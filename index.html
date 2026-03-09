@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,2992 +7,767 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════════════
-   DESIGN SYSTEM: "Ancient Authority Meets Digital Future"
-   ═══════════════════════════════════════════════════════ */
+/* === DESIGN SYSTEM === */
 :root, [data-theme="dark"] {
-  --bg-deep: #003057;
-  --bg-surface: #00395f;
-  --bg-elevated: #004470;
-  --gold-primary: #BDD6E6;
-  --gold-light: #d4e5f0;
-  --gold-dim: #8bb3cc;
-  --teal: #776E64;
-  --teal-light: #9a9189;
-  --teal-dim: #5d554d;
-  --text-primary: #f0f4f7;
-  --text-secondary: #b0c4d4;
+  --bg: #003057;
+  --bg-nav: rgba(0,24,44,0.92);
+  --text: #f0f4f7;
+  --text-sub: #b0c4d4;
   --text-dim: #6d8ea6;
-  --accent-red: #c44e3e;
-  --accent-orange: #d4723c;
-  --accent-green: #4a9e6d;
-  --font-display: 'Montserrat', system-ui, sans-serif;
-  --font-body: 'Montserrat', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --accent: #BDD6E6;
+  --accent-light: #d4e5f0;
+  --accent-dim: #8bb3cc;
+  --taupe: #776E64;
+  --font-d: 'Montserrat', system-ui, sans-serif;
+  --font-m: 'JetBrains Mono', monospace;
+  --nav-logo-white: block;
+  --nav-logo-color: none;
   --logo-filter: none;
-  --card-bg: rgba(0,38,70,0.6);
-  --card-border: rgba(189,214,230,0.12);
 }
-
 [data-theme="light"] {
-  --bg-deep: #f5f5f0;
-  --bg-surface: #eeeee8;
-  --bg-elevated: #e5e5de;
-  --gold-primary: #003057;
-  --gold-light: #00395f;
-  --gold-dim: #336b8f;
-  --teal: #776E64;
-  --teal-light: #5d554d;
-  --teal-dim: #9a9189;
-  --text-primary: #1a1a1a;
-  --text-secondary: #3d4f5c;
+  --bg: #f5f5f0;
+  --bg-nav: rgba(240,240,235,0.92);
+  --text: #1a1a1a;
+  --text-sub: #3d4f5c;
   --text-dim: #7a8e9e;
-  --accent-red: #b03a2e;
-  --accent-orange: #c4622c;
-  --accent-green: #3a8e5d;
-  --logo-filter: none;
-  --card-bg: rgba(255,255,255,0.7);
-  --card-border: rgba(0,48,87,0.12);
+  --accent: #003057;
+  --accent-light: #00395f;
+  --accent-dim: #336b8f;
+  --taupe: #776E64;
+  --nav-logo-white: none;
+  --nav-logo-color: block;
+  --logo-filter: brightness(0) saturate(100%);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: var(--font-d); }
 
-html, body {
-  width: 100%; height: 100%;
-  overflow: hidden;
-  background: var(--bg-deep);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-}
-
-/* ═══ SLIDE ENGINE ═══ */
-.deck {
-  width: 100%; height: 100%;
-  position: relative;
-}
+/* === SLIDE ENGINE === */
+.deck { width: 100%; height: 100%; position: relative; }
 
 .slide {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 60px 80px;
-  opacity: 0;
-  transform: translateY(30px);
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 60px 80px 80px;
+  opacity: 0; transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none;
-  overflow: hidden;
+  pointer-events: none; overflow: hidden;
 }
+.slide.active { opacity: 1; transform: translateY(0); pointer-events: all; }
 
-.slide.active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
+/* Grain overlay */
+.slide::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
 }
+.slide > * { position: relative; z-index: 1; }
 
-.slide.active .reveal {
-  animation: revealUp 0.7s ease forwards;
-}
+/* Reveal animations */
+.reveal { opacity: 0; transform: translateY(20px); }
+.slide.active .reveal { animation: revealUp 0.7s ease forwards; }
+.slide.active .reveal-d1 { animation-delay: 0.15s; }
+.slide.active .reveal-d2 { animation-delay: 0.3s; }
+.slide.active .reveal-d3 { animation-delay: 0.45s; }
+.slide.active .reveal-d4 { animation-delay: 0.6s; }
+@keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
 
-.slide.active .reveal-delay-1 { animation-delay: 0.15s; }
-.slide.active .reveal-delay-2 { animation-delay: 0.3s; }
-.slide.active .reveal-delay-3 { animation-delay: 0.45s; }
-.slide.active .reveal-delay-4 { animation-delay: 0.6s; }
-.slide.active .reveal-delay-5 { animation-delay: 0.75s; }
-.slide.active .reveal-delay-6 { animation-delay: 0.9s; }
+/* === PROGRESS === */
+.progress-track { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: rgba(189,214,230,0.1); z-index: 100; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-light)); transition: width 0.4s ease; }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-@keyframes revealUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ═══ NAVIGATION ═══ */
+/* === NAVIGATION === */
 .nav-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0; right: 0;
-  height: 56px;
-  background: linear-gradient(to top, rgba(0,24,44,0.95), rgba(0,24,44,0.7));
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-  z-index: 100;
-  border-top: 1px solid rgba(189,214,230,0.15);
+  position: fixed; bottom: 0; left: 0; right: 0; height: 56px;
+  background: var(--bg-nav); backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 30px; z-index: 100;
+  border-top: 1px solid rgba(189,214,230,0.12);
 }
-
-.nav-bar .slide-counter {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--gold-primary);
-  letter-spacing: 1px;
-}
-
-.nav-bar .act-label {
-  font-family: var(--font-display);
-  font-size: 15px;
-  color: var(--text-secondary);
-  font-style: italic;
-}
-
-.nav-bar .nav-buttons {
-  display: flex;
-  gap: 8px;
-}
-
+.nav-logo-white { display: var(--nav-logo-white); height: 32px; margin-right: 12px; }
+.nav-logo-color { display: var(--nav-logo-color); height: 32px; margin-right: 12px; }
+.slide-counter { font-family: var(--font-m); font-size: 13px; color: var(--accent); letter-spacing: 1px; }
+.act-label { font-family: var(--font-d); font-size: 14px; color: var(--text-sub); font-style: italic; }
+.nav-controls { display: flex; align-items: center; gap: 12px; }
 .nav-btn {
-  background: rgba(189,214,230,0.1);
-  border: 1px solid rgba(189,214,230,0.25);
-  color: var(--gold-primary);
-  width: 36px; height: 36px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  font-size: 16px;
-}
-
-.nav-btn:hover {
-  background: rgba(189,214,230,0.2);
-  border-color: var(--gold-primary);
-}
-
-/* Progress bar */
-.progress-track {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: rgba(189,214,230,0.1);
-  z-index: 100;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--gold-dim), var(--gold-primary), var(--gold-light));
-  transition: width 0.4s ease;
-}
-
-/* ═══ ACT DIVIDERS ═══ */
-.act-divider {
-  position: absolute;
-  top: 20px;
-  left: 80px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--gold-dim);
-}
-
-/* ═══ TYPOGRAPHY ═══ */
-h1 {
-  font-family: var(--font-display);
-  font-weight: 300;
-  line-height: 1.1;
-}
-
-h2 {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 48px;
-  line-height: 1.15;
-  margin-bottom: 24px;
-}
-
-h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 28px;
-  color: var(--gold-primary);
-  margin-bottom: 16px;
-}
-
-p, li {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
-
-.tagline {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 26px;
-  color: var(--gold-light);
-  letter-spacing: 0.5px;
-}
-
-.label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold-dim);
-  margin-bottom: 12px;
-}
-
-.stat-big {
-  font-family: var(--font-display);
-  font-size: 72px;
-  font-weight: 700;
-  color: var(--gold-primary);
-  line-height: 1;
-}
-
-.highlight {
-  color: var(--gold-primary);
-  font-weight: 600;
-}
-
-.teal-highlight {
-  color: var(--teal-light);
-  font-weight: 500;
-}
-
-blockquote {
-  border-left: 3px solid var(--gold-primary);
-  padding: 16px 24px;
-  margin: 20px 0;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 24px;
-  color: var(--text-primary);
-  background: rgba(189,214,230,0.05);
-}
-
-/* ═══ LAYOUT HELPERS ═══ */
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  height: 100%;
-}
-
-.split-40-60 {
-  grid-template-columns: 2fr 3fr;
-}
-
-.split-60-40 {
-  grid-template-columns: 3fr 2fr;
-}
-
-.stack {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.center-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-ul.clean {
-  list-style: none;
-  padding: 0;
-}
-
-ul.clean li {
-  padding: 8px 0;
-  padding-left: 24px;
-  position: relative;
-}
-
-ul.clean li::before {
-  content: '◆';
-  position: absolute;
-  left: 0;
-  color: var(--gold-primary);
-  font-size: 10px;
-  top: 12px;
-}
-
-/* ═══ CARDS & CONTAINERS ═══ */
-.card {
-  background: rgba(0,38,70,0.6);
-  border: 1px solid rgba(189,214,230,0.12);
-  border-radius: 12px;
-  padding: 28px;
-  backdrop-filter: blur(8px);
-}
-
-.card-glow {
-  box-shadow: 0 0 30px rgba(189,214,230,0.06);
-}
-
-.card-teal {
-  border-color: rgba(119,110,100,0.25);
-  background: rgba(119,110,100,0.06);
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.step-card {
-  background: rgba(0,38,70,0.5);
-  border: 1px solid rgba(189,214,230,0.1);
-  border-radius: 10px;
-  padding: 24px;
-  position: relative;
-}
-
-.step-num {
-  position: absolute;
-  top: -12px;
-  left: 20px;
-  background: var(--gold-primary);
-  color: var(--bg-deep);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 20px;
-}
-
-.step-card h4 {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-
-.step-card p {
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-/* ═══ VISUAL ELEMENTS ═══ */
-
-/* Sanhedrin circle illustration */
-.sanhedrin-circle {
-  width: 340px;
-  height: 340px;
-  position: relative;
-  margin: 0 auto;
-}
-
-.sanhedrin-circle .ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(189,214,230,0.2);
-}
-
-.sanhedrin-circle .ring-outer {
-  inset: 0;
-  border-width: 2px;
-  border-color: rgba(189,214,230,0.15);
-  animation: rotateRing 60s linear infinite;
-}
-
-.sanhedrin-circle .ring-mid {
-  inset: 40px;
-  border-style: dashed;
-  border-color: rgba(119,110,100,0.25);
-  animation: rotateRing 45s linear infinite reverse;
-}
-
-.sanhedrin-circle .ring-inner {
-  inset: 90px;
-  border-color: rgba(189,214,230,0.3);
-  background: radial-gradient(circle, rgba(189,214,230,0.08), transparent);
-}
-
-@keyframes rotateRing {
-  to { transform: rotate(360deg); }
-}
-
-.seat {
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, var(--gold-primary), var(--gold-dim));
-  box-shadow: 0 0 15px rgba(189,214,230,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  color: var(--bg-deep);
-  font-weight: 700;
-  font-family: var(--font-mono);
-}
-
-.seat.teal-seat {
-  background: radial-gradient(circle at 40% 40%, var(--teal-light), var(--teal-dim));
-  box-shadow: 0 0 15px rgba(119,110,100,0.3);
-}
-
-.seat.human-seat {
-  background: radial-gradient(circle at 40% 40%, var(--accent-orange), #8b4513);
-  box-shadow: 0 0 15px rgba(212,114,60,0.3);
-}
-
-/* Puzzle piece SVG */
-.puzzle-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  flex-wrap: wrap;
-  max-width: 320px;
-  margin: 0 auto;
-}
-
-/* Polarization visual */
-.polarization-visual {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  height: 180px;
-  margin: 20px 0;
-}
-
-.pole {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.pole-left {
-  background: linear-gradient(135deg, rgba(160,60,50,0.3), rgba(160,60,50,0.05));
-  border-radius: 12px 0 0 12px;
-  border: 1px solid rgba(160,60,50,0.2);
-  border-right: none;
-}
-
-.pole-right {
-  background: linear-gradient(135deg, rgba(74,158,109,0.05), rgba(74,158,109,0.3));
-  border-radius: 0 12px 12px 0;
-  border: 1px solid rgba(74,158,109,0.2);
-  border-left: none;
-}
-
-.pole-divider {
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--accent-red), var(--gold-primary), var(--accent-green));
-  position: relative;
-}
-
-.pole-divider::after {
-  content: '→ ◆ ←';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  font-size: 14px;
-  color: var(--gold-primary);
-  background: var(--bg-deep);
-  padding: 6px 10px;
-  border-radius: 20px;
-  border: 1px solid var(--gold-dim);
-}
-
-.pole-text {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-style: italic;
-  padding: 20px;
-  text-align: center;
-}
-
-.pole-left .pole-text { color: var(--accent-red); }
-.pole-right .pole-text { color: var(--accent-green); }
-
-/* Loop diagram */
-.loop-diagram {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 24px 0;
-}
-
-.loop-node {
-  background: rgba(0,38,70,0.8);
-  border: 1px solid rgba(189,214,230,0.2);
-  border-radius: 10px;
-  padding: 14px 20px;
-  font-family: var(--font-body);
-  font-size: 14px;
-  color: var(--text-primary);
-  text-align: center;
-  min-width: 120px;
-}
-
-.loop-node.active-node {
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 20px rgba(189,214,230,0.15);
-}
-
-.loop-arrow {
-  color: var(--gold-primary);
-  font-size: 20px;
-}
-
-/* Matrix table */
-.matrix {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-size: 14px;
-}
-
-.matrix th {
-  background: rgba(189,214,230,0.1);
-  color: var(--gold-primary);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 12px 16px;
-  text-align: left;
-  border-bottom: 1px solid rgba(189,214,230,0.2);
-}
-
-.matrix th:first-child { border-radius: 8px 0 0 0; }
-.matrix th:last-child { border-radius: 0 8px 0 0; }
-
-.matrix td {
-  padding: 12px 16px;
-  border-bottom: 1px solid rgba(189,214,230,0.06);
-  color: var(--text-secondary);
-}
-
-.matrix tr:hover td {
-  background: rgba(189,214,230,0.03);
-}
-
-.check { color: var(--accent-green); font-size: 16px; }
-.cross { color: var(--accent-red); font-size: 16px; }
-.partial { color: var(--accent-orange); font-size: 16px; }
-
-/* Roadmap timeline */
-.timeline {
-  position: relative;
-  padding-left: 40px;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 15px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--gold-primary), var(--teal), var(--gold-dim));
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 28px;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: -33px;
-  top: 4px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--gold-primary);
-  border: 3px solid var(--bg-deep);
-  box-shadow: 0 0 10px rgba(189,214,230,0.4);
-}
-
-.timeline-dot.active-dot {
-  background: var(--teal-light);
-  box-shadow: 0 0 10px rgba(119,110,100,0.4);
-  animation: pulse 2s ease infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 10px rgba(119,110,100,0.4); }
-  50% { box-shadow: 0 0 20px rgba(119,110,100,0.7); }
-}
-
-.timeline-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--gold-primary);
-  letter-spacing: 2px;
-  margin-bottom: 4px;
-}
-
-.timeline-title {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-}
-
-.timeline-desc {
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-
-/* Progress bars */
-.progress-bar-container {
-  margin: 16px 0;
-}
-
-.progress-label-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 6px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-}
-
-.progress-bar-bg {
-  height: 10px;
-  background: rgba(189,214,230,0.1);
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  border-radius: 5px;
-  transition: width 1.5s ease;
-}
-
-.fill-gold { background: linear-gradient(90deg, var(--gold-dim), var(--gold-primary)); }
-.fill-teal { background: linear-gradient(90deg, var(--teal-dim), var(--teal-light)); }
-
-/* Role architecture visual */
-.arch-grid {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 20px;
-  align-items: start;
-}
-
-.arch-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.arch-connector {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding-top: 20px;
-  color: var(--gold-primary);
-  font-size: 20px;
-}
-
-.arch-item {
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.arch-persona {
-  background: rgba(189,214,230,0.1);
-  border: 1px solid rgba(189,214,230,0.25);
-  color: var(--gold-light);
-}
-
-.arch-role {
-  background: rgba(119,110,100,0.1);
-  border: 1px solid rgba(119,110,100,0.25);
-  color: var(--teal-light);
-}
-
-/* Mode cards */
-.mode-card {
-  padding: 32px;
-  border-radius: 14px;
-  flex: 1;
-}
-
-.mode-culture {
-  background: linear-gradient(135deg, rgba(189,214,230,0.08), rgba(189,214,230,0.02));
-  border: 1px solid rgba(189,214,230,0.2);
-}
-
-.mode-debate {
-  background: linear-gradient(135deg, rgba(119,110,100,0.08), rgba(119,110,100,0.02));
-  border: 1px solid rgba(119,110,100,0.2);
-}
-
-.mode-icon {
-  font-size: 40px;
-  margin-bottom: 16px;
-}
-
-/* Team grid */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.team-card {
-  text-align: center;
-  padding: 24px 16px;
-  background: rgba(0,38,70,0.5);
-  border: 1px solid rgba(189,214,230,0.1);
-  border-radius: 12px;
-}
-
-.team-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  margin: 0 auto 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-}
-
-.team-card h4 {
-  font-family: var(--font-display);
-  font-size: 18px;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-}
-
-.team-card p {
-  font-size: 13px;
-  color: var(--text-secondary);
-}
-
-.team-missing {
-  border-style: dashed;
-  border-color: rgba(212,114,60,0.3);
-}
-
-.team-missing .team-avatar {
-  border: 2px dashed var(--accent-orange);
-}
-
-/* Physical space visualization */
-.space-visual {
-  width: 100%;
-  max-width: 420px;
-  aspect-ratio: 1;
-  margin: 0 auto;
-  position: relative;
-  background: radial-gradient(circle, rgba(0,38,70,0.8), transparent);
-}
-
-.space-floor {
-  position: absolute;
-  inset: 20%;
-  border-radius: 50%;
-  border: 2px solid rgba(189,214,230,0.2);
-  background: radial-gradient(circle, rgba(189,214,230,0.04), transparent);
-}
-
-.space-screen {
-  position: absolute;
-  inset: 5%;
-  border-radius: 50%;
-  border: 3px solid rgba(119,110,100,0.3);
-  border-style: dashed;
-}
-
-.space-label {
-  position: absolute;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 1px;
-  color: var(--text-dim);
-  white-space: nowrap;
-}
-
-.space-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--teal), var(--teal-dim));
-  box-shadow: 0 0 30px rgba(119,110,100,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-
-/* EdTech pyramid */
-.pyramid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  margin: 20px 0;
-}
-
-.pyramid-tier {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 16px;
-  border-radius: 8px;
-  color: var(--text-primary);
-}
-
-.pyramid-top {
-  width: 60%;
-  background: linear-gradient(90deg, rgba(189,214,230,0.2), rgba(189,214,230,0.1));
-  border: 1px solid rgba(189,214,230,0.3);
-  clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
-  padding: 20px 40px;
-}
-
-.pyramid-mid {
-  width: 80%;
-  background: linear-gradient(90deg, rgba(119,110,100,0.15), rgba(119,110,100,0.08));
-  border: 1px solid rgba(119,110,100,0.25);
-}
-
-.pyramid-base {
-  width: 100%;
-  background: linear-gradient(90deg, rgba(74,158,109,0.12), rgba(74,158,109,0.06));
-  border: 1px solid rgba(74,158,109,0.2);
-}
-
-/* CTA slide */
-.cta-box {
-  background: linear-gradient(135deg, rgba(189,214,230,0.12), rgba(189,214,230,0.04));
-  border: 2px solid rgba(189,214,230,0.3);
-  border-radius: 16px;
-  padding: 40px;
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.cta-button {
-  display: inline-block;
-  margin-top: 24px;
-  padding: 14px 40px;
-  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dim));
-  color: var(--bg-deep);
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
-  border-radius: 8px;
-  text-decoration: none;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 20px rgba(189,214,230,0.3);
-}
-
-/* Conversation bubbles for sample session */
-.chat-session {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 520px;
-}
-
-.chat-bubble {
-  padding: 14px 18px;
-  border-radius: 12px;
-  font-size: 14px;
-  line-height: 1.5;
-  max-width: 90%;
-  position: relative;
-}
-
-.chat-bubble .speaker {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-.bubble-rambam {
-  background: rgba(189,214,230,0.1);
-  border: 1px solid rgba(189,214,230,0.2);
-  align-self: flex-start;
-}
-
-.bubble-rambam .speaker { color: var(--gold-primary); }
-
-.bubble-golda {
-  background: rgba(119,110,100,0.1);
-  border: 1px solid rgba(119,110,100,0.2);
-  align-self: flex-end;
-}
-
-.bubble-golda .speaker { color: var(--teal-light); }
-
-.bubble-hillel {
-  background: rgba(74,158,109,0.1);
-  border: 1px solid rgba(74,158,109,0.2);
-  align-self: flex-start;
-}
-
-.bubble-hillel .speaker { color: var(--accent-green); }
-
-.bubble-system {
-  background: rgba(0,38,70,0.8);
-  border: 1px solid rgba(119,110,100,0.2);
-  align-self: center;
-  text-align: center;
-  font-style: italic;
-  color: var(--text-dim);
-  font-size: 12px;
-}
-
-/* Decorative background patterns */
-.bg-pattern {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.bg-pattern > * {
-  position: absolute;
-}
-
-.slide > *:not(.bg-pattern):not(.act-divider) {
-  position: relative;
-  z-index: 1;
-}
-
-/* Hero image styling */
-.slide-hero-img {
-  width: 100%;
-  max-width: 640px;
-  height: auto;
-  border-radius: 16px;
-  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
-  object-fit: contain;
-  margin: 0 auto;
-}
-
-.slide-hero-img-lg {
-  max-width: 720px;
-}
-
-.slide-hero-img-sm {
-  max-width: 520px;
-}
-
-.hero-img-float {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 560px;
-  z-index: 0;
-  opacity: 0.9;
-  border-radius: 16px;
-  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.3));
-}
-
-.center-hero-img {
-  display: block;
-  max-width: 560px;
-  margin: 20px auto;
-  border-radius: 16px;
-  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.3));
-}
-
-/* Geometric decorations */
-.geo-circle {
-  border-radius: 50%;
-  border: 1px solid rgba(189,214,230,0.08);
-}
-
-.geo-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(189,214,230,0.1), transparent);
-}
-
-/* Hebrew decorative text */
-.hebrew-deco {
-  font-size: 120px;
-  color: rgba(189,214,230,0.03);
-  font-family: serif;
-  line-height: 1;
-  user-select: none;
-}
-
-/* Appendix styles */
-.appendix-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.appendix-card {
-  padding: 24px;
-  background: rgba(0,38,70,0.5);
-  border: 1px solid rgba(189,214,230,0.1);
-  border-radius: 10px;
-}
-
-.appendix-card h4 {
-  font-family: var(--font-display);
-  font-size: 20px;
-  color: var(--gold-primary);
-  margin-bottom: 8px;
-}
-
-.appendix-card p {
-  font-size: 14px;
-}
-
-/* Thinking modes grid */
-.modes-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
-
-.mode-tag {
-  padding: 8px 10px;
-  background: rgba(189,214,230,0.06);
-  border: 1px solid rgba(189,214,230,0.12);
-  border-radius: 6px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-secondary);
-  text-align: center;
-}
-
-/* Two-col layout for modes slide */
-.modes-split {
-  display: flex;
-  gap: 40px;
-}
-
-/* Revenue model grid */
-.revenue-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.revenue-item {
-  padding: 20px;
-  background: rgba(0,38,70,0.5);
-  border: 1px solid rgba(189,214,230,0.1);
-  border-radius: 10px;
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-}
-
-.revenue-icon {
-  font-size: 28px;
-  flex-shrink: 0;
-}
-
-.revenue-item h4 {
-  font-family: var(--font-display);
-  font-size: 18px;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-}
-
-.revenue-item p {
-  font-size: 13px;
-}
-
-/* Fullscreen overlay for fullscreen mode */
-.fullscreen-hint {
-  position: fixed;
-  bottom: 70px;
-  right: 30px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-dim);
-  letter-spacing: 1px;
-  z-index: 100;
-  opacity: 0.5;
-}
-
-/* ═══ THEME TOGGLE ═══ */
-.theme-toggle {
-  position: fixed;
-  top: 16px;
-  right: 24px;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.theme-toggle label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-dim);
-  letter-spacing: 1px;
-  cursor: pointer;
-}
-
-.toggle-switch {
-  position: relative;
-  width: 44px;
-  height: 24px;
-  background: var(--bg-elevated);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.toggle-switch::after {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 16px;
-  height: 16px;
-  background: var(--gold-primary);
-  border-radius: 50%;
-  transition: transform 0.3s;
-}
-
-[data-theme="light"] .toggle-switch::after {
-  transform: translateX(20px);
-}
-
-/* ═══ LIGHT THEME OVERRIDES ═══ */
-[data-theme="light"] .nav-bar {
-  background: linear-gradient(to top, rgba(245,245,240,0.95), rgba(245,245,240,0.7));
-  border-top-color: rgba(0,48,87,0.15);
-}
-
-[data-theme="light"] .card {
-  background: var(--card-bg);
-  border-color: var(--card-border);
-}
-
-[data-theme="light"] .hero-img-float,
-[data-theme="light"] .slide-hero-img,
-[data-theme="light"] .center-hero-img {
-  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.12));
-}
-
-[data-theme="light"] .nav-btn {
-  background: rgba(0,48,87,0.06);
-  border-color: rgba(0,48,87,0.2);
-}
-
-[data-theme="light"] .nav-btn:hover {
-  background: rgba(0,48,87,0.12);
-}
-
-[data-theme="light"] .nav-logo-white { display: none; }
-[data-theme="light"] .nav-logo-color { display: block; }
-[data-theme="dark"] .nav-logo-white, :root .nav-logo-white { display: block; }
-[data-theme="dark"] .nav-logo-color, :root .nav-logo-color { display: none; }
-
-/* ═══ LANGUAGE TOGGLE ═══ */
-.lang-toggle {
-  position: fixed;
-  top: 16px;
-  right: 100px;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-}
-
+  background: rgba(189,214,230,0.08); border: 1px solid rgba(189,214,230,0.2);
+  color: var(--accent); width: 36px; height: 36px; border-radius: 6px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+}
+.nav-btn:hover { background: rgba(189,214,230,0.18); border-color: var(--accent); }
 .lang-btn {
-  background: var(--bg-elevated);
-  border: 1px solid var(--card-border);
-  color: var(--text-dim);
-  padding: 4px 10px;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 1px;
+  font-family: var(--font-m); font-size: 12px; padding: 6px 10px;
+  background: transparent; border: 1px solid rgba(189,214,230,0.2);
+  color: var(--text-dim); cursor: pointer; transition: all 0.2s;
 }
-
-.lang-btn:first-child { border-radius: 6px 0 0 6px; }
-.lang-btn:last-child { border-radius: 0 6px 6px 0; }
-
-.lang-btn.active {
-  background: var(--gold-primary);
-  color: var(--bg-deep);
-  border-color: var(--gold-primary);
-  font-weight: 600;
+.lang-btn:first-of-type { border-radius: 6px 0 0 6px; }
+.lang-btn:last-of-type { border-radius: 0 6px 6px 0; border-left: 0; }
+.lang-btn.active { background: rgba(189,214,230,0.15); color: var(--accent); }
+.theme-toggle {
+  width: 40px; height: 22px; border-radius: 11px; cursor: pointer;
+  background: rgba(189,214,230,0.15); border: 1px solid rgba(189,214,230,0.25);
+  position: relative; transition: all 0.3s;
 }
-
-.en-content, .he-content {
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  gap: 0;
-  position: relative;
-  z-index: 1;
+.theme-toggle::after {
+  content: ''; position: absolute; top: 2px; left: 2px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--accent); transition: transform 0.3s;
 }
+[data-theme="light"] .theme-toggle::after { transform: translateX(18px); }
+
+/* === TYPOGRAPHY === */
+.label {
+  font-family: var(--font-m); font-size: 12px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--accent-dim); margin-bottom: 12px;
+}
+h1 { font-family: var(--font-d); font-weight: 300; font-size: 56px; line-height: 1.1; }
+h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height: 1.1; margin-bottom: 20px; color: var(--text); }
+.tagline { font-family: var(--font-d); font-style: italic; font-size: 26px; color: var(--accent-light); }
+.body-text { font-size: 24px; line-height: 1.5; color: var(--text-sub); max-width: 560px; }
+.bullets { list-style: none; padding: 0; }
+.bullets li {
+  font-size: 22px; line-height: 1.6; color: var(--text-sub);
+  padding-left: 20px; position: relative; margin-bottom: 4px;
+}
+.bullets li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* === LAYOUT === */
+.split { display: grid; grid-template-columns: 45% 55%; gap: 48px; align-items: center; height: 100%; }
+.centered { display: flex; flex-direction: column; align-items: center; text-align: center; height: 100%; justify-content: center; }
+.hero-img {
+  width: 100%; max-height: 70vh; object-fit: cover;
+  border-radius: 16px; filter: drop-shadow(0 12px 40px rgba(0,0,0,0.25));
+}
+.hero-img-centered {
+  width: 60%; max-height: 50vh; object-fit: cover;
+  border-radius: 16px; filter: drop-shadow(0 12px 40px rgba(0,0,0,0.25));
+  margin: 24px auto 0;
+}
+.steps-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.step-pill {
+  font-family: var(--font-m); font-size: 13px; letter-spacing: 1px;
+  padding: 8px 16px; border-radius: 20px; color: var(--accent);
+  background: rgba(189,214,230,0.08); border: 1px solid rgba(189,214,230,0.15);
+}
+.thinker-row { display: flex; gap: 24px; margin-top: 16px; }
+.thinker {
+  font-family: var(--font-m); font-size: 14px; color: var(--accent);
+}
+.pair-list { list-style: none; padding: 0; }
+.pair-list li { font-size: 20px; color: var(--text-sub); padding: 6px 0; }
+.pair-list li span { color: var(--accent); font-weight: 500; }
+.mode-pair { display: flex; gap: 32px; margin-top: 16px; }
+.mode-box {
+  padding: 16px 24px; border-radius: 12px;
+  border: 1px solid rgba(189,214,230,0.15);
+  background: rgba(189,214,230,0.04);
+}
+.mode-box h3 { font-size: 22px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+.mode-box p { font-size: 18px; color: var(--text-sub); }
+.phase-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+.phase-box {
+  padding: 12px 20px; border-radius: 10px;
+  border: 1px solid rgba(189,214,230,0.12);
+  background: rgba(189,214,230,0.04);
+  font-family: var(--font-m); font-size: 14px; color: var(--accent);
+}
+.team-labels { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+.team-label { font-size: 20px; color: var(--text-sub); padding: 8px 0; }
+.team-label strong { color: var(--accent); font-weight: 600; }
+
+/* CTA */
+.cta-quote {
+  font-family: var(--font-d); font-style: italic; font-size: 28px;
+  color: var(--accent-light); max-width: 700px; line-height: 1.4;
+  border-left: 3px solid var(--accent); padding-left: 24px; margin: 24px auto;
+}
+.cta-btn {
+  display: inline-block; margin-top: 24px; padding: 16px 40px;
+  font-family: var(--font-d); font-size: 20px; font-weight: 600;
+  color: var(--bg); background: var(--accent);
+  border: none; border-radius: 8px; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(189,214,230,0.3); }
+
+/* Slide 1 logo */
+.motj-logo { height: 48px; margin-bottom: 32px; }
+[data-theme="light"] .motj-logo { filter: var(--logo-filter); }
+
+/* === LANGUAGE === */
+.en-content, .he-content { display: flex; flex-direction: column; }
 .en-content { display: flex; }
 .he-content { display: none; }
 [data-lang="he"] .en-content { display: none !important; }
 [data-lang="he"] .he-content { display: flex !important; }
 [data-lang="en"] .en-content { display: flex !important; }
 [data-lang="en"] .he-content { display: none !important; }
+[data-lang="he"] .slide { direction: rtl; text-align: right; }
+[data-lang="he"] .label { text-align: right; }
+[data-lang="he"] .split { grid-template-columns: 55% 45%; }
+[data-lang="he"] .bullets li { padding-left: 0; padding-right: 20px; }
+[data-lang="he"] .bullets li::before { left: auto; right: 0; }
+[data-lang="he"] .centered { text-align: center; direction: rtl; }
+[data-lang="he"] .cta-quote { border-left: none; border-right: 3px solid var(--accent); padding-left: 0; padding-right: 24px; }
 
-[data-lang="he"] .slide {
-  direction: rtl;
-  text-align: right;
-}
+/* Split slides: en-content and he-content should fill and be split */
+.slide .en-content.split, .slide .he-content.split { height: 100%; }
+.slide .en-content.centered, .slide .he-content.centered { height: 100%; }
 
-[data-lang="he"] .act-divider {
-  left: auto;
-  right: 80px;
-}
-
-[data-lang="he"] ul.clean li {
-  padding-left: 0;
-  padding-right: 24px;
-}
-
-[data-lang="he"] ul.clean li::before {
-  left: auto;
-  right: 0;
-}
-
-[data-lang="he"] blockquote {
-  border-left: none;
-  border-right: 3px solid var(--gold-primary);
-}
-
-[data-lang="he"] .timeline {
-  padding-left: 0;
-  padding-right: 40px;
-}
-
-[data-lang="he"] .timeline::before {
-  left: auto;
-  right: 15px;
-}
-
-[data-lang="he"] .timeline-dot {
-  left: auto;
-  right: -33px;
-}
-
-[data-lang="he"] .step-num {
-  left: auto;
-  right: 20px;
-}
-
-[data-lang="he"] .center-content {
-  text-align: center;
-}
-
-/* Responsive */
+/* === RESPONSIVE === */
 @media (max-width: 1024px) {
-  .slide { padding: 40px 40px 80px; }
-  h2 { font-size: 36px; }
-  .split { grid-template-columns: 1fr; gap: 30px; }
-  .split-40-60, .split-60-40 { grid-template-columns: 1fr; }
-  .steps-grid { grid-template-columns: 1fr 1fr; }
-  .team-grid { grid-template-columns: 1fr 1fr; }
-  .hero-img-float { position: relative; right: auto; top: auto; transform: none; max-width: 100%; margin: 20px auto; display: block; }
-  .theme-toggle { top: 10px; right: 16px; }
-  .lang-toggle { top: 10px; right: 80px; }
+  .slide { padding: 40px 40px 70px; }
+  h1 { font-size: 44px; }
+  h2 { font-size: 42px; }
+  .body-text { font-size: 20px; }
+  .tagline { font-size: 22px; }
+  .split { grid-template-columns: 1fr; gap: 24px; }
+  [data-lang="he"] .split { grid-template-columns: 1fr; }
+  .hero-img { max-height: 35vh; }
+  .hero-img-centered { width: 80%; max-height: 35vh; }
 }
-
 @media (max-width: 640px) {
-  .slide { padding: 24px 20px 80px; }
-  h1 { font-size: 36px !important; }
-  h2 { font-size: 28px; }
-  h3 { font-size: 22px; }
+  .slide { padding: 24px 20px 70px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 32px; }
+  .body-text { font-size: 18px; }
   .tagline { font-size: 18px; }
-  p, li { font-size: 15px; }
-  .stat-big { font-size: 48px; }
-  .steps-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: 1fr; }
-  .modes-grid { grid-template-columns: repeat(2, 1fr); }
-  .appendix-grid { grid-template-columns: 1fr; }
-  .revenue-grid { grid-template-columns: 1fr; }
-  .arch-grid { grid-template-columns: 1fr; }
-  .loop-diagram { flex-direction: column; }
-  .loop-arrow { transform: rotate(90deg); }
-  .modes-split { flex-direction: column; }
-  .chat-session { max-width: 100%; }
-  .slide-hero-img, .center-hero-img { max-width: 100%; }
-  .hero-img-float { max-width: 100%; opacity: 1; }
-  .nav-bar { padding: 0 16px; height: 50px; }
+  .bullets li { font-size: 18px; }
+  .nav-bar { padding: 0 16px; }
   .act-label { display: none; }
-  .act-divider { left: 20px; font-size: 10px; }
-  [data-lang="he"] .act-divider { right: 20px; }
-  .matrix { font-size: 11px; }
-  .matrix th, .matrix td { padding: 8px 6px; }
-  .theme-toggle label { display: none; }
-  .lang-toggle { right: 60px; }
-  .theme-toggle { right: 10px; }
-  blockquote { font-size: 18px; padding: 12px 16px; }
-  .cta-box { padding: 24px; }
-  .hebrew-deco { font-size: 60px; }
+  .hero-img-centered { width: 90%; }
+  .mode-pair { flex-direction: column; gap: 12px; }
+  .thinker-row { flex-direction: column; gap: 8px; }
+  .cta-quote { font-size: 22px; }
 }
 </style>
 </head>
 <body>
 
-<div class="lang-toggle">
-  <button class="lang-btn active" onclick="setLang('en')">EN</button>
-  <button class="lang-btn" onclick="setLang('he')">עב</button>
-</div>
+<!-- Progress -->
+<div class="progress-track"><div class="progress-fill" id="progressFill" style="width: 5.56%"></div></div>
 
-<div class="theme-toggle">
-  <label onclick="toggleTheme()" style="font-size:14px">LIGHT</label>
-  <div class="toggle-switch" onclick="toggleTheme()"></div>
-  <label onclick="toggleTheme()" style="font-size:14px">DARK</label>
-</div>
+<div class="deck">
 
-<div class="progress-track">
-  <div class="progress-fill" id="progressFill" style="width: 0%"></div>
-</div>
-
-<div class="deck" id="deck">
-
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 1 - TITLE / HERO
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 1: Title (centered) -->
+<!-- ============================================================ -->
 <section class="slide active" data-act="ACT 1: THE HOOK">
-  <div class="bg-pattern">
-    <div class="hebrew-deco" style="top: -20px; right: -30px;">סנהדרין</div>
-    <div class="geo-circle" style="width: 600px; height: 600px; right: -150px; top: -100px; border-color: rgba(189,214,230,0.06);"></div>
-    <div class="geo-circle" style="width: 400px; height: 400px; right: -50px; top: 0; border-color: rgba(119,110,100,0.05);"></div>
-    <div class="geo-circle" style="width: 200px; height: 200px; left: 10%; bottom: 15%; border-color: rgba(189,214,230,0.04);"></div>
-    <div class="geo-line" style="width: 100%; top: 50%; opacity: 0.3;"></div>
+  <div class="en-content centered">
+    <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" class="motj-logo reveal">
+    <h1 class="reveal reveal-d1">The Sanhedrin<br>Educational Experience</h1>
+    <p class="tagline reveal reveal-d2" style="margin-top: 20px; max-width: 600px;">What would history's greatest minds say about today's dilemmas?</p>
+    <img src="slides/slide-01/hero.png" alt="Sanhedrin arena" class="hero-img-centered reveal reveal-d3">
   </div>
-  <div class="act-divider">ACT 1: THE HOOK</div>
-  <div class="en-content">
-    <div style="max-width: 850px;">
-      <img src="assets/logos/motj-logo-horizontal-white.svg" class="reveal" style="max-width: 380px; margin-bottom: 20px;" alt="Museum of Tolerance Jerusalem">
-      <p class="label reveal">Museum of Tolerance Jerusalem</p>
-      <h1 style="font-size: 64px; margin-bottom: 24px;" class="reveal reveal-delay-1">
-        The <span style="color: var(--gold-primary);">Sanhedrin</span><br>Educational Experience
-      </h1>
-      <p class="tagline reveal reveal-delay-2" style="margin-bottom: 40px;">
-        "What would history's greatest minds say about <em>today's</em> dilemmas?"
-      </p>
-      <div style="display: flex; gap: 32px; margin-top: 20px;" class="reveal reveal-delay-3">
-        <div style="border-left: 2px solid var(--teal); padding-left: 16px;">
-          <p class="label" style="margin-bottom: 4px;">Format</p>
-          <p style="font-size: 16px; color: var(--text-primary);">AI-Powered Immersive Deliberation</p>
-        </div>
-        <div style="border-left: 2px solid var(--gold-dim); padding-left: 16px;">
-          <p class="label" style="margin-bottom: 4px;">Duration</p>
-          <p style="font-size: 16px; color: var(--text-primary);">20–25 Minute Sessions</p>
-        </div>
-        <div style="border-left: 2px solid var(--gold-dim); padding-left: 16px;">
-          <p class="label" style="margin-bottom: 4px;">Audience</p>
-          <p style="font-size: 16px; color: var(--text-primary);">Museum Visitors · Schools · Corporate</p>
-        </div>
-      </div>
-    </div>
+  <div class="he-content centered">
+    <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" class="motj-logo reveal">
+    <h1 class="reveal reveal-d1">חוויית הסנהדרין<br>החינוכית</h1>
+    <p class="tagline reveal reveal-d2" style="margin-top: 20px; max-width: 600px;">מה היו אומרים המוחות הגדולים בהיסטוריה על הדילמות של היום?</p>
+    <img src="slides/slide-01/hero.png" alt="זירת הסנהדרין" class="hero-img-centered reveal reveal-d3">
   </div>
-  <div class="he-content">
-    <div style="max-width: 850px;">
-      <img src="assets/logos/motj-logo-horizontal-white.svg" class="reveal" style="max-width: 380px; margin-bottom: 20px;" alt="מוזיאון הסובלנות ירושלים">
-      <p class="label reveal">מוזיאון הסובלנות ירושלים</p>
-      <h1 style="font-size: 64px; margin-bottom: 24px;" class="reveal reveal-delay-1">
-        חוויית <span style="color: var(--gold-primary);">הסנהדרין</span><br>החינוכית
-      </h1>
-      <p class="tagline reveal reveal-delay-2" style="margin-bottom: 40px;">
-        "מה היו אומרים המוחות הגדולים בהיסטוריה על הדילמות של <em>היום</em>?"
-      </p>
-      <div style="display: flex; gap: 32px; margin-top: 20px;" class="reveal reveal-delay-3">
-        <div style="border-right: 2px solid var(--teal); padding-right: 16px;">
-          <p class="label" style="margin-bottom: 4px;">פורמט</p>
-          <p style="font-size: 16px; color: var(--text-primary);">דיון אימרסיבי מונע בינה מלאכותית</p>
-        </div>
-        <div style="border-right: 2px solid var(--gold-dim); padding-right: 16px;">
-          <p class="label" style="margin-bottom: 4px;">משך</p>
-          <p style="font-size: 16px; color: var(--text-primary);">מפגשים של 20–25 דקות</p>
-        </div>
-        <div style="border-right: 2px solid var(--gold-dim); padding-right: 16px;">
-          <p class="label" style="margin-bottom: 4px;">קהל יעד</p>
-          <p style="font-size: 16px; color: var(--text-primary);">מבקרי מוזיאון · בתי ספר · ארגונים</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <img src="slides/slide-01/hero.png" class="hero-img-float reveal reveal-delay-3" alt="Sanhedrin Arena">
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 2 - THE PROBLEM
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 2: Problem -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
-  <div class="bg-pattern">
-    <div class="hebrew-deco" style="bottom: -30px; left: -20px; color: rgba(160,60,50,0.03);">מחלוקת</div>
-  </div>
-  <div class="act-divider">ACT 1: THE HOOK</div>
-  <div class="en-content">
-    <div class="split split-60-40">
-      <div>
-        <p class="label reveal">The Urgency</p>
-        <h2 class="reveal reveal-delay-1">Discourse is<br><span style="color: var(--accent-red);">Broken</span></h2>
-        <p class="reveal reveal-delay-2" style="font-size: 20px; color: var(--text-primary); margin-bottom: 20px;">
-          Young people <strong>walk out of rooms</strong> when exposed to opposing views.
-        </p>
-        <blockquote class="reveal reveal-delay-3">
-          "I disagree with you" has become synonymous with "You are my enemy."
-        </blockquote>
-        <ul class="clean reveal reveal-delay-4">
-          <li>Tolerance cannot be taught via passive history lectures</li>
-          <li>Civic discourse is a <span class="highlight">muscle</span> - it must be <em>built through experience</em></li>
-          <li>No "civic discourse simulator" exists to train these skills</li>
-        </ul>
-      </div>
-      <div class="reveal reveal-delay-3" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-02/hero.png" class="slide-hero-img" alt="Polarization">
-        <p style="text-align: center; font-size: 13px; color: var(--text-dim); margin-top: 12px;">
-          From adversarial conflict → collaborative inquiry
-        </p>
-      </div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">The Urgency</p>
+      <h2 class="reveal reveal-d1">Discourse<br>is Broken</h2>
+      <p class="body-text reveal reveal-d2">Young people walk out of rooms when exposed to opposing views.</p>
     </div>
+    <img src="slides/slide-02/hero.png" alt="Polarization" class="hero-img reveal reveal-d3">
   </div>
-  <div class="he-content">
-    <div class="split split-60-40">
-      <div>
-        <p class="label reveal">הדחיפות</p>
-        <h2 class="reveal reveal-delay-1">השיח<br><span style="color: var(--accent-red);">שבור</span></h2>
-        <p class="reveal reveal-delay-2" style="font-size: 20px; color: var(--text-primary); margin-bottom: 20px;">
-          צעירים <strong>עוזבים את החדר</strong> כשנחשפים לדעות מנוגדות.
-        </p>
-        <blockquote class="reveal reveal-delay-3">
-          "אני לא מסכים איתך" הפך לשם נרדף של "אתה האויב שלי."
-        </blockquote>
-        <ul class="clean reveal reveal-delay-4">
-          <li>סובלנות לא ניתן ללמד דרך הרצאות היסטוריה פסיביות</li>
-          <li>שיח אזרחי הוא <span class="highlight">שריר</span> - יש לבנות אותו <em>דרך חוויה</em></li>
-          <li>לא קיים "סימולטור שיח אזרחי" לאימון מיומנויות אלו</li>
-        </ul>
-      </div>
-      <div class="reveal reveal-delay-3" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-02/hero.png" class="slide-hero-img" alt="קיטוב">
-        <p style="text-align: center; font-size: 13px; color: var(--text-dim); margin-top: 12px;">
-          מעימות יריבותי → לחקירה משותפת
-        </p>
-      </div>
+  <div class="he-content split">
+    <img src="slides/slide-02/hero.png" alt="קיטוב" class="hero-img reveal reveal-d3">
+    <div>
+      <p class="label reveal">הדחיפות</p>
+      <h2 class="reveal reveal-d1">השיח שבור</h2>
+      <p class="body-text reveal reveal-d2">צעירים עוזבים את החדר כשנחשפים לדעות מנוגדות.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 3 - THE FRAMING (Puzzle Metaphor)
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 3: Puzzle -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
-  <div class="bg-pattern">
-    <div class="geo-circle" style="width: 500px; height: 500px; left: -200px; bottom: -200px; border-color: rgba(189,214,230,0.04);"></div>
-  </div>
-  <div class="act-divider">ACT 1: THE HOOK</div>
-  <div class="en-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">The Cognitive Twist</p>
-        <h2 class="reveal reveal-delay-1">Dispute as a<br><span class="highlight">Dynamic Puzzle</span></h2>
-        <p class="reveal reveal-delay-2" style="font-size: 18px; margin-bottom: 20px;">
-          We reframe disagreement: it's no longer a <span style="color: var(--accent-red);">battle to be won</span>,
-          but a <span class="highlight">puzzle to be solved together</span>.
-        </p>
-        <div class="card reveal reveal-delay-3" style="margin-bottom: 16px;">
-          <h3 style="font-size: 20px; margin-bottom: 8px;">The Sanhedrin as Operating System</h3>
-          <p style="font-size: 15px;">
-            Disagreement becomes <em>collaborative investigation</em> - a Sherlock Holmes-style inquiry
-            where participants uncover hidden puzzle pieces: arguments, facts, shared agreements.
-          </p>
-        </div>
-        <div class="card card-teal reveal reveal-delay-4">
-          <p class="label" style="color: var(--teal);">Powered By</p>
-          <p style="font-size: 16px; color: var(--text-primary);">
-            <span class="teal-highlight">13 Talmudic Thinking Modes</span> - structured methods for
-            examining every facet of a dilemma without tribalism.
-          </p>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-03/hero.png" class="slide-hero-img" alt="Dynamic Puzzle">
-        <p style="font-size: 13px; color: var(--text-dim); margin-top: 16px; text-align: center;">
-          Each deliberation reveals hidden puzzle pieces<br>that complete the full picture
-        </p>
-      </div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">The Cognitive Twist</p>
+      <h2 class="reveal reveal-d1">Dispute as a<br>Dynamic Puzzle</h2>
+      <p class="body-text reveal reveal-d2">Not a battle to win.<br>A puzzle to solve together.</p>
     </div>
+    <img src="slides/slide-03/hero.png" alt="Puzzle metaphor" class="hero-img reveal reveal-d3">
   </div>
-  <div class="he-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">הטוויסט הקוגניטיבי</p>
-        <h2 class="reveal reveal-delay-1">מחלוקת כ<br><span class="highlight">פאזל דינמי</span></h2>
-        <p class="reveal reveal-delay-2" style="font-size: 18px; margin-bottom: 20px;">
-          אנחנו ממסגרים מחדש את חוסר ההסכמה: זו כבר לא <span style="color: var(--accent-red);">מלחמה שצריך לנצח</span>,
-          אלא <span class="highlight">פאזל שצריך לפתור יחד</span>.
-        </p>
-        <div class="card reveal reveal-delay-3" style="margin-bottom: 16px;">
-          <h3 style="font-size: 20px; margin-bottom: 8px;">הסנהדרין כמערכת הפעלה</h3>
-          <p style="font-size: 15px;">
-            מחלוקת הופכת ל<em>חקירה משותפת</em> - חקירה בסגנון שרלוק הולמס
-            שבה המשתתפים חושפים חלקי פאזל נסתרים: טיעונים, עובדות, הסכמות משותפות.
-          </p>
-        </div>
-        <div class="card card-teal reveal reveal-delay-4">
-          <p class="label" style="color: var(--teal);">מופעל על ידי</p>
-          <p style="font-size: 16px; color: var(--text-primary);">
-            <span class="teal-highlight">13 מידות של חשיבה תלמודית</span> - שיטות מובנות לבחינת
-            כל היבט של דילמה ללא שבטיות.
-          </p>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-03/hero.png" class="slide-hero-img" alt="פאזל דינמי">
-        <p style="font-size: 13px; color: var(--text-dim); margin-top: 16px; text-align: center;">
-          כל דיון חושף חלקי פאזל נסתרים<br>שמשלימים את התמונה המלאה
-        </p>
-      </div>
+  <div class="he-content split">
+    <img src="slides/slide-03/hero.png" alt="מטאפורת פאזל" class="hero-img reveal reveal-d3">
+    <div>
+      <p class="label reveal">הטוויסט הקוגניטיבי</p>
+      <h2 class="reveal reveal-d1">מחלוקת<br>כפאזל דינמי</h2>
+      <p class="body-text reveal reveal-d2">לא קרב לניצחון.<br>פאזל לפתרון משותף.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 4 - KEY VALUE PROPOSITION
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 4: Value Prop (centered) -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
-  <div class="act-divider">ACT 1: THE HOOK</div>
-  <div class="en-content">
-    <div class="center-content" style="gap: 32px;">
-      <p class="label reveal">The Promise</p>
-      <h2 class="reveal reveal-delay-1" style="font-size: 52px; max-width: 800px;">
-        Learn to argue better in 30 minutes.<br>
-        <span class="highlight">without needing to agree.</span>
-      </h2>
-      <p class="reveal reveal-delay-2" style="font-size: 20px; max-width: 650px;">
-        An AI-powered immersive space where visitors engage with history's greatest
-        thinkers in <em>real-time deliberation</em> about modern moral dilemmas.
-      </p>
-      <img src="slides/slide-04/hero.png" class="center-hero-img reveal reveal-delay-2" style="max-width: 480px; margin: 12px auto;" alt="Value Proposition">
-      <div class="loop-diagram reveal reveal-delay-3">
-        <div class="loop-node active-node">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
-          Human Visitor
-        </div>
-        <div class="loop-arrow">→</div>
-        <div class="loop-node">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          Inputs Dilemma
-        </div>
-        <div class="loop-arrow">→</div>
-        <div class="loop-node" style="border-color: rgba(119,110,100,0.3);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="4" width="14" height="12" rx="2"/><circle cx="9" cy="10" r="1.5"/><circle cx="15" cy="10" r="1.5"/><path d="M9 14h6"/><path d="M8 20h8"/><path d="M12 16v4"/></svg>
-          AI + Humans<br>Deliberate
-        </div>
-        <div class="loop-arrow">→</div>
-        <div class="loop-node active-node">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
-          Expanded<br>Thinking
-        </div>
-      </div>
-      <div class="loop-arrow reveal reveal-delay-4" style="font-size: 14px; color: var(--text-dim);">
-        ← Continuous Loop - New Perspectives Each Session →
-      </div>
-    </div>
+  <div class="en-content centered">
+    <h2 class="reveal" style="max-width: 700px;">Learn to argue better.<br>Without needing to agree.</h2>
+    <p class="body-text reveal reveal-d1" style="text-align: center;">AI-powered deliberation with history's greatest thinkers.</p>
+    <img src="slides/slide-04/hero.png" alt="Value proposition" class="hero-img-centered reveal reveal-d2">
   </div>
-  <div class="he-content">
-    <div class="center-content" style="gap: 32px;">
-      <p class="label reveal">ההבטחה</p>
-      <h2 class="reveal reveal-delay-1" style="font-size: 52px; max-width: 800px;">
-        למדו להתווכח טוב יותר ב-30 דקות.<br>
-        <span class="highlight">בלי הצורך להסכים.</span>
-      </h2>
-      <p class="reveal reveal-delay-2" style="font-size: 20px; max-width: 650px;">
-        מרחב אימרסיבי מונע בינה מלאכותית שבו מבקרים מנהלים דיון בזמן אמת
-        עם ההוגים הגדולים בהיסטוריה על <em>דילמות מוסריות עכשוויות</em>.
-      </p>
-      <img src="slides/slide-04/hero.png" class="center-hero-img reveal reveal-delay-2" style="max-width: 480px; margin: 12px auto;" alt="הצעת ערך">
-      <div class="loop-diagram reveal reveal-delay-3">
-        <div class="loop-node active-node">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
-          מבקר
-        </div>
-        <div class="loop-arrow">←</div>
-        <div class="loop-node">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          מזין דילמה
-        </div>
-        <div class="loop-arrow">←</div>
-        <div class="loop-node" style="border-color: rgba(119,110,100,0.3);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="4" width="14" height="12" rx="2"/><circle cx="9" cy="10" r="1.5"/><circle cx="15" cy="10" r="1.5"/><path d="M9 14h6"/><path d="M8 20h8"/><path d="M12 16v4"/></svg>
-          בינה מלאכותית + אנשים<br>דנים
-        </div>
-        <div class="loop-arrow">←</div>
-        <div class="loop-node active-node">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
-          חשיבה<br>מורחבת
-        </div>
-      </div>
-      <div class="loop-arrow reveal reveal-delay-4" style="font-size: 14px; color: var(--text-dim);">
-        → לולאה מתמשכת - נקודות מבט חדשות בכל מפגש ←
-      </div>
-    </div>
+  <div class="he-content centered">
+    <h2 class="reveal" style="max-width: 700px;">למדו להתווכח טוב יותר.<br>בלי הצורך להסכים.</h2>
+    <p class="body-text reveal reveal-d1" style="text-align: center;">דיון מונע בינה מלאכותית עם ההוגים הגדולים בהיסטוריה.</p>
+    <img src="slides/slide-04/hero.png" alt="הצעת ערך" class="hero-img-centered reveal reveal-d2">
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 5 - VISITOR JOURNEY
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 5: Visitor Journey -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="bg-pattern">
-    <div class="geo-line" style="width: 100%; top: 30%;"></div>
-    <div class="geo-line" style="width: 100%; bottom: 30%;"></div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">End-to-End Flow</p>
+      <h2 class="reveal reveal-d1">The Visitor Journey</h2>
+      <div class="steps-row reveal reveal-d2">
+        <span class="step-pill">Input</span>
+        <span class="step-pill">Facilitate</span>
+        <span class="step-pill">Orchestrate</span>
+        <span class="step-pill">Deliberate</span>
+        <span class="step-pill">Synthesize</span>
+        <span class="step-pill">Takeaway</span>
+      </div>
+    </div>
+    <img src="slides/slide-05/hero.png" alt="Visitor journey" class="hero-img reveal reveal-d3">
   </div>
-  <div class="act-divider">ACT 2: THE EXPERIENCE</div>
-  <div class="en-content">
-    <div style="display: flex; gap: 32px; align-items: flex-start;">
-      <div style="flex: 1;">
-        <p class="label reveal">End-to-End Flow</p>
-        <h2 class="reveal reveal-delay-1" style="margin-bottom: 28px;">The Visitor Journey</h2>
-      </div>
-      <img src="slides/slide-05/hero.png" class="reveal reveal-delay-1" style="max-width: 440px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));" alt="Visitor Journey">
-    </div>
-    <div class="steps-grid reveal reveal-delay-2">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h4>Input Dilemma</h4>
-        <p>Visitor arrives and inputs a personal moral dilemma via touchscreen interface.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h4>Human Facilitator</h4>
-        <p>The Game Master sets the stage. <strong>Human charisma is non-negotiable</strong> for live orchestration.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h4>AI Orchestration</h4>
-        <p>The "Nasi" profiles the visitor and selects <span class="teal-highlight">5–7 relevant thinkers</span> by wisdom domain.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">04</div>
-        <h4>Deliberation</h4>
-        <p>Selected thinkers and human participants deliberate, uncovering puzzle pieces together.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">05</div>
-        <h4>Synthesis</h4>
-        <p>System highlights contradictions and expands perspective - <em>no single "right answer"</em>.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">06</div>
-        <h4>Takeaway</h4>
-        <p>Personalized digital summary with key insights and a reflection question via QR code.</p>
+  <div class="he-content split">
+    <img src="slides/slide-05/hero.png" alt="מסע מבקר" class="hero-img reveal reveal-d3">
+    <div>
+      <p class="label reveal">זרימה מקצה לקצה</p>
+      <h2 class="reveal reveal-d1">מסע המבקר</h2>
+      <div class="steps-row reveal reveal-d2">
+        <span class="step-pill">הזנה</span>
+        <span class="step-pill">הנחיה</span>
+        <span class="step-pill">תזמור</span>
+        <span class="step-pill">דיון</span>
+        <span class="step-pill">סינתזה</span>
+        <span class="step-pill">תובנות</span>
       </div>
     </div>
-    <p class="reveal reveal-delay-3" style="text-align: center; margin-top: 20px; font-size: 14px; color: var(--text-dim);">
-      Structured, repeatable <span class="highlight">20–25 minute loop</span> with human-in-the-loop orchestration
-    </p>
-  </div>
-  <div class="he-content">
-    <div style="display: flex; gap: 32px; align-items: flex-start;">
-      <div style="flex: 1;">
-        <p class="label reveal">תהליך מקצה לקצה</p>
-        <h2 class="reveal reveal-delay-1" style="margin-bottom: 28px;">מסע המבקר</h2>
-      </div>
-      <img src="slides/slide-05/hero.png" class="reveal reveal-delay-1" style="max-width: 440px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));" alt="מסע המבקר">
-    </div>
-    <div class="steps-grid reveal reveal-delay-2">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h4>הזנת דילמה</h4>
-        <p>המבקר מגיע ומזין דילמה מוסרית אישית דרך מסך מגע.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h4>מנחה אנושי</h4>
-        <p>מנהל המשחק מכין את הבמה. <strong>כריזמה אנושית היא תנאי הכרחי</strong> לתזמור חי.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h4>תזמור בינה מלאכותית</h4>
-        <p>ה"נשיא" מפרופל את המבקר ובוחר <span class="teal-highlight">5–7 הוגים רלוונטיים</span> לפי תחום חכמה.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">04</div>
-        <h4>דיון</h4>
-        <p>ההוגים שנבחרו והמשתתפים האנושיים דנים יחד, חושפים חלקי פאזל.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">05</div>
-        <h4>סינתזה</h4>
-        <p>המערכת מדגישה סתירות ומרחיבה את הפרספקטיבה - <em>אין תשובה "נכונה" אחת</em>.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">06</div>
-        <h4>תובנות לדרך</h4>
-        <p>סיכום דיגיטלי מותאם אישית עם תובנות מפתח ושאלת רפלקציה דרך QR.</p>
-      </div>
-    </div>
-    <p class="reveal reveal-delay-3" style="text-align: center; margin-top: 20px; font-size: 14px; color: var(--text-dim);">
-      לולאה מובנית וחוזרת של <span class="highlight">20–25 דקות</span> עם תזמור אנושי
-    </p>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 6 - THE ARCHITECTURE
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 6: Architecture -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="act-divider">ACT 2: THE EXPERIENCE</div>
-  <div class="en-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">System Design</p>
-        <h2 class="reveal reveal-delay-1">Role-Based<br>Architecture</h2>
-        <p class="reveal reveal-delay-2" style="margin-bottom: 20px;">
-          This is <strong>not</strong> a standard chatbot array. We separate
-          <span class="highlight">Persona</span> from <span class="teal-highlight">Role</span>.
-        </p>
-        <ul class="clean reveal reveal-delay-3">
-          <li>A persona can step into different functional roles depending on session needs</li>
-          <li>Humans and AI agents swap roles seamlessly</li>
-          <li>Highly modular - dynamic interactions, never scripted</li>
-        </ul>
-      </div>
-      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-06/hero.png" class="slide-hero-img" alt="Role-Based Architecture">
-        <p style="text-align: center; font-size: 12px; color: var(--text-dim); margin-top: 16px;">
-          Any persona can occupy any role - including human participants
-        </p>
-      </div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">System Design</p>
+      <h2 class="reveal reveal-d1">Role-Based<br>Architecture</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>Persona and Role separated</li>
+        <li>Humans and AI swap roles</li>
+        <li>Dynamic, never scripted</li>
+      </ul>
     </div>
+    <img src="slides/slide-06/hero.png" alt="Architecture" class="hero-img reveal reveal-d3">
   </div>
-  <div class="he-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">עיצוב מערכת</p>
-        <h2 class="reveal reveal-delay-1">ארכיטקטורה<br>מבוססת תפקידים</h2>
-        <p class="reveal reveal-delay-2" style="margin-bottom: 20px;">
-          זה <strong>לא</strong> מערך צ'אטבוטים סטנדרטי. אנחנו מפרידים בין
-          <span class="highlight">פרסונה</span> ל<span class="teal-highlight">תפקיד</span>.
-        </p>
-        <ul class="clean reveal reveal-delay-3">
-          <li>פרסונה יכולה להיכנס לתפקידים פונקציונליים שונים בהתאם לצרכי המפגש</li>
-          <li>בני אדם וסוכני בינה מלאכותית מחליפים תפקידים בצורה חלקה</li>
-          <li>מודולרי מאוד - אינטראקציות דינמיות, אף פעם לא מתוסרטות</li>
-        </ul>
-      </div>
-      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-06/hero.png" class="slide-hero-img" alt="ארכיטקטורה מבוססת תפקידים">
-        <p style="text-align: center; font-size: 12px; color: var(--text-dim); margin-top: 16px;">
-          כל פרסונה יכולה לתפוס כל תפקיד - כולל משתתפים אנושיים
-        </p>
-      </div>
+  <div class="he-content split">
+    <img src="slides/slide-06/hero.png" alt="ארכיטקטורה" class="hero-img reveal reveal-d3">
+    <div>
+      <p class="label reveal">עיצוב מערכת</p>
+      <h2 class="reveal reveal-d1">ארכיטקטורה<br>מבוססת תפקידים</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>פרסונה ותפקיד מופרדים</li>
+        <li>בני אדם ובינה מלאכותית מחליפים תפקידים</li>
+        <li>דינמי, אף פעם לא מתוסרט</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 7 - SAMPLE SESSION
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 7: Sample Session -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="bg-pattern">
-    <div class="hebrew-deco" style="top: -10px; right: -20px; font-size: 100px; color: rgba(119,110,100,0.03);">השור שנגח</div>
-  </div>
-  <div class="act-divider">ACT 2: THE EXPERIENCE</div>
-  <div class="en-content">
-    <div class="split split-40-60">
-      <div>
-        <p class="label reveal">Live Demo</p>
-        <h2 class="reveal reveal-delay-1">Sample<br>Session</h2>
-        <div class="card reveal reveal-delay-2" style="margin-bottom: 16px;">
-          <p class="label">The Dilemma</p>
-          <p style="font-size: 16px; color: var(--text-primary);">
-            The ancient <em>"Goring Ox"</em> (השור שנגח) modernized:
-          </p>
-          <p style="font-size: 20px; color: var(--gold-light); font-family: var(--font-display); margin-top: 8px;">
-            "Who is liable when an Autonomous Vehicle causes a fatal accident?"
-          </p>
-        </div>
-        <p class="reveal reveal-delay-3" style="font-size: 14px; color: var(--text-dim);">
-          Universal ethical gray zone (Tech/AI ethics) - no tribal political triggers
-        </p>
-      </div>
-      <div class="reveal reveal-delay-3">
-        <img src="slides/slide-07/hero.png" style="max-width: 440px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); margin-bottom: 16px;" alt="Sample Session">
-        <div class="chat-session">
-          <div class="chat-bubble bubble-system">
-            NASI assigns roles based on dilemma domain: Technology, Law, Ethics
-          </div>
-          <div class="chat-bubble bubble-rambam">
-            <div class="speaker">RAMBAM: The Judge</div>
-            "Liability has layers. The programmer wrote the algorithm, but the manufacturer deployed it,
-            and the city approved its roads. We must trace the chain of causation.
-            each link bears its own weight of responsibility."
-          </div>
-          <div class="chat-bubble bubble-golda">
-            <div class="speaker">GOLDA MEIR: The Advocate</div>
-            "Philosophy is beautiful, but families need answers <em>now</em>.
-            The manufacturer must bear primary liability - they sold the promise of safety.
-            Set the legal boundary first, refine later."
-          </div>
-          <div class="chat-bubble bubble-hillel">
-            <div class="speaker">HILLEL: The Questioner</div>
-            "Before we assign blame - have we asked the pedestrian's family what
-            <em>justice</em> means to them? Perhaps liability is less important than
-            preventing the next accident."
-          </div>
-          <div class="chat-bubble bubble-system">
-            3 PUZZLE PIECES UNCOVERED: Systemic Causation · Legal Pragmatism · Victim-Centered Justice
-          </div>
-        </div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">Live Demo</p>
+      <h2 class="reveal reveal-d1">The Goring Ox</h2>
+      <p class="body-text reveal reveal-d2">Who is liable when an autonomous vehicle causes a fatal accident?</p>
+      <div class="thinker-row reveal reveal-d3">
+        <span class="thinker">Rambam: Judge</span>
+        <span class="thinker">Golda: Advocate</span>
+        <span class="thinker">Hillel: Questioner</span>
       </div>
     </div>
+    <img src="slides/slide-07/hero.png" alt="Goring Ox session" class="hero-img reveal reveal-d4">
   </div>
-  <div class="he-content">
-    <div class="split split-40-60">
-      <div>
-        <p class="label reveal">הדגמה חיה</p>
-        <h2 class="reveal reveal-delay-1">מפגש<br>לדוגמה</h2>
-        <div class="card reveal reveal-delay-2" style="margin-bottom: 16px;">
-          <p class="label">הדילמה</p>
-          <p style="font-size: 16px; color: var(--text-primary);">
-            השור שנגח - <em>גרסה מודרנית</em>:
-          </p>
-          <p style="font-size: 20px; color: var(--gold-light); font-family: var(--font-display); margin-top: 8px;">
-            "מי אחראי כשרכב אוטונומי גורם לתאונה קטלנית?"
-          </p>
-        </div>
-        <p class="reveal reveal-delay-3" style="font-size: 14px; color: var(--text-dim);">
-          אזור אפור אתי אוניברסלי (אתיקה של טכנולוגיה/בינה מלאכותית) - ללא טריגרים פוליטיים שבטיים
-        </p>
-      </div>
-      <div class="reveal reveal-delay-3">
-        <img src="slides/slide-07/hero.png" style="max-width: 440px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); margin-bottom: 16px;" alt="מפגש לדוגמה">
-        <div class="chat-session">
-          <div class="chat-bubble bubble-system">
-            הנשיא מקצה תפקידים על פי תחום הדילמה: טכנולוגיה, משפט, אתיקה
-          </div>
-          <div class="chat-bubble bubble-rambam">
-            <div class="speaker">רמב"ם: השופט</div>
-            "לאחריות יש שכבות. המתכנת כתב את האלגוריתם, אך היצרן הפעיל אותו,
-            והעיר אישרה את הכבישים. עלינו לעקוב אחר שרשרת הסיבתיות.
-            כל חוליה נושאת את משקל האחריות שלה."
-          </div>
-          <div class="chat-bubble bubble-golda">
-            <div class="speaker">גולדה מאיר: הסנגורית</div>
-            "פילוסופיה זה יפה, אבל משפחות צריכות תשובות <em>עכשיו</em>.
-            היצרן חייב לשאת באחריות העיקרית - הם מכרו את ההבטחה לביטחון.
-            קבעו את הגבול המשפטי קודם, שפרו אחר כך."
-          </div>
-          <div class="chat-bubble bubble-hillel">
-            <div class="speaker">הלל: השואל</div>
-            "לפני שנטיל אשמה - האם שאלנו את משפחת הולך הרגל מה
-            <em>צדק</em> אומר בשבילם? אולי אחריות פחות חשובה ממניעת
-            התאונה הבאה."
-          </div>
-          <div class="chat-bubble bubble-system">
-            3 חלקי פאזל נחשפו: סיבתיות מערכתית · פרגמטיזם משפטי · צדק ממוקד קורבן
-          </div>
-        </div>
+  <div class="he-content split">
+    <img src="slides/slide-07/hero.png" alt="השור שנגח" class="hero-img reveal reveal-d4">
+    <div>
+      <p class="label reveal">הדגמה חיה</p>
+      <h2 class="reveal reveal-d1">השור שנגח</h2>
+      <p class="body-text reveal reveal-d2">מי אחראי כשרכב אוטונומי גורם לתאונה קטלנית?</p>
+      <div class="thinker-row reveal reveal-d3">
+        <span class="thinker">רמב״ם: שופט</span>
+        <span class="thinker">גולדה: סנגורית</span>
+        <span class="thinker">הלל: שואל</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 8 - EXPERIENCE MODES
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 8: Dilemma Library -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="act-divider">ACT 2: THE EXPERIENCE</div>
-  <div class="en-content">
-    <div class="center-content" style="gap: 24px;">
-      <p class="label reveal">One Platform, Two Configurations</p>
-      <h2 class="reveal reveal-delay-1">Experience Modes</h2>
-      <p class="reveal reveal-delay-2" style="max-width: 600px; text-align: center;">
-        The same technological infrastructure serves both the pedagogical vision
-        and the museum's need for visitor attraction.
-      </p>
-      <img src="slides/slide-09/hero.png" class="center-hero-img reveal reveal-delay-2" style="max-width: 500px; margin: 8px auto;" alt="Experience Modes">
-      <div style="display: flex; gap: 30px; width: 100%; max-width: 900px; margin-top: 12px;" class="reveal reveal-delay-3">
-        <div class="mode-card mode-culture">
-          <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2c-2 3-4 5-4 8a4 4 0 108 0c0-3-2-5-4-8z"/><rect x="10" y="14" width="4" height="8" rx="1"/></svg></div>
-          <h3 style="color: var(--gold-primary);">Culture of Disagreement</h3>
-          <p class="label" style="color: var(--gold-dim);">Machloket Mode</p>
-          <ul class="clean" style="margin-top: 12px;">
-            <li style="font-size: 15px;">Pedagogical & process-focused</li>
-            <li style="font-size: 15px;">Collaborative inquiry</li>
-            <li style="font-size: 15px;">Deep moral exploration</li>
-            <li style="font-size: 15px;">Ideal for school groups</li>
-          </ul>
-        </div>
-        <div style="display: flex; align-items: center; color: var(--text-dim); font-family: var(--font-mono); font-size: 12px;">
-          <div style="text-align: center;">
-            <div style="font-size: 28px; margin-bottom: 8px;">/</div>
-            Same<br>Tech<br>Stack
-          </div>
-        </div>
-        <div class="mode-card mode-debate">
-          <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-          <h3 style="color: var(--teal-light);">Debate Mode</h3>
-          <p class="label" style="color: var(--teal-dim);">Competition Mode</p>
-          <ul class="clean" style="margin-top: 12px;">
-            <li style="font-size: 15px;">Competitive & outcome-focused</li>
-            <li style="font-size: 15px;">High-energy "game show" dynamic</li>
-            <li style="font-size: 15px;">Rhetorical skill-building</li>
-            <li style="font-size: 15px;">Tourists & corporate groups</li>
-          </ul>
-        </div>
-      </div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">Content Library</p>
+      <h2 class="reveal reveal-d1">20+ Scenarios</h2>
+      <p class="body-text reveal reveal-d2">25-minute high-throughput sessions</p>
+      <ul class="pair-list reveal reveal-d3">
+        <li><span>Goring Ox</span> / Autonomous Vehicles</li>
+        <li><span>Lashon Hara</span> / Social Media</li>
+        <li><span>Medical Ethics</span> / Biotech</li>
+      </ul>
     </div>
+    <img src="slides/slide-08/hero.png" alt="Scenario library" class="hero-img reveal reveal-d4">
   </div>
-  <div class="he-content">
-    <div class="center-content" style="gap: 24px;">
-      <p class="label reveal">פלטפורמה אחת, שתי תצורות</p>
-      <h2 class="reveal reveal-delay-1">מצבי חוויה</h2>
-      <p class="reveal reveal-delay-2" style="max-width: 600px; text-align: center;">
-        אותה תשתית טכנולוגית משרתת גם את החזון הפדגוגי וגם את הצורך של המוזיאון במשיכת מבקרים.
-      </p>
-      <img src="slides/slide-09/hero.png" class="center-hero-img reveal reveal-delay-2" style="max-width: 500px; margin: 8px auto;" alt="מצבי חוויה">
-      <div style="display: flex; gap: 30px; width: 100%; max-width: 900px; margin-top: 12px;" class="reveal reveal-delay-3">
-        <div class="mode-card mode-culture">
-          <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2c-2 3-4 5-4 8a4 4 0 108 0c0-3-2-5-4-8z"/><rect x="10" y="14" width="4" height="8" rx="1"/></svg></div>
-          <h3 style="color: var(--gold-primary);">תרבות המחלוקת</h3>
-          <p class="label" style="color: var(--gold-dim);">מצב מחלוקת</p>
-          <ul class="clean" style="margin-top: 12px;">
-            <li style="font-size: 15px;">פדגוגי וממוקד תהליך</li>
-            <li style="font-size: 15px;">חקירה משותפת</li>
-            <li style="font-size: 15px;">חקירה מוסרית עמוקה</li>
-            <li style="font-size: 15px;">אידיאלי לקבוצות בתי ספר</li>
-          </ul>
-        </div>
-        <div style="display: flex; align-items: center; color: var(--text-dim); font-family: var(--font-mono); font-size: 12px;">
-          <div style="text-align: center;">
-            <div style="font-size: 28px; margin-bottom: 8px;">/</div>
-            אותו<br>מחסנית<br>טכנולוגית
-          </div>
-        </div>
-        <div class="mode-card mode-debate">
-          <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-          <h3 style="color: var(--teal-light);">מצב דיבייט</h3>
-          <p class="label" style="color: var(--teal-dim);">מצב תחרותי</p>
-          <ul class="clean" style="margin-top: 12px;">
-            <li style="font-size: 15px;">תחרותי וממוקד תוצאה</li>
-            <li style="font-size: 15px;">דינמיקת "שעשועון" אנרגטית</li>
-            <li style="font-size: 15px;">בניית מיומנויות רטוריות</li>
-            <li style="font-size: 15px;">תיירים וקבוצות ארגוניות</li>
-          </ul>
-        </div>
-      </div>
+  <div class="he-content split">
+    <img src="slides/slide-08/hero.png" alt="ספריית תרחישים" class="hero-img reveal reveal-d4">
+    <div>
+      <p class="label reveal">ספריית תוכן</p>
+      <h2 class="reveal reveal-d1">20+ תרחישים</h2>
+      <p class="body-text reveal reveal-d2">מפגשים של 25 דקות בתפוקה גבוהה</p>
+      <ul class="pair-list reveal reveal-d3">
+        <li><span>השור שנגח</span> / רכבים אוטונומיים</li>
+        <li><span>לשון הרע</span> / מדיה חברתית</li>
+        <li><span>אתיקה רפואית</span> / ביוטכנולוגיה</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 9 - THE PHYSICAL SPACE
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 9: Experience Modes (centered) -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="act-divider">ACT 2: THE EXPERIENCE</div>
-  <div class="en-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">Spatial Design</p>
-        <h2 class="reveal reveal-delay-1">The Physical<br>Space</h2>
-        <ul class="clean reveal reveal-delay-2">
-          <li>Circular room designed for <span class="highlight">civic discourse</span></li>
-          <li>Peripheral screens for spectator <strong>voting & reactions</strong></li>
-          <li>Spectators are active <span class="teal-highlight">Sanhedrin judges</span>, not passive watchers</li>
-          <li>Central immersive display as the visual "wow" factor</li>
-          <li>Reliable, high-impact AV integration</li>
-        </ul>
-        <div class="card reveal reveal-delay-3" style="margin-top: 20px;">
-          <p style="font-size: 14px; color: var(--text-dim);">
-            <span class="highlight">Key insight:</span> Every person in the room receives value.
-            even those not actively speaking participate as judges of the deliberation.
-          </p>
-        </div>
+  <div class="en-content centered">
+    <h2 class="reveal">Two Modes, One Platform</h2>
+    <div class="mode-pair reveal reveal-d1">
+      <div class="mode-box">
+        <h3>Machloket</h3>
+        <p>Collaborative Inquiry</p>
       </div>
-      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-10/hero.png" class="slide-hero-img" alt="Physical Space">
-        <div style="display: flex; gap: 16px; justify-content: center; margin-top: 12px;">
-          <span style="font-size: 12px; color: var(--text-dim);">
-            <span style="color: var(--gold-primary);">●</span> AI Agents &nbsp;
-            <span style="color: var(--accent-orange);">●</span> Humans &nbsp;
-            <span style="color: var(--text-dim);">●</span> Spectators
-          </span>
-        </div>
+      <div class="mode-box">
+        <h3>Debate</h3>
+        <p>Competitive Rhetoric</p>
       </div>
     </div>
+    <img src="slides/slide-09/hero.png" alt="Two modes" class="hero-img-centered reveal reveal-d2">
   </div>
-  <div class="he-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">עיצוב מרחבי</p>
-        <h2 class="reveal reveal-delay-1">המרחב<br>הפיזי</h2>
-        <ul class="clean reveal reveal-delay-2">
-          <li>חדר עגול מעוצב ל<span class="highlight">שיח אזרחי</span></li>
-          <li>מסכים היקפיים ל<strong>הצבעה ותגובות</strong> של הצופים</li>
-          <li>הצופים הם <span class="teal-highlight">שופטי סנהדרין</span> פעילים, לא צופים פסיביים</li>
-          <li>תצוגה אימרסיבית מרכזית כאפקט ה"וואו" הויזואלי</li>
-          <li>שילוב אורקולי אמין ובעל השפעה גבוהה</li>
-        </ul>
-        <div class="card reveal reveal-delay-3" style="margin-top: 20px;">
-          <p style="font-size: 14px; color: var(--text-dim);">
-            <span class="highlight">תובנה מפתח:</span> כל אדם בחדר מקבל ערך.
-            גם מי שלא מדבר באופן פעיל משתתף כשופט בדיון.
-          </p>
-        </div>
+  <div class="he-content centered">
+    <h2 class="reveal">שני מצבים, פלטפורמה אחת</h2>
+    <div class="mode-pair reveal reveal-d1">
+      <div class="mode-box">
+        <h3>מחלוקת</h3>
+        <p>חקירה משותפת</p>
       </div>
-      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-10/hero.png" class="slide-hero-img" alt="המרחב הפיזי">
-        <div style="display: flex; gap: 16px; justify-content: center; margin-top: 12px;">
-          <span style="font-size: 12px; color: var(--text-dim);">
-            <span style="color: var(--gold-primary);">●</span> סוכני בינה מלאכותית &nbsp;
-            <span style="color: var(--accent-orange);">●</span> בני אדם &nbsp;
-            <span style="color: var(--text-dim);">●</span> צופים
-          </span>
-        </div>
+      <div class="mode-box">
+        <h3>דיבייט</h3>
+        <p>רטוריקה תחרותית</p>
       </div>
+    </div>
+    <img src="slides/slide-09/hero.png" alt="שני מצבים" class="hero-img-centered reveal reveal-d2">
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: Physical Space -->
+<!-- ============================================================ -->
+<section class="slide" data-act="ACT 2: THE EXPERIENCE">
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">Spatial Design</p>
+      <h2 class="reveal reveal-d1">The Physical Space</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>Circular room for civic discourse</li>
+        <li>Spectators are active judges</li>
+        <li>Immersive display wall</li>
+      </ul>
+    </div>
+    <img src="slides/slide-10/hero.png" alt="Physical space" class="hero-img reveal reveal-d3">
+  </div>
+  <div class="he-content split">
+    <img src="slides/slide-10/hero.png" alt="המרחב הפיזי" class="hero-img reveal reveal-d3">
+    <div>
+      <p class="label reveal">עיצוב מרחבי</p>
+      <h2 class="reveal reveal-d1">המרחב הפיזי</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>חדר עגול לשיח אזרחי</li>
+        <li>צופים הם שופטים פעילים</li>
+        <li>קיר תצוגה אימרסיבי</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 10 - PROOF OF CONCEPT
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 11: Proof -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
-  <div class="bg-pattern">
-    <div class="hebrew-deco" style="bottom: -20px; right: -30px;">רמב״ם</div>
-  </div>
-  <div class="act-divider">ACT 3: WHY IT WORKS</div>
-  <div class="en-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">Proven Foundation</p>
-        <h2 class="reveal reveal-delay-1">We Already<br><span class="highlight">Did This</span></h2>
-        <p class="reveal reveal-delay-2" style="font-size: 18px; margin-bottom: 20px;">
-          The <strong>Maimonides (Rambam) Interactive Exhibit</strong> serves as our validated sibling project.
-        </p>
-        <blockquote class="reveal reveal-delay-3">
-          Expert Micha Goodman validated the conversational quality and depth of our AI model.
-        </blockquote>
-        <div class="card reveal reveal-delay-4" style="margin-top: 20px;">
-          <p class="label">Key Learning</p>
-          <p style="font-size: 18px; color: var(--text-primary); font-family: var(--font-display);">
-            "Rambam was a <span style="color: var(--text-dim);">monologue</span> sold in one slide.
-            Sanhedrin is a <span class="teal-highlight">multi-agent dialogue</span> - the next evolution."
-          </p>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-11/hero.png" class="slide-hero-img" alt="Proof of Concept">
-        <p style="text-align: center; font-size: 13px; color: var(--text-dim); margin-top: 12px;">
-          From single-agent monologue → multi-agent deliberation
-        </p>
-      </div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">Proven Foundation</p>
+      <h2 class="reveal reveal-d1">We Already<br>Did This</h2>
+      <p class="body-text reveal reveal-d2">From single-agent monologue to multi-agent deliberation.</p>
     </div>
+    <img src="slides/slide-11/hero.png" alt="Proof of concept" class="hero-img reveal reveal-d3">
   </div>
-  <div class="he-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">בסיס מוכח</p>
-        <h2 class="reveal reveal-delay-1">כבר עשינו<br><span class="highlight">את זה</span></h2>
-        <p class="reveal reveal-delay-2" style="font-size: 18px; margin-bottom: 20px;">
-          <strong>התערוכה האינטראקטיבית של הרמב"ם</strong> משמשת כפרויקט אחות מאומת.
-        </p>
-        <blockquote class="reveal reveal-delay-3">
-          המומחה מיכה גודמן אימת את איכות השיחה ועומק מודל הבינה המלאכותית שלנו.
-        </blockquote>
-        <div class="card reveal reveal-delay-4" style="margin-top: 20px;">
-          <p class="label">לקח מפתח</p>
-          <p style="font-size: 18px; color: var(--text-primary); font-family: var(--font-display);">
-            "רמב"ם היה <span style="color: var(--text-dim);">מונולוג</span> שנמכר בשקף אחד.
-            סנהדרין הוא <span class="teal-highlight">דיאלוג רב-סוכנים</span> - האבולוציה הבאה."
-          </p>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-11/hero.png" class="slide-hero-img" alt="הוכחת היתכנות">
-        <p style="text-align: center; font-size: 13px; color: var(--text-dim); margin-top: 12px;">
-          ממונולוג סוכן יחיד → לדיון רב-סוכנים
-        </p>
-      </div>
+  <div class="he-content split">
+    <img src="slides/slide-11/hero.png" alt="הוכחת היתכנות" class="hero-img reveal reveal-d3">
+    <div>
+      <p class="label reveal">יסוד מוכח</p>
+      <h2 class="reveal reveal-d1">כבר עשינו<br>את זה</h2>
+      <p class="body-text reveal reveal-d2">ממונולוג סוכן יחיד לדיון רב-סוכנים.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 11 - WHAT'S SOLVED VS. WHAT'S AHEAD
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 12: Progress -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
-  <div class="act-divider">ACT 3: WHY IT WORKS</div>
-  <div class="en-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">Transparent Risk Assessment</p>
-        <h2 class="reveal reveal-delay-1">Solved vs.<br><span class="teal-highlight">Ahead</span></h2>
-        <div class="reveal reveal-delay-2">
-          <div class="progress-bar-container">
-            <div class="progress-label-row">
-              <span style="color: var(--gold-primary);">SOLVED</span>
-              <span style="color: var(--gold-light);">70%</span>
-            </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill fill-gold" style="width: 70%;"></div>
-            </div>
-          </div>
-          <ul class="clean" style="margin: 12px 0 24px;">
-            <li style="font-size: 15px;">Individual agent quality & character modeling</li>
-            <li style="font-size: 15px;">Conversation protocols & frameworks</li>
-            <li style="font-size: 15px;">Content architecture & 13 Thinking Modes</li>
-            <li style="font-size: 15px;">Rambam exhibit validation</li>
-          </ul>
-        </div>
-        <div class="reveal reveal-delay-3">
-          <div class="progress-bar-container">
-            <div class="progress-label-row">
-              <span style="color: var(--teal);">AHEAD</span>
-              <span style="color: var(--teal-light);">30%</span>
-            </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill fill-teal" style="width: 30%;"></div>
-            </div>
-          </div>
-          <ul class="clean" style="margin: 12px 0;">
-            <li style="font-size: 15px;">A2A (Agent-to-Agent) real-time interaction</li>
-            <li style="font-size: 15px;">Multi-agent orchestration at scale</li>
-            <li style="font-size: 15px;">Live dynamics & turn management</li>
-          </ul>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-3">
-        <img src="slides/slide-12/hero.png" style="max-width: 480px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); margin-bottom: 16px; display: block;" alt="Progress">
-        <div class="card card-teal" style="padding: 32px;">
-          <h3 style="color: var(--teal-light); font-size: 22px;">Mitigation Strategy</h3>
-          <p style="font-size: 16px; margin-bottom: 16px; color: var(--text-primary);">
-            We are proving the final 30% via a <strong>Phase 1 POC</strong>:
-          </p>
-          <div style="background: rgba(119,110,100,0.1); border-radius: 10px; padding: 20px; border: 1px solid rgba(119,110,100,0.2);">
-            <p style="font-size: 14px; color: var(--teal-light); font-family: var(--font-mono); margin-bottom: 8px;">
-              MULTI-AGENT WHATSAPP GROUP
-            </p>
-            <p style="font-size: 15px;">
-              Testing live dynamics with real users before building the UI.
-              <strong>3 agents + 2 humans</strong> in real-time group deliberation.
-            </p>
-          </div>
-          <p style="font-size: 13px; color: var(--text-dim); margin-top: 16px;">
-            Low-cost, high-signal validation of the hardest technical challenge
-          </p>
-        </div>
-      </div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">Risk Assessment</p>
+      <h2 class="reveal reveal-d1">70% Solved.<br>30% Ahead.</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>Solved: Agents, content, frameworks</li>
+        <li>Ahead: Agent-to-Agent at scale</li>
+      </ul>
     </div>
+    <img src="slides/slide-12/hero.png" alt="Progress assessment" class="hero-img reveal reveal-d3">
   </div>
-  <div class="he-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">הערכת סיכונים שקופה</p>
-        <h2 class="reveal reveal-delay-1">פתור מול<br><span class="teal-highlight">קדימה</span></h2>
-        <div class="reveal reveal-delay-2">
-          <div class="progress-bar-container">
-            <div class="progress-label-row">
-              <span style="color: var(--gold-primary);">פתור</span>
-              <span style="color: var(--gold-light);">70%</span>
-            </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill fill-gold" style="width: 70%;"></div>
-            </div>
-          </div>
-          <ul class="clean" style="margin: 12px 0 24px;">
-            <li style="font-size: 15px;">איכות סוכן בודד ומידול אופי</li>
-            <li style="font-size: 15px;">פרוטוקולי שיחה ומסגרות</li>
-            <li style="font-size: 15px;">ארכיטקטורת תוכן ו-13 מידות חשיבה</li>
-            <li style="font-size: 15px;">אימות תערוכת הרמב"ם</li>
-          </ul>
-        </div>
-        <div class="reveal reveal-delay-3">
-          <div class="progress-bar-container">
-            <div class="progress-label-row">
-              <span style="color: var(--teal);">קדימה</span>
-              <span style="color: var(--teal-light);">30%</span>
-            </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill fill-teal" style="width: 30%;"></div>
-            </div>
-          </div>
-          <ul class="clean" style="margin: 12px 0;">
-            <li style="font-size: 15px;">אינטראקציה בזמן אמת בין סוכנים (A2A)</li>
-            <li style="font-size: 15px;">תזמור רב-סוכנים בקנה מידה</li>
-            <li style="font-size: 15px;">דינמיקה חיה וניהול תורות</li>
-          </ul>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-3">
-        <img src="slides/slide-12/hero.png" style="max-width: 480px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); margin-bottom: 16px; display: block;" alt="התקדמות">
-        <div class="card card-teal" style="padding: 32px;">
-          <h3 style="color: var(--teal-light); font-size: 22px;">אסטרטגיית הפחתת סיכון</h3>
-          <p style="font-size: 16px; margin-bottom: 16px; color: var(--text-primary);">
-            אנחנו מוכיחים את ה-30% האחרונים דרך <strong>POC שלב 1</strong>:
-          </p>
-          <div style="background: rgba(119,110,100,0.1); border-radius: 10px; padding: 20px; border: 1px solid rgba(119,110,100,0.2);">
-            <p style="font-size: 14px; color: var(--teal-light); font-family: var(--font-mono); margin-bottom: 8px;">
-              קבוצת ווטסאפ רב-סוכנית
-            </p>
-            <p style="font-size: 15px;">
-              בדיקת דינמיקה חיה עם משתמשים אמיתיים לפני בניית הממשק.
-              <strong>3 סוכנים + 2 בני אדם</strong> בדיון קבוצתי בזמן אמת.
-            </p>
-          </div>
-          <p style="font-size: 13px; color: var(--text-dim); margin-top: 16px;">
-            אימות בעלות נמוכה ואות חזק לאתגר הטכני הקשה ביותר
-          </p>
-        </div>
-      </div>
+  <div class="he-content split">
+    <img src="slides/slide-12/hero.png" alt="הערכת התקדמות" class="hero-img reveal reveal-d3">
+    <div>
+      <p class="label reveal">הערכת סיכונים</p>
+      <h2 class="reveal reveal-d1">70% פתור.<br>30% קדימה.</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>פתור: סוכנים, תוכן, מסגרות</li>
+        <li>קדימה: סוכן-לסוכן בקנה מידה</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 12 - COMPETITIVE ADVANTAGE
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 13: Competitive -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
-  <div class="act-divider">ACT 3: WHY IT WORKS</div>
-  <div class="en-content">
-    <div style="display: flex; gap: 32px; align-items: flex-start;">
-      <div style="flex: 1;">
-        <p class="label reveal">Market Position</p>
-        <h2 class="reveal reveal-delay-1" style="margin-bottom: 24px;">Competitive Advantage</h2>
-      </div>
-      <img src="slides/slide-13/hero.png" class="reveal reveal-delay-1" style="max-width: 400px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));" alt="Competitive Advantage">
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">Market Position</p>
+      <h2 class="reveal reveal-d1">The Moat</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>Multi-perspective (5-7 characters)</li>
+        <li>Orchestrated Talmudic logic</li>
+        <li>Human-in-the-loop</li>
+        <li>Institutional backing (MOTJ)</li>
+      </ul>
     </div>
-    <div class="reveal reveal-delay-2">
-      <table class="matrix">
-        <thead>
-          <tr>
-            <th>Capability</th>
-            <th>Standard Chatbot</th>
-            <th>Museum Exhibit</th>
-            <th>Debate AI</th>
-            <th style="color: var(--gold-light);">Sanhedrin</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Multi-perspective (5–7 characters)</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>No single "right answer"</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>Orchestrated meta-logic (13 Modes)</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>Human-in-the-loop integration</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>Immersive physical experience</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>Real-time multi-agent deliberation</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>Institutional backing (MOTJ)</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>Scalable EdTech platform</td>
-            <td><span class="partial">~</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="reveal reveal-delay-3" style="text-align: center; margin-top: 16px; font-size: 14px;">
-      <span class="highlight">The moat:</span> Integration of agentic systems + structured Talmudic dispute methodology + institutional credibility
-    </p>
+    <img src="slides/slide-13/hero.png" alt="Competitive advantage" class="hero-img reveal reveal-d3">
   </div>
-  <div class="he-content">
-    <div style="display: flex; gap: 32px; align-items: flex-start;">
-      <div style="flex: 1;">
-        <p class="label reveal">מיקום בשוק</p>
-        <h2 class="reveal reveal-delay-1" style="margin-bottom: 24px;">יתרון תחרותי</h2>
-      </div>
-      <img src="slides/slide-13/hero.png" class="reveal reveal-delay-1" style="max-width: 400px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));" alt="יתרון תחרותי">
+  <div class="he-content split">
+    <img src="slides/slide-13/hero.png" alt="יתרון תחרותי" class="hero-img reveal reveal-d3">
+    <div>
+      <p class="label reveal">מיקום בשוק</p>
+      <h2 class="reveal reveal-d1">החפיר</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>ריבוי נקודות מבט (5-7 דמויות)</li>
+        <li>לוגיקה תלמודית מתוזמרת</li>
+        <li>שילוב אנושי בלולאה</li>
+        <li>גיבוי מוסדי (MOTJ)</li>
+      </ul>
     </div>
-    <div class="reveal reveal-delay-2">
-      <table class="matrix">
-        <thead>
-          <tr>
-            <th>יכולת</th>
-            <th>צ'אטבוט סטנדרטי</th>
-            <th>תערוכת מוזיאון</th>
-            <th>דיבייט AI</th>
-            <th style="color: var(--gold-light);">סנהדרין</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ריבוי נקודות מבט (5–7 דמויות)</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>אין תשובה "נכונה" אחת</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>מטא-לוגיקה מתוזמרת (13 מידות)</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>שילוב אנושי בלולאה</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>חוויה פיזית אימרסיבית</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>דיון רב-סוכנים בזמן אמת</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>גיבוי מוסדי (MOTJ)</td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-          <tr>
-            <td>פלטפורמת אדטק סקיילבילית</td>
-            <td><span class="partial">~</span></td>
-            <td><span class="cross">-</span></td>
-            <td><span class="partial">~</span></td>
-            <td><span class="check">+</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="reveal reveal-delay-3" style="text-align: center; margin-top: 16px; font-size: 14px;">
-      <span class="highlight">החפיר:</span> שילוב מערכות סוכנים + מתודולוגיית מחלוקת תלמודית מובנית + אמינות מוסדית
-    </p>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 13 - EDTECH PLATFORM PLAY
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 14: EdTech -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
-  <div class="act-divider">ACT 3: WHY IT WORKS</div>
-  <div class="en-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">Expanding TAM</p>
-        <h2 class="reveal reveal-delay-1">The Debate<br><span class="teal-highlight">Gym</span></h2>
-        <p class="reveal reveal-delay-2" style="font-size: 18px; margin-bottom: 20px;">
-          This isn't just a museum exhibit - it's an <strong>education technology platform</strong>.
-        </p>
-        <p class="reveal reveal-delay-3" style="font-size: 15px;">
-          The initial investment funds a highly scalable EdTech ecosystem that expands from
-          a single physical installation to global digital reach.
-        </p>
-      </div>
-      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-14/hero.png" class="slide-hero-img" alt="EdTech Platform">
-        <p style="text-align: center; font-size: 12px; color: var(--text-dim); margin-top: 12px;">
-          Museum (premium) · Schools (curriculum) · Home/Online (global reach)
-        </p>
-      </div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">Expanding TAM</p>
+      <h2 class="reveal reveal-d1">The Debate Gym</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>Museum: Premium</li>
+        <li>Schools: Curriculum</li>
+        <li>Home: Global Reach</li>
+      </ul>
     </div>
+    <img src="slides/slide-14/hero.png" alt="EdTech platform" class="hero-img reveal reveal-d3">
   </div>
-  <div class="he-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">הרחבת השוק</p>
-        <h2 class="reveal reveal-delay-1">חדר הכושר<br><span class="teal-highlight">לדיבייט</span></h2>
-        <p class="reveal reveal-delay-2" style="font-size: 18px; margin-bottom: 20px;">
-          זו לא רק תערוכת מוזיאון - זו <strong>פלטפורמת טכנולוגיית חינוך</strong>.
-        </p>
-        <p class="reveal reveal-delay-3" style="font-size: 15px;">
-          ההשקעה הראשונית מממנת אקוסיסטם אדטק סקיילבילי מאוד שמתרחב מהתקנה פיזית אחת לטווח דיגיטלי עולמי.
-        </p>
-      </div>
-      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center;">
-        <img src="slides/slide-14/hero.png" class="slide-hero-img" alt="פלטפורמת אדטק">
-        <p style="text-align: center; font-size: 12px; color: var(--text-dim); margin-top: 12px;">
-          מוזיאון (פרימיום) · בתי ספר (תוכנית לימודים) · בית/אונליין (טווח עולמי)
-        </p>
-      </div>
+  <div class="he-content split">
+    <img src="slides/slide-14/hero.png" alt="פלטפורמת EdTech" class="hero-img reveal reveal-d3">
+    <div>
+      <p class="label reveal">הרחבת TAM</p>
+      <h2 class="reveal reveal-d1">חדר הכושר<br>לדיבייט</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>מוזיאון: פרימיום</li>
+        <li>בתי ספר: תוכנית לימודים</li>
+        <li>בית: טווח עולמי</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 14 - ROADMAP & MILESTONES
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 15: Roadmap -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
-  <div class="bg-pattern">
-    <div class="geo-line" style="width: 100%; top: 25%;"></div>
-    <div class="geo-line" style="width: 100%; bottom: 25%;"></div>
-  </div>
-  <div class="act-divider">ACT 4: THE ASK</div>
-  <div class="en-content">
-    <div class="split split-40-60">
-      <div>
-        <p class="label reveal">Execution Plan</p>
-        <h2 class="reveal reveal-delay-1">Roadmap &<br><span class="highlight">Milestones</span></h2>
-        <p class="reveal reveal-delay-2" style="font-size: 15px;">
-          A phased approach to systematically mitigate technical risk
-          while delivering demonstrable progress at every stage.
-        </p>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <img src="slides/slide-15/hero.png" style="max-width: 460px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); margin-bottom: 20px; display: block;" alt="Roadmap">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot active-dot"></div>
-            <div class="timeline-label">PHASE 1: NOW</div>
-            <div class="timeline-title">Proof of Concept</div>
-            <div class="timeline-desc">WhatsApp group with 3 AI agents + 2 humans. Live dynamics testing.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-label">PHASE 2: 3 MONTHS</div>
-            <div class="timeline-title">Working Demo</div>
-            <div class="timeline-desc">5 characters, fully text-based. Complete deliberation loop.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-label">PHASE 3: 6 MONTHS</div>
-            <div class="timeline-title">Full Prototype</div>
-            <div class="timeline-desc">Complete experience integrated with physical space mockup.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-label">PHASE 4: 12 MONTHS</div>
-            <div class="timeline-title">Launch-Ready</div>
-            <div class="timeline-desc">Full deployment at Museum of Tolerance Jerusalem.</div>
-          </div>
-        </div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">Execution Plan</p>
+      <h2 class="reveal reveal-d1">Roadmap</h2>
+      <div class="phase-row reveal reveal-d2">
+        <span class="phase-box">Phase 1: POC (Now)</span>
+        <span class="phase-box">Phase 2: Demo (3mo)</span>
+        <span class="phase-box">Phase 3: Prototype (6mo)</span>
+        <span class="phase-box">Phase 4: Launch (12mo)</span>
       </div>
     </div>
+    <img src="slides/slide-15/hero.png" alt="Roadmap" class="hero-img reveal reveal-d3">
   </div>
-  <div class="he-content">
-    <div class="split split-40-60">
-      <div>
-        <p class="label reveal">תוכנית ביצוע</p>
-        <h2 class="reveal reveal-delay-1">מפת דרכים<br><span class="highlight">ואבני דרך</span></h2>
-        <p class="reveal reveal-delay-2" style="font-size: 15px;">
-          גישה שלבית להפחתת סיכון טכני באופן שיטתי תוך הצגת התקדמות ברורה בכל שלב.
-        </p>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <img src="slides/slide-15/hero.png" style="max-width: 460px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); margin-bottom: 20px; display: block;" alt="מפת דרכים">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot active-dot"></div>
-            <div class="timeline-label">שלב 1: עכשיו</div>
-            <div class="timeline-title">הוכחת היתכנות</div>
-            <div class="timeline-desc">קבוצת ווטסאפ עם 3 סוכני בינה מלאכותית + 2 בני אדם. בדיקת דינמיקה חיה.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-label">שלב 2: 3 חודשים</div>
-            <div class="timeline-title">דמו עובד</div>
-            <div class="timeline-desc">5 דמויות, מבוסס טקסט לחלוטין. לולאת דיון מלאה.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-label">שלב 3: 6 חודשים</div>
-            <div class="timeline-title">אב טיפוס מלא</div>
-            <div class="timeline-desc">חוויה מלאה משולבת עם מודל חלל פיזי.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-label">שלב 4: 12 חודשים</div>
-            <div class="timeline-title">מוכן להשקה</div>
-            <div class="timeline-desc">פריסה מלאה במוזיאון הסובלנות ירושלים.</div>
-          </div>
-        </div>
+  <div class="he-content split">
+    <img src="slides/slide-15/hero.png" alt="מפת דרכים" class="hero-img reveal reveal-d3">
+    <div>
+      <p class="label reveal">תוכנית ביצוע</p>
+      <h2 class="reveal reveal-d1">מפת דרכים</h2>
+      <div class="phase-row reveal reveal-d2">
+        <span class="phase-box">שלב 1: POC (עכשיו)</span>
+        <span class="phase-box">שלב 2: דמו (3 חודשים)</span>
+        <span class="phase-box">שלב 3: אב טיפוס (6 חודשים)</span>
+        <span class="phase-box">שלב 4: השקה (12 חודשים)</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 15 - BUSINESS CASE
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 16: Business Case -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
-  <div class="act-divider">ACT 4: THE ASK</div>
-  <div class="en-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">Financial & Strategic ROI</p>
-        <h2 class="reveal reveal-delay-1">Business Case</h2>
-        <div class="card card-glow reveal reveal-delay-2" style="margin-bottom: 20px;">
-          <h3 style="font-size: 22px;">The Ask</h3>
-          <p style="font-size: 16px; color: var(--text-primary);">
-            Funding for <span class="highlight">technology development</span>,
-            <span class="highlight">content creation</span>, and
-            <span class="highlight">spatial build-out</span>.
-          </p>
-        </div>
-        <h3 class="reveal reveal-delay-3" style="font-size: 20px;">Revenue Streams</h3>
-        <div class="revenue-grid reveal reveal-delay-3">
-          <div class="revenue-item">
-            <div class="revenue-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20M9 6v12"/></svg></div>
-            <div>
-              <h4>Museum Admission</h4>
-              <p>Premium experience tier integrated with museum ticketing</p>
-            </div>
-          </div>
-          <div class="revenue-item">
-            <div class="revenue-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6.4 4.8L8 14 2 9.2h7.6z"/></svg></div>
-            <div>
-              <h4>VIP Tiers</h4>
-              <p>Extended sessions, private groups, corporate events</p>
-            </div>
-          </div>
-          <div class="revenue-item">
-            <div class="revenue-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
-            <div>
-              <h4>Licensing</h4>
-              <p>White-label platform for other institutions</p>
-            </div>
-          </div>
-          <div class="revenue-item">
-            <div class="revenue-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></div>
-            <div>
-              <h4>EdTech Subscriptions</h4>
-              <p>School programs & online debate training</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-4">
-        <img src="slides/slide-16/hero.png" style="max-width: 460px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); margin-bottom: 16px; display: block;" alt="Business Case">
-        <div class="card card-teal" style="padding: 28px;">
-          <h3 style="color: var(--teal-light);">Research & Insight Hub</h3>
-          <p style="font-size: 15px; margin-bottom: 16px;">
-            The system creates a highly valuable, <strong>anonymized data repository</strong>
-            on societal moral reasoning:
-          </p>
-          <ul class="clean">
-            <li style="font-size: 14px;">Insights on Israeli societal trends</li>
-            <li style="font-size: 14px;">Academic partnership opportunities</li>
-            <li style="font-size: 14px;">Longitudinal moral reasoning data</li>
-            <li style="font-size: 14px;">Cross-cultural comparison studies</li>
-          </ul>
-          <div style="margin-top: 20px; padding: 14px; background: rgba(119,110,100,0.1); border-radius: 8px; text-align: center;">
-            <p style="font-size: 13px; color: var(--teal-light); font-family: var(--font-mono); letter-spacing: 1px;">
-              MASSIVE IP GENERATION
-            </p>
-          </div>
-        </div>
-      </div>
+  <div class="en-content split">
+    <div>
+      <p class="label reveal">Financial ROI</p>
+      <h2 class="reveal reveal-d1">Business Case</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>Museum Admission</li>
+        <li>VIP Tiers</li>
+        <li>Licensing</li>
+        <li>EdTech Subscriptions</li>
+      </ul>
+      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">Anonymized research data as IP</p>
     </div>
+    <img src="slides/slide-16/hero.png" alt="Business case" class="hero-img reveal reveal-d4">
   </div>
-  <div class="he-content">
-    <div class="split">
-      <div>
-        <p class="label reveal">ROI פיננסי ואסטרטגי</p>
-        <h2 class="reveal reveal-delay-1">מקרה עסקי</h2>
-        <div class="card card-glow reveal reveal-delay-2" style="margin-bottom: 20px;">
-          <h3 style="font-size: 22px;">הבקשה</h3>
-          <p style="font-size: 16px; color: var(--text-primary);">
-            מימון ל<span class="highlight">פיתוח טכנולוגי</span>,
-            <span class="highlight">יצירת תוכן</span> ו<span class="highlight">בניית מרחב</span>.
-          </p>
-        </div>
-        <h3 class="reveal reveal-delay-3" style="font-size: 20px;">ערוצי הכנסה</h3>
-        <div class="revenue-grid reveal reveal-delay-3">
-          <div class="revenue-item">
-            <div class="revenue-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20M9 6v12"/></svg></div>
-            <div>
-              <h4>כניסה למוזיאון</h4>
-              <p>שכבת חוויה פרימיום משולבת עם כרטוס המוזיאון</p>
-            </div>
-          </div>
-          <div class="revenue-item">
-            <div class="revenue-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6.4 4.8L8 14 2 9.2h7.6z"/></svg></div>
-            <div>
-              <h4>שכבות VIP</h4>
-              <p>מפגשים מורחבים, קבוצות פרטיות, אירועים ארגוניים</p>
-            </div>
-          </div>
-          <div class="revenue-item">
-            <div class="revenue-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
-            <div>
-              <h4>רישוי</h4>
-              <p>פלטפורמת וייט-לייבל למוסדות אחרים</p>
-            </div>
-          </div>
-          <div class="revenue-item">
-            <div class="revenue-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg></div>
-            <div>
-              <h4>מנויי אדטק</h4>
-              <p>תוכניות בתי ספר ואימון דיבייט מקוון</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-4">
-        <img src="slides/slide-16/hero.png" style="max-width: 460px; border-radius: 12px; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3)); margin-bottom: 16px; display: block;" alt="מקרה עסקי">
-        <div class="card card-teal" style="padding: 28px;">
-          <h3 style="color: var(--teal-light);">מרכז מחקר ותובנות</h3>
-          <p style="font-size: 15px; margin-bottom: 16px;">
-            המערכת יוצרת <strong>מאגר נתונים אנונימי</strong> בעל ערך גבוה
-            על חשיבה מוסרית חברתית:
-          </p>
-          <ul class="clean">
-            <li style="font-size: 14px;">תובנות על מגמות חברתיות ישראליות</li>
-            <li style="font-size: 14px;">הזדמנויות שותפות אקדמית</li>
-            <li style="font-size: 14px;">נתוני חשיבה מוסרית לאורך זמן</li>
-            <li style="font-size: 14px;">מחקרי השוואה בין-תרבותיים</li>
-          </ul>
-          <div style="margin-top: 20px; padding: 14px; background: rgba(119,110,100,0.1); border-radius: 8px; text-align: center;">
-            <p style="font-size: 13px; color: var(--teal-light); font-family: var(--font-mono); letter-spacing: 1px;">
-              יצירת קניין רוחני מאסיבית
-            </p>
-          </div>
-        </div>
-      </div>
+  <div class="he-content split">
+    <img src="slides/slide-16/hero.png" alt="מקרה עסקי" class="hero-img reveal reveal-d4">
+    <div>
+      <p class="label reveal">ROI פיננסי</p>
+      <h2 class="reveal reveal-d1">מקרה עסקי</h2>
+      <ul class="bullets reveal reveal-d2">
+        <li>כניסה למוזיאון</li>
+        <li>שכבות VIP</li>
+        <li>רישוי</li>
+        <li>מנויי EdTech</li>
+      </ul>
+      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">נתוני מחקר אנונימיים כקניין רוחני</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 16 - THE TEAM
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 17: Team (centered) -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
-  <div class="act-divider">ACT 4: THE ASK</div>
-  <div class="en-content">
-    <div class="center-content" style="gap: 24px;">
-      <p class="label reveal">The Builders</p>
-      <h2 class="reveal reveal-delay-1">The Team</h2>
-      <p class="reveal reveal-delay-2" style="max-width: 600px;">
-        A balanced triad of technology, business, and cultural knowledge.
-      </p>
-      <img src="slides/slide-17/hero.png" class="center-hero-img reveal reveal-delay-2" style="max-width: 460px; margin: 8px auto;" alt="Team">
-      <div class="team-grid reveal reveal-delay-3" style="max-width: 800px; width: 100%;">
-        <div class="team-card">
-          <div class="team-avatar" style="background: linear-gradient(135deg, var(--teal-dim), var(--teal));"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
-          <h4>Tech Architecture</h4>
-          <p>AI systems, multi-agent orchestration, LLM infrastructure</p>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background: linear-gradient(135deg, var(--gold-dim), var(--gold-primary));"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 3v2h6V3"/><path d="M8 10h8M8 14h6"/></svg></div>
-          <h4>Project Strategy</h4>
-          <p>Museum operations, business development, stakeholder alignment</p>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background: linear-gradient(135deg, #4a3a6a, #7b5ea7);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <h4>Knowledge Holders</h4>
-          <p>Talmudic scholarship, educational methodology, content design</p>
-        </div>
-        <div class="team-card team-missing" style="grid-column: 2;">
-          <div class="team-avatar" style="background: transparent;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5"/></svg></div>
-          <h4 style="color: var(--accent-orange);">The Missing Piece</h4>
-          <p>World-renowned <strong>Debate Content Expert</strong> to design competitive mode</p>
-        </div>
-      </div>
+  <div class="en-content centered">
+    <h2 class="reveal">The Team</h2>
+    <div class="team-labels reveal reveal-d1">
+      <span class="team-label"><strong>Tech Architecture</strong></span>
+      <span class="team-label"><strong>Project Strategy</strong></span>
+      <span class="team-label"><strong>Knowledge Holders</strong></span>
+      <span class="team-label"><strong>The Missing Piece:</strong> Debate Expert</span>
     </div>
+    <img src="slides/slide-17/hero.png" alt="The team" class="hero-img-centered reveal reveal-d2">
   </div>
-  <div class="he-content">
-    <div class="center-content" style="gap: 24px;">
-      <p class="label reveal">הבונים</p>
-      <h2 class="reveal reveal-delay-1">הצוות</h2>
-      <p class="reveal reveal-delay-2" style="max-width: 600px;">
-        שלישייה מאוזנת של טכנולוגיה, עסקים וידע תרבותי.
-      </p>
-      <img src="slides/slide-17/hero.png" class="center-hero-img reveal reveal-delay-2" style="max-width: 460px; margin: 8px auto;" alt="הצוות">
-      <div class="team-grid reveal reveal-delay-3" style="max-width: 800px; width: 100%;">
-        <div class="team-card">
-          <div class="team-avatar" style="background: linear-gradient(135deg, var(--teal-dim), var(--teal));"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
-          <h4>ארכיטקטורת טכנולוגיה</h4>
-          <p>מערכות בינה מלאכותית, תזמור רב-סוכנים, תשתית LLM</p>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background: linear-gradient(135deg, var(--gold-dim), var(--gold-primary));"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 3v2h6V3"/><path d="M8 10h8M8 14h6"/></svg></div>
-          <h4>אסטרטגיית פרויקט</h4>
-          <p>תפעול מוזיאון, פיתוח עסקי, התאמת בעלי עניין</p>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background: linear-gradient(135deg, #4a3a6a, #7b5ea7);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-          <h4>נושאי ידע</h4>
-          <p>מלומדות תלמודית, מתודולוגיה חינוכית, עיצוב תוכן</p>
-        </div>
-        <div class="team-card team-missing" style="grid-column: 2;">
-          <div class="team-avatar" style="background: transparent;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5"/></svg></div>
-          <h4 style="color: var(--accent-orange);">החלק החסר</h4>
-          <p>מומחה תוכן דיבייט <strong>בעל שם עולמי</strong> לעיצוב המצב התחרותי</p>
-        </div>
-      </div>
+  <div class="he-content centered">
+    <h2 class="reveal">הצוות</h2>
+    <div class="team-labels reveal reveal-d1">
+      <span class="team-label"><strong>ארכיטקטורה טכנולוגית</strong></span>
+      <span class="team-label"><strong>אסטרטגיית פרויקט</strong></span>
+      <span class="team-label"><strong>בעלי ידע</strong></span>
+      <span class="team-label"><strong>החלק החסר:</strong> מומחה דיבייט</span>
     </div>
+    <img src="slides/slide-17/hero.png" alt="הצוות" class="hero-img-centered reveal reveal-d2">
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 17 - CLOSING / CTA
-     ══════════════════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- SLIDE 18: CTA (centered) -->
+<!-- ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
-  <div class="bg-pattern">
-    <div class="hebrew-deco" style="top: -30px; left: -20px; font-size: 140px;">סנהדרין</div>
-    <div class="geo-circle" style="width: 500px; height: 500px; right: -150px; bottom: -150px; border-color: rgba(189,214,230,0.06);"></div>
+  <div class="en-content centered">
+    <img src="slides/slide-18/hero.png" alt="Closing" class="hero-img-centered reveal" style="margin-top: 0; margin-bottom: 24px;">
+    <div class="cta-quote reveal reveal-d1">The Sanhedrin didn't give answers. They gave people the tools to think.</div>
+    <p class="body-text reveal reveal-d2" style="text-align: center; margin-top: 16px;">Fund Phase 1. Schedule the deep-dive. Let's build this.</p>
+    <button class="cta-btn reveal reveal-d3">Get in Touch</button>
   </div>
-  <div class="act-divider">ACT 4: THE ASK</div>
-  <div class="en-content">
-    <div class="center-content" style="gap: 32px; justify-content: center; height: 100%;">
-      <div class="reveal">
-        <img src="slides/slide-18/hero.png" style="max-width: 440px; border-radius: 16px; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));" alt="Ancient meets Modern">
-      </div>
-      <blockquote class="reveal reveal-delay-1" style="border: none; text-align: center; font-size: 32px; max-width: 800px; background: none; padding: 0;">
-        "The Sanhedrin didn't give answers.<br>
-        They gave people the <span class="highlight">tools to think</span>.<br>
-        We're bringing that to the 21st century."
-      </blockquote>
-      <div class="cta-box reveal reveal-delay-2">
-        <h3 style="font-size: 24px; margin-bottom: 16px;">The Green Light</h3>
-        <ul class="clean" style="text-align: left; max-width: 500px; margin: 0 auto;">
-          <li style="font-size: 16px;">Fund the <strong>Phase 1 POC</strong> - validate the final 30%</li>
-          <li style="font-size: 16px;">Schedule the <strong>deep-dive technical review</strong></li>
-          <li style="font-size: 16px;">Move past proof → <strong>production</strong></li>
-        </ul>
-        <div class="cta-button">Let's Build This →</div>
-      </div>
-    </div>
-  </div>
-  <div class="he-content">
-    <div class="center-content" style="gap: 32px; justify-content: center; height: 100%;">
-      <div class="reveal">
-        <img src="slides/slide-18/hero.png" style="max-width: 440px; border-radius: 16px; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));" alt="עתיק פוגש מודרני">
-      </div>
-      <blockquote class="reveal reveal-delay-1" style="border: none; text-align: center; font-size: 32px; max-width: 800px; background: none; padding: 0;">
-        "הסנהדרין לא נתנו תשובות.<br>
-        הם נתנו לאנשים את <span class="highlight">הכלים לחשוב</span>.<br>
-        אנחנו מביאים את זה למאה ה-21."
-      </blockquote>
-      <div class="cta-box reveal reveal-delay-2">
-        <h3 style="font-size: 24px; margin-bottom: 16px;">האור הירוק</h3>
-        <ul class="clean" style="text-align: right; max-width: 500px; margin: 0 auto;">
-          <li style="font-size: 16px;">ממנו את <strong>ה-POC של שלב 1</strong> - אמתו את ה-30% האחרונים</li>
-          <li style="font-size: 16px;">קבעו <strong>סקירה טכנית מעמיקה</strong></li>
-          <li style="font-size: 16px;">עברו מהוכחה → <strong>לייצור</strong></li>
-        </ul>
-        <div class="cta-button">← בואו נבנה את זה</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 18 - APPENDIX
-     ══════════════════════════════════════════════════════════ -->
-<section class="slide" data-act="APPENDIX">
-  <div class="act-divider">APPENDIX</div>
-  <div class="en-content">
-    <p class="label reveal">Deep-Dive Materials</p>
-    <h2 class="reveal reveal-delay-1" style="margin-bottom: 24px;">Appendix</h2>
-    <div class="appendix-grid reveal reveal-delay-2">
-      <div class="appendix-card">
-        <h4>A. Technical Architecture</h4>
-        <p>API Gateway, Nasi/Av Beit Din Orchestrator logic, LLM fine-tuning approach,
-           infrastructure topology, and scaling considerations.</p>
-        <div style="margin-top: 12px; padding: 12px; background: rgba(119,110,100,0.06); border-radius: 6px;">
-          <p style="font-size: 12px; font-family: var(--font-mono); color: var(--teal);">
-            Visitor → API Gateway → Nasi Orchestrator → Agent Pool → Synthesis Engine → Takeaway Generator
-          </p>
-        </div>
-      </div>
-      <div class="appendix-card">
-        <h4>B. 13 Talmudic Thinking Modes</h4>
-        <p style="margin-bottom: 12px;">Complete role mapping and application framework:</p>
-        <div class="modes-grid">
-          <div class="mode-tag">Kal v'Chomer</div>
-          <div class="mode-tag">Gezerah Shavah</div>
-          <div class="mode-tag">Binyan Av</div>
-          <div class="mode-tag">Klal u'Prat</div>
-          <div class="mode-tag">Prat u'Klal</div>
-          <div class="mode-tag">Klal u'Prat u'Klal</div>
-          <div class="mode-tag">Mi'klal she'hu tzarich li'prat</div>
-          <div class="mode-tag">Davar ha'lamed me'inyano</div>
-          <div class="mode-tag">Davar ha'lamed mi'sofo</div>
-          <div class="mode-tag">Shnei ketuvim</div>
-          <div class="mode-tag">Hekesh</div>
-          <div class="mode-tag">Sevarah</div>
-          <div class="mode-tag">Dayo</div>
-        </div>
-      </div>
-      <div class="appendix-card">
-        <h4>C. Competitive Analysis</h4>
-        <p>Detailed comparison against: ChatGPT roleplay, Character.AI,
-           Kialo debate platform, traditional museum interactives,
-           and academic debate training tools.</p>
-      </div>
-      <div class="appendix-card">
-        <h4>D. User Personas</h4>
-        <div style="display: flex; gap: 12px; margin-top: 8px;">
-          <div style="flex: 1; padding: 10px; background: rgba(189,214,230,0.06); border-radius: 6px;">
-            <p style="font-size: 13px; color: var(--gold-primary); font-weight: 600;">Daniel the Seeker</p>
-            <p style="font-size: 12px;">Curious, open-minded, wants to explore moral complexity</p>
-          </div>
-          <div style="flex: 1; padding: 10px; background: rgba(119,110,100,0.06); border-radius: 6px;">
-            <p style="font-size: 13px; color: var(--teal-light); font-weight: 600;">Sarah the Balanced</p>
-            <p style="font-size: 12px;">Structured thinker, values fairness, seeks synthesis</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="he-content">
-    <p class="label reveal">חומרים מעמיקים</p>
-    <h2 class="reveal reveal-delay-1" style="margin-bottom: 24px;">נספח</h2>
-    <div class="appendix-grid reveal reveal-delay-2">
-      <div class="appendix-card">
-        <h4>א. ארכיטקטורה טכנית</h4>
-        <p>שער API, לוגיקת תזמור נשיא/אב בית דין, גישת כיוונון LLM,
-           טופולוגיית תשתית ושיקולי סקיילינג.</p>
-        <div style="margin-top: 12px; padding: 12px; background: rgba(119,110,100,0.06); border-radius: 6px;">
-          <p style="font-size: 12px; font-family: var(--font-mono); color: var(--teal);">
-            מבקר ← שער API ← תזמור נשיא ← מאגר סוכנים ← מנוע סינתזה ← מחולל תובנות
-          </p>
-        </div>
-      </div>
-      <div class="appendix-card">
-        <h4>ב. 13 מידות חשיבה תלמודיות</h4>
-        <p style="margin-bottom: 12px;">מיפוי תפקידים מלא ומסגרת יישום:</p>
-        <div class="modes-grid">
-          <div class="mode-tag">קל וחומר</div>
-          <div class="mode-tag">גזרה שווה</div>
-          <div class="mode-tag">בנין אב</div>
-          <div class="mode-tag">כלל ופרט</div>
-          <div class="mode-tag">פרט וכלל</div>
-          <div class="mode-tag">כלל ופרט וכלל</div>
-          <div class="mode-tag">מכלל שהוא צריך לפרט</div>
-          <div class="mode-tag">דבר הלמד מעניינו</div>
-          <div class="mode-tag">דבר הלמד מסופו</div>
-          <div class="mode-tag">שני כתובים</div>
-          <div class="mode-tag">היקש</div>
-          <div class="mode-tag">סברה</div>
-          <div class="mode-tag">דיו</div>
-        </div>
-      </div>
-      <div class="appendix-card">
-        <h4>ג. ניתוח תחרותי</h4>
-        <p>השוואה מפורטת מול: ChatGPT roleplay, Character.AI,
-           פלטפורמת הדיבייט Kialo, אינטראקטיביים מוזיאליים מסורתיים,
-           וכלי אימון דיבייט אקדמיים.</p>
-      </div>
-      <div class="appendix-card">
-        <h4>ד. פרסונות משתמשים</h4>
-        <div style="display: flex; gap: 12px; margin-top: 8px;">
-          <div style="flex: 1; padding: 10px; background: rgba(189,214,230,0.06); border-radius: 6px;">
-            <p style="font-size: 13px; color: var(--gold-primary); font-weight: 600;">דניאל המחפש</p>
-            <p style="font-size: 12px;">סקרן, פתוח, רוצה לחקור מורכבות מוסרית</p>
-          </div>
-          <div style="flex: 1; padding: 10px; background: rgba(119,110,100,0.06); border-radius: 6px;">
-            <p style="font-size: 13px; color: var(--teal-light); font-weight: 600;">שרה המאוזנת</p>
-            <p style="font-size: 12px;">חושבת מובנית, מעריכה הוגנות, מחפשת סינתזה</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="he-content centered">
+    <img src="slides/slide-18/hero.png" alt="סיום" class="hero-img-centered reveal" style="margin-top: 0; margin-bottom: 24px;">
+    <div class="cta-quote reveal reveal-d1">הסנהדרין לא נתנו תשובות. הם נתנו לאנשים את הכלים לחשוב.</div>
+    <p class="body-text reveal reveal-d2" style="text-align: center; margin-top: 16px;">מממנים שלב 1. קובעים צלילה עמוקה. בואו נבנה את זה.</p>
+    <button class="cta-btn reveal reveal-d3">צרו קשר</button>
   </div>
 </section>
 
 </div><!-- /deck -->
 
-<!-- Navigation -->
+<!-- Navigation Bar -->
 <div class="nav-bar">
-  <img src="assets/logos/motj-icon-white.svg" class="nav-logo-white" style="height: 36px; margin-right: 12px;" alt="MOTJ">
-  <img src="assets/logos/motj-icon-color.svg" class="nav-logo-color" style="height: 36px; margin-right: 12px;" alt="MOTJ">
+  <img src="assets/logos/motj-icon-white.svg" alt="MOTJ" class="nav-logo-white">
+  <img src="assets/logos/motj-icon-color.svg" alt="MOTJ" class="nav-logo-color">
   <div class="slide-counter" id="slideCounter">01 / 18</div>
   <div class="act-label" id="actLabel">ACT 1: THE HOOK</div>
-  <div class="nav-buttons">
-    <button class="nav-btn" onclick="prevSlide()" title="Previous (←)">◀</button>
-    <button class="nav-btn" onclick="nextSlide()" title="Next (→)">▶</button>
-    <button class="nav-btn" onclick="toggleFullscreen()" title="Fullscreen (F)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg></button>
+  <div class="nav-controls">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('he')">HE</button>
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"></div>
+    <button class="nav-btn" onclick="prevSlide()" title="Previous">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="nav-btn" onclick="nextSlide()" title="Next">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <button class="nav-btn" onclick="toggleFullscreen()" title="Fullscreen (F)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+    </button>
   </div>
 </div>
-
-<div class="fullscreen-hint">← → Arrow Keys &nbsp;|&nbsp; F = Fullscreen</div>
 
 <script>
 const slides = document.querySelectorAll('.slide');
@@ -3004,19 +779,16 @@ let current = 0;
 function showSlide(index) {
   if (index < 0 || index >= slides.length) return;
   slides[current].classList.remove('active');
-  // Reset animations
   slides[current].querySelectorAll('.reveal').forEach(el => {
     el.style.animation = 'none';
-    el.offsetHeight; // trigger reflow
+    el.offsetHeight;
     el.style.animation = '';
   });
   current = index;
   slides[current].classList.add('active');
-
-  // Update nav
   const num = String(current + 1).padStart(2, '0');
   const total = String(slides.length).padStart(2, '0');
-  slideCounter.textContent = `${num} / ${total}`;
+  slideCounter.textContent = num + ' / ' + total;
   actLabel.textContent = slides[current].dataset.act || '';
   progressFill.style.width = ((current + 1) / slides.length * 100) + '%';
 }
@@ -3032,7 +804,8 @@ function toggleFullscreen() {
   }
 }
 
-document.addEventListener('keydown', (e) => {
+// Keyboard nav
+document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
   if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
   if (e.key === 'f' || e.key === 'F') { toggleFullscreen(); }
@@ -3040,43 +813,39 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'End') { showSlide(slides.length - 1); }
 });
 
-// Touch support
-let touchStartX = 0;
-document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
-document.addEventListener('touchend', (e) => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
+// Touch nav
+var touchStartX = 0;
+document.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', function(e) {
+  var diff = touchStartX - e.changedTouches[0].clientX;
   if (Math.abs(diff) > 50) {
     if (diff > 0) nextSlide();
     else prevSlide();
   }
 });
 
-// Theme toggle
+// Theme
 function toggleTheme() {
-  const html = document.documentElement;
-  const current = html.getAttribute('data-theme') || 'dark';
-  html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+  var html = document.documentElement;
+  var cur = html.getAttribute('data-theme') || 'dark';
+  html.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
   localStorage.setItem('sanhedrin-theme', html.getAttribute('data-theme'));
 }
-
-// Restore saved theme
-const savedTheme = localStorage.getItem('sanhedrin-theme');
+var savedTheme = localStorage.getItem('sanhedrin-theme');
 if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
 
-// Language toggle
+// Language
 function setLang(lang) {
   document.documentElement.setAttribute('data-lang', lang);
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.trim() === (lang === 'en' ? 'EN' : 'עב'));
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.textContent.trim() === (lang === 'en' ? 'EN' : 'HE'));
   });
   localStorage.setItem('sanhedrin-lang', lang);
 }
-
-// Restore saved language
-const savedLang = localStorage.getItem('sanhedrin-lang');
+var savedLang = localStorage.getItem('sanhedrin-lang');
 if (savedLang) setLang(savedLang);
 
-// Initialize
+// Init
 showSlide(0);
 </script>
 </body>
