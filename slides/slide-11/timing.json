@@ -1,0 +1,295 @@
+{
+  "words": [
+    {
+      "word": "70",
+      "start": 0.0,
+      "end": 0.36
+    },
+    {
+      "word": "percent",
+      "start": 0.418,
+      "end": 0.731
+    },
+    {
+      "word": "solved.",
+      "start": 0.789,
+      "end": 1.382
+    },
+    {
+      "word": "30",
+      "start": 1.823,
+      "end": 2.101
+    },
+    {
+      "word": "percent",
+      "start": 2.159,
+      "end": 2.577
+    },
+    {
+      "word": "ahead.",
+      "start": 2.81,
+      "end": 3.46
+    },
+    {
+      "word": "Individual",
+      "start": 3.971,
+      "end": 4.551
+    },
+    {
+      "word": "agent",
+      "start": 4.632,
+      "end": 4.969
+    },
+    {
+      "word": "quality,",
+      "start": 5.016,
+      "end": 5.724
+    },
+    {
+      "word": "conversation",
+      "start": 6.049,
+      "end": 6.687
+    },
+    {
+      "word": "protocols,",
+      "start": 6.745,
+      "end": 7.628
+    },
+    {
+      "word": "character",
+      "start": 7.953,
+      "end": 8.382
+    },
+    {
+      "word": "modeling",
+      "start": 8.429,
+      "end": 8.754
+    },
+    {
+      "word": "of",
+      "start": 8.8,
+      "end": 8.858
+    },
+    {
+      "word": "68",
+      "start": 8.975,
+      "end": 9.543
+    },
+    {
+      "word": "figures,",
+      "start": 9.601,
+      "end": 10.205
+    },
+    {
+      "word": "and",
+      "start": 10.379,
+      "end": 10.53
+    },
+    {
+      "word": "the",
+      "start": 10.577,
+      "end": 10.646
+    },
+    {
+      "word": "core",
+      "start": 10.716,
+      "end": 10.995
+    },
+    {
+      "word": "content",
+      "start": 11.041,
+      "end": 11.482
+    },
+    {
+      "word": "framework",
+      "start": 11.54,
+      "end": 12.098
+    },
+    {
+      "word": "are",
+      "start": 12.272,
+      "end": 12.469
+    },
+    {
+      "word": "established.",
+      "start": 12.516,
+      "end": 13.34
+    },
+    {
+      "word": "What",
+      "start": 13.932,
+      "end": 14.141
+    },
+    {
+      "word": "remains",
+      "start": 14.211,
+      "end": 14.768
+    },
+    {
+      "word": "is",
+      "start": 14.849,
+      "end": 15.012
+    },
+    {
+      "word": "A2A2H",
+      "start": 15.105,
+      "end": 16.498
+    },
+    {
+      "word": "orchestration,",
+      "start": 16.672,
+      "end": 17.67
+    },
+    {
+      "word": "getting",
+      "start": 18.054,
+      "end": 18.355
+    },
+    {
+      "word": "AI",
+      "start": 18.425,
+      "end": 18.785
+    },
+    {
+      "word": "agents",
+      "start": 18.866,
+      "end": 19.238
+    },
+    {
+      "word": "to",
+      "start": 19.284,
+      "end": 19.354
+    },
+    {
+      "word": "debate",
+      "start": 19.423,
+      "end": 19.737
+    },
+    {
+      "word": "each",
+      "start": 19.76,
+      "end": 19.911
+    },
+    {
+      "word": "other",
+      "start": 19.958,
+      "end": 20.19
+    },
+    {
+      "word": "while",
+      "start": 20.515,
+      "end": 20.793
+    },
+    {
+      "word": "synthesizing",
+      "start": 20.84,
+      "end": 21.548
+    },
+    {
+      "word": "outputs",
+      "start": 21.606,
+      "end": 22.013
+    },
+    {
+      "word": "for",
+      "start": 22.059,
+      "end": 22.163
+    },
+    {
+      "word": "human",
+      "start": 22.233,
+      "end": 22.512
+    },
+    {
+      "word": "interaction.",
+      "start": 22.558,
+      "end": 23.382
+    },
+    {
+      "word": "We",
+      "start": 23.986,
+      "end": 24.126
+    },
+    {
+      "word": "are",
+      "start": 24.172,
+      "end": 24.276
+    },
+    {
+      "word": "proving",
+      "start": 24.311,
+      "end": 24.625
+    },
+    {
+      "word": "this",
+      "start": 24.671,
+      "end": 24.811
+    },
+    {
+      "word": "now",
+      "start": 24.88,
+      "end": 25.124
+    },
+    {
+      "word": "via",
+      "start": 25.565,
+      "end": 25.855
+    },
+    {
+      "word": "a",
+      "start": 25.913,
+      "end": 25.96
+    },
+    {
+      "word": "Phase",
+      "start": 26.041,
+      "end": 26.331
+    },
+    {
+      "word": "1",
+      "start": 26.366,
+      "end": 26.54
+    },
+    {
+      "word": "proof",
+      "start": 26.668,
+      "end": 26.889
+    },
+    {
+      "word": "of",
+      "start": 26.947,
+      "end": 27.005
+    },
+    {
+      "word": "concept",
+      "start": 27.063,
+      "end": 27.62
+    },
+    {
+      "word": "using",
+      "start": 28.061,
+      "end": 28.34
+    },
+    {
+      "word": "a",
+      "start": 28.386,
+      "end": 28.41
+    },
+    {
+      "word": "multi-agent",
+      "start": 28.456,
+      "end": 29.211
+    },
+    {
+      "word": "WhatsApp",
+      "start": 29.42,
+      "end": 29.942
+    },
+    {
+      "word": "group.",
+      "start": 30.012,
+      "end": 30.697
+    }
+  ],
+  "duration": 30.7
+}

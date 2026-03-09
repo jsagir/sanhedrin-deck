@@ -1,0 +1,245 @@
+{
+  "words": [
+    {
+      "word": "We",
+      "start": 0.0,
+      "end": 0.186
+    },
+    {
+      "word": "already",
+      "start": 0.255,
+      "end": 0.615
+    },
+    {
+      "word": "did",
+      "start": 0.673,
+      "end": 0.836
+    },
+    {
+      "word": "this.",
+      "start": 0.882,
+      "end": 1.347
+    },
+    {
+      "word": "The",
+      "start": 1.788,
+      "end": 1.892
+    },
+    {
+      "word": "Rambam",
+      "start": 1.95,
+      "end": 2.438
+    },
+    {
+      "word": "interactive",
+      "start": 2.519,
+      "end": 3.111
+    },
+    {
+      "word": "exhibit",
+      "start": 3.146,
+      "end": 3.599
+    },
+    {
+      "word": "is",
+      "start": 3.773,
+      "end": 3.924
+    },
+    {
+      "word": "our",
+      "start": 3.982,
+      "end": 4.11
+    },
+    {
+      "word": "proven",
+      "start": 4.168,
+      "end": 4.551
+    },
+    {
+      "word": "sibling",
+      "start": 4.667,
+      "end": 5.039
+    },
+    {
+      "word": "project.",
+      "start": 5.097,
+      "end": 5.793
+    },
+    {
+      "word": "Expert",
+      "start": 6.385,
+      "end": 6.896
+    },
+    {
+      "word": "Micha",
+      "start": 6.978,
+      "end": 7.303
+    },
+    {
+      "word": "Goodman",
+      "start": 7.384,
+      "end": 7.802
+    },
+    {
+      "word": "validated",
+      "start": 7.918,
+      "end": 8.475
+    },
+    {
+      "word": "the",
+      "start": 8.522,
+      "end": 8.591
+    },
+    {
+      "word": "conversational",
+      "start": 8.638,
+      "end": 9.358
+    },
+    {
+      "word": "quality",
+      "start": 9.427,
+      "end": 9.868
+    },
+    {
+      "word": "and",
+      "start": 10.077,
+      "end": 10.252
+    },
+    {
+      "word": "depth",
+      "start": 10.333,
+      "end": 10.658
+    },
+    {
+      "word": "of",
+      "start": 10.867,
+      "end": 10.995
+    },
+    {
+      "word": "our",
+      "start": 11.064,
+      "end": 11.192
+    },
+    {
+      "word": "AI",
+      "start": 11.262,
+      "end": 11.622
+    },
+    {
+      "word": "model.",
+      "start": 11.68,
+      "end": 12.179
+    },
+    {
+      "word": "Rambam",
+      "start": 12.783,
+      "end": 13.305
+    },
+    {
+      "word": "was",
+      "start": 13.479,
+      "end": 13.642
+    },
+    {
+      "word": "a",
+      "start": 13.688,
+      "end": 13.711
+    },
+    {
+      "word": "monologue.",
+      "start": 13.769,
+      "end": 14.571
+    },
+    {
+      "word": "Sanhedrin",
+      "start": 15.174,
+      "end": 15.882
+    },
+    {
+      "word": "is",
+      "start": 15.999,
+      "end": 16.161
+    },
+    {
+      "word": "a",
+      "start": 16.208,
+      "end": 16.231
+    },
+    {
+      "word": "multi-agent",
+      "start": 16.289,
+      "end": 17.02
+    },
+    {
+      "word": "dialogue.",
+      "start": 17.09,
+      "end": 17.844
+    },
+    {
+      "word": "The",
+      "start": 18.227,
+      "end": 18.332
+    },
+    {
+      "word": "next",
+      "start": 18.39,
+      "end": 18.68
+    },
+    {
+      "word": "evolution.",
+      "start": 18.75,
+      "end": 19.562
+    },
+    {
+      "word": "We",
+      "start": 20.259,
+      "end": 20.398
+    },
+    {
+      "word": "are",
+      "start": 20.456,
+      "end": 20.584
+    },
+    {
+      "word": "scaling",
+      "start": 20.654,
+      "end": 21.153
+    },
+    {
+      "word": "a",
+      "start": 21.246,
+      "end": 21.304
+    },
+    {
+      "word": "validated",
+      "start": 21.42,
+      "end": 22.024
+    },
+    {
+      "word": "mechanism,",
+      "start": 22.093,
+      "end": 22.79
+    },
+    {
+      "word": "not",
+      "start": 23.069,
+      "end": 23.278
+    },
+    {
+      "word": "starting",
+      "start": 23.347,
+      "end": 23.835
+    },
+    {
+      "word": "from",
+      "start": 23.916,
+      "end": 24.079
+    },
+    {
+      "word": "scratch.",
+      "start": 24.16,
+      "end": 25.031
+    }
+  ],
+  "duration": 25.03
+}

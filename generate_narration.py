@@ -15,7 +15,7 @@ if os.path.exists(_env_path):
                 os.environ.setdefault(k, v)
 
 API_KEY = os.environ.get("ELEVENLABS_API_KEY", "")
-VOICE_ID = "onwK4e9ZLuTA"  # Daniel - Steady Broadcaster, British
+VOICE_ID = "onwK4e9ZLuTAKqWW03F9"  # Daniel - Steady Broadcaster, British
 URL = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}/with-timestamps"
 BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "slides")
 
@@ -169,7 +169,7 @@ def main():
     failed = 0
 
     print(f"Generating narration for {total} slides...")
-    print(f"Voice: Daniel (onwK4e9ZLuTA)")
+    print(f"Voice: Daniel (onwK4e9ZLuTAKqWW03F9)")
     print(f"Output: {BASE_DIR}/slide-NN/narration.mp3 + timing.json")
     print()
 

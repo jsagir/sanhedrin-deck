@@ -1,0 +1,225 @@
+{
+  "words": [
+    {
+      "word": "The",
+      "start": 0.0,
+      "end": 0.151
+    },
+    {
+      "word": "business",
+      "start": 0.197,
+      "end": 0.546
+    },
+    {
+      "word": "case.",
+      "start": 0.592,
+      "end": 1.126
+    },
+    {
+      "word": "Funding",
+      "start": 1.509,
+      "end": 1.95
+    },
+    {
+      "word": "is",
+      "start": 2.032,
+      "end": 2.136
+    },
+    {
+      "word": "required",
+      "start": 2.206,
+      "end": 2.705
+    },
+    {
+      "word": "for",
+      "start": 2.752,
+      "end": 2.856
+    },
+    {
+      "word": "tech",
+      "start": 2.902,
+      "end": 3.111
+    },
+    {
+      "word": "architecture,",
+      "start": 3.181,
+      "end": 4.087
+    },
+    {
+      "word": "content",
+      "start": 4.296,
+      "end": 4.714
+    },
+    {
+      "word": "development,",
+      "start": 4.76,
+      "end": 5.422
+    },
+    {
+      "word": "and",
+      "start": 5.7,
+      "end": 5.851
+    },
+    {
+      "word": "spatial",
+      "start": 5.933,
+      "end": 6.362
+    },
+    {
+      "word": "build-out.",
+      "start": 6.444,
+      "end": 7.152
+    },
+    {
+      "word": "Revenue",
+      "start": 7.848,
+      "end": 8.243
+    },
+    {
+      "word": "comes",
+      "start": 8.278,
+      "end": 8.58
+    },
+    {
+      "word": "from",
+      "start": 8.638,
+      "end": 8.824
+    },
+    {
+      "word": "museum",
+      "start": 8.905,
+      "end": 9.358
+    },
+    {
+      "word": "admission,",
+      "start": 9.404,
+      "end": 10.112
+    },
+    {
+      "word": "premium",
+      "start": 10.495,
+      "end": 10.971
+    },
+    {
+      "word": "VIP",
+      "start": 11.053,
+      "end": 11.482
+    },
+    {
+      "word": "tiers,",
+      "start": 11.656,
+      "end": 12.202
+    },
+    {
+      "word": "licensing,",
+      "start": 12.446,
+      "end": 13.282
+    },
+    {
+      "word": "and",
+      "start": 13.491,
+      "end": 13.642
+    },
+    {
+      "word": "EdTech",
+      "start": 13.723,
+      "end": 14.118
+    },
+    {
+      "word": "B2B",
+      "start": 14.187,
+      "end": 14.617
+    },
+    {
+      "word": "subscriptions.",
+      "start": 14.826,
+      "end": 15.824
+    },
+    {
+      "word": "The",
+      "start": 16.428,
+      "end": 16.533
+    },
+    {
+      "word": "system",
+      "start": 16.579,
+      "end": 16.916
+    },
+    {
+      "word": "also",
+      "start": 16.974,
+      "end": 17.299
+    },
+    {
+      "word": "creates",
+      "start": 17.369,
+      "end": 17.833
+    },
+    {
+      "word": "a",
+      "start": 18.042,
+      "end": 18.123
+    },
+    {
+      "word": "privacy-first,",
+      "start": 18.205,
+      "end": 19.261
+    },
+    {
+      "word": "anonymized",
+      "start": 19.435,
+      "end": 20.167
+    },
+    {
+      "word": "data",
+      "start": 20.283,
+      "end": 20.55
+    },
+    {
+      "word": "repository",
+      "start": 20.619,
+      "end": 21.246
+    },
+    {
+      "word": "on",
+      "start": 21.525,
+      "end": 21.688
+    },
+    {
+      "word": "societal",
+      "start": 21.757,
+      "end": 22.373
+    },
+    {
+      "word": "moral",
+      "start": 22.454,
+      "end": 22.721
+    },
+    {
+      "word": "reasoning,",
+      "start": 22.79,
+      "end": 23.417
+    },
+    {
+      "word": "establishing",
+      "start": 23.696,
+      "end": 24.369
+    },
+    {
+      "word": "prestigious",
+      "start": 24.462,
+      "end": 25.031
+    },
+    {
+      "word": "academic",
+      "start": 25.089,
+      "end": 25.577
+    },
+    {
+      "word": "partnerships.",
+      "start": 25.635,
+      "end": 26.703
+    }
+  ],
+  "duration": 26.7
+}

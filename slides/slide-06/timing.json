@@ -1,0 +1,270 @@
+{
+  "words": [
+    {
+      "word": "This",
+      "start": 0.0,
+      "end": 0.209
+    },
+    {
+      "word": "is",
+      "start": 0.255,
+      "end": 0.337
+    },
+    {
+      "word": "not",
+      "start": 0.395,
+      "end": 0.522
+    },
+    {
+      "word": "a",
+      "start": 0.557,
+      "end": 0.58
+    },
+    {
+      "word": "standard",
+      "start": 0.639,
+      "end": 1.08
+    },
+    {
+      "word": "chatbot",
+      "start": 1.138,
+      "end": 1.625
+    },
+    {
+      "word": "array.",
+      "start": 1.66,
+      "end": 2.136
+    },
+    {
+      "word": "It",
+      "start": 2.183,
+      "end": 2.31
+    },
+    {
+      "word": "utilizes",
+      "start": 2.392,
+      "end": 2.984
+    },
+    {
+      "word": "a",
+      "start": 3.03,
+      "end": 3.053
+    },
+    {
+      "word": "modular",
+      "start": 3.111,
+      "end": 3.518
+    },
+    {
+      "word": "role-based",
+      "start": 3.576,
+      "end": 4.122
+    },
+    {
+      "word": "architecture",
+      "start": 4.18,
+      "end": 5.004
+    },
+    {
+      "word": "layered",
+      "start": 5.329,
+      "end": 5.654
+    },
+    {
+      "word": "over",
+      "start": 5.712,
+      "end": 5.921
+    },
+    {
+      "word": "13",
+      "start": 5.991,
+      "end": 6.502
+    },
+    {
+      "word": "Talmudic",
+      "start": 6.629,
+      "end": 7.21
+    },
+    {
+      "word": "thinking",
+      "start": 7.268,
+      "end": 7.616
+    },
+    {
+      "word": "modes.",
+      "start": 7.686,
+      "end": 8.29
+    },
+    {
+      "word": "We",
+      "start": 8.8,
+      "end": 8.951
+    },
+    {
+      "word": "separate",
+      "start": 9.021,
+      "end": 9.485
+    },
+    {
+      "word": "the",
+      "start": 9.509,
+      "end": 9.578
+    },
+    {
+      "word": "character",
+      "start": 9.625,
+      "end": 10.043
+    },
+    {
+      "word": "from",
+      "start": 10.101,
+      "end": 10.24
+    },
+    {
+      "word": "the",
+      "start": 10.275,
+      "end": 10.344
+    },
+    {
+      "word": "system",
+      "start": 10.379,
+      "end": 10.716
+    },
+    {
+      "word": "function.",
+      "start": 10.797,
+      "end": 11.436
+    },
+    {
+      "word": "A",
+      "start": 12.04,
+      "end": 12.109
+    },
+    {
+      "word": "persona",
+      "start": 12.179,
+      "end": 12.608
+    },
+    {
+      "word": "can",
+      "start": 12.655,
+      "end": 12.771
+    },
+    {
+      "word": "step",
+      "start": 12.817,
+      "end": 13.026
+    },
+    {
+      "word": "into",
+      "start": 13.084,
+      "end": 13.235
+    },
+    {
+      "word": "different",
+      "start": 13.293,
+      "end": 13.607
+    },
+    {
+      "word": "roles",
+      "start": 13.653,
+      "end": 14.013
+    },
+    {
+      "word": "depending",
+      "start": 14.083,
+      "end": 14.501
+    },
+    {
+      "word": "on",
+      "start": 14.559,
+      "end": 14.617
+    },
+    {
+      "word": "the",
+      "start": 14.652,
+      "end": 14.722
+    },
+    {
+      "word": "session's",
+      "start": 14.757,
+      "end": 15.186
+    },
+    {
+      "word": "needs.",
+      "start": 15.267,
+      "end": 15.883
+    },
+    {
+      "word": "The",
+      "start": 16.579,
+      "end": 16.696
+    },
+    {
+      "word": "system",
+      "start": 16.742,
+      "end": 17.113
+    },
+    {
+      "word": "actively",
+      "start": 17.183,
+      "end": 17.601
+    },
+    {
+      "word": "fact-checks,",
+      "start": 17.671,
+      "end": 18.495
+    },
+    {
+      "word": "filters",
+      "start": 18.82,
+      "end": 19.273
+    },
+    {
+      "word": "for",
+      "start": 19.343,
+      "end": 19.447
+    },
+    {
+      "word": "cultural",
+      "start": 19.505,
+      "end": 19.877
+    },
+    {
+      "word": "sensitivity,",
+      "start": 19.935,
+      "end": 20.805
+    },
+    {
+      "word": "and",
+      "start": 21.084,
+      "end": 21.247
+    },
+    {
+      "word": "tracks",
+      "start": 21.305,
+      "end": 21.641
+    },
+    {
+      "word": "logical",
+      "start": 21.711,
+      "end": 22.094
+    },
+    {
+      "word": "contradictions",
+      "start": 22.152,
+      "end": 22.953
+    },
+    {
+      "word": "in",
+      "start": 23.232,
+      "end": 23.383
+    },
+    {
+      "word": "real-time.",
+      "start": 23.476,
+      "end": 24.567
+    }
+  ],
+  "duration": 24.57
+}
