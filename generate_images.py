@@ -5,52 +5,50 @@ import json, base64, sys, os, time
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
-API_KEY = "AIzaSyBTygbL5lzZYonciNrRhgDv79NK9yC_qDQ"
+API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyA5LvFesI77ctnUAKmvZ7jF-YzxlRKTTT0")
 MODEL = "gemini-2.5-flash-image"
 URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={API_KEY}"
-OUT_DIR = "/home/jsagi/sanhedrin-deck/assets"
+BASE_DIR = "/home/jsagi/sanhedrin-deck/slides"
 
 SLIDES = {
-    "slide-01-hero": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. A futuristic circular museum arena isolated on a pure white background for easy cutout. Expressive, modern "Sims" style visitors are standing around a sleek, glowing circular digital console. Surrounding them are life-sized, high-fidelity holographic projections of historical figures. The space features curved wooden benches and vertical glass touchscreens. Vibrant global illumination, deep blue and warm gold color palette, Unreal Engine 5 life-simulation style, hyper-detailed, clean edges.',
+    "slide-01": "High-end 3D isometric architectural visualization of a futuristic circular museum arena, isolated on a pure white background for easy cutout. In the center, a sleek brushed-aluminum and frosted glass digital console. Surrounding the console are life-sized, high-fidelity glowing blue holographic projections of historical figures. Semi-translucent architectural scale figures of modern visitors and one central facilitator stand around them. Two large vertical frosted-glass 'Sage Screens' flank a massive curved immersive display wall in the background. Warm walnut wood curved benches with integrated screens radiate outward. Premium corporate tech aesthetic, studio lighting, hyper-realistic, 8k.",
 
-    "slide-02-polarization": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. Two groups of expressive, modern "Sims" style characters stand on opposite sides of a glowing, jagged red chasm splitting the white floor. Above them, floating 3D digital speech bubbles collide and shatter into glitch effects. Crisp, vibrant lighting, deep blue and glowing red color palette, high-end life-simulation game style, clean edges.',
+    "slide-02": "High-end 3D isometric conceptual illustration, isolated on a pure white background for easy cutout. A sleek, minimalist white platform split by a glowing, jagged red chasm. On opposite sides stand semi-translucent architectural scale figures. Above them, sleek frosted-glass speech bubbles collide and shatter into digital data fragments. Premium corporate tech aesthetic, stark contrast, dramatic but clean studio lighting, hyper-detailed.",
 
-    "slide-03-puzzle": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. A complex, glowing 3D jigsaw puzzle assembling itself mid-air over a sleek modern pedestal. Each puzzle piece emits a soft light, containing faint etchings of historical faces and data charts. The pieces lock together into a unified sphere of light. Crisp global illumination, cyan and amber glowing accents, high-end life-simulation UI style, clean cutout.',
+    "slide-03": "High-end 3D isometric conceptual illustration, isolated on a pure white background for easy cutout. A complex, glowing jigsaw puzzle assembling itself mid-air over a sleek matte-black and walnut wood pedestal. The puzzle pieces are made of frosted glass, emitting soft cyan and amber light, containing faint etchings of ancient text and data nodes. Premium museum-tech aesthetic, glassmorphism, crisp shadows, 8k.",
 
-    "slide-04-value-prop": 'High-fidelity top-down isometric 3D infographic, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. A glowing technological loop: On the left, an expressive modern character inputs data into a sleek console. A light beam branches to the center into 5 floating, glowing nodes representing AI minds deliberating. The beams converge on the right into a brightly illuminated, stylized 3D human brain. Crisp lighting, neon blue and gold data streams, glass textures, game-ready UI aesthetic.',
+    "slide-04": "High-end 3D isometric infographic, isolated on a pure white background for easy cutout. A sleek technological flow: on the left, a minimalist data console. A crisp laser beam flows to the center, branching into 5 floating, frosted-glass geometric nodes representing AI minds. The beams converge on the right into an elegant, glowing wireframe sculpture of a human brain. Premium corporate tech aesthetic, cyan and gold data streams, minimalist.",
 
-    "slide-05-journey": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. A path of floating, illuminated glass stepping stones. The stones show sequential steps: a touchscreen kiosk, a friendly human facilitator character, a group of glowing AI avatars, and a glowing QR code on a smartphone. Interconnected laser lines map the journey. Bright, welcoming lighting, deep blue and warm gold accents, clean life-simulation UI design.',
+    "slide-05": "High-end 3D isometric architectural pathway, isolated on a pure white background for easy cutout. A path of floating, illuminated frosted-glass stepping stones. The stones feature sleek, minimalist dioramas: a modern touchscreen kiosk, a subtle human facilitator silhouette, glowing AI data nodes, and a sleek smartphone displaying a QR code. Connected by thin glowing fiber-optic lines. Premium museum-tech aesthetic, clean studio lighting.",
 
-    "slide-06-architecture": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. A digital "wardrobe" system. At the base, sleek glowing wireframe mannequins labeled with roles like Judge. Above them float highly detailed, stylized portrait avatars of historical figures inside glass data cards, actively slotting down into the wireframes. Clean, crisp lighting, deep blue and warm gold color palette, modern game UI aesthetic.',
+    "slide-06": "High-end 3D isometric infographic, isolated on a pure white background for easy cutout. A digital architecture matrix. At the base, identical sleek glass pedestals labeled with minimalist typography. Above them float highly detailed, translucent holographic busts of historical figures encased in sleek brushed-metal frames, actively slotting down onto the pedestals. Premium corporate tech aesthetic, glassmorphism, cyan and warm gold lighting.",
 
-    "slide-07-session": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. A sleek, interactive white display table. On the table, two glowing holographic 3D models: a modern autonomous vehicle and an ancient pair of brass scales of justice. Beams of data connect them, surrounded by floating game-style text boxes showing ethical questions. Crisp, vibrant lighting, deep blue and warm gold UI accents, hyper-detailed.',
+    "slide-07": "High-end 3D isometric diorama, isolated on a pure white background for easy cutout. A sleek, minimalist white museum display table. On the table, two highly detailed, contrasting 3D models: a modern matte-white autonomous vehicle, and an ancient pair of polished brass scales of justice. Elegant fiber-optic data beams connect them. Floating frosted-glass interface panels display ethical queries. Premium architectural visualization, 8k.",
 
-    "slide-08-dilemma": 'High-fidelity top-down isometric 3D infographic, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. A glowing, floating timeline. Above the timeline, three distinct, illuminated holographic bubbles float: a modern self-driving car next to an ancient ox, a smartphone with a chat bubble next to a scroll, and a medical DNA helix. Below the timeline, small sleek digital clocks. Bright, clean corporate game-tech aesthetic, deep blue and warm gold.',
+    "slide-08": "High-end 3D isometric infographic, isolated on a pure white background for easy cutout. A sleek, floating frosted-glass timeline bar. Above the timeline, three illuminated glass spheres float, containing minimalist 3D icons: a car and an ox, a smartphone and an ancient scroll, a medical DNA helix. Below, minimalist digital clocks read 02:00, 15:00, 25:00. Premium corporate tech aesthetic, clean lighting, highly professional.",
 
-    "slide-09-modes": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. A split-screen architectural diorama. The left side has calm, collaborative blue lighting with expressive student characters sitting peacefully around a glowing table. The right side features dynamic orange lighting with two distinct teams of characters facing each other in a game-show style debate setup. Crisp global illumination, high-end life-simulation graphics, clean cutout edges.',
+    "slide-09": "High-end 3D isometric split-screen architectural diorama, isolated on a pure white background for easy cutout. Left side: a calm, collaborative seminar setup with warm walnut tables, soft blue lighting, and semi-translucent figures studying. Right side: a dynamic, sleek debate podium setup with brushed metal, subtle amber lighting, and figures facing off. Premium museum-tech aesthetic, hyper-realistic materials, studio lighting.",
 
-    "slide-10-space": 'High-fidelity top-down isometric 3D architectural render, next-gen "Sims 8" build-mode aesthetic. Isolated on a pure white background for easy cutout. A wide semi-circle of modern white curved benches with individual glowing touchscreens. A sleek facilitator podium sits in the center. Vertical digital Sage Screens flank a curved immersive projection wall. Vibrant, inviting lighting, deep blue and warm gold color palette, clean modern game-design style.',
+    "slide-10": "High-end 3D isometric architectural visualization of a circular museum room, isolated on a pure white background for easy cutout. A wide semi-circle of modern white and walnut curved benches with sleek glass touchscreens. A minimalist facilitator podium in the center. Tall, vertical frosted-glass 'Sage Screens' flank a massive, curved immersive display wall. High-end interior design, premium lighting, 8k resolution.",
 
-    "slide-11-proof": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. On the left, a single glowing ancient Hebrew manuscript transitions into a stylized, high-quality digital hologram of a historical figure. Sweeping lines of light expand outward to the right, forming a network of multiple interconnected holographic figures deliberating together. Crisp lighting, blue to gold gradient, clean cutout.',
+    "slide-11": "High-end 3D isometric conceptual illustration, isolated on a pure white background for easy cutout. On the left, a single glowing ancient scroll transitions into a sleek, volumetric hologram of a historical figure. Elegant, fiber-optic light trails expand outward to the right, forming a network of multiple interconnected holographic pedestals. Premium museum-tech aesthetic, blue to gold gradient, hyper-detailed, minimalist.",
 
-    "slide-12-progress": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. A glowing architectural structure. The bottom 70% is solid, sleek, polished white metal and glass. The top 30% consists of glowing blue wireframes and holographic blueprints being actively constructed by digital laser beams representing Agent-to-Agent integration. Bright, inspiring tech-startup vibe, life-simulation build-mode aesthetic.',
+    "slide-12": "High-end 3D isometric architectural metaphor, isolated on a pure white background for easy cutout. A massive, sleek structure. The bottom 70% is built from solid, highly polished white marble and brushed steel. The top 30% transitions into a glowing cyan wireframe hologram, being actively constructed by precise laser beams. Premium corporate tech aesthetic, clean shadows, representing software architecture.",
 
-    "slide-13-competitive": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. In the center, a sleek, multifaceted glowing diamond tower projects different colors of light, protected by a glowing digital moat. Around it sit basic, dull gray square boxes representing standard chatbots. Crisp, vibrant lighting, deep blue and warm gold UI palette, clean metaphorical game-art style.',
+    "slide-13": "High-end 3D isometric conceptual illustration, isolated on a pure white background for easy cutout. In the center, an elegant, multifaceted glass diamond tower projects warm internal lighting, surrounded by a subtle glowing ring. Scattered around the perimeter are basic, matte-gray, unlit cubic blocks. Premium corporate tech aesthetic, visual hierarchy, hyper-realistic glassmorphism, 8k.",
 
-    "slide-14-edtech": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. Three floating stylized diorama islands connected by glowing data bridges. Top island: a sleek museum dome. Bottom-left: a vibrant modern classroom with smartboards and student characters. Bottom-right: a cozy home desk with a laptop and ring light. Bright, welcoming educational game aesthetic, crisp lighting, easy cutout.',
+    "slide-14": "High-end 3D isometric ecosystem map, isolated on a pure white background for easy cutout. Three sleek, floating minimalist dioramas connected by glowing fiber-optic bridges. Top: a premium museum exhibition dome. Bottom-left: a modern, high-tech academic classroom. Bottom-right: a sleek home office desk. Premium architectural visualization, warm wood and frosted glass materials, clean corporate lighting.",
 
-    "slide-15-roadmap": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. A glowing frosted glass staircase winding upward. Step 1: a smartphone with a chat bubble. Step 2: a laptop screen. Step 3: a modern museum kiosk. Step 4 (top): a fully realized, illuminated Sanhedrin circular arena diorama. Bright, uplifting lighting, deep blue and warm gold, clean edges for transparency.',
+    "slide-15": "High-end 3D isometric infographic, isolated on a pure white background for easy cutout. A sleek, upward-winding staircase made of frosted glass and brushed metal. Step 1: a minimalist smartphone. Step 2: a sleek laptop with data charts. Step 3: a premium museum touchscreen kiosk. Step 4 (top): a miniaturized, glowing architectural model of the circular Sanhedrin arena. Premium corporate tech aesthetic, inspiring upward momentum.",
 
-    "slide-16-business": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. A sleek, modern technological funnel mechanism. Glowing blue data particles flow into the top. The machine outputs two distinct streams at the bottom: shiny stylized gold coins, and illuminated, holographic academic documents and graphs. Vibrant, clean corporate-game UI illustration, crisp global illumination.',
+    "slide-16": "High-end 3D isometric conceptual illustration, isolated on a pure white background for easy cutout. An elegant, minimalist data funnel made of frosted glass. Glowing cyan data particles flow into the top. The funnel splits the output into two streams at the base: sleek, stylized gold coins, and floating, holographic academic documents. Premium corporate tech aesthetic, hyper-realistic materials, studio lighting.",
 
-    "slide-17-team": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. Three solid, glowing pillars made of sleek white marble and metal support a glowing platform. Next to them stands a fourth pillar that is an empty, glowing blue wireframe hologram, representing a missing expert waiting to be filled. Bright, clean architectural game-style graphics, deep blue and warm gold.',
+    "slide-17": "High-end 3D isometric architectural metaphor, isolated on a pure white background for easy cutout. Three solid, premium pillars made of polished white marble and brushed aluminum supporting a sleek platform. Next to them stands a fourth pillar that is an empty, glowing cyan wireframe hologram, representing a missing piece waiting to be filled. Premium corporate tech aesthetic, crisp shadows, minimalist.",
 
-    "slide-18-closing": 'High-fidelity top-down isometric 3D render, next-gen "Sims 8" stylized realism aesthetic. Isolated on a pure white background for easy cutout. Two stylized, expressive hands meeting over a sleek digital pedestal. One hand is slightly translucent, made of warm, ancient glowing light. The other is modern, solid, and reaching out. A brilliant spark of blue and white light illuminates the space between them. Crisp, vibrant lighting, emotional but clean game-art style.',
+    "slide-18": "High-end 3D isometric conceptual illustration, isolated on a pure white background for easy cutout. Two highly realistic, elegant hands meeting over a sleek matte-black pedestal. One hand is slightly translucent, made of warm, amber holographic light (ancient wisdom). The other is a solid, modern human hand. Between their fingers, a brilliant, clean spark of blue and white light. Premium museum-tech aesthetic, emotional but highly professional.",
 }
 
-os.makedirs(OUT_DIR, exist_ok=True)
-
-def generate_image(name, prompt):
+def generate_image(slide_name, prompt):
     payload = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"responseModalities": ["TEXT", "IMAGE"]}
@@ -62,32 +60,34 @@ def generate_image(name, prompt):
         data = json.loads(resp.read())
     except HTTPError as e:
         error_body = e.read().decode()
-        print(f"  FAILED {name}: HTTP {e.code} - {error_body[:200]}", flush=True)
+        print(f"  FAILED {slide_name}: HTTP {e.code} - {error_body[:200]}", flush=True)
         return False
     except Exception as e:
-        print(f"  FAILED {name}: {e}", flush=True)
+        print(f"  FAILED {slide_name}: {e}", flush=True)
         return False
 
     for candidate in data.get("candidates", []):
         fr = candidate.get("finishReason", "")
         if fr == "SAFETY":
-            print(f"  BLOCKED {name}: Safety filter", flush=True)
+            print(f"  BLOCKED {slide_name}: Safety filter", flush=True)
             return False
         if fr == "RECITATION":
-            print(f"  BLOCKED {name}: Recitation filter", flush=True)
+            print(f"  BLOCKED {slide_name}: Recitation filter", flush=True)
             return False
         for part in candidate.get("content", {}).get("parts", []):
             if "inlineData" in part:
                 img_data = base64.b64decode(part["inlineData"]["data"])
                 mime = part["inlineData"].get("mimeType", "image/png")
                 ext = "png" if "png" in mime else "jpg" if "jpeg" in mime or "jpg" in mime else "webp"
-                path = os.path.join(OUT_DIR, f"{name}.{ext}")
+                out_dir = os.path.join(BASE_DIR, slide_name)
+                os.makedirs(out_dir, exist_ok=True)
+                path = os.path.join(out_dir, f"hero.{ext}")
                 with open(path, "wb") as f:
                     f.write(img_data)
-                print(f"  OK {name}.{ext} ({len(img_data)//1024}KB)", flush=True)
-                return True
+                print(f"  OK {slide_name}/hero.{ext} ({len(img_data)//1024}KB)", flush=True)
+                return path
 
-    print(f"  FAILED {name}: No image in response", flush=True)
+    print(f"  FAILED {slide_name}: No image in response", flush=True)
     return False
 
 if __name__ == "__main__":
@@ -97,7 +97,8 @@ if __name__ == "__main__":
 
     for i, (name, prompt) in enumerate(SLIDES.items(), 1):
         print(f"[{i}/{total}] Generating {name}...", flush=True)
-        if generate_image(name, prompt):
+        result = generate_image(name, prompt)
+        if result:
             success += 1
         else:
             failed.append(name)
