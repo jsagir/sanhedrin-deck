@@ -92,11 +92,23 @@ sanhedrin-deck/
 18. Appendix — 13 Thinking Modes, architecture, personas
 
 ## Image Generation
-Images use "Sims 8" isometric aesthetic on white backgrounds (for easy cutout).
-- Model: `gemini-2.5-flash-image` via Google Generative AI API
-- Script: `generate_images.py` (requires API key)
+Images use "Premium Museum-Tech & Architectural Minimalism" aesthetic:
+- **Perspective:** High-end 3D top-down isometric, strictly grid-aligned
+- **Background:** Always "isolated on a pure white background for easy cutout"
+- **Materials:** Warm walnut wood (history), brushed aluminum, frosted glass/glassmorphism (technology)
+- **Characters:** Semi-translucent architectural scale figures (no cartoonish avatars)
+- **Lighting:** Premium corporate studio lighting, soft ambient occlusion, crisp shadows, cyan/amber data accents
+- **Model:** `gemini-2.5-flash-image` via Google Generative AI API
+- **Script:** `generate_images.py` (requires GEMINI_API_KEY env var)
 - To regenerate: `python3 generate_images.py`
-- Each slide folder can hold additional assets (alt versions, diagrams, etc.)
+
+## Presentation Design Rules
+- 16:9 widescreen aspect ratio (viewport-based, adapts naturally)
+- Titles: 56px (36-44pt equivalent)
+- Body text: 24px minimum (24pt+ rule)
+- Sans-serif fonts (Montserrat as Gotham proxy)
+- Rule of 6: max 6 elements per slide
+- High contrast: light text on dark navy, or dark on cream
 
 ## Working with This Deck
 

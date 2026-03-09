@@ -16,7 +16,7 @@
    ```
 4. **Commit and push:**
    ```bash
-   git add slides/ generate_images.py && git commit -m "update: Cinematic first-person hero images" && git push
+   git add slides/ generate_images.py index.html && git commit -m "update: Isometric museum-tech images and refined slide content" && git push
    ```
 5. **Review the deck** at https://sanhedrin-deck.onrender.com after deploy
 
@@ -66,10 +66,30 @@
   - All 18 prompts updated for photorealistic museum-tech feel
   - BLOCKED: both Gemini API keys flagged as leaked (committed to git)
 
+### Session 6 - Isometric Rebuild + Content Refresh (2026-03-09)
+- **Switched image style** from Cinematic First-Person to "Premium Museum-Tech & Architectural Minimalism" isometric
+  - All 18 prompts updated: 3D isometric, white background cutouts, walnut wood + brushed aluminum + frosted glass
+  - Semi-translucent architectural scale figures, cyan/amber data accents, studio lighting
+- **Updated all slide content** to match the definitive deck outline:
+  - Slide 2: Added civic discourse simulator framing
+  - Slide 3: Added 13 Talmudic Thinking Modes reference
+  - Slide 5: Expanded to 6 explicit journey steps with descriptions
+  - Slide 7: Added "Play Demo" button (links to sanhedrin-demo.onrender.com)
+  - Slide 8: Added 25-minute session timeline blocks
+  - Slide 9: Added audience descriptions (school groups, corporate)
+  - Slide 10: Clarified spectators as active judges
+  - Slide 11: Added Micha Goodman validation, monologue-to-dialogue evolution quote
+  - Slide 12: Added A2A mitigation via WhatsApp POC
+  - Slide 15: Added phase details (WhatsApp POC, 5 characters, physical mockup)
+  - Slide 16: Added Research Hub as IP
+  - Slide 17: Named team members (Daniel, Jonathan, Doron) + Debate Expert gap
+  - Slide 18: Updated CTA to "Fund Phase 1, schedule deep-dive, green light"
+- **Added CSS:** timeline-row/timeline-block for session flow, demo-btn style
+- **Kept all 18 slides** (no consolidation per user decision)
+
 ## What's Next (Backlog)
-- [ ] Generate cinematic images with fresh API key (env var, not hardcoded)
-- [ ] Apply structural deck feedback (combine slides, reduce to 12-14)
-- [ ] Add "Play Demo" button on Sample Session slide
+- [ ] Generate isometric images with fresh API key (env var, not hardcoded)
+- [ ] Update demo button URL once demo is deployed
 - [ ] Add Hebrew/Arabic font support (Almoni Neue, Markazi Text)
 - [ ] Review Hebrew translations with native speaker
 - [ ] Consider speaker notes or PDF export

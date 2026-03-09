@@ -176,6 +176,15 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
 .team-label { font-size: 20px; color: var(--text-sub); padding: 8px 0; }
 .team-label strong { color: var(--accent); font-weight: 600; }
 
+/* Timeline */
+.timeline-row { display: flex; gap: 4px; margin-top: 16px; flex-wrap: wrap; }
+.timeline-block {
+  font-family: var(--font-m); font-size: 12px; letter-spacing: 0.5px;
+  padding: 6px 12px; border-radius: 6px; color: var(--accent);
+  background: rgba(189,214,230,0.06); border: 1px solid rgba(189,214,230,0.12);
+  white-space: nowrap;
+}
+
 /* CTA */
 .cta-quote {
   font-family: var(--font-d); font-style: italic; font-size: 28px;
@@ -191,6 +200,15 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
   text-decoration: none;
 }
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(189,214,230,0.3); }
+.demo-btn {
+  display: inline-block; margin-top: 16px; margin-left: 12px; padding: 16px 40px;
+  font-family: var(--font-d); font-size: 20px; font-weight: 600;
+  color: var(--accent); background: transparent;
+  border: 2px solid var(--accent); border-radius: 8px; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  text-decoration: none;
+}
+.demo-btn:hover { transform: translateY(-2px); background: rgba(189,214,230,0.1); box-shadow: 0 8px 30px rgba(189,214,230,0.2); }
 
 /* Slide 1 logo */
 .motj-logo { height: 48px; margin-bottom: 32px; }
@@ -241,6 +259,7 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
   .mode-pair { flex-direction: column; gap: 12px; }
   .thinker-row { flex-direction: column; gap: 8px; }
   .cta-quote { font-size: 22px; }
+  .demo-btn { margin-left: 0; margin-top: 8px; }
 }
 </style>
 </head>
@@ -252,13 +271,14 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
 <div class="deck">
 
 <!-- ============================================================ -->
-<!-- SLIDE 1: Title (centered) -->
+<!-- SLIDE 1: Title / Hero (centered) -->
+<!-- ACT 1: THE HOOK - The Crisis and the Engine -->
 <!-- ============================================================ -->
 <section class="slide active" data-act="ACT 1: THE HOOK">
   <div class="en-content centered">
     <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" class="motj-logo reveal">
     <h1 class="reveal reveal-d1">The Sanhedrin<br>Educational Experience</h1>
-    <p class="tagline reveal reveal-d2" style="margin-top: 20px; max-width: 600px;">What would history's greatest minds say about today's dilemmas?</p>
+    <p class="tagline reveal reveal-d2" style="margin-top: 20px; max-width: 600px;">What would history's greatest minds say about TODAY's dilemmas?</p>
     <img src="slides/slide-01/hero.png" alt="Sanhedrin arena" class="hero-img-centered reveal reveal-d3">
   </div>
   <div class="he-content centered">
@@ -270,14 +290,14 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 2: Problem -->
+<!-- SLIDE 2: The Problem (THE URGENCY) -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
   <div class="en-content split">
     <div>
       <p class="label reveal">The Urgency</p>
       <h2 class="reveal reveal-d1">Discourse<br>is Broken</h2>
-      <p class="body-text reveal reveal-d2">Young people walk out of rooms when exposed to opposing views.</p>
+      <p class="body-text reveal reveal-d2">"I disagree with you" has become "You are my enemy." Civic discourse is a muscle that must be built through active experience. There is no simulator for it.</p>
     </div>
     <img src="slides/slide-02/hero.png" alt="Polarization" class="hero-img reveal reveal-d3">
   </div>
@@ -286,20 +306,20 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
     <div>
       <p class="label reveal">הדחיפות</p>
       <h2 class="reveal reveal-d1">השיח שבור</h2>
-      <p class="body-text reveal reveal-d2">צעירים עוזבים את החדר כשנחשפים לדעות מנוגדות.</p>
+      <p class="body-text reveal reveal-d2">"אני לא מסכים איתך" הפך ל"אתה האויב שלי." שיח אזרחי הוא שריר שצריך לבנות דרך חוויה פעילה. אין סימולטור לזה.</p>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 3: Puzzle -->
+<!-- SLIDE 3: The Framing (Puzzle Metaphor) -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
   <div class="en-content split">
     <div>
       <p class="label reveal">The Cognitive Twist</p>
       <h2 class="reveal reveal-d1">Dispute as a<br>Dynamic Puzzle</h2>
-      <p class="body-text reveal reveal-d2">Not a battle to win.<br>A puzzle to solve together.</p>
+      <p class="body-text reveal reveal-d2">Not a battle to win. A collaborative investigation powered by 13 Talmudic Thinking Modes. Participants uncover hidden puzzle pieces to see the full picture.</p>
     </div>
     <img src="slides/slide-03/hero.png" alt="Puzzle metaphor" class="hero-img reveal reveal-d3">
   </div>
@@ -308,29 +328,32 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
     <div>
       <p class="label reveal">הטוויסט הקוגניטיבי</p>
       <h2 class="reveal reveal-d1">מחלוקת<br>כפאזל דינמי</h2>
-      <p class="body-text reveal reveal-d2">לא קרב לניצחון.<br>פאזל לפתרון משותף.</p>
+      <p class="body-text reveal reveal-d2">לא קרב לניצחון. חקירה משותפת מונעת על ידי 13 מצבי חשיבה תלמודיים. המשתתפים חושפים חלקי פאזל נסתרים כדי לראות את התמונה המלאה.</p>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 4: Value Prop (centered) -->
+<!-- SLIDE 4: Key Value Proposition (centered) -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
   <div class="en-content centered">
-    <h2 class="reveal" style="max-width: 700px;">Learn to argue better.<br>Without needing to agree.</h2>
-    <p class="body-text reveal reveal-d1" style="text-align: center;">AI-powered deliberation with history's greatest thinkers.</p>
-    <img src="slides/slide-04/hero.png" alt="Value proposition" class="hero-img-centered reveal reveal-d2">
+    <h2 class="reveal" style="max-width: 700px;">Learn to argue better<br>in 30 minutes.</h2>
+    <p class="tagline reveal reveal-d1" style="margin-bottom: 16px;">Without needing to agree.</p>
+    <p class="body-text reveal reveal-d2" style="text-align: center;">AI-powered deliberation with history's greatest thinkers. Input a dilemma, deliberate together, expand your thinking.</p>
+    <img src="slides/slide-04/hero.png" alt="Value proposition" class="hero-img-centered reveal reveal-d3">
   </div>
   <div class="he-content centered">
-    <h2 class="reveal" style="max-width: 700px;">למדו להתווכח טוב יותר.<br>בלי הצורך להסכים.</h2>
-    <p class="body-text reveal reveal-d1" style="text-align: center;">דיון מונע בינה מלאכותית עם ההוגים הגדולים בהיסטוריה.</p>
-    <img src="slides/slide-04/hero.png" alt="הצעת ערך" class="hero-img-centered reveal reveal-d2">
+    <h2 class="reveal" style="max-width: 700px;">למדו להתווכח טוב יותר<br>ב-30 דקות.</h2>
+    <p class="tagline reveal reveal-d1" style="margin-bottom: 16px;">בלי הצורך להסכים.</p>
+    <p class="body-text reveal reveal-d2" style="text-align: center;">דיון מונע בינה מלאכותית עם ההוגים הגדולים בהיסטוריה. הזינו דילמה, דונו יחד, הרחיבו את החשיבה.</p>
+    <img src="slides/slide-04/hero.png" alt="הצעת ערך" class="hero-img-centered reveal reveal-d3">
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 5: Visitor Journey -->
+<!-- SLIDE 5: The Visitor Journey -->
+<!-- ACT 2: THE EXPERIENCE -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content split">
@@ -338,35 +361,37 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <p class="label reveal">End-to-End Flow</p>
       <h2 class="reveal reveal-d1">The Visitor Journey</h2>
       <div class="steps-row reveal reveal-d2">
-        <span class="step-pill">Input</span>
-        <span class="step-pill">Facilitate</span>
-        <span class="step-pill">Orchestrate</span>
-        <span class="step-pill">Deliberate</span>
-        <span class="step-pill">Synthesize</span>
-        <span class="step-pill">Takeaway</span>
+        <span class="step-pill">1. Input Dilemma</span>
+        <span class="step-pill">2. Facilitator Sets Stage</span>
+        <span class="step-pill">3. AI Selects Thinkers</span>
+        <span class="step-pill">4. Deliberate Together</span>
+        <span class="step-pill">5. Synthesize</span>
+        <span class="step-pill">6. QR Takeaway</span>
       </div>
+      <p class="body-text reveal reveal-d3" style="margin-top: 16px; font-size: 18px;">A structured, repeatable 25-minute loop.</p>
     </div>
-    <img src="slides/slide-05/hero.png" alt="Visitor journey" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-05/hero.png" alt="Visitor journey" class="hero-img reveal reveal-d4">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-05/hero.png" alt="מסע מבקר" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-05/hero.png" alt="מסע מבקר" class="hero-img reveal reveal-d4">
     <div>
       <p class="label reveal">זרימה מקצה לקצה</p>
       <h2 class="reveal reveal-d1">מסע המבקר</h2>
       <div class="steps-row reveal reveal-d2">
-        <span class="step-pill">הזנה</span>
-        <span class="step-pill">הנחיה</span>
-        <span class="step-pill">תזמור</span>
-        <span class="step-pill">דיון</span>
-        <span class="step-pill">סינתזה</span>
-        <span class="step-pill">תובנות</span>
+        <span class="step-pill">1. הזנת דילמה</span>
+        <span class="step-pill">2. המנחה פותח</span>
+        <span class="step-pill">3. AI בוחר הוגים</span>
+        <span class="step-pill">4. דיון משותף</span>
+        <span class="step-pill">5. סינתזה</span>
+        <span class="step-pill">6. QR לתובנות</span>
       </div>
+      <p class="body-text reveal reveal-d3" style="margin-top: 16px; font-size: 18px;">לולאה מובנית וחוזרת של 25 דקות.</p>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 6: Architecture -->
+<!-- SLIDE 6: The Architecture (Roles vs. Personas) -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content split">
@@ -375,8 +400,8 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <h2 class="reveal reveal-d1">Role-Based<br>Architecture</h2>
       <ul class="bullets reveal reveal-d2">
         <li>Persona and Role separated</li>
-        <li>Humans and AI swap roles</li>
-        <li>Dynamic, never scripted</li>
+        <li>A persona steps into different functional roles per session</li>
+        <li>Humans and AI swap roles seamlessly</li>
       </ul>
     </div>
     <img src="slides/slide-06/hero.png" alt="Architecture" class="hero-img reveal reveal-d3">
@@ -388,15 +413,15 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <h2 class="reveal reveal-d1">ארכיטקטורה<br>מבוססת תפקידים</h2>
       <ul class="bullets reveal reveal-d2">
         <li>פרסונה ותפקיד מופרדים</li>
-        <li>בני אדם ובינה מלאכותית מחליפים תפקידים</li>
-        <li>דינמי, אף פעם לא מתוסרט</li>
+        <li>פרסונה נכנסת לתפקידים פונקציונליים שונים בכל מפגש</li>
+        <li>בני אדם ובינה מלאכותית מחליפים תפקידים בצורה חלקה</li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 7: Sample Session -->
+<!-- SLIDE 7: Sample Session (Make It Real) + Play Demo -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content split">
@@ -405,9 +430,14 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <h2 class="reveal reveal-d1">The Goring Ox</h2>
       <p class="body-text reveal reveal-d2">Who is liable when an autonomous vehicle causes a fatal accident?</p>
       <div class="thinker-row reveal reveal-d3">
-        <span class="thinker">Rambam: Judge</span>
-        <span class="thinker">Golda: Advocate</span>
-        <span class="thinker">Hillel: Questioner</span>
+        <span class="thinker">Rambam: Systemic Causation</span>
+        <span class="thinker">Golda: Legal Boundaries</span>
+        <span class="thinker">Hillel: Compassion</span>
+      </div>
+      <div class="reveal reveal-d4" style="margin-top: 24px;">
+        <button class="demo-btn" onclick="window.open('https://sanhedrin-demo.onrender.com','_blank')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>Play Demo
+        </button>
       </div>
     </div>
     <img src="slides/slide-07/hero.png" alt="Goring Ox session" class="hero-img reveal reveal-d4">
@@ -419,28 +449,39 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <h2 class="reveal reveal-d1">השור שנגח</h2>
       <p class="body-text reveal reveal-d2">מי אחראי כשרכב אוטונומי גורם לתאונה קטלנית?</p>
       <div class="thinker-row reveal reveal-d3">
-        <span class="thinker">רמב״ם: שופט</span>
-        <span class="thinker">גולדה: סנגורית</span>
-        <span class="thinker">הלל: שואל</span>
+        <span class="thinker">רמב"ם: סיבתיות מערכתית</span>
+        <span class="thinker">גולדה: גבולות משפטיים</span>
+        <span class="thinker">הלל: חמלה</span>
+      </div>
+      <div class="reveal reveal-d4" style="margin-top: 24px;">
+        <button class="demo-btn" onclick="window.open('https://sanhedrin-demo.onrender.com','_blank')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px; margin-left: 8px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>הפעל דמו
+        </button>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 8: Dilemma Library -->
+<!-- SLIDE 8: Dilemma Library & Session Flow -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content split">
     <div>
       <p class="label reveal">Content Library</p>
       <h2 class="reveal reveal-d1">20+ Scenarios</h2>
-      <p class="body-text reveal reveal-d2">25-minute high-throughput sessions</p>
-      <ul class="pair-list reveal reveal-d3">
+      <ul class="pair-list reveal reveal-d2">
         <li><span>Goring Ox</span> / Autonomous Vehicles</li>
-        <li><span>Lashon Hara</span> / Social Media</li>
-        <li><span>Medical Ethics</span> / Biotech</li>
+        <li><span>Lashon Hara</span> / Cyberbullying</li>
+        <li><span>Medical Ethics</span> / Organ Markets</li>
       </ul>
+      <div class="timeline-row reveal reveal-d3">
+        <span class="timeline-block">0-2 min: Intake</span>
+        <span class="timeline-block">2-4 min: Opening</span>
+        <span class="timeline-block">4-19 min: Deliberation</span>
+        <span class="timeline-block">19-23 min: Closing</span>
+        <span class="timeline-block">23-25 min: Takeaway</span>
+      </div>
     </div>
     <img src="slides/slide-08/hero.png" alt="Scenario library" class="hero-img reveal reveal-d4">
   </div>
@@ -449,12 +490,18 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
     <div>
       <p class="label reveal">ספריית תוכן</p>
       <h2 class="reveal reveal-d1">20+ תרחישים</h2>
-      <p class="body-text reveal reveal-d2">מפגשים של 25 דקות בתפוקה גבוהה</p>
-      <ul class="pair-list reveal reveal-d3">
+      <ul class="pair-list reveal reveal-d2">
         <li><span>השור שנגח</span> / רכבים אוטונומיים</li>
-        <li><span>לשון הרע</span> / מדיה חברתית</li>
-        <li><span>אתיקה רפואית</span> / ביוטכנולוגיה</li>
+        <li><span>לשון הרע</span> / בריונות ברשת</li>
+        <li><span>אתיקה רפואית</span> / שוק איברים</li>
       </ul>
+      <div class="timeline-row reveal reveal-d3">
+        <span class="timeline-block">0-2 דק: קליטה</span>
+        <span class="timeline-block">2-4 דק: פתיחה</span>
+        <span class="timeline-block">4-19 דק: דיון</span>
+        <span class="timeline-block">19-23 דק: סיכום</span>
+        <span class="timeline-block">23-25 דק: תובנות</span>
+      </div>
     </div>
   </div>
 </section>
@@ -464,29 +511,29 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content centered">
-    <h2 class="reveal">Two Modes, One Platform</h2>
+    <h2 class="reveal">One Platform, Two Modes</h2>
     <div class="mode-pair reveal reveal-d1">
       <div class="mode-box">
         <h3>Machloket</h3>
-        <p>Collaborative Inquiry</p>
+        <p>Pedagogical, collaborative inquiry.<br>Ideal for school groups.</p>
       </div>
       <div class="mode-box">
         <h3>Debate</h3>
-        <p>Competitive Rhetoric</p>
+        <p>Competitive, outcome-focused rhetoric.<br>Ideal for visitors and corporate.</p>
       </div>
     </div>
     <img src="slides/slide-09/hero.png" alt="Two modes" class="hero-img-centered reveal reveal-d2">
   </div>
   <div class="he-content centered">
-    <h2 class="reveal">שני מצבים, פלטפורמה אחת</h2>
+    <h2 class="reveal">פלטפורמה אחת, שני מצבים</h2>
     <div class="mode-pair reveal reveal-d1">
       <div class="mode-box">
         <h3>מחלוקת</h3>
-        <p>חקירה משותפת</p>
+        <p>פדגוגי, חקירה משותפת.<br>אידיאלי לקבוצות בי"ס.</p>
       </div>
       <div class="mode-box">
         <h3>דיבייט</h3>
-        <p>רטוריקה תחרותית</p>
+        <p>תחרותי, רטוריקה ממוקדת תוצאה.<br>אידיאלי למבקרים וארגונים.</p>
       </div>
     </div>
     <img src="slides/slide-09/hero.png" alt="שני מצבים" class="hero-img-centered reveal reveal-d2">
@@ -494,7 +541,7 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 10: Physical Space -->
+<!-- SLIDE 10: The Physical Space -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content split">
@@ -503,8 +550,8 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <h2 class="reveal reveal-d1">The Physical Space</h2>
       <ul class="bullets reveal reveal-d2">
         <li>Circular room for civic discourse</li>
-        <li>Spectators are active judges</li>
-        <li>Immersive display wall</li>
+        <li>Spectators are active judges, not passive watchers</li>
+        <li>Immersive display wall as the visual centerpiece</li>
       </ul>
     </div>
     <img src="slides/slide-10/hero.png" alt="Physical space" class="hero-img reveal reveal-d3">
@@ -516,37 +563,40 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <h2 class="reveal reveal-d1">המרחב הפיזי</h2>
       <ul class="bullets reveal reveal-d2">
         <li>חדר עגול לשיח אזרחי</li>
-        <li>צופים הם שופטים פעילים</li>
-        <li>קיר תצוגה אימרסיבי</li>
+        <li>צופים הם שופטים פעילים, לא צופים פסיביים</li>
+        <li>קיר תצוגה אימרסיבי כמרכז החזותי</li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 11: Proof -->
+<!-- SLIDE 11: Proof of Concept - The Rambam -->
+<!-- ACT 3: WHY IT WORKS -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="en-content split">
     <div>
       <p class="label reveal">Proven Foundation</p>
       <h2 class="reveal reveal-d1">We Already<br>Did This</h2>
-      <p class="body-text reveal reveal-d2">From single-agent monologue to multi-agent deliberation.</p>
+      <p class="body-text reveal reveal-d2">The Rambam exhibit validated our AI's conversational depth. Expert Micha Goodman confirmed the quality.</p>
+      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">Rambam was a monologue. Sanhedrin is multi-agent dialogue: the next evolution.</p>
     </div>
-    <img src="slides/slide-11/hero.png" alt="Proof of concept" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-11/hero.png" alt="Proof of concept" class="hero-img reveal reveal-d4">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-11/hero.png" alt="הוכחת היתכנות" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-11/hero.png" alt="הוכחת היתכנות" class="hero-img reveal reveal-d4">
     <div>
       <p class="label reveal">יסוד מוכח</p>
       <h2 class="reveal reveal-d1">כבר עשינו<br>את זה</h2>
-      <p class="body-text reveal reveal-d2">ממונולוג סוכן יחיד לדיון רב-סוכנים.</p>
+      <p class="body-text reveal reveal-d2">תערוכת הרמב"ם אימתה את העומק השיחתי של הבינה המלאכותית שלנו. המומחה מיכה גודמן אישר את האיכות.</p>
+      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">רמב"ם היה מונולוג. סנהדרין הוא דיאלוג רב-סוכנים: האבולוציה הבאה.</p>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 12: Progress -->
+<!-- SLIDE 12: What's Solved vs. What's Ahead -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="en-content split">
@@ -554,8 +604,9 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <p class="label reveal">Risk Assessment</p>
       <h2 class="reveal reveal-d1">70% Solved.<br>30% Ahead.</h2>
       <ul class="bullets reveal reveal-d2">
-        <li>Solved: Agents, content, frameworks</li>
-        <li>Ahead: Agent-to-Agent at scale</li>
+        <li>Solved: Agent quality, protocols, characters, content framework</li>
+        <li>Ahead: A2A real-time interaction and orchestration</li>
+        <li>Mitigation: Phase 1 POC via multi-agent WhatsApp group</li>
       </ul>
     </div>
     <img src="slides/slide-12/hero.png" alt="Progress assessment" class="hero-img reveal reveal-d3">
@@ -566,15 +617,16 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <p class="label reveal">הערכת סיכונים</p>
       <h2 class="reveal reveal-d1">70% פתור.<br>30% קדימה.</h2>
       <ul class="bullets reveal reveal-d2">
-        <li>פתור: סוכנים, תוכן, מסגרות</li>
-        <li>קדימה: סוכן-לסוכן בקנה מידה</li>
+        <li>פתור: איכות סוכנים, פרוטוקולים, דמויות, מסגרת תוכן</li>
+        <li>קדימה: אינטראקציה ותזמור A2A בזמן אמת</li>
+        <li>מיטיגציה: POC שלב 1 דרך קבוצת WhatsApp רב-סוכנית</li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 13: Competitive -->
+<!-- SLIDE 13: Competitive Advantage -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="en-content split">
@@ -583,8 +635,8 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <h2 class="reveal reveal-d1">The Moat</h2>
       <ul class="bullets reveal reveal-d2">
         <li>Multi-perspective (5-7 characters)</li>
-        <li>Orchestrated Talmudic logic</li>
-        <li>Human-in-the-loop</li>
+        <li>No single "right answer"</li>
+        <li>Orchestrated meta-logic via 13 Thinking Modes</li>
         <li>Institutional backing (MOTJ)</li>
       </ul>
     </div>
@@ -597,8 +649,8 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <h2 class="reveal reveal-d1">החפיר</h2>
       <ul class="bullets reveal reveal-d2">
         <li>ריבוי נקודות מבט (5-7 דמויות)</li>
-        <li>לוגיקה תלמודית מתוזמרת</li>
-        <li>שילוב אנושי בלולאה</li>
+        <li>אין תשובה "נכונה" אחת</li>
+        <li>מטא-לוגיקה מתוזמרת דרך 13 מצבי חשיבה</li>
         <li>גיבוי מוסדי (MOTJ)</li>
       </ul>
     </div>
@@ -606,7 +658,7 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 14: EdTech -->
+<!-- SLIDE 14: EdTech Platform Play -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="en-content split">
@@ -614,9 +666,9 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <p class="label reveal">Expanding TAM</p>
       <h2 class="reveal reveal-d1">The Debate Gym</h2>
       <ul class="bullets reveal reveal-d2">
-        <li>Museum: Premium</li>
-        <li>Schools: Curriculum</li>
-        <li>Home: Global Reach</li>
+        <li>Museum: Premium immersive experience</li>
+        <li>Schools: Curriculum integration</li>
+        <li>Home: Async debate training with AI analysis</li>
       </ul>
     </div>
     <img src="slides/slide-14/hero.png" alt="EdTech platform" class="hero-img reveal reveal-d3">
@@ -627,16 +679,17 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <p class="label reveal">הרחבת TAM</p>
       <h2 class="reveal reveal-d1">חדר הכושר<br>לדיבייט</h2>
       <ul class="bullets reveal reveal-d2">
-        <li>מוזיאון: פרימיום</li>
-        <li>בתי ספר: תוכנית לימודים</li>
-        <li>בית: טווח עולמי</li>
+        <li>מוזיאון: חוויה אימרסיבית פרימיום</li>
+        <li>בתי ספר: שילוב בתוכנית לימודים</li>
+        <li>בית: אימון דיבייט אסינכרוני עם ניתוח AI</li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 15: Roadmap -->
+<!-- SLIDE 15: Roadmap & Milestones -->
+<!-- ACT 4: THE ASK -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="en-content split">
@@ -644,10 +697,10 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <p class="label reveal">Execution Plan</p>
       <h2 class="reveal reveal-d1">Roadmap</h2>
       <div class="phase-row reveal reveal-d2">
-        <span class="phase-box">Phase 1: POC (Now)</span>
-        <span class="phase-box">Phase 2: Demo (3mo)</span>
-        <span class="phase-box">Phase 3: Prototype (6mo)</span>
-        <span class="phase-box">Phase 4: Launch (12mo)</span>
+        <span class="phase-box">Phase 1: POC (Now) - WhatsApp, 3 agents + 2 humans</span>
+        <span class="phase-box">Phase 2: Demo (3mo) - 5 characters, text-based</span>
+        <span class="phase-box">Phase 3: Prototype (6mo) - Physical space mockup</span>
+        <span class="phase-box">Phase 4: Launch (12mo) - Full deployment</span>
       </div>
     </div>
     <img src="slides/slide-15/hero.png" alt="Roadmap" class="hero-img reveal reveal-d3">
@@ -658,17 +711,17 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <p class="label reveal">תוכנית ביצוע</p>
       <h2 class="reveal reveal-d1">מפת דרכים</h2>
       <div class="phase-row reveal reveal-d2">
-        <span class="phase-box">שלב 1: POC (עכשיו)</span>
-        <span class="phase-box">שלב 2: דמו (3 חודשים)</span>
-        <span class="phase-box">שלב 3: אב טיפוס (6 חודשים)</span>
-        <span class="phase-box">שלב 4: השקה (12 חודשים)</span>
+        <span class="phase-box">שלב 1: POC (עכשיו) - WhatsApp, 3 סוכנים + 2 בני אדם</span>
+        <span class="phase-box">שלב 2: דמו (3 חודשים) - 5 דמויות, טקסט</span>
+        <span class="phase-box">שלב 3: אב טיפוס (6 חודשים) - מוקאפ מרחב פיזי</span>
+        <span class="phase-box">שלב 4: השקה (12 חודשים) - פריסה מלאה</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 16: Business Case -->
+<!-- SLIDE 16: Business Case & Research Hub -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="en-content split">
@@ -677,11 +730,11 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <h2 class="reveal reveal-d1">Business Case</h2>
       <ul class="bullets reveal reveal-d2">
         <li>Museum Admission</li>
-        <li>VIP Tiers</li>
+        <li>Premium VIP Tiers</li>
         <li>Licensing</li>
         <li>EdTech Subscriptions</li>
       </ul>
-      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">Anonymized research data as IP</p>
+      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">Research Hub: Anonymized data on societal moral reasoning as IP</p>
     </div>
     <img src="slides/slide-16/hero.png" alt="Business case" class="hero-img reveal reveal-d4">
   </div>
@@ -692,55 +745,55 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
       <h2 class="reveal reveal-d1">מקרה עסקי</h2>
       <ul class="bullets reveal reveal-d2">
         <li>כניסה למוזיאון</li>
-        <li>שכבות VIP</li>
+        <li>שכבות VIP פרימיום</li>
         <li>רישוי</li>
         <li>מנויי EdTech</li>
       </ul>
-      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">נתוני מחקר אנונימיים כקניין רוחני</p>
+      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">מרכז מחקר: נתונים אנונימיים על חשיבה מוסרית חברתית כקניין רוחני</p>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 17: Team (centered) -->
+<!-- SLIDE 17: The Team (centered) -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="en-content centered">
     <h2 class="reveal">The Team</h2>
     <div class="team-labels reveal reveal-d1">
-      <span class="team-label"><strong>Tech Architecture</strong></span>
-      <span class="team-label"><strong>Project Strategy</strong></span>
-      <span class="team-label"><strong>Knowledge Holders</strong></span>
-      <span class="team-label"><strong>The Missing Piece:</strong> Debate Expert</span>
+      <span class="team-label"><strong>Daniel</strong> - Project Lead / Strategy</span>
+      <span class="team-label"><strong>Jonathan</strong> - Tech Architecture</span>
+      <span class="team-label"><strong>Doron</strong> - Knowledge Holder</span>
+      <span class="team-label"><strong>The Missing Piece:</strong> World-Renowned Debate Expert</span>
     </div>
     <img src="slides/slide-17/hero.png" alt="The team" class="hero-img-centered reveal reveal-d2">
   </div>
   <div class="he-content centered">
     <h2 class="reveal">הצוות</h2>
     <div class="team-labels reveal reveal-d1">
-      <span class="team-label"><strong>ארכיטקטורה טכנולוגית</strong></span>
-      <span class="team-label"><strong>אסטרטגיית פרויקט</strong></span>
-      <span class="team-label"><strong>בעלי ידע</strong></span>
-      <span class="team-label"><strong>החלק החסר:</strong> מומחה דיבייט</span>
+      <span class="team-label"><strong>דניאל</strong> - ראש פרויקט / אסטרטגיה</span>
+      <span class="team-label"><strong>יונתן</strong> - ארכיטקטורה טכנולוגית</span>
+      <span class="team-label"><strong>דורון</strong> - בעל ידע</span>
+      <span class="team-label"><strong>החלק החסר:</strong> מומחה דיבייט בעל שם עולמי</span>
     </div>
     <img src="slides/slide-17/hero.png" alt="הצוות" class="hero-img-centered reveal reveal-d2">
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SLIDE 18: CTA (centered) -->
+<!-- SLIDE 18: Closing / CTA (centered) -->
 <!-- ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="en-content centered">
     <img src="slides/slide-18/hero.png" alt="Closing" class="hero-img-centered reveal" style="margin-top: 0; margin-bottom: 24px;">
-    <div class="cta-quote reveal reveal-d1">The Sanhedrin didn't give answers. They gave people the tools to think.</div>
-    <p class="body-text reveal reveal-d2" style="text-align: center; margin-top: 16px;">Fund Phase 1. Schedule the deep-dive. Let's build this.</p>
+    <div class="cta-quote reveal reveal-d1">The Sanhedrin didn't give answers. They gave people the tools to think. We're bringing that to the 21st century.</div>
+    <p class="body-text reveal reveal-d2" style="text-align: center; margin-top: 16px;">Fund Phase 1. Schedule the deep-dive. Give us the green light.</p>
     <button class="cta-btn reveal reveal-d3">Get in Touch</button>
   </div>
   <div class="he-content centered">
     <img src="slides/slide-18/hero.png" alt="סיום" class="hero-img-centered reveal" style="margin-top: 0; margin-bottom: 24px;">
-    <div class="cta-quote reveal reveal-d1">הסנהדרין לא נתנו תשובות. הם נתנו לאנשים את הכלים לחשוב.</div>
-    <p class="body-text reveal reveal-d2" style="text-align: center; margin-top: 16px;">מממנים שלב 1. קובעים צלילה עמוקה. בואו נבנה את זה.</p>
+    <div class="cta-quote reveal reveal-d1">הסנהדרין לא נתנו תשובות. הם נתנו לאנשים את הכלים לחשוב. אנחנו מביאים את זה למאה ה-21.</div>
+    <p class="body-text reveal reveal-d2" style="text-align: center; margin-top: 16px;">ממנו שלב 1. קבעו צלילה עמוקה. תנו לנו אור ירוק.</p>
     <button class="cta-btn reveal reveal-d3">צרו קשר</button>
   </div>
 </section>
