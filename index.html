@@ -1613,8 +1613,6 @@ function toggleNarration() {
 function playNarration() {
   var slideIndex = current;
   var num = String(slideIndex + 1).padStart(2, '0');
-  var timing = narrationTimings[slideIndex];
-
   // Stop any existing
   stopNarration();
 
