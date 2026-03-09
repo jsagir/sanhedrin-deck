@@ -378,10 +378,10 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
 /* Audio controls */
 .narration-btn {
-  background: rgba(0,48,87,0.06);
-  border: 1px solid rgba(0,48,87,0.15);
+  background: rgba(0,48,87,0.12);
+  border: 1.5px solid rgba(0,48,87,0.3);
   color: var(--navy);
-  width: 34px; height: 34px;
+  width: 42px; height: 42px;
   border-radius: 50%;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
@@ -390,18 +390,22 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   bottom: 68px;
   right: 28px;
   z-index: 101;
+  box-shadow: 0 2px 8px rgba(0,48,87,0.12);
 }
 .narration-btn:hover {
-  background: rgba(0,48,87,0.12);
+  background: rgba(0,48,87,0.2);
+  box-shadow: 0 2px 12px rgba(0,48,87,0.2);
 }
 .narration-btn.playing {
   background: var(--navy);
   color: white;
+  box-shadow: 0 2px 12px rgba(0,48,87,0.3);
 }
 [data-theme="dark"] .narration-btn {
-  background: rgba(189,214,230,0.06);
-  border-color: rgba(189,214,230,0.15);
+  background: rgba(189,214,230,0.12);
+  border-color: rgba(189,214,230,0.3);
   color: var(--navy);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 [data-theme="dark"] .narration-btn.playing {
   background: var(--navy);
@@ -529,7 +533,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   <div class="lang-en">
     <div class="layout-statement">
       <p class="label reveal">Key Value Proposition</p>
-      <h2 class="reveal r1" style="font-size: 72px; max-width: 900px;">"Learn to argue better<br>in 30 minutes."</h2>
+      <h2 class="reveal r1" style="font-size: 72px; max-width: 900px;">"Learn to disagree better<br>in 30 minutes."</h2>
       <p class="tagline reveal r2" style="margin-top: 8px;">Without needing to agree.</p>
       <p class="body-text reveal r3" style="text-align: center; margin-top: 28px; max-width: 800px;">An <strong><span style="font-family: var(--font-m);">AI</span>-powered immersive space</strong> where visitors <strong>engage</strong> with <span style="font-family: var(--font-m);">71</span> <em>historical figures</em> in <strong>real-time</strong> deliberation.</p>
       <div style="display: flex; gap: 24px; margin-top: 40px;" class="reveal r4">
@@ -1473,7 +1477,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </div>
 
 <button class="narration-btn" id="narrationBtn" onclick="toggleNarration()" title="Play narration">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
     <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
     <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
@@ -1635,8 +1639,6 @@ function playNarration() {
   var num = String(slideIndex + 1).padStart(2, '0');
   var timing = narrationTimings[slideIndex];
 
-  if (!timing) return;
-
   // Stop any existing
   stopNarration();
 
@@ -1644,28 +1646,30 @@ function playNarration() {
   isNarrating = true;
   document.getElementById('narrationBtn').classList.add('playing');
 
-  // Wrap words in the active slide's lang-en content for highlighting
-  var slide = slides[slideIndex];
-  var langEn = slide.querySelector('.lang-en');
-  if (langEn) {
-    wrapWordsForHighlight(langEn, timing.words);
+  // Wrap words in the active slide's lang-en content for highlighting (only if timing data loaded)
+  if (timing) {
+    var slide = slides[slideIndex];
+    var langEn = slide.querySelector('.lang-en');
+    if (langEn) {
+      wrapWordsForHighlight(langEn, timing.words);
+    }
   }
 
   narrationAudio.play().then(function() {
     console.log('Narration playing for slide ' + num);
   }).catch(function(err) {
     console.error('Audio play failed:', err);
-    // Try loading and playing again
-    narrationAudio.load();
-    narrationAudio.play();
+    stopNarration();
   });
 
-  // Sync highlights
-  narrationInterval = setInterval(function() {
-    if (!narrationAudio) return;
-    var currentTime = narrationAudio.currentTime;
-    updateHighlights(slideIndex, currentTime);
-  }, 50);
+  // Sync highlights (only if timing data available)
+  if (timing) {
+    narrationInterval = setInterval(function() {
+      if (!narrationAudio) return;
+      var currentTime = narrationAudio.currentTime;
+      updateHighlights(slideIndex, currentTime);
+    }, 50);
+  }
 
   narrationAudio.onended = function() {
     stopNarration();
