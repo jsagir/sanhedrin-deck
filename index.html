@@ -364,6 +364,48 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   .nav-bar { padding: 0 14px; }
   .act-label { display: none; }
 }
+
+/* Narration highlight */
+.word-highlight {
+  background: rgba(0,48,87,0.12);
+  border-radius: 3px;
+  padding: 0 2px;
+  transition: background 0.15s ease;
+}
+[data-theme="dark"] .word-highlight {
+  background: rgba(189,214,230,0.15);
+}
+
+/* Audio controls */
+.narration-btn {
+  background: rgba(0,48,87,0.06);
+  border: 1px solid rgba(0,48,87,0.15);
+  color: var(--navy);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  position: fixed;
+  bottom: 68px;
+  right: 28px;
+  z-index: 101;
+}
+.narration-btn:hover {
+  background: rgba(0,48,87,0.12);
+}
+.narration-btn.playing {
+  background: var(--navy);
+  color: white;
+}
+[data-theme="dark"] .narration-btn {
+  background: rgba(189,214,230,0.06);
+  border-color: rgba(189,214,230,0.15);
+  color: var(--navy);
+}
+[data-theme="dark"] .narration-btn.playing {
+  background: var(--navy);
+}
 </style>
 </head>
 <body>
@@ -1430,6 +1472,14 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
 </div>
 
+<button class="narration-btn" id="narrationBtn" onclick="toggleNarration()" title="Play narration">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+  </svg>
+</button>
+
 <div class="nav-bar">
   <img src="assets/logos/motj-logo-horizontal.png" alt="MOTJ" class="nav-logo">
   <div class="slide-counter" id="slideCounter">01 / 17</div>
@@ -1464,6 +1514,7 @@ var isHebrew = false;
 
 function showSlide(index) {
   if (index < 0 || index >= slides.length) return;
+  stopNarration();
   slides[current].classList.remove('active');
   slides[current].querySelectorAll('.reveal').forEach(function(el) {
     el.style.animation = 'none';
@@ -1551,6 +1602,146 @@ function toggleTheme() {
     document.documentElement.setAttribute('data-theme', 'dark');
   }
 })();
+
+// Narration system
+var narrationAudio = null;
+var narrationTimings = {};
+var narrationInterval = null;
+var isNarrating = false;
+
+// Load timing data for all slides
+(function loadTimings() {
+  for (var i = 1; i <= 17; i++) {
+    (function(idx) {
+      var num = String(idx).padStart(2, '0');
+      fetch('slides/slide-' + num + '/timing.json')
+        .then(function(resp) { return resp.ok ? resp.json() : null; })
+        .then(function(data) { if (data) narrationTimings[idx - 1] = data; })
+        .catch(function() {});
+    })(i);
+  }
+})();
+
+function toggleNarration() {
+  if (isNarrating) {
+    stopNarration();
+  } else {
+    playNarration();
+  }
+}
+
+function playNarration() {
+  var slideIndex = current;
+  var num = String(slideIndex + 1).padStart(2, '0');
+  var timing = narrationTimings[slideIndex];
+
+  if (!timing) return;
+
+  // Stop any existing
+  stopNarration();
+
+  narrationAudio = new Audio('slides/slide-' + num + '/narration.mp3');
+  isNarrating = true;
+  document.getElementById('narrationBtn').classList.add('playing');
+
+  // Wrap words in the active slide's lang-en content for highlighting
+  var slide = slides[slideIndex];
+  var langEn = slide.querySelector('.lang-en');
+  if (langEn) {
+    wrapWordsForHighlight(langEn, timing.words);
+  }
+
+  narrationAudio.play();
+
+  // Sync highlights
+  narrationInterval = setInterval(function() {
+    if (!narrationAudio) return;
+    var currentTime = narrationAudio.currentTime;
+    updateHighlights(slideIndex, currentTime);
+  }, 50);
+
+  narrationAudio.onended = function() {
+    stopNarration();
+  };
+}
+
+function stopNarration() {
+  if (narrationAudio) {
+    narrationAudio.pause();
+    narrationAudio = null;
+  }
+  if (narrationInterval) {
+    clearInterval(narrationInterval);
+    narrationInterval = null;
+  }
+  isNarrating = false;
+  var btn = document.getElementById('narrationBtn');
+  if (btn) btn.classList.remove('playing');
+  // Remove all highlights
+  document.querySelectorAll('.word-highlight').forEach(function(el) {
+    el.classList.remove('word-highlight');
+  });
+  // Unwrap word spans
+  document.querySelectorAll('.narr-word').forEach(function(span) {
+    span.outerHTML = span.textContent;
+  });
+}
+
+function wrapWordsForHighlight(container, wordTimings) {
+  var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+  var textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+  var wordIndex = 0;
+
+  for (var t = 0; t < textNodes.length; t++) {
+    var textNode = textNodes[t];
+    var text = textNode.textContent;
+    if (!text.trim()) continue;
+
+    var fragment = document.createDocumentFragment();
+    var parts = text.split(/(\s+)/);
+
+    for (var p = 0; p < parts.length; p++) {
+      var part = parts[p];
+      if (/^\s+$/.test(part) || part === '') {
+        fragment.appendChild(document.createTextNode(part));
+      } else {
+        var span = document.createElement('span');
+        span.className = 'narr-word';
+        span.setAttribute('data-word-index', wordIndex);
+        span.textContent = part;
+        fragment.appendChild(span);
+        wordIndex++;
+      }
+    }
+
+    textNode.parentNode.replaceChild(fragment, textNode);
+  }
+}
+
+function updateHighlights(slideIndex, currentTime) {
+  var timing = narrationTimings[slideIndex];
+  if (!timing) return;
+
+  var wordSpans = document.querySelectorAll('.slide.active .narr-word');
+  var words = timing.words;
+
+  wordSpans.forEach(function(span) {
+    span.classList.remove('word-highlight');
+  });
+
+  var currentWordIdx = -1;
+  for (var i = 0; i < words.length; i++) {
+    if (currentTime >= words[i].start && currentTime <= words[i].end + 0.1) {
+      currentWordIdx = i;
+    }
+  }
+
+  if (currentWordIdx >= 0 && currentWordIdx < wordSpans.length) {
+    wordSpans[currentWordIdx].classList.add('word-highlight');
+  }
+}
 
 showSlide(0);
 </script>
