@@ -7,339 +7,339 @@
     },
     {
       "word": "business",
-      "start": 0.209,
-      "end": 0.569
+      "start": 0.186,
+      "end": 0.511
     },
     {
       "word": "case.",
-      "start": 0.627,
-      "end": 1.196
+      "start": 0.557,
+      "end": 1.115
     },
     {
       "word": "We",
-      "start": 1.521,
-      "end": 1.672
+      "start": 1.498,
+      "end": 1.649
     },
     {
       "word": "need",
-      "start": 1.741,
-      "end": 2.009
+      "start": 1.707,
+      "end": 1.892
     },
     {
       "word": "funding",
-      "start": 2.078,
-      "end": 2.485
+      "start": 1.95,
+      "end": 2.287
     },
     {
       "word": "for",
-      "start": 2.554,
-      "end": 2.659
+      "start": 2.357,
+      "end": 2.45
     },
     {
       "word": "tech",
-      "start": 2.705,
-      "end": 2.914
+      "start": 2.485,
+      "end": 2.694
     },
     {
       "word": "architecture,",
-      "start": 2.972,
-      "end": 3.762
+      "start": 2.752,
+      "end": 3.657
     },
     {
       "word": "content",
-      "start": 3.971,
-      "end": 4.435
+      "start": 4.04,
+      "end": 4.516
     },
     {
       "word": "development,",
-      "start": 4.481,
-      "end": 5.166
+      "start": 4.563,
+      "end": 5.271
     },
     {
       "word": "and",
-      "start": 5.341,
-      "end": 5.515
+      "start": 5.445,
+      "end": 5.608
     },
     {
       "word": "spatial",
-      "start": 5.608,
-      "end": 6.072
+      "start": 5.689,
+      "end": 6.165
     },
     {
       "word": "build-out.",
-      "start": 6.142,
-      "end": 6.827
+      "start": 6.223,
+      "end": 6.943
     },
     {
       "word": "Revenue",
-      "start": 7.338,
-      "end": 7.779
+      "start": 7.639,
+      "end": 8.081
     },
     {
       "word": "flows",
-      "start": 7.814,
-      "end": 8.301
+      "start": 8.139,
+      "end": 8.661
     },
     {
       "word": "from",
-      "start": 8.371,
-      "end": 8.557
+      "start": 8.812,
+      "end": 8.998
     },
     {
       "word": "four",
-      "start": 8.707,
-      "end": 9.102
+      "start": 9.079,
+      "end": 9.323
     },
     {
       "word": "streams:",
-      "start": 9.218,
-      "end": 10.019
+      "start": 9.381,
+      "end": 10.159
     },
     {
       "word": "museum",
-      "start": 10.298,
-      "end": 10.786
+      "start": 10.484,
+      "end": 10.925
     },
     {
       "word": "admission",
-      "start": 10.832,
-      "end": 11.308
+      "start": 10.96,
+      "end": 11.447
     },
     {
       "word": "with",
-      "start": 11.633,
-      "end": 11.831
+      "start": 11.656,
+      "end": 11.854
     },
     {
       "word": "premium",
-      "start": 11.877,
-      "end": 12.353
+      "start": 11.9,
+      "end": 12.307
     },
     {
       "word": "VIP",
-      "start": 12.423,
-      "end": 12.91
+      "start": 12.388,
+      "end": 12.829
     },
     {
       "word": "tiers,",
-      "start": 13.119,
-      "end": 13.7
+      "start": 13.003,
+      "end": 13.595
     },
     {
       "word": "content",
-      "start": 13.978,
-      "end": 14.443
+      "start": 13.92,
+      "end": 14.42
     },
     {
       "word": "licensing,",
-      "start": 14.512,
-      "end": 15.314
+      "start": 14.489,
+      "end": 15.36
     },
     {
       "word": "EdTech",
-      "start": 15.639,
-      "end": 16.138
+      "start": 15.801,
+      "end": 16.242
     },
     {
       "word": "B2B",
-      "start": 16.208,
-      "end": 16.637
+      "start": 16.3,
+      "end": 16.73
     },
     {
       "word": "subscriptions",
-      "start": 16.811,
-      "end": 17.496
+      "start": 16.904,
+      "end": 17.682
     },
     {
       "word": "for",
-      "start": 17.554,
-      "end": 17.671
+      "start": 17.752,
+      "end": 17.879
     },
     {
       "word": "schools,",
-      "start": 17.717,
-      "end": 18.367
+      "start": 17.937,
+      "end": 18.587
     },
     {
       "word": "and",
-      "start": 18.693,
-      "end": 18.855
+      "start": 18.866,
+      "end": 19.028
     },
     {
       "word": "here",
-      "start": 18.948,
-      "end": 19.343
+      "start": 19.098,
+      "end": 19.458
     },
     {
       "word": "is",
-      "start": 19.552,
-      "end": 19.726
+      "start": 19.702,
+      "end": 19.853
     },
     {
       "word": "the",
-      "start": 19.772,
-      "end": 19.842
+      "start": 19.899,
+      "end": 19.98
     },
     {
       "word": "hidden",
-      "start": 19.912,
-      "end": 20.202
+      "start": 20.038,
+      "end": 20.352
     },
     {
       "word": "gem:",
-      "start": 20.271,
-      "end": 20.759
+      "start": 20.445,
+      "end": 21.014
     },
     {
       "word": "the",
-      "start": 21.363,
-      "end": 21.467
+      "start": 21.617,
+      "end": 21.71
     },
     {
       "word": "system",
-      "start": 21.514,
-      "end": 21.85
+      "start": 21.768,
+      "end": 22.175
     },
     {
       "word": "generates",
-      "start": 21.92,
-      "end": 22.489
+      "start": 22.256,
+      "end": 22.813
     },
     {
       "word": "a",
-      "start": 22.605,
-      "end": 22.675
+      "start": 23.057,
+      "end": 23.15
     },
     {
       "word": "privacy-first,",
-      "start": 22.791,
-      "end": 24.114
+      "start": 23.266,
+      "end": 24.439
     },
     {
       "word": "anonymized",
-      "start": 24.289,
-      "end": 25.043
+      "start": 24.59,
+      "end": 25.379
     },
     {
       "word": "data",
-      "start": 25.113,
-      "end": 25.391
+      "start": 25.495,
+      "end": 25.832
     },
     {
       "word": "repository",
-      "start": 25.45,
-      "end": 26.111
+      "start": 25.901,
+      "end": 26.668
     },
     {
       "word": "on",
-      "start": 26.436,
-      "end": 26.599
+      "start": 26.946,
+      "end": 27.109
     },
     {
       "word": "how",
-      "start": 26.669,
-      "end": 26.796
+      "start": 27.179,
+      "end": 27.318
     },
     {
       "word": "society",
-      "start": 26.878,
-      "end": 27.458
+      "start": 27.434,
+      "end": 28.061
     },
     {
       "word": "reasons",
-      "start": 27.551,
-      "end": 28.039
+      "start": 28.142,
+      "end": 28.63
     },
     {
       "word": "about",
-      "start": 28.282,
-      "end": 28.654
+      "start": 28.839,
+      "end": 29.164
     },
     {
       "word": "moral",
-      "start": 28.724,
-      "end": 29.025
+      "start": 29.257,
+      "end": 29.582
     },
     {
       "word": "questions.",
-      "start": 29.095,
-      "end": 29.954
+      "start": 29.663,
+      "end": 30.534
     },
     {
       "word": "That",
-      "start": 30.651,
-      "end": 30.871
+      "start": 31.138,
+      "end": 31.37
     },
     {
       "word": "data",
-      "start": 30.941,
-      "end": 31.243
+      "start": 31.451,
+      "end": 31.846
     },
     {
       "word": "creates",
-      "start": 31.301,
-      "end": 31.707
+      "start": 31.927,
+      "end": 32.368
     },
     {
       "word": "prestigious",
-      "start": 31.765,
-      "end": 32.369
+      "start": 32.426,
+      "end": 33.03
     },
     {
       "word": "academic",
-      "start": 32.427,
-      "end": 32.926
+      "start": 33.088,
+      "end": 33.564
     },
     {
       "word": "partnerships",
-      "start": 32.984,
-      "end": 33.727
+      "start": 33.634,
+      "end": 34.377
     },
     {
       "word": "and",
-      "start": 34.052,
-      "end": 34.227
+      "start": 34.702,
+      "end": 34.946
     },
     {
       "word": "a",
-      "start": 34.285,
-      "end": 34.32
+      "start": 35.004,
+      "end": 35.039
     },
     {
       "word": "unique",
-      "start": 34.436,
-      "end": 34.877
+      "start": 35.166,
+      "end": 35.561
     },
     {
       "word": "research",
-      "start": 34.935,
-      "end": 35.446
+      "start": 35.619,
+      "end": 36.072
     },
     {
       "word": "asset",
-      "start": 35.504,
-      "end": 35.957
+      "start": 36.141,
+      "end": 36.559
     },
     {
       "word": "that",
-      "start": 36.2,
-      "end": 36.374
+      "start": 36.803,
+      "end": 36.977
     },
     {
       "word": "appreciates",
-      "start": 36.409,
-      "end": 37.176
+      "start": 37.001,
+      "end": 37.778
     },
     {
       "word": "over",
-      "start": 37.419,
-      "end": 37.698
+      "start": 38.104,
+      "end": 38.405
     },
     {
       "word": "time.",
-      "start": 37.756,
-      "end": 38.499
+      "start": 38.475,
+      "end": 39.241
     }
   ],
-  "duration": 38.5
+  "duration": 39.24
 }

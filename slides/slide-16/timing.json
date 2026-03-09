@@ -3,293 +3,293 @@
     {
       "word": "The",
       "start": 0.0,
-      "end": 0.151
+      "end": 0.163
     },
     {
       "word": "team.",
-      "start": 0.209,
+      "start": 0.221,
       "end": 0.755
     },
     {
       "word": "Jonathan",
-      "start": 1.358,
-      "end": 1.788
+      "start": 1.567,
+      "end": 1.997
     },
     {
       "word": "leads",
-      "start": 1.869,
-      "end": 2.218
+      "start": 2.078,
+      "end": 2.438
     },
     {
       "word": "tech",
-      "start": 2.276,
-      "end": 2.485
+      "start": 2.508,
+      "end": 2.763
     },
     {
       "word": "architecture,",
-      "start": 2.531,
-      "end": 3.413
+      "start": 2.821,
+      "end": 3.622
     },
     {
       "word": "the",
       "start": 3.692,
-      "end": 3.796
+      "end": 3.785
     },
     {
       "word": "person",
-      "start": 3.855,
-      "end": 4.214
+      "start": 3.831,
+      "end": 4.145
     },
     {
       "word": "who",
-      "start": 4.261,
-      "end": 4.389
+      "start": 4.191,
+      "end": 4.296
     },
     {
       "word": "built",
-      "start": 4.447,
-      "end": 4.679
+      "start": 4.354,
+      "end": 4.551
     },
     {
       "word": "the",
-      "start": 4.725,
-      "end": 4.807
+      "start": 4.586,
+      "end": 4.656
     },
     {
       "word": "Rambam",
-      "start": 4.876,
-      "end": 5.445
+      "start": 4.714,
+      "end": 5.259
     },
     {
       "word": "AI.",
-      "start": 5.538,
-      "end": 6.223
+      "start": 5.352,
+      "end": 5.991
     },
     {
       "word": "Daniel",
-      "start": 6.664,
-      "end": 7.059
+      "start": 6.502,
+      "end": 6.873
     },
     {
       "word": "drives",
-      "start": 7.117,
-      "end": 7.523
+      "start": 6.931,
+      "end": 7.303
     },
     {
       "word": "project",
-      "start": 7.593,
-      "end": 7.999
+      "start": 7.372,
+      "end": 7.814
     },
     {
       "word": "strategy",
-      "start": 8.046,
-      "end": 8.591
+      "start": 7.86,
+      "end": 8.44
     },
     {
       "word": "and",
-      "start": 8.835,
-      "end": 8.986
+      "start": 8.522,
+      "end": 8.638
     },
     {
       "word": "stakeholder",
-      "start": 9.067,
-      "end": 9.613
+      "start": 8.707,
+      "end": 9.276
     },
     {
       "word": "management.",
-      "start": 9.659,
-      "end": 10.31
+      "start": 9.323,
+      "end": 10.008
     },
     {
       "word": "Doron",
-      "start": 10.913,
-      "end": 11.343
+      "start": 10.612,
+      "end": 11.029
     },
     {
       "word": "handles",
-      "start": 11.424,
-      "end": 11.842
+      "start": 11.099,
+      "end": 11.622
     },
     {
       "word": "knowledge",
-      "start": 11.9,
-      "end": 12.237
+      "start": 11.703,
+      "end": 12.098
     },
     {
       "word": "design",
-      "start": 12.283,
-      "end": 12.817
+      "start": 12.144,
+      "end": 12.701
     },
     {
       "word": "and",
-      "start": 13.061,
-      "end": 13.224
+      "start": 13.026,
+      "end": 13.201
     },
     {
       "word": "the",
-      "start": 13.27,
-      "end": 13.34
+      "start": 13.247,
+      "end": 13.317
     },
     {
       "word": "creative",
-      "start": 13.386,
-      "end": 13.886
+      "start": 13.363,
+      "end": 13.827
     },
     {
       "word": "layer.",
-      "start": 13.932,
-      "end": 14.431
+      "start": 13.874,
+      "end": 14.303
     },
     {
       "word": "And",
-      "start": 15.128,
-      "end": 15.267
+      "start": 15.0,
+      "end": 15.128
     },
     {
       "word": "there",
-      "start": 15.302,
-      "end": 15.441
+      "start": 15.163,
+      "end": 15.314
     },
     {
       "word": "is",
-      "start": 15.476,
-      "end": 15.546
+      "start": 15.36,
+      "end": 15.441
     },
     {
       "word": "one",
-      "start": 15.615,
-      "end": 15.801
+      "start": 15.511,
+      "end": 15.743
     },
     {
       "word": "missing",
-      "start": 15.859,
-      "end": 16.149
+      "start": 15.813,
+      "end": 16.126
     },
     {
       "word": "piece",
-      "start": 16.208,
-      "end": 16.695
+      "start": 16.184,
+      "end": 16.649
     },
     {
       "word": "we",
+      "start": 16.742,
+      "end": 16.881
+    },
+    {
+      "word": "need",
       "start": 16.939,
       "end": 17.101
     },
     {
-      "word": "need",
-      "start": 17.171,
-      "end": 17.357
-    },
-    {
       "word": "your",
-      "start": 17.403,
-      "end": 17.554
+      "start": 17.148,
+      "end": 17.275
     },
     {
       "word": "help",
-      "start": 17.612,
-      "end": 17.798
+      "start": 17.333,
+      "end": 17.496
     },
     {
       "word": "finding:",
-      "start": 17.879,
-      "end": 18.506
+      "start": 17.577,
+      "end": 18.181
     },
     {
       "word": "a",
-      "start": 19.203,
-      "end": 19.261
+      "start": 18.878,
+      "end": 18.936
     },
     {
       "word": "world-renowned",
-      "start": 19.377,
-      "end": 20.34
+      "start": 19.052,
+      "end": 20.248
     },
     {
       "word": "debate",
       "start": 20.457,
-      "end": 20.828
+      "end": 20.851
     },
     {
       "word": "content",
-      "start": 20.875,
-      "end": 21.327
+      "start": 20.898,
+      "end": 21.304
     },
     {
       "word": "expert",
-      "start": 21.397,
-      "end": 21.908
+      "start": 21.374,
+      "end": 21.931
     },
     {
       "word": "to",
-      "start": 22.186,
-      "end": 22.314
+      "start": 22.21,
+      "end": 22.349
     },
     {
       "word": "mathematically",
-      "start": 22.395,
-      "end": 23.046
+      "start": 22.43,
+      "end": 23.08
     },
     {
       "word": "design",
-      "start": 23.092,
-      "end": 23.58
+      "start": 23.127,
+      "end": 23.626
     },
     {
       "word": "the",
-      "start": 23.661,
-      "end": 23.731
+      "start": 23.905,
+      "end": 24.032
     },
     {
       "word": "competitive",
-      "start": 23.777,
-      "end": 24.358
+      "start": 24.079,
+      "end": 24.636
     },
     {
       "word": "mode,",
-      "start": 24.404,
-      "end": 24.926
+      "start": 24.683,
+      "end": 25.124
     },
     {
       "word": "the",
-      "start": 25.251,
-      "end": 25.356
+      "start": 25.507,
+      "end": 25.6
     },
     {
       "word": "way",
-      "start": 25.414,
-      "end": 25.577
+      "start": 25.658,
+      "end": 25.878
     },
     {
       "word": "Barry",
-      "start": 25.658,
-      "end": 25.936
+      "start": 25.971,
+      "end": 26.238
     },
     {
       "word": "Lenny",
-      "start": 25.995,
-      "end": 26.215
+      "start": 26.308,
+      "end": 26.61
     },
     {
       "word": "shaped",
-      "start": 26.308,
-      "end": 26.679
+      "start": 26.761,
+      "end": 27.132
     },
     {
       "word": "the",
-      "start": 26.796,
-      "end": 26.923
+      "start": 27.19,
+      "end": 27.283
     },
     {
       "word": "Rambam",
-      "start": 26.993,
-      "end": 27.527
+      "start": 27.341,
+      "end": 27.817
     },
     {
       "word": "content.",
-      "start": 27.608,
-      "end": 28.467
+      "start": 27.899,
+      "end": 28.746
     }
   ],
-  "duration": 28.47
+  "duration": 28.75
 }

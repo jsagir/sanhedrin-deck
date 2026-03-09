@@ -26,7 +26,7 @@ NARRATIONS = {
 
     "slide-03": "Now here is where everything shifts. We are not building another debate platform. We are reframing what a dispute even is. A dispute is not a battle to be won. It is a dynamic puzzle to be solved. Participants uncover hidden pieces, arguments, facts, points of agreement, to see the full picture. Demagoguery makes the picture blur. Depth makes it sharpen. The goal is shared truth-seeking. L'Shem Shamayim. For the sake of heaven.",
 
-    "slide-04": "Our promise is simple. Learn to argue better in 30 minutes. Without needing to agree. This is an AI-powered immersive space where visitors step into real-time deliberation with 71 historical Jewish figures. A visitor brings a dilemma. Our engine, a mix of AI characters and human participants, deliberates together. And the output? Expanded thinking. New perspectives. A visitor who leaves sharper than when they walked in.",
+    "slide-04": "Our promise is simple. Learn to disagree better in 30 minutes. Without needing to agree. This is an AI-powered immersive space where visitors step into real-time deliberation with 71 historical Jewish figures. A visitor brings a dilemma. Our engine, a mix of AI characters and human participants, deliberates together. And the output? Expanded thinking. New perspectives. A visitor who leaves sharper than when they walked in.",
 
     "slide-05": "Here is how the experience works. It is a tight 25-minute loop. Twelve visitors select a dilemma and lock in their initial confidence level. A human game master, think game show host, sets the stage. Then our Wheel of Sages dynamically assigns AI historical figures to join the teams. What follows is structured deliberation, arguments, questioning, and clarification. Midpoint check-ins track how perspectives actually shift. And at the end, every visitor walks out with a personalized digital summary of their journey.",
 
@@ -101,8 +101,10 @@ def generate_slide(slide_id, text, index, total):
         "text": text,
         "model_id": "eleven_multilingual_v2",
         "voice_settings": {
-            "stability": 0.5,
-            "similarity_boost": 0.75
+            "stability": 0.3,
+            "similarity_boost": 0.85,
+            "style": 0.4,
+            "use_speaker_boost": True
         }
     }).encode("utf-8")
 
