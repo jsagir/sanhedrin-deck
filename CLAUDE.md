@@ -119,3 +119,12 @@ Render auto-deploys on push to master.
 - `F` key for fullscreen
 - Home/End for first/last slide
 - Bottom bar: prev/next/fullscreen buttons
+
+## State Tracking (MANDATORY)
+**After every work session**, update `STATE.md` with:
+1. What was done (add a new dated section)
+2. Why it was done (context/reasoning)
+3. What's next (update backlog)
+4. Any new decisions (add to decisions table)
+
+This is non-negotiable. STATE.md is the project memory.
