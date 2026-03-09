@@ -93,14 +93,14 @@ html, body {
   bottom: 0;
   left: 0; right: 0;
   height: 56px;
-  background: linear-gradient(to top, rgba(13,15,26,0.95), rgba(13,15,26,0.7));
+  background: linear-gradient(to top, rgba(0,24,44,0.95), rgba(0,24,44,0.7));
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
   z-index: 100;
-  border-top: 1px solid rgba(201,168,76,0.15);
+  border-top: 1px solid rgba(189,214,230,0.15);
 }
 
 .nav-bar .slide-counter {
@@ -123,8 +123,8 @@ html, body {
 }
 
 .nav-btn {
-  background: rgba(201,168,76,0.1);
-  border: 1px solid rgba(201,168,76,0.25);
+  background: rgba(189,214,230,0.1);
+  border: 1px solid rgba(189,214,230,0.25);
   color: var(--gold-primary);
   width: 36px; height: 36px;
   border-radius: 6px;
@@ -137,7 +137,7 @@ html, body {
 }
 
 .nav-btn:hover {
-  background: rgba(201,168,76,0.2);
+  background: rgba(189,214,230,0.2);
   border-color: var(--gold-primary);
 }
 
@@ -146,7 +146,7 @@ html, body {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: rgba(201,168,76,0.1);
+  background: rgba(189,214,230,0.1);
   z-index: 100;
 }
 
@@ -241,7 +241,7 @@ blockquote {
   font-style: italic;
   font-size: 24px;
   color: var(--text-primary);
-  background: rgba(201,168,76,0.05);
+  background: rgba(189,214,230,0.05);
 }
 
 /* ═══ LAYOUT HELPERS ═══ */
@@ -296,20 +296,20 @@ ul.clean li::before {
 
 /* ═══ CARDS & CONTAINERS ═══ */
 .card {
-  background: rgba(28,32,64,0.6);
-  border: 1px solid rgba(201,168,76,0.12);
+  background: rgba(0,38,70,0.6);
+  border: 1px solid rgba(189,214,230,0.12);
   border-radius: 12px;
   padding: 28px;
   backdrop-filter: blur(8px);
 }
 
 .card-glow {
-  box-shadow: 0 0 30px rgba(201,168,76,0.06);
+  box-shadow: 0 0 30px rgba(189,214,230,0.06);
 }
 
 .card-teal {
-  border-color: rgba(45,138,158,0.25);
-  background: rgba(45,138,158,0.06);
+  border-color: rgba(119,110,100,0.25);
+  background: rgba(119,110,100,0.06);
 }
 
 .steps-grid {
@@ -319,8 +319,8 @@ ul.clean li::before {
 }
 
 .step-card {
-  background: rgba(28,32,64,0.5);
-  border: 1px solid rgba(201,168,76,0.1);
+  background: rgba(0,38,70,0.5);
+  border: 1px solid rgba(189,214,230,0.1);
   border-radius: 10px;
   padding: 24px;
   position: relative;
@@ -366,27 +366,27 @@ ul.clean li::before {
 .sanhedrin-circle .ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(201,168,76,0.2);
+  border: 1px solid rgba(189,214,230,0.2);
 }
 
 .sanhedrin-circle .ring-outer {
   inset: 0;
   border-width: 2px;
-  border-color: rgba(201,168,76,0.15);
+  border-color: rgba(189,214,230,0.15);
   animation: rotateRing 60s linear infinite;
 }
 
 .sanhedrin-circle .ring-mid {
   inset: 40px;
   border-style: dashed;
-  border-color: rgba(45,138,158,0.25);
+  border-color: rgba(119,110,100,0.25);
   animation: rotateRing 45s linear infinite reverse;
 }
 
 .sanhedrin-circle .ring-inner {
   inset: 90px;
-  border-color: rgba(201,168,76,0.3);
-  background: radial-gradient(circle, rgba(201,168,76,0.08), transparent);
+  border-color: rgba(189,214,230,0.3);
+  background: radial-gradient(circle, rgba(189,214,230,0.08), transparent);
 }
 
 @keyframes rotateRing {
@@ -399,7 +399,7 @@ ul.clean li::before {
   height: 32px;
   border-radius: 50%;
   background: radial-gradient(circle at 40% 40%, var(--gold-primary), var(--gold-dim));
-  box-shadow: 0 0 15px rgba(201,168,76,0.3);
+  box-shadow: 0 0 15px rgba(189,214,230,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -411,7 +411,7 @@ ul.clean li::before {
 
 .seat.teal-seat {
   background: radial-gradient(circle at 40% 40%, var(--teal-light), var(--teal-dim));
-  box-shadow: 0 0 15px rgba(78,205,196,0.3);
+  box-shadow: 0 0 15px rgba(119,110,100,0.3);
 }
 
 .seat.human-seat {
@@ -449,9 +449,9 @@ ul.clean li::before {
 }
 
 .pole-left {
-  background: linear-gradient(135deg, rgba(196,78,62,0.3), rgba(196,78,62,0.05));
+  background: linear-gradient(135deg, rgba(160,60,50,0.3), rgba(160,60,50,0.05));
   border-radius: 12px 0 0 12px;
-  border: 1px solid rgba(196,78,62,0.2);
+  border: 1px solid rgba(160,60,50,0.2);
   border-right: none;
 }
 
@@ -506,8 +506,8 @@ ul.clean li::before {
 }
 
 .loop-node {
-  background: rgba(28,32,64,0.8);
-  border: 1px solid rgba(201,168,76,0.2);
+  background: rgba(0,38,70,0.8);
+  border: 1px solid rgba(189,214,230,0.2);
   border-radius: 10px;
   padding: 14px 20px;
   font-family: var(--font-body);
@@ -519,7 +519,7 @@ ul.clean li::before {
 
 .loop-node.active-node {
   border-color: var(--gold-primary);
-  box-shadow: 0 0 20px rgba(201,168,76,0.15);
+  box-shadow: 0 0 20px rgba(189,214,230,0.15);
 }
 
 .loop-arrow {
@@ -536,7 +536,7 @@ ul.clean li::before {
 }
 
 .matrix th {
-  background: rgba(201,168,76,0.1);
+  background: rgba(189,214,230,0.1);
   color: var(--gold-primary);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -544,7 +544,7 @@ ul.clean li::before {
   text-transform: uppercase;
   padding: 12px 16px;
   text-align: left;
-  border-bottom: 1px solid rgba(201,168,76,0.2);
+  border-bottom: 1px solid rgba(189,214,230,0.2);
 }
 
 .matrix th:first-child { border-radius: 8px 0 0 0; }
@@ -552,12 +552,12 @@ ul.clean li::before {
 
 .matrix td {
   padding: 12px 16px;
-  border-bottom: 1px solid rgba(201,168,76,0.06);
+  border-bottom: 1px solid rgba(189,214,230,0.06);
   color: var(--text-secondary);
 }
 
 .matrix tr:hover td {
-  background: rgba(201,168,76,0.03);
+  background: rgba(189,214,230,0.03);
 }
 
 .check { color: var(--accent-green); font-size: 16px; }
@@ -594,18 +594,18 @@ ul.clean li::before {
   border-radius: 50%;
   background: var(--gold-primary);
   border: 3px solid var(--bg-deep);
-  box-shadow: 0 0 10px rgba(201,168,76,0.4);
+  box-shadow: 0 0 10px rgba(189,214,230,0.4);
 }
 
 .timeline-dot.active-dot {
   background: var(--teal-light);
-  box-shadow: 0 0 10px rgba(78,205,196,0.4);
+  box-shadow: 0 0 10px rgba(119,110,100,0.4);
   animation: pulse 2s ease infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 10px rgba(78,205,196,0.4); }
-  50% { box-shadow: 0 0 20px rgba(78,205,196,0.7); }
+  0%, 100% { box-shadow: 0 0 10px rgba(119,110,100,0.4); }
+  50% { box-shadow: 0 0 20px rgba(119,110,100,0.7); }
 }
 
 .timeline-label {
@@ -644,7 +644,7 @@ ul.clean li::before {
 
 .progress-bar-bg {
   height: 10px;
-  background: rgba(201,168,76,0.1);
+  background: rgba(189,214,230,0.1);
   border-radius: 5px;
   overflow: hidden;
 }
@@ -690,14 +690,14 @@ ul.clean li::before {
 }
 
 .arch-persona {
-  background: rgba(201,168,76,0.1);
-  border: 1px solid rgba(201,168,76,0.25);
+  background: rgba(189,214,230,0.1);
+  border: 1px solid rgba(189,214,230,0.25);
   color: var(--gold-light);
 }
 
 .arch-role {
-  background: rgba(45,138,158,0.1);
-  border: 1px solid rgba(45,138,158,0.25);
+  background: rgba(119,110,100,0.1);
+  border: 1px solid rgba(119,110,100,0.25);
   color: var(--teal-light);
 }
 
@@ -709,13 +709,13 @@ ul.clean li::before {
 }
 
 .mode-culture {
-  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
-  border: 1px solid rgba(201,168,76,0.2);
+  background: linear-gradient(135deg, rgba(189,214,230,0.08), rgba(189,214,230,0.02));
+  border: 1px solid rgba(189,214,230,0.2);
 }
 
 .mode-debate {
-  background: linear-gradient(135deg, rgba(45,138,158,0.08), rgba(45,138,158,0.02));
-  border: 1px solid rgba(45,138,158,0.2);
+  background: linear-gradient(135deg, rgba(119,110,100,0.08), rgba(119,110,100,0.02));
+  border: 1px solid rgba(119,110,100,0.2);
 }
 
 .mode-icon {
@@ -733,8 +733,8 @@ ul.clean li::before {
 .team-card {
   text-align: center;
   padding: 24px 16px;
-  background: rgba(28,32,64,0.5);
-  border: 1px solid rgba(201,168,76,0.1);
+  background: rgba(0,38,70,0.5);
+  border: 1px solid rgba(189,214,230,0.1);
   border-radius: 12px;
 }
 
@@ -777,22 +777,22 @@ ul.clean li::before {
   aspect-ratio: 1;
   margin: 0 auto;
   position: relative;
-  background: radial-gradient(circle, rgba(28,32,64,0.8), transparent);
+  background: radial-gradient(circle, rgba(0,38,70,0.8), transparent);
 }
 
 .space-floor {
   position: absolute;
   inset: 20%;
   border-radius: 50%;
-  border: 2px solid rgba(201,168,76,0.2);
-  background: radial-gradient(circle, rgba(201,168,76,0.04), transparent);
+  border: 2px solid rgba(189,214,230,0.2);
+  background: radial-gradient(circle, rgba(189,214,230,0.04), transparent);
 }
 
 .space-screen {
   position: absolute;
   inset: 5%;
   border-radius: 50%;
-  border: 3px solid rgba(45,138,158,0.3);
+  border: 3px solid rgba(119,110,100,0.3);
   border-style: dashed;
 }
 
@@ -814,7 +814,7 @@ ul.clean li::before {
   height: 50px;
   border-radius: 50%;
   background: radial-gradient(circle, var(--teal), var(--teal-dim));
-  box-shadow: 0 0 30px rgba(45,138,158,0.4);
+  box-shadow: 0 0 30px rgba(119,110,100,0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -845,16 +845,16 @@ ul.clean li::before {
 
 .pyramid-top {
   width: 60%;
-  background: linear-gradient(90deg, rgba(201,168,76,0.2), rgba(201,168,76,0.1));
-  border: 1px solid rgba(201,168,76,0.3);
+  background: linear-gradient(90deg, rgba(189,214,230,0.2), rgba(189,214,230,0.1));
+  border: 1px solid rgba(189,214,230,0.3);
   clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
   padding: 20px 40px;
 }
 
 .pyramid-mid {
   width: 80%;
-  background: linear-gradient(90deg, rgba(45,138,158,0.15), rgba(45,138,158,0.08));
-  border: 1px solid rgba(45,138,158,0.25);
+  background: linear-gradient(90deg, rgba(119,110,100,0.15), rgba(119,110,100,0.08));
+  border: 1px solid rgba(119,110,100,0.25);
 }
 
 .pyramid-base {
@@ -865,8 +865,8 @@ ul.clean li::before {
 
 /* CTA slide */
 .cta-box {
-  background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
-  border: 2px solid rgba(201,168,76,0.3);
+  background: linear-gradient(135deg, rgba(189,214,230,0.12), rgba(189,214,230,0.04));
+  border: 2px solid rgba(189,214,230,0.3);
   border-radius: 16px;
   padding: 40px;
   text-align: center;
@@ -886,7 +886,7 @@ ul.clean li::before {
   border-radius: 8px;
   text-decoration: none;
   letter-spacing: 1px;
-  box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+  box-shadow: 0 4px 20px rgba(189,214,230,0.3);
 }
 
 /* Conversation bubbles for sample session */
@@ -915,16 +915,16 @@ ul.clean li::before {
 }
 
 .bubble-rambam {
-  background: rgba(201,168,76,0.1);
-  border: 1px solid rgba(201,168,76,0.2);
+  background: rgba(189,214,230,0.1);
+  border: 1px solid rgba(189,214,230,0.2);
   align-self: flex-start;
 }
 
 .bubble-rambam .speaker { color: var(--gold-primary); }
 
 .bubble-golda {
-  background: rgba(45,138,158,0.1);
-  border: 1px solid rgba(45,138,158,0.2);
+  background: rgba(119,110,100,0.1);
+  border: 1px solid rgba(119,110,100,0.2);
   align-self: flex-end;
 }
 
@@ -939,8 +939,8 @@ ul.clean li::before {
 .bubble-hillel .speaker { color: var(--accent-green); }
 
 .bubble-system {
-  background: rgba(28,32,64,0.8);
-  border: 1px solid rgba(107,97,88,0.2);
+  background: rgba(0,38,70,0.8);
+  border: 1px solid rgba(119,110,100,0.2);
   align-self: center;
   text-align: center;
   font-style: italic;
@@ -1008,18 +1008,18 @@ ul.clean li::before {
 /* Geometric decorations */
 .geo-circle {
   border-radius: 50%;
-  border: 1px solid rgba(201,168,76,0.08);
+  border: 1px solid rgba(189,214,230,0.08);
 }
 
 .geo-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(189,214,230,0.1), transparent);
 }
 
 /* Hebrew decorative text */
 .hebrew-deco {
   font-size: 120px;
-  color: rgba(201,168,76,0.03);
+  color: rgba(189,214,230,0.03);
   font-family: serif;
   line-height: 1;
   user-select: none;
@@ -1034,8 +1034,8 @@ ul.clean li::before {
 
 .appendix-card {
   padding: 24px;
-  background: rgba(28,32,64,0.5);
-  border: 1px solid rgba(201,168,76,0.1);
+  background: rgba(0,38,70,0.5);
+  border: 1px solid rgba(189,214,230,0.1);
   border-radius: 10px;
 }
 
@@ -1059,8 +1059,8 @@ ul.clean li::before {
 
 .mode-tag {
   padding: 8px 10px;
-  background: rgba(201,168,76,0.06);
-  border: 1px solid rgba(201,168,76,0.12);
+  background: rgba(189,214,230,0.06);
+  border: 1px solid rgba(189,214,230,0.12);
   border-radius: 6px;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -1083,8 +1083,8 @@ ul.clean li::before {
 
 .revenue-item {
   padding: 20px;
-  background: rgba(28,32,64,0.5);
-  border: 1px solid rgba(201,168,76,0.1);
+  background: rgba(0,38,70,0.5);
+  border: 1px solid rgba(189,214,230,0.1);
   border-radius: 10px;
   display: flex;
   gap: 14px;
@@ -1145,14 +1145,14 @@ ul.clean li::before {
 <section class="slide active" data-act="ACT 1 — THE HOOK">
   <div class="bg-pattern">
     <div class="hebrew-deco" style="top: -20px; right: -30px;">סנהדרין</div>
-    <div class="geo-circle" style="width: 600px; height: 600px; right: -150px; top: -100px; border-color: rgba(201,168,76,0.06);"></div>
-    <div class="geo-circle" style="width: 400px; height: 400px; right: -50px; top: 0; border-color: rgba(45,138,158,0.05);"></div>
-    <div class="geo-circle" style="width: 200px; height: 200px; left: 10%; bottom: 15%; border-color: rgba(201,168,76,0.04);"></div>
+    <div class="geo-circle" style="width: 600px; height: 600px; right: -150px; top: -100px; border-color: rgba(189,214,230,0.06);"></div>
+    <div class="geo-circle" style="width: 400px; height: 400px; right: -50px; top: 0; border-color: rgba(119,110,100,0.05);"></div>
+    <div class="geo-circle" style="width: 200px; height: 200px; left: 10%; bottom: 15%; border-color: rgba(189,214,230,0.04);"></div>
     <div class="geo-line" style="width: 100%; top: 50%; opacity: 0.3;"></div>
   </div>
   <div class="act-divider">ACT 1 — THE HOOK</div>
   <div style="max-width: 850px;">
-    <img src="assets/logos/motj-logo-horizontal.png" class="reveal" style="max-width: 340px; margin-bottom: 20px; filter: brightness(0) invert(1) brightness(1);" alt="Museum of Tolerance Jerusalem">
+    <img src="assets/logos/motj-logo-horizontal-white.svg" class="reveal" style="max-width: 380px; margin-bottom: 20px;" alt="Museum of Tolerance Jerusalem">
     <p class="label reveal">Museum of Tolerance Jerusalem</p>
     <h1 style="font-size: 64px; margin-bottom: 24px;" class="reveal reveal-delay-1">
       The <span style="color: var(--gold-primary);">Sanhedrin</span><br>Educational Experience
@@ -1183,7 +1183,7 @@ ul.clean li::before {
      ══════════════════════════════════════════════════════════ -->
 <section class="slide" data-act="ACT 1 — THE HOOK">
   <div class="bg-pattern">
-    <div class="hebrew-deco" style="bottom: -30px; left: -20px; color: rgba(196,78,62,0.03);">מחלוקת</div>
+    <div class="hebrew-deco" style="bottom: -30px; left: -20px; color: rgba(160,60,50,0.03);">מחלוקת</div>
   </div>
   <div class="act-divider">ACT 1 — THE HOOK</div>
   <div class="split split-60-40">
@@ -1216,7 +1216,7 @@ ul.clean li::before {
      ══════════════════════════════════════════════════════════ -->
 <section class="slide" data-act="ACT 1 — THE HOOK">
   <div class="bg-pattern">
-    <div class="geo-circle" style="width: 500px; height: 500px; left: -200px; bottom: -200px; border-color: rgba(201,168,76,0.04);"></div>
+    <div class="geo-circle" style="width: 500px; height: 500px; left: -200px; bottom: -200px; border-color: rgba(189,214,230,0.04);"></div>
   </div>
   <div class="act-divider">ACT 1 — THE HOOK</div>
   <div class="split">
@@ -1278,7 +1278,7 @@ ul.clean li::before {
         Inputs Dilemma
       </div>
       <div class="loop-arrow">→</div>
-      <div class="loop-node" style="border-color: rgba(45,138,158,0.3);">
+      <div class="loop-node" style="border-color: rgba(119,110,100,0.3);">
         <div style="font-size: 24px; margin-bottom: 6px;">🤖👥</div>
         AI + Humans<br>Deliberate
       </div>
@@ -1380,7 +1380,7 @@ ul.clean li::before {
      ══════════════════════════════════════════════════════════ -->
 <section class="slide" data-act="ACT 2 — THE EXPERIENCE">
   <div class="bg-pattern">
-    <div class="hebrew-deco" style="top: -10px; right: -20px; font-size: 100px; color: rgba(45,138,158,0.03);">השור שנגח</div>
+    <div class="hebrew-deco" style="top: -10px; right: -20px; font-size: 100px; color: rgba(119,110,100,0.03);">השור שנגח</div>
   </div>
   <div class="act-divider">ACT 2 — THE EXPERIENCE</div>
   <div class="split split-40-60">
@@ -1599,7 +1599,7 @@ ul.clean li::before {
         <p style="font-size: 16px; margin-bottom: 16px; color: var(--text-primary);">
           We are proving the final 30% via a <strong>Phase 1 POC</strong>:
         </p>
-        <div style="background: rgba(45,138,158,0.1); border-radius: 10px; padding: 20px; border: 1px solid rgba(45,138,158,0.2);">
+        <div style="background: rgba(119,110,100,0.1); border-radius: 10px; padding: 20px; border: 1px solid rgba(119,110,100,0.2);">
           <p style="font-size: 14px; color: var(--teal-light); font-family: var(--font-mono); margin-bottom: 8px;">
             MULTI-AGENT WHATSAPP GROUP
           </p>
@@ -1843,7 +1843,7 @@ ul.clean li::before {
           <li style="font-size: 14px;">Longitudinal moral reasoning data</li>
           <li style="font-size: 14px;">Cross-cultural comparison studies</li>
         </ul>
-        <div style="margin-top: 20px; padding: 14px; background: rgba(45,138,158,0.1); border-radius: 8px; text-align: center;">
+        <div style="margin-top: 20px; padding: 14px; background: rgba(119,110,100,0.1); border-radius: 8px; text-align: center;">
           <p style="font-size: 13px; color: var(--teal-light); font-family: var(--font-mono); letter-spacing: 1px;">
             MASSIVE IP GENERATION
           </p>
@@ -1896,7 +1896,7 @@ ul.clean li::before {
 <section class="slide" data-act="ACT 4 — THE ASK">
   <div class="bg-pattern">
     <div class="hebrew-deco" style="top: -30px; left: -20px; font-size: 140px;">סנהדרין</div>
-    <div class="geo-circle" style="width: 500px; height: 500px; right: -150px; bottom: -150px; border-color: rgba(201,168,76,0.06);"></div>
+    <div class="geo-circle" style="width: 500px; height: 500px; right: -150px; bottom: -150px; border-color: rgba(189,214,230,0.06);"></div>
   </div>
   <div class="act-divider">ACT 4 — THE ASK</div>
   <div class="center-content" style="gap: 32px; justify-content: center; height: 100%;">
@@ -1932,7 +1932,7 @@ ul.clean li::before {
       <h4>A. Technical Architecture</h4>
       <p>API Gateway, Nasi/Av Beit Din Orchestrator logic, LLM fine-tuning approach,
          infrastructure topology, and scaling considerations.</p>
-      <div style="margin-top: 12px; padding: 12px; background: rgba(45,138,158,0.06); border-radius: 6px;">
+      <div style="margin-top: 12px; padding: 12px; background: rgba(119,110,100,0.06); border-radius: 6px;">
         <p style="font-size: 12px; font-family: var(--font-mono); color: var(--teal);">
           Visitor → API Gateway → Nasi Orchestrator → Agent Pool → Synthesis Engine → Takeaway Generator
         </p>
@@ -1966,11 +1966,11 @@ ul.clean li::before {
     <div class="appendix-card">
       <h4>D. User Personas</h4>
       <div style="display: flex; gap: 12px; margin-top: 8px;">
-        <div style="flex: 1; padding: 10px; background: rgba(201,168,76,0.06); border-radius: 6px;">
+        <div style="flex: 1; padding: 10px; background: rgba(189,214,230,0.06); border-radius: 6px;">
           <p style="font-size: 13px; color: var(--gold-primary); font-weight: 600;">Daniel the Seeker</p>
           <p style="font-size: 12px;">Curious, open-minded, wants to explore moral complexity</p>
         </div>
-        <div style="flex: 1; padding: 10px; background: rgba(45,138,158,0.06); border-radius: 6px;">
+        <div style="flex: 1; padding: 10px; background: rgba(119,110,100,0.06); border-radius: 6px;">
           <p style="font-size: 13px; color: var(--teal-light); font-weight: 600;">Sarah the Balanced</p>
           <p style="font-size: 12px;">Structured thinker, values fairness, seeks synthesis</p>
         </div>
@@ -1983,7 +1983,7 @@ ul.clean li::before {
 
 <!-- Navigation -->
 <div class="nav-bar">
-  <img src="assets/logos/motj-logo-icon.png" style="height: 32px; filter: brightness(0) invert(1) brightness(1); margin-right: 12px;" alt="MOTJ">
+  <img src="assets/logos/motj-icon-white.svg" style="height: 36px; margin-right: 12px;" alt="MOTJ">
   <div class="slide-counter" id="slideCounter">01 / 18</div>
   <div class="act-label" id="actLabel">ACT 1 — THE HOOK</div>
   <div class="nav-buttons">
