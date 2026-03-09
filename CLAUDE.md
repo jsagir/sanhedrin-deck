@@ -128,3 +128,11 @@ Render auto-deploys on push to master.
 4. Any new decisions (add to decisions table)
 
 This is non-negotiable. STATE.md is the project memory.
+
+## Style Rules (MANDATORY)
+
+1. **NO em-dashes** - Never use "—" anywhere. Use ":", "-", ".", or "," instead.
+2. **NO emojis** - Never use emoji characters. Use inline SVG icons instead.
+3. **Professional tone** - This is an investor pitch deck for a world-class museum. Every element must look polished and institutional.
+4. **MOTJ Brand compliance** - All colors must use the 3 MOTJ Pantone values (see STYLE_GUIDE.md). No off-brand colors.
+5. **SVG icons only** - All icons must be inline SVG with `stroke="currentColor"`. No emoji, no icon fonts.
