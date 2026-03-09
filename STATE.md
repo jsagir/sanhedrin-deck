@@ -1,8 +1,8 @@
 # Sanhedrin Deck - Project State
 
 ## Current Status
-**Last updated:** 2026-03-09
-**Phase:** Final deck structure locked. English-only, 17+4 appendix. Deployed and live.
+**Last updated:** 2026-03-10
+**Phase:** Editorial redesign complete. Bilingual EN/HE, dark/light mode, new images. Deployed and live.
 **Live URL:** https://sanhedrin-deck.onrender.com
 **Repo:** https://github.com/jsagir/sanhedrin-deck (auto-deploy on push to master)
 
@@ -10,58 +10,53 @@
 
 ### Immediate
 1. **Review the live deck** at https://sanhedrin-deck.onrender.com
-2. **Regenerate hero images** if desired (current images are isometric architectural style):
-   - Get fresh Gemini API key from https://aistudio.google.com/apikey
-   - `export GEMINI_API_KEY="your-key"` (do NOT commit)
-   - `cd ~/sanhedrin-deck && python3 generate_images.py`
-3. **Wire up CTA buttons** - "Approve Phase 1 POC" and "View Tech Architecture" currently have no targets
+2. **Wire up CTA buttons** - "Approve Phase 1 POC" and "View Tech Architecture" currently have no targets
+3. **Review Hebrew translations** with Daniel and Doron for accuracy
 
 ### Content Refinement
-- [ ] Review all slide copy with Daniel and Doron
 - [ ] Confirm or remove unverified claims (Yazdani Studio, 71/68 figures, 100K visitors)
-- [ ] Add Hebrew version back if needed for Yoni presentation
 - [ ] Update "View Tech Architecture" link to point to Appendix A or a separate doc
+- [ ] Review all slide copy with Daniel and Doron (both EN and HE)
 
 ### Design Polish
-- [ ] Generate new hero images matching the final slide content
-- [ ] Consider replacing isometric images with product mockups/UX screenshots
 - [ ] PDF export for leave-behind
 - [ ] Speaker notes mode
+- [ ] Consider product mockups/UX screenshots alongside editorial photos
 
 ## Current Deck Structure (17 + 4 Appendix)
 
 ### ACT 1: THE HOOK (Slides 1-4)
 | # | Title | Layout | Image |
 |---|-------|--------|-------|
-| 1 | Title/Hero - "Disagree Better. Discover Together." | Centered | slide-01/hero.png |
-| 2 | The Problem - Discourse is broken | Split | slide-02/hero.png |
-| 3 | The Cognitive Twist - Dispute as Dynamic Puzzle | Split | slide-03/hero.png |
-| 4 | Value Prop - "Learn to argue in 30 min" + INPUT/ENGINE/OUTPUT | Centered | (no image) |
+| 1 | Title/Hero - "Disagree Better. Discover Together." | Hero full-bleed | slide-01/hero.png |
+| 2 | The Problem - Discourse is broken | Editorial split (img right) | slide-02/hero.png |
+| 3 | The Cognitive Twist - Dispute as Dynamic Puzzle | Editorial split (img left) | slide-03/hero.png |
+| 4 | Value Prop - "Learn to argue in 30 min" + INPUT/ENGINE/OUTPUT | Statement | (no image) |
 
 ### ACT 2: THE EXPERIENCE (Slides 5-9)
 | # | Title | Layout | Image |
 |---|-------|--------|-------|
-| 5 | Visitor Journey - 6-step, 25-min loop | Split + step grid | slide-05/hero.png |
-| 6 | Architecture - Role-Based, 13 Thinking Modes | Split | slide-06/hero.png |
-| 7 | Sample Session - The Goring Ox (Rambam/Shammai/Herzl) | Split | slide-07/hero.png |
-| 8 | Experience Modes - Machloket vs Debate | Centered + mode cards | (no image) |
-| 9 | Physical Space - 12 kiosks, Yazdani Studio | Split | slide-10/hero.png |
+| 5 | Visitor Journey - 6-step, 25-min loop | Statement + 2x3 cards | (no image) |
+| 6 | Architecture - Role-Based, 13 Thinking Modes | Editorial split (img right) | slide-06/hero.png |
+| 7 | Sample Session - The Goring Ox (Rambam/Shammai/Herzl) | Editorial split (img left) | slide-07/hero.png |
+| 8 | Two Configurations - Machloket vs Debate | Statement + 2 cards | (no image) |
+| 9 | Physical Space - 12 kiosks, Yazdani Studio | Hero full-bleed | slide-10/hero.png |
 
 ### ACT 3: WHY IT WORKS (Slides 10-13)
 | # | Title | Layout | Image |
 |---|-------|--------|-------|
-| 10 | POC - Rambam exhibit validated | Split + quote block | slide-11/hero.png |
-| 11 | Risk - 70% Solved, 30% Ahead (A2A2H) | Split | slide-12/hero.png |
-| 12 | Competitive - Matrix vs chatbots/museums/debate AI | Split-wide + table | slide-13/hero.png |
-| 13 | EdTech - Debate Gym (Museum/Schools/Home) | Split | slide-14/hero.png |
+| 10 | POC - Rambam exhibit validated | Editorial split (img right) | slide-11/hero.png |
+| 11 | Risk - 70% Solved, 30% Ahead (A2A2H) | Statement + giant typography | (no image) |
+| 12 | Competitive - Matrix vs chatbots/museums/debate AI | Statement + editorial table | (no image) |
+| 13 | EdTech - Debate Gym (Museum/Schools/Home) | Editorial split (img right) | slide-14/hero.png |
 
 ### ACT 4: THE ASK (Slides 14-17)
 | # | Title | Layout | Image |
 |---|-------|--------|-------|
-| 14 | Roadmap - 4 phases (POC/Demo/Prototype/Deploy) | Centered + phase cards | (no image) |
-| 15 | Business Case - Revenue + Research Hub | Split | slide-16/hero.png |
-| 16 | Team - Jonathan/Daniel/Doron + Missing Piece | Centered + team cards | (no image) |
-| 17 | CTA - "Give us the green light" | Centered + quote | slide-18/hero.png |
+| 14 | Roadmap - 4 phases (POC/Demo/Prototype/Deploy) | Statement + timeline cards | (no image) |
+| 15 | Business Case - Revenue + Research Hub | Editorial split (img left) | slide-16/hero.png |
+| 16 | Team - Jonathan/Daniel/Doron + Missing Piece | Statement + 2x2 cards | (no image) |
+| 17 | CTA - "Give us the green light" | Hero full-bleed | slide-18/hero.png |
 
 ### APPENDIX (A1-A4)
 | # | Title | Content |
@@ -71,19 +66,22 @@
 | A3 | Dilemma Scenarios | 13 pre-built scenarios (Goring Ox, Lashon Hara, NFT Chametz, etc.) |
 | A4 | Visitor Personas | Daniel the Seeker, Sarah the Balanced, Avi the Skeptic, Noa the Teacher |
 
-## What Changed in Latest Session (Session 8)
+## What Changed in Latest Sessions (Sessions 9-10)
 
-User manually revised the deck HTML with these changes:
-- **Removed Hebrew/bilingual** - English-only deck (no more EN/HE toggle)
-- **Removed language toggle buttons** from nav bar
-- **Added INPUT/ENGINE/OUTPUT pillars** to value prop slide (slide 4)
-- **Yazdani Studio** attribution restored on physical space slide
-- **4-phase roadmap** (POC Now / Demo 3mo / Prototype 6mo / Deploy 12mo) replacing 3-year structure
-- **CTA buttons changed:** "Approve Phase 1 POC" + "View Tech Architecture"
-- **Revised 13 Thinking Modes** names (Flexible, Narrative-Visual, Active, Generative, Imaginative, Creative, Innovation-Focused, Entrepreneurial, Collective)
-- **Enriched visitor personas** with ages, backgrounds, Noa the Teacher added
-- **Copy refinements** throughout all slides
-- **"Two Configurations"** instead of "Two Modes" on slide 8
+### Session 10 (2026-03-10)
+- **Dark mode toggle** added back - sun/moon SVG button, saves to localStorage
+- **Full Hebrew translations** - all 21 slides translated using meeting transcript terminology
+- Hebrew key terms: "תרבות המחלוקת", "השור שנגח", "חדר כושר לדיבייט", "בית ספר לשיח אזרחי"
+
+### Session 9 (2026-03-10)
+- **Editorial/magazine redesign** - complete visual overhaul:
+  - Light base (#F5F2EB warm off-white), navy as accent
+  - 3 layout types: hero full-bleed, editorial split, statement
+  - Bold typography (h1 88px, h2 60px, body 24px)
+  - White cards with subtle shadows
+- **11 new hero images** - editorial photography style via Gemini API (gemini-2.5-flash-image)
+- **Hebrew toggle** restored (EN/HE button in nav bar)
+- **"School of Civic Discourse"** - renamed from "School of Disagreement"
 
 ## Session History
 
@@ -97,6 +95,8 @@ User manually revised the deck HTML with these changes:
 | 6 | 2026-03-09 | Isometric rebuild, content refresh from definitive outline |
 | 7 | 2026-03-09 | Comprehensive rebuild (17+4), meeting transcripts filed |
 | 8 | 2026-03-09 | User-revised deck: EN-only, refined content, 4-phase roadmap |
+| 9 | 2026-03-10 | Editorial/magazine redesign, new images, Hebrew toggle |
+| 10 | 2026-03-10 | Dark mode toggle, full Hebrew translations from transcripts |
 
 ## Key Decisions
 | Decision | Why |
@@ -104,20 +104,24 @@ User manually revised the deck HTML with these changes:
 | Single HTML file | Simplicity, no build step, easy to share |
 | Montserrat over Gotham | Gotham isn't on Google Fonts; closest match |
 | Render static site | Free tier, auto-deploy from GitHub |
-| English-only (Session 8) | Primary audience is Yoni (internal), Hebrew can be added back later |
+| Editorial/magazine design | Light, bold, full-bleed. For laptop reading, not projection |
+| Bilingual EN/HE | Hebrew uses meeting transcript terminology for authenticity |
+| Dark mode optional | Toggle in nav, defaults to light, saves preference |
 | 17+4 appendix structure | Deep-dive content accessible but not in main narrative |
 | 4-phase roadmap | POC/Demo/Prototype/Deploy with concrete timelines |
 | No em-dashes, no emojis | Professional tone, SVG icons only |
 | API key via env var | Previous keys leaked by being committed to git |
+| Editorial photography | Warm, human, magazine-feel. Replaced isometric renders |
 
 ## File Quick Reference
-- `index.html` - the deck (17 main + 4 appendix, EN-only, inline CSS/JS)
+- `index.html` - the deck (17 main + 4 appendix, bilingual EN/HE, dark/light mode)
 - `CLAUDE.md` - project guide + mandatory style rules
 - `STATE.md` - this file
-- `generate_images.py` - image regeneration script (reads GEMINI_API_KEY from .env)
+- `generate_images.py` - image regeneration script (editorial prompts, gemini-2.5-flash-image)
 - `assets/logos/` - MOTJ logos (PNG/SVG, color/white)
-- `slides/slide-NN/hero.png` - 18 hero images (isometric architectural style)
+- `slides/slide-NN/hero.png` - 11 hero images (editorial photography style)
 - `docs/motj-brand/` - brand guide reference
+- `docs/plans/` - design docs and implementation plans
 - `docs/sanhedrin-kickoff-transcript.md` - Meeting 1: kickoff, role-based architecture, two modes
 - `docs/sanhedrin-meeting2-transcript.md` - Meeting 2: deck walkthrough, presentation strategy
 - `docs/sanhedrin-meeting3-transcript.md` - Meeting 3: two-track ASK, debate expert, timeline
