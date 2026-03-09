@@ -5,12 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Sanhedrin Educational Experience | Museum of Tolerance Jerusalem</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* === DESIGN SYSTEM === */
+/* ================================================================
+   DESIGN SYSTEM - MOTJ Brand
+   PMS 540 Navy | PMS 544 Light Blue | PMS 404 Warm Taupe
+   ================================================================ */
 :root, [data-theme="dark"] {
   --bg: #003057;
-  --bg-nav: rgba(0,24,44,0.92);
+  --bg-surface: #00243f;
+  --bg-nav: rgba(0,24,44,0.94);
   --text: #f0f4f7;
   --text-sub: #b0c4d4;
   --text-dim: #6d8ea6;
@@ -18,15 +22,20 @@
   --accent-light: #d4e5f0;
   --accent-dim: #8bb3cc;
   --taupe: #776E64;
+  --taupe-light: #9a9189;
   --font-d: 'Montserrat', system-ui, sans-serif;
   --font-m: 'JetBrains Mono', monospace;
   --nav-logo-white: block;
   --nav-logo-color: none;
   --logo-filter: none;
+  --card-bg: rgba(189,214,230,0.04);
+  --card-border: rgba(189,214,230,0.12);
+  --card-hover: rgba(189,214,230,0.08);
 }
 [data-theme="light"] {
   --bg: #f5f5f0;
-  --bg-nav: rgba(240,240,235,0.92);
+  --bg-surface: #eeeee8;
+  --bg-nav: rgba(240,240,235,0.94);
   --text: #1a1a1a;
   --text-sub: #3d4f5c;
   --text-dim: #7a8e9e;
@@ -34,187 +43,274 @@
   --accent-light: #00395f;
   --accent-dim: #336b8f;
   --taupe: #776E64;
+  --taupe-light: #a09890;
   --nav-logo-white: none;
   --nav-logo-color: block;
   --logo-filter: brightness(0) saturate(100%);
+  --card-bg: rgba(0,48,87,0.04);
+  --card-border: rgba(0,48,87,0.12);
+  --card-hover: rgba(0,48,87,0.08);
 }
 
+/* ================================================================
+   RESET & BASE
+   ================================================================ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: var(--font-d); }
 
-/* === SLIDE ENGINE === */
+/* ================================================================
+   SLIDE ENGINE
+   ================================================================ */
 .deck { width: 100%; height: 100%; position: relative; }
 
 .slide {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 60px 80px 80px;
-  opacity: 0; transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  padding: 56px 80px 72px;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: none; overflow: hidden;
 }
 .slide.active { opacity: 1; transform: translateY(0); pointer-events: all; }
 
-/* Grain overlay */
+/* Subtle grain texture */
 .slide::after {
   content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 256px 256px;
 }
 .slide > * { position: relative; z-index: 1; }
 
 /* Reveal animations */
-.reveal { opacity: 0; transform: translateY(20px); }
-.slide.active .reveal { animation: revealUp 0.7s ease forwards; }
-.slide.active .reveal-d1 { animation-delay: 0.15s; }
-.slide.active .reveal-d2 { animation-delay: 0.3s; }
-.slide.active .reveal-d3 { animation-delay: 0.45s; }
-.slide.active .reveal-d4 { animation-delay: 0.6s; }
+.reveal { opacity: 0; transform: translateY(16px); }
+.slide.active .reveal { animation: revealUp 0.6s ease forwards; }
+.slide.active .r1 { animation-delay: 0.1s; }
+.slide.active .r2 { animation-delay: 0.2s; }
+.slide.active .r3 { animation-delay: 0.35s; }
+.slide.active .r4 { animation-delay: 0.5s; }
+.slide.active .r5 { animation-delay: 0.65s; }
 @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
 
-/* === PROGRESS === */
-.progress-track { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: rgba(189,214,230,0.1); z-index: 100; }
+/* ================================================================
+   PROGRESS & NAVIGATION
+   ================================================================ */
+.progress-track { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: rgba(189,214,230,0.08); z-index: 100; }
 .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-light)); transition: width 0.4s ease; }
 
-/* === NAVIGATION === */
 .nav-bar {
-  position: fixed; bottom: 0; left: 0; right: 0; height: 56px;
-  background: var(--bg-nav); backdrop-filter: blur(12px);
+  position: fixed; bottom: 0; left: 0; right: 0; height: 52px;
+  background: var(--bg-nav); backdrop-filter: blur(14px);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 30px; z-index: 100;
-  border-top: 1px solid rgba(189,214,230,0.12);
+  padding: 0 28px; z-index: 100;
+  border-top: 1px solid rgba(189,214,230,0.1);
 }
-.nav-logo-white { display: var(--nav-logo-white); height: 32px; margin-right: 12px; }
-.nav-logo-color { display: var(--nav-logo-color); height: 32px; margin-right: 12px; }
-.slide-counter { font-family: var(--font-m); font-size: 13px; color: var(--accent); letter-spacing: 1px; }
-.act-label { font-family: var(--font-d); font-size: 14px; color: var(--text-sub); font-style: italic; }
-.nav-controls { display: flex; align-items: center; gap: 12px; }
+.nav-logo-white { display: var(--nav-logo-white); height: 28px; }
+.nav-logo-color { display: var(--nav-logo-color); height: 28px; }
+.slide-counter { font-family: var(--font-m); font-size: 12px; color: var(--accent); letter-spacing: 1.5px; }
+.act-label { font-family: var(--font-d); font-size: 13px; color: var(--text-dim); font-style: italic; letter-spacing: 0.5px; }
+.nav-controls { display: flex; align-items: center; gap: 10px; }
 .nav-btn {
-  background: rgba(189,214,230,0.08); border: 1px solid rgba(189,214,230,0.2);
-  color: var(--accent); width: 36px; height: 36px; border-radius: 6px;
+  background: rgba(189,214,230,0.06); border: 1px solid rgba(189,214,230,0.15);
+  color: var(--accent); width: 34px; height: 34px; border-radius: 6px;
   cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
 }
-.nav-btn:hover { background: rgba(189,214,230,0.18); border-color: var(--accent); }
+.nav-btn:hover { background: rgba(189,214,230,0.15); border-color: var(--accent); }
 .lang-btn {
-  font-family: var(--font-m); font-size: 12px; padding: 6px 10px;
-  background: transparent; border: 1px solid rgba(189,214,230,0.2);
-  color: var(--text-dim); cursor: pointer; transition: all 0.2s;
+  font-family: var(--font-m); font-size: 11px; padding: 5px 9px;
+  background: transparent; border: 1px solid rgba(189,214,230,0.15);
+  color: var(--text-dim); cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px;
 }
-.lang-btn:first-of-type { border-radius: 6px 0 0 6px; }
-.lang-btn:last-of-type { border-radius: 0 6px 6px 0; border-left: 0; }
-.lang-btn.active { background: rgba(189,214,230,0.15); color: var(--accent); }
+.lang-btn:first-of-type { border-radius: 5px 0 0 5px; }
+.lang-btn:last-of-type { border-radius: 0 5px 5px 0; border-left: 0; }
+.lang-btn.active { background: rgba(189,214,230,0.12); color: var(--accent); }
 .theme-toggle {
-  width: 40px; height: 22px; border-radius: 11px; cursor: pointer;
-  background: rgba(189,214,230,0.15); border: 1px solid rgba(189,214,230,0.25);
+  width: 36px; height: 20px; border-radius: 10px; cursor: pointer;
+  background: rgba(189,214,230,0.12); border: 1px solid rgba(189,214,230,0.2);
   position: relative; transition: all 0.3s;
 }
 .theme-toggle::after {
   content: ''; position: absolute; top: 2px; left: 2px;
-  width: 16px; height: 16px; border-radius: 50%;
+  width: 14px; height: 14px; border-radius: 50%;
   background: var(--accent); transition: transform 0.3s;
 }
-[data-theme="light"] .theme-toggle::after { transform: translateX(18px); }
+[data-theme="light"] .theme-toggle::after { transform: translateX(16px); }
 
-/* === TYPOGRAPHY === */
+/* ================================================================
+   TYPOGRAPHY
+   ================================================================ */
 .label {
-  font-family: var(--font-m); font-size: 12px; letter-spacing: 4px;
-  text-transform: uppercase; color: var(--accent-dim); margin-bottom: 12px;
+  font-family: var(--font-m); font-size: 11px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--accent-dim); margin-bottom: 14px;
 }
-h1 { font-family: var(--font-d); font-weight: 300; font-size: 56px; line-height: 1.1; }
-h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height: 1.1; margin-bottom: 20px; color: var(--text); }
-.tagline { font-family: var(--font-d); font-style: italic; font-size: 26px; color: var(--accent-light); }
-.body-text { font-size: 24px; line-height: 1.5; color: var(--text-sub); max-width: 560px; }
+h1 { font-family: var(--font-d); font-weight: 300; font-size: 64px; line-height: 1.08; letter-spacing: -1px; }
+h2 { font-family: var(--font-d); font-weight: 700; font-size: 56px; line-height: 1.08; margin-bottom: 20px; color: var(--text); letter-spacing: -0.5px; }
+h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height: 1.2; color: var(--accent); margin-bottom: 8px; }
+.tagline { font-family: var(--font-d); font-weight: 500; font-size: 28px; color: var(--accent-light); line-height: 1.3; }
+.sub-tagline { font-family: var(--font-d); font-style: italic; font-size: 22px; color: var(--text-sub); margin-top: 8px; }
+.body-text { font-size: 24px; line-height: 1.55; color: var(--text-sub); max-width: 580px; }
+.body-sm { font-size: 20px; line-height: 1.5; color: var(--text-dim); max-width: 580px; margin-top: 12px; }
 .bullets { list-style: none; padding: 0; }
 .bullets li {
-  font-size: 22px; line-height: 1.6; color: var(--text-sub);
-  padding-left: 20px; position: relative; margin-bottom: 4px;
+  font-size: 24px; line-height: 1.55; color: var(--text-sub);
+  padding-left: 20px; position: relative; margin-bottom: 8px;
 }
-.bullets li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.bullets li::before { content: ''; position: absolute; left: 0; top: 14px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.bullets li strong { color: var(--text); font-weight: 600; }
 
-/* === LAYOUT === */
+/* ================================================================
+   LAYOUTS
+   ================================================================ */
 .split { display: grid; grid-template-columns: 45% 55%; gap: 48px; align-items: center; height: 100%; }
+.split-wide { display: grid; grid-template-columns: 50% 50%; gap: 40px; align-items: center; height: 100%; }
 .centered { display: flex; flex-direction: column; align-items: center; text-align: center; height: 100%; justify-content: center; }
 .hero-img {
-  width: 100%; height: 80vh; object-fit: contain;
-  filter: drop-shadow(0 12px 40px rgba(0,0,0,0.25));
+  width: 100%; max-height: 78vh; object-fit: contain;
+  filter: drop-shadow(0 10px 36px rgba(0,0,0,0.22));
+}
+.hero-img-sm {
+  width: 100%; max-height: 55vh; object-fit: contain;
+  filter: drop-shadow(0 10px 36px rgba(0,0,0,0.22));
+  margin-top: 20px;
 }
 .hero-img-centered {
-  width: 70%; height: 55vh; object-fit: contain;
-  filter: drop-shadow(0 12px 40px rgba(0,0,0,0.25));
-  margin: 16px auto 0;
+  width: 65%; max-height: 48vh; object-fit: contain;
+  filter: drop-shadow(0 10px 36px rgba(0,0,0,0.22));
+  margin: 20px auto 0;
 }
-.steps-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-.step-pill {
-  font-family: var(--font-m); font-size: 13px; letter-spacing: 1px;
-  padding: 8px 16px; border-radius: 20px; color: var(--accent);
-  background: rgba(189,214,230,0.08); border: 1px solid rgba(189,214,230,0.15);
-}
-.thinker-row { display: flex; gap: 24px; margin-top: 16px; }
-.thinker {
-  font-family: var(--font-m); font-size: 14px; color: var(--accent);
-}
-.pair-list { list-style: none; padding: 0; }
-.pair-list li { font-size: 20px; color: var(--text-sub); padding: 6px 0; }
-.pair-list li span { color: var(--accent); font-weight: 500; }
-.mode-pair { display: flex; gap: 32px; margin-top: 16px; }
-.mode-box {
-  padding: 16px 24px; border-radius: 12px;
-  border: 1px solid rgba(189,214,230,0.15);
-  background: rgba(189,214,230,0.04);
-}
-.mode-box h3 { font-size: 22px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
-.mode-box p { font-size: 18px; color: var(--text-sub); }
-.phase-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
-.phase-box {
-  padding: 12px 20px; border-radius: 10px;
-  border: 1px solid rgba(189,214,230,0.12);
-  background: rgba(189,214,230,0.04);
-  font-family: var(--font-m); font-size: 14px; color: var(--accent);
-}
-.team-labels { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
-.team-label { font-size: 20px; color: var(--text-sub); padding: 8px 0; }
-.team-label strong { color: var(--accent); font-weight: 600; }
 
-/* Timeline */
-.timeline-row { display: flex; gap: 4px; margin-top: 16px; flex-wrap: wrap; }
-.timeline-block {
-  font-family: var(--font-m); font-size: 12px; letter-spacing: 0.5px;
-  padding: 6px 12px; border-radius: 6px; color: var(--accent);
-  background: rgba(189,214,230,0.06); border: 1px solid rgba(189,214,230,0.12);
-  white-space: nowrap;
+/* ================================================================
+   COMPONENTS
+   ================================================================ */
+
+/* Step pills */
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+.step {
+  padding: 10px 14px; border-radius: 8px;
+  background: var(--card-bg); border: 1px solid var(--card-border);
 }
+.step-num { font-family: var(--font-m); font-size: 11px; color: var(--accent-dim); letter-spacing: 1px; }
+.step-title { font-size: 15px; font-weight: 600; color: var(--text); margin-top: 2px; }
+.step-desc { font-size: 13px; color: var(--text-dim); margin-top: 2px; line-height: 1.3; }
+
+/* Mode comparison */
+.mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; width: 100%; max-width: 900px; }
+.mode-card {
+  padding: 28px; border-radius: 12px;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  text-align: left;
+}
+.mode-card h3 { margin-bottom: 10px; }
+.mode-card p { font-size: 20px; color: var(--text-sub); line-height: 1.4; }
+.mode-card .mode-tag { font-family: var(--font-m); font-size: 12px; color: var(--accent-dim); letter-spacing: 1px; margin-top: 12px; }
+
+/* Competitive matrix */
+.matrix { width: 100%; border-collapse: collapse; margin-top: 16px; }
+.matrix th {
+  font-family: var(--font-m); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--accent-dim); padding: 10px 14px; text-align: left;
+  border-bottom: 1px solid var(--card-border);
+}
+.matrix td {
+  font-size: 18px; padding: 10px 14px; color: var(--text-sub);
+  border-bottom: 1px solid rgba(189,214,230,0.06);
+}
+.matrix td:first-child { font-weight: 600; color: var(--text); }
+.matrix .check { color: var(--accent); font-weight: 700; }
+.matrix .x { color: var(--text-dim); }
+.matrix tr.highlight td { background: rgba(189,214,230,0.06); }
+
+/* Phase timeline */
+.phases { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+.phase {
+  flex: 1; min-width: 200px; padding: 16px 20px; border-radius: 10px;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+}
+.phase-label { font-family: var(--font-m); font-size: 11px; letter-spacing: 1.5px; color: var(--accent-dim); text-transform: uppercase; }
+.phase-title { font-size: 20px; font-weight: 700; color: var(--text); margin-top: 4px; }
+.phase-desc { font-size: 15px; color: var(--text-sub); margin-top: 4px; line-height: 1.3; }
+
+/* Team */
+.team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px; max-width: 800px; }
+.team-card {
+  padding: 20px 24px; border-radius: 10px;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  text-align: left;
+}
+.team-card .team-name { font-size: 22px; font-weight: 700; color: var(--text); }
+.team-card .team-role { font-size: 16px; color: var(--text-sub); margin-top: 2px; }
+.team-card.missing { border-color: var(--accent-dim); border-style: dashed; }
 
 /* CTA */
 .cta-quote {
-  font-family: var(--font-d); font-style: italic; font-size: 28px;
-  color: var(--accent-light); max-width: 700px; line-height: 1.4;
-  border-left: 3px solid var(--accent); padding-left: 24px; margin: 24px auto;
+  font-family: var(--font-d); font-style: italic; font-size: 30px;
+  color: var(--accent-light); max-width: 740px; line-height: 1.4;
+  border-left: 3px solid var(--accent); padding-left: 28px; margin: 28px auto;
 }
+.cta-actions { display: flex; gap: 16px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
 .cta-btn {
-  display: inline-block; margin-top: 24px; padding: 16px 40px;
-  font-family: var(--font-d); font-size: 20px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 36px;
+  font-family: var(--font-d); font-size: 18px; font-weight: 600;
   color: var(--bg); background: var(--accent);
   border: none; border-radius: 8px; cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   text-decoration: none;
 }
-.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(189,214,230,0.3); }
-.demo-btn {
-  display: inline-block; margin-top: 16px; margin-left: 12px; padding: 16px 40px;
-  font-family: var(--font-d); font-size: 20px; font-weight: 600;
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(189,214,230,0.25); }
+.cta-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 36px;
+  font-family: var(--font-d); font-size: 18px; font-weight: 600;
   color: var(--accent); background: transparent;
   border: 2px solid var(--accent); border-radius: 8px; cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: transform 0.2s, background 0.2s;
   text-decoration: none;
 }
-.demo-btn:hover { transform: translateY(-2px); background: rgba(189,214,230,0.1); box-shadow: 0 8px 30px rgba(189,214,230,0.2); }
+.cta-btn-outline:hover { transform: translateY(-2px); background: rgba(189,214,230,0.08); }
 
-/* Slide 1 logo */
-.motj-logo { height: 48px; margin-bottom: 32px; }
+/* Thinker chips */
+.thinkers { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+.thinker {
+  font-family: var(--font-m); font-size: 14px; color: var(--accent);
+  padding: 6px 14px; border-radius: 20px;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+}
+
+/* Pillar cards for value prop */
+.pillars { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; justify-content: center; }
+.pillar {
+  padding: 16px 24px; border-radius: 10px; text-align: center;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  min-width: 200px;
+}
+.pillar-title { font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; color: var(--accent); font-weight: 500; }
+
+/* Space features */
+.space-features { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+.space-feat {
+  padding: 8px 16px; border-radius: 8px; font-size: 16px; color: var(--text-sub);
+  background: var(--card-bg); border: 1px solid var(--card-border);
+}
+
+/* Slide 1 hero logo */
+.motj-logo { height: 44px; margin-bottom: 28px; }
 [data-theme="light"] .motj-logo { filter: var(--logo-filter); }
 
-/* === LANGUAGE === */
+/* Appendix label */
+.appendix-label {
+  font-family: var(--font-m); font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--taupe-light); margin-bottom: 8px;
+}
+.appendix-content { font-size: 18px; color: var(--text-sub); line-height: 1.6; max-width: 800px; }
+.appendix-content strong { color: var(--text); }
+.appendix-list { list-style: none; padding: 0; }
+.appendix-list li { font-size: 18px; color: var(--text-sub); padding: 6px 0; padding-left: 16px; position: relative; }
+.appendix-list li::before { content: ''; position: absolute; left: 0; top: 14px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent-dim); }
+
+/* ================================================================
+   LANGUAGE
+   ================================================================ */
 .en-content, .he-content { display: flex; flex-direction: column; }
 .en-content { display: flex; }
 .he-content { display: none; }
@@ -223,578 +319,889 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
 [data-lang="en"] .en-content { display: flex !important; }
 [data-lang="en"] .he-content { display: none !important; }
 [data-lang="he"] .slide { direction: rtl; text-align: right; }
-[data-lang="he"] .label { text-align: right; }
+[data-lang="he"] .label, [data-lang="he"] .appendix-label { text-align: right; }
 [data-lang="he"] .split { grid-template-columns: 55% 45%; }
+[data-lang="he"] .split-wide { grid-template-columns: 50% 50%; }
 [data-lang="he"] .bullets li { padding-left: 0; padding-right: 20px; }
 [data-lang="he"] .bullets li::before { left: auto; right: 0; }
 [data-lang="he"] .centered { text-align: center; direction: rtl; }
-[data-lang="he"] .cta-quote { border-left: none; border-right: 3px solid var(--accent); padding-left: 0; padding-right: 24px; }
-
-/* Split slides: en-content and he-content should fill and be split */
-.slide .en-content.split, .slide .he-content.split { height: 100%; }
+[data-lang="he"] .cta-quote { border-left: none; border-right: 3px solid var(--accent); padding-left: 0; padding-right: 28px; }
+[data-lang="he"] .appendix-list li { padding-left: 0; padding-right: 16px; }
+[data-lang="he"] .appendix-list li::before { left: auto; right: 0; }
+.slide .en-content.split, .slide .he-content.split,
+.slide .en-content.split-wide, .slide .he-content.split-wide,
 .slide .en-content.centered, .slide .he-content.centered { height: 100%; }
 
-/* === RESPONSIVE === */
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
 @media (max-width: 1024px) {
-  .slide { padding: 40px 40px 70px; }
-  h1 { font-size: 44px; }
+  .slide { padding: 36px 36px 64px; }
+  h1 { font-size: 48px; }
   h2 { font-size: 42px; }
   .body-text { font-size: 20px; }
-  .tagline { font-size: 22px; }
-  .split { grid-template-columns: 1fr; gap: 24px; }
-  [data-lang="he"] .split { grid-template-columns: 1fr; }
-  .hero-img { height: 50vh; }
-  .hero-img-centered { width: 85%; height: 40vh; }
+  .tagline { font-size: 24px; }
+  .split, .split-wide { grid-template-columns: 1fr; gap: 20px; }
+  [data-lang="he"] .split, [data-lang="he"] .split-wide { grid-template-columns: 1fr; }
+  .hero-img { max-height: 45vh; }
+  .hero-img-sm { max-height: 35vh; }
+  .hero-img-centered { width: 80%; max-height: 35vh; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .mode-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .slide { padding: 24px 20px 70px; }
-  h1 { font-size: 32px; }
+  .slide { padding: 20px 18px 64px; }
+  h1 { font-size: 36px; }
   h2 { font-size: 32px; }
   .body-text { font-size: 18px; }
-  .tagline { font-size: 18px; }
-  .bullets li { font-size: 18px; }
-  .nav-bar { padding: 0 16px; }
+  .tagline { font-size: 20px; }
+  .bullets li { font-size: 20px; }
+  .nav-bar { padding: 0 14px; }
   .act-label { display: none; }
   .hero-img-centered { width: 90%; }
-  .mode-pair { flex-direction: column; gap: 12px; }
-  .thinker-row { flex-direction: column; gap: 8px; }
-  .cta-quote { font-size: 22px; }
-  .demo-btn { margin-left: 0; margin-top: 8px; }
+  .cta-quote { font-size: 24px; }
+  .phases { flex-direction: column; }
+  .steps-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
 <!-- Progress -->
-<div class="progress-track"><div class="progress-fill" id="progressFill" style="width: 5.56%"></div></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
 
 <div class="deck">
 
-<!-- ============================================================ -->
-<!-- SLIDE 1: Title / Hero (centered) -->
-<!-- ACT 1: THE HOOK - The Crisis and the Engine -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 1: Title / Hero
+     ACT 1: THE HOOK - The Crisis and the Engine
+     ============================================================ -->
 <section class="slide active" data-act="ACT 1: THE HOOK">
   <div class="en-content centered">
     <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" class="motj-logo reveal">
-    <h1 class="reveal reveal-d1">The Sanhedrin<br>Educational Experience</h1>
-    <p class="tagline reveal reveal-d2" style="margin-top: 20px; max-width: 600px;">What would history's greatest minds say about TODAY's dilemmas?</p>
-    <img src="slides/slide-01/hero.png" alt="Sanhedrin arena" class="hero-img-centered reveal reveal-d3">
+    <h1 class="reveal r1">The Sanhedrin<br>Educational Experience</h1>
+    <p class="tagline reveal r2" style="margin-top: 16px;">Disagree Better. Discover Together.</p>
+    <p class="sub-tagline reveal r3">What would history's greatest minds say about today's dilemmas?</p>
+    <img src="slides/slide-01/hero.png" alt="Sanhedrin arena" class="hero-img-centered reveal r4">
   </div>
   <div class="he-content centered">
     <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" class="motj-logo reveal">
-    <h1 class="reveal reveal-d1">חוויית הסנהדרין<br>החינוכית</h1>
-    <p class="tagline reveal reveal-d2" style="margin-top: 20px; max-width: 600px;">מה היו אומרים המוחות הגדולים בהיסטוריה על הדילמות של היום?</p>
-    <img src="slides/slide-01/hero.png" alt="זירת הסנהדרין" class="hero-img-centered reveal reveal-d3">
+    <h1 class="reveal r1">חוויית הסנהדרין<br>החינוכית</h1>
+    <p class="tagline reveal r2" style="margin-top: 16px;">חלקו טוב יותר. גלו יחד.</p>
+    <p class="sub-tagline reveal r3">מה היו אומרים המוחות הגדולים בהיסטוריה על הדילמות של היום?</p>
+    <img src="slides/slide-01/hero.png" alt="זירת הסנהדרין" class="hero-img-centered reveal r4">
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 2: The Problem (THE URGENCY) -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 2: The Problem (THE URGENCY)
+     ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
   <div class="en-content split">
     <div>
       <p class="label reveal">The Urgency</p>
-      <h2 class="reveal reveal-d1">Discourse<br>is Broken</h2>
-      <p class="body-text reveal reveal-d2">"I disagree with you" has become "You are my enemy." Civic discourse is a muscle that must be built through active experience. There is no simulator for it.</p>
+      <h2 class="reveal r1">Discourse<br>is Broken</h2>
+      <p class="body-text reveal r2">We live in a polarized society where "I disagree with you" has become synonymous with tribal identity defense. Young people walk out of rooms when exposed to opposing views.</p>
+      <p class="body-text reveal r3" style="margin-top: 16px;">Civic discourse is a muscle that requires active training to sit with discomfort. It cannot be taught through passive lectures.</p>
+      <p class="body-sm reveal r4">The gap: there is no "civic discourse simulator" to train society on navigating complex, emotionally charged issues.</p>
     </div>
-    <img src="slides/slide-02/hero.png" alt="Polarization" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-02/hero.png" alt="Polarization" class="hero-img reveal r4">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-02/hero.png" alt="קיטוב" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-02/hero.png" alt="קיטוב" class="hero-img reveal r4">
     <div>
       <p class="label reveal">הדחיפות</p>
-      <h2 class="reveal reveal-d1">השיח שבור</h2>
-      <p class="body-text reveal reveal-d2">"אני לא מסכים איתך" הפך ל"אתה האויב שלי." שיח אזרחי הוא שריר שצריך לבנות דרך חוויה פעילה. אין סימולטור לזה.</p>
+      <h2 class="reveal r1">השיח<br>שבור</h2>
+      <p class="body-text reveal r2">אנחנו חיים בחברה מקוטבת שבה "אני לא מסכים איתך" הפך לזהה עם הגנה שבטית. צעירים עוזבים חדרים כשנחשפים לדעות מנוגדות.</p>
+      <p class="body-text reveal r3" style="margin-top: 16px;">שיח אזרחי הוא שריר שדורש אימון פעיל כדי לשבת עם אי-נוחות. אי אפשר ללמד את זה דרך הרצאות פסיביות.</p>
+      <p class="body-sm reveal r4">הפער: אין "סימולטור שיח אזרחי" לאמן חברה בניווט סוגיות מורכבות ורגשיות.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 3: The Framing (Puzzle Metaphor) -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 3: The Framing (Puzzle Metaphor)
+     ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
   <div class="en-content split">
     <div>
       <p class="label reveal">The Cognitive Twist</p>
-      <h2 class="reveal reveal-d1">Dispute as a<br>Dynamic Puzzle</h2>
-      <p class="body-text reveal reveal-d2">Not a battle to win. A collaborative investigation powered by 13 Talmudic Thinking Modes. Participants uncover hidden puzzle pieces to see the full picture.</p>
+      <h2 class="reveal r1">Dispute as a<br>Dynamic Puzzle</h2>
+      <p class="body-text reveal r2">We reframe disagreement: not a battle to win, but a collaborative investigation. A Sherlock Holmes-style inquiry where participants uncover hidden "puzzle pieces" to see the full picture.</p>
+      <ul class="bullets reveal r3">
+        <li>Adding depth earns puzzle pieces</li>
+        <li>Demagoguery and personal attacks cause pieces to blur</li>
+        <li>Powered by 13 Talmudic Thinking Modes</li>
+      </ul>
     </div>
-    <img src="slides/slide-03/hero.png" alt="Puzzle metaphor" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-03/hero.png" alt="Puzzle metaphor" class="hero-img reveal r4">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-03/hero.png" alt="מטאפורת פאזל" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-03/hero.png" alt="מטאפורת פאזל" class="hero-img reveal r4">
     <div>
       <p class="label reveal">הטוויסט הקוגניטיבי</p>
-      <h2 class="reveal reveal-d1">מחלוקת<br>כפאזל דינמי</h2>
-      <p class="body-text reveal reveal-d2">לא קרב לניצחון. חקירה משותפת מונעת על ידי 13 מצבי חשיבה תלמודיים. המשתתפים חושפים חלקי פאזל נסתרים כדי לראות את התמונה המלאה.</p>
+      <h2 class="reveal r1">מחלוקת<br>כפאזל דינמי</h2>
+      <p class="body-text reveal r2">אנחנו ממסגרים מחדש מחלוקת: לא קרב לניצחון, אלא חקירה משותפת. חקירה בסגנון שרלוק הולמס שבה משתתפים חושפים "חלקי פאזל" נסתרים כדי לראות את התמונה המלאה.</p>
+      <ul class="bullets reveal r3">
+        <li>הוספת עומק מרוויחה חלקי פאזל</li>
+        <li>דמגוגיה והתקפות אישיות גורמות לחלקים להיטשטש</li>
+        <li>מונע על ידי 13 מצבי חשיבה תלמודיים</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 4: Key Value Proposition (centered) -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 4: Key Value Proposition (Statement Slide)
+     ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
   <div class="en-content centered">
-    <h2 class="reveal" style="max-width: 700px;">Learn to argue better<br>in 30 minutes.</h2>
-    <p class="tagline reveal reveal-d1" style="margin-bottom: 16px;">Without needing to agree.</p>
-    <p class="body-text reveal reveal-d2" style="text-align: center;">AI-powered deliberation with history's greatest thinkers. Input a dilemma, deliberate together, expand your thinking.</p>
-    <img src="slides/slide-04/hero.png" alt="Value proposition" class="hero-img-centered reveal reveal-d3">
+    <p class="label reveal">The Promise</p>
+    <h2 class="reveal r1" style="font-size: 64px; max-width: 800px;">Learn to argue better<br>in 30 minutes.</h2>
+    <p class="tagline reveal r2" style="margin-top: 8px;">Without needing to agree.</p>
+    <p class="body-text reveal r3" style="text-align: center; margin-top: 24px; max-width: 700px;">An AI-powered immersive space where visitors engage with historical Jewish thinkers in real-time deliberation. Input a dilemma, deliberate together, expand your thinking. No single "right answer."</p>
+    <img src="slides/slide-04/hero.png" alt="Value proposition" class="hero-img-centered reveal r4">
   </div>
   <div class="he-content centered">
-    <h2 class="reveal" style="max-width: 700px;">למדו להתווכח טוב יותר<br>ב-30 דקות.</h2>
-    <p class="tagline reveal reveal-d1" style="margin-bottom: 16px;">בלי הצורך להסכים.</p>
-    <p class="body-text reveal reveal-d2" style="text-align: center;">דיון מונע בינה מלאכותית עם ההוגים הגדולים בהיסטוריה. הזינו דילמה, דונו יחד, הרחיבו את החשיבה.</p>
-    <img src="slides/slide-04/hero.png" alt="הצעת ערך" class="hero-img-centered reveal reveal-d3">
+    <p class="label reveal">ההבטחה</p>
+    <h2 class="reveal r1" style="font-size: 64px; max-width: 800px;">למדו להתווכח טוב יותר<br>ב-30 דקות.</h2>
+    <p class="tagline reveal r2" style="margin-top: 8px;">בלי הצורך להסכים.</p>
+    <p class="body-text reveal r3" style="text-align: center; margin-top: 24px; max-width: 700px;">מרחב אימרסיבי מונע בינה מלאכותית שבו מבקרים מתדיינים עם הוגים יהודיים היסטוריים בזמן אמת. הזינו דילמה, דונו יחד, הרחיבו את החשיבה. אין תשובה "נכונה" אחת.</p>
+    <img src="slides/slide-04/hero.png" alt="הצעת ערך" class="hero-img-centered reveal r4">
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 5: The Visitor Journey -->
-<!-- ACT 2: THE EXPERIENCE -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 5: The Visitor Journey (End-to-End)
+     ACT 2: THE EXPERIENCE
+     ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content split">
     <div>
-      <p class="label reveal">End-to-End Flow</p>
-      <h2 class="reveal reveal-d1">The Visitor Journey</h2>
-      <div class="steps-row reveal reveal-d2">
-        <span class="step-pill">1. Input Dilemma</span>
-        <span class="step-pill">2. Facilitator Sets Stage</span>
-        <span class="step-pill">3. AI Selects Thinkers</span>
-        <span class="step-pill">4. Deliberate Together</span>
-        <span class="step-pill">5. Synthesize</span>
-        <span class="step-pill">6. QR Takeaway</span>
+      <p class="label reveal">The 25-Minute Loop</p>
+      <h2 class="reveal r1">The Visitor<br>Journey</h2>
+      <div class="steps-grid reveal r2">
+        <div class="step">
+          <span class="step-num">01</span>
+          <div class="step-title">Input Dilemma</div>
+          <div class="step-desc">Visitors vote on a dilemma and set initial confidence levels</div>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <div class="step-title">Facilitator Opens</div>
+          <div class="step-desc">Human Game Master sets the stage with energy and context</div>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <div class="step-title">Sages Assigned</div>
+          <div class="step-desc">AI dynamically assigns historical figures to join human teams</div>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <div class="step-title">Deliberate</div>
+          <div class="step-desc">Structured rounds of arguments, questioning, and clarification</div>
+        </div>
+        <div class="step">
+          <span class="step-num">05</span>
+          <div class="step-title">Re-evaluate</div>
+          <div class="step-desc">Track how confidence levels and perspectives shift</div>
+        </div>
+        <div class="step">
+          <span class="step-num">06</span>
+          <div class="step-title">Takeaway</div>
+          <div class="step-desc">Personalized digital summary with 3 insights and a reflection</div>
+        </div>
       </div>
-      <p class="body-text reveal reveal-d3" style="margin-top: 16px; font-size: 18px;">A structured, repeatable 25-minute loop.</p>
     </div>
-    <img src="slides/slide-05/hero.png" alt="Visitor journey" class="hero-img reveal reveal-d4">
+    <img src="slides/slide-05/hero.png" alt="Visitor journey" class="hero-img reveal r3">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-05/hero.png" alt="מסע מבקר" class="hero-img reveal reveal-d4">
+    <img src="slides/slide-05/hero.png" alt="מסע מבקר" class="hero-img reveal r3">
     <div>
-      <p class="label reveal">זרימה מקצה לקצה</p>
-      <h2 class="reveal reveal-d1">מסע המבקר</h2>
-      <div class="steps-row reveal reveal-d2">
-        <span class="step-pill">1. הזנת דילמה</span>
-        <span class="step-pill">2. המנחה פותח</span>
-        <span class="step-pill">3. AI בוחר הוגים</span>
-        <span class="step-pill">4. דיון משותף</span>
-        <span class="step-pill">5. סינתזה</span>
-        <span class="step-pill">6. QR לתובנות</span>
+      <p class="label reveal">לולאת 25 דקות</p>
+      <h2 class="reveal r1">מסע<br>המבקר</h2>
+      <div class="steps-grid reveal r2">
+        <div class="step">
+          <span class="step-num">01</span>
+          <div class="step-title">הזנת דילמה</div>
+          <div class="step-desc">מבקרים מצביעים על דילמה וקובעים רמת ביטחון ראשונית</div>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <div class="step-title">המנחה פותח</div>
+          <div class="step-desc">מנחה אנושי יוצר אנרגיה והקשר</div>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <div class="step-title">הקצאת חכמים</div>
+          <div class="step-desc">AI מקצה דמויות היסטוריות לצוותים האנושיים</div>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <div class="step-title">דיון</div>
+          <div class="step-desc">סיבובים מובנים של טיעונים, שאלות והבהרות</div>
+        </div>
+        <div class="step">
+          <span class="step-num">05</span>
+          <div class="step-title">הערכה מחדש</div>
+          <div class="step-desc">מעקב אחר שינויים ברמת הביטחון ובנקודות המבט</div>
+        </div>
+        <div class="step">
+          <span class="step-num">06</span>
+          <div class="step-title">תובנות</div>
+          <div class="step-desc">סיכום דיגיטלי אישי עם 3 תובנות ושאלת רפלקציה</div>
+        </div>
       </div>
-      <p class="body-text reveal reveal-d3" style="margin-top: 16px; font-size: 18px;">לולאה מובנית וחוזרת של 25 דקות.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 6: The Architecture (Roles vs. Personas) -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 6: The Architecture (Roles vs. Personas)
+     ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content split">
     <div>
       <p class="label reveal">System Design</p>
-      <h2 class="reveal reveal-d1">Role-Based<br>Architecture</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>Persona and Role separated</li>
-        <li>A persona steps into different functional roles per session</li>
-        <li>Humans and AI swap roles seamlessly</li>
+      <h2 class="reveal r1">Role-Based<br>Architecture</h2>
+      <p class="body-text reveal r2">Not a chatbot array. A layered system built on 13 Talmudic Thinking Modes, separating who speaks from how they think.</p>
+      <ul class="bullets reveal r3">
+        <li><strong>Persona</strong> is the character: Rambam, Golda Meir, Herzl</li>
+        <li><strong>Role</strong> is the function: Facilitator, Devil's Advocate, Research Agent</li>
+        <li>Humans and AI swap roles seamlessly within the same session</li>
       </ul>
+      <p class="body-sm reveal r4">The system actively fact-checks, filters for cultural sensitivity, and tracks logical contradictions in real-time.</p>
     </div>
-    <img src="slides/slide-06/hero.png" alt="Architecture" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-06/hero.png" alt="Architecture" class="hero-img reveal r4">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-06/hero.png" alt="ארכיטקטורה" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-06/hero.png" alt="ארכיטקטורה" class="hero-img reveal r4">
     <div>
       <p class="label reveal">עיצוב מערכת</p>
-      <h2 class="reveal reveal-d1">ארכיטקטורה<br>מבוססת תפקידים</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>פרסונה ותפקיד מופרדים</li>
-        <li>פרסונה נכנסת לתפקידים פונקציונליים שונים בכל מפגש</li>
-        <li>בני אדם ובינה מלאכותית מחליפים תפקידים בצורה חלקה</li>
+      <h2 class="reveal r1">ארכיטקטורה<br>מבוססת תפקידים</h2>
+      <p class="body-text reveal r2">לא מערך צ'אטבוטים. מערכת שכבתית הבנויה על 13 מצבי חשיבה תלמודיים, המפרידה בין מי מדבר לבין איך הוא חושב.</p>
+      <ul class="bullets reveal r3">
+        <li><strong>פרסונה</strong> היא הדמות: רמב"ם, גולדה מאיר, הרצל</li>
+        <li><strong>תפקיד</strong> הוא הפונקציה: מנחה, פרקליט השטן, סוכן מחקר</li>
+        <li>בני אדם ו-AI מחליפים תפקידים בצורה חלקה באותו מפגש</li>
       </ul>
+      <p class="body-sm reveal r4">המערכת בודקת עובדות, מסננת רגישות תרבותית ועוקבת אחר סתירות לוגיות בזמן אמת.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 7: Sample Session (Make It Real) + Play Demo -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 7: Sample Session (Make It Real) + Play Demo
+     ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content split">
     <div>
-      <p class="label reveal">Live Demo</p>
-      <h2 class="reveal reveal-d1">The Goring Ox</h2>
-      <p class="body-text reveal reveal-d2">Who is liable when an autonomous vehicle causes a fatal accident?</p>
-      <div class="thinker-row reveal reveal-d3">
+      <p class="label reveal">Live Example</p>
+      <h2 class="reveal r1">The Goring Ox</h2>
+      <p class="body-text reveal r2">We modernize the Talmudic "Goring Ox" into today's reality: Who is liable when an autonomous vehicle causes a fatal accident?</p>
+      <div class="thinkers reveal r3">
         <span class="thinker">Rambam: Systemic Causation</span>
-        <span class="thinker">Golda: Legal Boundaries</span>
-        <span class="thinker">Hillel: Compassion</span>
+        <span class="thinker">Shammai: Challenge Assumptions</span>
+        <span class="thinker">Herzl: Future Solutions</span>
       </div>
-      <div class="reveal reveal-d4" style="margin-top: 24px;">
-        <button class="demo-btn" onclick="window.open('https://sanhedrin-demo.onrender.com','_blank')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>Play Demo
-        </button>
+      <p class="body-sm reveal r4">The Research Agent injects real-time statistics. No tribal politics. Pure ethical gray zone.</p>
+      <div class="reveal r5" style="margin-top: 20px;">
+        <a class="cta-btn-outline" href="https://sanhedrin-demo.onrender.com" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Play Demo
+        </a>
       </div>
     </div>
-    <img src="slides/slide-07/hero.png" alt="Goring Ox session" class="hero-img reveal reveal-d4">
+    <img src="slides/slide-07/hero.png" alt="Goring Ox session" class="hero-img reveal r4">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-07/hero.png" alt="השור שנגח" class="hero-img reveal reveal-d4">
+    <img src="slides/slide-07/hero.png" alt="השור שנגח" class="hero-img reveal r4">
     <div>
-      <p class="label reveal">הדגמה חיה</p>
-      <h2 class="reveal reveal-d1">השור שנגח</h2>
-      <p class="body-text reveal reveal-d2">מי אחראי כשרכב אוטונומי גורם לתאונה קטלנית?</p>
-      <div class="thinker-row reveal reveal-d3">
+      <p class="label reveal">דוגמה חיה</p>
+      <h2 class="reveal r1">השור שנגח</h2>
+      <p class="body-text reveal r2">אנחנו מחדשים את "השור שנגח" התלמודי למציאות של היום: מי אחראי כשרכב אוטונומי גורם לתאונה קטלנית?</p>
+      <div class="thinkers reveal r3">
         <span class="thinker">רמב"ם: סיבתיות מערכתית</span>
-        <span class="thinker">גולדה: גבולות משפטיים</span>
-        <span class="thinker">הלל: חמלה</span>
+        <span class="thinker">שמאי: אתגור הנחות</span>
+        <span class="thinker">הרצל: פתרונות עתידיים</span>
       </div>
-      <div class="reveal reveal-d4" style="margin-top: 24px;">
-        <button class="demo-btn" onclick="window.open('https://sanhedrin-demo.onrender.com','_blank')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px; margin-left: 8px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>הפעל דמו
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SLIDE 8: Dilemma Library & Session Flow -->
-<!-- ============================================================ -->
-<section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="en-content split">
-    <div>
-      <p class="label reveal">Content Library</p>
-      <h2 class="reveal reveal-d1">20+ Scenarios</h2>
-      <ul class="pair-list reveal reveal-d2">
-        <li><span>Goring Ox</span> / Autonomous Vehicles</li>
-        <li><span>Lashon Hara</span> / Cyberbullying</li>
-        <li><span>Medical Ethics</span> / Organ Markets</li>
-      </ul>
-      <div class="timeline-row reveal reveal-d3">
-        <span class="timeline-block">0-2 min: Intake</span>
-        <span class="timeline-block">2-4 min: Opening</span>
-        <span class="timeline-block">4-19 min: Deliberation</span>
-        <span class="timeline-block">19-23 min: Closing</span>
-        <span class="timeline-block">23-25 min: Takeaway</span>
-      </div>
-    </div>
-    <img src="slides/slide-08/hero.png" alt="Scenario library" class="hero-img reveal reveal-d4">
-  </div>
-  <div class="he-content split">
-    <img src="slides/slide-08/hero.png" alt="ספריית תרחישים" class="hero-img reveal reveal-d4">
-    <div>
-      <p class="label reveal">ספריית תוכן</p>
-      <h2 class="reveal reveal-d1">20+ תרחישים</h2>
-      <ul class="pair-list reveal reveal-d2">
-        <li><span>השור שנגח</span> / רכבים אוטונומיים</li>
-        <li><span>לשון הרע</span> / בריונות ברשת</li>
-        <li><span>אתיקה רפואית</span> / שוק איברים</li>
-      </ul>
-      <div class="timeline-row reveal reveal-d3">
-        <span class="timeline-block">0-2 דק: קליטה</span>
-        <span class="timeline-block">2-4 דק: פתיחה</span>
-        <span class="timeline-block">4-19 דק: דיון</span>
-        <span class="timeline-block">19-23 דק: סיכום</span>
-        <span class="timeline-block">23-25 דק: תובנות</span>
+      <p class="body-sm reveal r4">סוכן המחקר מזריק סטטיסטיקות בזמן אמת. ללא פוליטיקה שבטית. אזור אפור אתי טהור.</p>
+      <div class="reveal r5" style="margin-top: 20px;">
+        <a class="cta-btn-outline" href="https://sanhedrin-demo.onrender.com" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          הפעל דמו
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 9: Experience Modes (centered) -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 8: Experience Modes
+     ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content centered">
-    <h2 class="reveal">One Platform, Two Modes</h2>
-    <div class="mode-pair reveal reveal-d1">
-      <div class="mode-box">
-        <h3>Machloket</h3>
-        <p>Pedagogical, collaborative inquiry.<br>Ideal for school groups.</p>
+    <p class="label reveal">Platform Versatility</p>
+    <h2 class="reveal r1">One Platform.<br>Two Modes.</h2>
+    <div class="mode-grid reveal r2">
+      <div class="mode-card">
+        <h3>Culture of Disagreement</h3>
+        <p>Pedagogical and collaborative inquiry. Real-time analytics track a "Polarization Score" and a constructive dialogue index. Process-focused, open-ended exploration.</p>
+        <div class="mode-tag">Ideal for school groups</div>
       </div>
-      <div class="mode-box">
-        <h3>Debate</h3>
-        <p>Competitive, outcome-focused rhetoric.<br>Ideal for visitors and corporate.</p>
+      <div class="mode-card">
+        <h3>Debate Mode</h3>
+        <p>Competitive, outcome-focused rhetoric with structured rounds, opening statements, rebuttals, and audience voting. High-energy, gamified dynamic.</p>
+        <div class="mode-tag">Ideal for visitors and corporate</div>
       </div>
     </div>
-    <img src="slides/slide-09/hero.png" alt="Two modes" class="hero-img-centered reveal reveal-d2">
+    <p class="body-sm reveal r3" style="text-align: center; max-width: 700px; margin-top: 16px;">The same technological infrastructure serves both the pedagogical vision and the museum's need for a structured attraction.</p>
   </div>
   <div class="he-content centered">
-    <h2 class="reveal">פלטפורמה אחת, שני מצבים</h2>
-    <div class="mode-pair reveal reveal-d1">
-      <div class="mode-box">
-        <h3>מחלוקת</h3>
-        <p>פדגוגי, חקירה משותפת.<br>אידיאלי לקבוצות בי"ס.</p>
+    <p class="label reveal">גמישות פלטפורמה</p>
+    <h2 class="reveal r1">פלטפורמה אחת.<br>שני מצבים.</h2>
+    <div class="mode-grid reveal r2">
+      <div class="mode-card">
+        <h3>תרבות המחלוקת</h3>
+        <p>חקירה פדגוגית ושיתופית. אנליטיקה בזמן אמת עוקבת אחר "ציון קיטוב" ומדד דיאלוג בונה. ממוקד תהליך, חקירה פתוחה.</p>
+        <div class="mode-tag">אידיאלי לקבוצות בי"ס</div>
       </div>
-      <div class="mode-box">
-        <h3>דיבייט</h3>
-        <p>תחרותי, רטוריקה ממוקדת תוצאה.<br>אידיאלי למבקרים וארגונים.</p>
+      <div class="mode-card">
+        <h3>מצב דיבייט</h3>
+        <p>רטוריקה תחרותית ממוקדת תוצאה עם סיבובים מובנים, הצהרות פתיחה, תגובות והצבעת קהל. דינמיקה אנרגטית ומגוימפיקציה.</p>
+        <div class="mode-tag">אידיאלי למבקרים וארגונים</div>
       </div>
     </div>
-    <img src="slides/slide-09/hero.png" alt="שני מצבים" class="hero-img-centered reveal reveal-d2">
+    <p class="body-sm reveal r3" style="text-align: center; max-width: 700px; margin-top: 16px;">אותה תשתית טכנולוגית משרתת גם את החזון הפדגוגי וגם את צורך המוזיאון באטרקציה מובנית.</p>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 10: The Physical Space -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 9: The Physical Space
+     ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="en-content split">
     <div>
       <p class="label reveal">Spatial Design</p>
-      <h2 class="reveal reveal-d1">The Physical Space</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>Circular room for civic discourse</li>
-        <li>Spectators are active judges, not passive watchers</li>
-        <li>Immersive display wall as the visual centerpiece</li>
-      </ul>
+      <h2 class="reveal r1">The Physical<br>Space</h2>
+      <p class="body-text reveal r2">A circular civic discourse arena designed for immersive engagement. Not a passive "aquarium" - every person in the room participates.</p>
+      <div class="space-features reveal r3">
+        <span class="space-feat">12 Interactive Kiosks</span>
+        <span class="space-feat">Sage Portrait Screens</span>
+        <span class="space-feat">Host Stand</span>
+        <span class="space-feat">Dynamic Spotlights</span>
+      </div>
+      <p class="body-sm reveal r4">Peripheral audiences participate as "The Sanhedrin" via mobile devices with reaction buttons and voting mechanics.</p>
     </div>
-    <img src="slides/slide-10/hero.png" alt="Physical space" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-10/hero.png" alt="Physical space" class="hero-img reveal r4">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-10/hero.png" alt="המרחב הפיזי" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-10/hero.png" alt="המרחב הפיזי" class="hero-img reveal r4">
     <div>
       <p class="label reveal">עיצוב מרחבי</p>
-      <h2 class="reveal reveal-d1">המרחב הפיזי</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>חדר עגול לשיח אזרחי</li>
-        <li>צופים הם שופטים פעילים, לא צופים פסיביים</li>
-        <li>קיר תצוגה אימרסיבי כמרכז החזותי</li>
-      </ul>
+      <h2 class="reveal r1">המרחב<br>הפיזי</h2>
+      <p class="body-text reveal r2">זירת שיח אזרחי מעגלית שתוכננה למעורבות אימרסיבית. לא "אקווריום" פסיבי - כל אדם בחדר משתתף.</p>
+      <div class="space-features reveal r3">
+        <span class="space-feat">12 קיוסקים אינטראקטיביים</span>
+        <span class="space-feat">מסכי דיוקן חכמים</span>
+        <span class="space-feat">עמדת מנחה</span>
+        <span class="space-feat">תאורה דינמית</span>
+      </div>
+      <p class="body-sm reveal r4">קהל היקפי משתתף כ"הסנהדרין" דרך מכשירים ניידים עם כפתורי תגובה ומכניקת הצבעה.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 11: Proof of Concept - The Rambam -->
-<!-- ACT 3: WHY IT WORKS -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 10: Proof of Concept - The Rambam
+     ACT 3: WHY IT WORKS
+     ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="en-content split">
     <div>
       <p class="label reveal">Proven Foundation</p>
-      <h2 class="reveal reveal-d1">We Already<br>Did This</h2>
-      <p class="body-text reveal reveal-d2">The Rambam exhibit validated our AI's conversational depth. Expert Micha Goodman confirmed the quality.</p>
-      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">Rambam was a monologue. Sanhedrin is multi-agent dialogue: the next evolution.</p>
+      <h2 class="reveal r1">We Already<br>Did This.</h2>
+      <p class="body-text reveal r2">The Maimonides (Rambam) interactive exhibit serves as our proven sibling project. Expert Micha Goodman validated the conversational quality and depth of our AI model.</p>
+      <p class="body-text reveal r3" style="margin-top: 16px; color: var(--accent-dim); font-style: italic;">Rambam was a monologue. The Sanhedrin is the natural evolution: two or more Rambams in dialogue.</p>
     </div>
-    <img src="slides/slide-11/hero.png" alt="Proof of concept" class="hero-img reveal reveal-d4">
+    <img src="slides/slide-11/hero.png" alt="Proof of concept" class="hero-img reveal r4">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-11/hero.png" alt="הוכחת היתכנות" class="hero-img reveal reveal-d4">
+    <img src="slides/slide-11/hero.png" alt="הוכחת היתכנות" class="hero-img reveal r4">
     <div>
       <p class="label reveal">יסוד מוכח</p>
-      <h2 class="reveal reveal-d1">כבר עשינו<br>את זה</h2>
-      <p class="body-text reveal reveal-d2">תערוכת הרמב"ם אימתה את העומק השיחתי של הבינה המלאכותית שלנו. המומחה מיכה גודמן אישר את האיכות.</p>
-      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">רמב"ם היה מונולוג. סנהדרין הוא דיאלוג רב-סוכנים: האבולוציה הבאה.</p>
+      <h2 class="reveal r1">כבר עשינו<br>את זה.</h2>
+      <p class="body-text reveal r2">תערוכת הרמב"ם האינטראקטיבית משמשת כפרויקט אח מוכח שלנו. המומחה מיכה גודמן אימת את איכות ועומק השיחה של מודל הבינה המלאכותית שלנו.</p>
+      <p class="body-text reveal r3" style="margin-top: 16px; color: var(--accent-dim); font-style: italic;">רמב"ם היה מונולוג. הסנהדרין הוא האבולוציה הטבעית: שניים או יותר רמב"מים בדיאלוג.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 12: What's Solved vs. What's Ahead -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 11: What's Solved vs. What's Ahead
+     ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="en-content split">
     <div>
       <p class="label reveal">Risk Assessment</p>
-      <h2 class="reveal reveal-d1">70% Solved.<br>30% Ahead.</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>Solved: Agent quality, protocols, characters, content framework</li>
-        <li>Ahead: A2A real-time interaction and orchestration</li>
-        <li>Mitigation: Phase 1 POC via multi-agent WhatsApp group</li>
+      <h2 class="reveal r1">70% Solved.<br>30% Ahead.</h2>
+      <ul class="bullets reveal r2">
+        <li><strong>Solved:</strong> Individual agent quality, conversation protocols, character modeling, and the content framework</li>
+        <li><strong>Ahead:</strong> A2A2H orchestration: getting AI agents to debate each other while synthesizing outputs for human interaction</li>
+        <li><strong>Mitigation:</strong> Proving the final 30% now via a Phase 1 POC using a multi-agent WhatsApp group to test live dynamics</li>
       </ul>
     </div>
-    <img src="slides/slide-12/hero.png" alt="Progress assessment" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-12/hero.png" alt="Progress assessment" class="hero-img reveal r3">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-12/hero.png" alt="הערכת התקדמות" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-12/hero.png" alt="הערכת התקדמות" class="hero-img reveal r3">
     <div>
       <p class="label reveal">הערכת סיכונים</p>
-      <h2 class="reveal reveal-d1">70% פתור.<br>30% קדימה.</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>פתור: איכות סוכנים, פרוטוקולים, דמויות, מסגרת תוכן</li>
-        <li>קדימה: אינטראקציה ותזמור A2A בזמן אמת</li>
-        <li>מיטיגציה: POC שלב 1 דרך קבוצת WhatsApp רב-סוכנית</li>
+      <h2 class="reveal r1">70% פתור.<br>30% קדימה.</h2>
+      <ul class="bullets reveal r2">
+        <li><strong>פתור:</strong> איכות סוכנים בודדים, פרוטוקולי שיחה, מידול דמויות ומסגרת תוכן</li>
+        <li><strong>קדימה:</strong> תזמור A2A2H - לגרום לסוכני AI להתווכח זה עם זה תוך סינתוז פלטים לאינטראקציה אנושית</li>
+        <li><strong>מיטיגציה:</strong> מוכיחים את ה-30% האחרונים כעת דרך POC שלב 1 בקבוצת WhatsApp רב-סוכנית לבדיקת דינמיקה חיה</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 13: Competitive Advantage -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 12: Competitive Advantage (Matrix)
+     ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
-  <div class="en-content split">
+  <div class="en-content split-wide">
     <div>
       <p class="label reveal">Market Position</p>
-      <h2 class="reveal reveal-d1">The Moat</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>Multi-perspective (5-7 characters)</li>
-        <li>No single "right answer"</li>
-        <li>Orchestrated meta-logic via 13 Thinking Modes</li>
-        <li>Institutional backing (MOTJ)</li>
-      </ul>
+      <h2 class="reveal r1">The Moat</h2>
+      <table class="matrix reveal r2">
+        <thead>
+          <tr><th>Capability</th><th>Chatbots</th><th>Museums</th><th>Debate AI</th><th>Sanhedrin</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Multi-perspective (5-7 characters)</td><td class="x">-</td><td class="x">-</td><td class="x">-</td><td class="check">Yes</td></tr>
+          <tr><td>No single "right answer"</td><td class="x">-</td><td class="check">Yes</td><td class="x">-</td><td class="check">Yes</td></tr>
+          <tr><td>13 orchestrated Thinking Modes</td><td class="x">-</td><td class="x">-</td><td class="x">-</td><td class="check">Yes</td></tr>
+          <tr><td>Physical immersive space</td><td class="x">-</td><td class="check">Yes</td><td class="x">-</td><td class="check">Yes</td></tr>
+          <tr class="highlight"><td>Institutional backing (MOTJ)</td><td class="x">-</td><td class="check">Yes</td><td class="x">-</td><td class="check">Yes</td></tr>
+        </tbody>
+      </table>
+      <p class="body-sm reveal r3">The innovation is in the integration of agentic systems with structured dispute methodology. We are not building new LLMs. We are combining existing technology in a new way.</p>
     </div>
-    <img src="slides/slide-13/hero.png" alt="Competitive advantage" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-13/hero.png" alt="Competitive advantage" class="hero-img-sm reveal r3">
   </div>
-  <div class="he-content split">
-    <img src="slides/slide-13/hero.png" alt="יתרון תחרותי" class="hero-img reveal reveal-d3">
+  <div class="he-content split-wide">
+    <img src="slides/slide-13/hero.png" alt="יתרון תחרותי" class="hero-img-sm reveal r3">
     <div>
       <p class="label reveal">מיקום בשוק</p>
-      <h2 class="reveal reveal-d1">החפיר</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>ריבוי נקודות מבט (5-7 דמויות)</li>
-        <li>אין תשובה "נכונה" אחת</li>
-        <li>מטא-לוגיקה מתוזמרת דרך 13 מצבי חשיבה</li>
-        <li>גיבוי מוסדי (MOTJ)</li>
-      </ul>
+      <h2 class="reveal r1">החפיר</h2>
+      <table class="matrix reveal r2">
+        <thead>
+          <tr><th>יכולת</th><th>צ'אטבוטים</th><th>מוזיאונים</th><th>AI דיבייט</th><th>סנהדרין</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ריבוי נקודות מבט (5-7 דמויות)</td><td class="x">-</td><td class="x">-</td><td class="x">-</td><td class="check">V</td></tr>
+          <tr><td>אין תשובה "נכונה" אחת</td><td class="x">-</td><td class="check">V</td><td class="x">-</td><td class="check">V</td></tr>
+          <tr><td>13 מצבי חשיבה מתוזמרים</td><td class="x">-</td><td class="x">-</td><td class="x">-</td><td class="check">V</td></tr>
+          <tr><td>מרחב אימרסיבי פיזי</td><td class="x">-</td><td class="check">V</td><td class="x">-</td><td class="check">V</td></tr>
+          <tr class="highlight"><td>גיבוי מוסדי (MOTJ)</td><td class="x">-</td><td class="check">V</td><td class="x">-</td><td class="check">V</td></tr>
+        </tbody>
+      </table>
+      <p class="body-sm reveal r3">החדשנות היא באינטגרציה של מערכות סוכנים עם מתודולוגיה מובנית של מחלוקת. אנחנו לא בונים LLMs חדשים. אנחנו משלבים טכנולוגיה קיימת בדרך חדשה.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 14: EdTech Platform Play -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 13: EdTech Platform Play
+     ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="en-content split">
     <div>
       <p class="label reveal">Expanding TAM</p>
-      <h2 class="reveal reveal-d1">The Debate Gym</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>Museum: Premium immersive experience</li>
-        <li>Schools: Curriculum integration</li>
-        <li>Home: Async debate training with AI analysis</li>
+      <h2 class="reveal r1">The Debate Gym</h2>
+      <p class="body-text reveal r2">This is not just a museum exhibit. It is an education technology platform scalable far beyond the physical walls.</p>
+      <ul class="bullets reveal r3">
+        <li><strong>Museum:</strong> The premium, peak immersive live experience</li>
+        <li><strong>Schools:</strong> Curriculum integration via structured programs</li>
+        <li><strong>Home / Online:</strong> Async debate training tools with AI analysis on rhetoric and argumentation</li>
       </ul>
     </div>
-    <img src="slides/slide-14/hero.png" alt="EdTech platform" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-14/hero.png" alt="EdTech platform" class="hero-img reveal r4">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-14/hero.png" alt="פלטפורמת EdTech" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-14/hero.png" alt="פלטפורמת EdTech" class="hero-img reveal r4">
     <div>
       <p class="label reveal">הרחבת TAM</p>
-      <h2 class="reveal reveal-d1">חדר הכושר<br>לדיבייט</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>מוזיאון: חוויה אימרסיבית פרימיום</li>
-        <li>בתי ספר: שילוב בתוכנית לימודים</li>
-        <li>בית: אימון דיבייט אסינכרוני עם ניתוח AI</li>
+      <h2 class="reveal r1">חדר הכושר<br>לדיבייט</h2>
+      <p class="body-text reveal r2">זו לא רק תערוכת מוזיאון. זו פלטפורמת טכנולוגיית חינוך הניתנת להרחבה הרבה מעבר לקירות הפיזיים.</p>
+      <ul class="bullets reveal r3">
+        <li><strong>מוזיאון:</strong> חוויה חיה אימרסיבית פרימיום</li>
+        <li><strong>בתי ספר:</strong> שילוב בתוכנית לימודים דרך תוכניות מובנות</li>
+        <li><strong>בית / אונליין:</strong> כלי אימון דיבייט אסינכרוניים עם ניתוח AI על רטוריקה וטיעון</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 15: Roadmap & Milestones -->
-<!-- ACT 4: THE ASK -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 14: Roadmap & Milestones
+     ACT 4: THE ASK
+     ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="en-content split">
     <div>
       <p class="label reveal">Execution Plan</p>
-      <h2 class="reveal reveal-d1">Roadmap</h2>
-      <div class="phase-row reveal reveal-d2">
-        <span class="phase-box">Phase 1: POC (Now) - WhatsApp, 3 agents + 2 humans</span>
-        <span class="phase-box">Phase 2: Demo (3mo) - 5 characters, text-based</span>
-        <span class="phase-box">Phase 3: Prototype (6mo) - Physical space mockup</span>
-        <span class="phase-box">Phase 4: Launch (12mo) - Full deployment</span>
+      <h2 class="reveal r1">Roadmap</h2>
+      <div class="phases reveal r2">
+        <div class="phase">
+          <div class="phase-label">Year 1</div>
+          <div class="phase-title">Learn</div>
+          <div class="phase-desc">MVP with core orchestrators and initial character set. Pilot with visitors to validate A2A mechanics.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-label">Year 2</div>
+          <div class="phase-title">Scale</div>
+          <div class="phase-desc">Expand character library, build pre-set scenario catalog, and grow visitor throughput.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-label">Year 3</div>
+          <div class="phase-title">Innovate</div>
+          <div class="phase-desc">Launch remote digital versions, B2B school integration, and target positive ROI.</div>
+        </div>
       </div>
     </div>
-    <img src="slides/slide-15/hero.png" alt="Roadmap" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-15/hero.png" alt="Roadmap" class="hero-img reveal r3">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-15/hero.png" alt="מפת דרכים" class="hero-img reveal reveal-d3">
+    <img src="slides/slide-15/hero.png" alt="מפת דרכים" class="hero-img reveal r3">
     <div>
       <p class="label reveal">תוכנית ביצוע</p>
-      <h2 class="reveal reveal-d1">מפת דרכים</h2>
-      <div class="phase-row reveal reveal-d2">
-        <span class="phase-box">שלב 1: POC (עכשיו) - WhatsApp, 3 סוכנים + 2 בני אדם</span>
-        <span class="phase-box">שלב 2: דמו (3 חודשים) - 5 דמויות, טקסט</span>
-        <span class="phase-box">שלב 3: אב טיפוס (6 חודשים) - מוקאפ מרחב פיזי</span>
-        <span class="phase-box">שלב 4: השקה (12 חודשים) - פריסה מלאה</span>
+      <h2 class="reveal r1">מפת דרכים</h2>
+      <div class="phases reveal r2">
+        <div class="phase">
+          <div class="phase-label">שנה 1</div>
+          <div class="phase-title">למד</div>
+          <div class="phase-desc">MVP עם מתזמרים ליבתיים וסט דמויות ראשוני. פיילוט עם מבקרים לאימות מכניקת A2A.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-label">שנה 2</div>
+          <div class="phase-title">הרחב</div>
+          <div class="phase-desc">הרחבת ספריית דמויות, בניית קטלוג תרחישים והגדלת תפוקת מבקרים.</div>
+        </div>
+        <div class="phase">
+          <div class="phase-label">שנה 3</div>
+          <div class="phase-title">חדש</div>
+          <div class="phase-desc">השקת גרסאות דיגיטליות מרחוק, שילוב B2B לבתי ספר ומיקוד ב-ROI חיובי.</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 16: Business Case & Research Hub -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 15: Business Case & Research Hub
+     ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="en-content split">
     <div>
-      <p class="label reveal">Financial ROI</p>
-      <h2 class="reveal reveal-d1">Business Case</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>Museum Admission</li>
-        <li>Premium VIP Tiers</li>
-        <li>Licensing</li>
-        <li>EdTech Subscriptions</li>
+      <p class="label reveal">Strategic ROI</p>
+      <h2 class="reveal r1">Business Case</h2>
+      <ul class="bullets reveal r2">
+        <li><strong>Revenue:</strong> Museum admission, premium VIP tiers, licensing, and EdTech subscriptions</li>
+        <li><strong>Research Hub:</strong> A privacy-first, anonymized data repository on societal moral reasoning, generating publishable insights</li>
+        <li><strong>Partnerships:</strong> Potential academic collaborations with leading universities for research and validation</li>
       </ul>
-      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">Research Hub: Anonymized data on societal moral reasoning as IP</p>
+      <p class="body-sm reveal r3">Funding covers tech architecture, content development, and AV spatial build-out.</p>
     </div>
-    <img src="slides/slide-16/hero.png" alt="Business case" class="hero-img reveal reveal-d4">
+    <img src="slides/slide-16/hero.png" alt="Business case" class="hero-img reveal r4">
   </div>
   <div class="he-content split">
-    <img src="slides/slide-16/hero.png" alt="מקרה עסקי" class="hero-img reveal reveal-d4">
+    <img src="slides/slide-16/hero.png" alt="מקרה עסקי" class="hero-img reveal r4">
     <div>
-      <p class="label reveal">ROI פיננסי</p>
-      <h2 class="reveal reveal-d1">מקרה עסקי</h2>
-      <ul class="bullets reveal reveal-d2">
-        <li>כניסה למוזיאון</li>
-        <li>שכבות VIP פרימיום</li>
-        <li>רישוי</li>
-        <li>מנויי EdTech</li>
+      <p class="label reveal">ROI אסטרטגי</p>
+      <h2 class="reveal r1">מקרה עסקי</h2>
+      <ul class="bullets reveal r2">
+        <li><strong>הכנסות:</strong> כניסה למוזיאון, שכבות VIP פרימיום, רישוי ומנויי EdTech</li>
+        <li><strong>מרכז מחקר:</strong> מאגר נתונים אנונימי ומוגן פרטיות על חשיבה מוסרית חברתית, מייצר תובנות פרסומיות</li>
+        <li><strong>שותפויות:</strong> שיתופי פעולה אקדמיים פוטנציאליים עם אוניברסיטאות מובילות למחקר ואימות</li>
       </ul>
-      <p class="body-text reveal reveal-d3" style="margin-top: 12px; font-size: 20px; color: var(--accent-dim);">מרכז מחקר: נתונים אנונימיים על חשיבה מוסרית חברתית כקניין רוחני</p>
+      <p class="body-sm reveal r3">המימון מכסה ארכיטקטורה טכנולוגית, פיתוח תוכן ובניית מרחב AV.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 17: The Team (centered) -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 16: The Team
+     ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="en-content centered">
-    <h2 class="reveal">The Team</h2>
-    <div class="team-labels reveal reveal-d1">
-      <span class="team-label"><strong>Daniel</strong> - Project Lead / Strategy</span>
-      <span class="team-label"><strong>Jonathan</strong> - Tech Architecture</span>
-      <span class="team-label"><strong>Doron</strong> - Knowledge Holder</span>
-      <span class="team-label"><strong>The Missing Piece:</strong> World-Renowned Debate Expert</span>
+    <p class="label reveal">Who We Are</p>
+    <h2 class="reveal r1">The Team</h2>
+    <div class="team-grid reveal r2">
+      <div class="team-card">
+        <div class="team-name">Jonathan</div>
+        <div class="team-role">Tech Architecture</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Daniel</div>
+        <div class="team-role">Project Strategy</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Doron</div>
+        <div class="team-role">Knowledge & Design</div>
+      </div>
+      <div class="team-card missing">
+        <div class="team-name">The Missing Piece</div>
+        <div class="team-role">World-renowned Debate Content Expert to design competitive mode mechanics</div>
+      </div>
     </div>
-    <img src="slides/slide-17/hero.png" alt="The team" class="hero-img-centered reveal reveal-d2">
+    <img src="slides/slide-17/hero.png" alt="The team" class="hero-img-centered reveal r3" style="max-height: 36vh;">
   </div>
   <div class="he-content centered">
-    <h2 class="reveal">הצוות</h2>
-    <div class="team-labels reveal reveal-d1">
-      <span class="team-label"><strong>דניאל</strong> - ראש פרויקט / אסטרטגיה</span>
-      <span class="team-label"><strong>יונתן</strong> - ארכיטקטורה טכנולוגית</span>
-      <span class="team-label"><strong>דורון</strong> - בעל ידע</span>
-      <span class="team-label"><strong>החלק החסר:</strong> מומחה דיבייט בעל שם עולמי</span>
+    <p class="label reveal">מי אנחנו</p>
+    <h2 class="reveal r1">הצוות</h2>
+    <div class="team-grid reveal r2">
+      <div class="team-card">
+        <div class="team-name">יונתן</div>
+        <div class="team-role">ארכיטקטורה טכנולוגית</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">דניאל</div>
+        <div class="team-role">אסטרטגיית פרויקט</div>
+      </div>
+      <div class="team-card">
+        <div class="team-name">דורון</div>
+        <div class="team-role">ידע ועיצוב</div>
+      </div>
+      <div class="team-card missing">
+        <div class="team-name">החלק החסר</div>
+        <div class="team-role">מומחה תוכן דיבייט בעל שם עולמי לעיצוב מכניקת המצב התחרותי</div>
+      </div>
     </div>
-    <img src="slides/slide-17/hero.png" alt="הצוות" class="hero-img-centered reveal reveal-d2">
+    <img src="slides/slide-17/hero.png" alt="הצוות" class="hero-img-centered reveal r3" style="max-height: 36vh;">
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SLIDE 18: Closing / CTA (centered) -->
-<!-- ============================================================ -->
+<!-- ============================================================
+     SLIDE 17: Closing / CTA
+     ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="en-content centered">
-    <img src="slides/slide-18/hero.png" alt="Closing" class="hero-img-centered reveal" style="margin-top: 0; margin-bottom: 24px;">
-    <div class="cta-quote reveal reveal-d1">The Sanhedrin didn't give answers. They gave people the tools to think. We're bringing that to the 21st century.</div>
-    <p class="body-text reveal reveal-d2" style="text-align: center; margin-top: 16px;">Fund Phase 1. Schedule the deep-dive. Give us the green light.</p>
-    <button class="cta-btn reveal reveal-d3">Get in Touch</button>
+    <img src="slides/slide-18/hero.png" alt="Closing" class="hero-img-centered reveal" style="max-height: 38vh; margin-bottom: 20px;">
+    <div class="cta-quote reveal r1">The Sanhedrin didn't give answers. They gave people the tools to think. We're bringing that to the 21st century.</div>
+    <p class="body-text reveal r2" style="text-align: center; margin-top: 20px; max-width: 640px;">Give us the green light to move past the 70% mark, fund the Phase 1 POC, and schedule the deep-dive technical review.</p>
+    <div class="cta-actions reveal r3">
+      <button class="cta-btn">Get in Touch</button>
+      <a class="cta-btn-outline" href="https://sanhedrin-demo.onrender.com" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Try the Demo
+      </a>
+    </div>
   </div>
   <div class="he-content centered">
-    <img src="slides/slide-18/hero.png" alt="סיום" class="hero-img-centered reveal" style="margin-top: 0; margin-bottom: 24px;">
-    <div class="cta-quote reveal reveal-d1">הסנהדרין לא נתנו תשובות. הם נתנו לאנשים את הכלים לחשוב. אנחנו מביאים את זה למאה ה-21.</div>
-    <p class="body-text reveal reveal-d2" style="text-align: center; margin-top: 16px;">ממנו שלב 1. קבעו צלילה עמוקה. תנו לנו אור ירוק.</p>
-    <button class="cta-btn reveal reveal-d3">צרו קשר</button>
+    <img src="slides/slide-18/hero.png" alt="סיום" class="hero-img-centered reveal" style="max-height: 38vh; margin-bottom: 20px;">
+    <div class="cta-quote reveal r1">הסנהדרין לא נתנו תשובות. הם נתנו לאנשים את הכלים לחשוב. אנחנו מביאים את זה למאה ה-21.</div>
+    <p class="body-text reveal r2" style="text-align: center; margin-top: 20px; max-width: 640px;">תנו לנו אור ירוק לעבור את רף ה-70%, ממנו את POC שלב 1, וקבעו סקירה טכנית מעמיקה.</p>
+    <div class="cta-actions reveal r3">
+      <button class="cta-btn">צרו קשר</button>
+      <a class="cta-btn-outline" href="https://sanhedrin-demo.onrender.com" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        נסו את הדמו
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     APPENDIX SLIDES (accessible via navigation, not in main count display)
+     ============================================================ -->
+
+<!-- APPENDIX A: Technical Architecture -->
+<section class="slide" data-act="APPENDIX" data-appendix="true">
+  <div class="en-content centered" style="align-items: flex-start; text-align: left; max-width: 900px; margin: 0 auto;">
+    <p class="appendix-label reveal">Appendix A</p>
+    <h2 class="reveal r1" style="font-size: 44px;">Technical Architecture</h2>
+    <div class="appendix-content reveal r2">
+      <p><strong>Front-Facing Agents:</strong> Character avatars with assigned system roles, visible to participants. Each agent combines a Persona layer (personality, knowledge, speech patterns) with a Role layer (functional behavior, tool access, turn-taking rules).</p>
+      <p style="margin-top: 12px;"><strong>Orchestrator Agent:</strong> Controlled by the human facilitator via a backend dashboard. Manages turn flow, topic progression, and intervention triggers. Not visible to participants.</p>
+      <p style="margin-top: 12px;"><strong>Background Agents:</strong> Context engine, fact-checker, sentiment analyzer, and cultural sensitivity filter. All running in parallel during the session to maintain quality and safety.</p>
+      <p style="margin-top: 12px;"><strong>A2A2H Protocol:</strong> Agent-to-Agent-to-Human orchestration. AI agents debate each other in background threads while synthesizing outputs for the human-facing interaction layer.</p>
+    </div>
+  </div>
+  <div class="he-content centered" style="align-items: flex-start; text-align: right; max-width: 900px; margin: 0 auto;">
+    <p class="appendix-label reveal">נספח א</p>
+    <h2 class="reveal r1" style="font-size: 44px;">ארכיטקטורה טכנית</h2>
+    <div class="appendix-content reveal r2">
+      <p><strong>סוכנים חזיתיים:</strong> אווטארי דמויות עם תפקידי מערכת מוקצים, גלויים למשתתפים. כל סוכן משלב שכבת פרסונה (אישיות, ידע, דפוסי דיבור) עם שכבת תפקיד (התנהגות פונקציונלית, גישה לכלים, כללי תורות).</p>
+      <p style="margin-top: 12px;"><strong>סוכן מתזמר:</strong> נשלט על ידי המנחה האנושי דרך לוח בקרה. מנהל זרימת תורות, התקדמות נושאית וטריגרים להתערבות. לא גלוי למשתתפים.</p>
+      <p style="margin-top: 12px;"><strong>סוכני רקע:</strong> מנוע הקשר, בודק עובדות, מנתח סנטימנט ומסנן רגישות תרבותית. כולם רצים במקביל במהלך המפגש לשמירה על איכות ובטיחות.</p>
+      <p style="margin-top: 12px;"><strong>פרוטוקול A2A2H:</strong> תזמור סוכן-לסוכן-לאדם. סוכני AI מתווכחים זה עם זה בתהליכוני רקע תוך סינתוז פלטים לשכבת האינטראקציה האנושית.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPENDIX B: 13 Talmudic Thinking Modes -->
+<section class="slide" data-act="APPENDIX" data-appendix="true">
+  <div class="en-content centered" style="align-items: flex-start; text-align: left; max-width: 900px; margin: 0 auto;">
+    <p class="appendix-label reveal">Appendix B</p>
+    <h2 class="reveal r1" style="font-size: 44px;">13 Talmudic Thinking Modes</h2>
+    <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; margin-top: 16px;">
+      <p class="appendix-content"><strong>#1</strong> Disruption</p>
+      <p class="appendix-content"><strong>#8</strong> Integrative</p>
+      <p class="appendix-content"><strong>#2</strong> Analogical</p>
+      <p class="appendix-content"><strong>#9</strong> Ethical</p>
+      <p class="appendix-content"><strong>#3</strong> Contextual</p>
+      <p class="appendix-content"><strong>#10</strong> Solution-Oriented</p>
+      <p class="appendix-content"><strong>#4</strong> Interpretive</p>
+      <p class="appendix-content"><strong>#11</strong> Systemic</p>
+      <p class="appendix-content"><strong>#5</strong> Dialectical</p>
+      <p class="appendix-content"><strong>#12</strong> Imaginative</p>
+      <p class="appendix-content"><strong>#6</strong> Skeptical-Critical</p>
+      <p class="appendix-content"><strong>#13</strong> Meta-Cognitive</p>
+      <p class="appendix-content"><strong>#7</strong> Empathic</p>
+    </div>
+    <div class="appendix-content reveal r3" style="margin-top: 20px;">
+      <p><strong>System Roles:</strong> Nasi (Facilitator), Av Beit Din (Quality Control), Devil's Advocate, Research Agent, Synthesizer, Questioner, Context Agent. Each role maps to specific thinking modes and tool access patterns.</p>
+    </div>
+  </div>
+  <div class="he-content centered" style="align-items: flex-start; text-align: right; max-width: 900px; margin: 0 auto;">
+    <p class="appendix-label reveal">נספח ב</p>
+    <h2 class="reveal r1" style="font-size: 44px;">13 מצבי חשיבה תלמודיים</h2>
+    <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; margin-top: 16px;">
+      <p class="appendix-content"><strong>#1</strong> שיבוש</p>
+      <p class="appendix-content"><strong>#8</strong> אינטגרטיבי</p>
+      <p class="appendix-content"><strong>#2</strong> אנלוגי</p>
+      <p class="appendix-content"><strong>#9</strong> אתי</p>
+      <p class="appendix-content"><strong>#3</strong> הקשרי</p>
+      <p class="appendix-content"><strong>#10</strong> ממוקד פתרון</p>
+      <p class="appendix-content"><strong>#4</strong> פרשני</p>
+      <p class="appendix-content"><strong>#11</strong> מערכתי</p>
+      <p class="appendix-content"><strong>#5</strong> דיאלקטי</p>
+      <p class="appendix-content"><strong>#12</strong> דמיוני</p>
+      <p class="appendix-content"><strong>#6</strong> ספקני-ביקורתי</p>
+      <p class="appendix-content"><strong>#13</strong> מטא-קוגניטיבי</p>
+      <p class="appendix-content"><strong>#7</strong> אמפתי</p>
+    </div>
+    <div class="appendix-content reveal r3" style="margin-top: 20px;">
+      <p><strong>תפקידי מערכת:</strong> נשיא (מנחה), אב בית דין (בקרת איכות), פרקליט השטן, סוכן מחקר, מסנתז, שואל, סוכן הקשר. כל תפקיד ממופה למצבי חשיבה ספציפיים ודפוסי גישה לכלים.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPENDIX C: Dilemma Scenarios -->
+<section class="slide" data-act="APPENDIX" data-appendix="true">
+  <div class="en-content centered" style="align-items: flex-start; text-align: left; max-width: 900px; margin: 0 auto;">
+    <p class="appendix-label reveal">Appendix C</p>
+    <h2 class="reveal r1" style="font-size: 44px;">Pre-Built Dilemma Scenarios</h2>
+    <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; margin-top: 16px;">
+      <ul class="appendix-list">
+        <li><strong>The Goring Ox</strong> - Autonomous Vehicle Liability</li>
+        <li><strong>Lashon Hara</strong> - Cyberbullying and Free Speech</li>
+        <li><strong>Medical Ethics</strong> - Organ Market Dilemmas</li>
+        <li><strong>NFT Chametz</strong> - Digital Ownership and Tradition</li>
+        <li><strong>The Informer</strong> - Whistleblowing Ethics</li>
+        <li><strong>Pikuach Nefesh</strong> - Life vs. Liberty</li>
+        <li><strong>Rodef Shalom</strong> - Peace vs. Justice</li>
+        <li><strong>Lo Taamod</strong> - Bystander Obligations</li>
+        <li><strong>Bal Tashchit</strong> - Environmental Ethics</li>
+        <li><strong>Dina D'Malkhuta</strong> - Civil Disobedience</li>
+      </ul>
+      <ul class="appendix-list">
+        <li><strong>Algorithm Radicalization</strong> - Content Moderation</li>
+        <li><strong>Open Source Ownership</strong> - Code as Commons</li>
+        <li><strong>Genetic Editing</strong> - Playing Creator</li>
+        <li><strong>AI Sentience</strong> - Rights for Machines</li>
+        <li><strong>Surveillance State</strong> - Security vs. Privacy</li>
+        <li><strong>Water Rights</strong> - Resource Allocation</li>
+        <li><strong>Refugee Obligations</strong> - Borders and Hospitality</li>
+        <li><strong>Truth Commissions</strong> - Memory vs. Forgiveness</li>
+        <li><strong>Corporate Ethics</strong> - Profit vs. Purpose</li>
+        <li><strong>Digital Afterlife</strong> - Identity After Death</li>
+      </ul>
+    </div>
+    <p class="appendix-content reveal r3" style="margin-top: 16px;">All scenarios are deliberately non-political: moral and ethical gray zones that prevent immediate tribal defense responses.</p>
+  </div>
+  <div class="he-content centered" style="align-items: flex-start; text-align: right; max-width: 900px; margin: 0 auto;">
+    <p class="appendix-label reveal">נספח ג</p>
+    <h2 class="reveal r1" style="font-size: 44px;">תרחישי דילמה מוכנים</h2>
+    <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; margin-top: 16px;">
+      <ul class="appendix-list">
+        <li><strong>השור שנגח</strong> - אחריות רכב אוטונומי</li>
+        <li><strong>לשון הרע</strong> - בריונות ברשת וחופש ביטוי</li>
+        <li><strong>אתיקה רפואית</strong> - דילמות שוק איברים</li>
+        <li><strong>חמץ NFT</strong> - בעלות דיגיטלית ומסורת</li>
+        <li><strong>המלשין</strong> - אתיקת חשיפה</li>
+        <li><strong>פיקוח נפש</strong> - חיים מול חירות</li>
+        <li><strong>רודף שלום</strong> - שלום מול צדק</li>
+        <li><strong>לא תעמוד</strong> - חובות העומד מנגד</li>
+        <li><strong>בל תשחית</strong> - אתיקה סביבתית</li>
+        <li><strong>דינא דמלכותא</strong> - סרבנות אזרחית</li>
+      </ul>
+      <ul class="appendix-list">
+        <li><strong>רדיקליזציה אלגוריתמית</strong> - מיתון תוכן</li>
+        <li><strong>בעלות קוד פתוח</strong> - קוד כנכס משותף</li>
+        <li><strong>עריכה גנטית</strong> - לשחק ביוצר</li>
+        <li><strong>תודעת AI</strong> - זכויות למכונות</li>
+        <li><strong>מדינת מעקב</strong> - ביטחון מול פרטיות</li>
+        <li><strong>זכויות מים</strong> - הקצאת משאבים</li>
+        <li><strong>חובות כלפי פליטים</strong> - גבולות והכנסת אורחים</li>
+        <li><strong>ועדות אמת</strong> - זיכרון מול סליחה</li>
+        <li><strong>אתיקה תאגידית</strong> - רווח מול מטרה</li>
+        <li><strong>חיים דיגיטליים לאחר המוות</strong> - זהות אחרי מוות</li>
+      </ul>
+    </div>
+    <p class="appendix-content reveal r3" style="margin-top: 16px;">כל התרחישים הם בכוונה לא-פוליטיים: אזורים אפורים מוסריים ואתיים שמונעים תגובות הגנה שבטיות מיידיות.</p>
+  </div>
+</section>
+
+<!-- APPENDIX D: User Personas -->
+<section class="slide" data-act="APPENDIX" data-appendix="true">
+  <div class="en-content centered" style="align-items: flex-start; text-align: left; max-width: 900px; margin: 0 auto;">
+    <p class="appendix-label reveal">Appendix D</p>
+    <h2 class="reveal r1" style="font-size: 44px;">Visitor Personas</h2>
+    <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
+        <h3 style="font-size: 22px;">Daniel the Seeker</h3>
+        <p class="appendix-content" style="margin-top: 6px;">Open-minded, curious, eager to explore multiple perspectives. Arrives without strong opinions, leaves with expanded frameworks for thinking about complex issues.</p>
+      </div>
+      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
+        <h3 style="font-size: 22px;">Sarah the Balanced</h3>
+        <p class="appendix-content" style="margin-top: 6px;">Already holds considered views but values nuance. Enjoys testing her reasoning against historical perspectives. Seeks depth, not validation.</p>
+      </div>
+      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
+        <h3 style="font-size: 22px;">Avi the Skeptic</h3>
+        <p class="appendix-content" style="margin-top: 6px;">Arrives with strong convictions and expects to "win." The experience subtly shifts his framing from debate-to-win to investigate-to-understand.</p>
+      </div>
+      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
+        <h3 style="font-size: 22px;">The Group Visit</h3>
+        <p class="appendix-content" style="margin-top: 6px;">School classes and corporate teams. Mixed engagement levels. The structured format ensures even reluctant participants find a role that fits their comfort level.</p>
+      </div>
+    </div>
+  </div>
+  <div class="he-content centered" style="align-items: flex-start; text-align: right; max-width: 900px; margin: 0 auto;">
+    <p class="appendix-label reveal">נספח ד</p>
+    <h2 class="reveal r1" style="font-size: 44px;">פרסונות מבקרים</h2>
+    <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
+        <h3 style="font-size: 22px;">דניאל המחפש</h3>
+        <p class="appendix-content" style="margin-top: 6px;">פתוח, סקרן, להוט לחקור נקודות מבט מרובות. מגיע ללא דעות חזקות, עוזב עם מסגרות חשיבה מורחבות לסוגיות מורכבות.</p>
+      </div>
+      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
+        <h3 style="font-size: 22px;">שרה המאוזנת</h3>
+        <p class="appendix-content" style="margin-top: 6px;">כבר מחזיקה בדעות מושכלות אך מעריכה ניואנסים. נהנית לבחון את ההיגיון שלה מול נקודות מבט היסטוריות. מחפשת עומק, לא אישור.</p>
+      </div>
+      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
+        <h3 style="font-size: 22px;">אבי הסקפטיקן</h3>
+        <p class="appendix-content" style="margin-top: 6px;">מגיע עם שכנועים חזקים ומצפה "לנצח." החוויה מסיטה בעדינות את המסגור שלו מוויכוח-לניצחון לחקירה-להבנה.</p>
+      </div>
+      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
+        <h3 style="font-size: 22px;">הביקור הקבוצתי</h3>
+        <p class="appendix-content" style="margin-top: 6px;">כיתות בית ספר וצוותים ארגוניים. רמות מעורבות מעורבות. הפורמט המובנה מבטיח שגם משתתפים מהססים מוצאים תפקיד שמתאים לרמת הנוחות שלהם.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -804,26 +1211,28 @@ h2 { font-family: var(--font-d); font-weight: 600; font-size: 56px; line-height:
 <div class="nav-bar">
   <img src="assets/logos/motj-icon-white.svg" alt="MOTJ" class="nav-logo-white">
   <img src="assets/logos/motj-icon-color.svg" alt="MOTJ" class="nav-logo-color">
-  <div class="slide-counter" id="slideCounter">01 / 18</div>
+  <div class="slide-counter" id="slideCounter">01 / 17</div>
   <div class="act-label" id="actLabel">ACT 1: THE HOOK</div>
   <div class="nav-controls">
     <button class="lang-btn active" onclick="setLang('en')">EN</button>
     <button class="lang-btn" onclick="setLang('he')">HE</button>
     <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"></div>
     <button class="nav-btn" onclick="prevSlide()" title="Previous">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
     <button class="nav-btn" onclick="nextSlide()" title="Next">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
     </button>
     <button class="nav-btn" onclick="toggleFullscreen()" title="Fullscreen (F)">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
     </button>
   </div>
 </div>
 
 <script>
 const slides = document.querySelectorAll('.slide');
+const mainSlides = document.querySelectorAll('.slide:not([data-appendix])');
+const MAIN_COUNT = mainSlides.length;
 const progressFill = document.getElementById('progressFill');
 const slideCounter = document.getElementById('slideCounter');
 const actLabel = document.getElementById('actLabel');
@@ -832,16 +1241,23 @@ let current = 0;
 function showSlide(index) {
   if (index < 0 || index >= slides.length) return;
   slides[current].classList.remove('active');
-  slides[current].querySelectorAll('.reveal').forEach(el => {
+  slides[current].querySelectorAll('.reveal').forEach(function(el) {
     el.style.animation = 'none';
     el.offsetHeight;
     el.style.animation = '';
   });
   current = index;
   slides[current].classList.add('active');
-  const num = String(current + 1).padStart(2, '0');
-  const total = String(slides.length).padStart(2, '0');
-  slideCounter.textContent = num + ' / ' + total;
+
+  // Display: main slides show "01 / 17", appendix shows "A1 / A4" etc.
+  var isAppendix = slides[current].hasAttribute('data-appendix');
+  if (isAppendix) {
+    var appIdx = index - MAIN_COUNT + 1;
+    slideCounter.textContent = 'A' + appIdx + ' / A' + (slides.length - MAIN_COUNT);
+  } else {
+    var num = String(index + 1).padStart(2, '0');
+    slideCounter.textContent = num + ' / ' + String(MAIN_COUNT).padStart(2, '0');
+  }
   actLabel.textContent = slides[current].dataset.act || '';
   progressFill.style.width = ((current + 1) / slides.length * 100) + '%';
 }
@@ -857,7 +1273,7 @@ function toggleFullscreen() {
   }
 }
 
-// Keyboard nav
+// Keyboard navigation
 document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
   if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
@@ -866,7 +1282,7 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'End') { showSlide(slides.length - 1); }
 });
 
-// Touch nav
+// Touch navigation
 var touchStartX = 0;
 document.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; });
 document.addEventListener('touchend', function(e) {

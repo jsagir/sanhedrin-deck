@@ -2,7 +2,7 @@
 
 ## Current Status
 **Last updated:** 2026-03-09
-**Phase:** Frontend rewrite done, cinematic image regeneration blocked on API key
+**Phase:** Comprehensive deck rebuild complete (17+4 slides), ready for review
 
 ## What Needs to Happen Next
 1. **Get a fresh Gemini API key** from https://aistudio.google.com/apikey
@@ -87,8 +87,39 @@
 - **Added CSS:** timeline-row/timeline-block for session flow, demo-btn style
 - **Kept all 18 slides** (no consolidation per user decision)
 
+### Session 7 - Comprehensive Deck Rebuild (2026-03-09)
+- **Filed 3 meeting transcripts** to docs/ with structured key decision summaries
+- **Complete deck rewrite** from enhanced comprehensive outline:
+  - 17 main slides + 4 appendix slides (21 total, up from 18 flat)
+  - New 4-act structure: Hook (4), Experience (5), Why It Works (4), The Ask (4)
+  - Appendix: Technical Architecture, 13 Thinking Modes, 20 Dilemma Scenarios, Visitor Personas
+  - Appendix slides navigable but shown as "A1/A4" not in main slide count
+  - New tagline: "Disagree Better. Discover Together."
+- **New slide content from outline:**
+  - Slide 2: Expanded urgency with tribal identity defense, "muscles" framing, civic simulator gap
+  - Slide 3: Puzzle metaphor with earn/lose pieces mechanic, Sherlock Holmes framing
+  - Slide 4: Pure statement slide with core loop description
+  - Slide 5: 6-step visitor journey with step cards (confidence levels, Gold Star concept, digital takeaway)
+  - Slide 6: Architecture with Persona vs Role separation explained, fact-checking callout
+  - Slide 7: Goring Ox with Shammai and Herzl added, Research Agent mention, Play Demo button
+  - Slide 8: Two modes with Polarization Score and dialogue index concepts, audience targeting
+  - Slide 9: Physical space with 12 kiosks, Sage Screens, spotlights, peripheral audience mechanics
+  - Slide 11: A2A2H terminology (Agent-to-Agent-to-Human), WhatsApp POC mitigation
+  - Slide 12: Competitive matrix (4-column comparison table vs chatbots/museums/debate AI)
+  - Slide 14: 3-year roadmap (Learn/Scale/Innovate) replacing 4-phase structure
+  - Slide 15: Research Hub elevated, potential academic partnerships (aspirational)
+  - Slide 17: Dual CTA buttons (Get in Touch + Try the Demo)
+- **Design improvements:**
+  - Varied layouts: centered, split, split-wide, statement, comparison matrix
+  - Larger typography: 64px h1, 56px h2, 28px tagline, 24px body
+  - Team cards with dashed border for "Missing Piece"
+  - Thinker chips, space feature pills, phase cards
+  - All aspirational elements phrased carefully (not stated as facts)
+- **All unconfirmed elements flagged as aspirational:**
+  - Wheel of Sages, Polarization Score, Gold Star, university partnerships, visitor numbers
+
 ## What's Next (Backlog)
-- [ ] Generate isometric images with fresh API key (env var, not hardcoded)
+- [ ] Generate new/refined images with fresh API key
 - [ ] Update demo button URL once demo is deployed
 - [ ] Add Hebrew/Arabic font support (Almoni Neue, Markazi Text)
 - [ ] Review Hebrew translations with native speaker
@@ -106,10 +137,13 @@
 | en-content/he-content divs | Language toggle via CSS display, no JS DOM manipulation |
 | Light theme: cream/stone | Warm institutional feel vs cold white |
 | Cinematic over Isometric | Emotional connection, first-person immersion for investors |
+| 17+4 appendix structure | Deep-dive content accessible but not cluttering main narrative |
+| 3-year roadmap (Learn/Scale/Innovate) | Clearer phasing than 4-phase POC/Demo/Prototype/Launch |
+| Aspirational language for unconfirmed | Wheel of Sages, Polarization Score etc. not stated as facts |
 | API key via env var | Previous keys leaked by being committed to git |
 
 ## File Quick Reference
-- `index.html` - the deck (18 slides, inline CSS/JS, killer presentation layout)
+- `index.html` - the deck (17 main + 4 appendix slides, inline CSS/JS)
 - `CLAUDE.md` - project guide + mandatory style rules
 - `STATE.md` - this file (session log + backlog)
 - `generate_images.py` - image regeneration script (cinematic prompts, reads GEMINI_API_KEY env var)
