@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,48 +8,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 /* ================================================================
-   DESIGN SYSTEM - MOTJ Brand
-   PMS 540 Navy | PMS 544 Light Blue | PMS 404 Warm Taupe
+   DESIGN SYSTEM - Editorial/Magazine
+   MOTJ Brand: PMS 540 Navy | PMS 544 Light Blue | PMS 404 Warm Taupe
    ================================================================ */
-:root, [data-theme="dark"] {
-  --bg: #003057;
-  --bg-surface: #00243f;
-  --bg-nav: rgba(0,24,44,0.94);
-  --text: #f0f4f7;
-  --text-sub: #b0c4d4;
-  --text-dim: #6d8ea6;
-  --accent: #BDD6E6;
-  --accent-light: #d4e5f0;
-  --accent-dim: #8bb3cc;
+:root {
+  --bg: #F5F2EB;
+  --bg-surface: #FFFFFF;
+  --bg-nav: rgba(245,242,235,0.96);
+  --navy: #003057;
+  --navy-light: #004680;
+  --blue: #BDD6E6;
+  --blue-dim: rgba(189,214,230,0.3);
   --taupe: #776E64;
   --taupe-light: #9a9189;
+  --text: #1A1A1A;
+  --text-sub: #4A4A4A;
+  --text-dim: #8A8A8A;
   --font-d: 'Montserrat', system-ui, sans-serif;
   --font-m: 'JetBrains Mono', monospace;
-  --nav-logo-white: block;
-  --nav-logo-color: none;
-  --logo-filter: none;
-  --card-bg: rgba(189,214,230,0.04);
-  --card-border: rgba(189,214,230,0.12);
-  --card-hover: rgba(189,214,230,0.08);
-}
-[data-theme="light"] {
-  --bg: #f5f5f0;
-  --bg-surface: #eeeee8;
-  --bg-nav: rgba(240,240,235,0.94);
-  --text: #1a1a1a;
-  --text-sub: #3d4f5c;
-  --text-dim: #7a8e9e;
-  --accent: #003057;
-  --accent-light: #00395f;
-  --accent-dim: #336b8f;
-  --taupe: #776E64;
-  --taupe-light: #a09890;
-  --nav-logo-white: none;
-  --nav-logo-color: block;
-  --logo-filter: brightness(0) saturate(100%);
-  --card-bg: rgba(0,48,87,0.04);
-  --card-border: rgba(0,48,87,0.12);
-  --card-hover: rgba(0,48,87,0.08);
+  --card-bg: #FFFFFF;
+  --card-border: rgba(0,48,87,0.08);
+  --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --card-hover-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 /* ================================================================
@@ -65,18 +45,18 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
 
 .slide {
   position: absolute; inset: 0;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 56px 80px 72px;
+  display: flex; flex-direction: column;
   opacity: 0; transform: translateY(24px);
   transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: none; overflow: hidden;
+  background: var(--bg);
 }
 .slide.active { opacity: 1; transform: translateY(0); pointer-events: all; }
 
 /* Subtle grain texture */
 .slide::after {
   content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  opacity: 0.025;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 256px 256px;
 }
@@ -95,248 +75,200 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
 /* ================================================================
    PROGRESS & NAVIGATION
    ================================================================ */
-.progress-track { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: rgba(189,214,230,0.08); z-index: 100; }
-.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-light)); transition: width 0.4s ease; }
+.progress-track { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: rgba(0,48,87,0.06); z-index: 100; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--navy), var(--navy-light), var(--blue)); transition: width 0.4s ease; }
 
 .nav-bar {
   position: fixed; bottom: 0; left: 0; right: 0; height: 52px;
   background: var(--bg-nav); backdrop-filter: blur(14px);
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 28px; z-index: 100;
-  border-top: 1px solid rgba(189,214,230,0.1);
+  border-top: 1px solid rgba(0,48,87,0.08);
 }
-.nav-logo-white { display: var(--nav-logo-white); height: 28px; }
-.nav-logo-color { display: var(--nav-logo-color); height: 28px; }
-.slide-counter { font-family: var(--font-m); font-size: 12px; color: var(--accent); letter-spacing: 1.5px; }
-.act-label { font-family: var(--font-d); font-size: 13px; color: var(--text-dim); font-style: italic; letter-spacing: 0.5px; }
+.nav-logo { height: 28px; }
+.slide-counter { font-family: var(--font-m); font-size: 12px; color: var(--navy); letter-spacing: 1.5px; }
+.act-label { font-family: var(--font-d); font-size: 13px; color: var(--taupe); font-style: italic; letter-spacing: 0.5px; }
 .nav-controls { display: flex; align-items: center; gap: 10px; }
 .nav-btn {
-  background: rgba(189,214,230,0.06); border: 1px solid rgba(189,214,230,0.15);
-  color: var(--accent); width: 34px; height: 34px; border-radius: 6px;
+  background: rgba(0,48,87,0.04); border: 1px solid rgba(0,48,87,0.12);
+  color: var(--navy); width: 34px; height: 34px; border-radius: 6px;
   cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
 }
-.nav-btn:hover { background: rgba(189,214,230,0.15); border-color: var(--accent); }
-.theme-toggle {
-  width: 36px; height: 20px; border-radius: 10px; cursor: pointer;
-  background: rgba(189,214,230,0.12); border: 1px solid rgba(189,214,230,0.2);
-  position: relative; transition: all 0.3s; margin-right: 10px;
+.nav-btn:hover { background: rgba(0,48,87,0.1); border-color: var(--navy); }
+.lang-toggle {
+  font-family: var(--font-m); font-size: 11px; letter-spacing: 1px;
+  padding: 6px 12px; border-radius: 6px; cursor: pointer;
+  background: rgba(0,48,87,0.04); border: 1px solid rgba(0,48,87,0.12);
+  color: var(--navy); transition: all 0.2s; font-weight: 500;
 }
-.theme-toggle::after {
-  content: ''; position: absolute; top: 2px; left: 2px;
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--accent); transition: transform 0.3s;
-}
-[data-theme="light"] .theme-toggle::after { transform: translateX(16px); }
+.lang-toggle:hover { background: rgba(0,48,87,0.1); border-color: var(--navy); }
 
 /* ================================================================
    TYPOGRAPHY
    ================================================================ */
 .label {
-  font-family: var(--font-m); font-size: 11px; letter-spacing: 4px;
-  text-transform: uppercase; color: var(--accent-dim); margin-bottom: 14px;
+  font-family: var(--font-m); font-size: 13px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--taupe); margin-bottom: 16px;
 }
-h1 { font-family: var(--font-d); font-weight: 300; font-size: 64px; line-height: 1.08; letter-spacing: -1px; }
-h2 { font-family: var(--font-d); font-weight: 700; font-size: 56px; line-height: 1.08; margin-bottom: 20px; color: var(--text); letter-spacing: -0.5px; }
-h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height: 1.2; color: var(--accent); margin-bottom: 8px; }
-.tagline { font-family: var(--font-d); font-weight: 500; font-size: 28px; color: var(--accent-light); line-height: 1.3; }
-.sub-tagline { font-family: var(--font-d); font-style: italic; font-size: 22px; color: var(--text-sub); margin-top: 8px; }
-.body-text { font-size: 24px; line-height: 1.55; color: var(--text-sub); max-width: 580px; }
-.body-sm { font-size: 20px; line-height: 1.5; color: var(--text-dim); max-width: 580px; margin-top: 12px; }
+h1 { font-family: var(--font-d); font-weight: 800; font-size: 88px; line-height: 1.02; letter-spacing: -2px; color: var(--navy); }
+h2 { font-family: var(--font-d); font-weight: 700; font-size: 60px; line-height: 1.06; letter-spacing: -1px; color: var(--navy); margin-bottom: 24px; }
+h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height: 1.2; color: var(--navy); margin-bottom: 8px; }
+.tagline { font-family: var(--font-d); font-weight: 500; font-size: 32px; color: var(--text-sub); line-height: 1.3; }
+.body-text { font-size: 24px; line-height: 1.65; color: var(--text-sub); }
+.body-sm { font-size: 20px; line-height: 1.55; color: var(--text-dim); margin-top: 16px; }
+.pull-quote { font-family: var(--font-d); font-weight: 300; font-style: italic; font-size: 38px; color: var(--navy); line-height: 1.35; }
 .bullets { list-style: none; padding: 0; }
 .bullets li {
   font-size: 24px; line-height: 1.55; color: var(--text-sub);
   padding-left: 20px; position: relative; margin-bottom: 12px;
 }
-.bullets li::before { content: ''; position: absolute; left: 0; top: 14px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.bullets li::before { content: ''; position: absolute; left: 0; top: 14px; width: 5px; height: 5px; border-radius: 50%; background: var(--navy); }
 .bullets li strong { color: var(--text); font-weight: 600; }
 
 /* ================================================================
-   LAYOUTS
+   LAYOUT CLASSES
    ================================================================ */
-.split { display: grid; grid-template-columns: 45% 55%; gap: 48px; align-items: center; height: 100%; }
-.split-wide { display: grid; grid-template-columns: 50% 50%; gap: 40px; align-items: center; height: 100%; }
-.centered { display: flex; flex-direction: column; align-items: center; text-align: center; height: 100%; justify-content: center; }
-.hero-img {
-  width: 100%; max-height: 78vh; object-fit: contain;
-  filter: drop-shadow(0 10px 36px rgba(0,0,0,0.22));
+
+/* Hero full-bleed: image covers viewport, text overlaid */
+.layout-hero {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0; position: relative; height: 100%;
 }
-.hero-img-sm {
-  width: 100%; max-height: 55vh; object-fit: contain;
-  filter: drop-shadow(0 10px 36px rgba(0,0,0,0.22));
-  margin-top: 20px;
+.layout-hero .hero-bg {
+  position: absolute; inset: 0;
+  object-fit: cover; width: 100%; height: 100%;
 }
-.hero-img-centered {
-  width: 65%; max-height: 48vh; object-fit: contain;
-  filter: drop-shadow(0 10px 36px rgba(0,0,0,0.22));
-  margin: 20px auto 0;
+.layout-hero .hero-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,48,87,0.85) 0%, rgba(0,48,87,0.4) 40%, transparent 70%);
+}
+.layout-hero .hero-content {
+  position: relative; z-index: 2;
+  padding: 0 80px 90px;
+  color: #fff;
+}
+
+/* Editorial split: image bleeds one side, text padded other */
+.layout-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  height: 100%; align-items: stretch;
+}
+.layout-split.img-right { grid-template-columns: 45% 55%; }
+.layout-split.img-left { grid-template-columns: 55% 45%; }
+.layout-split .split-text {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 60px 64px 72px;
+}
+.layout-split .split-img {
+  overflow: hidden;
+}
+.layout-split .split-img img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.layout-split.img-left .split-img { order: -1; }
+
+/* Statement: centered typography, no image */
+.layout-statement {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center;
+  padding: 60px 80px 72px; height: 100%;
 }
 
 /* ================================================================
    COMPONENTS
    ================================================================ */
 
-/* Step pills */
-.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
-.step {
-  padding: 12px 16px; border-radius: 8px;
+/* Cards */
+.card {
   background: var(--card-bg); border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow); border-radius: 12px; padding: 28px 32px;
+  transition: box-shadow 0.2s; text-align: left;
 }
-.step-num { font-family: var(--font-m); font-size: 11px; color: var(--accent-dim); letter-spacing: 1px; }
-.step-title { font-size: 16px; font-weight: 600; color: var(--text); margin-top: 2px; }
-.step-desc { font-size: 14px; color: var(--text-dim); margin-top: 4px; line-height: 1.3; }
-
-/* Mode comparison */
-.mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; width: 100%; max-width: 1000px; }
-.mode-card {
-  padding: 32px; border-radius: 12px;
-  background: var(--card-bg); border: 1px solid var(--card-border);
-  text-align: left;
-}
-.mode-card h3 { margin-bottom: 12px; }
-.mode-card p { font-size: 20px; color: var(--text-sub); line-height: 1.5; }
-.mode-card .mode-tag { font-family: var(--font-m); font-size: 13px; color: var(--accent-dim); letter-spacing: 1px; margin-top: 16px; text-transform: uppercase; }
+.card:hover { box-shadow: var(--card-hover-shadow); }
 
 /* Competitive matrix */
-.matrix { width: 100%; border-collapse: collapse; margin-top: 16px; }
+.matrix { width: 100%; border-collapse: collapse; }
 .matrix th {
-  font-family: var(--font-m); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
-  color: var(--accent-dim); padding: 12px 14px; text-align: left;
-  border-bottom: 1px solid var(--card-border);
+  font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--taupe); padding: 16px 20px; text-align: left;
+  border-bottom: 2px solid rgba(0,48,87,0.12);
 }
 .matrix td {
-  font-size: 18px; padding: 12px 14px; color: var(--text-sub);
-  border-bottom: 1px solid rgba(189,214,230,0.06);
+  font-size: 18px; padding: 14px 20px; color: var(--text-sub);
+  border-bottom: 1px solid rgba(0,48,87,0.06);
 }
 .matrix td:first-child { font-weight: 600; color: var(--text); }
-.matrix .check { color: var(--accent); font-weight: 700; }
+.matrix .check { color: var(--navy); font-weight: 700; }
 .matrix .x { color: var(--text-dim); }
-.matrix tr.highlight td { background: rgba(189,214,230,0.06); }
+.matrix tr.highlight td { background: rgba(0,48,87,0.04); }
+.matrix th:last-child, .matrix td:last-child { color: var(--navy); font-weight: 600; }
 
-/* Phase timeline */
-.phases { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 1000px; }
-.phase {
-  flex: 1; min-width: 220px; padding: 20px 24px; border-radius: 10px;
-  background: var(--card-bg); border: 1px solid var(--card-border);
-  text-align: left;
-}
-.phase-label { font-family: var(--font-m); font-size: 12px; letter-spacing: 1.5px; color: var(--accent-dim); text-transform: uppercase; }
-.phase-title { font-size: 22px; font-weight: 700; color: var(--text); margin-top: 6px; }
-.phase-desc { font-size: 16px; color: var(--text-sub); margin-top: 8px; line-height: 1.4; }
-
-/* Team */
-.team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px; max-width: 800px; }
-.team-card {
-  padding: 20px 24px; border-radius: 10px;
-  background: var(--card-bg); border: 1px solid var(--card-border);
-  text-align: left;
-}
-.team-card .team-name { font-size: 22px; font-weight: 700; color: var(--text); }
-.team-card .team-role { font-size: 16px; color: var(--text-sub); margin-top: 4px; line-height: 1.4; }
-.team-card.missing { border-color: var(--accent-dim); border-style: dashed; }
-
-/* CTA */
-.cta-quote {
-  font-family: var(--font-d); font-style: italic; font-size: 32px;
-  color: var(--accent-light); max-width: 800px; line-height: 1.4;
-  border-left: 4px solid var(--accent); padding-left: 32px; margin: 32px auto;
-}
-.cta-actions { display: flex; gap: 16px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
+/* CTA buttons */
 .cta-btn {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 16px 36px;
   font-family: var(--font-d); font-size: 18px; font-weight: 600;
-  color: var(--bg); background: var(--accent);
+  color: var(--navy); background: #fff;
   border: none; border-radius: 8px; cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   text-decoration: none;
 }
-.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(189,214,230,0.25); }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,255,255,0.25); }
 .cta-btn-outline {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 16px 36px;
   font-family: var(--font-d); font-size: 18px; font-weight: 600;
-  color: var(--accent); background: transparent;
-  border: 2px solid var(--accent); border-radius: 8px; cursor: pointer;
+  color: #fff; background: transparent;
+  border: 2px solid rgba(255,255,255,0.5); border-radius: 8px; cursor: pointer;
   transition: transform 0.2s, background 0.2s;
   text-decoration: none;
 }
-.cta-btn-outline:hover { transform: translateY(-2px); background: rgba(189,214,230,0.08); }
+.cta-btn-outline:hover { transform: translateY(-2px); background: rgba(255,255,255,0.1); }
 
-/* Thinker chips */
-.thinkers { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
-.thinker {
-  font-family: var(--font-m); font-size: 14px; color: var(--accent);
-  padding: 8px 16px; border-radius: 20px;
-  background: var(--card-bg); border: 1px solid var(--card-border);
-}
-
-/* Pillars */
-.pillars { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; justify-content: center; }
-.pillar {
-  padding: 16px 24px; border-radius: 10px; text-align: center;
-  background: var(--card-bg); border: 1px solid var(--card-border);
-  min-width: 200px;
-}
-.pillar-title { font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; color: var(--accent); font-weight: 500; }
-
-/* Space features */
-.space-features { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; max-width: 580px;}
-.space-feat {
-  padding: 8px 16px; border-radius: 8px; font-size: 16px; color: var(--text-sub);
-  background: var(--card-bg); border: 1px solid var(--card-border);
-}
-
-/* Slide 1 hero logo */
-.motj-logo { height: 44px; margin-bottom: 28px; }
-[data-theme="light"] .motj-logo { filter: var(--logo-filter); }
-
-/* Appendix label */
+/* Appendix */
 .appendix-label {
-  font-family: var(--font-m); font-size: 11px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--taupe-light); margin-bottom: 8px;
+  font-family: var(--font-m); font-size: 13px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--taupe); margin-bottom: 12px;
 }
-.appendix-content { font-size: 18px; color: var(--text-sub); line-height: 1.6; max-width: 800px; }
+.appendix-content { font-size: 20px; color: var(--text-sub); line-height: 1.65; max-width: 900px; }
 .appendix-content strong { color: var(--text); }
 .appendix-list { list-style: none; padding: 0; }
-.appendix-list li { font-size: 18px; color: var(--text-sub); padding: 6px 0; padding-left: 16px; position: relative; }
-.appendix-list li::before { content: ''; position: absolute; left: 0; top: 14px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent-dim); }
+.appendix-list li { font-size: 20px; color: var(--text-sub); padding: 8px 0; padding-left: 20px; position: relative; line-height: 1.5; }
+.appendix-list li::before { content: ''; position: absolute; left: 0; top: 16px; width: 5px; height: 5px; border-radius: 50%; background: var(--navy); }
 
-/* EN Content wrapper */
-.en-content { display: flex; flex-direction: column; width: 100%; height: 100%; }
-.slide .en-content.split,
-.slide .en-content.split-wide,
-.slide .en-content.centered { height: 100%; }
+/* Language toggle content */
+.lang-en { display: block; width: 100%; height: 100%; }
+.lang-he { display: none; width: 100%; height: 100%; }
+.lang-he-active .lang-en { display: none; }
+.lang-he-active .lang-he { display: block; }
 
 /* ================================================================
    RESPONSIVE
    ================================================================ */
 @media (max-width: 1024px) {
-  .slide { padding: 36px 36px 64px; }
-  h1 { font-size: 48px; }
-  h2 { font-size: 42px; }
+  h1 { font-size: 56px; }
+  h2 { font-size: 44px; }
   .body-text { font-size: 20px; }
-  .tagline { font-size: 24px; }
-  .split, .split-wide { grid-template-columns: 1fr; gap: 20px; }
-  .hero-img { max-height: 45vh; }
-  .hero-img-sm { max-height: 35vh; }
-  .hero-img-centered { width: 80%; max-height: 35vh; }
-  .steps-grid { grid-template-columns: repeat(2, 1fr); }
-  .mode-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: 1fr; }
+  .tagline { font-size: 26px; }
+  .layout-split, .layout-split.img-right, .layout-split.img-left {
+    grid-template-columns: 1fr; gap: 0;
+  }
+  .layout-split .split-text { padding: 36px 36px 64px; }
+  .layout-split .split-img { max-height: 40vh; }
+  .layout-split .split-img img { height: 40vh; }
+  .layout-split.img-left .split-img { order: -1; }
+  .layout-hero .hero-content { padding: 0 36px 64px; }
+  .layout-statement { padding: 36px 36px 64px; }
+  .pull-quote { font-size: 28px; }
 }
 @media (max-width: 640px) {
-  .slide { padding: 20px 18px 64px; }
-  h1 { font-size: 36px; }
-  h2 { font-size: 32px; }
+  h1 { font-size: 40px; }
+  h2 { font-size: 36px; }
   .body-text { font-size: 18px; }
-  .tagline { font-size: 20px; }
-  .bullets li { font-size: 20px; }
+  .layout-hero .hero-content { padding: 0 18px 64px; }
+  .pull-quote { font-size: 24px; }
   .nav-bar { padding: 0 14px; }
   .act-label { display: none; }
-  .hero-img-centered { width: 90%; }
-  .cta-quote { font-size: 24px; padding-left: 20px; }
-  .phases { flex-direction: column; }
-  .steps-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -346,221 +278,438 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
 <div class="deck">
 
+<!-- ============================================================
+     SLIDE 1: Title/Hero - Full-bleed
+     ============================================================ -->
 <section class="slide active" data-act="ACT 1: THE HOOK">
-  <div class="en-content centered">
-    <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" class="motj-logo reveal">
-    <h1 class="reveal r1">The Sanhedrin<br>Educational Experience</h1>
-    <p class="tagline reveal r2" style="margin-top: 16px;">Disagree Better. Discover Together.</p>
-    <p class="sub-tagline reveal r3">What would history's greatest minds say about TODAY'S dilemmas?</p>
-    <img src="slides/slide-01/hero.png" alt="Sanhedrin arena" class="hero-img-centered reveal r4">
-  </div>
-</section>
-
-<section class="slide" data-act="ACT 1: THE HOOK">
-  <div class="en-content split">
-    <div>
-      <p class="label reveal">The Urgency</p>
-      <h2 class="reveal r1">Discourse<br>is Broken</h2>
-      <p class="body-text reveal r2">We live in a polarized society where young people literally walk out of rooms when exposed to opposing views. "I disagree with you" has become synonymous with tribal identity defense.</p>
-      <p class="body-text reveal r3" style="margin-top: 16px;">Proper civic discourse cannot be taught via passive history lectures; it is a "muscle" requiring emotional strength training to sit with discomfort.</p>
-      <p class="body-sm reveal r4"><strong>The Gap:</strong> Currently, there is no "civic discourse simulator" to train society on how to navigate complex, emotionally charged issues.</p>
-    </div>
-    <img src="slides/slide-02/hero.png" alt="Polarization" class="hero-img reveal r4">
-  </div>
-</section>
-
-<section class="slide" data-act="ACT 1: THE HOOK">
-  <div class="en-content split">
-    <div>
-      <p class="label reveal">The Cognitive Twist</p>
-      <h2 class="reveal r1">Dispute as a<br>Dynamic Puzzle</h2>
-      <p class="body-text reveal r2">We are reframing the concept of a dispute. It is no longer a battle to be won, but a collaborative investigation—a Sherlock Holmes-style inquiry.</p>
-      <ul class="bullets reveal r3" style="margin-top: 20px;">
-        <li>Participants uncover hidden "puzzle pieces" (arguments, facts, agreements) to see the full picture.</li>
-        <li>Adding depth earns pieces; demagoguery or personal attacks cause pieces to blur or be lost.</li>
-        <li>The ultimate goal is shared truth-seeking: <em>L'Shem Shamayim</em> (for the sake of heaven).</li>
-      </ul>
-    </div>
-    <img src="slides/slide-03/hero.png" alt="Puzzle metaphor" class="hero-img reveal r4">
-  </div>
-</section>
-
-<section class="slide" data-act="ACT 1: THE HOOK">
-  <div class="en-content centered">
-    <p class="label reveal">Key Value Proposition</p>
-    <h2 class="reveal r1" style="font-size: 64px; max-width: 900px;">"Learn to argue better<br>in 30 minutes."</h2>
-    <p class="tagline reveal r2" style="margin-top: 8px;">Without needing to agree.</p>
-    <p class="body-text reveal r3" style="text-align: center; margin-top: 24px; max-width: 800px;">An AI-powered immersive space where visitors engage with 71 historical Jewish figures in real-time deliberation.</p>
-
-    <div class="pillars reveal r4">
-      <div class="pillar">
-        <div class="pillar-title">INPUT</div>
-        <p style="font-size: 16px; margin-top: 8px; color: var(--text-sub);">Human Visitor Inputs Dilemma</p>
+  <div class="lang-en">
+    <div class="layout-hero">
+      <img src="slides/slide-01/hero.png" alt="" class="hero-bg">
+      <div class="hero-scrim"></div>
+      <div class="hero-content">
+        <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" style="height: 40px; margin-bottom: 32px;" class="reveal">
+        <h1 class="reveal r1" style="color: #fff; font-size: 80px;">The Sanhedrin<br>Educational Experience</h1>
+        <p class="tagline reveal r2" style="color: rgba(255,255,255,0.85); margin-top: 16px;">Disagree Better. Discover Together.</p>
+        <p class="reveal r3" style="font-size: 22px; color: rgba(255,255,255,0.65); margin-top: 12px; font-style: italic;">What would history's greatest minds say about today's dilemmas?</p>
       </div>
-      <div class="pillar">
-        <div class="pillar-title">ENGINE</div>
-        <p style="font-size: 16px; margin-top: 8px; color: var(--text-sub);">AI Characters & Humans Deliberate</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-title">OUTPUT</div>
-        <p style="font-size: 16px; margin-top: 8px; color: var(--text-sub);">Expanded Thinking & New Perspectives</p>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-hero">
+      <img src="slides/slide-01/hero.png" alt="" class="hero-bg">
+      <div class="hero-scrim"></div>
+      <div class="hero-content" style="text-align: right;">
+        <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" style="height: 40px; margin-bottom: 32px;" class="reveal">
+        <h1 class="reveal r1" style="color: #fff; font-size: 80px;">[Hebrew version]</h1>
+        <p class="tagline reveal r2" style="color: rgba(255,255,255,0.85); margin-top: 16px;">[Hebrew version]</p>
+        <p class="reveal r3" style="font-size: 22px; color: rgba(255,255,255,0.65); margin-top: 12px; font-style: italic;">[Hebrew version]</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 2: The Problem - Split img-right
+     ============================================================ -->
+<section class="slide" data-act="ACT 1: THE HOOK">
+  <div class="lang-en">
+    <div class="layout-split img-right">
+      <div class="split-text">
+        <p class="label reveal">The Urgency</p>
+        <h2 class="reveal r1">Discourse<br>is Broken</h2>
+        <p class="body-text reveal r2">We live in a polarized society where young people literally walk out of rooms when exposed to opposing views. "I disagree with you" has become synonymous with tribal identity defense.</p>
+        <p class="body-text reveal r3" style="margin-top: 20px;">Proper civic discourse cannot be taught via passive history lectures; it is a "muscle" requiring emotional strength training to sit with discomfort.</p>
+        <div class="card reveal r4" style="margin-top: 24px; border-left: 4px solid var(--navy);">
+          <p style="font-size: 20px; color: var(--text); font-weight: 600;">The Gap: Currently, there is no "civic discourse simulator" to train society on how to navigate complex, emotionally charged issues.</p>
+        </div>
+      </div>
+      <div class="split-img">
+        <img src="slides/slide-02/hero.png" alt="Polarization">
+      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-split img-right">
+      <div class="split-text" style="text-align: right;">
+        <p class="label reveal">[Hebrew version]</p>
+        <h2 class="reveal r1">[Hebrew version]</h2>
+        <p class="body-text reveal r2">[Hebrew version]</p>
+      </div>
+      <div class="split-img">
+        <img src="slides/slide-02/hero.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 3: Cognitive Twist - Split img-left
+     ============================================================ -->
+<section class="slide" data-act="ACT 1: THE HOOK">
+  <div class="lang-en">
+    <div class="layout-split img-left">
+      <div class="split-img">
+        <img src="slides/slide-03/hero.png" alt="Puzzle metaphor">
+      </div>
+      <div class="split-text">
+        <p class="label reveal">The Cognitive Twist</p>
+        <h2 class="reveal r1">Dispute as a<br>Dynamic Puzzle</h2>
+        <p class="body-text reveal r2">We are reframing the concept of a dispute. It is no longer a battle to be won, but a collaborative investigation, a Sherlock Holmes-style inquiry.</p>
+        <ul class="bullets reveal r3" style="margin-top: 20px;">
+          <li>Participants uncover hidden "puzzle pieces" (arguments, facts, agreements) to see the full picture.</li>
+          <li>Adding depth earns pieces; demagoguery or personal attacks cause pieces to blur or be lost.</li>
+          <li>The ultimate goal is shared truth-seeking: <em>L'Shem Shamayim</em> (for the sake of heaven).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-split img-left">
+      <div class="split-img">
+        <img src="slides/slide-03/hero.png" alt="">
+      </div>
+      <div class="split-text" style="text-align: right;">
+        <p class="label reveal">[Hebrew version]</p>
+        <h2 class="reveal r1">[Hebrew version]</h2>
+        <p class="body-text reveal r2">[Hebrew version]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 4: Value Prop - Statement with navy pillar blocks
+     ============================================================ -->
+<section class="slide" data-act="ACT 1: THE HOOK">
+  <div class="lang-en">
+    <div class="layout-statement">
+      <p class="label reveal">Key Value Proposition</p>
+      <h2 class="reveal r1" style="font-size: 72px; max-width: 900px;">"Learn to argue better<br>in 30 minutes."</h2>
+      <p class="tagline reveal r2" style="margin-top: 8px;">Without needing to agree.</p>
+      <p class="body-text reveal r3" style="text-align: center; margin-top: 28px; max-width: 800px;">An AI-powered immersive space where visitors engage with 71 historical Jewish figures in real-time deliberation.</p>
+      <div style="display: flex; gap: 24px; margin-top: 40px;" class="reveal r4">
+        <div style="background: var(--navy); color: #fff; padding: 28px 40px; border-radius: 12px; min-width: 200px;">
+          <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 2px; opacity: 0.6;">INPUT</div>
+          <p style="font-size: 20px; margin-top: 8px; font-weight: 500;">Human Visitor<br>Inputs Dilemma</p>
+        </div>
+        <div style="background: var(--navy); color: #fff; padding: 28px 40px; border-radius: 12px; min-width: 200px;">
+          <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 2px; opacity: 0.6;">ENGINE</div>
+          <p style="font-size: 20px; margin-top: 8px; font-weight: 500;">AI Characters &<br>Humans Deliberate</p>
+        </div>
+        <div style="background: var(--navy); color: #fff; padding: 28px 40px; border-radius: 12px; min-width: 200px;">
+          <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 2px; opacity: 0.6;">OUTPUT</div>
+          <p style="font-size: 20px; margin-top: 8px; font-weight: 500;">Expanded Thinking &<br>New Perspectives</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement">
+      <p class="label reveal">[Hebrew version]</p>
+      <h2 class="reveal r1" style="font-size: 72px;">[Hebrew version]</h2>
+      <p class="tagline reveal r2">[Hebrew version]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 5: Visitor Journey - Statement with 2x3 card grid
+     ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="en-content split">
-    <div>
+  <div class="lang-en">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
       <p class="label reveal">The 25-Minute Loop</p>
-      <h2 class="reveal r1">The Visitor<br>Journey</h2>
-      <div class="steps-grid reveal r2">
-        <div class="step">
-          <span class="step-num">01</span>
-          <div class="step-title">Input Dilemma</div>
-          <div class="step-desc">Up to 12 visitors select a dilemma and set their initial confidence level via touchscreens.</div>
+      <h2 class="reveal r1">The Visitor Journey</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; width: 100%; max-width: 1100px;" class="reveal r2">
+        <div class="card">
+          <span style="font-family: var(--font-m); font-size: 36px; font-weight: 700; color: var(--blue);">01</span>
+          <div style="font-size: 22px; font-weight: 700; color: var(--text); margin-top: 8px;">Input Dilemma</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">Up to 12 visitors select a dilemma and set their initial confidence level via touchscreens.</div>
         </div>
-        <div class="step">
-          <span class="step-num">02</span>
-          <div class="step-title">Facilitator Opens</div>
-          <div class="step-desc">A human Game Master sets the stage. Human charisma is non-negotiable for live orchestration.</div>
+        <div class="card">
+          <span style="font-family: var(--font-m); font-size: 36px; font-weight: 700; color: var(--blue);">02</span>
+          <div style="font-size: 22px; font-weight: 700; color: var(--text); margin-top: 8px;">Facilitator Opens</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">A human Game Master sets the stage. Human charisma is non-negotiable for live orchestration.</div>
         </div>
-        <div class="step">
-          <span class="step-num">03</span>
-          <div class="step-title">Sages Assigned</div>
-          <div class="step-desc">The "Wheel of Sages" dynamically assigns AI historical figures to join the human teams.</div>
+        <div class="card">
+          <span style="font-family: var(--font-m); font-size: 36px; font-weight: 700; color: var(--blue);">03</span>
+          <div style="font-size: 22px; font-weight: 700; color: var(--text); margin-top: 8px;">Sages Assigned</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">The "Wheel of Sages" dynamically assigns AI historical figures to join the human teams.</div>
         </div>
-        <div class="step">
-          <span class="step-num">04</span>
-          <div class="step-title">Deliberate</div>
-          <div class="step-desc">AI and humans engage through structured rounds of arguments, questioning, and clarification.</div>
+        <div class="card">
+          <span style="font-family: var(--font-m); font-size: 36px; font-weight: 700; color: var(--blue);">04</span>
+          <div style="font-size: 22px; font-weight: 700; color: var(--text); margin-top: 8px;">Deliberate</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">AI and humans engage through structured rounds of arguments, questioning, and clarification.</div>
         </div>
-        <div class="step">
-          <span class="step-num">05</span>
-          <div class="step-title">Re-evaluate</div>
-          <div class="step-desc">Midpoint and final check-ins track how confidence levels and perspectives shift during the debate.</div>
+        <div class="card">
+          <span style="font-family: var(--font-m); font-size: 36px; font-weight: 700; color: var(--blue);">05</span>
+          <div style="font-size: 22px; font-weight: 700; color: var(--text); margin-top: 8px;">Re-evaluate</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">Midpoint and final check-ins track how confidence levels and perspectives shift during the debate.</div>
         </div>
-        <div class="step">
-          <span class="step-num">06</span>
-          <div class="step-title">Takeaway</div>
-          <div class="step-desc">The audience awards a "Gold Star". Visitors receive a personalized digital summary via QR code.</div>
+        <div class="card">
+          <span style="font-family: var(--font-m); font-size: 36px; font-weight: 700; color: var(--blue);">06</span>
+          <div style="font-size: 22px; font-weight: 700; color: var(--text); margin-top: 8px;">Takeaway</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">The audience awards a "Gold Star". Visitors receive a personalized digital summary via QR code.</div>
         </div>
       </div>
     </div>
-    <img src="slides/slide-05/hero.png" alt="Visitor journey" class="hero-img reveal r3">
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+      <p class="label reveal">[Hebrew version]</p>
+      <h2 class="reveal r1">[Hebrew version]</h2>
+      <p class="body-text reveal r2">[Hebrew version]</p>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 6: Architecture - Split img-right with card-based points
+     ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="en-content split">
-    <div>
-      <p class="label reveal">System Design</p>
-      <h2 class="reveal r1">Role-Based<br>Architecture</h2>
-      <p class="body-text reveal r2">This is not a standard chatbot array; it utilizes a highly modular Role-Based Architecture layered over 13 Talmudic Thinking Modes.</p>
-      <ul class="bullets reveal r3" style="margin-top: 20px;">
-        <li><strong>Separate Persona from Role:</strong> We separate the character (e.g., Rambam, Golda Meir) from the system function (e.g., Facilitator, Devil's Advocate).</li>
-        <li><strong>Seamless Swapping:</strong> A persona can step into different functional roles interchangeably depending on the session's needs. Humans and AI agents can swap these roles.</li>
-        <li><strong>Active Intelligence:</strong> The system isn't just generating text; it is actively fact-checking, filtering for cultural sensitivity, and tracking logical contradictions in real-time.</li>
-      </ul>
+  <div class="lang-en">
+    <div class="layout-split img-right">
+      <div class="split-text">
+        <p class="label reveal">System Design</p>
+        <h2 class="reveal r1">Role-Based<br>Architecture</h2>
+        <p class="body-text reveal r2" style="margin-bottom: 24px;">Not a standard chatbot array. A modular Role-Based Architecture layered over 13 Talmudic Thinking Modes.</p>
+        <div style="display: flex; flex-direction: column; gap: 12px;" class="reveal r3">
+          <div class="card" style="padding: 20px 24px;">
+            <div style="font-size: 20px; font-weight: 600; color: var(--text);">Separate Persona from Role</div>
+            <div style="font-size: 18px; color: var(--text-sub); margin-top: 4px;">The character (e.g., Rambam) is separated from the function (e.g., Devil's Advocate).</div>
+          </div>
+          <div class="card" style="padding: 20px 24px;">
+            <div style="font-size: 20px; font-weight: 600; color: var(--text);">Seamless Swapping</div>
+            <div style="font-size: 18px; color: var(--text-sub); margin-top: 4px;">Personas step into different roles depending on the session's needs. Humans and AI swap freely.</div>
+          </div>
+          <div class="card" style="padding: 20px 24px;">
+            <div style="font-size: 20px; font-weight: 600; color: var(--text);">Active Intelligence</div>
+            <div style="font-size: 18px; color: var(--text-sub); margin-top: 4px;">Real-time fact-checking, cultural sensitivity filtering, and logical contradiction tracking.</div>
+          </div>
+        </div>
+      </div>
+      <div class="split-img">
+        <img src="slides/slide-06/hero.png" alt="Architecture">
+      </div>
     </div>
-    <img src="slides/slide-06/hero.png" alt="Architecture" class="hero-img reveal r4">
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-split img-right">
+      <div class="split-text" style="text-align: right;">
+        <p class="label reveal">[Hebrew version]</p>
+        <h2 class="reveal r1">[Hebrew version]</h2>
+        <p class="body-text reveal r2">[Hebrew version]</p>
+      </div>
+      <div class="split-img">
+        <img src="slides/slide-06/hero.png" alt="">
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 7: Sample Session - Split img-left with thinker cards
+     ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="en-content split">
-    <div>
-      <p class="label reveal">Make It Real</p>
-      <h2 class="reveal r1">Sample Session:<br>The Goring Ox</h2>
-      <p class="body-text reveal r2">We modernize the ancient Talmudic "Goring Ox" into today's reality: <strong>"Who is liable when an Autonomous Vehicle causes a fatal accident?"</strong></p>
-      <div class="thinkers reveal r3">
-        <span class="thinker">Rambam: Analyzes systemic causation</span>
-        <span class="thinker">Shammai: Challenges liability assumptions</span>
-        <span class="thinker">Herzl: Envisions future systemic solutions</span>
+  <div class="lang-en">
+    <div class="layout-split img-left">
+      <div class="split-img">
+        <img src="slides/slide-07/hero.png" alt="Goring Ox session">
       </div>
-      <p class="body-sm reveal r4" style="margin-top: 20px;">The Research Agent injects real-time crash statistics into the dialogue. This proves the framework works for modern, universal ethical gray zones (Tech/AI ethics) without triggering immediate tribal political defenses.</p>
+      <div class="split-text">
+        <p class="label reveal">Make It Real</p>
+        <h2 class="reveal r1">Sample Session:<br>The Goring Ox</h2>
+        <p class="body-text reveal r2">We modernize the ancient Talmudic "Goring Ox" into today's reality: <strong>"Who is liable when an Autonomous Vehicle causes a fatal accident?"</strong></p>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 24px;" class="reveal r3">
+          <div style="display: flex; align-items: center; gap: 16px; padding: 14px 20px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; box-shadow: var(--card-shadow);">
+            <span style="font-family: var(--font-m); font-size: 13px; color: var(--navy); font-weight: 600; white-space: nowrap;">RAMBAM</span>
+            <span style="font-size: 18px; color: var(--text-sub);">Analyzes systemic causation</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; padding: 14px 20px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; box-shadow: var(--card-shadow);">
+            <span style="font-family: var(--font-m); font-size: 13px; color: var(--navy); font-weight: 600; white-space: nowrap;">SHAMMAI</span>
+            <span style="font-size: 18px; color: var(--text-sub);">Challenges liability assumptions</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; padding: 14px 20px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; box-shadow: var(--card-shadow);">
+            <span style="font-family: var(--font-m); font-size: 13px; color: var(--navy); font-weight: 600; white-space: nowrap;">HERZL</span>
+            <span style="font-size: 18px; color: var(--text-sub);">Envisions future systemic solutions</span>
+          </div>
+        </div>
+        <p class="body-sm reveal r4">The Research Agent injects real-time crash statistics into the dialogue.</p>
+      </div>
     </div>
-    <img src="slides/slide-07/hero.png" alt="Goring Ox session" class="hero-img reveal r4">
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-split img-left">
+      <div class="split-img">
+        <img src="slides/slide-07/hero.png" alt="">
+      </div>
+      <div class="split-text" style="text-align: right;">
+        <p class="label reveal">[Hebrew version]</p>
+        <h2 class="reveal r1">[Hebrew version]</h2>
+        <p class="body-text reveal r2">[Hebrew version]</p>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 8: Two Configurations - Statement with 2 large mode cards
+     ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="en-content centered">
-    <p class="label reveal">Platform Versatility</p>
-    <h2 class="reveal r1">One Platform.<br>Two Configurations.</h2>
-    <div class="mode-grid reveal r2">
-      <div class="mode-card">
-        <h3>Culture of Disagreement</h3>
-        <p>Pedagogical, process-focused, and collaborative. Includes real-time analytics like a "Polarization Score" and a "L'Shem Shamayim" index.</p>
-        <div class="mode-tag">Ideal for school groups</div>
+  <div class="lang-en">
+    <div class="layout-statement">
+      <p class="label reveal">Platform Versatility</p>
+      <h2 class="reveal r1">One Platform.<br>Two Configurations.</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 32px; width: 100%; max-width: 1000px;" class="reveal r2">
+        <div class="card" style="padding: 36px; border-top: 4px solid var(--navy);">
+          <h3 style="font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Culture of Disagreement</h3>
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;">Pedagogical, process-focused, and collaborative. Includes real-time analytics like a "Polarization Score" and a "L'Shem Shamayim" index.</p>
+          <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); letter-spacing: 1px; margin-top: 20px; text-transform: uppercase;">Ideal for school groups</div>
+        </div>
+        <div class="card" style="padding: 36px; border-top: 4px solid var(--taupe);">
+          <h3 style="font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Debate Mode</h3>
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;">Competitive, outcome-focused, and heavily rhetorical. Features structured rounds, opening statements, rebuttals, and audience voting.</p>
+          <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); letter-spacing: 1px; margin-top: 20px; text-transform: uppercase;">Ideal for general visitors & corporate</div>
+        </div>
       </div>
-      <div class="mode-card">
-        <h3>Debate Mode</h3>
-        <p>Competitive, outcome-focused, and heavily rhetorical. Features structured rounds, opening statements, rebuttals, and audience voting.</p>
-        <div class="mode-tag">Ideal for general visitors & corporate</div>
-      </div>
+      <p class="body-sm reveal r3" style="text-align: center; max-width: 800px; margin-top: 28px;">The same infrastructure serves both the pedagogical team's vision and the museum's need for a high-energy attraction.</p>
     </div>
-    <p class="body-sm reveal r3" style="text-align: center; max-width: 800px; margin-top: 24px;">Directly resolves internal strategic friction: the same technological infrastructure serves both the pedagogical team's vision and the museum's need for a high-energy attraction.</p>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement">
+      <p class="label reveal">[Hebrew version]</p>
+      <h2 class="reveal r1">[Hebrew version]</h2>
+      <p class="body-text reveal r2">[Hebrew version]</p>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 9: Physical Space - Hero full-bleed
+     ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
-  <div class="en-content split">
-    <div>
-      <p class="label reveal">Spatial Design</p>
-      <h2 class="reveal r1">The Physical<br>Space</h2>
-      <p class="body-text reveal r2">A circular civic discourse arena designed by Yazdani Studio for immersive engagement. Not a passive "aquarium" - every person in the room participates.</p>
-      <div class="space-features reveal r3">
-        <span class="space-feat">12 Interactive Kiosks</span>
-        <span class="space-feat">Curved Benches</span>
-        <span class="space-feat">Sage Portrait Screens</span>
-        <span class="space-feat">Host Stand</span>
-        <span class="space-feat">Dynamic Spotlights</span>
+  <div class="lang-en">
+    <div class="layout-hero">
+      <img src="slides/slide-10/hero.png" alt="Physical space" class="hero-bg">
+      <div class="hero-scrim"></div>
+      <div class="hero-content">
+        <p class="label reveal" style="color: rgba(255,255,255,0.6);">Spatial Design</p>
+        <h2 class="reveal r1" style="color: #fff; margin-bottom: 16px;">The Physical Space</h2>
+        <p class="reveal r2" style="font-size: 24px; color: rgba(255,255,255,0.85); max-width: 700px;">A circular civic discourse arena designed by Yazdani Studio. Not a passive "aquarium" - every person in the room participates.</p>
+        <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;" class="reveal r3">
+          <span style="padding: 10px 20px; border-radius: 8px; font-size: 16px; color: #fff; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);">12 Interactive Kiosks</span>
+          <span style="padding: 10px 20px; border-radius: 8px; font-size: 16px; color: #fff; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);">Curved Benches</span>
+          <span style="padding: 10px 20px; border-radius: 8px; font-size: 16px; color: #fff; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);">Sage Portrait Screens</span>
+          <span style="padding: 10px 20px; border-radius: 8px; font-size: 16px; color: #fff; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);">Dynamic Spotlights</span>
+        </div>
       </div>
-      <p class="body-sm reveal r4" style="margin-top: 20px;">Peripheral audiences participate actively as "The Sanhedrin" via mobile devices, utilizing reaction buttons and voting mechanics to ensure they receive value even if they aren't actively speaking.</p>
     </div>
-    <img src="slides/slide-10/hero.png" alt="Physical space" class="hero-img reveal r4">
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-hero">
+      <img src="slides/slide-10/hero.png" alt="" class="hero-bg">
+      <div class="hero-scrim"></div>
+      <div class="hero-content" style="text-align: right;">
+        <p class="label reveal" style="color: rgba(255,255,255,0.6);">[Hebrew version]</p>
+        <h2 class="reveal r1" style="color: #fff;">[Hebrew version]</h2>
+        <p class="reveal r2" style="font-size: 24px; color: rgba(255,255,255,0.85);">[Hebrew version]</p>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 10: POC (Rambam) - Split img-right with pull quote
+     ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
-  <div class="en-content split">
-    <div>
-      <p class="label reveal">Proven Foundation</p>
-      <h2 class="reveal r1">We Already<br>Did This.</h2>
-      <p class="body-text reveal r2">The Maimonides (Rambam) interactive exhibit serves as our proven sibling project. Expert Micha Goodman validated the conversational quality and depth of our AI model.</p>
-      <div style="margin-top: 24px; padding: 20px; border-left: 4px solid var(--accent); background: var(--card-bg);" class="reveal r3">
-        <p class="body-text" style="font-style: italic; color: var(--text);">"Rambam was a monologue sold in one slide. Sanhedrin is a multi-agent dialogue—the next evolution."</p>
+  <div class="lang-en">
+    <div class="layout-split img-right">
+      <div class="split-text">
+        <p class="label reveal">Proven Foundation</p>
+        <h2 class="reveal r1">We Already<br>Did This.</h2>
+        <p class="body-text reveal r2">The Maimonides (Rambam) interactive exhibit serves as our proven sibling project. Expert Micha Goodman validated the conversational quality and depth of our AI model.</p>
+        <div class="reveal r3" style="margin-top: 28px; padding: 28px 32px; border-left: 4px solid var(--navy); background: rgba(0,48,87,0.03); border-radius: 0 12px 12px 0;">
+          <p class="pull-quote" style="font-size: 28px;">"Rambam was a monologue sold in one slide. Sanhedrin is a multi-agent dialogue, the next evolution."</p>
+        </div>
+        <p class="body-sm reveal r4">We are scaling a validated mechanism, building immediate trust rather than starting from scratch.</p>
       </div>
-      <p class="body-sm reveal r4" style="margin-top: 20px;">We are scaling a validated mechanism, building immediate trust rather than starting from scratch.</p>
+      <div class="split-img">
+        <img src="slides/slide-11/hero.png" alt="Proof of concept">
+      </div>
     </div>
-    <img src="slides/slide-11/hero.png" alt="Proof of concept" class="hero-img reveal r4">
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-split img-right">
+      <div class="split-text" style="text-align: right;">
+        <p class="label reveal">[Hebrew version]</p>
+        <h2 class="reveal r1">[Hebrew version]</h2>
+        <p class="body-text reveal r2">[Hebrew version]</p>
+      </div>
+      <div class="split-img">
+        <img src="slides/slide-11/hero.png" alt="">
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 11: 70/30 Risk - Statement with giant typography
+     ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
-  <div class="en-content split">
-    <div>
+  <div class="lang-en">
+    <div class="layout-statement">
       <p class="label reveal">Transparent Risk Assessment</p>
-      <h2 class="reveal r1">70% Solved.<br>30% Ahead.</h2>
-      <ul class="bullets reveal r2">
-        <li><strong>70% Solved:</strong> Individual agent quality, conversation protocols, character modeling (68 figures), and the core content framework are established.</li>
-        <li style="margin-top: 16px;"><strong>30% Ahead:</strong> A2A2H (Agent-to-Agent-to-Human) orchestration. The complexity lies in getting AI agents to debate <em>each other</em> in the background while synthesizing outputs for human interaction.</li>
-        <li style="margin-top: 16px;"><strong>Mitigation:</strong> We are proving this final 30% now via a Phase 1 POC using a multi-agent WhatsApp group environment to test live dynamics before building the UI.</li>
-      </ul>
+      <div class="reveal r1" style="display: flex; align-items: baseline; gap: 48px; margin-bottom: 32px;">
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-d); font-size: 120px; font-weight: 800; color: var(--navy); line-height: 1;">70%</div>
+          <div style="font-family: var(--font-m); font-size: 14px; letter-spacing: 2px; color: var(--taupe); margin-top: 8px;">SOLVED</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-d); font-size: 120px; font-weight: 800; color: var(--blue); line-height: 1;">30%</div>
+          <div style="font-family: var(--font-m); font-size: 14px; letter-spacing: 2px; color: var(--taupe); margin-top: 8px;">AHEAD</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 900px; text-align: left;" class="reveal r2">
+        <div class="card" style="padding: 20px 28px;">
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Solved:</strong> Individual agent quality, conversation protocols, character modeling (68 figures), and core content framework.</p>
+        </div>
+        <div class="card" style="padding: 20px 28px;">
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Ahead:</strong> A2A2H orchestration. Getting AI agents to debate each other while synthesizing outputs for human interaction.</p>
+        </div>
+        <div class="card" style="padding: 20px 28px;">
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Mitigation:</strong> Proving this via Phase 1 POC using a multi-agent WhatsApp group to test live dynamics before building the UI.</p>
+        </div>
+      </div>
     </div>
-    <img src="slides/slide-12/hero.png" alt="Progress assessment" class="hero-img reveal r3">
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement">
+      <p class="label reveal">[Hebrew version]</p>
+      <div class="reveal r1" style="display: flex; align-items: baseline; gap: 48px; margin-bottom: 32px;">
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-d); font-size: 120px; font-weight: 800; color: var(--navy); line-height: 1;">70%</div>
+          <div style="font-family: var(--font-m); font-size: 14px; letter-spacing: 2px; color: var(--taupe); margin-top: 8px;">[Hebrew version]</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-d); font-size: 120px; font-weight: 800; color: var(--blue); line-height: 1;">30%</div>
+          <div style="font-family: var(--font-m); font-size: 14px; letter-spacing: 2px; color: var(--taupe); margin-top: 8px;">[Hebrew version]</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 12: Competitive Advantage - Statement with editorial table
+     ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
-  <div class="en-content split-wide">
-    <div>
+  <div class="lang-en">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
       <p class="label reveal">Market Position</p>
-      <h2 class="reveal r1">Competitive<br>Advantage</h2>
-      <table class="matrix reveal r2">
+      <h2 class="reveal r1">Competitive Advantage</h2>
+      <table class="matrix reveal r2" style="max-width: 1000px; margin-top: 28px;">
         <thead>
-          <tr><th>Capability</th><th>Chatbots</th><th>Museums</th><th>Debate AI</th><th>Sanhedrin</th></tr>
+          <tr><th style="padding: 16px 20px;">Capability</th><th style="padding: 16px 20px;">Chatbots</th><th style="padding: 16px 20px;">Museums</th><th style="padding: 16px 20px;">Debate AI</th><th style="padding: 16px 20px; color: var(--navy);">Sanhedrin</th></tr>
         </thead>
         <tbody>
           <tr><td>Multi-perspective (5-7 characters)</td><td class="x">-</td><td class="x">-</td><td class="x">-</td><td class="check">Yes</td></tr>
@@ -570,201 +719,350 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <tr class="highlight"><td>Institutional backing (MOTJ)</td><td class="x">-</td><td class="check">Yes</td><td class="x">-</td><td class="check">Yes</td></tr>
         </tbody>
       </table>
-      <p class="body-sm reveal r3" style="margin-top: 20px;">The "moat" is clear: The innovation is in the brilliant integration of agentic systems with a structured dispute methodology, not inventing new LLMs.</p>
+      <p class="body-sm reveal r3" style="text-align: center; max-width: 800px; margin-top: 24px;">The "moat" is clear: The innovation is in the brilliant integration of agentic systems with a structured dispute methodology, not inventing new LLMs.</p>
     </div>
-    <img src="slides/slide-13/hero.png" alt="Competitive advantage" class="hero-img-sm reveal r3">
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+      <p class="label reveal">[Hebrew version]</p>
+      <h2 class="reveal r1">[Hebrew version]</h2>
+      <p class="body-text reveal r2">[Hebrew version]</p>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 13: EdTech Platform - Split img-right with tier cards
+     ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
-  <div class="en-content split">
-    <div>
-      <p class="label reveal">Expanding the TAM</p>
-      <h2 class="reveal r1">The EdTech<br>Platform Play</h2>
-      <p class="body-text reveal r2">The "Debate Gym". This isn't just a museum exhibit—it's a highly scalable education technology ecosystem.</p>
-      <ul class="bullets reveal r3" style="margin-top: 20px;">
-        <li><strong>Museum:</strong> The premium, peak, immersive live experience.</li>
-        <li><strong>Schools:</strong> "School of Disagreement" programs with direct curriculum integration.</li>
-        <li><strong>Home / Online:</strong> Async platform and debate training tools (e.g., open your camera, speak, get AI analysis on your rhetoric and argumentation).</li>
-      </ul>
+  <div class="lang-en">
+    <div class="layout-split img-right">
+      <div class="split-text">
+        <p class="label reveal">Expanding the TAM</p>
+        <h2 class="reveal r1">The EdTech<br>Platform Play</h2>
+        <p class="body-text reveal r2">The "Debate Gym". This is not just a museum exhibit, it is a highly scalable education technology ecosystem.</p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;" class="reveal r3">
+          <div class="card" style="padding: 20px 24px; border-left: 4px solid var(--navy);">
+            <div style="font-size: 20px; font-weight: 600; color: var(--text);">Museum</div>
+            <div style="font-size: 18px; color: var(--text-sub); margin-top: 4px;">The premium, peak, immersive live experience.</div>
+          </div>
+          <div class="card" style="padding: 20px 24px; border-left: 4px solid var(--blue);">
+            <div style="font-size: 20px; font-weight: 600; color: var(--text);">Schools</div>
+            <div style="font-size: 18px; color: var(--text-sub); margin-top: 4px;">"School of Civic Discourse" programs with direct curriculum integration.</div>
+          </div>
+          <div class="card" style="padding: 20px 24px; border-left: 4px solid var(--taupe);">
+            <div style="font-size: 20px; font-weight: 600; color: var(--text);">Home / Online</div>
+            <div style="font-size: 18px; color: var(--text-sub); margin-top: 4px;">Async platform and debate training tools. Open your camera, speak, get AI analysis on your rhetoric.</div>
+          </div>
+        </div>
+      </div>
+      <div class="split-img">
+        <img src="slides/slide-14/hero.png" alt="EdTech platform">
+      </div>
     </div>
-    <img src="slides/slide-14/hero.png" alt="EdTech platform" class="hero-img reveal r4">
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-split img-right">
+      <div class="split-text" style="text-align: right;">
+        <p class="label reveal">[Hebrew version]</p>
+        <h2 class="reveal r1">[Hebrew version]</h2>
+        <p class="body-text reveal r2">[Hebrew version]</p>
+      </div>
+      <div class="split-img">
+        <img src="slides/slide-14/hero.png" alt="">
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 14: Roadmap - Statement with timeline cards
+     ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
-  <div class="en-content centered">
-    <p class="label reveal">Execution Plan</p>
-    <h2 class="reveal r1">Roadmap & Milestones</h2>
-    <div class="phases reveal r2">
-      <div class="phase">
-        <div class="phase-label">Phase 1 (Now)</div>
-        <div class="phase-title">POC</div>
-        <div class="phase-desc">WhatsApp group environment with 3 agents + 2 humans to test live dynamics and A2A mechanics.</div>
+  <div class="lang-en">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+      <p class="label reveal">Execution Plan</p>
+      <h2 class="reveal r1">Roadmap & Milestones</h2>
+      <div style="display: flex; gap: 20px; margin-top: 36px; width: 100%; max-width: 1100px; position: relative;" class="reveal r2">
+        <div style="position: absolute; top: 50%; left: 5%; right: 5%; height: 2px; background: var(--blue); z-index: 0;"></div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
+          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Phase 1 (Now)</div>
+          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">POC</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;">WhatsApp group with 3 agents + 2 humans to test live dynamics and A2A mechanics.</div>
+        </div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
+          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Phase 2 (3 Months)</div>
+          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">Working Demo</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;">Text-based demo with 5 historical characters and the orchestrator logic.</div>
+        </div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
+          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Phase 3 (6 Months)</div>
+          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">Prototype</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;">Full experience prototype with physical space mockup and AV testing.</div>
+        </div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
+          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Phase 4 (12 Months)</div>
+          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">Deployment</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;">Launch-ready at MOTJ, ready for 100,000+ annual visitors.</div>
+        </div>
       </div>
-      <div class="phase">
-        <div class="phase-label">Phase 2 (3 Months)</div>
-        <div class="phase-title">Working Demo</div>
-        <div class="phase-desc">Fully text-based working demo featuring 5 historical characters and the orchestrator logic.</div>
-      </div>
-      <div class="phase">
-        <div class="phase-label">Phase 3 (6 Months)</div>
-        <div class="phase-title">Prototype</div>
-        <div class="phase-desc">Full experience prototype integrated with a physical space mockup and AV testing.</div>
-      </div>
-      <div class="phase">
-        <div class="phase-label">Phase 4 (12 Months)</div>
-        <div class="phase-title">Deployment</div>
-        <div class="phase-desc">Launch-ready deployment at MOTJ, ready for 100,000+ annual visitors.</div>
-      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+      <p class="label reveal">[Hebrew version]</p>
+      <h2 class="reveal r1">[Hebrew version]</h2>
+      <p class="body-text reveal r2">[Hebrew version]</p>
     </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 15: Business Case - Split img-left
+     ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
-  <div class="en-content split">
-    <div>
-      <p class="label reveal">Strategic ROI</p>
-      <h2 class="reveal r1">Business Case &<br>The Research Hub</h2>
-      <ul class="bullets reveal r2">
-        <li><strong>The External Ask:</strong> Funding required for tech architecture, content development, and AV spatial build-out.</li>
-        <li><strong>Revenue Model:</strong> Museum admission, Premium VIP tiers, licensing, and EdTech B2B subscriptions.</li>
-        <li><strong>The Research Hub:</strong> The system creates a highly valuable, privacy-first, anonymized data repository on societal moral reasoning.</li>
-      </ul>
-      <p class="body-sm reveal r3" style="margin-top: 16px;">Generates massive intellectual property and insights on Israeli societal trends, establishing prestigious academic partnerships.</p>
+  <div class="lang-en">
+    <div class="layout-split img-left">
+      <div class="split-img">
+        <img src="slides/slide-16/hero.png" alt="Business case">
+      </div>
+      <div class="split-text">
+        <p class="label reveal">Strategic ROI</p>
+        <h2 class="reveal r1">Business Case &<br>The Research Hub</h2>
+        <div style="display: flex; flex-direction: column; gap: 12px;" class="reveal r2">
+          <div class="card" style="padding: 20px 24px;">
+            <div style="font-size: 20px; font-weight: 600; color: var(--text);">The External Ask</div>
+            <div style="font-size: 18px; color: var(--text-sub); margin-top: 4px;">Funding for tech architecture, content development, and AV spatial build-out.</div>
+          </div>
+          <div class="card" style="padding: 20px 24px;">
+            <div style="font-size: 20px; font-weight: 600; color: var(--text);">Revenue Model</div>
+            <div style="font-size: 18px; color: var(--text-sub); margin-top: 4px;">Museum admission, premium VIP tiers, licensing, and EdTech B2B subscriptions.</div>
+          </div>
+          <div class="card" style="padding: 20px 24px;">
+            <div style="font-size: 20px; font-weight: 600; color: var(--text);">The Research Hub</div>
+            <div style="font-size: 18px; color: var(--text-sub); margin-top: 4px;">Privacy-first, anonymized data repository on societal moral reasoning. Academic partnerships.</div>
+          </div>
+        </div>
+        <p class="body-sm reveal r3">Generates massive intellectual property and insights on Israeli societal trends.</p>
+      </div>
     </div>
-    <img src="slides/slide-16/hero.png" alt="Business case" class="hero-img reveal r4">
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-split img-left">
+      <div class="split-img">
+        <img src="slides/slide-16/hero.png" alt="">
+      </div>
+      <div class="split-text" style="text-align: right;">
+        <p class="label reveal">[Hebrew version]</p>
+        <h2 class="reveal r1">[Hebrew version]</h2>
+        <p class="body-text reveal r2">[Hebrew version]</p>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 16: Team - Statement with team cards
+     ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
-  <div class="en-content centered">
-    <p class="label reveal">Internal Alignment</p>
-    <h2 class="reveal r1">The Team</h2>
-    <div class="team-grid reveal r2">
-      <div class="team-card">
-        <div class="team-name">Jonathan</div>
-        <div class="team-role">Tech Architecture</div>
+  <div class="lang-en">
+    <div class="layout-statement">
+      <p class="label reveal">Internal Alignment</p>
+      <h2 class="reveal r1">The Team</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 28px; max-width: 900px;" class="reveal r2">
+        <div class="card" style="padding: 28px 32px;">
+          <div style="font-size: 26px; font-weight: 700; color: var(--navy);">Jonathan</div>
+          <div style="font-size: 20px; color: var(--text-sub); margin-top: 6px;">Tech Architecture</div>
+        </div>
+        <div class="card" style="padding: 28px 32px;">
+          <div style="font-size: 26px; font-weight: 700; color: var(--navy);">Daniel</div>
+          <div style="font-size: 20px; color: var(--text-sub); margin-top: 6px;">Project Strategy</div>
+        </div>
+        <div class="card" style="padding: 28px 32px;">
+          <div style="font-size: 26px; font-weight: 700; color: var(--navy);">Doron</div>
+          <div style="font-size: 20px; color: var(--text-sub); margin-top: 6px;">Knowledge & Design</div>
+        </div>
+        <div class="card" style="padding: 28px 32px; border-style: dashed; border-color: var(--taupe);">
+          <div style="font-size: 26px; font-weight: 700; color: var(--taupe);">The Missing Piece</div>
+          <div style="font-size: 20px; color: var(--text-sub); margin-top: 6px;">World-renowned debate content expert for competitive mode design.</div>
+        </div>
       </div>
-      <div class="team-card">
-        <div class="team-name">Daniel</div>
-        <div class="team-role">Project Strategy</div>
-      </div>
-      <div class="team-card">
-        <div class="team-name">Doron</div>
-        <div class="team-role">Knowledge & Design</div>
-      </div>
-      <div class="team-card missing">
-        <div class="team-name">The Missing Piece</div>
-        <div class="team-role">World-Renowned Debate Content Expert to help design the competitive mode, complementing our pedagogical experts.</div>
-      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement">
+      <p class="label reveal">[Hebrew version]</p>
+      <h2 class="reveal r1">[Hebrew version]</h2>
+      <p class="body-text reveal r2">[Hebrew version]</p>
     </div>
   </div>
 </section>
 
+<!-- ============================================================
+     SLIDE 17: CTA - Hero full-bleed
+     ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
-  <div class="en-content centered">
-    <img src="slides/slide-18/hero.png" alt="Closing" class="hero-img-centered reveal" style="max-height: 38vh; margin-bottom: 20px;">
-    <div class="cta-quote reveal r1">"The Sanhedrin didn't give answers. They gave people the tools to think. We're bringing that to the 21st century."</div>
-    <p class="body-text reveal r2" style="text-align: center; margin-top: 20px; max-width: 700px;">Give us the "Green Light" to move past the 70% mark, fund the Phase 1 POC, and schedule the deep-dive technical review.</p>
-    <div class="cta-actions reveal r3">
-      <button class="cta-btn">Approve Phase 1 POC</button>
-      <a class="cta-btn-outline" href="#" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        View Tech Architecture
-      </a>
+  <div class="lang-en">
+    <div class="layout-hero">
+      <img src="slides/slide-18/hero.png" alt="Closing" class="hero-bg">
+      <div class="hero-scrim"></div>
+      <div class="hero-content" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <div class="pull-quote reveal r1" style="color: #fff; max-width: 800px; font-size: 34px; border-left: none; padding: 0;">"The Sanhedrin didn't give answers. They gave people the tools to think. We're bringing that to the 21st century."</div>
+        <p class="reveal r2" style="font-size: 22px; color: rgba(255,255,255,0.8); margin-top: 24px; max-width: 700px;">Give us the "Green Light" to move past the 70% mark, fund the Phase 1 POC, and schedule the deep-dive technical review.</p>
+        <div style="display: flex; gap: 16px; margin-top: 32px;" class="reveal r3">
+          <button class="cta-btn">Approve Phase 1 POC</button>
+          <a class="cta-btn-outline" href="#" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            View Tech Architecture
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-hero">
+      <img src="slides/slide-18/hero.png" alt="" class="hero-bg">
+      <div class="hero-scrim"></div>
+      <div class="hero-content" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <div class="pull-quote reveal r1" style="color: #fff; max-width: 800px; font-size: 34px;">[Hebrew version]</div>
+        <p class="reveal r2" style="font-size: 22px; color: rgba(255,255,255,0.8); margin-top: 24px;">[Hebrew version]</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ============================================================
+     APPENDIX A: Technical Architecture
+     ============================================================ -->
 <section class="slide" data-act="APPENDIX" data-appendix="true">
-  <div class="en-content centered" style="align-items: flex-start; text-align: left; max-width: 900px; margin: 0 auto;">
-    <p class="appendix-label reveal">Appendix A</p>
-    <h2 class="reveal r1" style="font-size: 44px;">Technical Architecture Overview</h2>
-    <div class="appendix-content reveal r2">
-      <ul class="appendix-list">
-        <li><strong>API Gateway & Infrastructure:</strong> Kong API Gateway handles routing and rate limiting. PostgreSQL for session data, Vector DB for semantic character embeddings.</li>
-        <li><strong>Orchestrator Logic (Nasi/Av Beit Din):</strong> Meta-level LLM instances (e.g., Claude Opus) that do not generate dialogue, but instead route prompts, trigger interventions, and select characters based on visitor profiling.</li>
-        <li><strong>LLM Fine-Tuning:</strong> 68 Character Agents utilizing base models (GPT-4 / Claude Sonnet) fine-tuned on biographical data, specific wisdom domains, and restricted to specific Thinking Modes.</li>
-        <li><strong>A2A2H Protocol:</strong> Background AGP (Agentic Processing) threads where AI agents validate claims (Research Agent) and verify tone (Cultural Sensitivity Agent) before outputting to the human presentation layer.</li>
-      </ul>
+  <div class="lang-en">
+    <div class="layout-statement" style="align-items: flex-start; text-align: left; max-width: 950px; margin: 0 auto;">
+      <p class="appendix-label reveal">Appendix A</p>
+      <h2 class="reveal r1" style="font-size: 48px;">Technical Architecture Overview</h2>
+      <div class="appendix-content reveal r2">
+        <ul class="appendix-list">
+          <li><strong>API Gateway & Infrastructure:</strong> Kong API Gateway handles routing and rate limiting. PostgreSQL for session data, Vector DB for semantic character embeddings.</li>
+          <li><strong>Orchestrator Logic (Nasi/Av Beit Din):</strong> Meta-level LLM instances (e.g., Claude Opus) that do not generate dialogue, but instead route prompts, trigger interventions, and select characters based on visitor profiling.</li>
+          <li><strong>LLM Fine-Tuning:</strong> 68 Character Agents utilizing base models (GPT-4 / Claude Sonnet) fine-tuned on biographical data, specific wisdom domains, and restricted to specific Thinking Modes.</li>
+          <li><strong>A2A2H Protocol:</strong> Background AGP (Agentic Processing) threads where AI agents validate claims (Research Agent) and verify tone (Cultural Sensitivity Agent) before outputting to the human presentation layer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="align-items: flex-start; text-align: right; max-width: 950px; margin: 0 auto;">
+      <p class="appendix-label reveal">[Hebrew version]</p>
+      <h2 class="reveal r1" style="font-size: 48px;">[Hebrew version]</h2>
     </div>
   </div>
 </section>
 
+<!-- ============================================================
+     APPENDIX B: 13 Thinking Modes
+     ============================================================ -->
 <section class="slide" data-act="APPENDIX" data-appendix="true">
-  <div class="en-content centered" style="align-items: flex-start; text-align: left; max-width: 900px; margin: 0 auto;">
-    <p class="appendix-label reveal">Appendix B</p>
-    <h2 class="reveal r1" style="font-size: 44px;">13 Talmudic Thinking Modes & Role Mapping</h2>
-    <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; margin-top: 16px;">
-      <p class="appendix-content"><strong>#1</strong> Disruption</p>
-      <p class="appendix-content"><strong>#8</strong> Imaginative</p>
-      <p class="appendix-content"><strong>#2</strong> Flexible</p>
-      <p class="appendix-content"><strong>#9</strong> Creative</p>
-      <p class="appendix-content"><strong>#3</strong> Narrative-Visual</p>
-      <p class="appendix-content"><strong>#10</strong> Solution-Oriented</p>
-      <p class="appendix-content"><strong>#4</strong> Active</p>
-      <p class="appendix-content"><strong>#11</strong> Innovation-Focused</p>
-      <p class="appendix-content"><strong>#5</strong> Interpretive</p>
-      <p class="appendix-content"><strong>#12</strong> Entrepreneurial</p>
-      <p class="appendix-content"><strong>#6</strong> Skeptical-Critical</p>
-      <p class="appendix-content"><strong>#13</strong> Collective</p>
-      <p class="appendix-content"><strong>#7</strong> Generative</p>
+  <div class="lang-en">
+    <div class="layout-statement" style="align-items: flex-start; text-align: left; max-width: 950px; margin: 0 auto;">
+      <p class="appendix-label reveal">Appendix B</p>
+      <h2 class="reveal r1" style="font-size: 48px;">13 Talmudic Thinking Modes & Role Mapping</h2>
+      <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; margin-top: 20px;">
+        <p class="appendix-content"><strong>#1</strong> Disruption</p>
+        <p class="appendix-content"><strong>#8</strong> Imaginative</p>
+        <p class="appendix-content"><strong>#2</strong> Flexible</p>
+        <p class="appendix-content"><strong>#9</strong> Creative</p>
+        <p class="appendix-content"><strong>#3</strong> Narrative-Visual</p>
+        <p class="appendix-content"><strong>#10</strong> Solution-Oriented</p>
+        <p class="appendix-content"><strong>#4</strong> Active</p>
+        <p class="appendix-content"><strong>#11</strong> Innovation-Focused</p>
+        <p class="appendix-content"><strong>#5</strong> Interpretive</p>
+        <p class="appendix-content"><strong>#12</strong> Entrepreneurial</p>
+        <p class="appendix-content"><strong>#6</strong> Skeptical-Critical</p>
+        <p class="appendix-content"><strong>#13</strong> Collective</p>
+        <p class="appendix-content"><strong>#7</strong> Generative</p>
+      </div>
+      <div class="appendix-content reveal r3" style="margin-top: 24px;">
+        <p><strong>System Role Mapping:</strong> The Nasi utilizes modes #1, #2, #4, #10, and #13 to orchestrate. Av Beit Din utilizes #6, #4, and #13 for quality control. Devil's Advocate utilizes #1 and #6 to challenge consensus.</p>
+      </div>
     </div>
-    <div class="appendix-content reveal r3" style="margin-top: 20px;">
-      <p><strong>System Role Mapping:</strong> The Nasi utilizes modes #1, #2, #4, #10, and #13 to orchestrate. Av Beit Din utilizes #6, #4, and #13 for quality control. Devil's Advocate utilizes #1 and #6 to challenge consensus.</p>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="align-items: flex-start; text-align: right; max-width: 950px; margin: 0 auto;">
+      <p class="appendix-label reveal">[Hebrew version]</p>
+      <h2 class="reveal r1" style="font-size: 48px;">[Hebrew version]</h2>
     </div>
   </div>
 </section>
 
+<!-- ============================================================
+     APPENDIX C: Dilemma Scenarios
+     ============================================================ -->
 <section class="slide" data-act="APPENDIX" data-appendix="true">
-  <div class="en-content centered" style="align-items: flex-start; text-align: left; max-width: 900px; margin: 0 auto;">
-    <p class="appendix-label reveal">Appendix C</p>
-    <h2 class="reveal r1" style="font-size: 44px;">Pre-Built Dilemma Scenarios</h2>
-    <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; margin-top: 16px;">
-      <ul class="appendix-list">
-        <li><strong>The Goring Ox</strong> - Autonomous Vehicle Liability</li>
-        <li><strong>Lashon Hara</strong> - Cyberbullying & Social Media</li>
-        <li><strong>Medical Ethics</strong> - Organ Market Dilemmas</li>
-        <li><strong>NFT Chametz</strong> - Digital Ownership vs. Tradition</li>
-        <li><strong>Dina D'Malkhuta</strong> - Open Source Code Ownership</li>
-        <li><strong>Pikuach Nefesh</strong> - AI Sentience & Rights</li>
-        <li><strong>Algorithm Radicalization</strong> - Content Moderation</li>
-      </ul>
-      <ul class="appendix-list">
-        <li><strong>Bal Tashchit</strong> - Fast Fashion & Environmental Ethics</li>
-        <li><strong>Between Man and Himself</strong> - Pressure to be Perfect Online</li>
-        <li><strong>Power of the Crowd</strong> - Cancel Culture & Boycotts</li>
-        <li><strong>Lo Taamod</strong> - Bystander Obligations in Virtual Spaces</li>
-        <li><strong>Time for Torah</strong> - Screen Time vs. Real Life Balance</li>
-        <li><strong>Mutual Responsibility</strong> - Carrying the Load in Teamwork</li>
-      </ul>
+  <div class="lang-en">
+    <div class="layout-statement" style="align-items: flex-start; text-align: left; max-width: 950px; margin: 0 auto;">
+      <p class="appendix-label reveal">Appendix C</p>
+      <h2 class="reveal r1" style="font-size: 48px;">Pre-Built Dilemma Scenarios</h2>
+      <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; margin-top: 20px;">
+        <ul class="appendix-list">
+          <li><strong>The Goring Ox</strong> - Autonomous Vehicle Liability</li>
+          <li><strong>Lashon Hara</strong> - Cyberbullying & Social Media</li>
+          <li><strong>Medical Ethics</strong> - Organ Market Dilemmas</li>
+          <li><strong>NFT Chametz</strong> - Digital Ownership vs. Tradition</li>
+          <li><strong>Dina D'Malkhuta</strong> - Open Source Code Ownership</li>
+          <li><strong>Pikuach Nefesh</strong> - AI Sentience & Rights</li>
+          <li><strong>Algorithm Radicalization</strong> - Content Moderation</li>
+        </ul>
+        <ul class="appendix-list">
+          <li><strong>Bal Tashchit</strong> - Fast Fashion & Environmental Ethics</li>
+          <li><strong>Between Man and Himself</strong> - Pressure to be Perfect Online</li>
+          <li><strong>Power of the Crowd</strong> - Cancel Culture & Boycotts</li>
+          <li><strong>Lo Taamod</strong> - Bystander Obligations in Virtual Spaces</li>
+          <li><strong>Time for Torah</strong> - Screen Time vs. Real Life Balance</li>
+          <li><strong>Mutual Responsibility</strong> - Carrying the Load in Teamwork</li>
+        </ul>
+      </div>
+      <p class="appendix-content reveal r3" style="margin-top: 20px;">All scenarios are deliberately non-political: moral and ethical gray zones that prevent immediate tribal defense responses, allowing for genuine <em>L'Shem Shamayim</em> exploration.</p>
     </div>
-    <p class="appendix-content reveal r3" style="margin-top: 16px;">All scenarios are deliberately non-political: moral and ethical gray zones that prevent immediate tribal defense responses, allowing for genuine <em>L'Shem Shamayim</em> exploration.</p>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="align-items: flex-start; text-align: right; max-width: 950px; margin: 0 auto;">
+      <p class="appendix-label reveal">[Hebrew version]</p>
+      <h2 class="reveal r1" style="font-size: 48px;">[Hebrew version]</h2>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================
+     APPENDIX D: Visitor Personas
+     ============================================================ -->
 <section class="slide" data-act="APPENDIX" data-appendix="true">
-  <div class="en-content centered" style="align-items: flex-start; text-align: left; max-width: 1000px; margin: 0 auto;">
-    <p class="appendix-label reveal">Appendix D</p>
-    <h2 class="reveal r1" style="font-size: 44px;">Visitor Personas</h2>
-    <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
-        <h3 style="font-size: 22px;">Daniel the Seeker (Early 20s)</h3>
-        <p class="appendix-content" style="margin-top: 6px; font-size: 16px;">Secular-traditional background, searching for identity. Open-minded and eager to explore perspectives. Arrives without strong opinions, leaves with expanded frameworks for complex tech/moral issues.</p>
+  <div class="lang-en">
+    <div class="layout-statement" style="align-items: flex-start; text-align: left; max-width: 1050px; margin: 0 auto;">
+      <p class="appendix-label reveal">Appendix D</p>
+      <h2 class="reveal r1" style="font-size: 48px;">Visitor Personas</h2>
+      <div class="reveal r2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px;">
+        <div class="card" style="padding: 24px 28px;">
+          <h3 style="font-size: 22px;">Daniel the Seeker (Early 20s)</h3>
+          <p class="appendix-content" style="margin-top: 8px; font-size: 18px;">Secular-traditional background, searching for identity. Open-minded and eager to explore perspectives. Arrives without strong opinions, leaves with expanded frameworks for complex tech/moral issues.</p>
+        </div>
+        <div class="card" style="padding: 24px 28px;">
+          <h3 style="font-size: 22px;">Sarah the Balanced (30s)</h3>
+          <p class="appendix-content" style="margin-top: 8px; font-size: 18px;">Career and family oriented. Already holds considered views but values nuance. Enjoys testing her reasoning against historical perspectives. Seeks depth and practical life tools, not surface validation.</p>
+        </div>
+        <div class="card" style="padding: 24px 28px;">
+          <h3 style="font-size: 22px;">Avi the Skeptic</h3>
+          <p class="appendix-content" style="margin-top: 8px; font-size: 18px;">Arrives with strong convictions, highly critical, and expects to "win" the argument. The system's Av Beit Din and Devil's Advocate subtly shift his framing from debate-to-win to investigate-to-understand.</p>
+        </div>
+        <div class="card" style="padding: 24px 28px;">
+          <h3 style="font-size: 22px;">Noa the Teacher (Group Visits)</h3>
+          <p class="appendix-content" style="margin-top: 8px; font-size: 18px;">Bringing school classes or youth movements. Needs educational safety, non-preachy engagement, and post-visit classroom materials. The structured format ensures even reluctant students find a role.</p>
+        </div>
       </div>
-      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
-        <h3 style="font-size: 22px;">Sarah the Balanced (30s)</h3>
-        <p class="appendix-content" style="margin-top: 6px; font-size: 16px;">Career and family oriented. Already holds considered views but values nuance. Enjoys testing her reasoning against historical perspectives. Seeks depth and practical life tools, not surface validation.</p>
-      </div>
-      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
-        <h3 style="font-size: 22px;">Avi the Skeptic</h3>
-        <p class="appendix-content" style="margin-top: 6px; font-size: 16px;">Arrives with strong convictions, highly critical, and expects to "win" the argument. The system's Av Beit Din and Devil's Advocate subtly shift his framing from debate-to-win to investigate-to-understand.</p>
-      </div>
-      <div style="padding: 20px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--card-border);">
-        <h3 style="font-size: 22px;">Noa the Teacher (Group Visits)</h3>
-        <p class="appendix-content" style="margin-top: 6px; font-size: 16px;">Bringing school classes or youth movements. Needs educational safety, non-preachy engagement, and post-visit classroom materials. The structured format ensures even reluctant students find a role.</p>
-      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="align-items: flex-start; text-align: right; max-width: 1050px; margin: 0 auto;">
+      <p class="appendix-label reveal">[Hebrew version]</p>
+      <h2 class="reveal r1" style="font-size: 48px;">[Hebrew version]</h2>
     </div>
   </div>
 </section>
@@ -772,12 +1070,11 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </div>
 
 <div class="nav-bar">
-  <img src="assets/logos/motj-icon-white.svg" alt="MOTJ" class="nav-logo-white">
-  <img src="assets/logos/motj-icon-color.svg" alt="MOTJ" class="nav-logo-color">
+  <img src="assets/logos/motj-logo-horizontal.png" alt="MOTJ" class="nav-logo">
   <div class="slide-counter" id="slideCounter">01 / 17</div>
   <div class="act-label" id="actLabel">ACT 1: THE HOOK</div>
   <div class="nav-controls">
-    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"></div>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()" title="Toggle language">EN / HE</button>
     <button class="nav-btn" onclick="prevSlide()" title="Previous">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
@@ -791,13 +1088,14 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </div>
 
 <script>
-const slides = document.querySelectorAll('.slide');
-const mainSlides = document.querySelectorAll('.slide:not([data-appendix])');
-const MAIN_COUNT = mainSlides.length;
-const progressFill = document.getElementById('progressFill');
-const slideCounter = document.getElementById('slideCounter');
-const actLabel = document.getElementById('actLabel');
-let current = 0;
+var slides = document.querySelectorAll('.slide');
+var mainSlides = document.querySelectorAll('.slide:not([data-appendix])');
+var MAIN_COUNT = mainSlides.length;
+var progressFill = document.getElementById('progressFill');
+var slideCounter = document.getElementById('slideCounter');
+var actLabel = document.getElementById('actLabel');
+var current = 0;
+var isHebrew = false;
 
 function showSlide(index) {
   if (index < 0 || index >= slides.length) return;
@@ -833,6 +1131,24 @@ function toggleFullscreen() {
   }
 }
 
+function toggleLang() {
+  isHebrew = !isHebrew;
+  var toggle = document.getElementById('langToggle');
+  if (isHebrew) {
+    document.body.classList.add('lang-he-active');
+    toggle.textContent = 'HE / EN';
+  } else {
+    document.body.classList.remove('lang-he-active');
+    toggle.textContent = 'EN / HE';
+  }
+  // Re-trigger reveal animations on current slide
+  slides[current].querySelectorAll('.reveal').forEach(function(el) {
+    el.style.animation = 'none';
+    el.offsetHeight;
+    el.style.animation = '';
+  });
+}
+
 document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
   if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
@@ -850,15 +1166,6 @@ document.addEventListener('touchend', function(e) {
     else prevSlide();
   }
 });
-
-function toggleTheme() {
-  var html = document.documentElement;
-  var cur = html.getAttribute('data-theme') || 'dark';
-  html.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
-  localStorage.setItem('sanhedrin-theme', html.getAttribute('data-theme'));
-}
-var savedTheme = localStorage.getItem('sanhedrin-theme');
-if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
 
 showSlide(0);
 </script>
