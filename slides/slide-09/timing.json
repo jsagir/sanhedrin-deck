@@ -7,164 +7,294 @@
     },
     {
       "word": "physical",
-      "start": 0.197,
-      "end": 0.58
+      "start": 0.209,
+      "end": 0.592
     },
     {
       "word": "space.",
       "start": 0.662,
-      "end": 1.324
+      "end": 1.347
     },
     {
       "word": "A",
-      "start": 1.834,
-      "end": 1.927
+      "start": 1.73,
+      "end": 1.811
     },
     {
       "word": "circular",
-      "start": 2.009,
-      "end": 2.426
+      "start": 1.904,
+      "end": 2.38
     },
     {
       "word": "civic",
-      "start": 2.485,
-      "end": 2.775
+      "start": 2.45,
+      "end": 2.763
     },
     {
       "word": "discourse",
-      "start": 2.833,
-      "end": 3.355
+      "start": 2.821,
+      "end": 3.309
     },
     {
-      "word": "arena",
-      "start": 3.402,
-      "end": 3.878
+      "word": "arena.",
+      "start": 3.367,
+      "end": 3.971
     },
     {
-      "word": "designed",
-      "start": 4.203,
-      "end": 4.679
+      "word": "Designed",
+      "start": 4.412,
+      "end": 4.946
     },
     {
       "word": "by",
-      "start": 4.737,
-      "end": 4.865
+      "start": 5.016,
+      "end": 5.143
     },
     {
       "word": "Yazdani",
-      "start": 4.934,
-      "end": 5.503
+      "start": 5.213,
+      "end": 5.735
     },
     {
       "word": "Studio.",
-      "start": 5.584,
-      "end": 6.269
+      "start": 5.817,
+      "end": 6.525
     },
     {
-      "word": "Not",
-      "start": 6.711,
-      "end": 6.978
+      "word": "This",
+      "start": 7.129,
+      "end": 7.303
+    },
+    {
+      "word": "is",
+      "start": 7.349,
+      "end": 7.442
+    },
+    {
+      "word": "not",
+      "start": 7.535,
+      "end": 7.79
     },
     {
       "word": "a",
-      "start": 7.129,
-      "end": 7.21
+      "start": 7.86,
+      "end": 7.918
     },
     {
       "word": "passive",
-      "start": 7.303,
-      "end": 7.697
+      "start": 8.011,
+      "end": 8.371
     },
     {
-      "word": "aquarium.",
-      "start": 7.721,
-      "end": 8.487
+      "word": "aquarium",
+      "start": 8.394,
+      "end": 8.916
+    },
+    {
+      "word": "where",
+      "start": 8.998,
+      "end": 9.195
+    },
+    {
+      "word": "people",
+      "start": 9.23,
+      "end": 9.52
+    },
+    {
+      "word": "watch",
+      "start": 9.567,
+      "end": 9.799
+    },
+    {
+      "word": "screens.",
+      "start": 9.845,
+      "end": 10.565
     },
     {
       "word": "Every",
-      "start": 8.928,
-      "end": 9.172
+      "start": 11.006,
+      "end": 11.296
+    },
+    {
+      "word": "single",
+      "start": 11.343,
+      "end": 11.633
     },
     {
       "word": "person",
-      "start": 9.242,
-      "end": 9.601
+      "start": 11.668,
+      "end": 12.016
     },
     {
       "word": "in",
-      "start": 9.671,
-      "end": 9.752
+      "start": 12.086,
+      "end": 12.179
     },
     {
-      "word": "the",
-      "start": 9.799,
-      "end": 9.868
+      "word": "this",
+      "start": 12.225,
+      "end": 12.365
     },
     {
       "word": "room",
-      "start": 9.927,
-      "end": 10.194
+      "start": 12.434,
+      "end": 12.666
     },
     {
       "word": "participates.",
-      "start": 10.31,
-      "end": 11.297
+      "start": 12.748,
+      "end": 13.711
     },
     {
-      "word": "12",
-      "start": 11.9,
-      "end": 12.295
+      "word": "Twelve",
+      "start": 14.153,
+      "end": 14.652
     },
     {
       "word": "interactive",
-      "start": 12.411,
-      "end": 13.084
-    },
-    {
-      "word": "kiosks,",
-      "start": 13.131,
-      "end": 13.897
-    },
-    {
-      "word": "curved",
-      "start": 14.222,
-      "end": 14.64
-    },
-    {
-      "word": "benches,",
       "start": 14.71,
-      "end": 15.372
+      "end": 15.325
     },
     {
-      "word": "sage",
-      "start": 15.615,
-      "end": 16.022
+      "word": "kiosks.",
+      "start": 15.372,
+      "end": 16.115
+    },
+    {
+      "word": "Curved",
+      "start": 16.556,
+      "end": 16.951
+    },
+    {
+      "word": "benches.",
+      "start": 17.021,
+      "end": 17.717
+    },
+    {
+      "word": "Sage",
+      "start": 18.158,
+      "end": 18.553
     },
     {
       "word": "portrait",
-      "start": 16.068,
-      "end": 16.475
+      "start": 18.6,
+      "end": 18.994
     },
     {
-      "word": "screens,",
-      "start": 16.521,
-      "end": 17.136
+      "word": "screens",
+      "start": 19.041,
+      "end": 19.482
     },
     {
-      "word": "and",
-      "start": 17.31,
-      "end": 17.461
+      "word": "that",
+      "start": 19.54,
+      "end": 19.679
     },
     {
-      "word": "dynamic",
-      "start": 17.531,
-      "end": 18.007
+      "word": "come",
+      "start": 19.726,
+      "end": 19.888
+    },
+    {
+      "word": "alive.",
+      "start": 19.923,
+      "end": 20.55
+    },
+    {
+      "word": "Dynamic",
+      "start": 20.933,
+      "end": 21.409
     },
     {
       "word": "spotlights.",
-      "start": 18.077,
-      "end": 19.133
+      "start": 21.456,
+      "end": 22.315
+    },
+    {
+      "word": "And",
+      "start": 22.826,
+      "end": 22.965
+    },
+    {
+      "word": "the",
+      "start": 23.011,
+      "end": 23.081
+    },
+    {
+      "word": "peripheral",
+      "start": 23.116,
+      "end": 23.58
+    },
+    {
+      "word": "audience?",
+      "start": 23.65,
+      "end": 24.323
+    },
+    {
+      "word": "They",
+      "start": 24.765,
+      "end": 24.939
+    },
+    {
+      "word": "are",
+      "start": 24.973,
+      "end": 25.101
+    },
+    {
+      "word": "actively",
+      "start": 25.159,
+      "end": 25.635
+    },
+    {
+      "word": "voting,",
+      "start": 25.705,
+      "end": 26.367
+    },
+    {
+      "word": "reacting,",
+      "start": 26.645,
+      "end": 27.249
+    },
+    {
+      "word": "and",
+      "start": 27.272,
+      "end": 27.435
+    },
+    {
+      "word": "engaging",
+      "start": 27.504,
+      "end": 28.085
+    },
+    {
+      "word": "through",
+      "start": 28.364,
+      "end": 28.642
+    },
+    {
+      "word": "their",
+      "start": 28.677,
+      "end": 28.816
+    },
+    {
+      "word": "mobile",
+      "start": 28.863,
+      "end": 29.269
+    },
+    {
+      "word": "devices.",
+      "start": 29.316,
+      "end": 30.163
+    },
+    {
+      "word": "Zero",
+      "start": 30.604,
+      "end": 31.127
+    },
+    {
+      "word": "bystanders.",
+      "start": 31.22,
+      "end": 32.462
     }
   ],
-  "duration": 19.13
+  "duration": 32.46
 }

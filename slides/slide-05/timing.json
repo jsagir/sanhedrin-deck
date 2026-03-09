@@ -1,305 +1,410 @@
 {
   "words": [
     {
-      "word": "The",
+      "word": "Here",
       "start": 0.0,
-      "end": 0.151
-    },
-    {
-      "word": "visitor",
-      "start": 0.197,
-      "end": 0.534
-    },
-    {
-      "word": "journey",
-      "start": 0.58,
-      "end": 0.987
+      "end": 0.348
     },
     {
       "word": "is",
-      "start": 1.161,
-      "end": 1.324
-    },
-    {
-      "word": "a",
-      "start": 1.358,
-      "end": 1.393
-    },
-    {
-      "word": "25-minute",
-      "start": 1.486,
-      "end": 2.403
-    },
-    {
-      "word": "loop.",
-      "start": 2.438,
-      "end": 2.891
-    },
-    {
-      "word": "Up",
-      "start": 3.402,
-      "end": 3.576
-    },
-    {
-      "word": "to",
-      "start": 3.634,
-      "end": 3.692
-    },
-    {
-      "word": "12",
-      "start": 3.773,
-      "end": 4.052
-    },
-    {
-      "word": "visitors",
-      "start": 4.11,
-      "end": 4.505
-    },
-    {
-      "word": "select",
-      "start": 4.551,
-      "end": 4.853
-    },
-    {
-      "word": "a",
-      "start": 4.888,
-      "end": 4.911
-    },
-    {
-      "word": "dilemma",
-      "start": 4.969,
-      "end": 5.433
-    },
-    {
-      "word": "and",
-      "start": 5.933,
-      "end": 6.095
-    },
-    {
-      "word": "set",
-      "start": 6.165,
-      "end": 6.374
-    },
-    {
-      "word": "their",
-      "start": 6.42,
-      "end": 6.571
-    },
-    {
-      "word": "confidence",
-      "start": 6.629,
-      "end": 7.163
-    },
-    {
-      "word": "level.",
-      "start": 7.221,
-      "end": 7.755
-    },
-    {
-      "word": "A",
-      "start": 8.255,
-      "end": 8.336
-    },
-    {
-      "word": "human",
-      "start": 8.417,
-      "end": 8.777
-    },
-    {
-      "word": "game",
-      "start": 8.87,
-      "end": 9.149
-    },
-    {
-      "word": "master",
-      "start": 9.183,
-      "end": 9.625
-    },
-    {
-      "word": "sets",
-      "start": 9.95,
-      "end": 10.298
-    },
-    {
-      "word": "the",
-      "start": 10.356,
-      "end": 10.449
-    },
-    {
-      "word": "stage.",
-      "start": 10.495,
-      "end": 11.227
-    },
-    {
-      "word": "The",
-      "start": 11.726,
-      "end": 11.831
-    },
-    {
-      "word": "Wheel",
-      "start": 11.877,
-      "end": 12.074
-    },
-    {
-      "word": "of",
-      "start": 12.121,
-      "end": 12.167
-    },
-    {
-      "word": "Sages",
-      "start": 12.237,
-      "end": 12.736
-    },
-    {
-      "word": "assigns",
-      "start": 12.806,
-      "end": 13.433
-    },
-    {
-      "word": "AI",
-      "start": 13.514,
-      "end": 13.967
-    },
-    {
-      "word": "historical",
-      "start": 14.036,
-      "end": 14.559
-    },
-    {
-      "word": "figures",
-      "start": 14.617,
-      "end": 15.0
-    },
-    {
-      "word": "to",
-      "start": 15.325,
-      "end": 15.453
-    },
-    {
-      "word": "join",
-      "start": 15.534,
-      "end": 15.778
-    },
-    {
-      "word": "the",
-      "start": 15.836,
-      "end": 15.906
-    },
-    {
-      "word": "teams.",
-      "start": 15.952,
-      "end": 16.649
-    },
-    {
-      "word": "AI",
-      "start": 17.078,
-      "end": 17.612
-    },
-    {
-      "word": "and",
-      "start": 17.705,
-      "end": 17.821
-    },
-    {
-      "word": "humans",
-      "start": 17.903,
-      "end": 18.32
-    },
-    {
-      "word": "engage",
-      "start": 18.378,
-      "end": 19.121
-    },
-    {
-      "word": "through",
-      "start": 19.33,
-      "end": 19.609
-    },
-    {
-      "word": "structured",
-      "start": 19.667,
-      "end": 20.143
-    },
-    {
-      "word": "rounds",
-      "start": 20.189,
-      "end": 20.538
-    },
-    {
-      "word": "of",
-      "start": 20.584,
-      "end": 20.642
-    },
-    {
-      "word": "arguments.",
-      "start": 20.758,
-      "end": 21.641
-    },
-    {
-      "word": "Midpoint",
-      "start": 22.024,
-      "end": 22.523
-    },
-    {
-      "word": "check-ins",
-      "start": 22.581,
-      "end": 23.15
-    },
-    {
-      "word": "track",
-      "start": 23.219,
-      "end": 23.568
+      "start": 0.406,
+      "end": 0.522
     },
     {
       "word": "how",
-      "start": 23.846,
-      "end": 24.021
+      "start": 0.592,
+      "end": 0.708
     },
     {
-      "word": "perspectives",
-      "start": 24.09,
-      "end": 24.706
+      "word": "the",
+      "start": 0.766,
+      "end": 0.836
     },
     {
-      "word": "shift.",
-      "start": 24.764,
-      "end": 25.414
+      "word": "experience",
+      "start": 0.906,
+      "end": 1.521
     },
     {
-      "word": "Finally,",
-      "start": 25.925,
-      "end": 26.633
+      "word": "works.",
+      "start": 1.579,
+      "end": 2.287
     },
     {
-      "word": "visitors",
-      "start": 27.016,
-      "end": 27.457
+      "word": "It",
+      "start": 2.728,
+      "end": 2.856
     },
     {
-      "word": "receive",
-      "start": 27.515,
-      "end": 28.061
+      "word": "is",
+      "start": 2.902,
+      "end": 2.972
     },
     {
       "word": "a",
-      "start": 28.13,
-      "end": 28.212
+      "start": 3.019,
+      "end": 3.042
+    },
+    {
+      "word": "tight",
+      "start": 3.123,
+      "end": 3.471
+    },
+    {
+      "word": "25-minute",
+      "start": 3.646,
+      "end": 4.586
+    },
+    {
+      "word": "loop.",
+      "start": 4.632,
+      "end": 5.062
+    },
+    {
+      "word": "Twelve",
+      "start": 5.573,
+      "end": 6.049
+    },
+    {
+      "word": "visitors",
+      "start": 6.095,
+      "end": 6.571
+    },
+    {
+      "word": "select",
+      "start": 6.687,
+      "end": 7.047
+    },
+    {
+      "word": "a",
+      "start": 7.082,
+      "end": 7.105
+    },
+    {
+      "word": "dilemma",
+      "start": 7.163,
+      "end": 7.651
+    },
+    {
+      "word": "and",
+      "start": 8.034,
+      "end": 8.208
+    },
+    {
+      "word": "lock",
+      "start": 8.29,
+      "end": 8.487
+    },
+    {
+      "word": "in",
+      "start": 8.58,
+      "end": 8.8
+    },
+    {
+      "word": "their",
+      "start": 8.963,
+      "end": 9.16
+    },
+    {
+      "word": "initial",
+      "start": 9.207,
+      "end": 9.555
+    },
+    {
+      "word": "confidence",
+      "start": 9.636,
+      "end": 10.17
+    },
+    {
+      "word": "level.",
+      "start": 10.217,
+      "end": 10.704
+    },
+    {
+      "word": "A",
+      "start": 11.297,
+      "end": 11.378
+    },
+    {
+      "word": "human",
+      "start": 11.494,
+      "end": 11.865
+    },
+    {
+      "word": "game",
+      "start": 11.947,
+      "end": 12.214
+    },
+    {
+      "word": "master,",
+      "start": 12.249,
+      "end": 12.852
+    },
+    {
+      "word": "think",
+      "start": 13.131,
+      "end": 13.375
+    },
+    {
+      "word": "game",
+      "start": 13.468,
+      "end": 13.769
+    },
+    {
+      "word": "show",
+      "start": 13.827,
+      "end": 14.083
+    },
+    {
+      "word": "host,",
+      "start": 14.153,
+      "end": 14.617
+    },
+    {
+      "word": "sets",
+      "start": 14.814,
+      "end": 15.105
+    },
+    {
+      "word": "the",
+      "start": 15.163,
+      "end": 15.232
+    },
+    {
+      "word": "stage.",
+      "start": 15.29,
+      "end": 15.964
+    },
+    {
+      "word": "Then",
+      "start": 16.347,
+      "end": 16.637
+    },
+    {
+      "word": "our",
+      "start": 16.753,
+      "end": 16.927
+    },
+    {
+      "word": "Wheel",
+      "start": 16.985,
+      "end": 17.218
+    },
+    {
+      "word": "of",
+      "start": 17.264,
+      "end": 17.322
+    },
+    {
+      "word": "Sages",
+      "start": 17.392,
+      "end": 17.902
+    },
+    {
+      "word": "dynamically",
+      "start": 18.111,
+      "end": 18.75
+    },
+    {
+      "word": "assigns",
+      "start": 18.784,
+      "end": 19.319
+    },
+    {
+      "word": "AI",
+      "start": 19.4,
+      "end": 19.76
+    },
+    {
+      "word": "historical",
+      "start": 19.829,
+      "end": 20.363
+    },
+    {
+      "word": "figures",
+      "start": 20.421,
+      "end": 20.781
+    },
+    {
+      "word": "to",
+      "start": 21.06,
+      "end": 21.188
+    },
+    {
+      "word": "join",
+      "start": 21.304,
+      "end": 21.606
+    },
+    {
+      "word": "the",
+      "start": 21.664,
+      "end": 21.733
+    },
+    {
+      "word": "teams.",
+      "start": 21.78,
+      "end": 22.453
+    },
+    {
+      "word": "What",
+      "start": 22.964,
+      "end": 23.161
+    },
+    {
+      "word": "follows",
+      "start": 23.231,
+      "end": 23.742
+    },
+    {
+      "word": "is",
+      "start": 24.125,
+      "end": 24.288
+    },
+    {
+      "word": "structured",
+      "start": 24.334,
+      "end": 24.822
+    },
+    {
+      "word": "deliberation,",
+      "start": 24.856,
+      "end": 25.797
+    },
+    {
+      "word": "arguments,",
+      "start": 26.18,
+      "end": 27.051
+    },
+    {
+      "word": "questioning,",
+      "start": 27.26,
+      "end": 28.038
+    },
+    {
+      "word": "and",
+      "start": 28.247,
+      "end": 28.409
+    },
+    {
+      "word": "clarification.",
+      "start": 28.49,
+      "end": 29.535
+    },
+    {
+      "word": "Midpoint",
+      "start": 30.232,
+      "end": 30.72
+    },
+    {
+      "word": "check-ins",
+      "start": 30.778,
+      "end": 31.393
+    },
+    {
+      "word": "track",
+      "start": 31.776,
+      "end": 32.124
+    },
+    {
+      "word": "how",
+      "start": 32.206,
+      "end": 32.542
+    },
+    {
+      "word": "perspectives",
+      "start": 32.658,
+      "end": 33.309
+    },
+    {
+      "word": "actually",
+      "start": 33.39,
+      "end": 33.877
+    },
+    {
+      "word": "shift.",
+      "start": 33.947,
+      "end": 34.574
+    },
+    {
+      "word": "And",
+      "start": 35.178,
+      "end": 35.329
+    },
+    {
+      "word": "at",
+      "start": 35.375,
+      "end": 35.456
+    },
+    {
+      "word": "the",
+      "start": 35.491,
+      "end": 35.572
+    },
+    {
+      "word": "end,",
+      "start": 35.654,
+      "end": 36.083
+    },
+    {
+      "word": "every",
+      "start": 36.292,
+      "end": 36.594
+    },
+    {
+      "word": "visitor",
+      "start": 36.664,
+      "end": 37.012
+    },
+    {
+      "word": "walks",
+      "start": 37.07,
+      "end": 37.36
+    },
+    {
+      "word": "out",
+      "start": 37.407,
+      "end": 37.569
+    },
+    {
+      "word": "with",
+      "start": 37.616,
+      "end": 37.755
+    },
+    {
+      "word": "a",
+      "start": 37.79,
+      "end": 37.825
     },
     {
       "word": "personalized",
-      "start": 28.386,
-      "end": 29.28
+      "start": 37.883,
+      "end": 38.661
     },
     {
       "word": "digital",
-      "start": 29.396,
-      "end": 29.826
+      "start": 38.719,
+      "end": 39.102
     },
     {
-      "word": "summary.",
-      "start": 29.895,
-      "end": 30.696
+      "word": "summary",
+      "start": 39.183,
+      "end": 39.636
+    },
+    {
+      "word": "of",
+      "start": 39.752,
+      "end": 39.891
+    },
+    {
+      "word": "their",
+      "start": 39.949,
+      "end": 40.123
+    },
+    {
+      "word": "journey.",
+      "start": 40.181,
+      "end": 40.959
     }
   ],
-  "duration": 30.7
+  "duration": 40.96
 }

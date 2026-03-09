@@ -1,270 +1,325 @@
 {
   "words": [
     {
-      "word": "The",
+      "word": "And",
       "start": 0.0,
       "end": 0.151
     },
     {
-      "word": "EdTech",
-      "start": 0.221,
-      "end": 0.592
+      "word": "this",
+      "start": 0.197,
+      "end": 0.313
     },
     {
-      "word": "platform",
-      "start": 0.662,
+      "word": "is",
+      "start": 0.36,
+      "end": 0.441
+    },
+    {
+      "word": "bigger",
+      "start": 0.511,
+      "end": 0.824
+    },
+    {
+      "word": "than",
+      "start": 0.964,
+      "end": 1.138
+    },
+    {
+      "word": "a",
+      "start": 1.173,
       "end": 1.196
     },
     {
-      "word": "play.",
-      "start": 1.254,
-      "end": 1.8
-    },
-    {
-      "word": "The",
-      "start": 2.241,
-      "end": 2.345
-    },
-    {
-      "word": "Debate",
-      "start": 2.403,
-      "end": 2.752
-    },
-    {
-      "word": "Gym.",
-      "start": 2.821,
-      "end": 3.286
-    },
-    {
-      "word": "This",
-      "start": 3.889,
-      "end": 4.075
-    },
-    {
-      "word": "is",
-      "start": 4.133,
-      "end": 4.214
-    },
-    {
-      "word": "not",
-      "start": 4.284,
-      "end": 4.458
-    },
-    {
-      "word": "just",
-      "start": 4.54,
-      "end": 4.807
-    },
-    {
-      "word": "a",
-      "start": 4.865,
-      "end": 4.888
-    },
-    {
       "word": "museum",
-      "start": 4.957,
-      "end": 5.387
+      "start": 1.265,
+      "end": 1.753
     },
     {
       "word": "exhibit.",
-      "start": 5.433,
-      "end": 6.026
+      "start": 1.8,
+      "end": 2.415
     },
     {
-      "word": "It",
-      "start": 6.409,
-      "end": 6.536
+      "word": "This",
+      "start": 2.728,
+      "end": 3.007
     },
     {
       "word": "is",
-      "start": 6.583,
-      "end": 6.664
-    },
-    {
-      "word": "a",
-      "start": 6.711,
-      "end": 6.745
-    },
-    {
-      "word": "scalable",
-      "start": 6.861,
-      "end": 7.477
-    },
-    {
-      "word": "education",
-      "start": 7.558,
-      "end": 8.22
-    },
-    {
-      "word": "technology",
-      "start": 8.29,
-      "end": 8.951
-    },
-    {
-      "word": "ecosystem.",
-      "start": 9.033,
-      "end": 10.043
-    },
-    {
-      "word": "The",
-      "start": 10.542,
-      "end": 10.646
-    },
-    {
-      "word": "museum",
-      "start": 10.716,
-      "end": 11.192
-    },
-    {
-      "word": "provides",
-      "start": 11.262,
-      "end": 11.889
+      "start": 3.111,
+      "end": 3.274
     },
     {
       "word": "the",
-      "start": 11.947,
-      "end": 12.016
+      "start": 3.32,
+      "end": 3.39
+    },
+    {
+      "word": "Debate",
+      "start": 3.448,
+      "end": 3.796
+    },
+    {
+      "word": "Gym.",
+      "start": 3.855,
+      "end": 4.365
+    },
+    {
+      "word": "A",
+      "start": 4.957,
+      "end": 5.039
+    },
+    {
+      "word": "scalable",
+      "start": 5.132,
+      "end": 5.712
+    },
+    {
+      "word": "EdTech",
+      "start": 5.782,
+      "end": 6.258
+    },
+    {
+      "word": "platform.",
+      "start": 6.316,
+      "end": 7.07
+    },
+    {
+      "word": "The",
+      "start": 7.5,
+      "end": 7.616
+    },
+    {
+      "word": "museum",
+      "start": 7.674,
+      "end": 8.255
+    },
+    {
+      "word": "is",
+      "start": 8.568,
+      "end": 8.731
+    },
+    {
+      "word": "the",
+      "start": 8.777,
+      "end": 8.847
     },
     {
       "word": "premium",
-      "start": 12.098,
-      "end": 12.597
+      "start": 8.893,
+      "end": 9.346
     },
     {
-      "word": "immersive",
-      "start": 12.678,
-      "end": 13.259
+      "word": "peak",
+      "start": 9.439,
+      "end": 9.718
     },
     {
       "word": "experience.",
-      "start": 13.293,
-      "end": 14.292
+      "start": 9.81,
+      "end": 10.855
     },
     {
       "word": "Schools",
-      "start": 14.733,
-      "end": 15.29
+      "start": 11.18,
+      "end": 11.703
     },
     {
       "word": "run",
-      "start": 15.383,
-      "end": 15.685
+      "start": 11.784,
+      "end": 12.074
     },
     {
       "word": "School",
-      "start": 15.836,
-      "end": 16.184
+      "start": 12.202,
+      "end": 12.574
     },
     {
       "word": "of",
-      "start": 16.231,
-      "end": 16.289
+      "start": 12.632,
+      "end": 12.701
     },
     {
       "word": "Civic",
-      "start": 16.358,
-      "end": 16.649
+      "start": 12.759,
+      "end": 13.026
     },
     {
       "word": "Discourse",
-      "start": 16.707,
-      "end": 17.218
+      "start": 13.084,
+      "end": 13.537
     },
     {
       "word": "programs",
-      "start": 17.264,
-      "end": 17.949
+      "start": 13.572,
+      "end": 14.234
     },
     {
       "word": "with",
-      "start": 18.228,
-      "end": 18.402
+      "start": 14.478,
+      "end": 14.652
     },
     {
       "word": "direct",
-      "start": 18.46,
-      "end": 18.831
+      "start": 14.71,
+      "end": 15.128
     },
     {
       "word": "curriculum",
-      "start": 18.913,
-      "end": 19.447
+      "start": 15.209,
+      "end": 15.732
     },
     {
       "word": "integration.",
-      "start": 19.528,
-      "end": 20.399
+      "start": 15.813,
+      "end": 16.684
     },
     {
       "word": "And",
-      "start": 21.003,
-      "end": 21.153
+      "start": 16.997,
+      "end": 17.16
     },
     {
       "word": "at",
-      "start": 21.212,
-      "end": 21.293
+      "start": 17.229,
+      "end": 17.311
     },
     {
-      "word": "home,",
-      "start": 21.351,
-      "end": 21.792
+      "word": "home?",
+      "start": 17.357,
+      "end": 17.787
     },
     {
-      "word": "an",
-      "start": 22.175,
-      "end": 22.303
-    },
-    {
-      "word": "async",
-      "start": 22.384,
-      "end": 22.79
-    },
-    {
-      "word": "platform",
-      "start": 22.86,
-      "end": 23.417
-    },
-    {
-      "word": "provides",
-      "start": 23.592,
-      "end": 24.114
-    },
-    {
-      "word": "AI",
-      "start": 24.195,
-      "end": 24.555
-    },
-    {
-      "word": "analysis",
-      "start": 24.602,
-      "end": 25.217
-    },
-    {
-      "word": "on",
-      "start": 25.542,
-      "end": 25.705
+      "word": "Open",
+      "start": 18.286,
+      "end": 18.588
     },
     {
       "word": "your",
-      "start": 25.763,
-      "end": 25.89
+      "start": 18.646,
+      "end": 18.762
     },
     {
-      "word": "rhetoric",
-      "start": 25.937,
-      "end": 26.355
+      "word": "camera,",
+      "start": 18.82,
+      "end": 19.343
+    },
+    {
+      "word": "speak,",
+      "start": 19.575,
+      "end": 20.155
     },
     {
       "word": "and",
-      "start": 26.564,
-      "end": 26.761
+      "start": 20.364,
+      "end": 20.515
+    },
+    {
+      "word": "get",
+      "start": 20.573,
+      "end": 20.724
+    },
+    {
+      "word": "real-time",
+      "start": 20.805,
+      "end": 21.432
+    },
+    {
+      "word": "AI",
+      "start": 21.502,
+      "end": 21.943
+    },
+    {
+      "word": "analysis",
+      "start": 21.99,
+      "end": 22.57
+    },
+    {
+      "word": "on",
+      "start": 22.814,
+      "end": 22.976
+    },
+    {
+      "word": "your",
+      "start": 23.023,
+      "end": 23.162
+    },
+    {
+      "word": "rhetoric",
+      "start": 23.22,
+      "end": 23.65
+    },
+    {
+      "word": "and",
+      "start": 23.824,
+      "end": 23.998
     },
     {
       "word": "argumentation.",
-      "start": 26.842,
-      "end": 28.143
+      "start": 24.079,
+      "end": 25.171
+    },
+    {
+      "word": "Museum,",
+      "start": 25.682,
+      "end": 26.436
+    },
+    {
+      "word": "school,",
+      "start": 26.645,
+      "end": 27.295
+    },
+    {
+      "word": "home.",
+      "start": 27.574,
+      "end": 28.085
+    },
+    {
+      "word": "Three",
+      "start": 28.596,
+      "end": 28.909
+    },
+    {
+      "word": "tiers.",
+      "start": 28.967,
+      "end": 29.536
+    },
+    {
+      "word": "One",
+      "start": 30.047,
+      "end": 30.326
+    },
+    {
+      "word": "technology",
+      "start": 30.395,
+      "end": 31.022
+    },
+    {
+      "word": "stack.",
+      "start": 31.092,
+      "end": 31.614
+    },
+    {
+      "word": "Massive",
+      "start": 32.055,
+      "end": 32.52
+    },
+    {
+      "word": "total",
+      "start": 32.566,
+      "end": 32.973
+    },
+    {
+      "word": "addressable",
+      "start": 33.054,
+      "end": 33.646
+    },
+    {
+      "word": "market.",
+      "start": 33.716,
+      "end": 34.459
     }
   ],
-  "duration": 28.14
+  "duration": 34.46
 }

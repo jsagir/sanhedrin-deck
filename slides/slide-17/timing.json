@@ -1,225 +1,315 @@
 {
   "words": [
     {
-      "word": "The",
+      "word": "Two",
       "start": 0.0,
-      "end": 0.151
+      "end": 0.302
+    },
+    {
+      "word": "thousand",
+      "start": 0.395,
+      "end": 0.789
+    },
+    {
+      "word": "years",
+      "start": 0.848,
+      "end": 1.057
+    },
+    {
+      "word": "ago,",
+      "start": 1.091,
+      "end": 1.602
+    },
+    {
+      "word": "the",
+      "start": 2.043,
+      "end": 2.113
     },
     {
       "word": "Sanhedrin",
-      "start": 0.209,
-      "end": 0.848
+      "start": 2.159,
+      "end": 2.833
     },
     {
-      "word": "didn't",
-      "start": 1.022,
-      "end": 1.312
+      "word": "did",
+      "start": 3.007,
+      "end": 3.17
+    },
+    {
+      "word": "not",
+      "start": 3.239,
+      "end": 3.39
     },
     {
       "word": "give",
-      "start": 1.347,
-      "end": 1.521
-    },
-    {
-      "word": "answers.",
-      "start": 1.579,
-      "end": 2.357
-    },
-    {
-      "word": "They",
-      "start": 2.868,
-      "end": 3.03
-    },
-    {
-      "word": "gave",
-      "start": 3.088,
-      "end": 3.332
+      "start": 3.448,
+      "end": 3.611
     },
     {
       "word": "people",
-      "start": 3.379,
-      "end": 3.68
+      "start": 3.646,
+      "end": 3.936
+    },
+    {
+      "word": "answers.",
+      "start": 4.005,
+      "end": 4.748
+    },
+    {
+      "word": "They",
+      "start": 5.352,
+      "end": 5.538
+    },
+    {
+      "word": "gave",
+      "start": 5.596,
+      "end": 5.84
+    },
+    {
+      "word": "people",
+      "start": 5.875,
+      "end": 6.153
     },
     {
       "word": "the",
-      "start": 3.715,
-      "end": 3.785
+      "start": 6.177,
+      "end": 6.246
     },
     {
       "word": "tools",
-      "start": 3.855,
-      "end": 4.307
+      "start": 6.293,
+      "end": 6.583
     },
     {
       "word": "to",
-      "start": 4.365,
-      "end": 4.447
-    },
-    {
-      "word": "think.",
-      "start": 4.54,
-      "end": 5.074
-    },
-    {
-      "word": "We're",
-      "start": 5.677,
-      "end": 5.898
-    },
-    {
-      "word": "bringing",
-      "start": 5.921,
-      "end": 6.188
-    },
-    {
-      "word": "that",
-      "start": 6.246,
-      "end": 6.409
-    },
-    {
-      "word": "to",
-      "start": 6.467,
-      "end": 6.56
-    },
-    {
-      "word": "the",
       "start": 6.629,
       "end": 6.699
     },
     {
+      "word": "think.",
+      "start": 6.78,
+      "end": 7.326
+    },
+    {
+      "word": "We",
+      "start": 7.837,
+      "end": 7.988
+    },
+    {
+      "word": "are",
+      "start": 8.046,
+      "end": 8.139
+    },
+    {
+      "word": "bringing",
+      "start": 8.162,
+      "end": 8.44
+    },
+    {
+      "word": "that",
+      "start": 8.487,
+      "end": 8.615
+    },
+    {
+      "word": "into",
+      "start": 8.673,
+      "end": 8.835
+    },
+    {
+      "word": "the",
+      "start": 8.893,
+      "end": 8.963
+    },
+    {
       "word": "21st",
-      "start": 6.792,
-      "end": 7.407
+      "start": 9.033,
+      "end": 9.555
     },
     {
       "word": "century.",
-      "start": 7.465,
-      "end": 8.162
+      "start": 9.601,
+      "end": 10.263
     },
     {
       "word": "Give",
-      "start": 8.603,
-      "end": 8.789
+      "start": 10.588,
+      "end": 10.774
     },
     {
       "word": "us",
-      "start": 8.824,
-      "end": 8.928
+      "start": 10.82,
+      "end": 10.925
     },
     {
       "word": "the",
-      "start": 8.998,
-      "end": 9.079
+      "start": 10.983,
+      "end": 11.053
     },
     {
       "word": "green",
-      "start": 9.149,
-      "end": 9.439
+      "start": 11.111,
+      "end": 11.366
     },
     {
-      "word": "light",
-      "start": 9.509,
-      "end": 9.81
+      "word": "light.",
+      "start": 11.436,
+      "end": 11.889
     },
     {
-      "word": "to",
-      "start": 9.985,
-      "end": 10.112
-    },
-    {
-      "word": "move",
-      "start": 10.194,
-      "end": 10.426
-    },
-    {
-      "word": "past",
-      "start": 10.472,
-      "end": 10.786
+      "word": "Fund",
+      "start": 12.399,
+      "end": 12.759
     },
     {
       "word": "the",
-      "start": 10.832,
-      "end": 10.902
-    },
-    {
-      "word": "70",
-      "start": 10.995,
-      "end": 11.331
-    },
-    {
-      "word": "percent",
-      "start": 11.389,
-      "end": 11.738
-    },
-    {
-      "word": "mark,",
-      "start": 11.807,
-      "end": 12.295
-    },
-    {
-      "word": "fund",
-      "start": 12.806,
-      "end": 13.189
-    },
-    {
-      "word": "the",
-      "start": 13.27,
-      "end": 13.351
+      "start": 12.829,
+      "end": 12.91
     },
     {
       "word": "Phase",
-      "start": 13.398,
-      "end": 13.711
+      "start": 12.957,
+      "end": 13.27
     },
     {
       "word": "1",
-      "start": 13.746,
-      "end": 13.897
+      "start": 13.305,
+      "end": 13.456
     },
     {
       "word": "proof",
-      "start": 14.025,
-      "end": 14.269
+      "start": 13.572,
+      "end": 13.804
     },
     {
       "word": "of",
-      "start": 14.338,
-      "end": 14.396
+      "start": 13.862,
+      "end": 13.932
     },
     {
-      "word": "concept,",
-      "start": 14.466,
-      "end": 15.209
+      "word": "concept.",
+      "start": 14.002,
+      "end": 14.768
     },
     {
-      "word": "and",
-      "start": 15.906,
-      "end": 16.057
+      "word": "Let",
+      "start": 15.209,
+      "end": 15.383
     },
     {
-      "word": "schedule",
-      "start": 16.149,
-      "end": 16.707
+      "word": "us",
+      "start": 15.441,
+      "end": 15.523
+    },
+    {
+      "word": "prove",
+      "start": 15.581,
+      "end": 15.906
     },
     {
       "word": "the",
-      "start": 16.742,
-      "end": 16.811
+      "start": 15.94,
+      "end": 16.01
+    },
+    {
+      "word": "final",
+      "start": 16.068,
+      "end": 16.405
+    },
+    {
+      "word": "30",
+      "start": 16.521,
+      "end": 16.846
+    },
+    {
+      "word": "percent.",
+      "start": 16.904,
+      "end": 17.566
+    },
+    {
+      "word": "And",
+      "start": 18.263,
+      "end": 18.414
+    },
+    {
+      "word": "schedule",
+      "start": 18.495,
+      "end": 18.994
+    },
+    {
+      "word": "the",
+      "start": 19.029,
+      "end": 19.099
     },
     {
       "word": "deep-dive",
-      "start": 16.881,
-      "end": 17.554
+      "start": 19.145,
+      "end": 19.749
     },
     {
       "word": "technical",
-      "start": 17.589,
-      "end": 18.03
+      "start": 19.784,
+      "end": 20.213
     },
     {
-      "word": "review.",
-      "start": 18.1,
-      "end": 18.901
+      "word": "review",
+      "start": 20.271,
+      "end": 20.654
+    },
+    {
+      "word": "where",
+      "start": 21.038,
+      "end": 21.247
+    },
+    {
+      "word": "we",
+      "start": 21.281,
+      "end": 21.351
+    },
+    {
+      "word": "show",
+      "start": 21.397,
+      "end": 21.595
+    },
+    {
+      "word": "you",
+      "start": 21.664,
+      "end": 21.757
+    },
+    {
+      "word": "exactly",
+      "start": 21.85,
+      "end": 22.442
+    },
+    {
+      "word": "how",
+      "start": 22.5,
+      "end": 22.628
+    },
+    {
+      "word": "this",
+      "start": 22.686,
+      "end": 22.825
+    },
+    {
+      "word": "works",
+      "start": 22.884,
+      "end": 23.243
+    },
+    {
+      "word": "under",
+      "start": 23.522,
+      "end": 23.766
+    },
+    {
+      "word": "the",
+      "start": 23.801,
+      "end": 23.87
+    },
+    {
+      "word": "hood.",
+      "start": 23.917,
+      "end": 24.567
     }
   ],
-  "duration": 18.9
+  "duration": 24.57
 }

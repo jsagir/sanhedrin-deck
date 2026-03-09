@@ -1,225 +1,360 @@
 {
   "words": [
     {
-      "word": "One",
+      "word": "Now,",
       "start": 0.0,
-      "end": 0.209
+      "end": 0.604
     },
     {
-      "word": "platform.",
-      "start": 0.267,
+      "word": "we",
+      "start": 0.801,
       "end": 0.952
     },
     {
-      "word": "Two",
-      "start": 1.393,
-      "end": 1.683
-    },
-    {
-      "word": "configurations.",
-      "start": 1.765,
-      "end": 2.902
-    },
-    {
-      "word": "Culture",
-      "start": 3.344,
-      "end": 3.75
-    },
-    {
-      "word": "of",
-      "start": 3.796,
-      "end": 3.855
-    },
-    {
-      "word": "Disagreement",
-      "start": 3.913,
-      "end": 4.586
-    },
-    {
-      "word": "is",
-      "start": 4.969,
-      "end": 5.12
-    },
-    {
-      "word": "pedagogical,",
-      "start": 5.178,
-      "end": 6.072
-    },
-    {
-      "word": "process-focused,",
-      "start": 6.351,
-      "end": 7.477
-    },
-    {
-      "word": "and",
-      "start": 7.651,
-      "end": 7.802
-    },
-    {
-      "word": "collaborative,",
-      "start": 7.86,
-      "end": 8.649
-    },
-    {
-      "word": "with",
-      "start": 8.975,
-      "end": 9.137
+      "word": "faced",
+      "start": 1.033,
+      "end": 1.405
     },
     {
       "word": "a",
-      "start": 9.172,
-      "end": 9.195
+      "start": 1.474,
+      "end": 1.556
     },
     {
-      "word": "polarization",
-      "start": 9.242,
-      "end": 10.066
+      "word": "real",
+      "start": 1.707,
+      "end": 2.02
     },
     {
-      "word": "score",
-      "start": 10.159,
-      "end": 10.704
+      "word": "internal",
+      "start": 2.113,
+      "end": 2.624
     },
     {
-      "word": "and",
-      "start": 10.948,
-      "end": 11.204
+      "word": "tension.",
+      "start": 2.694,
+      "end": 3.344
     },
     {
-      "word": "L'Shem",
-      "start": 11.273,
-      "end": 11.703
+      "word": "One",
+      "start": 3.715,
+      "end": 3.959
     },
     {
-      "word": "Shamayim",
-      "start": 11.819,
-      "end": 12.399
+      "word": "team",
+      "start": 4.005,
+      "end": 4.284
     },
     {
-      "word": "index.",
-      "start": 12.492,
-      "end": 13.235
+      "word": "wanted",
+      "start": 4.365,
+      "end": 4.644
     },
     {
-      "word": "Ideal",
-      "start": 13.746,
-      "end": 14.222
+      "word": "collaborative",
+      "start": 4.702,
+      "end": 5.236
     },
     {
-      "word": "for",
-      "start": 14.292,
-      "end": 14.396
+      "word": "pedagogy.",
+      "start": 5.283,
+      "end": 6.026
     },
     {
-      "word": "school",
-      "start": 14.443,
-      "end": 14.733
+      "word": "The",
+      "start": 6.339,
+      "end": 6.467
     },
     {
-      "word": "groups.",
-      "start": 14.791,
-      "end": 15.395
+      "word": "other",
+      "start": 6.548,
+      "end": 6.815
     },
     {
-      "word": "Debate",
-      "start": 15.906,
-      "end": 16.277
+      "word": "wanted",
+      "start": 7.047,
+      "end": 7.419
+    },
+    {
+      "word": "competitive",
+      "start": 7.465,
+      "end": 8.046
+    },
+    {
+      "word": "debate.",
+      "start": 8.081,
+      "end": 8.649
+    },
+    {
+      "word": "Our",
+      "start": 9.079,
+      "end": 9.265
+    },
+    {
+      "word": "solution?",
+      "start": 9.323,
+      "end": 9.938
+    },
+    {
+      "word": "One",
+      "start": 10.368,
+      "end": 10.623
+    },
+    {
+      "word": "platform,",
+      "start": 10.658,
+      "end": 11.378
+    },
+    {
+      "word": "two",
+      "start": 11.691,
+      "end": 11.947
+    },
+    {
+      "word": "configurations.",
+      "start": 12.028,
+      "end": 13.224
+    },
+    {
+      "word": "Culture",
+      "start": 13.653,
+      "end": 14.083
+    },
+    {
+      "word": "of",
+      "start": 14.118,
+      "end": 14.187
+    },
+    {
+      "word": "Disagreement",
+      "start": 14.245,
+      "end": 14.838
     },
     {
       "word": "mode",
-      "start": 16.324,
-      "end": 16.637
+      "start": 14.907,
+      "end": 15.209
     },
     {
       "word": "is",
-      "start": 16.672,
-      "end": 16.753
+      "start": 15.244,
+      "end": 15.325
     },
     {
-      "word": "competitive,",
-      "start": 16.811,
-      "end": 17.601
+      "word": "pedagogical,",
+      "start": 15.395,
+      "end": 16.3
     },
     {
-      "word": "outcome-focused,",
-      "start": 17.88,
-      "end": 19.017
-    },
-    {
-      "word": "and",
-      "start": 19.168,
-      "end": 19.331
-    },
-    {
-      "word": "rhetorical,",
-      "start": 19.389,
-      "end": 20.202
+      "word": "process-focused,",
+      "start": 16.475,
+      "end": 17.694
     },
     {
       "word": "with",
-      "start": 20.445,
-      "end": 20.643
+      "start": 17.868,
+      "end": 18.031
     },
     {
-      "word": "structured",
-      "start": 20.701,
-      "end": 21.212
+      "word": "a",
+      "start": 18.066,
+      "end": 18.1
     },
     {
-      "word": "rounds",
-      "start": 21.247,
-      "end": 21.723
+      "word": "live",
+      "start": 18.216,
+      "end": 18.623
+    },
+    {
+      "word": "polarization",
+      "start": 18.669,
+      "end": 19.54
+    },
+    {
+      "word": "score",
+      "start": 19.621,
+      "end": 20.179
     },
     {
       "word": "and",
-      "start": 21.897,
-      "end": 22.106
+      "start": 20.376,
+      "end": 20.573
     },
     {
-      "word": "audience",
-      "start": 22.187,
-      "end": 22.663
+      "word": "a",
+      "start": 20.631,
+      "end": 20.655
     },
     {
-      "word": "voting.",
-      "start": 22.721,
-      "end": 23.36
+      "word": "L'Shem",
+      "start": 20.701,
+      "end": 21.096
     },
     {
-      "word": "Ideal",
-      "start": 23.963,
-      "end": 24.381
+      "word": "Shamayim",
+      "start": 21.212,
+      "end": 21.769
+    },
+    {
+      "word": "index.",
+      "start": 21.862,
+      "end": 22.57
+    },
+    {
+      "word": "Perfect",
+      "start": 22.895,
+      "end": 23.348
     },
     {
       "word": "for",
-      "start": 24.439,
-      "end": 24.544
+      "start": 23.406,
+      "end": 23.511
     },
     {
-      "word": "general",
-      "start": 24.613,
-      "end": 24.927
-    },
-    {
-      "word": "visitors",
-      "start": 24.973,
-      "end": 25.438
-    },
-    {
-      "word": "and",
-      "start": 25.647,
-      "end": 25.844
-    },
-    {
-      "word": "corporate",
-      "start": 25.925,
-      "end": 26.332
+      "word": "school",
+      "start": 23.58,
+      "end": 23.905
     },
     {
       "word": "groups.",
-      "start": 26.367,
-      "end": 27.168
+      "start": 23.963,
+      "end": 24.579
+    },
+    {
+      "word": "Debate",
+      "start": 25.02,
+      "end": 25.415
+    },
+    {
+      "word": "mode",
+      "start": 25.461,
+      "end": 25.856
+    },
+    {
+      "word": "is",
+      "start": 25.949,
+      "end": 26.111
+    },
+    {
+      "word": "competitive,",
+      "start": 26.169,
+      "end": 26.912
+    },
+    {
+      "word": "rhetorical,",
+      "start": 27.028,
+      "end": 27.83
+    },
+    {
+      "word": "with",
+      "start": 28.004,
+      "end": 28.178
+    },
+    {
+      "word": "structured",
+      "start": 28.247,
+      "end": 28.735
+    },
+    {
+      "word": "rounds,",
+      "start": 28.782,
+      "end": 29.432
+    },
+    {
+      "word": "opening",
+      "start": 29.583,
+      "end": 29.966
+    },
+    {
+      "word": "statements,",
+      "start": 30.035,
+      "end": 30.686
+    },
+    {
+      "word": "rebuttals,",
+      "start": 30.836,
+      "end": 31.58
+    },
+    {
+      "word": "and",
+      "start": 31.696,
+      "end": 31.858
+    },
+    {
+      "word": "audience",
+      "start": 31.939,
+      "end": 32.415
+    },
+    {
+      "word": "voting.",
+      "start": 32.462,
+      "end": 33.089
+    },
+    {
+      "word": "Perfect",
+      "start": 33.693,
+      "end": 34.099
+    },
+    {
+      "word": "for",
+      "start": 34.145,
+      "end": 34.25
+    },
+    {
+      "word": "general",
+      "start": 34.319,
+      "end": 34.645
+    },
+    {
+      "word": "visitors",
+      "start": 34.703,
+      "end": 35.202
+    },
+    {
+      "word": "and",
+      "start": 35.376,
+      "end": 35.539
+    },
+    {
+      "word": "corporate",
+      "start": 35.62,
+      "end": 36.038
+    },
+    {
+      "word": "groups.",
+      "start": 36.073,
+      "end": 36.654
+    },
+    {
+      "word": "Same",
+      "start": 36.932,
+      "end": 37.373
+    },
+    {
+      "word": "infrastructure.",
+      "start": 37.431,
+      "end": 38.302
+    },
+    {
+      "word": "Two",
+      "start": 38.685,
+      "end": 38.952
+    },
+    {
+      "word": "completely",
+      "start": 39.022,
+      "end": 39.626
+    },
+    {
+      "word": "different",
+      "start": 39.672,
+      "end": 39.974
+    },
+    {
+      "word": "experiences.",
+      "start": 40.02,
+      "end": 41.239
     }
   ],
-  "duration": 27.17
+  "duration": 41.24
 }

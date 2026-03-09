@@ -1651,7 +1651,14 @@ function playNarration() {
     wrapWordsForHighlight(langEn, timing.words);
   }
 
-  narrationAudio.play();
+  narrationAudio.play().then(function() {
+    console.log('Narration playing for slide ' + num);
+  }).catch(function(err) {
+    console.error('Audio play failed:', err);
+    // Try loading and playing again
+    narrationAudio.load();
+    narrationAudio.play();
+  });
 
   // Sync highlights
   narrationInterval = setInterval(function() {

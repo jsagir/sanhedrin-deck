@@ -3,88 +3,188 @@
     {
       "word": "The",
       "start": 0.0,
-      "end": 0.163
+      "end": 0.139
     },
     {
       "word": "Sanhedrin",
-      "start": 0.221,
-      "end": 0.929
+      "start": 0.197,
+      "end": 0.848
     },
     {
       "word": "Educational",
-      "start": 1.103,
-      "end": 1.858
+      "start": 0.964,
+      "end": 1.637
     },
     {
       "word": "Experience.",
-      "start": 1.927,
-      "end": 3.03
+      "start": 1.695,
+      "end": 2.705
     },
     {
       "word": "Disagree",
-      "start": 3.634,
-      "end": 4.18
+      "start": 3.088,
+      "end": 3.599
     },
     {
       "word": "better.",
-      "start": 4.226,
-      "end": 4.69
+      "start": 3.657,
+      "end": 4.18
     },
     {
       "word": "Discover",
-      "start": 5.074,
-      "end": 5.561
+      "start": 4.505,
+      "end": 5.004
     },
     {
       "word": "together.",
-      "start": 5.619,
-      "end": 6.188
+      "start": 5.062,
+      "end": 5.689
     },
     {
       "word": "What",
-      "start": 6.885,
-      "end": 7.105
+      "start": 6.385,
+      "end": 6.618
     },
     {
       "word": "would",
-      "start": 7.163,
-      "end": 7.338
+      "start": 6.664,
+      "end": 6.85
     },
     {
       "word": "history's",
-      "start": 7.407,
-      "end": 7.872
+      "start": 6.896,
+      "end": 7.349
     },
     {
       "word": "greatest",
-      "start": 7.93,
-      "end": 8.301
+      "start": 7.407,
+      "end": 7.802
     },
     {
       "word": "minds",
-      "start": 8.371,
-      "end": 8.847
+      "start": 7.872,
+      "end": 8.243
     },
     {
       "word": "say",
-      "start": 8.998,
-      "end": 9.381
+      "start": 8.313,
+      "end": 8.719
     },
     {
       "word": "about",
-      "start": 9.532,
-      "end": 9.868
+      "start": 9.16,
+      "end": 9.497
     },
     {
-      "word": "today's",
-      "start": 9.927,
-      "end": 10.379
+      "word": "the",
+      "start": 9.52,
+      "end": 9.59
     },
     {
-      "word": "dilemmas?",
-      "start": 10.449,
-      "end": 11.331
+      "word": "dilemmas",
+      "start": 9.636,
+      "end": 10.159
+    },
+    {
+      "word": "tearing",
+      "start": 10.252,
+      "end": 10.716
+    },
+    {
+      "word": "our",
+      "start": 10.786,
+      "end": 10.913
+    },
+    {
+      "word": "society",
+      "start": 10.983,
+      "end": 11.587
+    },
+    {
+      "word": "apart",
+      "start": 11.645,
+      "end": 12.121
+    },
+    {
+      "word": "right",
+      "start": 12.725,
+      "end": 12.992
+    },
+    {
+      "word": "now?",
+      "start": 13.073,
+      "end": 13.549
+    },
+    {
+      "word": "That",
+      "start": 14.245,
+      "end": 14.594
+    },
+    {
+      "word": "is",
+      "start": 14.919,
+      "end": 15.07
+    },
+    {
+      "word": "what",
+      "start": 15.128,
+      "end": 15.279
+    },
+    {
+      "word": "we",
+      "start": 15.337,
+      "end": 15.43
+    },
+    {
+      "word": "are",
+      "start": 15.488,
+      "end": 15.581
+    },
+    {
+      "word": "building.",
+      "start": 15.615,
+      "end": 16.173
+    },
+    {
+      "word": "And",
+      "start": 16.684,
+      "end": 16.823
+    },
+    {
+      "word": "it",
+      "start": 16.893,
+      "end": 16.962
+    },
+    {
+      "word": "is",
+      "start": 17.02,
+      "end": 17.101
+    },
+    {
+      "word": "unlike",
+      "start": 17.16,
+      "end": 17.705
+    },
+    {
+      "word": "anything",
+      "start": 17.728,
+      "end": 18.286
+    },
+    {
+      "word": "that",
+      "start": 18.727,
+      "end": 18.913
+    },
+    {
+      "word": "exists",
+      "start": 18.971,
+      "end": 19.528
+    },
+    {
+      "word": "today.",
+      "start": 19.598,
+      "end": 20.387
     }
   ],
-  "duration": 11.33
+  "duration": 20.39
 }

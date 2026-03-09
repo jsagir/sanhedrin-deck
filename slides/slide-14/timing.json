@@ -1,290 +1,375 @@
 {
   "words": [
     {
-      "word": "Roadmap",
+      "word": "Here",
       "start": 0.0,
-      "end": 0.534
+      "end": 0.232
     },
     {
-      "word": "and",
-      "start": 0.731,
-      "end": 0.882
+      "word": "is",
+      "start": 0.279,
+      "end": 0.348
     },
     {
-      "word": "milestones.",
-      "start": 0.952,
-      "end": 1.858
+      "word": "the",
+      "start": 0.395,
+      "end": 0.453
+    },
+    {
+      "word": "roadmap.",
+      "start": 0.499,
+      "end": 1.126
     },
     {
       "word": "Phase",
-      "start": 2.252,
-      "end": 2.612
+      "start": 1.509,
+      "end": 1.892
     },
     {
       "word": "1,",
-      "start": 2.647,
-      "end": 3.088
+      "start": 1.916,
+      "end": 2.38
     },
     {
-      "word": "happening",
-      "start": 3.379,
-      "end": 3.75
+      "word": "right",
+      "start": 2.775,
+      "end": 2.972
     },
     {
       "word": "now:",
-      "start": 3.82,
-      "end": 4.214
+      "start": 3.042,
+      "end": 3.46
     },
     {
       "word": "a",
-      "start": 4.609,
-      "end": 4.679
+      "start": 3.855,
+      "end": 3.901
     },
     {
-      "word": "WhatsApp",
-      "start": 4.783,
-      "end": 5.213
-    },
-    {
-      "word": "group",
-      "start": 5.271,
-      "end": 5.468
+      "word": "WhatsApp-based",
+      "start": 3.982,
+      "end": 4.714
     },
     {
       "word": "proof",
-      "start": 5.526,
-      "end": 5.735
+      "start": 4.76,
+      "end": 4.969
     },
     {
       "word": "of",
-      "start": 5.782,
-      "end": 5.84
+      "start": 5.004,
+      "end": 5.062
     },
     {
       "word": "concept",
-      "start": 5.909,
-      "end": 6.432
+      "start": 5.108,
+      "end": 5.654
     },
     {
       "word": "with",
-      "start": 6.618,
-      "end": 6.792
+      "start": 5.944,
+      "end": 6.13
     },
     {
       "word": "3",
-      "start": 6.873,
-      "end": 7.094
+      "start": 6.211,
+      "end": 6.502
+    },
+    {
+      "word": "AI",
+      "start": 6.571,
+      "end": 6.943
     },
     {
       "word": "agents",
-      "start": 7.163,
-      "end": 7.57
+      "start": 7.001,
+      "end": 7.43
     },
     {
       "word": "and",
-      "start": 7.755,
-      "end": 7.918
+      "start": 7.616,
+      "end": 7.767
     },
     {
       "word": "2",
-      "start": 7.988,
-      "end": 8.173
+      "start": 7.848,
+      "end": 8.034
     },
     {
-      "word": "humans.",
-      "start": 8.243,
-      "end": 8.893
+      "word": "humans",
+      "start": 8.092,
+      "end": 8.545
+    },
+    {
+      "word": "testing",
+      "start": 8.835,
+      "end": 9.218
+    },
+    {
+      "word": "live",
+      "start": 9.288,
+      "end": 9.625
+    },
+    {
+      "word": "agent-to-agent",
+      "start": 9.671,
+      "end": 10.437
+    },
+    {
+      "word": "mechanics.",
+      "start": 10.495,
+      "end": 11.192
     },
     {
       "word": "Phase",
-      "start": 9.183,
-      "end": 9.52
+      "start": 11.807,
+      "end": 12.144
     },
     {
       "word": "2",
-      "start": 9.555,
-      "end": 9.776
+      "start": 12.179,
+      "end": 12.388
     },
     {
       "word": "at",
-      "start": 10.182,
-      "end": 10.321
+      "start": 12.574,
+      "end": 12.759
     },
     {
       "word": "3",
-      "start": 10.426,
-      "end": 10.623
+      "start": 12.841,
+      "end": 13.05
     },
     {
       "word": "months:",
-      "start": 10.704,
-      "end": 11.204
+      "start": 13.131,
+      "end": 13.688
     },
     {
       "word": "a",
-      "start": 11.447,
-      "end": 11.517
+      "start": 13.978,
+      "end": 14.036
     },
     {
       "word": "working",
-      "start": 11.598,
-      "end": 11.935
+      "start": 14.129,
+      "end": 14.489
     },
     {
       "word": "text-based",
-      "start": 12.016,
-      "end": 12.597
+      "start": 14.571,
+      "end": 15.197
     },
     {
       "word": "demo",
-      "start": 12.62,
-      "end": 12.945
+      "start": 15.267,
+      "end": 15.627
     },
     {
       "word": "with",
-      "start": 13.247,
-      "end": 13.421
+      "start": 15.917,
+      "end": 16.115
     },
     {
       "word": "5",
-      "start": 13.502,
-      "end": 13.804
+      "start": 16.184,
+      "end": 16.475
     },
     {
       "word": "historical",
-      "start": 13.886,
-      "end": 14.373
+      "start": 16.556,
+      "end": 17.032
     },
     {
-      "word": "characters.",
-      "start": 14.431,
-      "end": 15.151
+      "word": "characters",
+      "start": 17.078,
+      "end": 17.566
     },
     {
-      "word": "Phase",
-      "start": 15.697,
-      "end": 16.022
-    },
-    {
-      "word": "3",
-      "start": 16.057,
-      "end": 16.277
-    },
-    {
-      "word": "at",
-      "start": 16.335,
-      "end": 16.416
-    },
-    {
-      "word": "6",
-      "start": 16.498,
-      "end": 16.718
-    },
-    {
-      "word": "months:",
-      "start": 16.823,
-      "end": 17.345
-    },
-    {
-      "word": "a",
-      "start": 17.74,
-      "end": 17.798
+      "word": "and",
+      "start": 17.786,
+      "end": 17.937
     },
     {
       "word": "full",
-      "start": 17.903,
-      "end": 18.077
+      "start": 18.007,
+      "end": 18.216
     },
     {
-      "word": "experience",
-      "start": 18.135,
-      "end": 18.703
+      "word": "orchestrator",
+      "start": 18.297,
+      "end": 18.843
     },
     {
-      "word": "prototype",
-      "start": 18.738,
-      "end": 19.458
-    },
-    {
-      "word": "with",
-      "start": 19.597,
-      "end": 19.783
-    },
-    {
-      "word": "physical",
-      "start": 19.841,
-      "end": 20.178
-    },
-    {
-      "word": "space",
-      "start": 20.224,
-      "end": 20.549
-    },
-    {
-      "word": "mockup.",
-      "start": 20.607,
-      "end": 21.165
+      "word": "logic.",
+      "start": 18.878,
+      "end": 19.377
     },
     {
       "word": "Phase",
-      "start": 21.768,
-      "end": 22.094
+      "start": 19.911,
+      "end": 20.248
     },
     {
-      "word": "4",
-      "start": 22.14,
-      "end": 22.419
+      "word": "3",
+      "start": 20.294,
+      "end": 20.538
     },
     {
       "word": "at",
-      "start": 22.593,
-      "end": 22.755
+      "start": 20.724,
+      "end": 20.886
     },
     {
-      "word": "12",
-      "start": 22.813,
-      "end": 23.162
+      "word": "6",
+      "start": 20.956,
+      "end": 21.165
     },
     {
       "word": "months:",
-      "start": 23.243,
-      "end": 23.8
+      "start": 21.258,
+      "end": 21.838
+    },
+    {
+      "word": "a",
+      "start": 22.163,
+      "end": 22.221
+    },
+    {
+      "word": "complete",
+      "start": 22.291,
+      "end": 22.662
+    },
+    {
+      "word": "experience",
+      "start": 22.697,
+      "end": 23.255
+    },
+    {
+      "word": "prototype",
+      "start": 23.289,
+      "end": 23.881
+    },
+    {
+      "word": "integrated",
+      "start": 23.928,
+      "end": 24.566
+    },
+    {
+      "word": "with",
+      "start": 24.845,
+      "end": 25.019
+    },
+    {
+      "word": "a",
+      "start": 25.054,
+      "end": 25.089
+    },
+    {
+      "word": "physical",
+      "start": 25.147,
+      "end": 25.519
+    },
+    {
+      "word": "space",
+      "start": 25.6,
+      "end": 25.948
+    },
+    {
+      "word": "mockup.",
+      "start": 26.006,
+      "end": 26.645
+    },
+    {
+      "word": "Phase",
+      "start": 27.341,
+      "end": 27.69
+    },
+    {
+      "word": "4",
+      "start": 27.724,
+      "end": 28.003
+    },
+    {
+      "word": "at",
+      "start": 28.177,
+      "end": 28.34
+    },
+    {
+      "word": "12",
+      "start": 28.398,
+      "end": 28.711
+    },
+    {
+      "word": "months:",
+      "start": 28.781,
+      "end": 29.315
     },
     {
       "word": "launch-ready",
-      "start": 24.241,
-      "end": 24.845
+      "start": 29.64,
+      "end": 30.255
     },
     {
       "word": "deployment",
-      "start": 24.903,
-      "end": 25.495
+      "start": 30.302,
+      "end": 30.906
     },
     {
-      "word": "for",
-      "start": 25.82,
-      "end": 25.983
+      "word": "at",
+      "start": 31.08,
+      "end": 31.231
+    },
+    {
+      "word": "the",
+      "start": 31.265,
+      "end": 31.335
+    },
+    {
+      "word": "Museum",
+      "start": 31.382,
+      "end": 31.846
+    },
+    {
+      "word": "of",
+      "start": 31.904,
+      "end": 31.962
+    },
+    {
+      "word": "Tolerance",
+      "start": 32.032,
+      "end": 32.473
+    },
+    {
+      "word": "Jerusalem,",
+      "start": 32.508,
+      "end": 33.286
+    },
+    {
+      "word": "serving",
+      "start": 33.611,
+      "end": 34.075
     },
     {
       "word": "over",
-      "start": 26.041,
-      "end": 26.296
+      "start": 34.226,
+      "end": 34.516
     },
     {
       "word": "100,000",
-      "start": 26.366,
-      "end": 27.33
+      "start": 34.632,
+      "end": 35.735
     },
     {
       "word": "annual",
-      "start": 27.411,
-      "end": 27.817
+      "start": 35.828,
+      "end": 36.235
     },
     {
       "word": "visitors.",
-      "start": 27.887,
-      "end": 28.746
+      "start": 36.304,
+      "end": 37.198
     }
   ],
-  "duration": 28.75
+  "duration": 37.2
 }

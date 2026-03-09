@@ -1,270 +1,430 @@
 {
   "words": [
     {
-      "word": "This",
+      "word": "Now",
       "start": 0.0,
       "end": 0.209
     },
     {
-      "word": "is",
+      "word": "let",
       "start": 0.255,
-      "end": 0.337
+      "end": 0.372
     },
     {
-      "word": "not",
-      "start": 0.395,
-      "end": 0.522
+      "word": "me",
+      "start": 0.418,
+      "end": 0.511
     },
     {
-      "word": "a",
+      "word": "show",
       "start": 0.557,
-      "end": 0.58
+      "end": 0.755
     },
     {
-      "word": "standard",
-      "start": 0.639,
-      "end": 1.08
+      "word": "you",
+      "start": 0.824,
+      "end": 0.917
     },
     {
-      "word": "chatbot",
-      "start": 1.138,
-      "end": 1.625
+      "word": "what",
+      "start": 0.987,
+      "end": 1.126
     },
     {
-      "word": "array.",
-      "start": 1.66,
-      "end": 2.136
+      "word": "is",
+      "start": 1.184,
+      "end": 1.265
     },
     {
-      "word": "It",
-      "start": 2.183,
-      "end": 2.31
+      "word": "under",
+      "start": 1.347,
+      "end": 1.591
     },
     {
-      "word": "utilizes",
-      "start": 2.392,
+      "word": "the",
+      "start": 1.625,
+      "end": 1.695
+    },
+    {
+      "word": "hood.",
+      "start": 1.765,
+      "end": 2.287
+    },
+    {
+      "word": "This",
+      "start": 2.798,
       "end": 2.984
     },
     {
+      "word": "is",
+      "start": 3.042,
+      "end": 3.111
+    },
+    {
+      "word": "not",
+      "start": 3.193,
+      "end": 3.448
+    },
+    {
       "word": "a",
-      "start": 3.03,
-      "end": 3.053
+      "start": 3.529,
+      "end": 3.587
     },
     {
-      "word": "modular",
-      "start": 3.111,
-      "end": 3.518
+      "word": "chatbot.",
+      "start": 3.669,
+      "end": 4.365
     },
     {
-      "word": "role-based",
-      "start": 3.576,
-      "end": 4.122
+      "word": "It",
+      "start": 4.748,
+      "end": 4.876
     },
     {
-      "word": "architecture",
-      "start": 4.18,
+      "word": "is",
+      "start": 4.923,
       "end": 5.004
     },
     {
+      "word": "a",
+      "start": 5.05,
+      "end": 5.074
+    },
+    {
+      "word": "modular",
+      "start": 5.132,
+      "end": 5.55
+    },
+    {
+      "word": "role-based",
+      "start": 5.608,
+      "end": 6.153
+    },
+    {
+      "word": "architecture",
+      "start": 6.211,
+      "end": 7.094
+    },
+    {
       "word": "layered",
-      "start": 5.329,
-      "end": 5.654
+      "start": 7.303,
+      "end": 7.651
     },
     {
       "word": "over",
-      "start": 5.712,
-      "end": 5.921
+      "start": 7.709,
+      "end": 7.953
     },
     {
       "word": "13",
-      "start": 5.991,
-      "end": 6.502
+      "start": 8.022,
+      "end": 8.568
     },
     {
       "word": "Talmudic",
-      "start": 6.629,
-      "end": 7.21
+      "start": 8.684,
+      "end": 9.323
     },
     {
       "word": "thinking",
-      "start": 7.268,
-      "end": 7.616
+      "start": 9.381,
+      "end": 9.752
     },
     {
       "word": "modes.",
-      "start": 7.686,
-      "end": 8.29
+      "start": 9.822,
+      "end": 10.472
     },
     {
       "word": "We",
-      "start": 8.8,
-      "end": 8.951
+      "start": 11.064,
+      "end": 11.204
     },
     {
-      "word": "separate",
-      "start": 9.021,
-      "end": 9.485
+      "word": "do",
+      "start": 11.262,
+      "end": 11.389
     },
     {
-      "word": "the",
-      "start": 9.509,
-      "end": 9.578
+      "word": "something",
+      "start": 11.471,
+      "end": 11.842
     },
     {
-      "word": "character",
-      "start": 9.625,
-      "end": 10.043
+      "word": "no",
+      "start": 12.016,
+      "end": 12.179
     },
     {
-      "word": "from",
-      "start": 10.101,
-      "end": 10.24
+      "word": "one",
+      "start": 12.26,
+      "end": 12.376
     },
     {
-      "word": "the",
-      "start": 10.275,
-      "end": 10.344
+      "word": "else",
+      "start": 12.411,
+      "end": 12.597
     },
     {
-      "word": "system",
-      "start": 10.379,
-      "end": 10.716
-    },
-    {
-      "word": "function.",
-      "start": 10.797,
-      "end": 11.436
-    },
-    {
-      "word": "A",
-      "start": 12.04,
-      "end": 12.109
-    },
-    {
-      "word": "persona",
-      "start": 12.179,
-      "end": 12.608
-    },
-    {
-      "word": "can",
-      "start": 12.655,
-      "end": 12.771
-    },
-    {
-      "word": "step",
-      "start": 12.817,
-      "end": 13.026
-    },
-    {
-      "word": "into",
-      "start": 13.084,
+      "word": "does:",
+      "start": 12.643,
       "end": 13.235
     },
     {
-      "word": "different",
-      "start": 13.293,
-      "end": 13.607
+      "word": "we",
+      "start": 13.746,
+      "end": 13.886
     },
     {
-      "word": "roles",
-      "start": 13.653,
-      "end": 14.013
-    },
-    {
-      "word": "depending",
-      "start": 14.083,
-      "end": 14.501
-    },
-    {
-      "word": "on",
-      "start": 14.559,
-      "end": 14.617
+      "word": "separate",
+      "start": 13.967,
+      "end": 14.478
     },
     {
       "word": "the",
-      "start": 14.652,
-      "end": 14.722
+      "start": 14.512,
+      "end": 14.582
     },
     {
-      "word": "session's",
-      "start": 14.757,
-      "end": 15.186
+      "word": "persona",
+      "start": 14.64,
+      "end": 15.244
     },
     {
-      "word": "needs.",
-      "start": 15.267,
-      "end": 15.883
+      "word": "from",
+      "start": 15.615,
+      "end": 15.801
     },
     {
-      "word": "The",
-      "start": 16.579,
-      "end": 16.696
+      "word": "the",
+      "start": 15.848,
+      "end": 15.917
+    },
+    {
+      "word": "role.",
+      "start": 15.975,
+      "end": 16.486
+    },
+    {
+      "word": "Rambam",
+      "start": 17.078,
+      "end": 17.612
+    },
+    {
+      "word": "is",
+      "start": 17.682,
+      "end": 17.763
+    },
+    {
+      "word": "a",
+      "start": 17.809,
+      "end": 17.844
+    },
+    {
+      "word": "character.",
+      "start": 17.902,
+      "end": 18.599
+    },
+    {
+      "word": "Facilitator",
+      "start": 18.982,
+      "end": 19.795
+    },
+    {
+      "word": "is",
+      "start": 19.876,
+      "end": 19.992
+    },
+    {
+      "word": "a",
+      "start": 20.027,
+      "end": 20.062
+    },
+    {
+      "word": "function.",
+      "start": 20.12,
+      "end": 20.77
+    },
+    {
+      "word": "Any",
+      "start": 21.281,
+      "end": 21.513
+    },
+    {
+      "word": "persona",
+      "start": 21.583,
+      "end": 22.14
+    },
+    {
+      "word": "can",
+      "start": 22.349,
+      "end": 22.546
+    },
+    {
+      "word": "fill",
+      "start": 22.639,
+      "end": 22.941
+    },
+    {
+      "word": "any",
+      "start": 23.115,
+      "end": 23.382
+    },
+    {
+      "word": "role.",
+      "start": 23.475,
+      "end": 24.056
+    },
+    {
+      "word": "Humans",
+      "start": 24.439,
+      "end": 25.054
+    },
+    {
+      "word": "can",
+      "start": 25.228,
+      "end": 25.437
+    },
+    {
+      "word": "swap",
+      "start": 25.53,
+      "end": 25.844
+    },
+    {
+      "word": "in.",
+      "start": 25.96,
+      "end": 26.331
+    },
+    {
+      "word": "AI",
+      "start": 26.714,
+      "end": 27.225
+    },
+    {
+      "word": "can",
+      "start": 27.295,
+      "end": 27.457
+    },
+    {
+      "word": "swap",
+      "start": 27.539,
+      "end": 27.817
+    },
+    {
+      "word": "out.",
+      "start": 27.887,
+      "end": 28.282
+    },
+    {
+      "word": "And",
+      "start": 28.665,
+      "end": 28.816
+    },
+    {
+      "word": "running",
+      "start": 28.885,
+      "end": 29.129
+    },
+    {
+      "word": "behind",
+      "start": 29.176,
+      "end": 29.512
+    },
+    {
+      "word": "all",
+      "start": 29.57,
+      "end": 29.686
+    },
+    {
+      "word": "of",
+      "start": 29.733,
+      "end": 29.779
+    },
+    {
+      "word": "it,",
+      "start": 29.826,
+      "end": 30.104
+    },
+    {
+      "word": "our",
+      "start": 30.313,
+      "end": 30.499
     },
     {
       "word": "system",
-      "start": 16.742,
-      "end": 17.113
+      "start": 30.569,
+      "end": 30.987
+    },
+    {
+      "word": "is",
+      "start": 31.312,
+      "end": 31.474
     },
     {
       "word": "actively",
-      "start": 17.183,
-      "end": 17.601
+      "start": 31.544,
+      "end": 32.043
     },
     {
-      "word": "fact-checks,",
-      "start": 17.671,
-      "end": 18.495
+      "word": "fact-checking,",
+      "start": 32.136,
+      "end": 33.03
     },
     {
-      "word": "filters",
-      "start": 18.82,
-      "end": 19.273
+      "word": "filtering",
+      "start": 33.355,
+      "end": 33.843
     },
     {
       "word": "for",
-      "start": 19.343,
-      "end": 19.447
+      "start": 33.901,
+      "end": 34.005
     },
     {
       "word": "cultural",
-      "start": 19.505,
-      "end": 19.877
+      "start": 34.063,
+      "end": 34.481
     },
     {
       "word": "sensitivity,",
-      "start": 19.935,
-      "end": 20.805
+      "start": 34.551,
+      "end": 35.503
     },
     {
       "word": "and",
-      "start": 21.084,
-      "end": 21.247
+      "start": 35.677,
+      "end": 35.84
     },
     {
-      "word": "tracks",
-      "start": 21.305,
-      "end": 21.641
+      "word": "tracking",
+      "start": 35.898,
+      "end": 36.327
     },
     {
       "word": "logical",
-      "start": 21.711,
-      "end": 22.094
+      "start": 36.571,
+      "end": 36.989
     },
     {
-      "word": "contradictions",
-      "start": 22.152,
-      "end": 22.953
+      "word": "contradictions.",
+      "start": 37.07,
+      "end": 38.197
     },
     {
-      "word": "in",
-      "start": 23.232,
-      "end": 23.383
+      "word": "In",
+      "start": 38.522,
+      "end": 38.673
     },
     {
-      "word": "real-time.",
-      "start": 23.476,
-      "end": 24.567
+      "word": "real",
+      "start": 38.789,
+      "end": 39.056
+    },
+    {
+      "word": "time.",
+      "start": 39.125,
+      "end": 39.892
     }
   ],
-  "duration": 24.57
+  "duration": 39.89
 }

@@ -1,295 +1,425 @@
 {
   "words": [
     {
-      "word": "70",
+      "word": "Let",
       "start": 0.0,
-      "end": 0.36
+      "end": 0.174
+    },
+    {
+      "word": "me",
+      "start": 0.221,
+      "end": 0.302
+    },
+    {
+      "word": "be",
+      "start": 0.36,
+      "end": 0.441
+    },
+    {
+      "word": "transparent",
+      "start": 0.476,
+      "end": 1.08
+    },
+    {
+      "word": "about",
+      "start": 1.115,
+      "end": 1.324
+    },
+    {
+      "word": "where",
+      "start": 1.347,
+      "end": 1.509
+    },
+    {
+      "word": "we",
+      "start": 1.533,
+      "end": 1.625
+    },
+    {
+      "word": "stand.",
+      "start": 1.66,
+      "end": 2.287
+    },
+    {
+      "word": "70",
+      "start": 2.717,
+      "end": 3.065
     },
     {
       "word": "percent",
-      "start": 0.418,
-      "end": 0.731
-    },
-    {
-      "word": "solved.",
-      "start": 0.789,
-      "end": 1.382
-    },
-    {
-      "word": "30",
-      "start": 1.823,
-      "end": 2.101
-    },
-    {
-      "word": "percent",
-      "start": 2.159,
-      "end": 2.577
-    },
-    {
-      "word": "ahead.",
-      "start": 2.81,
+      "start": 3.111,
       "end": 3.46
     },
     {
-      "word": "Individual",
-      "start": 3.971,
-      "end": 4.551
+      "word": "solved.",
+      "start": 3.529,
+      "end": 4.18
     },
     {
-      "word": "agent",
-      "start": 4.632,
-      "end": 4.969
+      "word": "Agent",
+      "start": 4.551,
+      "end": 4.923
     },
     {
       "word": "quality,",
-      "start": 5.016,
-      "end": 5.724
+      "start": 4.981,
+      "end": 5.666
     },
     {
       "word": "conversation",
-      "start": 6.049,
-      "end": 6.687
+      "start": 5.979,
+      "end": 6.653
     },
     {
       "word": "protocols,",
-      "start": 6.745,
-      "end": 7.628
+      "start": 6.711,
+      "end": 7.558
     },
     {
       "word": "character",
-      "start": 7.953,
-      "end": 8.382
+      "start": 7.767,
+      "end": 8.185
     },
     {
       "word": "modeling",
-      "start": 8.429,
-      "end": 8.754
+      "start": 8.243,
+      "end": 8.615
     },
     {
       "word": "of",
-      "start": 8.8,
-      "end": 8.858
+      "start": 8.673,
+      "end": 8.731
     },
     {
       "word": "68",
-      "start": 8.975,
-      "end": 9.543
+      "start": 8.835,
+      "end": 9.462
+    },
+    {
+      "word": "historical",
+      "start": 9.497,
+      "end": 9.985
     },
     {
       "word": "figures,",
-      "start": 9.601,
-      "end": 10.205
+      "start": 10.054,
+      "end": 10.612
     },
     {
       "word": "and",
-      "start": 10.379,
-      "end": 10.53
+      "start": 10.762,
+      "end": 10.902
     },
     {
-      "word": "the",
-      "start": 10.577,
-      "end": 10.646
+      "word": "our",
+      "start": 10.971,
+      "end": 11.088
     },
     {
-      "word": "core",
-      "start": 10.716,
-      "end": 10.995
+      "word": "entire",
+      "start": 11.122,
+      "end": 11.633
     },
     {
       "word": "content",
-      "start": 11.041,
-      "end": 11.482
+      "start": 11.691,
+      "end": 12.121
     },
     {
-      "word": "framework",
-      "start": 11.54,
-      "end": 12.098
+      "word": "framework:",
+      "start": 12.19,
+      "end": 12.934
     },
     {
-      "word": "are",
-      "start": 12.272,
-      "end": 12.469
+      "word": "done.",
+      "start": 13.433,
+      "end": 13.92
     },
     {
-      "word": "established.",
-      "start": 12.516,
-      "end": 13.34
+      "word": "The",
+      "start": 14.408,
+      "end": 14.512
     },
     {
-      "word": "What",
-      "start": 13.932,
-      "end": 14.141
+      "word": "remaining",
+      "start": 14.571,
+      "end": 14.954
     },
     {
-      "word": "remains",
-      "start": 14.211,
-      "end": 14.768
+      "word": "30",
+      "start": 15.035,
+      "end": 15.314
+    },
+    {
+      "word": "percent",
+      "start": 15.372,
+      "end": 15.801
     },
     {
       "word": "is",
-      "start": 14.849,
-      "end": 15.012
+      "start": 16.161,
+      "end": 16.324
     },
     {
-      "word": "A2A2H",
-      "start": 15.105,
-      "end": 16.498
+      "word": "the",
+      "start": 16.37,
+      "end": 16.428
     },
     {
-      "word": "orchestration,",
-      "start": 16.672,
-      "end": 17.67
+      "word": "hard",
+      "start": 16.498,
+      "end": 16.73
     },
     {
-      "word": "getting",
-      "start": 18.054,
-      "end": 18.355
+      "word": "part.",
+      "start": 16.788,
+      "end": 17.241
+    },
+    {
+      "word": "Agent-to-agent-to-human",
+      "start": 17.659,
+      "end": 20.074
+    },
+    {
+      "word": "orchestration.",
+      "start": 20.167,
+      "end": 21.142
+    },
+    {
+      "word": "Getting",
+      "start": 21.583,
+      "end": 21.908
     },
     {
       "word": "AI",
-      "start": 18.425,
-      "end": 18.785
+      "start": 21.99,
+      "end": 22.35
     },
     {
-      "word": "agents",
-      "start": 18.866,
-      "end": 19.238
+      "word": "characters",
+      "start": 22.419,
+      "end": 22.907
     },
     {
       "word": "to",
-      "start": 19.284,
-      "end": 19.354
+      "start": 22.965,
+      "end": 23.035
     },
     {
       "word": "debate",
-      "start": 19.423,
-      "end": 19.737
+      "start": 23.104,
+      "end": 23.441
     },
     {
       "word": "each",
-      "start": 19.76,
-      "end": 19.911
+      "start": 23.464,
+      "end": 23.615
     },
     {
       "word": "other",
-      "start": 19.958,
-      "end": 20.19
+      "start": 23.662,
+      "end": 23.836
+    },
+    {
+      "word": "in",
+      "start": 23.905,
+      "end": 23.998
+    },
+    {
+      "word": "the",
+      "start": 24.045,
+      "end": 24.114
+    },
+    {
+      "word": "background",
+      "start": 24.161,
+      "end": 24.776
     },
     {
       "word": "while",
-      "start": 20.515,
-      "end": 20.793
+      "start": 25.159,
+      "end": 25.473
     },
     {
       "word": "synthesizing",
-      "start": 20.84,
-      "end": 21.548
+      "start": 25.542,
+      "end": 26.39
+    },
+    {
+      "word": "coherent",
+      "start": 26.506,
+      "end": 27.028
     },
     {
       "word": "outputs",
-      "start": 21.606,
-      "end": 22.013
+      "start": 27.087,
+      "end": 27.679
     },
     {
       "word": "for",
-      "start": 22.059,
-      "end": 22.163
+      "start": 28.004,
+      "end": 28.155
+    },
+    {
+      "word": "the",
+      "start": 28.189,
+      "end": 28.259
     },
     {
       "word": "human",
-      "start": 22.233,
-      "end": 22.512
+      "start": 28.317,
+      "end": 28.631
     },
     {
-      "word": "interaction.",
-      "start": 22.558,
-      "end": 23.382
+      "word": "layer.",
+      "start": 28.7,
+      "end": 29.176
     },
     {
-      "word": "We",
-      "start": 23.986,
-      "end": 24.126
+      "word": "That",
+      "start": 29.559,
+      "end": 29.873
+    },
+    {
+      "word": "is",
+      "start": 30.152,
+      "end": 30.337
+    },
+    {
+      "word": "the",
+      "start": 30.395,
+      "end": 30.465
+    },
+    {
+      "word": "frontier.",
+      "start": 30.511,
+      "end": 31.208
+    },
+    {
+      "word": "And",
+      "start": 31.812,
+      "end": 31.963
+    },
+    {
+      "word": "we",
+      "start": 32.021,
+      "end": 32.102
     },
     {
       "word": "are",
-      "start": 24.172,
-      "end": 24.276
+      "start": 32.16,
+      "end": 32.253
     },
     {
       "word": "proving",
-      "start": 24.311,
-      "end": 24.625
+      "start": 32.299,
+      "end": 32.624
     },
     {
-      "word": "this",
-      "start": 24.671,
-      "end": 24.811
+      "word": "it",
+      "start": 32.683,
+      "end": 32.741
+    },
+    {
+      "word": "right",
+      "start": 32.81,
+      "end": 33.031
     },
     {
       "word": "now",
-      "start": 24.88,
-      "end": 25.124
+      "start": 33.1,
+      "end": 33.368
     },
     {
-      "word": "via",
-      "start": 25.565,
-      "end": 25.855
+      "word": "with",
+      "start": 33.693,
+      "end": 33.878
     },
     {
       "word": "a",
-      "start": 25.913,
-      "end": 25.96
+      "start": 33.913,
+      "end": 33.948
     },
     {
       "word": "Phase",
-      "start": 26.041,
-      "end": 26.331
+      "start": 34.029,
+      "end": 34.412
     },
     {
       "word": "1",
-      "start": 26.366,
-      "end": 26.54
+      "start": 34.459,
+      "end": 34.668
     },
     {
-      "word": "proof",
-      "start": 26.668,
-      "end": 26.889
-    },
-    {
-      "word": "of",
-      "start": 26.947,
-      "end": 27.005
-    },
-    {
-      "word": "concept",
-      "start": 27.063,
-      "end": 27.62
-    },
-    {
-      "word": "using",
-      "start": 28.061,
-      "end": 28.34
+      "word": "POC,",
+      "start": 34.842,
+      "end": 35.689
     },
     {
       "word": "a",
-      "start": 28.386,
-      "end": 28.41
+      "start": 36.015,
+      "end": 36.096
+    },
+    {
+      "word": "live",
+      "start": 36.224,
+      "end": 36.618
     },
     {
       "word": "multi-agent",
-      "start": 28.456,
-      "end": 29.211
+      "start": 36.676,
+      "end": 37.408
     },
     {
       "word": "WhatsApp",
-      "start": 29.42,
-      "end": 29.942
+      "start": 37.466,
+      "end": 37.93
     },
     {
-      "word": "group.",
-      "start": 30.012,
-      "end": 30.697
+      "word": "group",
+      "start": 37.977,
+      "end": 38.197
+    },
+    {
+      "word": "testing",
+      "start": 38.255,
+      "end": 38.662
+    },
+    {
+      "word": "real",
+      "start": 38.743,
+      "end": 38.94
+    },
+    {
+      "word": "dynamics",
+      "start": 39.01,
+      "end": 39.544
+    },
+    {
+      "word": "before",
+      "start": 39.602,
+      "end": 40.171
+    },
+    {
+      "word": "we",
+      "start": 40.229,
+      "end": 40.333
+    },
+    {
+      "word": "build",
+      "start": 40.403,
+      "end": 40.635
+    },
+    {
+      "word": "the",
+      "start": 40.67,
+      "end": 40.74
+    },
+    {
+      "word": "UI.",
+      "start": 40.833,
+      "end": 41.611
     }
   ],
-  "duration": 30.7
+  "duration": 41.61
 }

@@ -1,250 +1,335 @@
 {
   "words": [
     {
-      "word": "Learn",
+      "word": "Our",
       "start": 0.0,
-      "end": 0.302
+      "end": 0.186
+    },
+    {
+      "word": "promise",
+      "start": 0.232,
+      "end": 0.685
+    },
+    {
+      "word": "is",
+      "start": 0.859,
+      "end": 1.01
+    },
+    {
+      "word": "simple.",
+      "start": 1.068,
+      "end": 1.625
+    },
+    {
+      "word": "Learn",
+      "start": 2.067,
+      "end": 2.345
     },
     {
       "word": "to",
-      "start": 0.36,
-      "end": 0.418
+      "start": 2.403,
+      "end": 2.473
     },
     {
       "word": "argue",
-      "start": 0.511,
-      "end": 0.882
+      "start": 2.566,
+      "end": 2.914
     },
     {
       "word": "better",
-      "start": 0.94,
-      "end": 1.254
+      "start": 2.949,
+      "end": 3.251
     },
     {
       "word": "in",
-      "start": 1.347,
-      "end": 1.44
+      "start": 3.495,
+      "end": 3.646
     },
     {
       "word": "30",
-      "start": 1.591,
-      "end": 1.927
+      "start": 3.762,
+      "end": 4.063
     },
     {
       "word": "minutes.",
-      "start": 1.997,
-      "end": 2.612
+      "start": 4.133,
+      "end": 4.725
     },
     {
       "word": "Without",
-      "start": 2.995,
-      "end": 3.344
+      "start": 4.969,
+      "end": 5.341
     },
     {
       "word": "needing",
-      "start": 3.402,
-      "end": 3.704
+      "start": 5.41,
+      "end": 5.735
     },
     {
       "word": "to",
-      "start": 3.773,
-      "end": 3.843
+      "start": 5.793,
+      "end": 5.863
     },
     {
       "word": "agree.",
-      "start": 3.936,
-      "end": 4.574
+      "start": 5.944,
+      "end": 6.525
     },
     {
-      "word": "An",
-      "start": 5.085,
-      "end": 5.236
+      "word": "This",
+      "start": 7.221,
+      "end": 7.396
+    },
+    {
+      "word": "is",
+      "start": 7.454,
+      "end": 7.535
+    },
+    {
+      "word": "an",
+      "start": 7.581,
+      "end": 7.651
     },
     {
       "word": "AI-powered",
-      "start": 5.329,
-      "end": 6.13
+      "start": 7.732,
+      "end": 8.533
     },
     {
       "word": "immersive",
-      "start": 6.165,
-      "end": 6.583
+      "start": 8.58,
+      "end": 9.067
     },
     {
       "word": "space",
-      "start": 6.618,
-      "end": 7.198
+      "start": 9.091,
+      "end": 9.671
     },
     {
       "word": "where",
-      "start": 7.372,
-      "end": 7.605
+      "start": 9.915,
+      "end": 10.147
     },
     {
       "word": "visitors",
-      "start": 7.663,
-      "end": 8.069
+      "start": 10.194,
+      "end": 10.577
     },
     {
-      "word": "engage",
-      "start": 8.127,
-      "end": 8.615
+      "word": "step",
+      "start": 10.623,
+      "end": 10.867
     },
     {
-      "word": "with",
-      "start": 8.649,
-      "end": 8.777
-    },
-    {
-      "word": "71",
-      "start": 8.87,
-      "end": 9.52
-    },
-    {
-      "word": "historical",
-      "start": 9.636,
-      "end": 10.194
-    },
-    {
-      "word": "Jewish",
-      "start": 10.286,
-      "end": 10.6
-    },
-    {
-      "word": "figures",
-      "start": 10.646,
-      "end": 11.076
-    },
-    {
-      "word": "in",
-      "start": 11.459,
-      "end": 11.61
+      "word": "into",
+      "start": 10.937,
+      "end": 11.111
     },
     {
       "word": "real-time",
-      "start": 11.726,
-      "end": 12.388
+      "start": 11.227,
+      "end": 11.9
     },
     {
-      "word": "deliberation.",
-      "start": 12.446,
-      "end": 13.363
+      "word": "deliberation",
+      "start": 11.947,
+      "end": 12.678
     },
     {
-      "word": "The",
-      "start": 13.967,
-      "end": 14.106
+      "word": "with",
+      "start": 13.061,
+      "end": 13.259
     },
     {
-      "word": "input",
-      "start": 14.187,
-      "end": 14.64
+      "word": "71",
+      "start": 13.375,
+      "end": 14.025
     },
     {
-      "word": "is",
-      "start": 14.791,
-      "end": 14.954
+      "word": "historical",
+      "start": 14.141,
+      "end": 14.745
     },
     {
-      "word": "a",
-      "start": 15.0,
-      "end": 15.023
+      "word": "Jewish",
+      "start": 14.861,
+      "end": 15.197
     },
     {
-      "word": "human",
-      "start": 15.093,
-      "end": 15.453
+      "word": "figures.",
+      "start": 15.255,
+      "end": 15.882
     },
     {
-      "word": "dilemma.",
-      "start": 15.534,
-      "end": 16.196
-    },
-    {
-      "word": "The",
+      "word": "A",
       "start": 16.579,
-      "end": 16.707
+      "end": 16.66
     },
     {
-      "word": "engine",
-      "start": 16.788,
+      "word": "visitor",
+      "start": 16.73,
       "end": 17.148
     },
     {
-      "word": "is",
-      "start": 17.206,
-      "end": 17.334
+      "word": "brings",
+      "start": 17.322,
+      "end": 17.775
+    },
+    {
+      "word": "a",
+      "start": 17.845,
+      "end": 17.879
+    },
+    {
+      "word": "dilemma.",
+      "start": 17.949,
+      "end": 18.645
+    },
+    {
+      "word": "Our",
+      "start": 19.086,
+      "end": 19.272
+    },
+    {
+      "word": "engine,",
+      "start": 19.33,
+      "end": 19.911
+    },
+    {
+      "word": "a",
+      "start": 20.062,
+      "end": 20.12
+    },
+    {
+      "word": "mix",
+      "start": 20.213,
+      "end": 20.445
+    },
+    {
+      "word": "of",
+      "start": 20.526,
+      "end": 20.596
     },
     {
       "word": "AI",
-      "start": 17.427,
-      "end": 17.868
+      "start": 20.712,
+      "end": 21.107
     },
     {
       "word": "characters",
-      "start": 17.949,
-      "end": 18.553
+      "start": 21.165,
+      "end": 21.722
     },
     {
       "word": "and",
-      "start": 18.797,
-      "end": 18.994
+      "start": 21.931,
+      "end": 22.105
     },
     {
-      "word": "humans",
-      "start": 19.087,
-      "end": 19.54
+      "word": "human",
+      "start": 22.175,
+      "end": 22.477
     },
     {
-      "word": "deliberating",
-      "start": 19.61,
-      "end": 20.26
+      "word": "participants,",
+      "start": 22.546,
+      "end": 23.475
+    },
+    {
+      "word": "deliberates",
+      "start": 23.858,
+      "end": 24.462
     },
     {
       "word": "together.",
-      "start": 20.329,
-      "end": 20.945
+      "start": 24.508,
+      "end": 25.124
     },
     {
-      "word": "The",
-      "start": 21.548,
-      "end": 21.676
+      "word": "And",
+      "start": 25.507,
+      "end": 25.669
     },
     {
-      "word": "output",
-      "start": 21.757,
-      "end": 22.187
+      "word": "the",
+      "start": 25.716,
+      "end": 25.797
     },
     {
-      "word": "is",
-      "start": 22.361,
-      "end": 22.524
+      "word": "output?",
+      "start": 25.867,
+      "end": 26.528
     },
     {
-      "word": "expanded",
-      "start": 22.582,
-      "end": 23.209
+      "word": "Expanded",
+      "start": 27.132,
+      "end": 27.759
     },
     {
-      "word": "thinking",
-      "start": 23.267,
-      "end": 23.661
+      "word": "thinking.",
+      "start": 27.817,
+      "end": 28.432
     },
     {
-      "word": "and",
-      "start": 23.987,
-      "end": 24.219
-    },
-    {
-      "word": "new",
-      "start": 24.3,
-      "end": 24.486
+      "word": "New",
+      "start": 28.874,
+      "end": 29.094
     },
     {
       "word": "perspectives.",
-      "start": 24.555,
-      "end": 25.682
+      "start": 29.164,
+      "end": 30.093
+    },
+    {
+      "word": "A",
+      "start": 30.418,
+      "end": 30.499
+    },
+    {
+      "word": "visitor",
+      "start": 30.58,
+      "end": 31.056
+    },
+    {
+      "word": "who",
+      "start": 31.335,
+      "end": 31.509
+    },
+    {
+      "word": "leaves",
+      "start": 31.579,
+      "end": 31.857
+    },
+    {
+      "word": "sharper",
+      "start": 31.904,
+      "end": 32.38
+    },
+    {
+      "word": "than",
+      "start": 32.763,
+      "end": 32.926
+    },
+    {
+      "word": "when",
+      "start": 32.972,
+      "end": 33.1
+    },
+    {
+      "word": "they",
+      "start": 33.135,
+      "end": 33.251
+    },
+    {
+      "word": "walked",
+      "start": 33.309,
+      "end": 33.611
+    },
+    {
+      "word": "in.",
+      "start": 33.68,
+      "end": 34.226
     }
   ],
-  "duration": 25.68
+  "duration": 34.23
 }
