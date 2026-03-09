@@ -136,3 +136,4 @@ This is non-negotiable. STATE.md is the project memory.
 3. **Professional tone** - This is an investor pitch deck for a world-class museum. Every element must look polished and institutional.
 4. **MOTJ Brand compliance** - All colors must use the 3 MOTJ Pantone values (see STYLE_GUIDE.md). No off-brand colors.
 5. **SVG icons only** - All icons must be inline SVG with `stroke="currentColor"`. No emoji, no icon fonts.
+6. **API keys LOCAL ONLY** - For image generation, read GEMINI_API_KEY from `.env` file (gitignored). NEVER hardcode API keys in code or commit them to the repo.
