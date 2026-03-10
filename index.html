@@ -159,15 +159,29 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
 }
 .slide > * { position: relative; z-index: 1; }
 
-/* Reveal animations */
-.reveal { opacity: 0; transform: translateY(16px); }
-.slide.active .reveal { animation: revealUp 0.6s ease forwards; }
-.slide.active .r1 { animation-delay: 0.1s; }
-.slide.active .r2 { animation-delay: 0.2s; }
-.slide.active .r3 { animation-delay: 0.35s; }
-.slide.active .r4 { animation-delay: 0.5s; }
-.slide.active .r5 { animation-delay: 0.65s; }
+/* Reveal animations - cinematic stagger */
+.reveal { opacity: 0; transform: translateY(28px); }
+.slide.active .reveal { animation: revealUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.slide.active .r1 { animation-delay: 0.15s; }
+.slide.active .r2 { animation-delay: 0.3s; }
+.slide.active .r3 { animation-delay: 0.5s; }
+.slide.active .r4 { animation-delay: 0.7s; }
+.slide.active .r5 { animation-delay: 0.9s; }
 @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+
+/* Split-slide parallax: text from left, image from right */
+.layout-split .split-text .reveal { transform: translateX(-40px) translateY(0); opacity: 0; }
+.slide.active .layout-split .split-text .reveal { animation: revealFromLeft 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+@keyframes revealFromLeft { to { opacity: 1; transform: translateX(0) translateY(0); } }
+
+.layout-split .split-img { opacity: 0; transform: translateX(60px) scale(1.03); transition: opacity 0.9s ease 0.1s, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.1s; }
+.slide.active .layout-split .split-img { opacity: 1; transform: translateX(0) scale(1); }
+.layout-split.img-left .split-img { transform: translateX(-60px) scale(1.03); }
+.slide.active .layout-split.img-left .split-img { transform: translateX(0) scale(1); }
+
+/* Hero image Ken Burns */
+.layout-hero .hero-bg { transition: transform 8s ease-out; transform: scale(1); }
+.slide.active .layout-hero .hero-bg { transform: scale(1.06); }
 
 /* ================================================================
    PROGRESS & NAVIGATION
@@ -182,7 +196,7 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg);
   padding: 0 28px; z-index: 100;
   border-top: 1px solid rgba(0,48,87,0.08);
 }
-.nav-logo { height: 28px; }
+.nav-logo { height: 36px; }
 .slide-counter { font-family: var(--font-m); font-size: 12px; color: var(--navy); letter-spacing: 1.5px; }
 .act-label { font-family: var(--font-d); font-size: 13px; color: var(--taupe); font-style: italic; letter-spacing: 0.5px; }
 .nav-controls { display: flex; align-items: center; gap: 10px; }
@@ -281,7 +295,13 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   box-shadow: var(--card-shadow); border-radius: 12px; padding: 28px 32px;
   transition: box-shadow 0.2s; text-align: left;
 }
-.card:hover { box-shadow: var(--card-hover-shadow); }
+.card {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.card:hover {
+  box-shadow: var(--card-hover-shadow), 0 0 0 1px var(--blue-dim);
+  transform: translateY(-4px);
+}
 
 /* Competitive matrix */
 .matrix { width: 100%; border-collapse: collapse; }
@@ -393,7 +413,35 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   background: var(--navy);
   color: white;
   box-shadow: 0 2px 12px rgba(0,48,87,0.3);
+  animation: narrationPulse 2s ease-in-out infinite;
 }
+@keyframes narrationPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,48,87,0.3); }
+  50% { box-shadow: 0 0 0 10px rgba(0,48,87,0); }
+}
+
+/* Deliberation network overlay */
+.deliberation-network {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+}
+
+/* Typewriter effect */
+.typewriter { overflow: hidden; white-space: nowrap; border-right: 3px solid var(--navy); width: 0; }
+.slide.active .typewriter { animation: typeOut 2s steps(28, end) 0.4s forwards, blinkCaret 0.6s step-end 6; }
+@keyframes typeOut { to { width: 100%; } }
+@keyframes blinkCaret { 50% { border-color: transparent; } }
+
+/* Animated counter */
+.count-up { font-variant-numeric: tabular-nums; }
+
+/* Slide number watermark */
+.slide-watermark {
+  position: absolute; top: 24px; right: 32px; z-index: 2;
+  font-family: var(--font-m); font-size: 120px; font-weight: 800;
+  color: var(--navy); opacity: 0.04; line-height: 1;
+  pointer-events: none; user-select: none;
+}
+[data-theme="dark"] .slide-watermark { opacity: 0.06; }
 [data-theme="dark"] .narration-btn {
   background: rgba(189,214,230,0.12);
   border-color: rgba(189,214,230,0.3);
@@ -419,8 +467,9 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-hero">
       <img src="slides/slide-01/hero.png" alt="" class="hero-bg">
       <div class="hero-scrim"></div>
+      <canvas class="deliberation-network" id="heroNetwork"></canvas>
       <div class="hero-content">
-        <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" style="height: 40px; margin-bottom: 32px;" class="reveal">
+        <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" style="height: 64px; margin-bottom: 32px;" class="reveal">
         <h1 class="reveal r1" style="color: #fff; font-size: 80px;">The Sanhedrin<br>Educational Experience</h1>
         <p class="tagline reveal r2" style="color: rgba(255,255,255,0.85); margin-top: 16px;">Disagree Better. Discover Together.</p>
         <p class="reveal r3" style="font-size: 22px; color: rgba(255,255,255,0.65); margin-top: 12px; font-style: italic;">What would history's greatest minds say about today's dilemmas?</p>
@@ -431,8 +480,9 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-hero">
       <img src="slides/slide-01/hero.png" alt="" class="hero-bg">
       <div class="hero-scrim"></div>
+      <canvas class="deliberation-network" id="heroNetworkHe"></canvas>
       <div class="hero-content" style="text-align: right;">
-        <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" style="height: 40px; margin-bottom: 32px;" class="reveal">
+        <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" style="height: 64px; margin-bottom: 32px;" class="reveal">
         <h1 class="reveal r1" style="color: #fff; font-size: 80px;">חווית הסנהדרין<br>החינוכית</h1>
         <p class="tagline reveal r2" style="color: rgba(255,255,255,0.85); margin-top: 16px;">חולקים טוב יותר. מגלים יחד.</p>
         <p class="reveal r3" style="font-size: 22px; color: rgba(255,255,255,0.65); margin-top: 12px; font-style: italic;">מה היו אומרים גדולי ההיסטוריה על הדילמות של היום?</p>
@@ -528,7 +578,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <p class="label reveal">Key Value Proposition</p>
       <h2 class="reveal r1" style="font-size: 72px; max-width: 900px;">"Learn to disagree better<br>in 30 minutes."</h2>
       <p class="tagline reveal r2" style="margin-top: 8px;">Without needing to agree.</p>
-      <p class="body-text reveal r3" style="text-align: center; margin-top: 28px; max-width: 800px;">An <strong><span style="font-family: var(--font-m);">AI</span>-powered immersive space</strong> where visitors <strong>engage</strong> with <span style="font-family: var(--font-m);">71</span> <em>historical figures</em> in <strong>real-time</strong> deliberation.</p>
+      <p class="body-text reveal r3" style="text-align: center; margin-top: 28px; max-width: 800px;">An <strong><span style="font-family: var(--font-m);">AI</span>-powered immersive space</strong> where visitors <strong>engage</strong> with <span style="font-family: var(--font-m);" data-count="71">0</span> <em>historical figures</em> in <strong>real-time</strong> deliberation.</p>
       <div style="display: flex; gap: 24px; margin-top: 40px;" class="reveal r4">
         <div style="background: var(--navy); color: #fff; padding: 28px 40px; border-radius: 12px; min-width: 200px;">
           <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 2px; opacity: 0.6;">INPUT</div>
@@ -581,7 +631,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div class="card">
           <span style="font-family: var(--font-m); font-size: 36px; font-weight: 700; color: var(--blue);">01</span>
           <div style="font-size: 22px; font-weight: 700; color: var(--text); margin-top: 8px;">Input Dilemma</div>
-          <div style="font-size: 18px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">Up to <span style="font-family: var(--font-m);">12</span> visitors <strong>select a dilemma</strong> and set their initial confidence level via touchscreens.</div>
+          <div style="font-size: 18px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">Up to <span style="font-family: var(--font-m);" data-count="12">0</span> visitors <strong>select a dilemma</strong> and set their initial confidence level via touchscreens.</div>
         </div>
         <div class="card">
           <span style="font-family: var(--font-m); font-size: 36px; font-weight: 700; color: var(--blue);">02</span>
@@ -660,7 +710,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <div class="split-text">
         <p class="label reveal">System Design</p>
         <h2 class="reveal r1">Role-Based<br>Architecture</h2>
-        <p class="body-text reveal r2" style="margin-bottom: 24px;"><strong><em>Not a chatbot array.</em></strong> A modular <strong>Role-Based Architecture</strong> layered over <span style="font-family: var(--font-m);">13</span> <strong>Thinking Modes.</strong></p>
+        <p class="body-text reveal r2" style="margin-bottom: 24px;"><strong><em>Not a chatbot array.</em></strong> A modular <strong>Role-Based Architecture</strong> layered over <span style="font-family: var(--font-m);" data-count="13">0</span> <strong>Thinking Modes.</strong></p>
         <div style="display: flex; flex-direction: column; gap: 12px;" class="reveal r3">
           <div class="card" style="padding: 20px 24px;">
             <div style="font-size: 20px; font-weight: 600; color: var(--text);">Separate Persona from Role</div>
@@ -1646,6 +1696,121 @@ function stopNarration() {
   var btn = document.getElementById('narrationBtn');
   if (btn) btn.classList.remove('playing');
 }
+
+// === DELIBERATION NETWORK (hero canvas) ===
+(function() {
+  var canvases = [document.getElementById('heroNetwork'), document.getElementById('heroNetworkHe')];
+  canvases.forEach(function(canvas) {
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var nodes = [];
+    var NODE_COUNT = 18;
+    var animId;
+
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    for (var i = 0; i < NODE_COUNT; i++) {
+      nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: 2 + Math.random() * 2.5,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var t = Date.now() * 0.001;
+      // Draw connections
+      for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+          var dx = nodes[i].x - nodes[j].x;
+          var dy = nodes[i].y - nodes[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 200) {
+            var alpha = (1 - dist / 200) * 0.25;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = 'rgba(189,214,230,' + alpha + ')';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+      // Draw nodes
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        var pulse = 0.6 + 0.4 * Math.sin(t * 1.5 + n.phase);
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r * pulse, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(189,214,230,' + (0.3 + 0.3 * pulse) + ')';
+        ctx.fill();
+        // Move
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+      }
+      animId = requestAnimationFrame(draw);
+    }
+    draw();
+  });
+})();
+
+// === ANIMATED COUNTERS ===
+function animateCounters() {
+  document.querySelectorAll('.slide.active [data-count]').forEach(function(el) {
+    if (el.dataset.counted) return;
+    el.dataset.counted = '1';
+    var target = parseInt(el.dataset.count);
+    var duration = 1200;
+    var start = performance.now();
+    function tick(now) {
+      var progress = Math.min((now - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+
+// === SLIDE NUMBER WATERMARKS ===
+(function() {
+  var allSlides = document.querySelectorAll('.slide');
+  allSlides.forEach(function(slide, idx) {
+    var wm = document.createElement('div');
+    wm.className = 'slide-watermark';
+    if (slide.hasAttribute('data-appendix')) {
+      wm.textContent = 'A' + (idx - MAIN_COUNT + 1);
+    } else {
+      wm.textContent = String(idx + 1).padStart(2, '0');
+    }
+    slide.appendChild(wm);
+  });
+})();
+
+// Hook counters into slide transitions
+var _origShowSlide = showSlide;
+showSlide = function(index) {
+  _origShowSlide(index);
+  // Reset counters on other slides
+  document.querySelectorAll('[data-count]').forEach(function(el) {
+    if (!el.closest('.slide.active')) {
+      delete el.dataset.counted;
+      el.textContent = '0';
+    }
+  });
+  setTimeout(animateCounters, 400);
+};
 
 showSlide(0);
 </script>
