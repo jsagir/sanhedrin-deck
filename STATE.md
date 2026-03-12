@@ -71,7 +71,21 @@
 | A4 | Visitor Personas | Daniel the Seeker, Sarah the Balanced, Avi the Skeptic, Noa the Teacher |
 | A5 | The Sage Library | All 80 Jewish Lives figures with hover overlays showing Sanhedrin roles |
 
-## What Changed in Latest Sessions (Sessions 9-11)
+## What Changed in Latest Sessions
+
+### Session 13 (2026-03-12) - Sage Voices + Canvas Animations
+- **ElevenLabs voice clips** for 9 sages: Abraham, Maimonides, Herzl, Golda Meir, Einstein, Anne Frank, Houdini, Moses, Freud
+- Each sage has a unique ElevenLabs voice with custom stability/similarity settings
+- Einstein uses "Bill" voice (Feynman restricted to Reader App)
+- **Slide 5 expanded** from 6 to 9 sage cards (added Houdini, Moses, Freud)
+- **Slide 5 hover redesign**: cards scale to 1.5x on hover showing overlay with role title, description, quote, and play button
+- **Play button** on each card triggers sage voice clip (audio/sages/*.mp3)
+- **Audio system integration**: sage voice, slide narration, and slide transitions all stop competing audio
+- **Slide 6 canvas animation**: "Dynamic Role Assignment Network" with 3 persona nodes, 9 role nodes, edges that migrate between personas every 4 seconds
+- **Slide 9 canvas animation**: "Living Arena" with 12 kiosk nodes in a circle, central pulsing hub, 25 drifting participant dots, spark effects
+- **Animation lifecycle**: canvas animations start/stop on slide transitions (not always-on)
+- Grid widened from 1100px to 1400px for 9 cards, gap reduced to 12px
+- Both EN and HE versions updated with full Hebrew overlays
 
 ### Session 12 (2026-03-12) - Full 80-Sage Library
 - **Appendix E expanded** from 24 to all 80 Jewish Lives figures
@@ -119,6 +133,7 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | 10 | 2026-03-10 | Dark mode toggle, full Hebrew translations from transcripts |
 | 11 | 2026-03-12 | Daniel meeting revision: new sage slide, role terminology, simplified competitive, team update |
 | 12 | 2026-03-12 | Full 80-sage library: expanded Appendix E from 24 to 80 Jewish Lives figures with real cover images, added navigation button from Slide 5 |
+| 13 | 2026-03-12 | Sage voices (ElevenLabs, 9 sages), Slide 5 hover+play redesign, canvas animations for Slides 6+9 |
 
 ## Key Decisions
 | Decision | Why |
@@ -140,7 +155,9 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | Remove Doron from team | Per Daniel instruction. Team is now Jonathan, Daniel, Micha Goodman, Bar-Ilan |
 | Dilemmas pre-selected | Not visitor-chosen. Supra-moral, non-political. Per meeting discussion |
 | All 80 sages with real images | No placeholders - every sage uses actual Jewish Lives (Yale UP) cover art from Squarespace CDN |
-| Slide 5 links to full library | "View Full Library" button navigates from preview (6 sages) to complete Appendix E (80 sages) |
+| Slide 5 links to full library | "View Full Library" button navigates from preview (9 sages) to complete Appendix E (80 sages) |
+| ElevenLabs for sage voices | Each sage gets a unique voice matching their character; Einstein uses Bill (Feynman restricted) |
+| Canvas animations lifecycle | Start/stop tied to slide transitions to avoid running 3 animation loops simultaneously |
 
 ## File Quick Reference
 - `index.html` - the deck (18 main + 5 appendix, bilingual EN/HE, dark/light mode)
