@@ -508,6 +508,18 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 .appendix-list li { font-size: 20px; color: var(--text-sub); padding: 8px 0; padding-left: 20px; position: relative; line-height: 1.5; }
 .appendix-list li::before { content: ''; position: absolute; left: 0; top: 16px; width: 5px; height: 5px; border-radius: 50%; background: var(--navy); }
 
+/* === SLIDE 5 VOICE CARDS === */
+.sage-card-voice { transition: transform 0.3s, box-shadow 0.3s; }
+.sage-card-voice:hover { transform: scale(1.5); z-index: 20; box-shadow: var(--card-hover-shadow), 0 0 0 2px var(--blue); }
+.sage-card-voice.playing { box-shadow: 0 0 0 3px var(--blue), 0 0 20px rgba(189,214,230,0.4); }
+.sage-play-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid rgba(189,214,230,0.4); background: rgba(0,48,87,0.6); color: #fff; cursor: pointer; margin: 8px auto 0; transition: background 0.2s; }
+.sage-play-btn:hover { background: rgba(0,48,87,0.9); }
+.sage-play-btn.playing { animation: narrationPulse 2s ease-in-out infinite; background: var(--navy); }
+
+/* === CANVAS ANIMATIONS === */
+.role-network { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.6; }
+.arena-network { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.5; }
+
 /* Language toggle content */
 .lang-en { display: block; width: 100%; height: 100%; }
 .lang-he { display: none; width: 100%; height: 100%; }
@@ -905,48 +917,51 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <p class="label reveal">Powered by Jewish Lives (Yale University Press)</p>
       <h2 class="reveal r1">The Thinkers Behind<br>the Sanhedrin</h2>
       <p class="body-text reveal r2" style="text-align: center; max-width: 800px; margin-bottom: 28px;"><span style="font-family: var(--font-m);">80</span> historical figures, each modeled as an <strong>AI persona</strong> with a distinct <strong>thinking archetype.</strong> Grounded in biographical scholarship.</p>
-      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; max-width: 1100px; width: 100%;" class="reveal r3">
-        <div class="sage-card">
+      <div style="display: grid; grid-template-columns: repeat(9, 1fr); gap: 12px; max-width: 1400px; width: 100%;" class="reveal r3">
+        <div class="sage-card sage-card-voice" data-sage="abraham" data-audio="audio/sages/abraham.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/6788010d96ece2161d573ed9/1736966413206/JL_NewReleases_Abraham_Facebook+%28002%29.jpg?format=500w" alt="Abraham" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">Abraham</div>
-            <div class="sage-mode-badge">#1 DISRUPTION</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">Abraham</div><div class="sage-mode-badge">#1 DISRUPTION</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">The Idol-Smasher</div><div class="sage-role-desc">Challenges every inherited assumption. Forces the council to question what they take for granted.</div><div class="sage-sig">"What if everything your fathers taught you is wrong?"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card">
+        <div class="sage-card sage-card-voice" data-sage="maimonides" data-audio="audio/sages/maimonides.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/63eb944ebbaede1fe2a511f8/1770325601718/Maimonides.jpg?format=500w" alt="Maimonides" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">Maimonides</div>
-            <div class="sage-mode-badge">#10 SOLUTION</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">Maimonides</div><div class="sage-mode-badge">#10 SOLUTION</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">The Supreme Systematizer</div><div class="sage-role-desc">Unified Aristotelian logic with Torah law. Brings rigorous classification to every debate.</div><div class="sage-sig">"There are exactly four categories, and here they are"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card">
+        <div class="sage-card sage-card-voice" data-sage="herzl" data-audio="audio/sages/herzl.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/5e3c33a90a26f25c6a297761/1581003693653/Herzl+Facebook.jpg?format=500w" alt="Herzl" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">Herzl</div>
-            <div class="sage-mode-badge">#7 GENERATIVE</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">Herzl</div><div class="sage-mode-badge">#7 GENERATIVE</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">The Visionary</div><div class="sage-role-desc">Generates radical new possibilities from nothing. Produces options when the council reaches deadlock.</div><div class="sage-sig">"If you will it, it is no dream"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card">
+        <div class="sage-card sage-card-voice" data-sage="golda-meir" data-audio="audio/sages/golda-meir.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/64b01293bcde250ff58dca7e/1689260695538/JL_NewReleases_Meir_Facebook.jpg?format=500w" alt="Golda Meir" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">Golda Meir</div>
-            <div class="sage-mode-badge">#13 COLLECTIVE</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">Golda Meir</div><div class="sage-mode-badge">#13 COLLECTIVE</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">The Mother of the Nation</div><div class="sage-role-desc">Speaks for collective fate, not personal interest. Frames every dilemma: what does this mean for our people?</div><div class="sage-sig">"We have no one else"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card">
+        <div class="sage-card sage-card-voice" data-sage="einstein" data-audio="audio/sages/einstein.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/58ac325c9de4bb7fca0ba46d/1770324502345/Einstein.jpg?format=500w" alt="Einstein" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">Einstein</div>
-            <div class="sage-mode-badge">#8 IMAGINATIVE</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">Einstein</div><div class="sage-mode-badge">#8 IMAGINATIVE</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">The Thought Experimenter</div><div class="sage-role-desc">Proposes radical hypotheses that reframe the entire discussion. Takes fixed assumptions and asks: what if they are wrong?</div><div class="sage-sig">"Imagine everything you assume is wrong"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card">
+        <div class="sage-card sage-card-voice" data-sage="anne-frank" data-audio="audio/sages/anne-frank.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/676eca6cfc91ce6c667540e6/1735314028002/JL_Podcast_FBBanner_Anne+Frank+%28002%29.jpg?format=500w" alt="Anne Frank" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">Anne Frank</div>
-            <div class="sage-mode-badge">#3 NARRATIVE</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">Anne Frank</div><div class="sage-mode-badge">#3 NARRATIVE</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">The Witness of the Ordinary</div><div class="sage-role-desc">Reminds the council that grand principles are lived in small daily moments. Testifies from experience, not theory.</div><div class="sage-sig">"I still believe people are good. But let me tell you what I saw."</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
+        </div>
+        <div class="sage-card sage-card-voice" data-sage="houdini" data-audio="audio/sages/houdini.mp3">
+          <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/5e54182e7bcf434aa9c1d312/1582569521607/JL_NewReleases_Houdini_Facebook.jpg?format=500w" alt="Houdini" loading="lazy">
+          <div class="sage-info"><div class="sage-name">Houdini</div><div class="sage-mode-badge">#1 DISRUPTION</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">The Escape Artist</div><div class="sage-role-desc">No cage can hold a determined mind. Every constraint is an invitation to find the hidden exit.</div><div class="sage-sig">"What the eyes see and the ears hear, the mind believes"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
+        </div>
+        <div class="sage-card sage-card-voice" data-sage="moses" data-audio="audio/sages/moses.mp3">
+          <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/58584185e58c623d6c961256/1770319874617/Moses.jpg?format=500w" alt="Moses" loading="lazy">
+          <div class="sage-info"><div class="sage-name">Moses</div><div class="sage-mode-badge">#10 SOLUTION</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">The Lawgiver</div><div class="sage-role-desc">Translates values into actionable statutes. Cuts through abstraction to ask: what is the law?</div><div class="sage-sig">"That is the principle; now here is the statute"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
+        </div>
+        <div class="sage-card sage-card-voice" data-sage="freud" data-audio="audio/sages/freud.mp3">
+          <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/5852c1eef7e0ab7cf8248cd3/1770911668899/Freud.jpg?format=500w" alt="Sigmund Freud" loading="lazy">
+          <div class="sage-info"><div class="sage-name">Sigmund Freud</div><div class="sage-mode-badge">#5 INTERPRETIVE</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">The Unconscious Explorer</div><div class="sage-role-desc">What you think you believe is not what drives you. Forces the council to examine their hidden motivations.</div><div class="sage-sig">"Before you insist on your reasons, let us examine your resistance"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
       </div>
       <p class="body-sm reveal r4" style="text-align: center; max-width: 800px; margin-top: 20px;">Character library based on the <strong>Jewish Lives</strong> biographical series. <span style="font-family: var(--font-m);">80</span> volumes across <span style="font-family: var(--font-m);">9</span> domains: biblical, rabbinic, philosophy, politics, arts, science, activism, law, and modern Israel.</p>
@@ -961,48 +976,51 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <p class="label reveal">מבוסס על Jewish Lives (Yale University Press)</p>
       <h2 class="reveal r1">ההוגים שמאחורי<br>הסנהדרין</h2>
       <p class="body-text reveal r2" style="text-align: center; max-width: 800px; margin-bottom: 28px;"><span style="font-family: var(--font-m);">80</span> דמויות היסטוריות, כל אחת מעוצבת כ<strong>פרסונת AI</strong> עם <strong>ארכיטיפ חשיבה</strong> ייחודי. מבוסס על מחקר ביוגרפי.</p>
-      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; max-width: 1100px; width: 100%;" class="reveal r3">
-        <div class="sage-card">
+      <div style="display: grid; grid-template-columns: repeat(9, 1fr); gap: 12px; max-width: 1400px; width: 100%;" class="reveal r3">
+        <div class="sage-card sage-card-voice" data-sage="abraham" data-audio="audio/sages/abraham.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/6788010d96ece2161d573ed9/1736966413206/JL_NewReleases_Abraham_Facebook+%28002%29.jpg?format=500w" alt="Abraham" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">אברהם</div>
-            <div class="sage-mode-badge">#1 חשיבה מפריעה</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">אברהם</div><div class="sage-mode-badge">#1 חשיבה מפריעה</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">שובר האלילים</div><div class="sage-role-desc">מאתגר כל הנחה מקובלת. מכריח את המועצה לשאול מה הם מקבלים כמובן מאליו.</div><div class="sage-sig">"ומה אם כל מה שאבותיכם לימדו אתכם שגוי?"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card">
+        <div class="sage-card sage-card-voice" data-sage="maimonides" data-audio="audio/sages/maimonides.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/63eb944ebbaede1fe2a511f8/1770325601718/Maimonides.jpg?format=500w" alt="Maimonides" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">רמב"ם</div>
-            <div class="sage-mode-badge">#10 חשיבה מוכוונת פתרון</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">רמב"ם</div><div class="sage-mode-badge">#10 חשיבה מוכוונת פתרון</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">המסדר העליון</div><div class="sage-role-desc">איחד לוגיקה אריסטוטלית עם הלכה. מביא סיווג קפדני לכל דיון.</div><div class="sage-sig">"יש בדיוק ארבע קטגוריות, והנה הן"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card">
+        <div class="sage-card sage-card-voice" data-sage="herzl" data-audio="audio/sages/herzl.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/5e3c33a90a26f25c6a297761/1581003693653/Herzl+Facebook.jpg?format=500w" alt="Herzl" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">הרצל</div>
-            <div class="sage-mode-badge">#7 חשיבה גנרטיבית</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">הרצל</div><div class="sage-mode-badge">#7 חשיבה גנרטיבית</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">החוזה</div><div class="sage-role-desc">מייצר אפשרויות רדיקליות מאין. מפיק פתרונות כשהמועצה מגיעה למבוי סתום.</div><div class="sage-sig">"אם תרצו, אין זו אגדה"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card">
+        <div class="sage-card sage-card-voice" data-sage="golda-meir" data-audio="audio/sages/golda-meir.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/64b01293bcde250ff58dca7e/1689260695538/JL_NewReleases_Meir_Facebook.jpg?format=500w" alt="Golda Meir" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">גולדה מאיר</div>
-            <div class="sage-mode-badge">#13 חשיבה קולקטיבית</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">גולדה מאיר</div><div class="sage-mode-badge">#13 חשיבה קולקטיבית</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">אם האומה</div><div class="sage-role-desc">מדברת בשם הגורל הקולקטיבי. בכל דילמה שואלת: מה זה אומר לעם שלנו?</div><div class="sage-sig">"אין לנו אף אחד אחר"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card">
+        <div class="sage-card sage-card-voice" data-sage="einstein" data-audio="audio/sages/einstein.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/58ac325c9de4bb7fca0ba46d/1770324502345/Einstein.jpg?format=500w" alt="Einstein" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">איינשטיין</div>
-            <div class="sage-mode-badge">#8 חשיבה דמיונית</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">איינשטיין</div><div class="sage-mode-badge">#8 חשיבה דמיונית</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">ניסויי המחשבה</div><div class="sage-role-desc">מציע השערות רדיקליות שממסגרות מחדש את כל הדיון. לוקח הנחות קבועות ושואל: ומה אם הן שגויות?</div><div class="sage-sig">"דמיינו שכל מה שאתם מניחים שגוי"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card">
+        <div class="sage-card sage-card-voice" data-sage="anne-frank" data-audio="audio/sages/anne-frank.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/676eca6cfc91ce6c667540e6/1735314028002/JL_Podcast_FBBanner_Anne+Frank+%28002%29.jpg?format=500w" alt="Anne Frank" loading="lazy">
-          <div class="sage-info">
-            <div class="sage-name">אנה פרנק</div>
-            <div class="sage-mode-badge">#3 חשיבה נרטיבית</div>
-          </div>
+          <div class="sage-info"><div class="sage-name">אנה פרנק</div><div class="sage-mode-badge">#3 חשיבה נרטיבית</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">העדה של הרגיל</div><div class="sage-role-desc">מזכירה למועצה שעקרונות גדולים חיים ברגעים קטנים יומיומיים. מעידה מניסיון, לא מתיאוריה.</div><div class="sage-sig">"אני עדיין מאמינה שאנשים טובים. אבל תנו לי לספר מה ראיתי."</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
+        </div>
+        <div class="sage-card sage-card-voice" data-sage="houdini" data-audio="audio/sages/houdini.mp3">
+          <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/5e54182e7bcf434aa9c1d312/1582569521607/JL_NewReleases_Houdini_Facebook.jpg?format=500w" alt="Houdini" loading="lazy">
+          <div class="sage-info"><div class="sage-name">הודיני</div><div class="sage-mode-badge">#1 חשיבה מפריעה</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">אמן הבריחה</div><div class="sage-role-desc">שום כלוב לא יכול להחזיק מוח נחוש. כל אילוץ הוא הזמנה למצוא את היציאה הנסתרת.</div><div class="sage-sig">"מה שהעיניים רואות והאוזניים שומעות, המוח מאמין"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
+        </div>
+        <div class="sage-card sage-card-voice" data-sage="moses" data-audio="audio/sages/moses.mp3">
+          <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/58584185e58c623d6c961256/1770319874617/Moses.jpg?format=500w" alt="Moses" loading="lazy">
+          <div class="sage-info"><div class="sage-name">משה</div><div class="sage-mode-badge">#10 חשיבה מוכוונת פתרון</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">המחוקק</div><div class="sage-role-desc">מתרגם ערכים לחוקים ברי ביצוע. חותך דרך הפשטות ושואל: מה הדין?</div><div class="sage-sig">"זה העיקרון; עכשיו הנה החוק"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
+        </div>
+        <div class="sage-card sage-card-voice" data-sage="freud" data-audio="audio/sages/freud.mp3">
+          <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/5852c1eef7e0ab7cf8248cd3/1770911668899/Freud.jpg?format=500w" alt="Sigmund Freud" loading="lazy">
+          <div class="sage-info"><div class="sage-name">זיגמונד פרויד</div><div class="sage-mode-badge">#5 חשיבה פרשנית</div></div>
+          <div class="sage-overlay"><div class="sage-role-title">חוקר התת-מודע</div><div class="sage-role-desc">מה שאתם חושבים שאתם מאמינים לא מה שמניע אתכם. מכריח את המועצה לבחון את המוטיבציות הנסתרות.</div><div class="sage-sig">"לפני שתתעקשו על הסיבות שלכם, בואו נבחן את ההתנגדות"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
       </div>
       <p class="body-sm reveal r4" style="text-align: center; max-width: 800px; margin-top: 20px;">ספריית דמויות מבוססת על סדרת <strong>Jewish Lives</strong> הביוגרפית. <span style="font-family: var(--font-m);">80</span> כרכים ב-<span style="font-family: var(--font-m);">9</span> תחומים: תנ"ך, רבני, פילוסופיה, פוליטיקה, אמנות, מדע, אקטיביזם, משפט וישראל המודרנית.</p>
@@ -1101,7 +1119,8 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
      ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="lang-en">
-    <div class="layout-statement" style="justify-content: flex-start; padding-top: 40px;">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 40px; position: relative;">
+      <canvas class="role-network" id="roleNetwork"></canvas>
       <p class="label reveal">System Design</p>
       <h2 class="reveal r1">Role-Based Architecture</h2>
       <p class="body-text reveal r2" style="text-align: center; max-width: 800px;"><strong><em>Not a chatbot array.</em></strong> A modular architecture where <strong>personas</strong> are stable identities and <strong>roles</strong> are dynamic thinking modes, layered over <span style="font-family: var(--font-m);">13</span> <strong>Thinking Modes.</strong></p>
@@ -1183,7 +1202,8 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     </div>
   </div>
   <div class="lang-he" dir="rtl">
-    <div class="layout-statement" style="justify-content: flex-start; padding-top: 40px;">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 40px; position: relative;">
+      <canvas class="role-network" id="roleNetworkHe"></canvas>
       <p class="label reveal">עיצוב המערכת</p>
       <h2 class="reveal r1">ארכיטקטורה מבוססת תפקידים</h2>
       <p class="body-text reveal r2" style="text-align: center; max-width: 800px;"><strong><em>לא מערך צ'אטבוטים.</em></strong> ארכיטקטורה מודולרית שבה <strong>פרסונות</strong> הן זהויות קבועות ו<strong>תפקידים</strong> הם מצבי חשיבה דינמיים, שנבנו מעל <span style="font-family: var(--font-m);">13</span> <strong>מצבי חשיבה.</strong></p>
@@ -1387,6 +1407,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-hero">
       <img src="slides/slide-10/hero.png" alt="Physical space" class="hero-bg">
       <div class="hero-scrim"></div>
+      <canvas class="arena-network" id="arenaNetwork"></canvas>
       <div class="hero-content">
         <p class="label reveal" style="color: rgba(255,255,255,0.6);">Spatial Design</p>
         <h2 class="reveal r1" style="color: #fff; margin-bottom: 16px;">The Physical Space</h2>
@@ -1404,6 +1425,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-hero">
       <img src="slides/slide-10/hero.png" alt="" class="hero-bg">
       <div class="hero-scrim"></div>
+      <canvas class="arena-network" id="arenaNetworkHe"></canvas>
       <div class="hero-content" style="text-align: right;">
         <p class="label reveal" style="color: rgba(255,255,255,0.6);">עיצוב מרחבי</p>
         <h2 class="reveal r1" style="color: #fff;">המרחב הפיזי</h2>
@@ -3318,6 +3340,7 @@ var isHebrew = false;
 function showSlide(index) {
   if (index < 0 || index >= slides.length) return;
   stopNarration();
+  if (typeof stopSageVoice === 'function') stopSageVoice();
   slides[current].classList.remove('active');
   slides[current].querySelectorAll('.reveal').forEach(function(el) {
     el.style.animation = 'none';
@@ -3435,6 +3458,7 @@ function playNarration() {
   var num = String(slideIndex + 1).padStart(2, '0');
   // Stop any existing
   stopNarration();
+  if (typeof stopSageVoice === 'function') stopSageVoice();
 
   narrationAudio = new Audio('slides/slide-' + num + '/narration.mp3');
   isNarrating = true;
@@ -3462,6 +3486,39 @@ function stopNarration() {
   isNarrating = false;
   var btn = document.getElementById('narrationBtn');
   if (btn) btn.classList.remove('playing');
+}
+
+// === SAGE VOICE PLAYBACK ===
+var sageAudio = null;
+var isSagePlaying = false;
+var activeSageCard = null;
+
+function stopSageVoice() {
+  if (sageAudio) { sageAudio.pause(); sageAudio = null; }
+  isSagePlaying = false;
+  if (activeSageCard) {
+    activeSageCard.classList.remove('playing');
+    var btn = activeSageCard.querySelector('.sage-play-btn');
+    if (btn) btn.classList.remove('playing');
+    activeSageCard = null;
+  }
+}
+
+function playSageVoice(btn) {
+  var card = btn.closest('.sage-card-voice');
+  var audioSrc = card.dataset.audio;
+  stopNarration();
+  if (activeSageCard === card && isSagePlaying) { stopSageVoice(); return; }
+  stopSageVoice();
+  sageAudio = new Audio(audioSrc);
+  isSagePlaying = true;
+  activeSageCard = card;
+  card.classList.add('playing');
+  btn.classList.add('playing');
+  sageAudio.play().then(function() {
+    console.log('Sage voice playing: ' + card.dataset.sage);
+  }).catch(function(err) { console.error('Sage audio failed:', err); stopSageVoice(); });
+  sageAudio.onended = function() { stopSageVoice(); };
 }
 
 // === DELIBERATION NETWORK (hero canvas) ===
@@ -3566,9 +3623,93 @@ function animateCounters() {
 })();
 
 // Hook counters into slide transitions
+// === ROLE NETWORK ANIMATION (Slide 6) ===
+var slideAnimations = {};
+(function() {
+  ['roleNetwork','roleNetworkHe'].forEach(function(id) {
+    var canvas = document.getElementById(id); if (!canvas) return;
+    var ctx = canvas.getContext('2d'), animId = null, running = false;
+    var personas = [], roles = [], edges = [], edgeTimer = 0;
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; initNodes(); }
+    function initNodes() {
+      var w = canvas.width, h = canvas.height;
+      personas = [{x:w*0.167,y:h*0.18,r:6},{x:w*0.5,y:h*0.18,r:6},{x:w*0.833,y:h*0.18,r:6}];
+      roles = []; edges = [];
+      for (var c=0;c<3;c++) for (var r=0;r<3;r++) {
+        roles.push({x:personas[c].x+(Math.random()-0.5)*30, y:h*(0.4+r*0.18), r:3, col:c});
+      }
+      for (var i=0;i<roles.length;i++) edges.push({role:i,persona:roles[i].col,strength:0.5+Math.random()*0.5,migrating:false,fromPersona:-1,progress:1});
+    }
+    function draw() {
+      if (!running) return; ctx.clearRect(0,0,canvas.width,canvas.height); var t=Date.now()*0.001;
+      if (t-edgeTimer>4) { edgeTimer=t; var idx=Math.floor(Math.random()*edges.length), np=Math.floor(Math.random()*3);
+        if(np!==edges[idx].persona){edges[idx].fromPersona=edges[idx].persona;edges[idx].persona=np;edges[idx].progress=0;edges[idx].migrating=true;}}
+      for (var i=0;i<edges.length;i++) { var e=edges[i],role=roles[e.role],p=personas[e.persona];
+        if(e.migrating&&e.progress<1){e.progress=Math.min(e.progress+0.02,1);if(e.progress>=1)e.migrating=false;var pO=personas[e.fromPersona];var lx=pO.x+(p.x-pO.x)*e.progress,ly=pO.y+(p.y-pO.y)*e.progress;ctx.beginPath();ctx.moveTo(role.x,role.y);ctx.lineTo(lx,ly);ctx.strokeStyle='rgba(189,214,230,'+(e.strength*0.4)+')';ctx.lineWidth=1.5;ctx.stroke();}
+        else{var pulse=0.2+0.2*Math.sin(t*1.2+i);ctx.beginPath();ctx.moveTo(role.x,role.y);ctx.lineTo(p.x,p.y);ctx.strokeStyle='rgba(189,214,230,'+(e.strength*pulse+0.1)+')';ctx.lineWidth=1;ctx.stroke();}}
+      for(var i=0;i<personas.length;i++){var p=personas[i],g=0.5+0.3*Math.sin(t*1.5+i*2);ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(189,214,230,'+g+')';ctx.fill();}
+      for(var i=0;i<roles.length;i++){var r=roles[i],g=0.3+0.2*Math.sin(t*1.8+i);ctx.beginPath();ctx.arc(r.x,r.y,r.r,0,Math.PI*2);ctx.fillStyle='rgba(189,214,230,'+g+')';ctx.fill();}
+      animId=requestAnimationFrame(draw);
+    }
+    function start(){if(running)return;running=true;resize();edgeTimer=Date.now()*0.001;draw();}
+    function stop(){running=false;if(animId){cancelAnimationFrame(animId);animId=null;}}
+    window.addEventListener('resize',resize);
+    if(!slideAnimations[5])slideAnimations[5]=[];
+    slideAnimations[5].push({start:start,stop:stop});
+  });
+})();
+
+// === ARENA ANIMATION (Slide 9 - Physical Space) ===
+(function() {
+  ['arenaNetwork','arenaNetworkHe'].forEach(function(id) {
+    var canvas = document.getElementById(id); if (!canvas) return;
+    var ctx = canvas.getContext('2d'), animId = null, running = false;
+    var kiosks=[], participants=[], sparks=[], hub={x:0,y:0,baseR:12};
+    function resize() { canvas.width=canvas.offsetWidth; canvas.height=canvas.offsetHeight; initArena(); }
+    function initArena() {
+      var w=canvas.width,h=canvas.height,cx=w/2,cy=h/2,radius=Math.min(w,h)*0.35;
+      hub.x=cx; hub.y=cy; kiosks=[];
+      for(var i=0;i<12;i++){var a=(i/12)*Math.PI*2-Math.PI/2;kiosks.push({x:cx+Math.cos(a)*radius,y:cy+Math.sin(a)*radius,r:4});}
+      participants=[];
+      for(var i=0;i<25;i++){var tgt=Math.random()<0.4?-1:Math.floor(Math.random()*12),src=Math.floor(Math.random()*12);
+        participants.push({x:kiosks[src].x+(Math.random()-0.5)*20,y:kiosks[src].y+(Math.random()-0.5)*20,target:tgt,speed:0.3+Math.random()*0.5,phase:Math.random()*Math.PI*2});}
+      sparks=[];
+    }
+    function draw() {
+      if(!running)return; ctx.clearRect(0,0,canvas.width,canvas.height); var t=Date.now()*0.001;
+      for(var i=0;i<kiosks.length;i++){var next=(i+1)%kiosks.length,alpha=0.08+0.05*Math.sin(t*0.8+i);ctx.beginPath();ctx.moveTo(kiosks[i].x,kiosks[i].y);ctx.lineTo(kiosks[next].x,kiosks[next].y);ctx.strokeStyle='rgba(189,214,230,'+alpha+')';ctx.lineWidth=0.5;ctx.stroke();}
+      for(var i=0;i<kiosks.length;i++){var alpha=0.06+0.04*Math.sin(t*0.6+i*0.5);ctx.beginPath();ctx.moveTo(kiosks[i].x,kiosks[i].y);ctx.lineTo(hub.x,hub.y);ctx.strokeStyle='rgba(189,214,230,'+alpha+')';ctx.lineWidth=0.5;ctx.stroke();}
+      var hubR=hub.baseR+4*Math.sin(t*1.2),hubA=0.3+0.15*Math.sin(t*1.2);
+      ctx.beginPath();ctx.arc(hub.x,hub.y,hubR,0,Math.PI*2);ctx.fillStyle='rgba(189,214,230,'+hubA+')';ctx.fill();
+      ctx.beginPath();ctx.arc(hub.x,hub.y,hubR*0.5,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+(hubA*0.6)+')';ctx.fill();
+      for(var i=0;i<kiosks.length;i++){var k=kiosks[i],pulse=0.4+0.2*Math.sin(t*1.5+i*0.5);ctx.beginPath();ctx.arc(k.x,k.y,k.r,0,Math.PI*2);ctx.fillStyle='rgba(189,214,230,'+pulse+')';ctx.fill();}
+      for(var i=0;i<participants.length;i++){var p=participants[i],tx,ty;if(p.target===-1){tx=hub.x;ty=hub.y;}else{tx=kiosks[p.target].x;ty=kiosks[p.target].y;}
+        var dx=tx-p.x,dy=ty-p.y,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<8){p.target=p.target===-1?Math.floor(Math.random()*12):(Math.random()<0.3?-1:Math.floor(Math.random()*12));}else{p.x+=(dx/dist)*p.speed;p.y+=(dy/dist)*p.speed;}
+        var alpha=0.3+0.2*Math.sin(t*2+p.phase);ctx.beginPath();ctx.arc(p.x,p.y,1.5,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+alpha+')';ctx.fill();}
+      if(Math.random()<0.005&&sparks.length<3){var from=Math.floor(Math.random()*12),to=(from+Math.floor(Math.random()*5)+3)%12;sparks.push({fromX:kiosks[from].x,fromY:kiosks[from].y,toX:kiosks[to].x,toY:kiosks[to].y,progress:0,speed:0.03});}
+      for(var i=sparks.length-1;i>=0;i--){var s=sparks[i];s.progress+=s.speed;if(s.progress>=1){sparks.splice(i,1);continue;}var sx=s.fromX+(s.toX-s.fromX)*s.progress,sy=s.fromY+(s.toY-s.fromY)*s.progress;ctx.beginPath();ctx.arc(sx,sy,3,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+(0.8-s.progress*0.6)+')';ctx.fill();}
+      animId=requestAnimationFrame(draw);
+    }
+    function start(){if(running)return;running=true;resize();draw();}
+    function stop(){running=false;if(animId){cancelAnimationFrame(animId);animId=null;}}
+    window.addEventListener('resize',resize);
+    if(!slideAnimations[8])slideAnimations[8]=[];
+    slideAnimations[8].push({start:start,stop:stop});
+  });
+})();
+
 var _origShowSlide = showSlide;
 showSlide = function(index) {
+  // Stop all canvas animations
+  Object.keys(slideAnimations).forEach(function(key) {
+    slideAnimations[key].forEach(function(anim) { anim.stop(); });
+  });
   _origShowSlide(index);
+  // Start animations for current slide
+  if (slideAnimations[index]) {
+    slideAnimations[index].forEach(function(anim) { anim.start(); });
+  }
   // Reset counters on other slides
   document.querySelectorAll('[data-count]').forEach(function(el) {
     if (!el.closest('.slide.active')) {
