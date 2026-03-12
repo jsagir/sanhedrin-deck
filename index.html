@@ -347,6 +347,157 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   font-family: var(--font-m); font-size: 13px; letter-spacing: 3px;
   text-transform: uppercase; color: var(--taupe); margin-bottom: 12px;
 }
+
+/* ================================================================
+   SAGE LIBRARY CARDS (Appendix E)
+   ================================================================ */
+.sage-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) transparent;
+}
+.sage-grid::-webkit-scrollbar { width: 4px; }
+.sage-grid::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+.sage-card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.sage-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: var(--card-hover-shadow), 0 0 0 2px var(--blue);
+  z-index: 10;
+}
+
+.sage-card .sage-cover {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+  background: linear-gradient(135deg, var(--navy) 0%, #004680 100%);
+}
+.sage-card .sage-cover-placeholder {
+  width: 100%;
+  aspect-ratio: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: 28px;
+  color: rgba(255,255,255,0.9);
+  background: linear-gradient(135deg, var(--navy) 0%, #004680 100%);
+}
+
+.sage-info {
+  padding: 10px 10px 8px;
+}
+.sage-name {
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 2px;
+}
+.sage-name-he {
+  font-family: var(--font-d);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--taupe);
+  direction: rtl;
+  line-height: 1.3;
+}
+.sage-mode-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 7px;
+  font-family: var(--font-m);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  background: var(--blue-dim);
+  color: var(--navy);
+  font-weight: 500;
+}
+
+/* Hover overlay */
+.sage-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,48,87,0.94);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.sage-card:hover .sage-overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+.sage-overlay .sage-role-title {
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--blue);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.sage-overlay .sage-role-desc {
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 8px;
+}
+.sage-overlay .sage-sig {
+  font-family: var(--font-d);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--blue);
+  line-height: 1.35;
+  border-top: 1px solid rgba(189,214,230,0.2);
+  padding-top: 8px;
+}
+.sage-overlay .sage-mode-overlay {
+  margin-top: 6px;
+  font-family: var(--font-m);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: rgba(189,214,230,0.7);
+}
+
+/* Partnership badge */
+.sage-partnership {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  font-family: var(--font-m);
+  font-size: 11px;
+  color: var(--taupe);
+}
+.sage-partnership strong { color: var(--navy); font-weight: 600; }
 .appendix-content { font-size: 20px; color: var(--text-sub); line-height: 1.65; max-width: 900px; }
 .appendix-content strong { color: var(--text); }
 .appendix-list { list-style: none; padding: 0; }
@@ -1643,6 +1794,430 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <h3 style="font-size: 22px;">נועה המורה (ביקורים קבוצתיים)</h3>
           <p class="appendix-content" style="margin-top: 8px; font-size: 18px;">מביאה כיתות או תנועות נוער. זקוקה ל<strong>בטיחות חינוכית,</strong> מעורבות לא-מטיפה, ו<strong>חומרי כיתה לאחר הביקור.</strong> המבנה המובנה מבטיח שגם תלמידים <em>מהססים</em> מוצאים תפקיד.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     APPENDIX E: The Sage Library (Jewish Lives)
+     ============================================================ -->
+<section class="slide" data-act="APPENDIX" data-appendix="true">
+  <div class="lang-en">
+    <div style="display: flex; flex-direction: column; align-items: center; padding: 36px 40px 20px; height: 100%; overflow: hidden;">
+      <p class="appendix-label reveal">Appendix E</p>
+      <h2 class="reveal r1" style="font-size: 42px; margin-bottom: 6px;">The Sage Library</h2>
+      <p class="body-sm reveal r2" style="margin-top: 0; margin-bottom: 16px; font-size: 16px; max-width: 700px; text-align: center;">80 historical Jewish figures, each modeled as an AI persona with a distinct thinking mode. Hover to see their Sanhedrin role. Powered by the <strong>Jewish Lives</strong> biographical series (Yale University Press).</p>
+
+      <div class="sage-grid reveal r3">
+        <!-- ROW 1: ANTIQUITY -->
+        <div class="sage-card" data-sage="abraham">
+          <div class="sage-cover-placeholder">A</div>
+          <div class="sage-info">
+            <div class="sage-name">Abraham</div>
+            <div class="sage-name-he">אברהם</div>
+            <div class="sage-mode-badge">#1 DISRUPTION</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Idol-Smasher</div>
+            <div class="sage-role-desc">Challenges every inherited assumption. Forces the council to question what they take for granted.</div>
+            <div class="sage-sig">"What if everything your fathers taught you is wrong?"</div>
+            <div class="sage-mode-overlay">#1 Disruption / חשיבה מפריעה</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="akiva">
+          <div class="sage-cover-placeholder">ע</div>
+          <div class="sage-info">
+            <div class="sage-name">Rabbi Akiva</div>
+            <div class="sage-name-he">רבי עקיבא</div>
+            <div class="sage-mode-badge">#5 INTERPRETIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Master Exegete</div>
+            <div class="sage-role-desc">Derives mountains of meaning from every detail. Forces the group to look deeper at what was actually said.</div>
+            <div class="sage-sig">"Even the silence between words has meaning"</div>
+            <div class="sage-mode-overlay">#5 Interpretive / חשיבה פרשנית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="moses">
+          <div class="sage-cover-placeholder">M</div>
+          <div class="sage-info">
+            <div class="sage-name">Moses</div>
+            <div class="sage-name-he">משה</div>
+            <div class="sage-mode-badge">#10 SOLUTION</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Lawgiver</div>
+            <div class="sage-role-desc">Translates values into actionable statutes. Cuts through abstraction to ask: what is the law?</div>
+            <div class="sage-sig">"That is the principle; now here is the statute"</div>
+            <div class="sage-mode-overlay">#10 Solution-Oriented / חשיבה מוכוונת פתרון</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="ruth">
+          <div class="sage-cover-placeholder">R</div>
+          <div class="sage-info">
+            <div class="sage-name">Ruth</div>
+            <div class="sage-name-he">רות</div>
+            <div class="sage-mode-badge">#13 COLLECTIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Voice of the Outsider</div>
+            <div class="sage-role-desc">Insists that community is built through radical inclusion. No system is valid if it excludes the stranger.</div>
+            <div class="sage-sig">"Where you go, I will go"</div>
+            <div class="sage-mode-overlay">#13 Collective / חשיבה קולקטיבית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="solomon">
+          <div class="sage-cover-placeholder">S</div>
+          <div class="sage-info">
+            <div class="sage-name">Solomon</div>
+            <div class="sage-name-he">שלמה</div>
+            <div class="sage-mode-badge">#10 SOLUTION</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Wisdom Judge</div>
+            <div class="sage-role-desc">Uses paradox and provocation as diagnostic tools. Proposes the unthinkable to reveal the truth.</div>
+            <div class="sage-sig">"I will propose the unthinkable to find the truth"</div>
+            <div class="sage-mode-overlay">#10 Solution-Oriented / חשיבה מוכוונת פתרון</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="elijah">
+          <div class="sage-cover-placeholder">E</div>
+          <div class="sage-info">
+            <div class="sage-name">Elijah</div>
+            <div class="sage-name-he">אליהו</div>
+            <div class="sage-mode-badge">#6 SKEPTICAL</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Truth-Tester</div>
+            <div class="sage-role-desc">Demands proof, tolerates no evasion, forces binary choices. The relentless challenger.</div>
+            <div class="sage-sig">"Choose now: this side or that side"</div>
+            <div class="sage-mode-overlay">#6 Skeptical-Critical / חשיבה ספקנית-ביקורתית</div>
+          </div>
+        </div>
+
+        <!-- ROW 2: PHILOSOPHY -->
+        <div class="sage-card" data-sage="maimonides">
+          <div class="sage-cover-placeholder">ם</div>
+          <div class="sage-info">
+            <div class="sage-name">Maimonides</div>
+            <div class="sage-name-he">רמב"ם</div>
+            <div class="sage-mode-badge">#10 SOLUTION</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Supreme Systematizer</div>
+            <div class="sage-role-desc">Unified Aristotelian logic with Torah law. Brings rigorous classification to every debate.</div>
+            <div class="sage-sig">"There are exactly four categories, and here they are"</div>
+            <div class="sage-mode-overlay">#10 Solution-Oriented / חשיבה מוכוונת פתרון</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="spinoza">
+          <div class="sage-cover-placeholder">S</div>
+          <div class="sage-info">
+            <div class="sage-name">Spinoza</div>
+            <div class="sage-name-he">שפינוזה</div>
+            <div class="sage-mode-badge">#1 DISRUPTION</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">Freedom's Messiah</div>
+            <div class="sage-role-desc">First-principles reasoning regardless of social cost. The excommunicated lens-grinder who feared no authority.</div>
+            <div class="sage-sig">"I owe no institution my silence"</div>
+            <div class="sage-mode-overlay">#1 Disruption / חשיבה מפריעה</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="buber">
+          <div class="sage-cover-placeholder">B</div>
+          <div class="sage-info">
+            <div class="sage-name">Martin Buber</div>
+            <div class="sage-name-he">מרטין בובר</div>
+            <div class="sage-mode-badge">#13 COLLECTIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The I-Thou Voice</div>
+            <div class="sage-role-desc">Insists truth lives between persons, not within them. Halts abstract argument to demand genuine encounter.</div>
+            <div class="sage-sig">"You are treating this person as an It, not a Thou"</div>
+            <div class="sage-mode-overlay">#13 Collective / חשיבה קולקטיבית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="heschel">
+          <div class="sage-cover-placeholder">H</div>
+          <div class="sage-info">
+            <div class="sage-name">Heschel</div>
+            <div class="sage-name-he">הֶשֶׁל</div>
+            <div class="sage-mode-badge">#8 IMAGINATIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Prophetic Voice</div>
+            <div class="sage-role-desc">Marched with King, insisted that wonder precedes knowledge. Some questions cannot wait for committee.</div>
+            <div class="sage-sig">"Some are guilty; all are responsible"</div>
+            <div class="sage-mode-overlay">#8 Imaginative / חשיבה דמיונית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="ravkook">
+          <div class="sage-cover-placeholder">ק</div>
+          <div class="sage-info">
+            <div class="sage-name">Rav Kook</div>
+            <div class="sage-name-he">הרב קוק</div>
+            <div class="sage-mode-badge">#7 GENERATIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Sacred Synthesizer</div>
+            <div class="sage-role-desc">Saw holiness in secular Zionists and divine sparks in heresy. Unites opposites the room considers irreconcilable.</div>
+            <div class="sage-sig">"The sacred and profane are fragments of a larger light"</div>
+            <div class="sage-mode-overlay">#7 Generative / חשיבה גנרטיבית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="marx">
+          <div class="sage-cover-placeholder">M</div>
+          <div class="sage-info">
+            <div class="sage-name">Karl Marx</div>
+            <div class="sage-name-he">קרל מרקס</div>
+            <div class="sage-mode-badge">#6 SKEPTICAL</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Power Unmasker</div>
+            <div class="sage-role-desc">Asks cui bono of every moral position. Forces the group to examine whose economic interests a position serves.</div>
+            <div class="sage-sig">"You call it ethics; I call it ruling-class ideology"</div>
+            <div class="sage-mode-overlay">#6 Skeptical-Critical / חשיבה ספקנית-ביקורתית</div>
+          </div>
+        </div>
+
+        <!-- ROW 3: LAW/POLITICS -->
+        <div class="sage-card" data-sage="bengurion">
+          <div class="sage-cover-placeholder">B</div>
+          <div class="sage-info">
+            <div class="sage-name">Ben-Gurion</div>
+            <div class="sage-name-he">בן-גוריון</div>
+            <div class="sage-mode-badge">#4 ACTIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Decider</div>
+            <div class="sage-role-desc">Forces the room from theory to action. Cuts through ideological debate by demanding: what do we do now?</div>
+            <div class="sage-sig">"Declare and build"</div>
+            <div class="sage-mode-overlay">#4 Active / חשיבה אקטיבית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="herzl">
+          <div class="sage-cover-placeholder">H</div>
+          <div class="sage-info">
+            <div class="sage-name">Theodor Herzl</div>
+            <div class="sage-name-he">תאודור הרצל</div>
+            <div class="sage-mode-badge">#7 GENERATIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Visionary</div>
+            <div class="sage-role-desc">Conjures new possibilities from thin air. Generates radical options when the Sanhedrin reaches deadlock.</div>
+            <div class="sage-sig">"If you will it, it is no dream"</div>
+            <div class="sage-mode-overlay">#7 Generative / חשיבה גנרטיבית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="goldameir">
+          <div class="sage-cover-placeholder">G</div>
+          <div class="sage-info">
+            <div class="sage-name">Golda Meir</div>
+            <div class="sage-name-he">גולדה מאיר</div>
+            <div class="sage-mode-badge">#13 COLLECTIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Matriarch</div>
+            <div class="sage-role-desc">Speaks for collective fate, not individual interest. Reframes every dilemma as: what does this mean for our people?</div>
+            <div class="sage-sig">"We have no one else"</div>
+            <div class="sage-mode-overlay">#13 Collective / חשיבה קולקטיבית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="brandeis">
+          <div class="sage-cover-placeholder">B</div>
+          <div class="sage-info">
+            <div class="sage-name">Brandeis</div>
+            <div class="sage-name-he">ברנדייס</div>
+            <div class="sage-mode-badge">#10 SOLUTION</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The People's Lawyer</div>
+            <div class="sage-role-desc">Weaponizes facts. Invented the sociological brief. Buries opponents under mountains of evidence.</div>
+            <div class="sage-sig">"Let the facts speak"</div>
+            <div class="sage-mode-overlay">#10 Solution-Oriented / חשיבה מוכוונת פתרון</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="goldman">
+          <div class="sage-cover-placeholder">E</div>
+          <div class="sage-info">
+            <div class="sage-name">Emma Goldman</div>
+            <div class="sage-name-he">אמה גולדמן</div>
+            <div class="sage-mode-badge">#1 DISRUPTION</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Firebrand</div>
+            <div class="sage-role-desc">Rejects the entire framework of the question. Insists on redefining the terms of debate entirely.</div>
+            <div class="sage-sig">"Reject the premise"</div>
+            <div class="sage-mode-overlay">#1 Disruption / חשיבה מפריעה</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="szold">
+          <div class="sage-cover-placeholder">H</div>
+          <div class="sage-info">
+            <div class="sage-name">Henrietta Szold</div>
+            <div class="sage-name-he">הנרייטה סצולד</div>
+            <div class="sage-mode-badge">#12 ENTREPRENEUR</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Organizer</div>
+            <div class="sage-role-desc">Turns compassion into institutions. Founded Hadassah, ran Youth Aliyah. Asks: who will actually do the work?</div>
+            <div class="sage-sig">"Organize the response"</div>
+            <div class="sage-mode-overlay">#12 Entrepreneurial / חשיבה יזמית</div>
+          </div>
+        </div>
+
+        <!-- ROW 4: ARTS/LITERARY/SCIENCE -->
+        <div class="sage-card" data-sage="kafka">
+          <div class="sage-cover-placeholder">K</div>
+          <div class="sage-info">
+            <div class="sage-name">Franz Kafka</div>
+            <div class="sage-name-he">פרנץ קפקא</div>
+            <div class="sage-mode-badge">#8 IMAGINATIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Nightmare Logician</div>
+            <div class="sage-role-desc">Takes a principle and follows it into its most disturbing logical extension. Shows what the rule looks like from inside.</div>
+            <div class="sage-sig">"Imagine you woke up and this rule applied to you"</div>
+            <div class="sage-mode-overlay">#8 Imaginative / חשיבה דמיונית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="einstein">
+          <div class="sage-cover-placeholder">E</div>
+          <div class="sage-info">
+            <div class="sage-name">Einstein</div>
+            <div class="sage-name-he">איינשטיין</div>
+            <div class="sage-mode-badge">#8 IMAGINATIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Thought Experimenter</div>
+            <div class="sage-role-desc">Proposes radical hypotheticals that reframe the entire debate. Takes fixed assumptions and asks: what if they are wrong?</div>
+            <div class="sage-sig">"Imagine everything you assume is incorrect"</div>
+            <div class="sage-mode-overlay">#8 Imaginative / חשיבה דמיונית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="wiesel">
+          <div class="sage-cover-placeholder">W</div>
+          <div class="sage-info">
+            <div class="sage-name">Elie Wiesel</div>
+            <div class="sage-name-he">אלי ויזל</div>
+            <div class="sage-mode-badge">#3 NARRATIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Witness</div>
+            <div class="sage-role-desc">Authority comes from presence, not logic. Makes silence and indifference impossible. Memory is moral obligation.</div>
+            <div class="sage-sig">"I was there. You were not. Now listen."</div>
+            <div class="sage-mode-overlay">#3 Narrative-Visual / חשיבה נרטיבית-חזותית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="wittgenstein">
+          <div class="sage-cover-placeholder">W</div>
+          <div class="sage-info">
+            <div class="sage-name">Wittgenstein</div>
+            <div class="sage-name-he">ויטגנשטיין</div>
+            <div class="sage-mode-badge">#9 CREATIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Language Analyst</div>
+            <div class="sage-role-desc">Shows most disagreements are about language, not facts. Dissolves pseudo-problems by revealing linguistic confusion.</div>
+            <div class="sage-sig">"Before we argue, show me what you mean by that word"</div>
+            <div class="sage-mode-overlay">#9 Creative / חשיבה יצירתית</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="kaplan">
+          <div class="sage-cover-placeholder">K</div>
+          <div class="sage-info">
+            <div class="sage-name">Mordecai Kaplan</div>
+            <div class="sage-name-he">מרדכי קפלן</div>
+            <div class="sage-mode-badge">#11 INNOVATION</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Reconstructor</div>
+            <div class="sage-role-desc">Reimagines Judaism as evolving civilization, not fixed dogma. Redesigns tradition to work for the next generation.</div>
+            <div class="sage-sig">"The past has a vote but not a veto"</div>
+            <div class="sage-mode-overlay">#11 Innovation-Focused / חשיבה מוכוונת חדשנות</div>
+          </div>
+        </div>
+
+        <div class="sage-card" data-sage="annefrank">
+          <div class="sage-cover-placeholder">A</div>
+          <div class="sage-info">
+            <div class="sage-name">Anne Frank</div>
+            <div class="sage-name-he">אנה פרנק</div>
+            <div class="sage-mode-badge">#3 NARRATIVE</div>
+          </div>
+          <div class="sage-overlay">
+            <div class="sage-role-title">The Witness of the Ordinary</div>
+            <div class="sage-role-desc">Reminds the council that grand principles are lived in small daily moments. Testifies from experience, not theory.</div>
+            <div class="sage-sig">"I still believe people are good. But let me tell you what I saw."</div>
+            <div class="sage-mode-overlay">#3 Narrative-Visual / חשיבה נרטיבית-חזותית</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sage-partnership reveal r4" style="margin-top: 12px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        <span>Character library powered by <strong>Jewish Lives</strong> (Yale University Press) - 80 biographical volumes across 9 domains</span>
+      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div style="display: flex; flex-direction: column; align-items: center; padding: 36px 40px 20px; height: 100%; overflow: hidden;">
+      <p class="appendix-label reveal">נספח ה'</p>
+      <h2 class="reveal r1" style="font-size: 42px; margin-bottom: 6px;">ספריית החכמים</h2>
+      <p class="body-sm reveal r2" style="margin-top: 0; margin-bottom: 16px; font-size: 16px; max-width: 700px; text-align: center;">80 דמויות יהודיות היסטוריות, כל אחת מעוצבת כפרסונת AI עם מצב חשיבה ייחודי. העבירו את העכבר כדי לראות את תפקידם בסנהדרין. מבוסס על סדרת <strong>Jewish Lives</strong> הביוגרפית (Yale University Press).</p>
+
+      <div class="sage-grid reveal r3">
+        <!-- Same 24 cards, Hebrew-first display handled by RTL context -->
+        <div class="sage-card"><div class="sage-cover-placeholder">א</div><div class="sage-info"><div class="sage-name">אברהם</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Abraham</div><div class="sage-mode-badge">#1 חשיבה מפריעה</div></div><div class="sage-overlay"><div class="sage-role-title">שובר האלילים</div><div class="sage-role-desc">מאתגר כל הנחה מורשת. מכריח את המועצה לבחון מה שהם מקבלים כמובן מאליו.</div><div class="sage-sig">"מה אם כל מה שאבותיך לימדו אותך הוא טעות?"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ע</div><div class="sage-info"><div class="sage-name">רבי עקיבא</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Rabbi Akiva</div><div class="sage-mode-badge">#5 חשיבה פרשנית</div></div><div class="sage-overlay"><div class="sage-role-title">הפרשן העליון</div><div class="sage-role-desc">גוזר הרים של משמעות מכל פרט. מכריח את הקבוצה להתעמק במה שנאמר באמת.</div><div class="sage-sig">"אפילו לשתיקה שבין המילים יש משמעות"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">מ</div><div class="sage-info"><div class="sage-name">משה</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Moses</div><div class="sage-mode-badge">#10 חשיבה מוכוונת פתרון</div></div><div class="sage-overlay"><div class="sage-role-title">מחוקק התורה</div><div class="sage-role-desc">מתרגם ערכים לחוקים ברי-ביצוע. חותך דרך ההפשטה ושואל: מה החוק?</div><div class="sage-sig">"זה העיקרון; ועכשיו הנה החוק"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ר</div><div class="sage-info"><div class="sage-name">רות</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Ruth</div><div class="sage-mode-badge">#13 חשיבה קולקטיבית</div></div><div class="sage-overlay"><div class="sage-role-title">קול הזר</div><div class="sage-role-desc">עומדת על כך שקהילה נבנית מתוך הכלה רדיקלית. אין מערכת תקפה אם היא מדירה את הזר.</div><div class="sage-sig">"אל אשר תלכי אלך"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ש</div><div class="sage-info"><div class="sage-name">שלמה</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Solomon</div><div class="sage-mode-badge">#10 חשיבה מוכוונת פתרון</div></div><div class="sage-overlay"><div class="sage-role-title">שופט החכמה</div><div class="sage-role-desc">משתמש בפרדוקס ובפרובוקציה ככלי אבחון. מציע את הבלתי-נתפס כדי לחשוף את האמת.</div><div class="sage-sig">"אציע את הבלתי-נתפס כדי למצוא את האמת"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">א</div><div class="sage-info"><div class="sage-name">אליהו</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Elijah</div><div class="sage-mode-badge">#6 חשיבה ספקנית</div></div><div class="sage-overlay"><div class="sage-role-title">בוחן האמת</div><div class="sage-role-desc">דורש הוכחות, לא סובל התחמקות, מכריח בחירות בינאריות. המאתגר הבלתי-מתפשר.</div><div class="sage-sig">"בחרו עכשיו: הצד הזה או הצד הזה"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ם</div><div class="sage-info"><div class="sage-name">רמב"ם</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Maimonides</div><div class="sage-mode-badge">#10 חשיבה מוכוונת פתרון</div></div><div class="sage-overlay"><div class="sage-role-title">המסדר העליון</div><div class="sage-role-desc">איחד היגיון אריסטוטלי עם הלכה. מביא סיווג קפדני לכל דיון.</div><div class="sage-sig">"יש בדיוק ארבע קטגוריות, והנה הן"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ש</div><div class="sage-info"><div class="sage-name">שפינוזה</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Spinoza</div><div class="sage-mode-badge">#1 חשיבה מפריעה</div></div><div class="sage-overlay"><div class="sage-role-title">משיח החירות</div><div class="sage-role-desc">חשיבה מעקרונות ראשונים ללא קשר למחיר החברתי. המנדה שלא פחד מאף סמכות.</div><div class="sage-sig">"אינני חייב לשום מוסד את שתיקתי"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ב</div><div class="sage-info"><div class="sage-name">מרטין בובר</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Martin Buber</div><div class="sage-mode-badge">#13 חשיבה קולקטיבית</div></div><div class="sage-overlay"><div class="sage-role-title">קול ה'אני-אתה'</div><div class="sage-role-desc">עומד על כך שהאמת חיה בין אנשים, לא בתוכם. עוצר ויכוח מופשט כדי לדרוש מפגש אמיתי.</div><div class="sage-sig">"אתה מתייחס לאדם הזה כ'זה', לא כ'אתה'"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ה</div><div class="sage-info"><div class="sage-name">הֶשֶׁל</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Heschel</div><div class="sage-mode-badge">#8 חשיבה דמיונית</div></div><div class="sage-overlay"><div class="sage-role-title">הקול הנבואי</div><div class="sage-role-desc">צעד עם קינג, עמד על כך שפליאה קודמת לידע. חלק מהשאלות לא יכולות לחכות.</div><div class="sage-sig">"חלקם אשמים; כולם אחראים"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ק</div><div class="sage-info"><div class="sage-name">הרב קוק</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Rav Kook</div><div class="sage-mode-badge">#7 חשיבה גנרטיבית</div></div><div class="sage-overlay"><div class="sage-role-title">המסנתז הקדוש</div><div class="sage-role-desc">ראה קדושה בציונים חילוניים וניצוצות אלוהיים בכפירה. מאחד ניגודים שהחדר מחשיב כבלתי-ניתנים ליישוב.</div><div class="sage-sig">"הקודש והחול שניהם שברים של אור גדול יותר"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">מ</div><div class="sage-info"><div class="sage-name">קרל מרקס</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Karl Marx</div><div class="sage-mode-badge">#6 חשיבה ספקנית</div></div><div class="sage-overlay"><div class="sage-role-title">חושף הכוח</div><div class="sage-role-desc">שואל למי זה משרת בכל עמדה מוסרית. מכריח את הקבוצה לבדוק אילו אינטרסים כלכליים עמדה משרתת.</div><div class="sage-sig">"אתם קוראים לזה אתיקה; אני קורא לזה אידיאולוגיה של מעמד השליטה"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ב</div><div class="sage-info"><div class="sage-name">בן-גוריון</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Ben-Gurion</div><div class="sage-mode-badge">#4 חשיבה אקטיבית</div></div><div class="sage-overlay"><div class="sage-role-title">המחליט</div><div class="sage-role-desc">מכריח את החדר מתיאוריה לפעולה. חותך דרך דיון אידיאולוגי בדרישה: מה עושים עכשיו?</div><div class="sage-sig">"להכריז ולבנות"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ה</div><div class="sage-info"><div class="sage-name">הרצל</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Herzl</div><div class="sage-mode-badge">#7 חשיבה גנרטיבית</div></div><div class="sage-overlay"><div class="sage-role-title">החוזה</div><div class="sage-role-desc">מייצר אפשרויות חדשות יש מאין. מייצר אופציות רדיקליות כשהסנהדרין מגיעה למבוי סתום.</div><div class="sage-sig">"אם תרצו, אין זו אגדה"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ג</div><div class="sage-info"><div class="sage-name">גולדה מאיר</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Golda Meir</div><div class="sage-mode-badge">#13 חשיבה קולקטיבית</div></div><div class="sage-overlay"><div class="sage-role-title">האם של האומה</div><div class="sage-role-desc">מדברת בשם הגורל הקולקטיבי, לא האינטרס האישי. ממסגרת כל דילמה: מה זה אומר לעם שלנו?</div><div class="sage-sig">"אין לנו אף אחד אחר"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ב</div><div class="sage-info"><div class="sage-name">ברנדייס</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Brandeis</div><div class="sage-mode-badge">#10 חשיבה מוכוונת פתרון</div></div><div class="sage-overlay"><div class="sage-role-title">עורך הדין של העם</div><div class="sage-role-desc">הופך עובדות לנשק. המציא את התקדים הסוציולוגי. קובר יריבים תחת הרים של ראיות.</div><div class="sage-sig">"תנו לעובדות לדבר"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">א</div><div class="sage-info"><div class="sage-name">אמה גולדמן</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Emma Goldman</div><div class="sage-mode-badge">#1 חשיבה מפריעה</div></div><div class="sage-overlay"><div class="sage-role-title">הלפיד</div><div class="sage-role-desc">דוחה את כל מסגרת השאלה. עומדת על הגדרה מחדש של תנאי הדיון לחלוטין.</div><div class="sage-sig">"דחו את ההנחה"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ה</div><div class="sage-info"><div class="sage-name">הנרייטה סצולד</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Henrietta Szold</div><div class="sage-mode-badge">#12 חשיבה יזמית</div></div><div class="sage-overlay"><div class="sage-role-title">המארגנת</div><div class="sage-role-desc">הופכת חמלה למוסדות. ייסדה את הדסה, ניהלה עליית הנוער. שואלת: מי באמת יעשה את העבודה?</div><div class="sage-sig">"לארגן את התגובה"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ק</div><div class="sage-info"><div class="sage-name">קפקא</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Kafka</div><div class="sage-mode-badge">#8 חשיבה דמיונית</div></div><div class="sage-overlay"><div class="sage-role-title">הלוגיקן של הסיוט</div><div class="sage-role-desc">לוקח עיקרון ועוקב אחריו אל ההרחבה ההגיונית המטרידה ביותר שלו.</div><div class="sage-sig">"דמיינו שהתעוררתם והכלל הזה חל עליכם"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">א</div><div class="sage-info"><div class="sage-name">איינשטיין</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Einstein</div><div class="sage-mode-badge">#8 חשיבה דמיונית</div></div><div class="sage-overlay"><div class="sage-role-title">הניסויָן המחשבתי</div><div class="sage-role-desc">מציע היפותזות רדיקליות שממסגרות מחדש את כל הדיון. לוקח הנחות קבועות ושואל: מה אם הן שגויות?</div><div class="sage-sig">"דמיינו שכל מה שאתם מניחים הוא שגוי"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ו</div><div class="sage-info"><div class="sage-name">אלי ויזל</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Elie Wiesel</div><div class="sage-mode-badge">#3 חשיבה נרטיבית</div></div><div class="sage-overlay"><div class="sage-role-title">העד</div><div class="sage-role-desc">הסמכות שלו נובעת מנוכחות, לא מהיגיון. הופך שתיקה ואדישות לבלתי-אפשריים. זיכרון הוא חובה מוסרית.</div><div class="sage-sig">"הייתי שם. אתם לא הייתם. עכשיו הקשיבו."</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ו</div><div class="sage-info"><div class="sage-name">ויטגנשטיין</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Wittgenstein</div><div class="sage-mode-badge">#9 חשיבה יצירתית</div></div><div class="sage-overlay"><div class="sage-role-title">מנתח השפה</div><div class="sage-role-desc">מראה שרוב המחלוקות הן על שפה, לא על עובדות. מפרק בעיות-דמה על ידי חשיפת בלבול לשוני.</div><div class="sage-sig">"לפני שנתווכח, הראו לי מה אתם מתכוונים במילה הזו"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">ק</div><div class="sage-info"><div class="sage-name">מרדכי קפלן</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Kaplan</div><div class="sage-mode-badge">#11 חשיבה מוכוונת חדשנות</div></div><div class="sage-overlay"><div class="sage-role-title">המשחזר</div><div class="sage-role-desc">מדמיין מחדש את היהדות כציוויליזציה מתפתחת, לא כדוגמה קבועה. מעצב מחדש את המסורת כך שתעבוד לדור הבא.</div><div class="sage-sig">"לעבר יש זכות הצבעה אבל לא זכות וטו"</div></div></div>
+        <div class="sage-card"><div class="sage-cover-placeholder">א</div><div class="sage-info"><div class="sage-name">אנה פרנק</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Anne Frank</div><div class="sage-mode-badge">#3 חשיבה נרטיבית</div></div><div class="sage-overlay"><div class="sage-role-title">עדת היומיום</div><div class="sage-role-desc">מזכירה למועצה שעקרונות גדולים נחיים ברגעים יומיומיים קטנים. מעידה מניסיון, לא מתיאוריה.</div><div class="sage-sig">"אני עדיין מאמינה שאנשים טובים. אבל תנו לי לספר מה ראיתי."</div></div></div>
+      </div>
+
+      <div class="sage-partnership reveal r4" style="margin-top: 12px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        <span>ספריית דמויות מבוססת על <strong>Jewish Lives</strong> (Yale University Press) - 80 כרכים ביוגרפיים ב-9 תחומים</span>
       </div>
     </div>
   </div>
