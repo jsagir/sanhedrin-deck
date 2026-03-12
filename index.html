@@ -509,6 +509,16 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 .appendix-list li::before { content: ''; position: absolute; left: 0; top: 16px; width: 5px; height: 5px; border-radius: 50%; background: var(--navy); }
 
 /* === SLIDE 5 VOICE CARDS === */
+.sage-carousel { position: relative; max-width: 900px; width: 100%; z-index: 10; }
+.sage-carousel-track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.sage-carousel-track .sage-card-voice { display: none; }
+.sage-carousel-track .sage-card-voice.sage-visible { display: block; }
+.sage-carousel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 14px; }
+.sage-carousel-btn { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--card-border); background: var(--card-bg); color: var(--text); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s; }
+.sage-carousel-btn:hover { border-color: var(--blue); background: var(--blue-dim); }
+.sage-carousel-dots { display: flex; gap: 8px; }
+.sage-carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--card-border); border: none; cursor: pointer; transition: background 0.2s; }
+.sage-carousel-dot.active { background: var(--navy); }
 .sage-card-voice { transition: transform 0.3s, box-shadow 0.3s; position: relative; z-index: 1; }
 .sage-card-voice:hover { transform: scale(1.5); z-index: 50; box-shadow: var(--card-hover-shadow), 0 0 0 2px var(--blue); }
 .sage-card-voice .sage-overlay { pointer-events: all; z-index: 51; text-decoration: none; }
@@ -918,23 +928,24 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <p class="label reveal">Powered by Jewish Lives (Yale University Press)</p>
       <h2 class="reveal r1">The Thinkers Behind<br>the Sanhedrin</h2>
       <p class="body-text reveal r2" style="text-align: center; max-width: 800px; margin-bottom: 28px;"><span style="font-family: var(--font-m);">80</span> historical figures, each modeled as an <strong>AI persona</strong> with a distinct <strong>thinking archetype.</strong> Grounded in biographical scholarship.</p>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 900px; width: 100%; position: relative; z-index: 10;" class="reveal r3">
-        <div class="sage-card sage-card-voice" data-sage="abraham" data-audio="audio/sages/abraham.mp3">
+      <div class="sage-carousel reveal r3" id="sage-carousel-en">
+        <div class="sage-carousel-track">
+        <div class="sage-card sage-card-voice sage-visible" data-sage="abraham" data-audio="audio/sages/abraham.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/6788010d96ece2161d573ed9/1736966413206/JL_NewReleases_Abraham_Facebook+%28002%29.jpg?format=500w" alt="Abraham" loading="lazy">
           <div class="sage-info"><div class="sage-name">Abraham</div><div class="sage-mode-badge">#1 DISRUPTION</div></div>
           <div class="sage-overlay"><div class="sage-role-title">The Idol-Smasher</div><div class="sage-role-desc">Challenges every inherited assumption. Forces the council to question what they take for granted.</div><div class="sage-sig">"What if everything your fathers taught you is wrong?"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card sage-card-voice" data-sage="maimonides" data-audio="audio/sages/maimonides.mp3">
+        <div class="sage-card sage-card-voice sage-visible" data-sage="maimonides" data-audio="audio/sages/maimonides.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/63eb944ebbaede1fe2a511f8/1770325601718/Maimonides.jpg?format=500w" alt="Maimonides" loading="lazy">
           <div class="sage-info"><div class="sage-name">Maimonides</div><div class="sage-mode-badge">#10 SOLUTION</div></div>
           <div class="sage-overlay"><div class="sage-role-title">The Supreme Systematizer</div><div class="sage-role-desc">Unified Aristotelian logic with Torah law. Brings rigorous classification to every debate.</div><div class="sage-sig">"There are exactly four categories, and here they are"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card sage-card-voice" data-sage="spinoza" data-audio="audio/sages/spinoza.mp3">
+        <div class="sage-card sage-card-voice sage-visible" data-sage="spinoza" data-audio="audio/sages/spinoza.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/65a7f2d36f74a66358780d2e/1763647095948/Spinoza.jpg?format=500w" alt="Spinoza" loading="lazy">
           <div class="sage-info"><div class="sage-name">Spinoza</div><div class="sage-mode-badge">#1 DISRUPTION</div></div>
           <div class="sage-overlay"><div class="sage-role-title">Freedom's Messiah</div><div class="sage-role-desc">First-principles reasoning regardless of social cost. The excommunicated lens-grinder who feared no authority.</div><div class="sage-sig">"I owe no institution my silence"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card sage-card-voice" data-sage="herzl" data-audio="audio/sages/herzl.mp3">
+        <div class="sage-card sage-card-voice sage-visible" data-sage="herzl" data-audio="audio/sages/herzl.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/5e3c33a90a26f25c6a297761/1581003693653/Herzl+Facebook.jpg?format=500w" alt="Herzl" loading="lazy">
           <div class="sage-info"><div class="sage-name">Herzl</div><div class="sage-mode-badge">#7 GENERATIVE</div></div>
           <div class="sage-overlay"><div class="sage-role-title">The Visionary</div><div class="sage-role-desc">Generates radical new possibilities from nothing. Produces options when the council reaches deadlock.</div><div class="sage-sig">"If you will it, it is no dream"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
@@ -979,6 +990,12 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <div class="sage-info"><div class="sage-name">Henrietta Szold</div><div class="sage-mode-badge">#12 ENTREPRENEURIAL</div></div>
           <div class="sage-overlay"><div class="sage-role-title">The Organizer</div><div class="sage-role-desc">Turns compassion into institutions. Founded Hadassah, ran Youth Aliyah. Asks: who will actually do the work?</div><div class="sage-sig">"Organize the response"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="Hear this sage"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
+        </div>
+        <div class="sage-carousel-nav">
+          <button class="sage-carousel-btn" onclick="sageCarouselNav(this, -1)" title="Previous"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <div class="sage-carousel-dots"><button class="sage-carousel-dot active" onclick="sageCarouselGo(this, 0)"></button><button class="sage-carousel-dot" onclick="sageCarouselGo(this, 1)"></button><button class="sage-carousel-dot" onclick="sageCarouselGo(this, 2)"></button></div>
+          <button class="sage-carousel-btn" onclick="sageCarouselNav(this, 1)" title="Next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></button>
+        </div>
       </div>
       <p class="body-sm reveal r4" style="text-align: center; max-width: 800px; margin-top: 60px;">Character library based on the <strong>Jewish Lives</strong> biographical series. <span style="font-family: var(--font-m);">80</span> volumes across <span style="font-family: var(--font-m);">9</span> domains: biblical, rabbinic, philosophy, politics, arts, science, activism, law, and modern Israel.</p>
       <button onclick="goToSageLibrary()" class="reveal r5" style="margin-top: 12px; padding: 10px 28px; background: var(--navy); color: #fff; border: none; border-radius: 8px; font-family: var(--font-d); font-size: 14px; font-weight: 600; cursor: pointer; letter-spacing: 0.5px; transition: background 0.3s, transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
@@ -992,23 +1009,24 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <p class="label reveal">מבוסס על Jewish Lives (Yale University Press)</p>
       <h2 class="reveal r1">ההוגים שמאחורי<br>הסנהדרין</h2>
       <p class="body-text reveal r2" style="text-align: center; max-width: 800px; margin-bottom: 28px;"><span style="font-family: var(--font-m);">80</span> דמויות היסטוריות, כל אחת מעוצבת כ<strong>פרסונת AI</strong> עם <strong>ארכיטיפ חשיבה</strong> ייחודי. מבוסס על מחקר ביוגרפי.</p>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 900px; width: 100%; position: relative; z-index: 10;" class="reveal r3">
-        <div class="sage-card sage-card-voice" data-sage="abraham" data-audio="audio/sages/abraham.mp3">
+      <div class="sage-carousel reveal r3" id="sage-carousel-he">
+        <div class="sage-carousel-track">
+        <div class="sage-card sage-card-voice sage-visible" data-sage="abraham" data-audio="audio/sages/abraham.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/6788010d96ece2161d573ed9/1736966413206/JL_NewReleases_Abraham_Facebook+%28002%29.jpg?format=500w" alt="Abraham" loading="lazy">
           <div class="sage-info"><div class="sage-name">אברהם</div><div class="sage-mode-badge">#1 חשיבה מפריעה</div></div>
           <div class="sage-overlay"><div class="sage-role-title">שובר האלילים</div><div class="sage-role-desc">מאתגר כל הנחה מקובלת. מכריח את המועצה לשאול מה הם מקבלים כמובן מאליו.</div><div class="sage-sig">"ומה אם כל מה שאבותיכם לימדו אתכם שגוי?"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card sage-card-voice" data-sage="maimonides" data-audio="audio/sages/maimonides.mp3">
+        <div class="sage-card sage-card-voice sage-visible" data-sage="maimonides" data-audio="audio/sages/maimonides.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/63eb944ebbaede1fe2a511f8/1770325601718/Maimonides.jpg?format=500w" alt="Maimonides" loading="lazy">
           <div class="sage-info"><div class="sage-name">רמב"ם</div><div class="sage-mode-badge">#10 חשיבה מוכוונת פתרון</div></div>
           <div class="sage-overlay"><div class="sage-role-title">המסדר העליון</div><div class="sage-role-desc">איחד לוגיקה אריסטוטלית עם הלכה. מביא סיווג קפדני לכל דיון.</div><div class="sage-sig">"יש בדיוק ארבע קטגוריות, והנה הן"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card sage-card-voice" data-sage="spinoza" data-audio="audio/sages/spinoza.mp3">
+        <div class="sage-card sage-card-voice sage-visible" data-sage="spinoza" data-audio="audio/sages/spinoza.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/65a7f2d36f74a66358780d2e/1763647095948/Spinoza.jpg?format=500w" alt="Spinoza" loading="lazy">
           <div class="sage-info"><div class="sage-name">שפינוזה</div><div class="sage-mode-badge">#1 חשיבה מפריעה</div></div>
           <div class="sage-overlay"><div class="sage-role-title">משיח החירות</div><div class="sage-role-desc">חשיבה מעקרונות ראשונים ללא קשר למחיר החברתי. מלטש העדשות המוחרם שלא פחד משום סמכות.</div><div class="sage-sig">"אינני חייב לשום מוסד את שתיקתי"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
         </div>
-        <div class="sage-card sage-card-voice" data-sage="herzl" data-audio="audio/sages/herzl.mp3">
+        <div class="sage-card sage-card-voice sage-visible" data-sage="herzl" data-audio="audio/sages/herzl.mp3">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/5e3c33a90a26f25c6a297761/1581003693653/Herzl+Facebook.jpg?format=500w" alt="Herzl" loading="lazy">
           <div class="sage-info"><div class="sage-name">הרצל</div><div class="sage-mode-badge">#7 חשיבה גנרטיבית</div></div>
           <div class="sage-overlay"><div class="sage-role-title">החוזה</div><div class="sage-role-desc">מייצר אפשרויות רדיקליות מאין. מפיק פתרונות כשהמועצה מגיעה למבוי סתום.</div><div class="sage-sig">"אם תרצו, אין זו אגדה"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכם"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
@@ -1052,6 +1070,12 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/65b7a81075b12671d96aeb1a/1766510784069/Henrietta+Szold.jpg?format=500w" alt="Henrietta Szold" loading="lazy">
           <div class="sage-info"><div class="sage-name">הנרייטה סצולד</div><div class="sage-mode-badge">#12 חשיבה יזמית</div></div>
           <div class="sage-overlay"><div class="sage-role-title">המארגנת</div><div class="sage-role-desc">הופכת חמלה למוסדות. ייסדה את הדסה, הובילה עליית הנוער. שואלת: מי באמת יעשה את העבודה?</div><div class="sage-sig">"ארגנו את התגובה"</div><button class="sage-play-btn" onclick="event.stopPropagation(); playSageVoice(this)" title="שמעו את החכמה"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button></div>
+        </div>
+        </div>
+        <div class="sage-carousel-nav">
+          <button class="sage-carousel-btn" onclick="sageCarouselNav(this, -1)" title="הקודם"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></button>
+          <div class="sage-carousel-dots"><button class="sage-carousel-dot active" onclick="sageCarouselGo(this, 0)"></button><button class="sage-carousel-dot" onclick="sageCarouselGo(this, 1)"></button><button class="sage-carousel-dot" onclick="sageCarouselGo(this, 2)"></button></div>
+          <button class="sage-carousel-btn" onclick="sageCarouselNav(this, 1)" title="הבא"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
         </div>
       </div>
       <p class="body-sm reveal r4" style="text-align: center; max-width: 800px; margin-top: 60px;">ספריית דמויות מבוססת על סדרת <strong>Jewish Lives</strong> הביוגרפית. <span style="font-family: var(--font-m);">80</span> כרכים ב-<span style="font-family: var(--font-m);">9</span> תחומים: תנ"ך, רבני, פילוסופיה, פוליטיקה, אמנות, מדע, אקטיביזם, משפט וישראל המודרנית.</p>
@@ -3533,6 +3557,33 @@ function stopSageVoice() {
     if (btn) btn.classList.remove('playing');
     activeSageCard = null;
   }
+}
+
+/* === SAGE CAROUSEL === */
+function sageCarouselNav(btn, dir) {
+  const carousel = btn.closest('.sage-carousel');
+  const cards = carousel.querySelectorAll('.sage-card-voice');
+  const dots = carousel.querySelectorAll('.sage-carousel-dot');
+  const perPage = 4;
+  const totalPages = Math.ceil(cards.length / perPage);
+  const activeDot = carousel.querySelector('.sage-carousel-dot.active');
+  let page = Array.from(dots).indexOf(activeDot);
+  page = (page + dir + totalPages) % totalPages;
+  sageCarouselShow(carousel, page);
+}
+function sageCarouselGo(dot, page) {
+  const carousel = dot.closest('.sage-carousel');
+  sageCarouselShow(carousel, page);
+}
+function sageCarouselShow(carousel, page) {
+  const cards = carousel.querySelectorAll('.sage-card-voice');
+  const dots = carousel.querySelectorAll('.sage-carousel-dot');
+  const perPage = 4;
+  const start = page * perPage;
+  cards.forEach((c, i) => {
+    c.classList.toggle('sage-visible', i >= start && i < start + perPage);
+  });
+  dots.forEach((d, i) => d.classList.toggle('active', i === page));
 }
 
 function playSageVoice(btn) {
