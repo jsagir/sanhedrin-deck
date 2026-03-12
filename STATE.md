@@ -2,7 +2,7 @@
 
 ## Current Status
 **Last updated:** 2026-03-12
-**Phase:** Major revision from Daniel meeting transcript. 18 main + 5 appendix slides. Deployed and live.
+**Phase:** Full 80-sage library complete. 18 main + 5 appendix slides. Deployed and live.
 **Live URL:** https://sanhedrin-deck.onrender.com
 **Repo:** https://github.com/jsagir/sanhedrin-deck (auto-deploy on push to master)
 
@@ -69,9 +69,18 @@
 | A2 | 13 Thinking Modes | Full list + System Role Mapping (Nasi, Av Beit Din, Devil's Advocate) |
 | A3 | Dilemma Scenarios | 13 pre-built scenarios (Goring Ox, Lashon Hara, NFT Chametz, etc.) |
 | A4 | Visitor Personas | Daniel the Seeker, Sarah the Balanced, Avi the Skeptic, Noa the Teacher |
-| A5 | The Sage Library | 24 Jewish Lives figures with hover overlays showing Sanhedrin roles |
+| A5 | The Sage Library | All 80 Jewish Lives figures with hover overlays showing Sanhedrin roles |
 
 ## What Changed in Latest Sessions (Sessions 9-11)
+
+### Session 12 (2026-03-12) - Full 80-Sage Library
+- **Appendix E expanded** from 24 to all 80 Jewish Lives figures
+- All 80 sages have real book cover images from Jewish Lives Squarespace CDN
+- Each sage has: cover image, EN+HE name, thinking mode badge, hover overlay with role title, description, signature quote
+- 9 domains: Antiquity (9), Philosophy/Religion (12), Law/Politics (16), Literary Arts (13), Arts/Culture (9), Entertainment (13), Business (1), Rogues (2), Science (4)
+- **"View Full Library" button** added to Slide 5 (EN + HE) linking to Appendix E via goToSageLibrary() JS function
+- Sage Library appendix section given id="sage-library" for targeting
+- Pending: visitor journey dilemma scheduling concept (from user feedback)
 
 ### Session 11 (2026-03-12) - Daniel Meeting Revision
 Based on transcript of Jonathan-Daniel deck walkthrough meeting:
@@ -109,6 +118,7 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | 9 | 2026-03-10 | Editorial/magazine redesign, new images, Hebrew toggle |
 | 10 | 2026-03-10 | Dark mode toggle, full Hebrew translations from transcripts |
 | 11 | 2026-03-12 | Daniel meeting revision: new sage slide, role terminology, simplified competitive, team update |
+| 12 | 2026-03-12 | Full 80-sage library: expanded Appendix E from 24 to 80 Jewish Lives figures with real cover images, added navigation button from Slide 5 |
 
 ## Key Decisions
 | Decision | Why |
@@ -129,6 +139,8 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | Chatbot vs Sanhedrin only | Simplified competitive slide per Daniel feedback - drop Museum/Debate columns |
 | Remove Doron from team | Per Daniel instruction. Team is now Jonathan, Daniel, Micha Goodman, Bar-Ilan |
 | Dilemmas pre-selected | Not visitor-chosen. Supra-moral, non-political. Per meeting discussion |
+| All 80 sages with real images | No placeholders - every sage uses actual Jewish Lives (Yale UP) cover art from Squarespace CDN |
+| Slide 5 links to full library | "View Full Library" button navigates from preview (6 sages) to complete Appendix E (80 sages) |
 
 ## File Quick Reference
 - `index.html` - the deck (18 main + 5 appendix, bilingual EN/HE, dark/light mode)
