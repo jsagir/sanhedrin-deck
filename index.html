@@ -4565,12 +4565,14 @@ function toggleNarration() {
 
 function playNarration() {
   var slideIndex = current;
+  // No narration for appendix slides
+  if (slides[slideIndex] && slides[slideIndex].hasAttribute('data-appendix')) return;
   var num = String(slideIndex + 1).padStart(2, '0');
   // Stop any existing
   stopNarration();
   if (typeof stopSageVoice === 'function') stopSageVoice();
 
-  narrationAudio = new Audio('slides/slide-' + num + '/narration.mp3');
+  narrationAudio = new Audio('audio/narration/slide-' + num + '.mp3');
   isNarrating = true;
   document.getElementById('narrationBtn').classList.add('playing');
 

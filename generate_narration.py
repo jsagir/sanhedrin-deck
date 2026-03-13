@@ -1,192 +1,187 @@
 #!/usr/bin/env python3
-"""Generate narration audio + word timestamps for each slide via ElevenLabs API."""
+"""Generate slide narration MP3s using ElevenLabs TTS API.
 
-import json, base64, sys, os, time
-from urllib.request import Request, urlopen
-from urllib.error import HTTPError
+22 main slides (new deck structure), presenter-style narration (~15-20s each).
+Uses eleven_multilingual_v2 model. Output: audio/narration/slide-NN.mp3
+"""
 
-# Load from .env file if present
-_env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
-if os.path.exists(_env_path):
-    with open(_env_path) as f:
-        for line in f:
-            if "=" in line and not line.startswith("#"):
-                k, v = line.strip().split("=", 1)
-                os.environ.setdefault(k, v)
+import os
+import time
+from pathlib import Path
+from dotenv import load_dotenv
+from elevenlabs import ElevenLabs
 
-API_KEY = os.environ.get("ELEVENLABS_API_KEY", "")
-VOICE_ID = "onwK4e9ZLuTAKqWW03F9"  # Daniel - Steady Broadcaster, British
-URL = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}/with-timestamps"
-BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "slides")
+load_dotenv()
 
-NARRATIONS = {
-    "slide-01": "The Sanhedrin Educational Experience. Disagree better. Discover together. What would history's greatest minds say about the dilemmas tearing our society apart right now? That is what we are building. And it is unlike anything that exists today.",
+client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
 
-    "slide-02": "Here is the crisis. Discourse is broken. Young people literally walk out of rooms when they hear something they disagree with. Disagreement has become tribal. It triggers identity defense, not critical thinking. And here is the gap no one has filled: there is no civic discourse simulator. No place where society can train the muscle of sitting with discomfort. We are building that place.",
+OUTPUT_DIR = Path("audio/narration")
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    "slide-03": "Now here is where everything shifts. We are not building another debate platform. We are reframing what a dispute even is. A dispute is not a battle to be won. It is a dynamic puzzle to be solved. Participants uncover hidden pieces, arguments, facts, points of agreement, to see the full picture. Demagoguery makes the picture blur. Depth makes it sharpen. The goal is shared truth-seeking. L'Shem Shamayim. For the sake of heaven.",
+# Daniel voice - Steady Broadcaster, same as original narration
+NARRATOR_VOICE_ID = "onwK4e9ZLuTAKqWW03F9"
 
-    "slide-04": "Our promise is simple. Learn to disagree better in 30 minutes. Without needing to agree. This is an AI-powered immersive space where visitors step into real-time deliberation with 71 historical Jewish figures. A visitor brings a dilemma. Our engine, a mix of AI characters and human participants, deliberates together. And the output? Expanded thinking. New perspectives. A visitor who leaves sharper than when they walked in.",
+# 22 main slides in new deck order (no narration for appendices)
+SLIDES = [
+    {
+        "file": "slide-01.mp3",
+        "text": "The Sanhedrin Educational Experience. Disagree better. Discover together. What would history's greatest minds say about the dilemmas tearing our society apart? That is what we are building at the Museum of Tolerance Jerusalem. And it is unlike anything that exists today."
+    },
+    {
+        "file": "slide-02.mp3",
+        "text": "Discourse is broken. Young people literally walk out of rooms when they hear something they disagree with. Disagreement has become tribal. It triggers identity defense, not critical thinking. There is no civic discourse simulator. No place where society can train the muscle of sitting with discomfort. We are building that place."
+    },
+    {
+        "file": "slide-03.mp3",
+        "text": "Meet the core MOTJ team. Daniel Muller, PhD in AI, our CTO and project manager with 18 years in R&D. Jonathan Sagir, MBA, project operations and coordination. Marla Supnick, creative director and visitor experience lead. And Sharon Jacobson, director of design and content. Together, we co-lead the Maimonides Pavilion AI and AV integration model."
+    },
+    {
+        "file": "slide-04.mp3",
+        "text": "Our academic partner: Bar-Ilan University. Professor Jonathan Schler brings deep NLP and computational linguistics expertise. Dr. Alex Tal contributes research in digital humanities and AI ethics. Together, they ground our approach in rigorous academic methodology."
+    },
+    {
+        "file": "slide-05.mp3",
+        "text": "Our advisory team. Dr. Micha Goodman, bestselling author and public intellectual, serves as content and philosophical advisor. Lieutenant Colonel Miri Dayan, retired, is the principal of the School of Civic Discourse and developed much of the foundational learning methodology we build upon."
+    },
+    {
+        "file": "slide-06.mp3",
+        "text": "The cognitive twist. We reframe dispute not as conflict, but as a dynamic puzzle. The Talmudic tradition treated disagreement as a structured intellectual exercise. Our system transforms confrontation into collaborative discovery. L'Shem Shamayim: for the sake of heaven."
+    },
+    {
+        "file": "slide-07.mp3",
+        "text": "Our key value proposition: learn to disagree better in 30 minutes. Without needing to agree. A visitor brings a dilemma. Our engine, AI historical sages and human participants, deliberates together. The output: expanded thinking, new perspectives, a visitor who leaves sharper than when they walked in."
+    },
+    {
+        "file": "slide-08.mp3",
+        "text": "The thinkers behind the Sanhedrin. 80 historical figures from the Jewish Lives series by Yale University Press. From Abraham to Einstein, Maimonides to Golda Meir, Spinoza to Houdini. Each sage brings a distinct thinking mode and deliberative role to the council. Click any card to hear them speak."
+    },
+    {
+        "file": "slide-09.mp3",
+        "text": "The visitor journey: a tight 25-minute loop. Choose a pre-selected dilemma. Meet your sage panel. Engage in structured deliberation. Hear counterarguments. Reach synthesis. Reflect on what shifted. All dilemmas are supra-moral, non-political."
+    },
+    {
+        "file": "slide-10.mp3",
+        "text": "Role-based architecture. We separate persona from role. Rambam is a character. Facilitator is a function. Any persona can fill any role. Three visitor personas encounter sages playing Sanhedrin roles: Nasi, Av Beit Din, Ipcha Mistabra, Praklit Satan. Authentic Talmudic deliberation, powered by modern AI."
+    },
+    {
+        "file": "slide-11.mp3",
+        "text": "A sample session: The Goring Ox. An ancient Talmudic case, modernized. Who is liable when an autonomous vehicle causes harm? Maimonides systematizes. Golda Meir advocates for the collective. Einstein reframes every assumption. Watch perspectives shift in real time."
+    },
+    {
+        "file": "slide-12.mp3",
+        "text": "One platform, two configurations. Culture of Disagreement mode: pedagogical, process-focused, with a live polarization score. Perfect for school groups. Debate mode: competitive, structured rounds, opening statements, rebuttals, audience voting. Perfect for general visitors and corporate groups. Same infrastructure, two different experiences."
+    },
+    {
+        "file": "slide-13.mp3",
+        "text": "The physical space. A circular civic discourse arena. Twelve interactive kiosks. Central display for live sentiment analysis and argument visualization. Curved benches. Dynamic spotlights. Every person in this room participates. Zero bystanders."
+    },
+    {
+        "file": "slide-14.mp3",
+        "text": "AI and context engineering. Under the hood: retrieval-augmented generation grounds each sage in their actual writings. Multi-agent orchestration enables debate dynamics between agents. Context engineering manages the weights: what each agent knows, remembers, and responds to in real time."
+    },
+    {
+        "file": "slide-15.mp3",
+        "text": "The debate and discourse framework. Our cognitive layer implements structured argumentation protocols. Claim, evidence, rebuttal, synthesis. Each sage follows authentic deliberative patterns drawn from Talmudic methodology. The system actively tracks logical contradictions and filters for cultural sensitivity."
+    },
+    {
+        "file": "slide-16.mp3",
+        "text": "We already did this. The Rambam exhibit at the Museum of Tolerance is our proven sibling project. Visitors engaged with a single AI sage and the response was overwhelming. Rambam was a monologue. Sanhedrin is a multi-agent dialogue. We are not starting from scratch. We are scaling a validated mechanism."
+    },
+    {
+        "file": "slide-17.mp3",
+        "text": "Transparent risk assessment. 70 percent solved: agent quality, protocols, 80 characters, and the core framework. 30 percent ahead: agent-to-agent-to-human orchestration. We mitigate this with a Phase 1 proof of concept, a WhatsApp group testing live multi-agent dynamics before we build the full UI."
+    },
+    {
+        "file": "slide-18.mp3",
+        "text": "Why not just use ChatGPT? A chatbot gives you one voice, one perspective, generic responses. The Sanhedrin gives you a council of distinct thinkers with authentic viewpoints, structured debate, and real cognitive challenge. Nobody combines multi-perspective dialogue with orchestrated meta-logic across 13 thinking modes and a physical immersive space."
+    },
+    {
+        "file": "slide-19.mp3",
+        "text": "The EdTech platform play. Beyond the museum: a debate gym for schools, universities, and home learners. Museum, school, home. Three tiers, one technology stack. Massive total addressable market expanding from museum visitors to the global education sector."
+    },
+    {
+        "file": "slide-20.mp3",
+        "text": "Roadmap and milestones. Six phases. Internal presentation and green light now. Donor presentations and RFP by April. Proof of concept. Core platform build. Beta testing and museum integration. Then school rollout and global scale."
+    },
+    {
+        "file": "slide-21.mp3",
+        "text": "The business case. Multiple revenue streams: museum licensing, school subscriptions, and a research hub generating publishable data on AI-mediated discourse. The system creates a unique anonymized data repository on how society reasons about moral questions. Strategic ROI for donors investing in the future of civic engagement."
+    },
+    {
+        "file": "slide-22.mp3",
+        "text": "The Sanhedrin didn't give answers. They gave people the tools to think. We are bringing that into the 21st century. Give us the green light. Fund Phase 1. Let us prove the final 30 percent. And schedule the technical review where we show you exactly how this works under the hood."
+    },
+]
 
-    "slide-05": "Here is how the experience works. It is a tight 25-minute loop. Twelve visitors select a dilemma and lock in their initial confidence level. A human game master, think game show host, sets the stage. Then our Wheel of Sages dynamically assigns AI historical figures to join the teams. What follows is structured deliberation, arguments, questioning, and clarification. Midpoint check-ins track how perspectives actually shift. And at the end, every visitor walks out with a personalized digital summary of their journey.",
 
-    "slide-06": "Now let me show you what is under the hood. This is not a chatbot. It is a modular role-based architecture layered over 13 Talmudic thinking modes. We do something no one else does: we separate the persona from the role. Rambam is a character. Facilitator is a function. Any persona can fill any role. Humans can swap in. AI can swap out. And running behind all of it, our system is actively fact-checking, filtering for cultural sensitivity, and tracking logical contradictions. In real time.",
+def generate_narration(slide, max_retries=3):
+    """Generate a single slide narration clip."""
+    output_path = OUTPUT_DIR / slide["file"]
 
-    "slide-07": "Let me make this real for you. The Goring Ox. It is an ancient Talmudic case. We modernize it: who is liable when an autonomous vehicle kills someone? Is it the manufacturer? The owner? The software developer? The city that built the road? There is no right answer, and that is the point. Rambam analyzes systemic causation. Shammai challenges every assumption. Herzl envisions systemic solutions. And our research agent injects live crash statistics into the conversation as it unfolds.",
+    # Skip if already generated
+    if output_path.exists() and output_path.stat().st_size > 0:
+        print(f"  SKIP {slide['file']} (already exists: {output_path.stat().st_size} bytes)")
+        return True
 
-    "slide-08": "Now, we faced a real internal tension. One team wanted collaborative pedagogy. The other wanted competitive debate. Our solution? One platform, two configurations. Culture of Disagreement mode is pedagogical, process-focused, with a live polarization score and a L'Shem Shamayim index. Perfect for school groups. Debate mode is competitive, rhetorical, with structured rounds, opening statements, rebuttals, and audience voting. Perfect for general visitors and corporate groups. Same infrastructure. Two completely different experiences.",
+    for attempt in range(max_retries):
+        try:
+            print(f"  Generating {slide['file']} (attempt {attempt + 1})...")
+            audio_generator = client.text_to_speech.convert(
+                voice_id=NARRATOR_VOICE_ID,
+                text=slide["text"],
+                model_id="eleven_multilingual_v2",
+                voice_settings={
+                    "stability": 0.3,
+                    "similarity_boost": 0.85,
+                },
+            )
 
-    "slide-09": "The physical space. A circular civic discourse arena. Designed by Yazdani Studio. This is not a passive aquarium where people watch screens. Every single person in this room participates. Twelve interactive kiosks. Curved benches. Sage portrait screens that come alive. Dynamic spotlights. And the peripheral audience? They are actively voting, reacting, and engaging through their mobile devices. Zero bystanders.",
+            # Write audio chunks to file
+            with open(output_path, "wb") as f:
+                for chunk in audio_generator:
+                    f.write(chunk)
 
-    "slide-10": "And here is why you should believe us. We already did this. The Rambam interactive exhibit at the museum is our proven sibling project. Micha Goodman, one of Israel's leading public intellectuals, tested our AI and validated its conversational depth. His reaction? Rambam was a monologue sold in one slide. Sanhedrin is a multi-agent dialogue. The next evolution. We are not starting from scratch. We are scaling a validated mechanism.",
+            size = output_path.stat().st_size
+            if size < 1000:
+                print(f"  WARNING: {slide['file']} suspiciously small ({size} bytes)")
+                output_path.unlink()
+                continue
 
-    "slide-11": "Let me be transparent about where we stand. 70 percent solved. Agent quality, conversation protocols, character modeling of 68 historical figures, and our entire content framework: done. The remaining 30 percent is the hard part. Agent-to-agent-to-human orchestration. Getting AI characters to debate each other in the background while synthesizing coherent outputs for the human layer. That is the frontier. And we are proving it right now with a Phase 1 POC, a live multi-agent WhatsApp group testing real dynamics before we build the UI.",
+            print(f"  OK {slide['file']} ({size:,} bytes)")
+            return True
 
-    "slide-12": "Look at the competitive landscape. Chatbots give you one perspective. Museums give you passive exhibits. Debate AI gives you structured arguments. Nobody, nobody, combines multi-perspective dialogue with 5 to 7 characters, orchestrated meta-logic across 13 thinking modes, a physical immersive space, and institutional backing from the Museum of Tolerance Jerusalem. Our moat is not a new LLM. Our moat is integration. Agentic systems plus structured dispute methodology, combined in a way no one else has attempted.",
+        except Exception as e:
+            error_msg = str(e)
+            print(f"  ERROR {slide['file']}: {error_msg}")
+            if "429" in error_msg or "rate" in error_msg.lower():
+                wait = 2 ** (attempt + 1)
+                print(f"  Rate limited, waiting {wait}s...")
+                time.sleep(wait)
+            elif attempt < max_retries - 1:
+                time.sleep(1)
 
-    "slide-13": "And this is bigger than a museum exhibit. This is the Debate Gym. A scalable EdTech platform. The museum is the premium peak experience. Schools run School of Civic Discourse programs with direct curriculum integration. And at home? Open your camera, speak, and get real-time AI analysis on your rhetoric and argumentation. Museum, school, home. Three tiers. One technology stack. Massive total addressable market.",
-
-    "slide-14": "Here is the roadmap. Phase 1, right now: a WhatsApp-based proof of concept with 3 AI agents and 2 humans testing live agent-to-agent mechanics. Phase 2 at 3 months: a working text-based demo with 5 historical characters and full orchestrator logic. Phase 3 at 6 months: a complete experience prototype integrated with a physical space mockup. Phase 4 at 12 months: launch-ready deployment at the Museum of Tolerance Jerusalem, serving over 100,000 annual visitors.",
-
-    "slide-15": "The business case. We need funding for tech architecture, content development, and spatial build-out. Revenue flows from four streams: museum admission with premium VIP tiers, content licensing, EdTech B2B subscriptions for schools, and here is the hidden gem: the system generates a privacy-first, anonymized data repository on how society reasons about moral questions. That data creates prestigious academic partnerships and a unique research asset that appreciates over time.",
-
-    "slide-16": "The team. Jonathan leads tech architecture, the person who built the Rambam AI. Daniel drives project strategy and stakeholder management. Doron handles knowledge design and the creative layer. And there is one missing piece we need your help finding: a world-renowned debate content expert to mathematically design the competitive mode, the way Barry Lenny shaped the Rambam content.",
-
-    "slide-17": "Two thousand years ago, the Sanhedrin did not give people answers. They gave people the tools to think. We are bringing that into the 21st century. Give us the green light. Fund the Phase 1 proof of concept. Let us prove the final 30 percent. And schedule the deep-dive technical review where we show you exactly how this works under the hood.",
-}
-
-
-def chars_to_words(text, char_starts, char_ends):
-    """Convert character-level timings to word-level timings."""
-    words = []
-    current_word = ""
-    word_start = None
-    word_end = None
-
-    for i, char in enumerate(text):
-        if char == ' ' or char == '\n':
-            if current_word:
-                words.append({
-                    "word": current_word,
-                    "start": round(word_start, 4),
-                    "end": round(word_end, 4)
-                })
-                current_word = ""
-                word_start = None
-        else:
-            if not current_word:
-                word_start = char_starts[i] if i < len(char_starts) else 0
-            current_word += char
-            word_end = char_ends[i] if i < len(char_ends) else word_start
-
-    if current_word:
-        words.append({
-            "word": current_word,
-            "start": round(word_start, 4),
-            "end": round(word_end, 4)
-        })
-
-    return words
-
-
-def generate_slide(slide_id, text, index, total):
-    """Generate narration for a single slide. Returns True on success."""
-    slide_dir = os.path.join(BASE_DIR, slide_id)
-    os.makedirs(slide_dir, exist_ok=True)
-
-    audio_path = os.path.join(slide_dir, "narration.mp3")
-    timing_path = os.path.join(slide_dir, "timing.json")
-
-    payload = json.dumps({
-        "text": text,
-        "model_id": "eleven_multilingual_v2",
-        "voice_settings": {
-            "stability": 0.3,
-            "similarity_boost": 0.85,
-            "style": 0.4,
-            "use_speaker_boost": True
-        }
-    }).encode("utf-8")
-
-    headers = {
-        "xi-api-key": API_KEY,
-        "Content-Type": "application/json"
-    }
-
-    req = Request(URL, data=payload, headers=headers, method="POST")
-
-    t0 = time.time()
-    try:
-        with urlopen(req, timeout=60) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        print(f"  ERROR: HTTP {e.code} - {body[:200]}")
-        return False
-    except Exception as e:
-        print(f"  ERROR: {e}")
-        return False
-
-    elapsed = round(time.time() - t0, 1)
-
-    # Save audio
-    audio_bytes = base64.b64decode(data["audio_base64"])
-    with open(audio_path, "wb") as f:
-        f.write(audio_bytes)
-
-    # Convert character timings to word timings
-    alignment = data.get("alignment", {})
-    characters = alignment.get("characters", list(text))
-    char_starts = alignment.get("character_start_times_seconds", [])
-    char_ends = alignment.get("character_end_times_seconds", [])
-
-    words = chars_to_words(text, char_starts, char_ends)
-
-    # Calculate duration from last word end or last char end
-    duration = 0.0
-    if words:
-        duration = round(words[-1]["end"], 2)
-    elif char_ends:
-        duration = round(char_ends[-1], 2)
-
-    timing_data = {
-        "words": words,
-        "duration": duration
-    }
-
-    with open(timing_path, "w") as f:
-        json.dump(timing_data, f, indent=2)
-
-    print(f"[{index}/{total}] Generating {slide_id}... OK ({elapsed}s, {len(words)} words, {duration}s duration)")
-    return True
+    print(f"  FAILED {slide['file']} after {max_retries} attempts")
+    return False
 
 
 def main():
-    if not API_KEY:
-        print("ERROR: ELEVENLABS_API_KEY not set. Add it to .env or export it.")
-        sys.exit(1)
+    print(f"Generating {len(SLIDES)} slide narration clips...")
+    print(f"Voice: Daniel ({NARRATOR_VOICE_ID})")
+    print(f"Output: {OUTPUT_DIR.resolve()}\n")
 
-    total = len(NARRATIONS)
     success = 0
     failed = 0
-
-    print(f"Generating narration for {total} slides...")
-    print(f"Voice: Daniel (onwK4e9ZLuTAKqWW03F9)")
-    print(f"Output: {BASE_DIR}/slide-NN/narration.mp3 + timing.json")
-    print()
-
-    for i, (slide_id, text) in enumerate(sorted(NARRATIONS.items()), 1):
-        if generate_slide(slide_id, text, i, total):
+    for slide in SLIDES:
+        if generate_narration(slide):
             success += 1
         else:
             failed += 1
+        # Brief pause between API calls
+        time.sleep(1)
 
-        # Rate limit: 2s between calls
-        if i < total:
-            time.sleep(2)
-
-    print()
-    print(f"Done. {success} succeeded, {failed} failed.")
+    print(f"\nDone: {success} succeeded, {failed} failed")
+    if failed:
+        print("Re-run the script to retry failed generations.")
 
 
 if __name__ == "__main__":

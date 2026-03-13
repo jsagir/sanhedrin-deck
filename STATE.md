@@ -75,6 +75,15 @@
 
 ## What Changed in Latest Sessions
 
+### Session 16 (2026-03-13) - Full Narration Regeneration (22 Slides)
+- **22 narration MP3s generated** via ElevenLabs (Daniel voice, eleven_multilingual_v2)
+- **New audio path**: `audio/narration/slide-NN.mp3` (was `slides/slide-NN/narration.mp3`)
+- **Narration scripts rewritten** from scratch for new 22-slide structure
+- **Content aligned with Daniel meeting transcript**: CTO title, Miri Dayan as Lt. Col. Ret./School of Civic Discourse principal, WhatsApp-based POC, Maimonides Pavilion co-leadership, 6-phase roadmap with April RFP
+- **index.html updated**: narration audio path changed, appendix slide guard added (no narration on appendix slides)
+- **generate_narration.py rewritten**: new 22-slide narration texts, outputs to audio/narration/, uses elevenlabs SDK
+- **RESOLVED**: "Narration MP3s need complete redo" from Session 15
+
 ### Session 15 (2026-03-13) - Tech Slides, Appendices P/Q, Back Button
 - **Two new tech slides** (11: AI & Context Engineering, 12: Debate & Discourse Framework) with drill-down links to Appendix A/B
 - **Appendix P** (Program Scope) and **Appendix Q** (POC Definition) added as SoW-style documents with sticky TOC
@@ -83,7 +92,7 @@
 - **RTL alignment fix** for Hebrew appendix content
 - **Daniel & Jonathan bios** updated with Maimonides Pavilion leadership
 - **All slides renumbered** (22 main + 7 appendix)
-- **PENDING**: Narration MP3s need complete redo for new slide order
+- **DONE**: Narration MP3s regenerated in Session 16
 
 ### Session 14 (2026-03-13) - Team Slides + Sage Carousel + Spinoza
 - **Team slide moved** from position 16 to position 3 per Daniel's feedback
@@ -191,7 +200,7 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | Sage carousel (4-col paginated) | Replaced single horizontal row; cleaner for 12 cards with room to grow |
 
 ## File Quick Reference
-- `index.html` - the deck (20 main + 5 appendix, bilingual EN/HE, dark/light mode)
+- `index.html` - the deck (22 main + 7 appendix, bilingual EN/HE, dark/light mode)
 - `CLAUDE.md` - project guide + mandatory style rules
 - `STATE.md` - this file
 - `generate_images.py` - image regeneration script (editorial prompts, gemini-2.5-flash-image)
