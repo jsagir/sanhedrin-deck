@@ -71,7 +71,11 @@
 
 ## What Changed in Latest Sessions
 
-### Session 20 (2026-03-13) - HE Scatter Fix, Dashboard Tour, Sage Hover Fix
+### Session 20 (2026-03-13) - HE Scatter Fix, Dashboard Tour, Sage Hover Fix, Layout Reflow, Seismograph
+- **Schedule relocated under video**: Moved Daily Session Schedule from cut-off footer into center column under video. Reformatted as 3-col grid (3x3). Both EN and HE
+- **Radar chart SVG labels fixed**: Expanded viewBox from "0 0 200 180" to "-15 -5 230 180" on both EN and HE radar charts. Labels no longer clipped
+- **Bottom scroll clearance**: padding-bottom bumped from 40px to 80px on both EN/HE dashboard wrappers to clear fixed nav bar
+- **Dialogue Seismograph**: Replaced static 5-row heatmap grid with mirrored area chart SVG. Team A (Human 1 + Rambam) waves above baseline, Team B (Human 2 + Spinoza) below. Blue=curiosity (smooth), orange=friction (jagged spikes), gold=synthesis (convergence zone min 20-25). Red dashed violation strike at min 9. Disengagement zone indicator min 5-8. Gold "pinch" pillars at convergence. Both EN and HE with Hebrew team labels
 - **HE scatter plot SVG axis labels**: Bumped font-size from 7 to 10 (axis labels) and 6 to 9 (inner labels: ideal zone, start, now) to match EN. Also aligned x position of rotated label
 - **Puzzle click-to-place verified**: Code reviewed - e.currentTarget usage correct, 75% hit area working, fly animation with cubic ease-out, both mouse and touch support via touchend
 - **Appendix F dashboard onboarding tour**: 9-step guided walkthrough of all dashboard widgets (sentiment, radar, scatter, video, sages, roles, visitors, heatmap, schedule). GUIDE button added to both EN and HE headers. Reuses existing tour overlay infrastructure. Scroll-into-view for heatmap/schedule steps
