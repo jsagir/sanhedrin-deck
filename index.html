@@ -505,6 +505,57 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   color: var(--taupe);
 }
 .sage-partnership strong { color: var(--navy); font-weight: 600; }
+
+/* === TEAM CARDS (sage-style) === */
+.team-grid { display: grid; gap: 20px; margin-top: 24px; width: 100%; }
+.team-grid--4 { grid-template-columns: repeat(4, 1fr); max-width: 1200px; }
+.team-grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 750px; }
+.team-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover-shadow), 0 0 0 2px var(--blue);
+}
+.team-card-photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+  background: linear-gradient(135deg, var(--navy) 0%, #004680 100%);
+}
+.team-card-body {
+  padding: 14px 14px 16px;
+}
+.team-card-name {
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 2px;
+}
+.team-card-role {
+  font-family: var(--font-m);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight: 600;
+  margin: 4px 0 8px;
+}
+.team-card-bio {
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+.team-card-bio strong { color: var(--text); font-weight: 600; }
+.team-card-bio em { color: var(--blue); font-style: normal; font-weight: 600; }
+
 .appendix-content { font-size: 20px; color: var(--text-sub); line-height: 1.65; max-width: 900px; }
 .appendix-content strong { color: var(--text); }
 .appendix-list { list-style: none; padding: 0; }
@@ -939,37 +990,45 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     SLIDE 3: Team (Core) - Statement with team cards
+     SLIDE 3: Team (Core) - Sage-style cards with headshots
      ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
   <div class="lang-en">
     <div class="layout-statement">
       <p class="label reveal">Project Team</p>
       <h2 class="reveal r1">Core MOTJ Team</h2>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 24px; max-width: 1100px;" class="reveal r2">
-        <div class="card" style="padding: 20px 16px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">Daniel Muller, PhD</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">Project Manager & AI / Tech Lead, CTO</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">PhD in AI and Decision Making and Planning in AI with extensive experience in engineering, data science, and R&D leadership across the defense, finance, and retail industries. CTO of MileZero and former CTO at ShopperAI and Be The Bank (BTB), with 18 years of experience in R&D, including 12 years in AI. Co-leads the team creating The Maimonides Pavilion AI and AV integration model.</div>
+      <div class="team-grid team-grid--4 reveal r2">
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/daniel-muller.png" alt="Daniel Muller">
+          <div class="team-card-body">
+            <div class="team-card-name">Daniel Muller, PhD</div>
+            <div class="team-card-role">CTO &amp; AI Lead</div>
+            <div class="team-card-bio"><strong>PhD in AI</strong> and Decision Making. <strong>18 years R&D</strong>, 12 in AI. CTO of <em>MileZero</em>, former CTO at ShopperAI. Leads the <em>multi-agent AI architecture</em> and A2A2H protocol powering the Sanhedrin experience. Co-leads <em>The Maimonides Pavilion</em> AI integration.</div>
+          </div>
         </div>
-        <div class="card" style="padding: 20px 16px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">Jonathan Sagir, MBA</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">Project Operations & Coordination</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">Skilled consultant for early-stage technology innovation teams and founder of the PWS ideation program. Lecturer on problem discovery, validation, and go-to-market strategies. Co-leads the team creating The Maimonides Pavilion AI and AV integration model.</div>
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/jonathan-sagir.png" alt="Jonathan Sagir">
+          <div class="team-card-body">
+            <div class="team-card-name">Jonathan Sagir, MBA</div>
+            <div class="team-card-role">Operations &amp; Strategy</div>
+            <div class="team-card-bio">Founder of the <em>PWS ideation framework</em>. Consultant to early-stage innovation teams. Lecturer on <strong>problem discovery</strong>, validation, and go-to-market. Designs the <em>visitor journey</em> and dilemma scenario architecture. Co-leads <em>The Maimonides Pavilion</em> AI integration.</div>
+          </div>
         </div>
-        <div class="card" style="padding: 20px 16px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">Marla Supnick</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">Creative Director & Visitor Experience Lead</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">President of Unified Field, an award-winning interactive multimedia design firm renowned for its innovative approach. Leads the visitor experience for the MOTJ People's Journey and Social Lab, ensuring a compelling and immersive journey for every visitor.</div>
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/marla-supnick.jpg" alt="Marla Supnick">
+          <div class="team-card-body">
+            <div class="team-card-name">Marla Supnick</div>
+            <div class="team-card-role">Creative Director</div>
+            <div class="team-card-bio">President of <em>Unified Field</em>, award-winning interactive design firm. Built the MOTJ <em>Social Lab</em> and <em>People's Journey</em> experiences. Leads <strong>visitor experience design</strong> for the Sanhedrin installation: kiosk interfaces, spatial flow, and immersive interactives.</div>
+          </div>
         </div>
-        <div class="card" style="padding: 20px 16px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">Sharon (Becker) Jacobson</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">Director of Design and Content</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">Leads the development of exhibition design and content at MOTJ, ensuring alignment between the museum's narratives, spatial design, and visitor experience.</div>
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/sharon-jacobson.png" alt="Sharon Jacobson">
+          <div class="team-card-body">
+            <div class="team-card-name">Sharon (Becker) Jacobson</div>
+            <div class="team-card-role">Chief Site Architect</div>
+            <div class="team-card-bio"><strong>Lead Architect</strong> at MOTJ. Harvard-trained. Ensures alignment between <em>exhibition narratives</em>, spatial design, and visitor flow. Oversees the physical integration of the <em>12-kiosk Sanhedrin arena</em> into the museum environment.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -978,30 +1037,38 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-statement">
       <p class="label reveal">צוות הפרויקט</p>
       <h2 class="reveal r1">צוות ליבה - MOTJ</h2>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 24px; max-width: 1100px;" class="reveal r2">
-        <div class="card" style="padding: 20px 16px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">ד"ר דניאל מולר</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">מנהל פרויקט ומוביל AI/טכנולוגיה, CTO</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">דוקטורט ב-AI, קבלת החלטות ותכנון. ניסיון נרחב בהנדסה, מדעי נתונים והובלת R&D בתעשיות הביטחון, הפיננסים והקמעונאות. CTO ב-MileZero, לשעבר CTO ב-ShopperAI ו-BTB. 18 שנות R&D, 12 ב-AI. שותף בהובלת הצוות היוצר את מודל שילוב ה-AI וה-AV של ביתן הרמב"ם.</div>
+      <div class="team-grid team-grid--4 reveal r2">
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/daniel-muller.png" alt="דניאל מולר">
+          <div class="team-card-body">
+            <div class="team-card-name">ד"ר דניאל מולר</div>
+            <div class="team-card-role">CTO ומוביל AI</div>
+            <div class="team-card-bio"><strong>דוקטורט ב-AI</strong> וקבלת החלטות. <strong>18 שנות R&D</strong>, 12 ב-AI. CTO ב-<em>MileZero</em>, לשעבר CTO ב-ShopperAI. מוביל את <em>ארכיטקטורת הסוכנים</em> ופרוטוקול A2A2H של חוויית הסנהדרין. שותף בהובלת שילוב ה-AI של <em>ביתן הרמב"ם</em>.</div>
+          </div>
         </div>
-        <div class="card" style="padding: 20px 16px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">יונתן שגיר, MBA</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">תפעול ותיאום פרויקט</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">יועץ מנוסה לצוותי חדשנות טכנולוגית בשלבים מוקדמים ומייסד תוכנית PWS. מרצה לגילוי בעיות, ולידציה ואסטרטגיות כניסה לשוק. שותף בהובלת הצוות היוצר את מודל שילוב ה-AI וה-AV של ביתן הרמב"ם.</div>
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/jonathan-sagir.png" alt="יונתן שגיר">
+          <div class="team-card-body">
+            <div class="team-card-name">יונתן שגיר, MBA</div>
+            <div class="team-card-role">תפעול ואסטרטגיה</div>
+            <div class="team-card-bio">מייסד <em>מסגרת PWS</em>. יועץ לצוותי חדשנות. מרצה ל<strong>גילוי בעיות</strong>, ולידציה וכניסה לשוק. מעצב את <em>מסע המבקר</em> וארכיטקטורת תרחישי הדילמה. שותף בהובלת שילוב ה-AI של <em>ביתן הרמב"ם</em>.</div>
+          </div>
         </div>
-        <div class="card" style="padding: 20px 16px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">מרלה סופניק</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">מנהלת קריאייטיב וחוויית מבקר</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">נשיאת Unified Field, חברת עיצוב מולטימדיה אינטראקטיבי עטורת פרסים. מובילה את חוויית המבקר ב-People's Journey ו-Social Lab ב-MOTJ.</div>
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/marla-supnick.jpg" alt="מרלה סופניק">
+          <div class="team-card-body">
+            <div class="team-card-name">מרלה סופניק</div>
+            <div class="team-card-role">מנהלת קריאייטיב</div>
+            <div class="team-card-bio">נשיאת <em>Unified Field</em>, חברת עיצוב אינטראקטיבי עטורת פרסים. בנתה את <em>Social Lab</em> ו-<em>People's Journey</em> ב-MOTJ. מובילה <strong>עיצוב חוויית מבקר</strong> להתקנת הסנהדרין: ממשקי קיוסק, זרימה מרחבית ואינטראקטיביות.</div>
+          </div>
         </div>
-        <div class="card" style="padding: 20px 16px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">שרון (בקר) יעקובסון</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">מנהלת עיצוב ותוכן</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">מובילה פיתוח עיצוב תערוכות ותוכן ב-MOTJ, מבטיחה התאמה בין הנרטיבים, העיצוב המרחבי וחוויית המבקר.</div>
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/sharon-jacobson.png" alt="שרון יעקובסון">
+          <div class="team-card-body">
+            <div class="team-card-name">שרון (בקר) יעקובסון</div>
+            <div class="team-card-role">אדריכלית ראשית</div>
+            <div class="team-card-bio"><strong>אדריכלית ראשית</strong> ב-MOTJ. בוגרת הרווארד. מבטיחה התאמה בין <em>נרטיבים תערוכתיים</em>, עיצוב מרחבי וזרימת מבקרים. מפקחת על שילוב <em>12 קיוסקי הסנהדרין</em> בסביבת המוזיאון.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1016,18 +1083,22 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-statement">
       <p class="label reveal">Project Team</p>
       <h2 class="reveal r1">Bar-Ilan University - Academic Partner</h2>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 32px; max-width: 750px;" class="reveal r2">
-        <div class="card" style="padding: 24px 20px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">Jonathan Schler, PhD</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">Academic Advisor</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">Professor of Computer Science and Data Science specializing in machine learning, text mining, and computational analysis of human behavior in digital environments.</div>
+      <div class="team-grid team-grid--2 reveal r2">
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/jonathan-schler.jpg" alt="Jonathan Schler">
+          <div class="team-card-body">
+            <div class="team-card-name">Jonathan Schler, PhD</div>
+            <div class="team-card-role">Academic Advisor</div>
+            <div class="team-card-bio">Professor of <strong>Computer Science</strong> at HIT and Bar-Ilan. Head of the <em>JewDit Lab</em> for digital analysis of Jewish heritage. Expert in <strong>NLP, authorship analysis</strong>, and computational text mining. Inventor of <em>semantic targeting</em> in AdTech. 30+ published papers, multiple patents. Bridges <em>AI and Talmudic scholarship</em>.</div>
+          </div>
         </div>
-        <div class="card" style="padding: 24px 20px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">Alex Tal, PhD</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">Academic Operations & Coordination</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">Experienced manager with a strong background in research, leadership, and academic coordination. Holds a PhD in Talmud from the Hebrew University of Jerusalem and a BSc in Physics and Materials Engineering from the Technion.</div>
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/alex-tal.png" alt="Alex Tal">
+          <div class="team-card-body">
+            <div class="team-card-name">Alex Tal, PhD</div>
+            <div class="team-card-role">Academic Coordination</div>
+            <div class="team-card-bio"><strong>PhD in Talmud</strong> from Hebrew University. BSc in <strong>Physics and Materials Engineering</strong> from the Technion. General Manager of <em>Bar-Ilan University Press</em>. Expert in <em>Responsa Project</em> (Israel Prize nominee). Uniquely bridges <strong>rabbinic literature and computational analysis</strong>.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1036,18 +1107,22 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-statement">
       <p class="label reveal">צוות הפרויקט</p>
       <h2 class="reveal r1">אוניברסיטת בר-אילן - שותף אקדמי</h2>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 32px; max-width: 750px;" class="reveal r2">
-        <div class="card" style="padding: 24px 20px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">ד"ר יונתן שלר</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">יועץ אקדמי</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">פרופסור למדעי המחשב ומדעי הנתונים, מתמחה בלמידת מכונה, כריית טקסט וניתוח חישובי של התנהגות אנושית בסביבות דיגיטליות.</div>
+      <div class="team-grid team-grid--2 reveal r2">
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/jonathan-schler.jpg" alt="יונתן שלר">
+          <div class="team-card-body">
+            <div class="team-card-name">פרופ' יונתן שלר</div>
+            <div class="team-card-role">יועץ אקדמי</div>
+            <div class="team-card-bio">פרופסור ל<strong>מדעי המחשב</strong> ב-HIT ובר-אילן. ראש <em>מעבדת JewDit</em> לניתוח דיגיטלי של המורשת היהודית. מומחה ב<strong>NLP, ניתוח מחברים</strong> וכריית טקסט. ממציא <em>מיקוד סמנטי</em> ב-AdTech. 30+ מאמרים, פטנטים רבים. מגשר בין <em>AI ומלומדות תלמודית</em>.</div>
+          </div>
         </div>
-        <div class="card" style="padding: 24px 20px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">ד"ר אלכס טל</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">תפעול ותיאום אקדמי</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">מנהל מנוסה עם רקע חזק במחקר, הנהגה ותיאום אקדמי. דוקטורט בתלמוד מהאוניברסיטה העברית ותואר ראשון בפיזיקה והנדסת חומרים מהטכניון.</div>
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/alex-tal.png" alt="אלכס טל">
+          <div class="team-card-body">
+            <div class="team-card-name">ד"ר אלכס טל</div>
+            <div class="team-card-role">תיאום אקדמי</div>
+            <div class="team-card-bio"><strong>דוקטורט בתלמוד</strong> מהאוניברסיטה העברית. תואר ראשון ב<strong>פיזיקה והנדסת חומרים</strong> מהטכניון. מנכ"ל <em>הוצאת אוניברסיטת בר-אילן</em>. מומחה ב<em>פרויקט השו"ת</em> (מועמד לפרס ישראל). מגשר בייחוד בין <strong>ספרות רבנית וניתוח חישובי</strong>.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1062,18 +1137,22 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-statement">
       <p class="label reveal">Project Team</p>
       <h2 class="reveal r1">Advisory Team</h2>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 32px; max-width: 750px;" class="reveal r2">
-        <div class="card" style="padding: 24px 20px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">Micha Goodman, PhD</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">Content & Philosophical Advisor</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">Philosopher, public speaker, and founder of the Ein Prat Academy. Leads the scholarly initiatives at MOTJ, integrating ancient Jewish wisdom with modern philosophical challenges.</div>
+      <div class="team-grid team-grid--2 reveal r2">
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/micah-goodman.png" alt="Micah Goodman">
+          <div class="team-card-body">
+            <div class="team-card-name">Micha Goodman, PhD</div>
+            <div class="team-card-role">Content &amp; Philosophy</div>
+            <div class="team-card-bio">Israel's leading <strong>public intellectual</strong> on Jewish philosophy. Author of 7 bestsellers including <em>Catch 67</em>. Named <strong>Top 50 Most Influential Jews</strong> (Jerusalem Post, 2017). Research Fellow at <em>Shalom Hartman Institute</em>. Co-founder of <em>Mabua</em> learning communities. <strong>Validated the AI conversational model</strong> for the Rambam exhibit.</div>
+          </div>
         </div>
-        <div class="card" style="padding: 24px 20px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">Miri Dayan (Lt. Col., Ret.)</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">Learning Methodology Advisor</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">A pioneer in instructional development in Israel and former Head of Instructional Development in the IDF. Principal Officer of the School of Civic Discourse. Specializes in designing complex learning processes and contributes to the development of educational experiences at MOTJ through a multi-layered methodology integrating theory, simulation, group dialogue, and personal reflection.</div>
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/miri-dayan.png" alt="Miri Dayan">
+          <div class="team-card-body">
+            <div class="team-card-name">Miri Dayan (Lt. Col., Ret.)</div>
+            <div class="team-card-role">Learning Methodology</div>
+            <div class="team-card-bio">Pioneer in <strong>instructional development</strong> in Israel. Former <strong>Head of IDF Instructional Development</strong>. Director of MOTJ <em>School of Civic Discourse</em>. Designs the <em>multi-layered learning methodology</em> for Sanhedrin sessions: theory, simulation, <strong>group dialogue</strong>, and personal reflection.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1082,18 +1161,22 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-statement">
       <p class="label reveal">צוות הפרויקט</p>
       <h2 class="reveal r1">צוות ייעוץ</h2>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 32px; max-width: 750px;" class="reveal r2">
-        <div class="card" style="padding: 24px 20px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">ד"ר מיכה גודמן</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">יועץ תוכן ופילוסופיה</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">פילוסוף, מרצה ציבורי ומייסד אקדמיית עין פרת. מוביל את היוזמות המחקריות ב-MOTJ, משלב חוכמה יהודית עתיקה עם אתגרים פילוסופיים מודרניים.</div>
+      <div class="team-grid team-grid--2 reveal r2">
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/micah-goodman.png" alt="מיכה גודמן">
+          <div class="team-card-body">
+            <div class="team-card-name">ד"ר מיכה גודמן</div>
+            <div class="team-card-role">תוכן ופילוסופיה</div>
+            <div class="team-card-bio"><strong>האינטלקטואל הציבורי</strong> המוביל בישראל בפילוסופיה יהודית. מחבר 7 רבי-מכר כולל <em>מלכוד 67</em>. ברשימת <strong>50 היהודים המשפיעים</strong> (ג'רוזלם פוסט, 2017). עמית מחקר ב<em>מכון הרטמן</em>. מייסד-שותף של קהילות <em>מבוע</em>. <strong>אימת את מודל השיח</strong> של תערוכת הרמב"ם.</div>
+          </div>
         </div>
-        <div class="card" style="padding: 24px 20px; text-align: center;">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div style="font-size: 16px; font-weight: 700; color: var(--navy);">מירי דיין (אל"מ בדימוס)</div>
-          <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">יועצת מתודולוגיית למידה</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">חלוצה בפיתוח הוראה בישראל וראש פיתוח הוראה לשעבר בצה"ל. קצינה ראשית בבית הספר לשיח אזרחי. מתמחה בעיצוב תהליכי למידה מורכבים ותורמת לפיתוח חוויות חינוכיות ב-MOTJ באמצעות מתודולוגיה רב-שכבתית המשלבת תיאוריה, סימולציה, דיאלוג קבוצתי ורפלקציה אישית.</div>
+        <div class="team-card">
+          <img class="team-card-photo" src="assets/headshots/miri-dayan.png" alt="מירי דיין">
+          <div class="team-card-body">
+            <div class="team-card-name">מירי דיין (אל"מ בדימוס)</div>
+            <div class="team-card-role">מתודולוגיית למידה</div>
+            <div class="team-card-bio">חלוצה ב<strong>פיתוח הוראה</strong> בישראל. לשעבר <strong>ראש פיתוח הוראה בצה"ל</strong>. מנהלת <em>בית הספר לשיח אזרחי</em> ב-MOTJ. מעצבת את <em>מתודולוגיית הלמידה הרב-שכבתית</em> למפגשי הסנהדרין: תיאוריה, סימולציה, <strong>דיאלוג קבוצתי</strong> ורפלקציה אישית.</div>
+          </div>
         </div>
       </div>
     </div>
