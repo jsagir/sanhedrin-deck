@@ -1102,8 +1102,9 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 <section class="slide" data-act="ACT 1: THE HOOK">
   <div class="lang-en">
     <div class="layout-split img-left">
-      <div class="split-img">
-        <img src="slides/slide-03/hero.png" alt="Puzzle metaphor">
+      <div class="split-img" style="position:relative; overflow:hidden;">
+        <canvas id="puzzleCanvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+        <img src="slides/slide-03/hero.png" alt="Puzzle metaphor" style="opacity:0.08;">
       </div>
       <div class="split-text">
         <p class="label reveal">The Cognitive Twist</p>
@@ -1119,8 +1120,9 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   </div>
   <div class="lang-he" dir="rtl">
     <div class="layout-split img-left">
-      <div class="split-img">
-        <img src="slides/slide-03/hero.png" alt="">
+      <div class="split-img" style="position:relative; overflow:hidden;">
+        <canvas id="puzzleCanvasHe" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+        <img src="slides/slide-03/hero.png" alt="" style="opacity:0.08;">
       </div>
       <div class="split-text" style="text-align: right;">
         <p class="label reveal">הטוויסט הקוגניטיבי</p>
@@ -1153,7 +1155,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <p style="font-size: 18px; margin-top: 8px; font-weight: 600; color: var(--navy);">Structured Dilemma</p>
         </div>
         <svg width="40" height="20" viewBox="0 0 40 20" style="flex-shrink:0; margin: 0 4px;"><path d="M2 10h28M24 4l8 6-8 6" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div style="background: var(--navy); color: #fff; padding: 28px 36px; border-radius: 12px; min-width: 220px; text-align: center; box-shadow: 0 4px 24px rgba(0,48,87,0.3);">
+        <div style="background: #003057; color: #fff; padding: 28px 36px; border-radius: 12px; min-width: 220px; text-align: center; box-shadow: 0 4px 24px rgba(0,48,87,0.3);">
           <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; opacity: 0.5;">ENGINE</div>
           <p style="font-size: 20px; margin-top: 8px; font-weight: 700;">Multi-Agent<br>Deliberation</p>
           <div style="display: flex; justify-content: center; gap: 8px; margin-top: 12px;">
@@ -1184,7 +1186,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <p style="font-size: 18px; margin-top: 8px; font-weight: 600; color: var(--navy);">דילמה מובנית</p>
         </div>
         <svg width="40" height="20" viewBox="0 0 40 20" style="flex-shrink:0; margin: 0 4px; transform: scaleX(-1);"><path d="M2 10h28M24 4l8 6-8 6" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div style="background: var(--navy); color: #fff; padding: 28px 36px; border-radius: 12px; min-width: 220px; text-align: center; box-shadow: 0 4px 24px rgba(0,48,87,0.3);">
+        <div style="background: #003057; color: #fff; padding: 28px 36px; border-radius: 12px; min-width: 220px; text-align: center; box-shadow: 0 4px 24px rgba(0,48,87,0.3);">
           <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; opacity: 0.5;">מנוע</div>
           <p style="font-size: 20px; margin-top: 8px; font-weight: 700;">דיון<br>רב-סוכנים</p>
           <div style="display: flex; justify-content: center; gap: 8px; margin-top: 12px;">
@@ -4858,8 +4860,8 @@ var slideAnimations = {};
     function start(){if(running)return;running=true;resize();edgeTimer=Date.now()*0.001;draw();}
     function stop(){running=false;if(animId){cancelAnimationFrame(animId);animId=null;}}
     window.addEventListener('resize',resize);
-    if(!slideAnimations[5])slideAnimations[5]=[];
-    slideAnimations[5].push({start:start,stop:stop});
+    if(!slideAnimations[8])slideAnimations[8]=[];
+    slideAnimations[8].push({start:start,stop:stop});
   });
 })();
 
@@ -4898,8 +4900,8 @@ var slideAnimations = {};
     function start(){if(running)return;running=true;resize();draw();}
     function stop(){running=false;if(animId){cancelAnimationFrame(animId);animId=null;}}
     window.addEventListener('resize',resize);
-    if(!slideAnimations[8])slideAnimations[8]=[];
-    slideAnimations[8].push({start:start,stop:stop});
+    if(!slideAnimations[11])slideAnimations[11]=[];
+    slideAnimations[11].push({start:start,stop:stop});
   });
 })();
 
@@ -5092,6 +5094,285 @@ showSlide = function(index) {
 // Register polarization as a slide animation on slide index 1
 if (!slideAnimations[1]) slideAnimations[1] = [];
 slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop: function() { window._polarAnim.stop(); } });
+
+// === PUZZLE ANIMATION (Slide 4 - Cognitive Twist) ===
+(function() {
+  var puzzleAnimId = null;
+  var pieces = [];
+  var COLS = 6, ROWS = 5;
+  var TOTAL = COLS * ROWS;
+  var phase = 0; // 0=scattered, 1=assembling, 2=complete, 3=blur-attack, 4=recovery
+  var phaseTimer = 0;
+  var completedGlow = 0;
+
+  function initPieces(w, h) {
+    pieces = [];
+    var pw = w / COLS, ph = h / ROWS;
+    for (var r = 0; r < ROWS; r++) {
+      for (var c = 0; c < COLS; c++) {
+        var homeX = c * pw + pw / 2;
+        var homeY = r * ph + ph / 2;
+        pieces.push({
+          homeX: homeX, homeY: homeY,
+          x: Math.random() * w, y: Math.random() * h,
+          rot: (Math.random() - 0.5) * Math.PI * 2,
+          homeRot: 0,
+          w: pw * 0.88, h: ph * 0.88,
+          col: c, row: r,
+          placed: false,
+          alpha: 0.4 + Math.random() * 0.3,
+          blurred: false,
+          blurAlpha: 1,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          vr: (Math.random() - 0.5) * 0.01,
+          delay: (r * COLS + c) * 0.12 + Math.random() * 0.3
+        });
+      }
+    }
+    phase = 0;
+    phaseTimer = Date.now() * 0.001;
+    completedGlow = 0;
+  }
+
+  function drawPuzzleTab(ctx, x, y, w, h, col, row) {
+    var tabW = w * 0.18, tabH = h * 0.18;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    // Top edge with tab
+    if (row > 0) {
+      ctx.lineTo(x + w * 0.35, y);
+      ctx.arc(x + w * 0.5, y, tabW, Math.PI, 0, false);
+      ctx.lineTo(x + w, y);
+    } else { ctx.lineTo(x + w, y); }
+    // Right edge with tab
+    if (col < COLS - 1) {
+      ctx.lineTo(x + w, y + h * 0.35);
+      ctx.arc(x + w, y + h * 0.5, tabH, -Math.PI * 0.5, Math.PI * 0.5, false);
+      ctx.lineTo(x + w, y + h);
+    } else { ctx.lineTo(x + w, y + h); }
+    // Bottom edge with tab
+    if (row < ROWS - 1) {
+      ctx.lineTo(x + w * 0.65, y + h);
+      ctx.arc(x + w * 0.5, y + h, tabW, 0, Math.PI, false);
+      ctx.lineTo(x, y + h);
+    } else { ctx.lineTo(x, y + h); }
+    // Left edge with tab
+    if (col > 0) {
+      ctx.lineTo(x, y + h * 0.65);
+      ctx.arc(x, y + h * 0.5, tabH, Math.PI * 0.5, -Math.PI * 0.5, false);
+      ctx.lineTo(x, y);
+    } else { ctx.lineTo(x, y); }
+    ctx.closePath();
+  }
+
+  function drawPuzzle(canvas) {
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+    var w = rect.width, h = rect.height;
+    var t = Date.now() * 0.001;
+    var elapsed = t - phaseTimer;
+
+    if (pieces.length === 0) initPieces(w, h);
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Subtle background: faint grid showing where pieces belong
+    var pw = w / COLS, ph = h / ROWS;
+    ctx.strokeStyle = 'rgba(189,214,230,0.06)';
+    ctx.lineWidth = 0.5;
+    for (var c = 1; c < COLS; c++) {
+      ctx.beginPath(); ctx.moveTo(c * pw, 0); ctx.lineTo(c * pw, h); ctx.stroke();
+    }
+    for (var r = 1; r < ROWS; r++) {
+      ctx.beginPath(); ctx.moveTo(0, r * ph); ctx.lineTo(w, r * ph); ctx.stroke();
+    }
+
+    // Phase transitions
+    if (phase === 0 && elapsed > 2.0) { phase = 1; phaseTimer = t; }
+    if (phase === 1 && elapsed > 6.0) { phase = 2; phaseTimer = t; }
+    if (phase === 2 && elapsed > 3.0) { phase = 3; phaseTimer = t; }
+    if (phase === 3 && elapsed > 2.5) { phase = 4; phaseTimer = t; }
+    if (phase === 4 && elapsed > 2.5) {
+      // Reset: scatter pieces again for looping
+      for (var i = 0; i < pieces.length; i++) {
+        pieces[i].x = Math.random() * w;
+        pieces[i].y = Math.random() * h;
+        pieces[i].rot = (Math.random() - 0.5) * Math.PI * 2;
+        pieces[i].placed = false;
+        pieces[i].blurred = false;
+        pieces[i].blurAlpha = 1;
+        pieces[i].vx = (Math.random() - 0.5) * 0.5;
+        pieces[i].vy = (Math.random() - 0.5) * 0.5;
+        pieces[i].vr = (Math.random() - 0.5) * 0.01;
+        pieces[i].alpha = 0.4 + Math.random() * 0.3;
+      }
+      phase = 0; phaseTimer = t; completedGlow = 0;
+    }
+
+    // Update pieces
+    for (var i = 0; i < pieces.length; i++) {
+      var p = pieces[i];
+
+      if (phase === 0) {
+        // Scattered: gentle drift
+        p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        // Bounce off edges
+        if (p.x < 20 || p.x > w - 20) p.vx *= -1;
+        if (p.y < 20 || p.y > h - 20) p.vy *= -1;
+      } else if (phase === 1) {
+        // Assembling: pieces fly toward home positions
+        var progress = Math.max(0, Math.min(1, (elapsed - p.delay) / 3.0));
+        var ease = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        if (progress > 0) {
+          var startX = p.placed ? p.homeX : p.x;
+          var startY = p.placed ? p.homeY : p.y;
+          if (!p.placed && progress < 0.05) {
+            p._startX = p.x; p._startY = p.y; p._startRot = p.rot;
+          }
+          if (p._startX !== undefined) {
+            p.x = p._startX + (p.homeX - p._startX) * ease;
+            p.y = p._startY + (p.homeY - p._startY) * ease;
+            p.rot = p._startRot * (1 - ease);
+          }
+          if (progress >= 1) { p.x = p.homeX; p.y = p.homeY; p.rot = 0; p.placed = true; }
+        }
+      } else if (phase === 2) {
+        // Complete: all pieces glow
+        p.x = p.homeX; p.y = p.homeY; p.rot = 0; p.placed = true;
+        completedGlow = Math.min(1, elapsed / 1.0);
+      } else if (phase === 3) {
+        // Blur attack: random pieces get "attacked"
+        if (elapsed < 0.3 && !p._blurPicked) {
+          p._blurPicked = true;
+          p.blurred = Math.random() < 0.35;
+        }
+        if (p.blurred) {
+          p.blurAlpha = Math.max(0.1, p.blurAlpha - 0.015);
+          // Shake slightly
+          p.x = p.homeX + (Math.random() - 0.5) * 3;
+          p.y = p.homeY + (Math.random() - 0.5) * 3;
+        }
+        completedGlow = Math.max(0, completedGlow - 0.008);
+      } else if (phase === 4) {
+        // Recovery: blurred pieces restore
+        if (p.blurred) {
+          p.blurAlpha = Math.min(1, p.blurAlpha + 0.02);
+          p.x += (p.homeX - p.x) * 0.08;
+          p.y += (p.homeY - p.y) * 0.08;
+          if (p.blurAlpha > 0.95) { p.blurred = false; p._blurPicked = false; }
+        }
+        completedGlow = Math.min(1, completedGlow + 0.01);
+      }
+    }
+
+    // Draw pieces
+    for (var i = 0; i < pieces.length; i++) {
+      var p = pieces[i];
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+
+      // Piece color based on state
+      var hue = 200 + (p.col * 8) + (p.row * 12);
+      var sat = p.placed ? 40 : 25;
+      var light = p.placed ? 65 : 50;
+      var alpha = p.placed ? (0.7 + completedGlow * 0.3) * p.blurAlpha : p.alpha * p.blurAlpha;
+
+      drawPuzzleTab(ctx, -p.w / 2, -p.h / 2, p.w, p.h, p.col, p.row);
+
+      // Fill
+      ctx.fillStyle = 'hsla(' + hue + ',' + sat + '%,' + light + '%,' + alpha + ')';
+      ctx.fill();
+
+      // Border
+      ctx.strokeStyle = 'hsla(' + hue + ',' + (sat + 10) + '%,' + (light + 15) + '%,' + (alpha * 0.8) + ')';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Glow when placed and complete
+      if (p.placed && completedGlow > 0) {
+        ctx.shadowColor = 'rgba(189,214,230,' + (completedGlow * 0.4) + ')';
+        ctx.shadowBlur = 12 * completedGlow;
+        drawPuzzleTab(ctx, -p.w / 2, -p.h / 2, p.w, p.h, p.col, p.row);
+        ctx.fillStyle = 'hsla(' + hue + ',50%,75%,' + (completedGlow * 0.15) + ')';
+        ctx.fill();
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+      }
+
+      ctx.restore();
+    }
+
+    // Connection spark lines between recently-placed adjacent pieces
+    if (phase === 1 || phase === 2) {
+      ctx.lineWidth = 1;
+      for (var i = 0; i < pieces.length; i++) {
+        var p = pieces[i];
+        if (!p.placed) continue;
+        // Check right neighbor
+        if (p.col < COLS - 1) {
+          var ri = p.row * COLS + p.col + 1;
+          if (pieces[ri].placed) {
+            var sparkAlpha = 0.15 + 0.1 * Math.sin(t * 3 + i);
+            ctx.strokeStyle = 'rgba(189,214,230,' + sparkAlpha + ')';
+            ctx.beginPath();
+            ctx.moveTo(p.homeX + p.w * 0.3, p.homeY);
+            ctx.lineTo(pieces[ri].homeX - pieces[ri].w * 0.3, pieces[ri].homeY);
+            ctx.stroke();
+          }
+        }
+        // Check bottom neighbor
+        if (p.row < ROWS - 1) {
+          var bi = (p.row + 1) * COLS + p.col;
+          if (pieces[bi].placed) {
+            var sparkAlpha = 0.15 + 0.1 * Math.sin(t * 3 + i + 1);
+            ctx.strokeStyle = 'rgba(189,214,230,' + sparkAlpha + ')';
+            ctx.beginPath();
+            ctx.moveTo(p.homeX, p.homeY + p.h * 0.3);
+            ctx.lineTo(pieces[bi].homeX, pieces[bi].homeY - pieces[bi].h * 0.3);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    // "L'Shem Shamayim" glow text when complete
+    if (phase === 2 && completedGlow > 0.5) {
+      ctx.fillStyle = 'rgba(189,214,230,' + ((completedGlow - 0.5) * 0.5) + ')';
+      ctx.font = '600 14px var(--font-m)';
+      ctx.textAlign = 'center';
+      ctx.fillText('L\'Shem Shamayim', w / 2, h - 20);
+    }
+  }
+
+  window._puzzleAnim = {
+    start: function() {
+      var c1 = document.getElementById('puzzleCanvas');
+      var c2 = document.getElementById('puzzleCanvasHe');
+      pieces = [];
+      function loop() {
+        if (!c1 && !c2) return;
+        drawPuzzle(isHebrew ? c2 : c1);
+        puzzleAnimId = requestAnimationFrame(loop);
+      }
+      loop();
+    },
+    stop: function() {
+      if (puzzleAnimId) { cancelAnimationFrame(puzzleAnimId); puzzleAnimId = null; }
+      pieces = [];
+    }
+  };
+})();
+
+// Register puzzle animation on slide index 4 (Slide 4 - Cognitive Twist)
+if (!slideAnimations[4]) slideAnimations[4] = [];
+slideAnimations[4].push({ start: function() { window._puzzleAnim.start(); }, stop: function() { window._puzzleAnim.stop(); } });
 
 showSlide(0);
 
