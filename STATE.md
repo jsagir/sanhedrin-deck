@@ -1,7 +1,7 @@
 # Sanhedrin Deck - Project State
 
 ## Current Status
-**Last updated:** 2026-03-13 (Session 17)
+**Last updated:** 2026-03-13 (Session 18)
 **Phase:** 22 main slides (3 team slides) + 8 appendix (A-F, P, Q). 12 sages with voices. Deployed and live.
 **Live URL:** https://sanhedrin-deck.onrender.com
 **Repo:** https://github.com/jsagir/sanhedrin-deck (auto-deploy on push to master)
@@ -9,9 +9,9 @@
 ## What To Do Next (Pick Up Here)
 
 ### Immediate
-1. **Puzzle jigsaw shape polish** - pieces still look too tile-like despite arc-based tabs. Need more pronounced classic jigsaw shape (bezier curves, varied tab in/out per edge). The interaction works (drag, snap, gradient merge, Venn center) but visual shape needs love
-2. **Sage card hover bug** - cards in Appendix E not scaling on hover due to overflow-y:auto on .sage-grid clipping transforms
-3. **Slide 9 (Physical Space)** - reconsider screen usage: live sentiment analysis, argument structure visualization
+1. **Appendix F onboarding tour** - highlight each dashboard component explaining what it is and what the facilitator can do with it (like the main deck onboarding tour)
+2. **Puzzle pieces "Facts" drag issue** - user reported Facts piece not moving. Bezier tabs + larger hit area deployed but needs more testing. May need canvas pointer-events debugging
+3. **Sage card hover bug** - cards in Appendix E not scaling on hover due to overflow-y:auto on .sage-grid clipping transforms
 4. **Slide 15 (Business Case)** - placeholder for Yoni to customize per donor
 5. **Wire up CTA buttons** - "Approve Phase 1 POC" and "View Tech Architecture" still have no targets
 
@@ -73,6 +73,22 @@
 | A5 | The Sage Library | All 80 Jewish Lives figures with hover overlays showing Sanhedrin roles |
 
 ## What Changed in Latest Sessions
+
+### Session 18 (2026-03-13) - Jigsaw Bezier, Control Room Dashboard, Behavioral Analytics
+- **Slide 4 jigsaw pieces**: Replaced arc-based tabs with bezier curve neck+bulb jigsaw profile. Per-piece tab directions (in/out) that interlock with neighbors. Outer edges flat. Piece size reduced to 0.82x for breathing room. Labels enlarged (18% of piece width, weight 800). Hit area doubled (30% margin)
+- **Appendix P/Q text alignment fix**: Added `text-align: left` to `.sow-doc` - was inheriting `text-align: center` from `.slide` parent
+- **Appendix F: Experience Control Room dashboard** - complete redesign from simple video+timetable to live facilitator intelligence dashboard:
+  - 3-column layout: metrics | video | metrics
+  - Header: "Experience Control Room" with pulsing green SESSION LIVE indicator
+  - Left panel: Sentiment Analysis bars (constructive 72%, adversarial 18%, neutral 10%)
+  - **Sanhedrin Rules Radar Chart**: 5-axis spider web (Premise, Logic, Humility, Grounding, Curiosity) showing L'Shem Shamayim Index as a pentagon shape (82/100)
+  - **Polarization vs Empathy Scatter Plot**: Journey trail from high-polarization/low-empathy start to bottom-right ideal zone
+  - Right panel: Sages at Play (Rambam speaking, Spinoza analyzing, Einstein listening, Golda standby), Roles at Play (Nasi, Ipcha Mistabra, Shakla V'Tarya, Av Beit Din), Visitors (8/12 active)
+  - **Discourse Rhythm Heatmap**: Full-width 25-minute timeline, 5 rows (Human 1, AI Rambam, Human 2, AI Spinoza, System). Color-coded: blue=curiosity, orange=friction, gold=synthesis, red=violation. Annotations show ad-hominem flag, disengagement warning, convergence zone
+  - Video frame: widescreen 16:8 aspect ratio, crops top/bottom (hides NotebookLM logo), preserves full width. Cyan corner accents
+  - Compact horizontal session schedule at bottom
+  - Full bilingual EN/HE
+- **dashPulse CSS animation** added for live status indicator
 
 ### Session 17 (2026-03-13) - Interactive Puzzle, Dark Mode Fixes, Video Appendix, Animation Index Fix
 - **Slide 4 (Cognitive Twist): Interactive drag-and-snap jigsaw puzzle**
