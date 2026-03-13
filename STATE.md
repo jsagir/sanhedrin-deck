@@ -75,7 +75,7 @@
 
 ## What Changed in Latest Sessions
 
-### Session 16 (2026-03-13) - Full Narration Regeneration (22 Slides)
+### Session 16 (2026-03-13) - Narration, Onboarding, Polarization Anim, Value Prop Redesign
 - **22 narration MP3s generated** via ElevenLabs (Daniel voice, eleven_multilingual_v2)
 - **New audio path**: `audio/narration/slide-NN.mp3` (was `slides/slide-NN/narration.mp3`)
 - **Narration scripts rewritten** from scratch for new 22-slide structure
@@ -83,6 +83,19 @@
 - **index.html updated**: narration audio path changed, appendix slide guard added (no narration on appendix slides)
 - **generate_narration.py rewritten**: new 22-slide narration texts, outputs to audio/narration/, uses elevenlabs SDK
 - **RESOLVED**: "Narration MP3s need complete redo" from Session 15
+- **Onboarding tour**: 8-step first-visit highlight walkthrough of all UI components (progress bar, counter, acts, quick nav, language, dark mode, arrows, narration). Auto-starts, skippable, saved to localStorage.
+- **CLAUDE.md rule #7**: narration MP3 sync required on any slide structure change
+- **Slide 2 (The Problem)**: "polarized society" bolded in EN+HE. Live canvas animation: 40 particles splitting into red/blue camps, central crack line, broken bridge lines, same-side network connections. Starts/stops on slide transition.
+- **Slide 5 (Value Prop) full redesign** per Daniel's feedback:
+  - Headline changed: "Discourse Training" (was "Learn to disagree better in 30 minutes")
+  - Label: "What This Is" (was "Key Value Proposition")
+  - Flow diagram with SVG arrows: INPUT -> ENGINE -> OUTPUT
+  - ENGINE box visually dominant (dark navy, shadow, larger), labeled "Multi-Agent Deliberation"
+  - INPUT/OUTPUT boxes light with border (clear hierarchy, 3-4 words each)
+  - 3 sage portraits (Rambam, Einstein, Golda) inside ENGINE box
+  - Removed generic "AI-powered immersive space" phrasing
+  - slide-07.mp3 narration regenerated to match
+- **Navigation fix**: duplicate showSlide wrapper was causing infinite recursion. Merged polarization into slideAnimations registry.
 
 ### Session 15 (2026-03-13) - Tech Slides, Appendices P/Q, Back Button
 - **Two new tech slides** (11: AI & Context Engineering, 12: Debate & Discourse Framework) with drill-down links to Appendix A/B
