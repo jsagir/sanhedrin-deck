@@ -4409,47 +4409,75 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
             </div>
           </div>
 
-          <!-- L'Shem Shamayim Index -->
+          <!-- Sanhedrin Rules Radar Chart (L'Shem Shamayim Quality) -->
           <div class="card" style="padding: 14px; border-radius: 8px; text-align: center;">
-            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">L'SHEM SHAMAYIM INDEX</div>
-            <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
-              <svg viewBox="0 0 100 100" style="width: 100%; height: 100%; transform: rotate(-90deg);">
-                <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(0,48,87,0.08)" stroke-width="8"/>
-                <circle cx="50" cy="50" r="42" fill="none" stroke="url(#lshGrad)" stroke-width="8" stroke-linecap="round" stroke-dasharray="211" stroke-dashoffset="48"/>
-                <defs><linearGradient id="lshGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#003057"/><stop offset="100%" stop-color="#5A8C6A"/></linearGradient></defs>
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 6px;">L'SHEM SHAMAYIM INDEX</div>
+            <div style="position: relative; width: 170px; height: 150px; margin: 0 auto;">
+              <svg viewBox="0 0 200 180" style="width: 100%; height: 100%;">
+                <!-- Radar grid rings (3 levels) -->
+                <polygon points="100,18 168,58 142,148 58,148 32,58" fill="none" stroke="rgba(0,48,87,0.06)" stroke-width="1"/>
+                <polygon points="100,45 145,72 127,132 73,132 55,72" fill="none" stroke="rgba(0,48,87,0.06)" stroke-width="1"/>
+                <polygon points="100,72 122,86 112,116 88,116 78,86" fill="none" stroke="rgba(0,48,87,0.06)" stroke-width="1"/>
+                <!-- Axis lines -->
+                <line x1="100" y1="98" x2="100" y2="18" stroke="rgba(0,48,87,0.08)" stroke-width="1"/>
+                <line x1="100" y1="98" x2="168" y2="58" stroke="rgba(0,48,87,0.08)" stroke-width="1"/>
+                <line x1="100" y1="98" x2="142" y2="148" stroke="rgba(0,48,87,0.08)" stroke-width="1"/>
+                <line x1="100" y1="98" x2="58" y2="148" stroke="rgba(0,48,87,0.08)" stroke-width="1"/>
+                <line x1="100" y1="98" x2="32" y2="58" stroke="rgba(0,48,87,0.08)" stroke-width="1"/>
+                <!-- Data shape: Premise 78%, Logic 85%, Humility 62%, Grounding 71%, Curiosity 68% -->
+                <polygon points="100,30 157,64 118,141 68,134 46,64" fill="rgba(0,48,87,0.12)" stroke="#003057" stroke-width="1.5"/>
+                <!-- Data dots -->
+                <circle cx="100" cy="30" r="3" fill="#003057"/>
+                <circle cx="157" cy="64" r="3" fill="#003057"/>
+                <circle cx="118" cy="141" r="3" fill="#003057"/>
+                <circle cx="68" cy="134" r="3" fill="#003057"/>
+                <circle cx="46" cy="64" r="3" fill="#003057"/>
+                <!-- Axis labels -->
+                <text x="100" y="12" text-anchor="middle" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">Premise</text>
+                <text x="178" y="58" text-anchor="start" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">Logic</text>
+                <text x="148" y="158" text-anchor="start" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">Humility</text>
+                <text x="52" y="158" text-anchor="end" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">Grounding</text>
+                <text x="22" y="58" text-anchor="end" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">Curiosity</text>
               </svg>
-              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <div style="font-family: var(--font-m); font-size: 28px; font-weight: 700; color: #003057; line-height: 1;">82</div>
-                <div style="font-size: 9px; color: var(--text-sub);">/ 100</div>
-              </div>
             </div>
-            <div style="font-size: 10px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">"For the sake of heaven"<br>discourse quality</div>
-            <div style="display: flex; justify-content: center; gap: 4px; margin-top: 8px;">
-              <div style="font-family: var(--font-m); font-size: 9px; color: #5A8C6A; padding: 2px 6px; border-radius: 3px; background: rgba(90,140,106,0.1);">+4 from start</div>
+            <div style="display: flex; justify-content: center; gap: 6px; margin-top: 2px;">
+              <div style="font-family: var(--font-m); font-size: 20px; font-weight: 700; color: #003057;">82</div>
+              <div style="font-size: 9px; color: var(--text-sub); text-align: left; line-height: 1.3;">/ 100<br>overall</div>
             </div>
           </div>
 
-          <!-- Discourse Depth -->
-          <div class="card" style="padding: 14px; border-radius: 8px;">
-            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">DISCOURSE DEPTH</div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="display: flex; justify-content: space-between; font-size: 11px;">
-                <span style="color: var(--text-sub);">Arguments surfaced</span>
-                <span style="font-family: var(--font-m); font-weight: 600; color: #003057;">14</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 11px;">
-                <span style="color: var(--text-sub);">Counterpoints</span>
-                <span style="font-family: var(--font-m); font-weight: 600; color: #003057;">9</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 11px;">
-                <span style="color: var(--text-sub);">Consensus points</span>
-                <span style="font-family: var(--font-m); font-weight: 600; color: #5A8C6A;">3</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 11px;">
-                <span style="color: var(--text-sub);">Visitor turns</span>
-                <span style="font-family: var(--font-m); font-weight: 600; color: #003057;">22</span>
-              </div>
+          <!-- Polarization vs Empathy Scatter -->
+          <div class="card" style="padding: 14px; border-radius: 8px; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 6px;">COGNITIVE JOURNEY</div>
+            <div style="position: relative; width: 170px; height: 130px; margin: 0 auto;">
+              <svg viewBox="0 0 170 130" style="width: 100%; height: 100%;">
+                <!-- Axes -->
+                <line x1="25" y1="110" x2="160" y2="110" stroke="rgba(0,48,87,0.15)" stroke-width="1"/>
+                <line x1="25" y1="110" x2="25" y2="10" stroke="rgba(0,48,87,0.15)" stroke-width="1"/>
+                <!-- Axis labels -->
+                <text x="92" y="126" text-anchor="middle" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">Empathy</text>
+                <text x="8" y="60" text-anchor="middle" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)" transform="rotate(-90,8,60)">Polarization</text>
+                <!-- Grid lines -->
+                <line x1="25" y1="60" x2="160" y2="60" stroke="rgba(0,48,87,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="92" y1="10" x2="92" y2="110" stroke="rgba(0,48,87,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
+                <!-- Ideal zone (bottom-right) -->
+                <rect x="110" y="70" width="50" height="40" rx="4" fill="rgba(90,140,106,0.06)" stroke="rgba(90,140,106,0.15)" stroke-width="1" stroke-dasharray="3,2"/>
+                <text x="135" y="94" text-anchor="middle" font-size="6" font-family="var(--font-m)" fill="#5A8C6A">IDEAL</text>
+                <!-- Journey trail -->
+                <polyline points="35,22 42,28 50,35 55,42 60,48 68,45 75,52 82,58 90,55 98,62 105,68 112,72 118,75" fill="none" stroke="rgba(0,48,87,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Start dot -->
+                <circle cx="35" cy="22" r="3" fill="#C05555"/>
+                <text x="42" y="19" font-size="6" font-family="var(--font-m)" fill="#C05555">start</text>
+                <!-- Current dot -->
+                <circle cx="118" cy="75" r="4" fill="#003057" stroke="#fff" stroke-width="1.5"/>
+                <text x="125" y="72" font-size="6" font-family="var(--font-m)" fill="#003057">now</text>
+                <!-- Arrow labels -->
+                <text x="30" y="118" font-size="6" fill="var(--text-dim)">Low</text>
+                <text x="148" y="118" font-size="6" fill="var(--text-dim)">High</text>
+                <text x="28" y="16" font-size="6" fill="var(--text-dim)">High</text>
+              </svg>
             </div>
+            <div style="font-size: 9px; color: var(--text-sub); margin-top: 4px; line-height: 1.3;">Tracking shift from debate to shared understanding</div>
           </div>
         </div>
 
@@ -4544,8 +4572,194 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         </div>
       </div>
 
-      <!-- Bottom: Compact Session Schedule -->
+      <!-- Discourse Rhythm Heatmap (Full Width) -->
       <div class="reveal r3" style="width: 100%; margin-top: 14px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+          <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600;">DISCOURSE RHYTHM HEATMAP</div>
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 10px; height: 10px; border-radius: 2px; background: #3d7ab5;"></div><span style="font-size: 8px; color: var(--text-sub); font-family: var(--font-m);">Curiosity</span></div>
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 10px; height: 10px; border-radius: 2px; background: #D4874D;"></div><span style="font-size: 8px; color: var(--text-sub); font-family: var(--font-m);">Friction</span></div>
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 10px; height: 10px; border-radius: 2px; background: #C9A84C;"></div><span style="font-size: 8px; color: var(--text-sub); font-family: var(--font-m);">Synthesis</span></div>
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 10px; height: 10px; border-radius: 2px; background: #8B2020;"></div><span style="font-size: 8px; color: var(--text-sub); font-family: var(--font-m);">Violation</span></div>
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 10px; height: 10px; border-radius: 2px; background: rgba(0,48,87,0.06); border: 1px solid rgba(0,48,87,0.1);"></div><span style="font-size: 8px; color: var(--text-sub); font-family: var(--font-m);">Silent</span></div>
+          </div>
+        </div>
+        <div class="card" style="padding: 12px 14px; border-radius: 8px; overflow-x: auto;">
+          <div style="display: grid; grid-template-columns: 80px repeat(25, 1fr); gap: 2px; min-width: 700px;">
+            <!-- Header row: minutes -->
+            <div style="font-family: var(--font-m); font-size: 8px; color: var(--text-dim);"></div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">1</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">2</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">3</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">4</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">5</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">6</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">7</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">8</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">9</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">10</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">11</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">12</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">13</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">14</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">15</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">16</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">17</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">18</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">19</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">20</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">21</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">22</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">23</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">24</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">25</div>
+            <!-- Row: Human 1 - starts strong with claims, asks questions mid-way, finds synthesis late -->
+            <div style="font-size: 10px; font-weight: 600; color: var(--text); display: flex; align-items: center;">Human 1</div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D; opacity: 0.7;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5; opacity: 0.7;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D; opacity: 0.7;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <!-- Row: AI Rambam (Nasi) - moderate, guides, mostly blue with some gold -->
+            <div style="font-size: 10px; font-weight: 600; color: var(--text); display: flex; align-items: center;">AI Rambam</div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5; opacity: 0.7;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D; opacity: 0.7;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <!-- Row: Human 2 - quiet early, disengaged mid, prompted back, then synthesis -->
+            <div style="font-size: 10px; font-weight: 600; color: var(--text); display: flex; align-items: center;">Human 2</div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5; opacity: 0.7;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #8B2020;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D; opacity: 0.7;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <!-- Row: AI Spinoza (Ipcha Mistabra) - contrarian, lots of orange, provokes constructively -->
+            <div style="font-size: 10px; font-weight: 600; color: var(--text); display: flex; align-items: center;">AI Spinoza</div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D; opacity: 0.7;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #D4874D; opacity: 0.7;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+            <!-- Row: System (Nasi/Av Beit Din) - intervenes at violations, guides structure -->
+            <div style="font-size: 10px; font-weight: 600; color: var(--taupe); display: flex; align-items: center;">System</div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5; opacity: 0.5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5; opacity: 0.5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #8B2020; opacity: 0.8;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C; opacity: 0.5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #3d7ab5; opacity: 0.5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: rgba(0,48,87,0.06);"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C; opacity: 0.5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C; opacity: 0.5;"></div>
+            <div style="height: 14px; border-radius: 2px; background: #C9A84C;"></div>
+          </div>
+          <!-- Heatmap insight annotation -->
+          <div style="display: flex; gap: 16px; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,48,87,0.06);">
+            <div style="font-size: 9px; color: #8B2020; font-family: var(--font-m);">Min 9: Av Beit Din flagged ad-hominem from Human 2</div>
+            <div style="font-size: 9px; color: #D4874D; font-family: var(--font-m);">Min 5-8: Human 2 disengaged (4 min silence)</div>
+            <div style="font-size: 9px; color: #5A8C6A; font-family: var(--font-m);">Min 20-25: Convergence zone, synthesis dominant</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Compact Session Schedule -->
+      <div style="width: 100%; margin-top: 14px;">
         <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 8px;">DAILY SESSION SCHEDULE</div>
         <div style="display: flex; gap: 0; width: 100%;">
           <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 8px 0 0 8px; border-right: none; text-align: center;">
@@ -4636,33 +4850,53 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
             </div>
           </div>
 
+          <!-- Radar Chart - Hebrew -->
           <div class="card" style="padding: 14px; border-radius: 8px; text-align: center;">
-            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">מדד לשם שמיים</div>
-            <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
-              <svg viewBox="0 0 100 100" style="width: 100%; height: 100%; transform: rotate(-90deg);">
-                <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(0,48,87,0.08)" stroke-width="8"/>
-                <circle cx="50" cy="50" r="42" fill="none" stroke="url(#lshGradHe)" stroke-width="8" stroke-linecap="round" stroke-dasharray="211" stroke-dashoffset="48"/>
-                <defs><linearGradient id="lshGradHe" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#003057"/><stop offset="100%" stop-color="#5A8C6A"/></linearGradient></defs>
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 6px;">מדד לשם שמיים</div>
+            <div style="position: relative; width: 170px; height: 150px; margin: 0 auto;">
+              <svg viewBox="0 0 200 180" style="width: 100%; height: 100%;">
+                <polygon points="100,18 168,58 142,148 58,148 32,58" fill="none" stroke="rgba(0,48,87,0.06)" stroke-width="1"/>
+                <polygon points="100,45 145,72 127,132 73,132 55,72" fill="none" stroke="rgba(0,48,87,0.06)" stroke-width="1"/>
+                <polygon points="100,72 122,86 112,116 88,116 78,86" fill="none" stroke="rgba(0,48,87,0.06)" stroke-width="1"/>
+                <line x1="100" y1="98" x2="100" y2="18" stroke="rgba(0,48,87,0.08)" stroke-width="1"/>
+                <line x1="100" y1="98" x2="168" y2="58" stroke="rgba(0,48,87,0.08)" stroke-width="1"/>
+                <line x1="100" y1="98" x2="142" y2="148" stroke="rgba(0,48,87,0.08)" stroke-width="1"/>
+                <line x1="100" y1="98" x2="58" y2="148" stroke="rgba(0,48,87,0.08)" stroke-width="1"/>
+                <line x1="100" y1="98" x2="32" y2="58" stroke="rgba(0,48,87,0.08)" stroke-width="1"/>
+                <polygon points="100,30 157,64 118,141 68,134 46,64" fill="rgba(0,48,87,0.12)" stroke="#003057" stroke-width="1.5"/>
+                <circle cx="100" cy="30" r="3" fill="#003057"/><circle cx="157" cy="64" r="3" fill="#003057"/><circle cx="118" cy="141" r="3" fill="#003057"/><circle cx="68" cy="134" r="3" fill="#003057"/><circle cx="46" cy="64" r="3" fill="#003057"/>
+                <text x="100" y="12" text-anchor="middle" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">הנחת יסוד</text>
+                <text x="178" y="58" text-anchor="start" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">לוגיקה</text>
+                <text x="148" y="158" text-anchor="start" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">ענווה</text>
+                <text x="52" y="158" text-anchor="end" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">ביסוס</text>
+                <text x="22" y="58" text-anchor="end" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">סקרנות</text>
               </svg>
-              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <div style="font-family: var(--font-m); font-size: 28px; font-weight: 700; color: #003057; line-height: 1;">82</div>
-                <div style="font-size: 9px; color: var(--text-sub);">/ 100</div>
-              </div>
             </div>
-            <div style="font-size: 10px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">איכות השיח<br>"לשם שמיים"</div>
-            <div style="display: flex; justify-content: center; gap: 4px; margin-top: 8px;">
-              <div style="font-family: var(--font-m); font-size: 9px; color: #5A8C6A; padding: 2px 6px; border-radius: 3px; background: rgba(90,140,106,0.1);">+4 מההתחלה</div>
+            <div style="display: flex; justify-content: center; gap: 6px; margin-top: 2px;">
+              <div style="font-family: var(--font-m); font-size: 20px; font-weight: 700; color: #003057;">82</div>
+              <div style="font-size: 9px; color: var(--text-sub); text-align: right; line-height: 1.3;">/ 100<br>כולל</div>
             </div>
           </div>
 
-          <div class="card" style="padding: 14px; border-radius: 8px;">
-            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">עומק השיח</div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="display: flex; justify-content: space-between; font-size: 11px;"><span style="color: var(--text-sub);">טיעונים שעלו</span><span style="font-family: var(--font-m); font-weight: 600; color: #003057;">14</span></div>
-              <div style="display: flex; justify-content: space-between; font-size: 11px;"><span style="color: var(--text-sub);">טענות נגד</span><span style="font-family: var(--font-m); font-weight: 600; color: #003057;">9</span></div>
-              <div style="display: flex; justify-content: space-between; font-size: 11px;"><span style="color: var(--text-sub);">נקודות הסכמה</span><span style="font-family: var(--font-m); font-weight: 600; color: #5A8C6A;">3</span></div>
-              <div style="display: flex; justify-content: space-between; font-size: 11px;"><span style="color: var(--text-sub);">תורות מבקרים</span><span style="font-family: var(--font-m); font-weight: 600; color: #003057;">22</span></div>
+          <!-- Scatter Plot - Hebrew -->
+          <div class="card" style="padding: 14px; border-radius: 8px; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 6px;">מסע קוגניטיבי</div>
+            <div style="position: relative; width: 170px; height: 130px; margin: 0 auto;">
+              <svg viewBox="0 0 170 130" style="width: 100%; height: 100%;">
+                <line x1="25" y1="110" x2="160" y2="110" stroke="rgba(0,48,87,0.15)" stroke-width="1"/>
+                <line x1="25" y1="110" x2="25" y2="10" stroke="rgba(0,48,87,0.15)" stroke-width="1"/>
+                <text x="92" y="126" text-anchor="middle" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">אמפתיה</text>
+                <text x="8" y="60" text-anchor="middle" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)" transform="rotate(-90,8,60)">קיטוב</text>
+                <line x1="25" y1="60" x2="160" y2="60" stroke="rgba(0,48,87,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
+                <line x1="92" y1="10" x2="92" y2="110" stroke="rgba(0,48,87,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
+                <rect x="110" y="70" width="50" height="40" rx="4" fill="rgba(90,140,106,0.06)" stroke="rgba(90,140,106,0.15)" stroke-width="1" stroke-dasharray="3,2"/>
+                <text x="135" y="94" text-anchor="middle" font-size="6" font-family="var(--font-m)" fill="#5A8C6A">אידיאלי</text>
+                <polyline points="35,22 42,28 50,35 55,42 60,48 68,45 75,52 82,58 90,55 98,62 105,68 112,72 118,75" fill="none" stroke="rgba(0,48,87,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="35" cy="22" r="3" fill="#C05555"/><text x="42" y="19" font-size="6" font-family="var(--font-m)" fill="#C05555">התחלה</text>
+                <circle cx="118" cy="75" r="4" fill="#003057" stroke="#fff" stroke-width="1.5"/><text x="125" y="72" font-size="6" font-family="var(--font-m)" fill="#003057">עכשיו</text>
+              </svg>
             </div>
+            <div style="font-size: 9px; color: var(--text-sub); margin-top: 4px; line-height: 1.3;">מעקב מעבר מוויכוח להבנה משותפת</div>
           </div>
         </div>
 
@@ -4752,8 +4986,48 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         </div>
       </div>
 
-      <!-- Bottom: Compact Session Schedule -->
+      <!-- Discourse Rhythm Heatmap - Hebrew -->
       <div class="reveal r3" style="width: 100%; margin-top: 14px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+          <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600;">מפת חום של קצב השיח</div>
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 10px; height: 10px; border-radius: 2px; background: #3d7ab5;"></div><span style="font-size: 8px; color: var(--text-sub); font-family: var(--font-m);">סקרנות</span></div>
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 10px; height: 10px; border-radius: 2px; background: #D4874D;"></div><span style="font-size: 8px; color: var(--text-sub); font-family: var(--font-m);">חיכוך</span></div>
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 10px; height: 10px; border-radius: 2px; background: #C9A84C;"></div><span style="font-size: 8px; color: var(--text-sub); font-family: var(--font-m);">סינתזה</span></div>
+            <div style="display: flex; align-items: center; gap: 4px;"><div style="width: 10px; height: 10px; border-radius: 2px; background: #8B2020;"></div><span style="font-size: 8px; color: var(--text-sub); font-family: var(--font-m);">הפרה</span></div>
+          </div>
+        </div>
+        <div class="card" style="padding: 12px 14px; border-radius: 8px; overflow-x: auto;">
+          <div style="display: grid; grid-template-columns: 80px repeat(25, 1fr); gap: 2px; min-width: 700px; direction: ltr;">
+            <!-- Same heatmap data (visual is LTR timeline regardless of language) -->
+            <div style="font-family: var(--font-m); font-size: 8px; color: var(--text-dim); text-align: right; padding-left: 4px;">דקה</div>
+            <div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">1</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">2</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">3</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">4</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">5</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">6</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">7</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">8</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">9</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">10</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">11</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">12</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">13</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">14</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">15</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">16</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">17</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">18</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">19</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">20</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">21</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">22</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">23</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">24</div><div style="font-family: var(--font-m); font-size: 7px; color: var(--text-dim); text-align: center;">25</div>
+            <!-- Human 1 -->
+            <div style="font-size: 10px; font-weight: 600; color: var(--text); display: flex; align-items: center; justify-content: flex-end; padding-left: 4px;">אדם 1</div>
+            <div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#D4874D;opacity:.7"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#3d7ab5;opacity:.7"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#D4874D;opacity:.7"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div>
+            <!-- AI Rambam -->
+            <div style="font-size: 10px; font-weight: 600; color: var(--text); display: flex; align-items: center; justify-content: flex-end; padding-left: 4px;">רמב"ם AI</div>
+            <div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#3d7ab5;opacity:.7"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#D4874D;opacity:.7"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div>
+            <!-- Human 2 -->
+            <div style="font-size: 10px; font-weight: 600; color: var(--text); display: flex; align-items: center; justify-content: flex-end; padding-left: 4px;">אדם 2</div>
+            <div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#3d7ab5;opacity:.7"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#8B2020"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#D4874D;opacity:.7"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div>
+            <!-- AI Spinoza -->
+            <div style="font-size: 10px; font-weight: 600; color: var(--text); display: flex; align-items: center; justify-content: flex-end; padding-left: 4px;">שפינוזה AI</div>
+            <div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#D4874D;opacity:.7"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#D4874D"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#D4874D;opacity:.7"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#3d7ab5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div>
+            <!-- System -->
+            <div style="font-size: 10px; font-weight: 600; color: var(--taupe); display: flex; align-items: center; justify-content: flex-end; padding-left: 4px;">מערכת</div>
+            <div style="height:14px;border-radius:2px;background:#3d7ab5;opacity:.5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#3d7ab5;opacity:.5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#8B2020;opacity:.8"></div><div style="height:14px;border-radius:2px;background:#C9A84C;opacity:.5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#3d7ab5;opacity:.5"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:rgba(0,48,87,.06)"></div><div style="height:14px;border-radius:2px;background:#C9A84C;opacity:.5"></div><div style="height:14px;border-radius:2px;background:#C9A84C;opacity:.5"></div><div style="height:14px;border-radius:2px;background:#C9A84C"></div>
+          </div>
+          <div style="display: flex; gap: 16px; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,48,87,0.06);">
+            <div style="font-size: 9px; color: #8B2020; font-family: var(--font-m);">דקה 9: אב בית דין סימן התקפה אישית מאדם 2</div>
+            <div style="font-size: 9px; color: #D4874D; font-family: var(--font-m);">דקות 5-8: אדם 2 מנותק (4 דק' שתיקה)</div>
+            <div style="font-size: 9px; color: #5A8C6A; font-family: var(--font-m);">דקות 20-25: אזור התכנסות, סינתזה שולטת</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Session Schedule - Hebrew -->
+      <div style="width: 100%; margin-top: 14px;">
         <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 8px;">לוח מפגשים יומי</div>
         <div style="display: flex; gap: 0; width: 100%;">
           <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0 8px 8px 0; border-left: none; text-align: center;">
