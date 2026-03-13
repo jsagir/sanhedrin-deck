@@ -1,7 +1,7 @@
 # Sanhedrin Deck - Project State
 
 ## Current Status
-**Last updated:** 2026-03-13 (Session 19)
+**Last updated:** 2026-03-13 (Session 20)
 **Phase:** 22 main slides (3 team slides) + 8 appendix (A-F, P, Q). 12 sages with voices. Deployed and live.
 **Live URL:** https://sanhedrin-deck.onrender.com
 **Repo:** https://github.com/jsagir/sanhedrin-deck (auto-deploy on push to master)
@@ -9,12 +9,8 @@
 ## What To Do Next (Pick Up Here)
 
 ### Immediate
-1. **Appendix F onboarding tour** - highlight each dashboard widget explaining what it is and what the facilitator can do with it (like the main deck onboarding tour)
-2. **HE scatter plot SVG axis labels** - still at font-size 7 inside SVG viewBox (renders larger but should match EN bump to 10 for consistency)
-3. **Puzzle pieces click-to-place testing** - was broken with drag, fixed to use e.currentTarget + 75% hit area. Needs verification
-4. **Sage card hover bug** - cards in Appendix E not scaling on hover due to overflow-y:auto on .sage-grid clipping transforms
-5. **Slide 15 (Business Case)** - placeholder for Yoni to customize per donor
-6. **Wire up CTA buttons** - "Approve Phase 1 POC" and "View Tech Architecture" still have no targets
+1. **Slide 15 (Business Case)** - placeholder for Yoni to customize per donor
+2. **Wire up CTA buttons** - "Approve Phase 1 POC" and "View Tech Architecture" still have no targets
 
 ### Content Refinement
 - [ ] Confirm or remove unverified claims (Yazdani Studio, 100K visitors)
@@ -74,6 +70,13 @@
 | A5 | The Sage Library | All 80 Jewish Lives figures with hover overlays showing Sanhedrin roles |
 
 ## What Changed in Latest Sessions
+
+### Session 20 (2026-03-13) - HE Scatter Fix, Dashboard Tour, Sage Hover Fix
+- **HE scatter plot SVG axis labels**: Bumped font-size from 7 to 10 (axis labels) and 6 to 9 (inner labels: ideal zone, start, now) to match EN. Also aligned x position of rotated label
+- **Puzzle click-to-place verified**: Code reviewed - e.currentTarget usage correct, 75% hit area working, fly animation with cubic ease-out, both mouse and touch support via touchend
+- **Appendix F dashboard onboarding tour**: 9-step guided walkthrough of all dashboard widgets (sentiment, radar, scatter, video, sages, roles, visitors, heatmap, schedule). GUIDE button added to both EN and HE headers. Reuses existing tour overlay infrastructure. Scroll-into-view for heatmap/schedule steps
+- **Sage card hover fix (Appendix E)**: Moved overflow-y:auto from .sage-grid to new .sage-grid-scroll wrapper. Grid itself now overflow:visible so hover transforms (scale 1.03 + translateY) are no longer clipped. Both EN and HE grids wrapped
+- IDs added to all EN dashboard widgets for tour targeting: dash-sentiment, dash-radar, dash-scatter, dash-video, dash-sages, dash-roles, dash-visitors, dash-heatmap, dash-schedule
 
 ### Session 19 (2026-03-13) - Dashboard Typography Scale, Proportions Rebalance, Video Controls
 - **Dashboard grid rebalanced**: Changed from `260px 1fr 260px` (~20/60/20) to `1fr 1.2fr 1fr` (~30/40/30). Side panels now wide enough for legible data tiles
@@ -238,6 +241,8 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | 12 | 2026-03-12 | Full 80-sage library: expanded Appendix E from 24 to 80 Jewish Lives figures with real cover images, added navigation button from Slide 5 |
 | 13 | 2026-03-12 | Sage voices (ElevenLabs, 9 sages), Slide 5 hover+play redesign, canvas animations for Slides 6+9 |
 | 14 | 2026-03-13 | Team moved to slide 3, split into 3 slides (8 members), Spinoza added as 12th sage, sage carousel with navigation, CSS fixes |
+| 15-19 | 2026-03-13 | Tech slides, appendices P/Q, narration, onboarding tour, sage voices, dashboard, typography scale |
+| 20 | 2026-03-13 | HE scatter fix, dashboard tour (9 steps), sage hover fix, puzzle verification |
 
 ## Key Decisions
 | Decision | Why |

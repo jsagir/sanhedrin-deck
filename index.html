@@ -351,6 +351,15 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 /* ================================================================
    SAGE LIBRARY CARDS (Appendix E)
    ================================================================ */
+.sage-grid-scroll {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  overflow-x: visible;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) transparent;
+}
+.sage-grid-scroll::-webkit-scrollbar { width: 4px; }
+.sage-grid-scroll::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
 .sage-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -358,17 +367,11 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   max-width: 1100px;
   margin: 0 auto;
   padding: 10px 20px;
-  max-height: calc(100vh - 200px);
-  overflow-y: auto;
-  overflow-x: visible;
-  scrollbar-width: thin;
-  scrollbar-color: var(--blue) transparent;
+  overflow: visible;
 }
 .sage-grid .sage-card {
   overflow: visible;
 }
-.sage-grid::-webkit-scrollbar { width: 4px; }
-.sage-grid::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
 
 .sage-card {
   position: relative;
@@ -2514,6 +2517,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <h2 class="reveal r1" style="font-size: 42px; margin-bottom: 6px;">The Sage Library</h2>
       <p class="body-sm reveal r2" style="margin-top: 0; margin-bottom: 16px; font-size: 16px; max-width: 700px; text-align: center;">80 historical Jewish figures, each modeled as an AI persona with a distinct thinking mode. Hover to see their Sanhedrin role. Powered by the <strong>Jewish Lives</strong> biographical series (Yale University Press).</p>
 
+      <div class="sage-grid-scroll">
       <div class="sage-grid reveal r3">
         <div class="sage-card" data-sage="abraham">
           <img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/6788010d96ece2161d573ed9/1736966413206/JL_NewReleases_Abraham_Facebook+%28002%29.jpg?format=500w" alt="Abraham - Jewish Lives" loading="lazy">
@@ -3637,6 +3641,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         </div>
       
       </div>
+      </div>
 
       <div class="sage-partnership reveal r4" style="margin-top: 12px;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
@@ -3650,6 +3655,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <h2 class="reveal r1" style="font-size: 42px; margin-bottom: 6px;">ספריית החכמים</h2>
       <p class="body-sm reveal r2" style="margin-top: 0; margin-bottom: 16px; font-size: 16px; max-width: 700px; text-align: center;">80 דמויות יהודיות היסטוריות, כל אחת מעוצבת כפרסונת AI עם מצב חשיבה ייחודי. העבירו את העכבר כדי לראות את תפקידם בסנהדרין. מבוסס על סדרת <strong>Jewish Lives</strong> הביוגרפית (Yale University Press).</p>
 
+      <div class="sage-grid-scroll">
       <div class="sage-grid reveal r3">
         <div class="sage-card"><img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/6788010d96ece2161d573ed9/1736966413206/JL_NewReleases_Abraham_Facebook+%28002%29.jpg?format=500w" alt="Abraham" loading="lazy"><div class="sage-info"><div class="sage-name">אברהם</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Abraham</div><div class="sage-mode-badge">#1 חשיבה מפריעה</div></div><div class="sage-overlay"><div class="sage-role-title">שובר האלילים</div><div class="sage-role-desc">מאתגר כל הנחה מורשת. מכריח את המועצה לבחון מה שהם מקבלים כמובן מאליו.</div><div class="sage-sig">"מה אם כל מה שאבותיך לימדו אותך הוא טעות?"</div></div></div>
         <div class="sage-card"><img class="sage-cover" src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/58b4e4ad03596ec663162909/1765402401722/Akiva.jpg?format=500w" alt="Rabbi Akiva" loading="lazy"><div class="sage-info"><div class="sage-name">רבי עקיבא</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Rabbi Akiva</div><div class="sage-mode-badge">#5 חשיבה פרשנית</div></div><div class="sage-overlay"><div class="sage-role-title">הפרשן העליון</div><div class="sage-role-desc">גוזר הרים של משמעות מכל פרט. מכריח את הקבוצה להתעמק במה שנאמר באמת.</div><div class="sage-sig">"אפילו לשתיקה שבין המילים יש משמעות"</div></div></div>
@@ -3732,6 +3738,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div class="sage-card"><img class="sage-cover" src="https://images.squarespace-cdn.com/content/v1/57abd1268419c28d7981b5cd/3832641a-8ae6-4d7b-b488-40d0583e274e/JL_NewRelease_Franz+Boas_ProductImage+%28002%29.jpg" alt="Franz Boas" loading="lazy"><div class="sage-info"><div class="sage-name">פרנץ בואס</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Franz Boas</div><div class="sage-mode-badge">#13 חשיבה קולקטיבית</div></div><div class="sage-overlay"><div class="sage-role-title">היחסן התרבותי</div><div class="sage-role-desc">הרס את המיתוס של היררכיה גזעית בראיות אמפיריות. כל תרבות חייבת להיות מובנת במונחים שלה.</div><div class="sage-sig">"אין היררכיה של תרבויות - רק דרכים שונות להיות אנושי"</div></div></div>
         <div class="sage-card"><img class="sage-cover" src="https://images.squarespace-cdn.com/content/v1/57abd1268419c28d7981b5cd/1642519417812-0WU01M0UM0DC91DWPXOG/Rickover.jpg" alt="Hyman Rickover" loading="lazy"><div class="sage-info"><div class="sage-name">היימן ריקובר</div><div class="sage-name-he" style="direction:ltr;text-align:left;">Hyman Rickover</div><div class="sage-mode-badge">#10 חשיבה מוכוונת פתרון</div></div><div class="sage-overlay"><div class="sage-role-title">מהנדס הכוח</div><div class="sage-role-desc">בנה את הצי הגרעיני בכוח רצון טהור. מצוינות היא לא מטרה - היא הסטנדרט המינימלי.</div><div class="sage-sig">"מוחות גדולים דנים ברעיונות; מוחות בינוניים דנים באירועים; מוחות קטנים דנים באנשים"</div></div></div>
       
+      </div>
       </div>
 
       <div class="sage-partnership reveal r4" style="margin-top: 12px;">
@@ -4372,6 +4379,10 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
             <div style="width: 8px; height: 8px; border-radius: 50%; background: #5A8C6A; animation: dashPulse 2s ease-in-out infinite;"></div>
             <span style="font-family: var(--font-m); font-size: 12px; letter-spacing: 1.5px; color: #5A8C6A; font-weight: 600;">SESSION LIVE</span>
           </div>
+          <button id="dashTourBtn" onclick="startDashTour()" style="display: flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 20px; background: rgba(0,48,87,0.08); border: 1px solid rgba(0,48,87,0.2); cursor: pointer; font-family: var(--font-m); font-size: 12px; letter-spacing: 1px; color: var(--text-sub); font-weight: 600;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            GUIDE
+          </button>
         </div>
       </div>
 
@@ -4382,7 +4393,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div style="display: flex; flex-direction: column; gap: 12px;">
 
           <!-- Sentiment Analysis -->
-          <div class="card" style="padding: 16px; border-radius: 8px;">
+          <div id="dash-sentiment" class="card" style="padding: 16px; border-radius: 8px;">
             <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; color: var(--taupe); font-weight: 600; margin-bottom: 12px;">SENTIMENT ANALYSIS</div>
             <div style="display: flex; flex-direction: column; gap: 8px;">
               <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -4410,7 +4421,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           </div>
 
           <!-- Sanhedrin Rules Radar Chart (L'Shem Shamayim Quality) -->
-          <div class="card" style="padding: 16px; border-radius: 8px; text-align: center;">
+          <div id="dash-radar" class="card" style="padding: 16px; border-radius: 8px; text-align: center;">
             <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; color: var(--taupe); font-weight: 600; margin-bottom: 8px;">L'SHEM SHAMAYIM INDEX</div>
             <div style="position: relative; width: 100%; max-width: 240px; height: 200px; margin: 0 auto;">
               <svg viewBox="0 0 200 180" style="width: 100%; height: 100%;">
@@ -4447,7 +4458,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           </div>
 
           <!-- Polarization vs Empathy Scatter -->
-          <div class="card" style="padding: 16px; border-radius: 8px; text-align: center;">
+          <div id="dash-scatter" class="card" style="padding: 16px; border-radius: 8px; text-align: center;">
             <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; color: var(--taupe); font-weight: 600; margin-bottom: 8px;">COGNITIVE JOURNEY</div>
             <div style="position: relative; width: 100%; max-width: 240px; height: 180px; margin: 0 auto;">
               <svg viewBox="0 0 170 130" style="width: 100%; height: 100%;">
@@ -4482,7 +4493,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         </div>
 
         <!-- CENTER: Video Player (proper frame) -->
-        <div style="position: relative; border-radius: 8px; overflow: hidden; background: #0a0f1a; border: 2px solid #003057; box-shadow: 0 4px 32px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(189,214,230,0.08); display: flex; flex-direction: column;">
+        <div id="dash-video" style="position: relative; border-radius: 8px; overflow: hidden; background: #0a0f1a; border: 2px solid #003057; box-shadow: 0 4px 32px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(189,214,230,0.08); display: flex; flex-direction: column;">
           <!-- Top overlay: LIVE indicator + action icons -->
           <div style="position: absolute; top: 0; left: 0; right: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, transparent 100%); pointer-events: none;">
             <div style="display: flex; align-items: center; gap: 10px; pointer-events: auto;">
@@ -4518,7 +4529,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div style="display: flex; flex-direction: column; gap: 12px;">
 
           <!-- Sages at Play -->
-          <div class="card" style="padding: 16px; border-radius: 8px;">
+          <div id="dash-sages" class="card" style="padding: 16px; border-radius: 8px;">
             <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; color: var(--taupe); font-weight: 600; margin-bottom: 12px;">SAGES AT PLAY</div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div style="display: flex; align-items: center; gap: 10px;">
@@ -4541,7 +4552,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           </div>
 
           <!-- Roles at Play -->
-          <div class="card" style="padding: 16px; border-radius: 8px;">
+          <div id="dash-roles" class="card" style="padding: 16px; border-radius: 8px;">
             <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; color: var(--taupe); font-weight: 600; margin-bottom: 12px;">ROLES AT PLAY</div>
             <div style="display: flex; flex-direction: column; gap: 6px;">
               <div style="display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 4px; background: rgba(90,140,106,0.08);">
@@ -4568,7 +4579,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           </div>
 
           <!-- Visitor Engagement -->
-          <div class="card" style="padding: 16px; border-radius: 8px;">
+          <div id="dash-visitors" class="card" style="padding: 16px; border-radius: 8px;">
             <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">VISITORS</div>
             <div style="display: flex; align-items: baseline; gap: 4px;">
               <span style="font-family: var(--font-m); font-size: 40px; font-weight: 700; color: #003057; line-height: 1;">8</span>
@@ -4594,7 +4605,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       </div>
 
       <!-- Discourse Rhythm Heatmap (Full Width) -->
-      <div class="reveal r3" style="width: 100%; margin-top: 14px;">
+      <div id="dash-heatmap" class="reveal r3" style="width: 100%; margin-top: 14px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
           <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; color: var(--taupe); font-weight: 600;">DISCOURSE RHYTHM HEATMAP</div>
           <div style="display: flex; gap: 14px; align-items: center;">
@@ -4780,7 +4791,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       </div>
 
       <!-- Bottom: Compact Session Schedule -->
-      <div style="width: 100%; margin-top: 14px;">
+      <div id="dash-schedule" style="width: 100%; margin-top: 14px;">
         <div style="font-family: var(--font-m); font-size: 13px; letter-spacing: 1px; color: var(--taupe); font-weight: 600; margin-bottom: 8px;">DAILY SESSION SCHEDULE</div>
         <div style="display: flex; gap: 0; width: 100%; opacity: 0.6;">
           <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 8px 0 0 8px; border-right: none; text-align: center;">
@@ -4836,6 +4847,10 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
             <div style="width: 8px; height: 8px; border-radius: 50%; background: #5A8C6A; animation: dashPulse 2s ease-in-out infinite;"></div>
             <span style="font-family: var(--font-m); font-size: 12px; letter-spacing: 1.5px; color: #5A8C6A; font-weight: 600;">מפגש חי</span>
           </div>
+          <button onclick="startDashTour()" style="display: flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 20px; background: rgba(0,48,87,0.08); border: 1px solid rgba(0,48,87,0.2); cursor: pointer; font-family: var(--font-m); font-size: 12px; letter-spacing: 1px; color: var(--text-sub); font-weight: 600;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            מדריך
+          </button>
         </div>
       </div>
 
@@ -4906,15 +4921,15 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
               <svg viewBox="0 0 170 130" style="width: 100%; height: 100%;">
                 <line x1="25" y1="110" x2="160" y2="110" stroke="rgba(0,48,87,0.15)" stroke-width="1"/>
                 <line x1="25" y1="110" x2="25" y2="10" stroke="rgba(0,48,87,0.15)" stroke-width="1"/>
-                <text x="92" y="126" text-anchor="middle" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)">אמפתיה</text>
-                <text x="8" y="60" text-anchor="middle" font-size="7" font-family="var(--font-m)" fill="var(--text-sub)" transform="rotate(-90,8,60)">קיטוב</text>
+                <text x="92" y="126" text-anchor="middle" font-size="10" font-family="var(--font-m)" fill="var(--text-sub)">אמפתיה</text>
+                <text x="6" y="60" text-anchor="middle" font-size="10" font-family="var(--font-m)" fill="var(--text-sub)" transform="rotate(-90,6,60)">קיטוב</text>
                 <line x1="25" y1="60" x2="160" y2="60" stroke="rgba(0,48,87,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
                 <line x1="92" y1="10" x2="92" y2="110" stroke="rgba(0,48,87,0.05)" stroke-width="1" stroke-dasharray="3,3"/>
                 <rect x="110" y="70" width="50" height="40" rx="4" fill="rgba(90,140,106,0.06)" stroke="rgba(90,140,106,0.15)" stroke-width="1" stroke-dasharray="3,2"/>
-                <text x="135" y="94" text-anchor="middle" font-size="6" font-family="var(--font-m)" fill="#5A8C6A">אידיאלי</text>
+                <text x="135" y="94" text-anchor="middle" font-size="9" font-family="var(--font-m)" fill="#5A8C6A">אידיאלי</text>
                 <polyline points="35,22 42,28 50,35 55,42 60,48 68,45 75,52 82,58 90,55 98,62 105,68 112,72 118,75" fill="none" stroke="rgba(0,48,87,0.25)" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="35" cy="22" r="3" fill="#C05555"/><text x="42" y="19" font-size="6" font-family="var(--font-m)" fill="#C05555">התחלה</text>
-                <circle cx="118" cy="75" r="4" fill="#003057" stroke="#fff" stroke-width="1.5"/><text x="125" y="72" font-size="6" font-family="var(--font-m)" fill="#003057">עכשיו</text>
+                <circle cx="35" cy="22" r="3" fill="#C05555"/><text x="42" y="19" font-size="9" font-family="var(--font-m)" fill="#C05555">התחלה</text>
+                <circle cx="118" cy="75" r="4" fill="#003057" stroke="#fff" stroke-width="1.5"/><text x="125" y="72" font-size="9" font-family="var(--font-m)" fill="#003057">עכשיו</text>
               </svg>
             </div>
             <div style="font-size: 13px; color: var(--text-sub); margin-top: 4px; line-height: 1.3;">מעקב מעבר מוויכוח להבנה משותפת</div>
@@ -6481,6 +6496,106 @@ function showTourStep() {
 if (!localStorage.getItem('sanhedrin-tour-done')) {
   setTimeout(startTour, 1500);
 }
+
+// === DASHBOARD TOUR (Appendix F) ===
+var dashTourSteps = [
+  { el: '#dash-sentiment', title: 'Sentiment Analysis', desc: 'Real-time breakdown of discourse tone. Tracks constructive, adversarial, and neutral speech across all participants.', pos: 'right' },
+  { el: '#dash-radar', title: "L'Shem Shamayim Index", desc: 'Spider chart scoring discourse quality on 5 axes: Premise, Logic, Humility, Grounding, and Curiosity. The overall score (0-100) reflects how well the session follows Sanhedrin rules.', pos: 'right' },
+  { el: '#dash-scatter', title: 'Cognitive Journey', desc: 'Plots the group trajectory from high-polarization/low-empathy (top-left) toward the ideal zone (bottom-right). Each dot is a 2-minute snapshot.', pos: 'right' },
+  { el: '#dash-video', title: 'Live Video Feed', desc: 'Kiosk camera view of the active session. Use the + button to inject context prompts and the flag button to mark moments for review.', pos: 'left' },
+  { el: '#dash-sages', title: 'Sages at Play', desc: 'Shows which AI sages are active in the current session and their status: speaking, analyzing, listening, or on standby.', pos: 'left' },
+  { el: '#dash-roles', title: 'Roles at Play', desc: 'Displays which Sanhedrin roles are currently assigned. Nasi leads, Ipcha Mistabra challenges, Shakla V\'Tarya probes, Av Beit Din moderates.', pos: 'left' },
+  { el: '#dash-visitors', title: 'Visitor Engagement', desc: 'Active participant count and session time remaining. The bar shows how many of the 12 kiosks are occupied.', pos: 'left' },
+  { el: '#dash-heatmap', title: 'Discourse Rhythm Heatmap', desc: '25-minute timeline showing every participant\'s activity. Blue is curiosity, orange is friction, gold is synthesis, red flags violations. The annotations below highlight key moments.', pos: 'top' },
+  { el: '#dash-schedule', title: 'Daily Session Schedule', desc: 'Eight dilemma scenarios rotate throughout the day (09:00-16:30). The highlighted slot shows the currently active session.', pos: 'top' },
+];
+var dashTourCurrent = 0;
+var dashTourActive = false;
+
+function startDashTour() {
+  dashTourCurrent = 0;
+  dashTourActive = true;
+  // Scroll Appendix F to top so widgets are visible
+  var appF = document.getElementById('appendix-video');
+  if (appF) appF.scrollTop = 0;
+  document.getElementById('tourOverlay').classList.add('active');
+  renderDashTourDots();
+  showDashTourStep();
+}
+
+function endDashTour() {
+  dashTourActive = false;
+  document.getElementById('tourOverlay').classList.remove('active');
+}
+
+function nextDashTourStep() {
+  dashTourCurrent++;
+  if (dashTourCurrent >= dashTourSteps.length) { endDashTour(); return; }
+  // Scroll target into view for heatmap/schedule
+  var step = dashTourSteps[dashTourCurrent];
+  var target = document.querySelector(step.el);
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(showDashTourStep, 300);
+}
+
+function renderDashTourDots() {
+  var html = '';
+  for (var i = 0; i < dashTourSteps.length; i++) {
+    html += '<div class="tour-dot' + (i === dashTourCurrent ? ' active' : '') + '"></div>';
+  }
+  document.getElementById('tourDots').innerHTML = html;
+}
+
+function showDashTourStep() {
+  var step = dashTourSteps[dashTourCurrent];
+  var target = document.querySelector(step.el);
+  if (!target) { nextDashTourStep(); return; }
+
+  renderDashTourDots();
+  document.getElementById('tourTitle').textContent = step.title;
+  document.getElementById('tourDesc').textContent = step.desc;
+  document.getElementById('tourCount').textContent = (dashTourCurrent + 1) + ' / ' + dashTourSteps.length;
+  document.getElementById('tourNext').textContent = dashTourCurrent === dashTourSteps.length - 1 ? 'Done' : 'Next';
+
+  var rect = target.getBoundingClientRect();
+  var pad = 6;
+  var hl = document.getElementById('tourHighlight');
+  hl.style.left = (rect.left - pad) + 'px';
+  hl.style.top = (rect.top - pad) + 'px';
+  hl.style.width = (rect.width + pad * 2) + 'px';
+  hl.style.height = (rect.height + pad * 2) + 'px';
+
+  var tt = document.getElementById('tourTooltip');
+  var arrow = document.getElementById('tourArrow');
+  tt.style.left = ''; tt.style.right = ''; tt.style.top = ''; tt.style.bottom = '';
+  arrow.style.left = ''; arrow.style.right = ''; arrow.style.top = ''; arrow.style.bottom = '';
+
+  if (step.pos === 'top') {
+    tt.style.left = Math.max(16, rect.left + rect.width / 2 - 160) + 'px';
+    tt.style.bottom = (window.innerHeight - rect.top + 16) + 'px';
+    arrow.style.bottom = '-6px'; arrow.style.left = '40px';
+  } else if (step.pos === 'bottom') {
+    tt.style.left = Math.max(16, rect.left) + 'px';
+    tt.style.top = (rect.bottom + 16) + 'px';
+    arrow.style.top = '-6px'; arrow.style.left = '40px';
+  } else if (step.pos === 'left') {
+    tt.style.right = (window.innerWidth - rect.left + 16) + 'px';
+    tt.style.top = Math.max(16, rect.top - 20) + 'px';
+    arrow.style.right = '-6px'; arrow.style.top = '24px';
+  } else if (step.pos === 'right') {
+    tt.style.left = (rect.right + 16) + 'px';
+    tt.style.top = Math.max(16, rect.top - 20) + 'px';
+    arrow.style.left = '-6px'; arrow.style.top = '24px';
+  }
+}
+
+// Override tour overlay clicks when dashboard tour is active
+(function() {
+  var origNext = document.getElementById('tourNext');
+  var origSkip = document.getElementById('tourSkip');
+  origNext.onclick = function() { if (dashTourActive) nextDashTourStep(); else nextTourStep(); };
+  origSkip.onclick = function() { if (dashTourActive) endDashTour(); else endTour(); };
+})();
 </script>
 </body>
 </html>
