@@ -5269,7 +5269,7 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
         pieces.push({
           homeX: homeX, homeY: homeY,
           x: sx, y: sy,
-          w: pw * 0.9, h: ph * 0.9,
+          w: pw * 0.82, h: ph * 0.82,
           col: c, row: r, idx: r * COLS + c,
           placed: false,
           snapTime: 0,
@@ -5279,27 +5279,75 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     }
   }
 
-  function drawRoundedRect(ctx, x, y, w, h, rad) {
-    // Jigsaw puzzle piece with tabs/notches on each edge
-    var tabSize = Math.min(w, h) * 0.22;
+  // Tab directions per piece: 0=flat (edge of puzzle), 1=tab out, -1=notch in
+  // Adjacent pieces have complementary tabs (one out, one in)
+  var PIECE_TABS = [
+    // [top, right, bottom, left] for each piece index (row-major 2x2)
+    [0, 1, 1, 0],   // (0,0) top-left: flat top/left edges, tab out right/bottom
+    [0, 0, -1, -1],  // (0,1) top-right: flat top/right, notch left/bottom (complements neighbors)
+    [-1, 1, 0, 0],   // (1,0) bottom-left: notch top (complement of 0,0 bottom), tab right, flat bottom/left
+    [1, 0, 0, -1]    // (1,1) bottom-right: tab top (complement of 0,1 bottom), flat right/bottom, notch left
+  ];
+
+  function drawJigsawEdge(ctx, x0, y0, x1, y1, tabDir) {
+    // Draw one edge of a jigsaw piece from (x0,y0) to (x1,y1)
+    // tabDir: 0=straight, 1=tab bulges outward (perpendicular), -1=notch inward
+    if (tabDir === 0) {
+      ctx.lineTo(x1, y1);
+      return;
+    }
+    var dx = x1 - x0, dy = y1 - y0;
+    var len = Math.sqrt(dx * dx + dy * dy);
+    // Unit vectors along edge and perpendicular
+    var ux = dx / len, uy = dy / len;
+    var nx = uy * tabDir, ny = -ux * tabDir; // perpendicular outward from piece center
+
+    var tabH = len * 0.22; // how far tab bulges
+    var neckW = len * 0.04; // neck inset
+
+    // Key points along the edge (as fractions of length)
+    var p1 = 0.34, p2 = 0.40, p3 = 0.60, p4 = 0.66;
+
+    // Start of tab neck
+    var ax = x0 + ux * len * p1, ay = y0 + uy * len * p1;
+    // Neck narrows inward slightly before bulging out
+    var bx = x0 + ux * len * p2 - nx * neckW, by = y0 + uy * len * p2 - ny * neckW;
+    // Tab bulge control points
+    var cx1 = x0 + ux * len * 0.28 + nx * tabH, cy1 = y0 + uy * len * 0.28 + ny * tabH;
+    var cx2 = x0 + ux * len * 0.72 + nx * tabH, cy2 = y0 + uy * len * 0.72 + ny * tabH;
+    // Neck on the other side
+    var ex = x0 + ux * len * p3 - nx * neckW, ey = y0 + uy * len * p3 - ny * neckW;
+    // End of tab
+    var fx = x0 + ux * len * p4, fy = y0 + uy * len * p4;
+
+    // Draw: straight to neck start, bezier through bulge, straight to edge end
+    ctx.lineTo(ax, ay);
+    ctx.bezierCurveTo(
+      bx, by,
+      cx1, cy1,
+      x0 + ux * len * 0.5 + nx * tabH * 1.05, y0 + uy * len * 0.5 + ny * tabH * 1.05
+    );
+    ctx.bezierCurveTo(
+      cx2, cy2,
+      ex, ey,
+      fx, fy
+    );
+    ctx.lineTo(x1, y1);
+  }
+
+  function drawRoundedRect(ctx, x, y, w, h, rad, pieceIdx) {
+    // Classic jigsaw piece shape with bezier-curve tabs/notches
+    var tabs = (pieceIdx !== undefined && PIECE_TABS[pieceIdx]) ? PIECE_TABS[pieceIdx] : [0,0,0,0];
     ctx.beginPath();
     ctx.moveTo(x, y);
-    // Top edge - tab out
-    ctx.lineTo(x + w * 0.35, y);
-    ctx.arc(x + w * 0.5, y, tabSize, Math.PI, 0, false);
-    ctx.lineTo(x + w, y);
-    // Right edge - tab out
-    ctx.lineTo(x + w, y + h * 0.35);
-    ctx.arc(x + w, y + h * 0.5, tabSize, -Math.PI * 0.5, Math.PI * 0.5, false);
-    ctx.lineTo(x + w, y + h);
-    // Bottom edge - notch in
-    ctx.lineTo(x + w * 0.65, y + h);
-    ctx.arc(x + w * 0.5, y + h, tabSize, 0, Math.PI, true);
-    ctx.lineTo(x, y + h);
-    // Left edge - notch in
-    ctx.lineTo(x, y + h * 0.65);
-    ctx.arc(x, y + h * 0.5, tabSize, Math.PI * 0.5, -Math.PI * 0.5, true);
-    ctx.lineTo(x, y);
+    // Top edge (left to right)
+    drawJigsawEdge(ctx, x, y, x + w, y, tabs[0]);
+    // Right edge (top to bottom)
+    drawJigsawEdge(ctx, x + w, y, x + w, y + h, tabs[1]);
+    // Bottom edge (right to left)
+    drawJigsawEdge(ctx, x + w, y + h, x, y + h, tabs[2]);
+    // Left edge (bottom to top)
+    drawJigsawEdge(ctx, x, y + h, x, y, tabs[3]);
     ctx.closePath();
   }
 
@@ -5337,7 +5385,7 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     for (var i = 0; i < pieces.length; i++) {
       var p = pieces[i];
       if (p.placed) continue;
-      drawRoundedRect(ctx, p.homeX - p.w/2, p.homeY - p.h/2, p.w, p.h, 8);
+      drawRoundedRect(ctx, p.homeX - p.w/2, p.homeY - p.h/2, p.w, p.h, 8, p.idx);
       ctx.strokeStyle = 'rgba(189,214,230,0.12)';
       ctx.setLineDash([4, 4]);
       ctx.lineWidth = 1;
@@ -5390,7 +5438,7 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
       ctx.scale(scale, scale);
 
       // Draw piece body
-      drawRoundedRect(ctx, -p.w/2, -p.h/2, p.w, p.h, 8);
+      drawRoundedRect(ctx, -p.w/2, -p.h/2, p.w, p.h, 8, p.idx);
       var alpha = p.placed ? 0.92 : 0.78;
 
       if (p.placed) {
