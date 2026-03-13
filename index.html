@@ -5089,14 +5089,9 @@ showSlide = function(index) {
   };
 })();
 
-// Hook into slide transitions
-var _origShowSlide = showSlide;
-showSlide = function(index) {
-  _origShowSlide(index);
-  // Slide 2 is index 1
-  if (index === 1) { window._polarAnim.start(); }
-  else { window._polarAnim.stop(); }
-};
+// Register polarization as a slide animation on slide index 1
+if (!slideAnimations[1]) slideAnimations[1] = [];
+slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop: function() { window._polarAnim.stop(); } });
 
 showSlide(0);
 
