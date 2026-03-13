@@ -1,7 +1,7 @@
 # Sanhedrin Deck - Project State
 
 ## Current Status
-**Last updated:** 2026-03-13 (Session 18)
+**Last updated:** 2026-03-13 (Session 19)
 **Phase:** 22 main slides (3 team slides) + 8 appendix (A-F, P, Q). 12 sages with voices. Deployed and live.
 **Live URL:** https://sanhedrin-deck.onrender.com
 **Repo:** https://github.com/jsagir/sanhedrin-deck (auto-deploy on push to master)
@@ -9,11 +9,12 @@
 ## What To Do Next (Pick Up Here)
 
 ### Immediate
-1. **Appendix F onboarding tour** - highlight each dashboard component explaining what it is and what the facilitator can do with it (like the main deck onboarding tour)
-2. **Puzzle pieces "Facts" drag issue** - user reported Facts piece not moving. Bezier tabs + larger hit area deployed but needs more testing. May need canvas pointer-events debugging
-3. **Sage card hover bug** - cards in Appendix E not scaling on hover due to overflow-y:auto on .sage-grid clipping transforms
-4. **Slide 15 (Business Case)** - placeholder for Yoni to customize per donor
-5. **Wire up CTA buttons** - "Approve Phase 1 POC" and "View Tech Architecture" still have no targets
+1. **Appendix F onboarding tour** - highlight each dashboard widget explaining what it is and what the facilitator can do with it (like the main deck onboarding tour)
+2. **HE scatter plot SVG axis labels** - still at font-size 7 inside SVG viewBox (renders larger but should match EN bump to 10 for consistency)
+3. **Puzzle pieces click-to-place testing** - was broken with drag, fixed to use e.currentTarget + 75% hit area. Needs verification
+4. **Sage card hover bug** - cards in Appendix E not scaling on hover due to overflow-y:auto on .sage-grid clipping transforms
+5. **Slide 15 (Business Case)** - placeholder for Yoni to customize per donor
+6. **Wire up CTA buttons** - "Approve Phase 1 POC" and "View Tech Architecture" still have no targets
 
 ### Content Refinement
 - [ ] Confirm or remove unverified claims (Yazdani Studio, 100K visitors)
@@ -73,6 +74,27 @@
 | A5 | The Sage Library | All 80 Jewish Lives figures with hover overlays showing Sanhedrin roles |
 
 ## What Changed in Latest Sessions
+
+### Session 19 (2026-03-13) - Dashboard Typography Scale, Proportions Rebalance, Video Controls
+- **Dashboard grid rebalanced**: Changed from `260px 1fr 260px` (~20/60/20) to `1fr 1.2fr 1fr` (~30/40/30). Side panels now wide enough for legible data tiles
+- **Full typography scale applied** (12px minimum rule, WCAG-compliant):
+  - Section headers: 10px -> 13px mono + letter-spacing: 1px (technical look without being invisible)
+  - Sentiment percentages: 18px -> **24px bold** (the data pops)
+  - Sentiment labels: 13px -> 15px
+  - Hero numbers (L'Shem Shamayim / Visitors): 36-38px -> **40px bold**
+  - Sage names: 14px -> 15px, status badges: 10px -> 12px
+  - Role names: 13px -> 15px, assignees: 11px -> 13px
+  - Heatmap minute numbers: 7px -> 11px, row labels: 10px -> 13px, annotations: 9px -> 12px
+  - Heatmap legend: 8px -> 12px, cell height: 18px -> 22px
+  - Schedule times: 10px -> 12px, schedule names: 11px -> 13-15px
+  - Radar/scatter axis labels: SVG font-size 7-9 -> 10-12 bold
+  - Video overlay LIVE badge: 9px -> 12px, cam label: 9px -> 12px
+  - Scatter subtitle: 9px -> 13px
+- **Video player fixed**: Replaced 16:8 cropped aspect ratio with proper **16:9** (object-fit: contain). Native browser controls now fully visible (play, pause, timeline, volume)
+- **Video overlay redesign**: Replaced text buttons ("INJECT CONTEXT", "FLAG") with **SVG icon buttons** (plus icon + flag icon) with tooltips. Cleaner control-room aesthetic, no legibility issue
+- **Hebrew dashboard full-bleed fix**: Changed `max-width: 1200px; margin: 0 auto` to `max-width: 100%; margin: 0; padding: 16px 28px 40px` (matches English)
+- **Dashboard scroll fix**: Added `slide--appendix` class to Appendix F section, changed layout-statement from `height: 100%` to `height: auto; justify-content: flex-start`. Session schedule no longer cut off at bottom
+- All changes applied to both EN and HE dashboards
 
 ### Session 18 (2026-03-13) - Jigsaw Bezier, Control Room Dashboard, Behavioral Analytics
 - **Slide 4 jigsaw pieces**: Replaced arc-based tabs with bezier curve neck+bulb jigsaw profile. Per-piece tab directions (in/out) that interlock with neighbors. Outer edges flat. Piece size reduced to 0.82x for breathing room. Labels enlarged (18% of piece width, weight 800). Hit area doubled (30% margin)
