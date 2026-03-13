@@ -6254,32 +6254,38 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
   }
 
   function hitTest(mx, my) {
-    // Check from top (last drawn) to bottom
+    // Check all unplaced, non-flying pieces
     for (var i = pieces.length - 1; i >= 0; i--) {
       var p = pieces[i];
-      if (p.placed) continue;
-      var margin = Math.min(p.w, p.h) * 0.3;
-      if (mx > p.x - p.w/2 - margin && mx < p.x + p.w/2 + margin && my > p.y - p.h/2 - margin && my < p.y + p.h/2 + margin) {
+      if (p.placed || p.flying) continue;
+      // Generous hit area: half the piece size as margin
+      var hw = p.w * 0.75, hh = p.h * 0.75;
+      if (mx > p.x - hw && mx < p.x + hw && my > p.y - hh && my < p.y + hh) {
         return i;
       }
     }
     return -1;
   }
 
+  function placePiece(idx) {
+    var p = pieces[idx];
+    if (p.placed || p.flying) return;
+    p.flying = true;
+    p.flyStart = Date.now();
+    p.flyFromX = p.x;
+    p.flyFromY = p.y;
+    p.flyDuration = 400;
+  }
+
   // Click-to-place: click a piece and it animates to its home position
   function onClick(e) {
-    if (!activeCanvas) return;
-    var pos = getCanvasXY(e, activeCanvas);
-    var hit = hitTest(pos.x, pos.y);
+    var canvas = e.currentTarget;
+    var rect = canvas.getBoundingClientRect();
+    var mx = e.clientX - rect.left;
+    var my = e.clientY - rect.top;
+    var hit = hitTest(mx, my);
     if (hit >= 0) {
-      var p = pieces[hit];
-      if (p.placed || p.flying) return;
-      // Start fly animation
-      p.flying = true;
-      p.flyStart = Date.now();
-      p.flyFromX = p.x;
-      p.flyFromY = p.y;
-      p.flyDuration = 400; // ms
+      placePiece(hit);
       e.preventDefault();
     }
   }
@@ -6308,20 +6314,12 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
 
   function bindEvents(canvas) {
     canvas.addEventListener('click', onClick);
-    canvas.addEventListener('touchend', function(e) {
-      if (e.changedTouches && e.changedTouches.length) {
-        // Simulate click from touch position
-        var touch = e.changedTouches[0];
-        var rect = canvas.getBoundingClientRect();
-        var pos = { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
-        var hit = hitTest(pos.x, pos.y);
-        if (hit >= 0) {
-          var p = pieces[hit];
-          if (!p.placed && !p.flying) {
-            p.flying = true; p.flyStart = Date.now();
-            p.flyFromX = p.x; p.flyFromY = p.y; p.flyDuration = 400;
-          }
-        }
+    canvas.addEventListener('touchend', function(ev) {
+      if (ev.changedTouches && ev.changedTouches.length) {
+        var touch = ev.changedTouches[0];
+        var r = canvas.getBoundingClientRect();
+        var hit = hitTest(touch.clientX - r.left, touch.clientY - r.top);
+        if (hit >= 0) placePiece(hit);
       }
     });
     canvas.style.cursor = 'pointer';
