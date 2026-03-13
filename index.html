@@ -794,6 +794,21 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 [dir="rtl"] .sow-sticky-meta { text-align: right; }
 [dir="rtl"] .sow-footer { text-align: center; }
 
+/* Quick Navigation Dropdown */
+.quick-nav { position: relative; }
+.quick-nav-btn { font-family: var(--font-m); font-size: 12px; letter-spacing: 1px; padding: 6px 14px; background: rgba(0,48,87,0.06); border: 1px solid var(--card-border); border-radius: 4px; color: var(--navy); cursor: pointer; display: flex; align-items: center; gap: 6px; transition: background 0.2s; }
+.quick-nav-btn:hover { background: rgba(0,48,87,0.12); }
+[data-theme="dark"] .quick-nav-btn { background: rgba(189,214,230,0.08); border-color: rgba(189,214,230,0.15); color: var(--navy); }
+[data-theme="dark"] .quick-nav-btn:hover { background: rgba(189,214,230,0.15); }
+.quick-nav-menu { display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 8px; background: var(--bg-surface); border: 1px solid var(--card-border); border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.15); padding: 8px 0; min-width: 260px; max-height: 70vh; overflow-y: auto; z-index: 300; }
+.quick-nav-menu.open { display: block; }
+.quick-nav-menu .qn-group { font-family: var(--font-m); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--taupe); padding: 10px 16px 4px; }
+.quick-nav-menu .qn-item { display: flex; align-items: center; gap: 8px; padding: 8px 16px; font-family: var(--font-d); font-size: 13px; color: var(--text); cursor: pointer; transition: background 0.15s; text-decoration: none; border: none; background: none; width: 100%; text-align: left; }
+.quick-nav-menu .qn-item:hover { background: rgba(0,48,87,0.06); }
+.quick-nav-menu .qn-item .qn-num { font-family: var(--font-m); font-size: 11px; color: var(--taupe); min-width: 28px; }
+[data-theme="dark"] .quick-nav-menu { background: #141B2D; border-color: rgba(189,214,230,0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+[data-theme="dark"] .quick-nav-menu .qn-item:hover { background: rgba(189,214,230,0.08); }
+
 /* Back-to-slide button for appendix slides */
 .appendix-back-btn {
   position: fixed; top: 16px; right: 20px; z-index: 200;
@@ -4305,9 +4320,49 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
 <div class="nav-bar">
   <img src="assets/logos/motj-logo-horizontal.png" alt="MOTJ" class="nav-logo">
-  <div class="slide-counter" id="slideCounter">01 / 18</div>
+  <div class="slide-counter" id="slideCounter">01 / 22</div>
   <div class="act-label" id="actLabel">ACT 1: THE HOOK</div>
   <div class="nav-controls">
+    <div class="quick-nav">
+      <button class="quick-nav-btn" onclick="toggleQuickNav()" title="Quick navigation">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        NAV
+      </button>
+      <div class="quick-nav-menu" id="quickNavMenu">
+        <div class="qn-group">Act 1: The Hook</div>
+        <button class="qn-item" onclick="qnGo(0)"><span class="qn-num">01</span>Title / Hero</button>
+        <button class="qn-item" onclick="qnGo(1)"><span class="qn-num">02</span>The Problem</button>
+        <button class="qn-item" onclick="qnGo(2)"><span class="qn-num">03</span>Team: Core</button>
+        <button class="qn-item" onclick="qnGo(3)"><span class="qn-num">04</span>Team: Academic</button>
+        <button class="qn-item" onclick="qnGo(4)"><span class="qn-num">05</span>Team: Advisory</button>
+        <button class="qn-item" onclick="qnGo(5)"><span class="qn-num">06</span>Cognitive Twist</button>
+        <button class="qn-item" onclick="qnGo(6)"><span class="qn-num">07</span>Value Prop</button>
+        <div class="qn-group">Act 2: The Experience</div>
+        <button class="qn-item" onclick="qnGo(7)"><span class="qn-num">08</span>Sage Showcase</button>
+        <button class="qn-item" onclick="qnGo(8)"><span class="qn-num">09</span>Visitor Journey</button>
+        <button class="qn-item" onclick="qnGo(9)"><span class="qn-num">10</span>Architecture</button>
+        <button class="qn-item" onclick="qnGo(10)"><span class="qn-num">11</span>Sample Session</button>
+        <button class="qn-item" onclick="qnGo(11)"><span class="qn-num">12</span>Two Configurations</button>
+        <button class="qn-item" onclick="qnGo(12)"><span class="qn-num">13</span>Physical Space</button>
+        <button class="qn-item" onclick="qnGo(13)"><span class="qn-num">14</span>AI & Context Engineering</button>
+        <button class="qn-item" onclick="qnGo(14)"><span class="qn-num">15</span>Debate Framework</button>
+        <div class="qn-group">Act 3: Why It Works</div>
+        <button class="qn-item" onclick="qnGo(15)"><span class="qn-num">16</span>POC (Rambam)</button>
+        <button class="qn-item" onclick="qnGo(16)"><span class="qn-num">17</span>70/30 Risk</button>
+        <button class="qn-item" onclick="qnGo(17)"><span class="qn-num">18</span>Competitive</button>
+        <button class="qn-item" onclick="qnGo(18)"><span class="qn-num">19</span>EdTech</button>
+        <div class="qn-group">Act 4: The Ask</div>
+        <button class="qn-item" onclick="qnGo(19)"><span class="qn-num">20</span>Roadmap</button>
+        <button class="qn-item" onclick="qnGo(20)"><span class="qn-num">21</span>Business Case</button>
+        <button class="qn-item" onclick="qnGo(21)"><span class="qn-num">22</span>CTA</button>
+        <div class="qn-group">Appendix</div>
+        <button class="qn-item" onclick="qnGo('appendix-tech')"><span class="qn-num">A</span>Technical Architecture</button>
+        <button class="qn-item" onclick="qnGo('appendix-modes')"><span class="qn-num">B</span>13 Thinking Modes</button>
+        <button class="qn-item" onclick="qnGo('appendix-program')"><span class="qn-num">P</span>Program Scope</button>
+        <button class="qn-item" onclick="qnGo('appendix-poc')"><span class="qn-num">Q</span>POC Definition</button>
+        <button class="qn-item" onclick="qnGo('sage-library')"><span class="qn-num">E</span>Sage Library (80)</button>
+      </div>
+    </div>
     <button class="lang-toggle" id="langToggle" onclick="toggleLang()" title="Toggle language">EN / HE</button>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">
       <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
@@ -4397,6 +4452,25 @@ function goToAppendix(id) {
     }
   }
 }
+
+function toggleQuickNav() {
+  var menu = document.getElementById('quickNavMenu');
+  menu.classList.toggle('open');
+}
+function qnGo(target) {
+  document.getElementById('quickNavMenu').classList.remove('open');
+  if (typeof target === 'number') {
+    showSlide(target);
+  } else {
+    goToAppendix(target);
+  }
+}
+document.addEventListener('click', function(e) {
+  var nav = document.querySelector('.quick-nav');
+  if (nav && !nav.contains(e.target)) {
+    document.getElementById('quickNavMenu').classList.remove('open');
+  }
+});
 
 function backFromAppendix() {
   if (typeof window._appendixSourceSlide === 'number') {
