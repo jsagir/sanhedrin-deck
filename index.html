@@ -751,6 +751,41 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 [data-theme="dark"] .narration-btn.playing {
   background: var(--navy);
 }
+
+/* ================================================================
+   SOW APPENDIX - Program Document (Appendix P)
+   ================================================================ */
+.slide--appendix { overflow-y: auto; }
+.sow-doc { max-width: 900px; margin: 0 auto; padding: 40px 48px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 4px; }
+.sow-sticky { position: sticky; top: 0; z-index: 10; background: var(--bg); padding: 16px 0 0; border-bottom: 1px solid var(--card-border); backdrop-filter: blur(12px); }
+.sow-sticky h2 { margin-bottom: 6px; font-size: 32px; font-weight: 700; color: var(--navy); }
+.sow-sticky-meta { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; font-family: var(--font-m); }
+.sow-toc-row { display: flex; align-items: center; gap: 8px; padding: 12px 0; flex-wrap: wrap; }
+.sow-toc-row a { font-family: var(--font-m); font-size: 13px; color: var(--navy); letter-spacing: 1px; padding: 7px 14px; border: 1px solid var(--blue-dim); border-radius: 2px; text-decoration: none; transition: background 0.2s, border-color 0.2s; white-space: nowrap; }
+.sow-toc-row a:hover { background: rgba(0,48,87,0.06); border-color: var(--navy); }
+[data-theme="dark"] .sow-toc-row a { color: var(--blue); border-color: rgba(189,214,230,0.2); }
+[data-theme="dark"] .sow-toc-row a:hover { background: rgba(189,214,230,0.08); border-color: var(--blue); }
+[data-theme="dark"] .sow-doc { background: #141B2D; border-color: rgba(189,214,230,0.1); }
+[data-theme="dark"] .sow-sticky { background: #141B2D; }
+.sow-body { padding: 40px 0; }
+.sow-body h3 { font: 600 20px/1.4 var(--font-m); color: var(--navy); margin: 40px 0 16px; text-transform: uppercase; letter-spacing: 2px; }
+.sow-body h4 { font: 600 18px/1.4 var(--font-d); color: var(--blue); margin: 28px 0 12px; }
+[data-theme="dark"] .sow-body h4 { color: var(--blue); }
+.sow-body p { font: 400 16px/1.75 var(--font-d); color: var(--text-sub); margin-bottom: 16px; }
+[data-theme="dark"] .sow-body p { color: var(--text-sub); }
+.sow-body ul { padding-left: 0; margin-bottom: 20px; list-style: none; }
+.sow-body li { font: 400 15px/1.7 var(--font-d); color: var(--text-sub); margin-bottom: 8px; padding-left: 24px; position: relative; }
+.sow-body li::before { content: '\2192'; position: absolute; left: 0; color: var(--navy); font-weight: 600; }
+[data-theme="dark"] .sow-body li { color: var(--text-sub); }
+[data-theme="dark"] .sow-body li::before { color: var(--blue); }
+.sow-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
+.sow-body th { font-family: var(--font-m); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--navy); border-bottom: 1px solid var(--navy); padding: 12px 10px; text-align: left; }
+.sow-body td { padding: 12px 10px; border-bottom: 1px solid var(--card-border); color: var(--text-sub); font-size: 15px; }
+.sow-body tr:nth-child(even) td { background: rgba(0,48,87,0.03); }
+[data-theme="dark"] .sow-body th { color: var(--blue); border-bottom-color: var(--blue); }
+[data-theme="dark"] .sow-body td { color: var(--text-sub); border-bottom-color: rgba(189,214,230,0.08); }
+[data-theme="dark"] .sow-body tr:nth-child(even) td { background: rgba(189,214,230,0.04); }
+.sow-footer { text-align: center; font: 400 11px/1 var(--font-m); color: var(--text-dim); letter-spacing: 1px; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--card-border); }
 </style>
 </head>
 <body>
@@ -842,13 +877,13 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           <div style="font-size: 16px; font-weight: 700; color: var(--navy);">Daniel Muller, PhD</div>
           <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">Project Manager & AI / Tech Lead, CTO</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">PhD in AI and Decision Making and Planning in AI with extensive experience in engineering, data science, and R&D leadership across the defense, finance, and retail industries. CTO of MileZero and former CTO at ShopperAI and Be The Bank (BTB), with 18 years of experience in R&D, including 12 years in AI.</div>
+          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">PhD in AI and Decision Making and Planning in AI with extensive experience in engineering, data science, and R&D leadership across the defense, finance, and retail industries. CTO of MileZero and former CTO at ShopperAI and Be The Bank (BTB), with 18 years of experience in R&D, including 12 years in AI. Co-leads the team creating The Maimonides Pavilion AI and AV integration model.</div>
         </div>
         <div class="card" style="padding: 20px 16px; text-align: center;">
           <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           <div style="font-size: 16px; font-weight: 700; color: var(--navy);">Jonathan Sagir, MBA</div>
           <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">Project Operations & Coordination</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">Skilled consultant for early-stage technology innovation teams and founder of the PWS ideation program. Lecturer on problem discovery, validation, and go-to-market strategies.</div>
+          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">Skilled consultant for early-stage technology innovation teams and founder of the PWS ideation program. Lecturer on problem discovery, validation, and go-to-market strategies. Co-leads the team creating The Maimonides Pavilion AI and AV integration model.</div>
         </div>
         <div class="card" style="padding: 20px 16px; text-align: center;">
           <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
@@ -874,13 +909,13 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           <div style="font-size: 16px; font-weight: 700; color: var(--navy);">ד"ר דניאל מולר</div>
           <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">מנהל פרויקט ומוביל AI/טכנולוגיה, CTO</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">דוקטורט ב-AI, קבלת החלטות ותכנון. ניסיון נרחב בהנדסה, מדעי נתונים והובלת R&D בתעשיות הביטחון, הפיננסים והקמעונאות. CTO ב-MileZero, לשעבר CTO ב-ShopperAI ו-BTB. 18 שנות R&D, 12 ב-AI.</div>
+          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">דוקטורט ב-AI, קבלת החלטות ותכנון. ניסיון נרחב בהנדסה, מדעי נתונים והובלת R&D בתעשיות הביטחון, הפיננסים והקמעונאות. CTO ב-MileZero, לשעבר CTO ב-ShopperAI ו-BTB. 18 שנות R&D, 12 ב-AI. שותף בהובלת הצוות היוצר את מודל שילוב ה-AI וה-AV של ביתן הרמב"ם.</div>
         </div>
         <div class="card" style="padding: 20px 16px; text-align: center;">
           <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
           <div style="font-size: 16px; font-weight: 700; color: var(--navy);">יונתן שגיר, MBA</div>
           <div style="font-size: 12px; color: var(--blue); font-weight: 600; margin: 4px 0;">תפעול ותיאום פרויקט</div>
-          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">יועץ מנוסה לצוותי חדשנות טכנולוגית בשלבים מוקדמים ומייסד תוכנית PWS. מרצה לגילוי בעיות, ולידציה ואסטרטגיות כניסה לשוק.</div>
+          <div style="font-size: 11px; color: var(--text-sub); line-height: 1.5; margin-top: 6px;">יועץ מנוסה לצוותי חדשנות טכנולוגית בשלבים מוקדמים ומייסד תוכנית PWS. מרצה לגילוי בעיות, ולידציה ואסטרטגיות כניסה לשוק. שותף בהובלת הצוות היוצר את מודל שילוב ה-AI וה-AV של ביתן הרמב"ם.</div>
         </div>
         <div class="card" style="padding: 20px 16px; text-align: center;">
           <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), #004680); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
@@ -1859,63 +1894,93 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     SLIDE 15: Roadmap - Statement with timeline cards
+     SLIDE 15: Roadmap - Statement with timeline cards (6 phases)
      ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="lang-en">
-    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 36px;">
       <p class="label reveal">Execution Plan</p>
       <h2 class="reveal r1">Roadmap & Milestones</h2>
-      <div style="display: flex; gap: 20px; margin-top: 36px; width: 100%; max-width: 1100px; position: relative;" class="reveal r2">
-        <div style="position: absolute; top: 50%; left: 5%; right: 5%; height: 2px; background: var(--blue); z-index: 0;"></div>
-        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
-          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Phase 1 (Now)</div>
-          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">POC</div>
-          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;"><strong>WhatsApp group</strong> with <span style="font-family: var(--font-m);">3</span> agents + <span style="font-family: var(--font-m);">2</span> humans to test <strong>live dynamics</strong> and <span style="font-family: var(--font-m);">A2A</span> mechanics.</div>
+      <!-- Row 1: Pre-POC, Donor Presentations, POC -->
+      <div style="display: flex; gap: 16px; margin-top: 28px; width: 100%; max-width: 1100px; position: relative;" class="reveal r2">
+        <div style="position: absolute; top: 50%; left: 3%; right: 3%; height: 2px; background: var(--blue); z-index: 0;"></div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Pre-POC (Now)</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">Internal Presentation</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>Internal deck</strong> and stakeholder alignment by <strong>end of March 2026.</strong></div>
         </div>
-        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
-          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Phase 2 (3 Months)</div>
-          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">Working Demo</div>
-          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;"><strong>Text-based demo</strong> with <span style="font-family: var(--font-m);">5</span> historical characters and the orchestrator logic.</div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Apr - May 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">Donor Presentations</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">Tailored presentations for <strong>potential donors</strong> with <strong>per-donor customization.</strong></div>
         </div>
-        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
-          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Phase 3 (6 Months)</div>
-          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">Prototype</div>
-          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;"><strong>Full prototype</strong> with <strong>physical space mockup</strong> and <span style="font-family: var(--font-m);">AV</span> testing.</div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">May - Jun 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">RFP & Vendor Selection</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>Price quotes</strong>, supplier briefings, and <strong>vendor selection</strong> round. <a href="#appendix-program" onclick="goToAppendix('appendix-program');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">View Full Program Scope</a></div>
         </div>
-        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
-          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Phase 4 (12 Months)</div>
-          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">Deployment</div>
-          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;"><strong>Launch-ready</strong> at MOTJ, ready for <span style="font-family: var(--font-m);">100,000+</span> <strong>visitors.</strong></div>
+      </div>
+      <!-- Row 2: POC, Working Demo, Prototype -->
+      <div style="display: flex; gap: 16px; margin-top: 16px; width: 100%; max-width: 1100px; position: relative;" class="reveal r3">
+        <div style="position: absolute; top: 50%; left: 3%; right: 3%; height: 2px; background: var(--blue); z-index: 0;"></div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Jun - Aug 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">POC</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>WhatsApp group</strong> with <span style="font-family: var(--font-m);">3</span> agents + <span style="font-family: var(--font-m);">2</span> humans to test <strong>live dynamics</strong> and <span style="font-family: var(--font-m);">A2A</span> mechanics.</div>
+        </div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Sep - Nov 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">Working Demo</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>Text-based demo</strong> with <span style="font-family: var(--font-m);">5</span> historical characters and the <strong>orchestrator logic.</strong></div>
+        </div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Dec 2026 - May 2027</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">Prototype & Deploy</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>Full prototype</strong> with <strong>physical space mockup</strong>, <span style="font-family: var(--font-m);">AV</span> testing, and <strong>museum deployment.</strong></div>
         </div>
       </div>
     </div>
   </div>
   <div class="lang-he" dir="rtl">
-    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 36px;">
       <p class="label reveal">תוכנית ביצוע</p>
       <h2 class="reveal r1">מפת דרכים ואבני דרך</h2>
-      <div style="display: flex; gap: 20px; margin-top: 36px; width: 100%; max-width: 1100px; position: relative;" class="reveal r2">
-        <div style="position: absolute; top: 50%; left: 5%; right: 5%; height: 2px; background: var(--blue); z-index: 0;"></div>
-        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
-          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">שלב 1 (עכשיו)</div>
-          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">POC</div>
-          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;"><strong>קבוצת WhatsApp</strong> עם <span style="font-family: var(--font-m);">3</span> סוכנים + <span style="font-family: var(--font-m);">2</span> בני אדם לבדיקת <strong>דינמיקות חיות</strong> ומכניקת <span style="font-family: var(--font-m);">A2A</span>.</div>
+      <!-- Row 1 -->
+      <div style="display: flex; gap: 16px; margin-top: 28px; width: 100%; max-width: 1100px; position: relative;" class="reveal r2">
+        <div style="position: absolute; top: 50%; left: 3%; right: 3%; height: 2px; background: var(--blue); z-index: 0;"></div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">טרום-POC (עכשיו)</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">מצגת פנימית</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>דק פנימי</strong> ויישור קו עם בעלי עניין עד <strong>סוף מרץ 2026.</strong></div>
         </div>
-        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
-          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">שלב 2 (3 חודשים)</div>
-          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">דמו עובד</div>
-          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;"><strong>דמו טקסטואלי</strong> עם <span style="font-family: var(--font-m);">5</span> דמויות היסטוריות ולוגיקת התזמורת.</div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">אפר' - מאי 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">מצגות לתורמים</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">מצגות מותאמות ל<strong>תורמים פוטנציאליים</strong> עם <strong>התאמה אישית לכל תורם.</strong></div>
         </div>
-        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
-          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">שלב 3 (6 חודשים)</div>
-          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">אב-טיפוס</div>
-          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;"><strong>אב-טיפוס מלא</strong> של החוויה עם <strong>מוקאפ של המרחב הפיזי</strong> ובדיקות <span style="font-family: var(--font-m);">AV</span>.</div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">מאי - יוני 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">RFP ובחירת ספקים</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>הצעות מחיר</strong>, תדריכי ספקים, וסבב <strong>בחירת ספקים.</strong> <a href="#appendix-program" onclick="goToAppendix('appendix-program');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">צפה בהיקף התוכנית המלא</a></div>
         </div>
-        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 28px;">
-          <div style="font-family: var(--font-m); font-size: 12px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">שלב 4 (12 חודשים)</div>
-          <div style="font-size: 28px; font-weight: 700; color: var(--navy); margin-top: 8px;">השקה</div>
-          <div style="font-size: 18px; color: var(--text-sub); margin-top: 10px; line-height: 1.4;"><strong>מוכן להשקה</strong> במוט"ל, מותאם ל-<span style="font-family: var(--font-m);">100,000+</span> <strong>מבקרים.</strong></div>
+      </div>
+      <!-- Row 2 -->
+      <div style="display: flex; gap: 16px; margin-top: 16px; width: 100%; max-width: 1100px; position: relative;" class="reveal r3">
+        <div style="position: absolute; top: 50%; left: 3%; right: 3%; height: 2px; background: var(--blue); z-index: 0;"></div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">יוני - אוג' 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">POC</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>קבוצת WhatsApp</strong> עם <span style="font-family: var(--font-m);">3</span> סוכנים + <span style="font-family: var(--font-m);">2</span> בני אדם לבדיקת <strong>דינמיקות חיות</strong> ומכניקת <span style="font-family: var(--font-m);">A2A</span>.</div>
+        </div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">ספט' - נוב' 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">דמו עובד</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>דמו טקסטואלי</strong> עם <span style="font-family: var(--font-m);">5</span> דמויות היסטוריות ו<strong>לוגיקת התזמורת.</strong></div>
+        </div>
+        <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">דצמ' 2026 - מאי 2027</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">אב-טיפוס והשקה</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>אב-טיפוס מלא</strong> עם <strong>מוקאפ מרחב פיזי</strong>, בדיקות <span style="font-family: var(--font-m);">AV</span>, ו<strong>פריסה במוזיאון.</strong></div>
         </div>
       </div>
     </div>
@@ -3458,6 +3523,324 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   </div>
 </section>
 
+<!-- ============================================================
+     APPENDIX P: Sanhedrin Program - Executive Scope, Timeline & Effort
+     ============================================================ -->
+<section class="slide slide--appendix" data-act="APPENDIX" data-appendix="true" id="appendix-program">
+  <div class="lang-en">
+    <div class="layout-statement" style="padding: 0; align-items: stretch;">
+      <div class="sow-doc">
+        <div class="sow-sticky">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px">
+            <img src="assets/logos/motj-logo-horizontal.png" alt="MOTJ" style="height:32px;width:auto">
+            <div class="label" style="color:var(--navy);margin-bottom:0">APPENDIX P</div>
+          </div>
+          <h2>Sanhedrin Program</h2>
+          <div class="sow-sticky-meta">Executive Scope, Timeline & Effort Estimation | MOTJ | 2026-2027 | Confidential</div>
+          <div class="sow-toc-row">
+            <a href="#sow-p1" onclick="sowJump(event,'sow-p1')">1. Purpose</a>
+            <a href="#sow-p2" onclick="sowJump(event,'sow-p2')">2. Phases</a>
+            <a href="#sow-p3" onclick="sowJump(event,'sow-p3')">3. Experience & Tech</a>
+            <a href="#sow-p4" onclick="sowJump(event,'sow-p4')">4. RFP & Suppliers</a>
+            <a href="#sow-p5" onclick="sowJump(event,'sow-p5')">5. Delivery Scope</a>
+            <a href="#sow-p6" onclick="sowJump(event,'sow-p6')">6. Timeline</a>
+          </div>
+        </div>
+        <div class="sow-body">
+
+          <h3 id="sow-p1">1. Purpose</h3>
+          <p>The Sanhedrin Program is an initiative at the Museum of Tolerance Jerusalem aimed at developing an AI-driven civic discourse experience in which multiple AI personas engage in structured debates with visitors and with each other.</p>
+          <p>The experience draws inspiration from the historical Sanhedrin and Jewish intellectual debate traditions. Visitors will interact with AI avatars representing different perspectives, enabling dynamic dialogue around complex ethical, philosophical, and societal questions.</p>
+          <p>The system will combine large language models, structured debate logic, and interactive experience design integrated into the museum environment.</p>
+
+          <h3 id="sow-p2">2. Program Phases</h3>
+          <table>
+            <thead><tr><th>Phase</th><th>Period</th></tr></thead>
+            <tbody>
+              <tr><td>Experience & Technology Definition</td><td>Mar - May 2026</td></tr>
+              <tr><td>RFP Definition & Supplier Selection</td><td>May - Jun 2026</td></tr>
+              <tr><td>Sanhedrin Delivery</td><td>Jun 2026 - May 2027</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="sow-p3">3. Experience & Technology Definition</h3>
+          <p><strong>Period:</strong> March - May 2026</p>
+          <p>This phase defines the conceptual and technological foundations of the Sanhedrin experience before development begins.</p>
+
+          <h4>Experience Definition</h4>
+          <ul>
+            <li>Define the Sanhedrin experience structure and visitor journey</li>
+            <li>Define debate formats, AI personas, and interaction flows</li>
+            <li>Define moderation and debate mechanics between AI avatars and visitors</li>
+            <li>Align the experience with museum narrative objectives</li>
+          </ul>
+
+          <h4>Technology Definition</h4>
+          <ul>
+            <li>Define AI architecture and technology stack</li>
+            <li>Define LLM interaction patterns and debate orchestration logic</li>
+            <li>Define integration architecture with experience systems</li>
+          </ul>
+
+          <h4>General Specification</h4>
+          <ul>
+            <li>Produce high-level system specification for the Sanhedrin experience</li>
+            <li>Define system interfaces and integration principles</li>
+            <li>Produce documentation that will guide supplier development</li>
+          </ul>
+
+          <h4>Investor Presentation</h4>
+          <ul>
+            <li>Prepare presentation materials for potential investors</li>
+            <li>Define the technological vision and experiential value proposition</li>
+            <li>Support fundraising activities related to the Sanhedrin project</li>
+          </ul>
+
+          <h3 id="sow-p4">4. RFP Definition & Supplier Selection</h3>
+          <p><strong>Period:</strong> May - June 2026</p>
+          <p>This phase covers the procurement and supplier selection process for the Sanhedrin system. Activities include:</p>
+          <ul>
+            <li>Definition of the Sanhedrin development scope</li>
+            <li>Preparation of the RFP documentation</li>
+            <li>Definition of functional and technical requirements</li>
+            <li>Identification and outreach to potential suppliers</li>
+            <li>Supplier briefings and clarifications</li>
+            <li>Proposal evaluation and comparison</li>
+            <li>Selection of multiple suppliers where required</li>
+            <li>Negotiation and recommendation for final supplier selection</li>
+          </ul>
+
+          <h3 id="sow-p5">5. Sanhedrin Delivery - Executive Scope</h3>
+          <p>The Sanhedrin delivery scope covers AI leadership, project management, cross-experience integration management, and delivery governance for the deployment of the Sanhedrin experience.</p>
+          <p>Hands-on development and system implementation are executed by selected development suppliers and by MOTJ experience teams responsible for the visual and interaction layers of the exhibition.</p>
+
+          <h4>AI Experience Definition & Debate Logic</h4>
+          <ul>
+            <li>Define AI personas and debate structures</li>
+            <li>Define interaction flows between avatars and visitors</li>
+            <li>Define debate orchestration logic and dialogue management</li>
+            <li>Ensure narrative coherence across debates</li>
+          </ul>
+
+          <h4>AI Architecture & Methodology</h4>
+          <ul>
+            <li>Define LLM usage patterns and orchestration strategy</li>
+            <li>Define system behavior rules and AI constraints</li>
+            <li>Ensure architectural consistency across AI components</li>
+          </ul>
+
+          <h4>Project Management & Delivery Governance</h4>
+          <ul>
+            <li>Define project milestones and delivery roadmap</li>
+            <li>Manage project timelines and progress tracking</li>
+            <li>Coordinate delivery milestones across multiple teams</li>
+            <li>Manage risk mitigation and decision processes</li>
+          </ul>
+
+          <h4>Cross-Team Alignment</h4>
+          <ul>
+            <li>Manage integration with experience teams developing visual and spatial elements</li>
+            <li>Coordinate sequencing between AI components and experience layers</li>
+            <li>Ensure alignment between system behavior and the designed visitor experience</li>
+          </ul>
+
+          <h4>Supplier Coordination</h4>
+          <ul>
+            <li>Provide architectural direction to development suppliers</li>
+            <li>Review supplier design decisions and AI implementation plans</li>
+            <li>Ensure supplier deliverables align with project objectives</li>
+          </ul>
+
+          <h4>Quality, Ethics & Experience Validation</h4>
+          <ul>
+            <li>Validate debate quality and visitor interaction design</li>
+            <li>Review ethical considerations and potential failure scenarios</li>
+            <li>Approve system readiness prior to museum deployment</li>
+          </ul>
+
+          <h3 id="sow-p6">6. Delivery Timeline & Effort</h3>
+          <p><strong>Period:</strong> June 2026 - May 2027</p>
+          <table>
+            <thead><tr><th>Month</th><th>Scope Focus</th></tr></thead>
+            <tbody>
+              <tr><td>Jun 2026</td><td>Delivery Planning, AI Architecture Alignment, Supplier Onboarding</td></tr>
+              <tr><td>Jul 2026</td><td>Debate Logic Definition, Interface Definition, Cross-Team Alignment</td></tr>
+              <tr><td>Aug 2026</td><td>Project Management, Supplier Coordination, Integration Management</td></tr>
+              <tr><td>Sep 2026</td><td>Project Management, Debate Logic Alignment, Integration Management</td></tr>
+              <tr><td>Oct 2026</td><td>Project Management, Integration Management, Quality & Ethics Review</td></tr>
+              <tr><td>Nov 2026</td><td>Project Management, Integration Management, Quality & Ethics Review</td></tr>
+              <tr><td>Dec 2026</td><td>Project Management, Cross-Team Alignment, Pre-Integration Readiness</td></tr>
+              <tr><td>Jan 2027</td><td>System Integration Management, Multi-Team Coordination, Debugging Cycles</td></tr>
+              <tr><td>Feb 2027</td><td>Integration Validation, System Behavior Tuning, Debate Logic Adjustments</td></tr>
+              <tr><td>Mar 2027</td><td>Stabilization, End-to-End Testing, Visitor Flow Validation</td></tr>
+              <tr><td>Apr 2027</td><td>Acceptance Testing, Ethical & Experience Validation, Final Adjustments</td></tr>
+              <tr><td>May 2027</td><td>Deployment Readiness, Final Integration, Delivery Wrap-Up</td></tr>
+            </tbody>
+          </table>
+
+          <div class="sow-footer">MOTJ - Sanhedrin Program - Executive Scope, Timeline & Effort Estimation - Confidential</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="padding: 0; align-items: stretch;">
+      <div class="sow-doc">
+        <div class="sow-sticky">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px">
+            <img src="assets/logos/motj-logo-horizontal.png" alt="MOTJ" style="height:32px;width:auto">
+            <div class="label" style="color:var(--navy);margin-bottom:0">נספח P</div>
+          </div>
+          <h2>תוכנית סנהדרין</h2>
+          <div class="sow-sticky-meta">היקף ביצועי, לוח זמנים והערכת מאמץ | מוט"ל | 2027-2026 | סודי</div>
+          <div class="sow-toc-row">
+            <a href="#sow-p1h" onclick="sowJump(event,'sow-p1h')">1. מטרה</a>
+            <a href="#sow-p2h" onclick="sowJump(event,'sow-p2h')">2. שלבים</a>
+            <a href="#sow-p3h" onclick="sowJump(event,'sow-p3h')">3. חוויה וטכנולוגיה</a>
+            <a href="#sow-p4h" onclick="sowJump(event,'sow-p4h')">4. RFP וספקים</a>
+            <a href="#sow-p5h" onclick="sowJump(event,'sow-p5h')">5. היקף האספקה</a>
+            <a href="#sow-p6h" onclick="sowJump(event,'sow-p6h')">6. לוח זמנים</a>
+          </div>
+        </div>
+        <div class="sow-body">
+
+          <h3 id="sow-p1h">1. מטרה</h3>
+          <p>תוכנית הסנהדרין היא יוזמה במוזיאון הסובלנות ירושלים שמטרתה לפתח חוויית שיח אזרחי מונעת AI, בה מספר פרסונות AI מנהלות דיונים מובנים עם מבקרים וזו עם זו.</p>
+          <p>החוויה שואבת השראה מהסנהדרין ההיסטורית ומסורות הדיון האינטלקטואלי היהודי. מבקרים יתקשרו עם אוואטרים של AI המייצגים נקודות מבט שונות, ומאפשרים דיאלוג דינמי סביב שאלות אתיות, פילוסופיות וחברתיות מורכבות.</p>
+          <p>המערכת תשלב מודלי שפה גדולים, לוגיקת דיון מובנית ועיצוב חוויה אינטראקטיבית המשולבת בסביבת המוזיאון.</p>
+
+          <h3 id="sow-p2h">2. שלבי התוכנית</h3>
+          <table>
+            <thead><tr><th>שלב</th><th>תקופה</th></tr></thead>
+            <tbody>
+              <tr><td>הגדרת חוויה וטכנולוגיה</td><td>מרץ - מאי 2026</td></tr>
+              <tr><td>הגדרת RFP ובחירת ספקים</td><td>מאי - יוני 2026</td></tr>
+              <tr><td>אספקת הסנהדרין</td><td>יוני 2026 - מאי 2027</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="sow-p3h">3. הגדרת חוויה וטכנולוגיה</h3>
+          <p><strong>תקופה:</strong> מרץ - מאי 2026</p>
+          <p>שלב זה מגדיר את היסודות הרעיוניים והטכנולוגיים של חוויית הסנהדרין לפני תחילת הפיתוח.</p>
+
+          <h4>הגדרת חוויה</h4>
+          <ul>
+            <li>הגדרת מבנה חוויית הסנהדרין ומסע המבקר</li>
+            <li>הגדרת פורמטי דיון, פרסונות AI וזרימות אינטראקציה</li>
+            <li>הגדרת מנגנוני מתינות ודיון בין אוואטרי AI למבקרים</li>
+            <li>יישור החוויה עם מטרות הנרטיב של המוזיאון</li>
+          </ul>
+
+          <h4>הגדרה טכנולוגית</h4>
+          <ul>
+            <li>הגדרת ארכיטקטורת AI ומחסנית טכנולוגית</li>
+            <li>הגדרת דפוסי אינטראקציה של LLM ולוגיקת תזמור דיון</li>
+            <li>הגדרת ארכיטקטורת אינטגרציה עם מערכות החוויה</li>
+          </ul>
+
+          <h4>מפרט כללי</h4>
+          <ul>
+            <li>הפקת מפרט מערכת ברמה גבוהה לחוויית הסנהדרין</li>
+            <li>הגדרת ממשקי מערכת ועקרונות אינטגרציה</li>
+            <li>הפקת תיעוד שינחה את פיתוח הספקים</li>
+          </ul>
+
+          <h4>מצגת משקיעים</h4>
+          <ul>
+            <li>הכנת חומרי מצגת למשקיעים פוטנציאליים</li>
+            <li>הגדרת החזון הטכנולוגי והצעת הערך החווייתית</li>
+            <li>תמיכה בפעילויות גיוס הון הקשורות לפרויקט הסנהדרין</li>
+          </ul>
+
+          <h3 id="sow-p4h">4. הגדרת RFP ובחירת ספקים</h3>
+          <p><strong>תקופה:</strong> מאי - יוני 2026</p>
+          <p>שלב זה מכסה את תהליך הרכש ובחירת הספקים למערכת הסנהדרין. הפעילויות כוללות:</p>
+          <ul>
+            <li>הגדרת היקף פיתוח הסנהדרין</li>
+            <li>הכנת תיעוד ה-RFP</li>
+            <li>הגדרת דרישות פונקציונליות וטכניות</li>
+            <li>זיהוי ופנייה לספקים פוטנציאליים</li>
+            <li>תדריכי ספקים והבהרות</li>
+            <li>הערכה והשוואת הצעות</li>
+            <li>בחירת מספר ספקים לפי הצורך</li>
+            <li>משא ומתן והמלצה לבחירת ספק סופית</li>
+          </ul>
+
+          <h3 id="sow-p5h">5. אספקת הסנהדרין - היקף ביצועי</h3>
+          <p>היקף אספקת הסנהדרין מכסה הובלת AI, ניהול פרויקט, ניהול אינטגרציה בין-חוויות וממשל אספקה לפריסת חוויית הסנהדרין.</p>
+          <p>הפיתוח המעשי ויישום המערכת מבוצעים על ידי ספקי פיתוח נבחרים ועל ידי צוותי החוויה של מוט"ל האחראים לשכבות החזותיות והאינטראקטיביות של התערוכה.</p>
+
+          <h4>הגדרת חוויית AI ולוגיקת דיון</h4>
+          <ul>
+            <li>הגדרת פרסונות AI ומבני דיון</li>
+            <li>הגדרת זרימות אינטראקציה בין אוואטרים למבקרים</li>
+            <li>הגדרת לוגיקת תזמור דיון וניהול דיאלוג</li>
+            <li>הבטחת קוהרנטיות נרטיבית לאורך הדיונים</li>
+          </ul>
+
+          <h4>ארכיטקטורת AI ומתודולוגיה</h4>
+          <ul>
+            <li>הגדרת דפוסי שימוש ב-LLM ואסטרטגיית תזמור</li>
+            <li>הגדרת כללי התנהגות מערכת ומגבלות AI</li>
+            <li>הבטחת עקביות ארכיטקטונית בין רכיבי AI</li>
+          </ul>
+
+          <h4>ניהול פרויקט וממשל אספקה</h4>
+          <ul>
+            <li>הגדרת אבני דרך ומפת דרכים לאספקה</li>
+            <li>ניהול לוחות זמנים ומעקב התקדמות</li>
+            <li>תיאום אבני דרך אספקה בין צוותים מרובים</li>
+            <li>ניהול הפחתת סיכונים ותהליכי קבלת החלטות</li>
+          </ul>
+
+          <h4>יישור בין-צוותי</h4>
+          <ul>
+            <li>ניהול אינטגרציה עם צוותי חוויה המפתחים אלמנטים ויזואליים ומרחביים</li>
+            <li>תיאום רצף בין רכיבי AI לשכבות החוויה</li>
+            <li>הבטחת יישור בין התנהגות המערכת לחוויית המבקר המעוצבת</li>
+          </ul>
+
+          <h4>תיאום ספקים</h4>
+          <ul>
+            <li>מתן כיוון ארכיטקטוני לספקי פיתוח</li>
+            <li>סקירת החלטות עיצוב ותוכניות יישום AI של ספקים</li>
+            <li>הבטחה שתוצרי הספקים מתיישרים עם יעדי הפרויקט</li>
+          </ul>
+
+          <h4>איכות, אתיקה ואימות חוויה</h4>
+          <ul>
+            <li>אימות איכות הדיון ועיצוב אינטראקציית המבקר</li>
+            <li>סקירת שיקולים אתיים ותרחישי כשל אפשריים</li>
+            <li>אישור מוכנות המערכת לפני פריסה במוזיאון</li>
+          </ul>
+
+          <h3 id="sow-p6h">6. לוח זמנים ומאמץ אספקה</h3>
+          <p><strong>תקופה:</strong> יוני 2026 - מאי 2027</p>
+          <table>
+            <thead><tr><th>חודש</th><th>מוקד היקף</th></tr></thead>
+            <tbody>
+              <tr><td>יוני 2026</td><td>תכנון אספקה, יישור ארכיטקטורת AI, קליטת ספקים</td></tr>
+              <tr><td>יולי 2026</td><td>הגדרת לוגיקת דיון, הגדרת ממשקים, יישור בין-צוותי</td></tr>
+              <tr><td>אוגוסט 2026</td><td>ניהול פרויקט, תיאום ספקים, ניהול אינטגרציה</td></tr>
+              <tr><td>ספטמבר 2026</td><td>ניהול פרויקט, יישור לוגיקת דיון, ניהול אינטגרציה</td></tr>
+              <tr><td>אוקטובר 2026</td><td>ניהול פרויקט, ניהול אינטגרציה, סקירת איכות ואתיקה</td></tr>
+              <tr><td>נובמבר 2026</td><td>ניהול פרויקט, ניהול אינטגרציה, סקירת איכות ואתיקה</td></tr>
+              <tr><td>דצמבר 2026</td><td>ניהול פרויקט, יישור בין-צוותי, מוכנות טרום-אינטגרציה</td></tr>
+              <tr><td>ינואר 2027</td><td>ניהול אינטגרציית מערכת, תיאום רב-צוותי, מחזורי דיבאג</td></tr>
+              <tr><td>פברואר 2027</td><td>אימות אינטגרציה, כיוונון התנהגות מערכת, התאמות לוגיקת דיון</td></tr>
+              <tr><td>מרץ 2027</td><td>ייצוב, בדיקות קצה-לקצה, אימות זרימת מבקרים</td></tr>
+              <tr><td>אפריל 2027</td><td>בדיקות קבלה, אימות אתי וחוויתי, התאמות סופיות</td></tr>
+              <tr><td>מאי 2027</td><td>מוכנות לפריסה, אינטגרציה סופית, סגירת אספקה</td></tr>
+            </tbody>
+          </table>
+
+          <div class="sow-footer">מוט"ל - תוכנית סנהדרין - היקף ביצועי, לוח זמנים והערכת מאמץ - סודי</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </div>
 
 <button class="narration-btn" id="narrationBtn" onclick="toggleNarration()" title="Play narration">
@@ -3537,6 +3920,24 @@ function goToSageLibrary() {
       return;
     }
   }
+}
+
+function goToAppendix(id) {
+  var target = document.getElementById(id);
+  if (!target) return;
+  var allSlides = document.querySelectorAll('.slide');
+  for (var i = 0; i < allSlides.length; i++) {
+    if (allSlides[i] === target) {
+      showSlide(i);
+      return;
+    }
+  }
+}
+
+function sowJump(e, id) {
+  e.preventDefault();
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function toggleFullscreen() {
