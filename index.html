@@ -780,6 +780,19 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 [data-theme="dark"] .sow-body li::before { color: var(--blue); }
 .sow-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
 .sow-body th { font-family: var(--font-m); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--navy); border-bottom: 1px solid var(--navy); padding: 12px 10px; text-align: left; }
+/* RTL overrides for Hebrew appendix documents */
+[dir="rtl"] .sow-doc { text-align: right; }
+[dir="rtl"] .sow-body p { text-align: right; }
+[dir="rtl"] .sow-body h3 { text-align: right; }
+[dir="rtl"] .sow-body h4 { text-align: right; }
+[dir="rtl"] .sow-body ul { padding-left: 0; padding-right: 0; }
+[dir="rtl"] .sow-body li { padding-left: 0; padding-right: 24px; }
+[dir="rtl"] .sow-body li::before { left: auto; right: 0; }
+[dir="rtl"] .sow-body th { text-align: right; }
+[dir="rtl"] .sow-body td { text-align: right; }
+[dir="rtl"] .sow-toc-row { direction: rtl; }
+[dir="rtl"] .sow-sticky-meta { text-align: right; }
+[dir="rtl"] .sow-footer { text-align: center; }
 .sow-body td { padding: 12px 10px; border-bottom: 1px solid var(--card-border); color: var(--text-sub); font-size: 15px; }
 .sow-body tr:nth-child(even) td { background: rgba(0,48,87,0.03); }
 [data-theme="dark"] .sow-body th { color: var(--blue); border-bottom-color: var(--blue); }
@@ -3536,7 +3549,8 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
             <div class="label" style="color:var(--navy);margin-bottom:0">APPENDIX P</div>
           </div>
           <h2>Sanhedrin Program</h2>
-          <div class="sow-sticky-meta">Executive Scope, Timeline & Effort Estimation | MOTJ | 2026-2027 | Confidential</div>
+          <div class="sow-sticky-meta">Executive Scope, Timeline & Effort Estimation</div>
+          <div class="sow-sticky-meta" style="margin-top: -8px;">Program: Sanhedrin - AI-Driven Civic Discourse Experience | Role: Strategic Advisor, Project Manager & AI Lead</div>
           <div class="sow-toc-row">
             <a href="#sow-p1" onclick="sowJump(event,'sow-p1')">1. Purpose</a>
             <a href="#sow-p2" onclick="sowJump(event,'sow-p2')">2. Phases</a>
@@ -3692,7 +3706,8 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
             <div class="label" style="color:var(--navy);margin-bottom:0">נספח P</div>
           </div>
           <h2>תוכנית סנהדרין</h2>
-          <div class="sow-sticky-meta">היקף ביצועי, לוח זמנים והערכת מאמץ | מוט"ל | 2027-2026 | סודי</div>
+          <div class="sow-sticky-meta">היקף ביצועי, לוח זמנים והערכת מאמץ</div>
+          <div class="sow-sticky-meta" style="margin-top: -8px;">תוכנית: סנהדרין - חוויית שיח אזרחי מונעת AI | תפקיד: יועץ אסטרטגי, מנהל פרויקט ומוביל AI</div>
           <div class="sow-toc-row">
             <a href="#sow-p1h" onclick="sowJump(event,'sow-p1h')">1. מטרה</a>
             <a href="#sow-p2h" onclick="sowJump(event,'sow-p2h')">2. שלבים</a>
