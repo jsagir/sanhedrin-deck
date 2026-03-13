@@ -525,7 +525,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 .sage-card-voice.playing { box-shadow: 0 0 0 3px var(--blue), 0 0 20px rgba(189,214,230,0.4); }
 .sage-play-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid rgba(189,214,230,0.4); background: rgba(0,48,87,0.6); color: #fff; cursor: pointer; margin: 8px auto 0; transition: background 0.2s; text-decoration: none; position: relative; z-index: 52; }
 .sage-play-btn:hover { background: rgba(0,48,87,0.9); }
-.sage-play-btn.playing { animation: narrationPulse 2s ease-in-out infinite; background: var(--navy); }
+.sage-play-btn.playing { animation: narrationPulse 2s ease-in-out infinite; background: #003057; }
 
 /* === CANVAS ANIMATIONS === */
 .role-network { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.6; }
@@ -710,7 +710,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   box-shadow: 0 2px 12px rgba(0,48,87,0.2);
 }
 .narration-btn.playing {
-  background: var(--navy);
+  background: #003057;
   color: white;
   box-shadow: 0 2px 12px rgba(0,48,87,0.3);
   animation: narrationPulse 2s ease-in-out infinite;
@@ -749,7 +749,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 [data-theme="dark"] .narration-btn.playing {
-  background: var(--navy);
+  background: #003057;
 }
 
 /* ================================================================
@@ -813,7 +813,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 .appendix-back-btn {
   position: fixed; top: 16px; right: 20px; z-index: 200;
   display: none; align-items: center; gap: 6px;
-  padding: 8px 18px; background: var(--navy); color: #fff;
+  padding: 8px 18px; background: #003057; color: #fff;
   border: none; border-radius: 6px; font-family: var(--font-d);
   font-size: 13px; font-weight: 600; cursor: pointer;
   box-shadow: 0 2px 12px rgba(0,0,0,0.2); transition: transform 0.2s, opacity 0.2s;
@@ -843,7 +843,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 .tour-dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; transition: background 0.2s; }
 .tour-dot.active { background: var(--navy); }
 .tour-btn { padding: 8px 20px; border: none; border-radius: 6px; font: 600 13px/1 var(--font-d); cursor: pointer; transition: all 0.2s; }
-.tour-btn-next { background: var(--navy); color: #fff; }
+.tour-btn-next { background: #003057; color: #fff; }
 .tour-btn-next:hover { background: #004680; }
 .tour-btn-skip { background: none; color: #999; font-weight: 500; }
 .tour-btn-skip:hover { color: #555; }
@@ -1285,7 +1285,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         </div>
       </div>
       <p class="body-sm reveal r4" style="text-align: center; max-width: 800px; margin-top: 60px;">Character library based on the <strong>Jewish Lives</strong> biographical series. <span style="font-family: var(--font-m);">80</span> volumes across <span style="font-family: var(--font-m);">9</span> domains: biblical, rabbinic, philosophy, politics, arts, science, activism, law, and modern Israel.</p>
-      <button onclick="goToSageLibrary()" class="reveal r5" style="margin-top: 12px; padding: 10px 28px; background: var(--navy); color: #fff; border: none; border-radius: 8px; font-family: var(--font-d); font-size: 14px; font-weight: 600; cursor: pointer; letter-spacing: 0.5px; transition: background 0.3s, transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+      <button onclick="goToSageLibrary()" class="reveal r5" style="margin-top: 12px; padding: 10px 28px; background: #003057; color: #fff; border: none; border-radius: 8px; font-family: var(--font-d); font-size: 14px; font-weight: 600; cursor: pointer; letter-spacing: 0.5px; transition: background 0.3s, transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
         View Full Library (80 Sages)
       </button>
@@ -1366,7 +1366,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         </div>
       </div>
       <p class="body-sm reveal r4" style="text-align: center; max-width: 800px; margin-top: 60px;">ספריית דמויות מבוססת על סדרת <strong>Jewish Lives</strong> הביוגרפית. <span style="font-family: var(--font-m);">80</span> כרכים ב-<span style="font-family: var(--font-m);">9</span> תחומים: תנ"ך, רבני, פילוסופיה, פוליטיקה, אמנות, מדע, אקטיביזם, משפט וישראל המודרנית.</p>
-      <button onclick="goToSageLibrary()" class="reveal r5" style="margin-top: 12px; padding: 10px 28px; background: var(--navy); color: #fff; border: none; border-radius: 8px; font-family: var(--font-d); font-size: 14px; font-weight: 600; cursor: pointer; letter-spacing: 0.5px; transition: background 0.3s, transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+      <button onclick="goToSageLibrary()" class="reveal r5" style="margin-top: 12px; padding: 10px 28px; background: #003057; color: #fff; border: none; border-radius: 8px; font-family: var(--font-d); font-size: 14px; font-weight: 600; cursor: pointer; letter-spacing: 0.5px; transition: background 0.3s, transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-left: 6px;"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
         צפו בספרייה המלאה (80 חכמים)
       </button>
@@ -1472,7 +1472,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
         <!-- Spinoza -->
         <div>
-          <div style="background: var(--navy); color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
+          <div style="background: #003057; color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
             <img src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/65a7f2d36f74a66358780d2e/1763647095948/Spinoza.jpg?format=500w" alt="Spinoza" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--blue); margin-bottom: 8px;" loading="lazy">
             <div style="font-family: var(--font-m); font-size: 10px; letter-spacing: 2px; opacity: 0.6;">PERSONA</div>
             <div style="font-size: 22px; font-weight: 700;">Spinoza</div>
@@ -1495,7 +1495,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
         <!-- Golda Meir -->
         <div>
-          <div style="background: var(--navy); color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
+          <div style="background: #003057; color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
             <img src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/64b01293bcde250ff58dca7e/1689260695538/JL_NewReleases_Meir_Facebook.jpg?format=500w" alt="Golda Meir" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--blue); margin-bottom: 8px;" loading="lazy">
             <div style="font-family: var(--font-m); font-size: 10px; letter-spacing: 2px; opacity: 0.6;">PERSONA</div>
             <div style="font-size: 22px; font-weight: 700;">Golda Meir</div>
@@ -1518,7 +1518,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
         <!-- Rambam -->
         <div>
-          <div style="background: var(--navy); color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
+          <div style="background: #003057; color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
             <img src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/63eb944ebbaede1fe2a511f8/1770325601718/Maimonides.jpg?format=500w" alt="Rambam" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--blue); margin-bottom: 8px;" loading="lazy">
             <div style="font-family: var(--font-m); font-size: 10px; letter-spacing: 2px; opacity: 0.6;">PERSONA</div>
             <div style="font-size: 22px; font-weight: 700;">Rambam</div>
@@ -1555,7 +1555,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
         <!-- Spinoza -->
         <div>
-          <div style="background: var(--navy); color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
+          <div style="background: #003057; color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
             <img src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/65a7f2d36f74a66358780d2e/1763647095948/Spinoza.jpg?format=500w" alt="Spinoza" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--blue); margin-bottom: 8px;" loading="lazy">
             <div style="font-family: var(--font-m); font-size: 10px; letter-spacing: 2px; opacity: 0.6;">פרסונה</div>
             <div style="font-size: 22px; font-weight: 700;">שפינוזה</div>
@@ -1578,7 +1578,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
         <!-- Golda Meir -->
         <div>
-          <div style="background: var(--navy); color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
+          <div style="background: #003057; color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
             <img src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/t/64b01293bcde250ff58dca7e/1689260695538/JL_NewReleases_Meir_Facebook.jpg?format=500w" alt="Golda Meir" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--blue); margin-bottom: 8px;" loading="lazy">
             <div style="font-family: var(--font-m); font-size: 10px; letter-spacing: 2px; opacity: 0.6;">פרסונה</div>
             <div style="font-size: 22px; font-weight: 700;">גולדה מאיר</div>
@@ -1601,7 +1601,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
         <!-- Rambam -->
         <div>
-          <div style="background: var(--navy); color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
+          <div style="background: #003057; color: #fff; border-radius: 14px; padding: 20px 16px; text-align: center; margin-bottom: 12px;">
             <img src="https://static1.squarespace.com/static/57abd1268419c28d7981b5cd/5851a83fb8a79b5cd9df2528/63eb944ebbaede1fe2a511f8/1770325601718/Maimonides.jpg?format=500w" alt="Rambam" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--blue); margin-bottom: 8px;" loading="lazy">
             <div style="font-family: var(--font-m); font-size: 10px; letter-spacing: 2px; opacity: 0.6;">פרסונה</div>
             <div style="font-size: 22px; font-weight: 700;">רמב"ם</div>
@@ -4351,6 +4351,124 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   </div>
 </section>
 
+<!-- ============================================================
+     APPENDIX F: Explainer Video & Session Schedule
+     ============================================================ -->
+<section class="slide" data-act="APPENDIX" data-appendix="true" id="appendix-video">
+  <div class="lang-en">
+    <div class="layout-statement" style="align-items: flex-start; text-align: left; max-width: 1100px; margin: 0 auto; padding-top: 32px;">
+      <p class="appendix-label reveal">Appendix F</p>
+      <h2 class="reveal r1" style="font-size: 44px;">AI Sages and the Art of Disagreement</h2>
+      <p class="body-text reveal r2" style="max-width: 800px; margin-top: 4px;">A conceptual walkthrough of the Sanhedrin Educational Experience: how visitors engage with historical AI personas in structured civic discourse.</p>
+
+      <div class="reveal r3" style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px; margin-top: 24px; width: 100%;">
+        <!-- Video Player -->
+        <div style="position: relative; border-radius: 10px; overflow: hidden; border: 1.5px solid rgba(0,48,87,0.15); box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+          <video controls playsinline style="width: 100%; display: block; background: #000;" poster="">
+            <source src="video/explainer.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Session Timetable -->
+        <div>
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 12px;">DAILY SESSION SCHEDULE</div>
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            <div class="card" style="padding: 10px 14px; border-radius: 8px 8px 0 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">09:00</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">The Goring Ox</div><div style="font-size: 11px; color: var(--text-sub);">Autonomous Vehicle Liability</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">10:00</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Lashon Hara</div><div style="font-size: 11px; color: var(--text-sub);">Cyberbullying and Social Media</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px; background: rgba(0,48,87,0.06);">
+              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">11:00</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Pikuach Nefesh</div><div style="font-size: 11px; color: var(--text-sub);">AI Sentience and Rights</div></div>
+              <div style="margin-left: auto; font-family: var(--font-m); font-size: 9px; letter-spacing: 1.5px; padding: 3px 8px; border-radius: 4px; background: rgba(0,48,87,0.08); color: #003057;">NOW</div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">12:00</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">NFT Chametz</div><div style="font-size: 11px; color: var(--text-sub);">Digital Ownership vs. Tradition</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">13:30</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Bal Tashchit</div><div style="font-size: 11px; color: var(--text-sub);">Fast Fashion and Environmental Ethics</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">14:30</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Lo Taamod</div><div style="font-size: 11px; color: var(--text-sub);">Bystander Obligations in Virtual Spaces</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">15:30</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Power of the Crowd</div><div style="font-size: 11px; color: var(--text-sub);">Cancel Culture and Boycotts</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0 0 8px 8px; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">16:30</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Dina D'Malkhuta</div><div style="font-size: 11px; color: var(--text-sub);">Open Source Code Ownership</div></div>
+            </div>
+          </div>
+          <p style="font-size: 11px; color: var(--text-sub); margin-top: 10px; font-style: italic;">Each 25-min session rotates dilemmas daily. Up to 12 visitors per session.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="align-items: flex-start; text-align: right; max-width: 1100px; margin: 0 auto; padding-top: 32px;">
+      <p class="appendix-label reveal">נספח ו'</p>
+      <h2 class="reveal r1" style="font-size: 44px;">חכמי AI ואמנות המחלוקת</h2>
+      <p class="body-text reveal r2" style="max-width: 800px; margin-top: 4px;">סקירה קונספטואלית של חווית הסנהדרין החינוכית: כיצד מבקרים מתדיינים עם דמויות היסטוריות מונעות AI בשיח אזרחי מובנה.</p>
+
+      <div class="reveal r3" style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px; margin-top: 24px; width: 100%;">
+        <div style="position: relative; border-radius: 10px; overflow: hidden; border: 1.5px solid rgba(0,48,87,0.15); box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+          <video controls playsinline style="width: 100%; display: block; background: #000;">
+            <source src="video/explainer.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div>
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 12px;">לוח מפגשים יומי</div>
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            <div class="card" style="padding: 10px 14px; border-radius: 8px 8px 0 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">09:00</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">השור שנגח</div><div style="font-size: 11px; color: var(--text-sub);">אחריות על רכב אוטונומי</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">10:00</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">לשון הרע</div><div style="font-size: 11px; color: var(--text-sub);">בריונות ברשת ומדיה חברתית</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px; background: rgba(0,48,87,0.06);">
+              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">11:00</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">פיקוח נפש</div><div style="font-size: 11px; color: var(--text-sub);">תודעת AI וזכויות</div></div>
+              <div style="margin-left: auto; font-family: var(--font-m); font-size: 9px; letter-spacing: 1.5px; padding: 3px 8px; border-radius: 4px; background: rgba(0,48,87,0.08); color: #003057;">עכשיו</div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">12:00</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">חמץ NFT</div><div style="font-size: 11px; color: var(--text-sub);">בעלות דיגיטלית מול מסורת</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">13:30</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">בל תשחית</div><div style="font-size: 11px; color: var(--text-sub);">אופנה מהירה ואתיקה סביבתית</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">14:30</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">לא תעמוד</div><div style="font-size: 11px; color: var(--text-sub);">חובת הצופה במרחבים וירטואליים</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">15:30</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">כוח הקהל</div><div style="font-size: 11px; color: var(--text-sub);">תרבות הביטול וחרמות</div></div>
+            </div>
+            <div class="card" style="padding: 10px 14px; border-radius: 0 0 8px 8px; display: flex; align-items: center; gap: 12px;">
+              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">16:30</div>
+              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">דינא דמלכותא</div><div style="font-size: 11px; color: var(--text-sub);">בעלות על קוד פתוח</div></div>
+            </div>
+          </div>
+          <p style="font-size: 11px; color: var(--text-sub); margin-top: 10px; font-style: italic;">כל מפגש נמשך 25 דקות. הדילמות מתחלפות מדי יום. עד 12 מבקרים למפגש.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </div>
 
 <button class="narration-btn" id="narrationBtn" onclick="toggleNarration()" title="Play narration">
@@ -4409,6 +4527,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <button class="qn-item" onclick="qnGo('appendix-program')"><span class="qn-num">P</span>Program Scope</button>
         <button class="qn-item" onclick="qnGo('appendix-poc')"><span class="qn-num">Q</span>POC Definition</button>
         <button class="qn-item" onclick="qnGo('sage-library')"><span class="qn-num">E</span>Sage Library (80)</button>
+        <button class="qn-item" onclick="qnGo('appendix-video')"><span class="qn-num">F</span>Explainer Video</button>
       </div>
     </div>
     <button class="lang-toggle" id="langToggle" onclick="toggleLang()" title="Toggle language">EN / HE</button>
@@ -4860,8 +4979,8 @@ var slideAnimations = {};
     function start(){if(running)return;running=true;resize();edgeTimer=Date.now()*0.001;draw();}
     function stop(){running=false;if(animId){cancelAnimationFrame(animId);animId=null;}}
     window.addEventListener('resize',resize);
-    if(!slideAnimations[8])slideAnimations[8]=[];
-    slideAnimations[8].push({start:start,stop:stop});
+    if(!slideAnimations[9])slideAnimations[9]=[];
+    slideAnimations[9].push({start:start,stop:stop});
   });
 })();
 
@@ -4900,8 +5019,8 @@ var slideAnimations = {};
     function start(){if(running)return;running=true;resize();draw();}
     function stop(){running=false;if(animId){cancelAnimationFrame(animId);animId=null;}}
     window.addEventListener('resize',resize);
-    if(!slideAnimations[11])slideAnimations[11]=[];
-    slideAnimations[11].push({start:start,stop:stop});
+    if(!slideAnimations[12])slideAnimations[12]=[];
+    slideAnimations[12].push({start:start,stop:stop});
   });
 })();
 
@@ -5370,9 +5489,9 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
   };
 })();
 
-// Register puzzle animation on slide index 4 (Slide 4 - Cognitive Twist)
-if (!slideAnimations[4]) slideAnimations[4] = [];
-slideAnimations[4].push({ start: function() { window._puzzleAnim.start(); }, stop: function() { window._puzzleAnim.stop(); } });
+// Register puzzle animation on slide index 5 (Slide 4 - Cognitive Twist, after Hero+Problem+3 team slides)
+if (!slideAnimations[5]) slideAnimations[5] = [];
+slideAnimations[5].push({ start: function() { window._puzzleAnim.start(); }, stop: function() { window._puzzleAnim.stop(); } });
 
 showSlide(0);
 
@@ -5381,7 +5500,7 @@ var tourSteps = [
   { el: '#progressFill', title: 'Progress Bar', desc: 'Shows how far you are through the deck. Fills as you advance through slides.', pos: 'bottom' },
   { el: '#slideCounter', title: 'Slide Counter', desc: 'Displays your current slide number. Main slides show "01 / 22", appendix slides show "A1 / A7".', pos: 'top' },
   { el: '#actLabel', title: 'Act Label', desc: 'The deck is organized in 4 acts: The Hook, The Experience, Why It Works, and The Ask.', pos: 'top' },
-  { el: '.quick-nav-btn', title: 'Quick Navigation', desc: 'Jump to any of the 22 slides or 7 appendices instantly. Click to open the full slide menu.', pos: 'top' },
+  { el: '.quick-nav-btn', title: 'Quick Navigation', desc: 'Jump to any of the 22 slides or 8 appendices instantly. Click to open the full slide menu.', pos: 'top' },
   { el: '#langToggle', title: 'Language Toggle', desc: 'Switch between English and Hebrew. All slides are fully bilingual.', pos: 'top' },
   { el: '#themeToggle', title: 'Dark Mode', desc: 'Toggle between light and dark themes. Your preference is saved.', pos: 'top' },
   { el: '.nav-btn', title: 'Navigation Arrows', desc: 'Move between slides. You can also use arrow keys, Space, Home/End, or swipe on touch devices.', pos: 'top' },
