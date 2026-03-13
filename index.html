@@ -5218,75 +5218,93 @@ showSlide = function(index) {
 if (!slideAnimations[1]) slideAnimations[1] = [];
 slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop: function() { window._polarAnim.stop(); } });
 
-// === PUZZLE ANIMATION (Slide 4 - Cognitive Twist) ===
+// === INTERACTIVE PUZZLE (Slide 4 - Cognitive Twist) ===
 (function() {
   var puzzleAnimId = null;
   var pieces = [];
-  var COLS = 6, ROWS = 5;
-  var TOTAL = COLS * ROWS;
-  var phase = 0; // 0=scattered, 1=assembling, 2=complete, 3=blur-attack, 4=recovery
-  var phaseTimer = 0;
-  var completedGlow = 0;
+  var sparks = [];
+  var COLS = 2, ROWS = 2;
+  var SNAP_DIST = 40;
+  var dragging = null;
+  var dragOff = {x:0,y:0};
+  var activeCanvas = null;
+  var canvasRect = null;
+  var completionGlow = 0;
+  var completionTime = 0;
+  var allPlaced = false;
+
+  var LABELS_EN = [
+    'Arguments','Facts',
+    'Empathy','Shared\nTruth'
+  ];
+  var LABELS_HE = [
+    '\u05D8\u05D9\u05E2\u05D5\u05E0\u05D9\u05DD','\u05E2\u05D5\u05D1\u05D3\u05D5\u05EA',
+    '\u05D0\u05DE\u05E4\u05EA\u05D9\u05D4','\u05D0\u05DE\u05EA\n\u05DE\u05E9\u05D5\u05EA\u05E4\u05EA'
+  ];
+
+  var COLORS = [
+    '#2A6FA8','#3B82A0',
+    '#4A9B8E','#2D7E9A'
+  ];
 
   function initPieces(w, h) {
-    pieces = [];
-    var pw = w / COLS, ph = h / ROWS;
+    pieces = []; sparks = []; allPlaced = false; completionGlow = 0;
+    var margin = 20;
+    var gridW = (w - margin*2) * 0.7;
+    var gridH = (h - margin*2) * 0.7;
+    var gridX = (w - gridW) / 2;
+    var gridY = (h - gridH) / 2;
+    var pw = gridW / COLS, ph = gridH / ROWS;
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
-        var homeX = c * pw + pw / 2;
-        var homeY = r * ph + ph / 2;
+        var homeX = gridX + c * pw + pw / 2;
+        var homeY = gridY + r * ph + ph / 2;
+        // Scatter around the edges
+        var angle = Math.random() * Math.PI * 2;
+        var radius = Math.min(w, h) * 0.3 + Math.random() * Math.min(w, h) * 0.15;
+        var sx = w/2 + Math.cos(angle) * radius;
+        var sy = h/2 + Math.sin(angle) * radius;
+        sx = Math.max(pw/2 + 5, Math.min(w - pw/2 - 5, sx));
+        sy = Math.max(ph/2 + 5, Math.min(h - ph/2 - 5, sy));
         pieces.push({
           homeX: homeX, homeY: homeY,
-          x: Math.random() * w, y: Math.random() * h,
-          rot: (Math.random() - 0.5) * Math.PI * 2,
-          homeRot: 0,
-          w: pw * 0.88, h: ph * 0.88,
-          col: c, row: r,
+          x: sx, y: sy,
+          w: pw * 0.9, h: ph * 0.9,
+          col: c, row: r, idx: r * COLS + c,
           placed: false,
-          alpha: 0.4 + Math.random() * 0.3,
-          blurred: false,
-          blurAlpha: 1,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          vr: (Math.random() - 0.5) * 0.01,
-          delay: (r * COLS + c) * 0.12 + Math.random() * 0.3
+          snapTime: 0,
+          color: COLORS[r * COLS + c]
         });
       }
     }
-    phase = 0;
-    phaseTimer = Date.now() * 0.001;
-    completedGlow = 0;
   }
 
-  function drawPuzzleTab(ctx, x, y, w, h, col, row) {
-    var tabW = w * 0.18, tabH = h * 0.18;
+  function drawRoundedRect(ctx, x, y, w, h, rad) {
     ctx.beginPath();
-    ctx.moveTo(x, y);
-    // Top edge with tab
-    if (row > 0) {
-      ctx.lineTo(x + w * 0.35, y);
-      ctx.arc(x + w * 0.5, y, tabW, Math.PI, 0, false);
-      ctx.lineTo(x + w, y);
-    } else { ctx.lineTo(x + w, y); }
-    // Right edge with tab
-    if (col < COLS - 1) {
-      ctx.lineTo(x + w, y + h * 0.35);
-      ctx.arc(x + w, y + h * 0.5, tabH, -Math.PI * 0.5, Math.PI * 0.5, false);
-      ctx.lineTo(x + w, y + h);
-    } else { ctx.lineTo(x + w, y + h); }
-    // Bottom edge with tab
-    if (row < ROWS - 1) {
-      ctx.lineTo(x + w * 0.65, y + h);
-      ctx.arc(x + w * 0.5, y + h, tabW, 0, Math.PI, false);
-      ctx.lineTo(x, y + h);
-    } else { ctx.lineTo(x, y + h); }
-    // Left edge with tab
-    if (col > 0) {
-      ctx.lineTo(x, y + h * 0.65);
-      ctx.arc(x, y + h * 0.5, tabH, Math.PI * 0.5, -Math.PI * 0.5, false);
-      ctx.lineTo(x, y);
-    } else { ctx.lineTo(x, y); }
+    ctx.moveTo(x + rad, y);
+    ctx.lineTo(x + w - rad, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + rad);
+    ctx.lineTo(x + w, y + h - rad);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - rad, y + h);
+    ctx.lineTo(x + rad, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - rad);
+    ctx.lineTo(x, y + rad);
+    ctx.quadraticCurveTo(x, y, x + rad, y);
     ctx.closePath();
+  }
+
+  function addSnapSparks(x, y) {
+    for (var i = 0; i < 12; i++) {
+      var angle = (i / 12) * Math.PI * 2 + Math.random() * 0.3;
+      var speed = 1.5 + Math.random() * 2.5;
+      sparks.push({
+        x: x, y: y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1.0, decay: 0.02 + Math.random() * 0.015,
+        r: 2 + Math.random() * 2
+      });
+    }
   }
 
   function drawPuzzle(canvas) {
@@ -5299,196 +5317,290 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     ctx.scale(dpr, dpr);
     var w = rect.width, h = rect.height;
     var t = Date.now() * 0.001;
-    var elapsed = t - phaseTimer;
+    var labels = isHebrew ? LABELS_HE : LABELS_EN;
 
     if (pieces.length === 0) initPieces(w, h);
 
     ctx.clearRect(0, 0, w, h);
 
-    // Subtle background: faint grid showing where pieces belong
-    var pw = w / COLS, ph = h / ROWS;
-    ctx.strokeStyle = 'rgba(189,214,230,0.06)';
-    ctx.lineWidth = 0.5;
-    for (var c = 1; c < COLS; c++) {
-      ctx.beginPath(); ctx.moveTo(c * pw, 0); ctx.lineTo(c * pw, h); ctx.stroke();
-    }
-    for (var r = 1; r < ROWS; r++) {
-      ctx.beginPath(); ctx.moveTo(0, r * ph); ctx.lineTo(w, r * ph); ctx.stroke();
-    }
-
-    // Phase transitions
-    if (phase === 0 && elapsed > 2.0) { phase = 1; phaseTimer = t; }
-    if (phase === 1 && elapsed > 6.0) { phase = 2; phaseTimer = t; }
-    if (phase === 2 && elapsed > 3.0) { phase = 3; phaseTimer = t; }
-    if (phase === 3 && elapsed > 2.5) { phase = 4; phaseTimer = t; }
-    if (phase === 4 && elapsed > 2.5) {
-      // Reset: scatter pieces again for looping
-      for (var i = 0; i < pieces.length; i++) {
-        pieces[i].x = Math.random() * w;
-        pieces[i].y = Math.random() * h;
-        pieces[i].rot = (Math.random() - 0.5) * Math.PI * 2;
-        pieces[i].placed = false;
-        pieces[i].blurred = false;
-        pieces[i].blurAlpha = 1;
-        pieces[i].vx = (Math.random() - 0.5) * 0.5;
-        pieces[i].vy = (Math.random() - 0.5) * 0.5;
-        pieces[i].vr = (Math.random() - 0.5) * 0.01;
-        pieces[i].alpha = 0.4 + Math.random() * 0.3;
-      }
-      phase = 0; phaseTimer = t; completedGlow = 0;
-    }
-
-    // Update pieces
+    // Draw ghost targets (where pieces should go)
     for (var i = 0; i < pieces.length; i++) {
       var p = pieces[i];
-
-      if (phase === 0) {
-        // Scattered: gentle drift
-        p.x += p.vx; p.y += p.vy; p.rot += p.vr;
-        // Bounce off edges
-        if (p.x < 20 || p.x > w - 20) p.vx *= -1;
-        if (p.y < 20 || p.y > h - 20) p.vy *= -1;
-      } else if (phase === 1) {
-        // Assembling: pieces fly toward home positions
-        var progress = Math.max(0, Math.min(1, (elapsed - p.delay) / 3.0));
-        var ease = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-        if (progress > 0) {
-          var startX = p.placed ? p.homeX : p.x;
-          var startY = p.placed ? p.homeY : p.y;
-          if (!p.placed && progress < 0.05) {
-            p._startX = p.x; p._startY = p.y; p._startRot = p.rot;
-          }
-          if (p._startX !== undefined) {
-            p.x = p._startX + (p.homeX - p._startX) * ease;
-            p.y = p._startY + (p.homeY - p._startY) * ease;
-            p.rot = p._startRot * (1 - ease);
-          }
-          if (progress >= 1) { p.x = p.homeX; p.y = p.homeY; p.rot = 0; p.placed = true; }
-        }
-      } else if (phase === 2) {
-        // Complete: all pieces glow
-        p.x = p.homeX; p.y = p.homeY; p.rot = 0; p.placed = true;
-        completedGlow = Math.min(1, elapsed / 1.0);
-      } else if (phase === 3) {
-        // Blur attack: random pieces get "attacked"
-        if (elapsed < 0.3 && !p._blurPicked) {
-          p._blurPicked = true;
-          p.blurred = Math.random() < 0.35;
-        }
-        if (p.blurred) {
-          p.blurAlpha = Math.max(0.1, p.blurAlpha - 0.015);
-          // Shake slightly
-          p.x = p.homeX + (Math.random() - 0.5) * 3;
-          p.y = p.homeY + (Math.random() - 0.5) * 3;
-        }
-        completedGlow = Math.max(0, completedGlow - 0.008);
-      } else if (phase === 4) {
-        // Recovery: blurred pieces restore
-        if (p.blurred) {
-          p.blurAlpha = Math.min(1, p.blurAlpha + 0.02);
-          p.x += (p.homeX - p.x) * 0.08;
-          p.y += (p.homeY - p.y) * 0.08;
-          if (p.blurAlpha > 0.95) { p.blurred = false; p._blurPicked = false; }
-        }
-        completedGlow = Math.min(1, completedGlow + 0.01);
+      if (p.placed) continue;
+      drawRoundedRect(ctx, p.homeX - p.w/2, p.homeY - p.h/2, p.w, p.h, 8);
+      ctx.strokeStyle = 'rgba(189,214,230,0.12)';
+      ctx.setLineDash([4, 4]);
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.setLineDash([]);
+      // Faint label in target
+      ctx.fillStyle = 'rgba(189,214,230,0.08)';
+      ctx.font = '600 ' + Math.max(9, Math.min(11, p.w * 0.1)) + 'px Montserrat, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      var tLines = labels[p.idx].split('\n');
+      for (var li = 0; li < tLines.length; li++) {
+        ctx.fillText(tLines[li], p.homeX, p.homeY + (li - (tLines.length-1)/2) * 14);
       }
     }
 
-    // Draw pieces
-    for (var i = 0; i < pieces.length; i++) {
+    // Draw placed pieces first (behind), then unplaced (on top)
+    var drawOrder = [];
+    for (var i = 0; i < pieces.length; i++) drawOrder.push(i);
+    // Put dragged piece last
+    if (dragging !== null) {
+      drawOrder.splice(drawOrder.indexOf(dragging), 1);
+      drawOrder.push(dragging);
+    }
+
+    for (var di = 0; di < drawOrder.length; di++) {
+      var i = drawOrder[di];
       var p = pieces[i];
+      var isBeingDragged = (i === dragging);
+      var snapAge = p.placed ? t - p.snapTime : 0;
+      var snapPulse = p.placed && snapAge < 0.6 ? Math.max(0, 1 - snapAge / 0.6) : 0;
+
       ctx.save();
+
+      // Shadow for floating pieces
+      if (!p.placed || isBeingDragged) {
+        ctx.shadowColor = 'rgba(0,0,0,0.25)';
+        ctx.shadowBlur = isBeingDragged ? 16 : 8;
+        ctx.shadowOffsetY = isBeingDragged ? 4 : 2;
+      }
+
+      // Snap glow
+      if (snapPulse > 0) {
+        ctx.shadowColor = 'rgba(0,212,255,' + (snapPulse * 0.6) + ')';
+        ctx.shadowBlur = 20 * snapPulse;
+      }
+
+      // Scale up slightly when dragging
+      var scale = isBeingDragged ? 1.08 : 1;
       ctx.translate(p.x, p.y);
-      ctx.rotate(p.rot);
+      ctx.scale(scale, scale);
 
-      // Piece color based on state
-      var hue = 200 + (p.col * 8) + (p.row * 12);
-      var sat = p.placed ? 40 : 25;
-      var light = p.placed ? 65 : 50;
-      var alpha = p.placed ? (0.7 + completedGlow * 0.3) * p.blurAlpha : p.alpha * p.blurAlpha;
-
-      drawPuzzleTab(ctx, -p.w / 2, -p.h / 2, p.w, p.h, p.col, p.row);
-
-      // Fill
-      ctx.fillStyle = 'hsla(' + hue + ',' + sat + '%,' + light + '%,' + alpha + ')';
+      // Draw piece body
+      drawRoundedRect(ctx, -p.w/2, -p.h/2, p.w, p.h, 8);
+      var alpha = p.placed ? 0.92 : 0.78;
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = alpha;
       ctx.fill();
+      ctx.globalAlpha = 1;
 
       // Border
-      ctx.strokeStyle = 'hsla(' + hue + ',' + (sat + 10) + '%,' + (light + 15) + '%,' + (alpha * 0.8) + ')';
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = p.placed ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.15)';
+      ctx.lineWidth = p.placed ? 2 : 1.5;
       ctx.stroke();
 
-      // Glow when placed and complete
-      if (p.placed && completedGlow > 0) {
-        ctx.shadowColor = 'rgba(189,214,230,' + (completedGlow * 0.4) + ')';
-        ctx.shadowBlur = 12 * completedGlow;
-        drawPuzzleTab(ctx, -p.w / 2, -p.h / 2, p.w, p.h, p.col, p.row);
-        ctx.fillStyle = 'hsla(' + hue + ',50%,75%,' + (completedGlow * 0.15) + ')';
-        ctx.fill();
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetY = 0;
+
+      // Label text
+      ctx.fillStyle = '#fff';
+      var fontSize = Math.max(10, Math.min(14, p.w * 0.12));
+      ctx.font = '700 ' + fontSize + 'px Montserrat, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      var tLines = labels[p.idx].split('\n');
+      for (var li = 0; li < tLines.length; li++) {
+        ctx.fillText(tLines[li], 0, (li - (tLines.length-1)/2) * (fontSize + 3));
+      }
+
+      // Placed checkmark
+      if (p.placed && snapAge > 0.3) {
+        var checkAlpha = Math.min(1, (snapAge - 0.3) / 0.3);
+        ctx.globalAlpha = checkAlpha * 0.6;
+        ctx.fillStyle = '#fff';
+        ctx.font = '600 ' + Math.max(8, fontSize * 0.7) + 'px sans-serif';
+        ctx.fillText('\u2713', p.w/2 - 10, -p.h/2 + 10);
+        ctx.globalAlpha = 1;
       }
 
       ctx.restore();
     }
 
-    // Connection spark lines between recently-placed adjacent pieces
-    if (phase === 1 || phase === 2) {
-      ctx.lineWidth = 1;
-      for (var i = 0; i < pieces.length; i++) {
-        var p = pieces[i];
-        if (!p.placed) continue;
-        // Check right neighbor
-        if (p.col < COLS - 1) {
-          var ri = p.row * COLS + p.col + 1;
-          if (pieces[ri].placed) {
-            var sparkAlpha = 0.15 + 0.1 * Math.sin(t * 3 + i);
-            ctx.strokeStyle = 'rgba(189,214,230,' + sparkAlpha + ')';
-            ctx.beginPath();
-            ctx.moveTo(p.homeX + p.w * 0.3, p.homeY);
-            ctx.lineTo(pieces[ri].homeX - pieces[ri].w * 0.3, pieces[ri].homeY);
-            ctx.stroke();
-          }
+    // Draw connection lines between adjacent placed pieces
+    ctx.lineWidth = 2;
+    for (var i = 0; i < pieces.length; i++) {
+      var p = pieces[i];
+      if (!p.placed) continue;
+      // Right neighbor
+      if (p.col < COLS - 1) {
+        var ri = p.row * COLS + p.col + 1;
+        if (pieces[ri].placed) {
+          var pulse = 0.2 + 0.15 * Math.sin(t * 2.5 + i);
+          ctx.strokeStyle = 'rgba(0,212,255,' + pulse + ')';
+          ctx.beginPath();
+          ctx.moveTo(p.homeX + p.w * 0.45, p.homeY);
+          ctx.lineTo(pieces[ri].homeX - pieces[ri].w * 0.45, pieces[ri].homeY);
+          ctx.stroke();
         }
-        // Check bottom neighbor
-        if (p.row < ROWS - 1) {
-          var bi = (p.row + 1) * COLS + p.col;
-          if (pieces[bi].placed) {
-            var sparkAlpha = 0.15 + 0.1 * Math.sin(t * 3 + i + 1);
-            ctx.strokeStyle = 'rgba(189,214,230,' + sparkAlpha + ')';
-            ctx.beginPath();
-            ctx.moveTo(p.homeX, p.homeY + p.h * 0.3);
-            ctx.lineTo(pieces[bi].homeX, pieces[bi].homeY - pieces[bi].h * 0.3);
-            ctx.stroke();
-          }
+      }
+      // Bottom neighbor
+      if (p.row < ROWS - 1) {
+        var bi = (p.row + 1) * COLS + p.col;
+        if (pieces[bi].placed) {
+          var pulse = 0.2 + 0.15 * Math.sin(t * 2.5 + i + 1);
+          ctx.strokeStyle = 'rgba(0,212,255,' + pulse + ')';
+          ctx.beginPath();
+          ctx.moveTo(p.homeX, p.homeY + p.h * 0.45);
+          ctx.lineTo(pieces[bi].homeX, pieces[bi].homeY - pieces[bi].h * 0.45);
+          ctx.stroke();
         }
       }
     }
 
-    // "L'Shem Shamayim" glow text when complete
-    if (phase === 2 && completedGlow > 0.5) {
-      ctx.fillStyle = 'rgba(189,214,230,' + ((completedGlow - 0.5) * 0.5) + ')';
-      ctx.font = '600 14px var(--font-m)';
+    // Draw and update sparks
+    for (var i = sparks.length - 1; i >= 0; i--) {
+      var s = sparks[i];
+      s.x += s.vx; s.y += s.vy;
+      s.vy += 0.05; // gravity
+      s.life -= s.decay;
+      if (s.life <= 0) { sparks.splice(i, 1); continue; }
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r * s.life, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,212,255,' + (s.life * 0.8) + ')';
+      ctx.fill();
+    }
+
+    // Completion celebration
+    var placedCount = 0;
+    for (var i = 0; i < pieces.length; i++) if (pieces[i].placed) placedCount++;
+    if (placedCount === pieces.length && !allPlaced) {
+      allPlaced = true;
+      completionTime = t;
+      // Big spark burst from center
+      var cx = w/2, cy = h/2;
+      for (var i = 0; i < 30; i++) {
+        var angle = (i / 30) * Math.PI * 2;
+        var speed = 2 + Math.random() * 4;
+        sparks.push({x:cx, y:cy, vx:Math.cos(angle)*speed, vy:Math.sin(angle)*speed, life:1, decay:0.01+Math.random()*0.01, r:3+Math.random()*2});
+      }
+    }
+    if (allPlaced) {
+      completionGlow = Math.min(1, (t - completionTime) / 0.8);
+      // Glow border around the whole grid
+      var gridW = pieces[COLS-1].homeX - pieces[0].homeX + pieces[0].w;
+      var gridH = pieces[pieces.length-1].homeY - pieces[0].homeY + pieces[0].h;
+      var gx = pieces[0].homeX - pieces[0].w/2;
+      var gy = pieces[0].homeY - pieces[0].h/2;
+      ctx.shadowColor = 'rgba(0,212,255,' + (completionGlow * 0.5) + ')';
+      ctx.shadowBlur = 24 * completionGlow;
+      drawRoundedRect(ctx, gx - 4, gy - 4, gridW + 8, gridH + 8, 12);
+      ctx.strokeStyle = 'rgba(0,212,255,' + (completionGlow * 0.4) + ')';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0;
+
+      // "L'Shem Shamayim" completion text
+      if (completionGlow > 0.5) {
+        var textAlpha = (completionGlow - 0.5) * 2;
+        ctx.fillStyle = 'rgba(189,214,230,' + (textAlpha * 0.6) + ')';
+        ctx.font = '600 ' + Math.max(12, Math.min(16, w * 0.03)) + 'px Montserrat, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(isHebrew ? '\u05EA\u05DE\u05D5\u05E0\u05D4 \u05E9\u05DC\u05DE\u05D4 \u2013 \u05DC\u05E9\u05DD \u05E9\u05DE\u05D9\u05D9\u05DD' : 'Complete Picture \u2013 L\'Shem Shamayim', w/2, gy + gridH + 28);
+      }
+
+      // Auto-reset after 5 seconds
+      if (t - completionTime > 5) {
+        initPieces(w, h);
+      }
+    }
+
+    // Progress indicator
+    if (!allPlaced) {
+      ctx.fillStyle = 'rgba(189,214,230,0.35)';
+      ctx.font = '500 11px Montserrat, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('L\'Shem Shamayim', w / 2, h - 20);
+      ctx.fillText((isHebrew ? '\u05D2\u05E8\u05D5\u05E8 \u05D5\u05D4\u05E0\u05D7 \u2013 ' : 'Drag and place \u2013 ') + placedCount + '/' + pieces.length, w/2, h - 12);
     }
   }
 
+  function getCanvasXY(e, canvas) {
+    var rect = canvas.getBoundingClientRect();
+    var clientX, clientY;
+    if (e.touches) { clientX = e.touches[0].clientX; clientY = e.touches[0].clientY; }
+    else { clientX = e.clientX; clientY = e.clientY; }
+    return { x: clientX - rect.left, y: clientY - rect.top };
+  }
+
+  function hitTest(mx, my) {
+    // Check from top (last drawn) to bottom
+    for (var i = pieces.length - 1; i >= 0; i--) {
+      var p = pieces[i];
+      if (p.placed) continue;
+      if (mx > p.x - p.w/2 && mx < p.x + p.w/2 && my > p.y - p.h/2 && my < p.y + p.h/2) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  function onDown(e) {
+    if (!activeCanvas) return;
+    var pos = getCanvasXY(e, activeCanvas);
+    var hit = hitTest(pos.x, pos.y);
+    if (hit >= 0) {
+      dragging = hit;
+      dragOff.x = pos.x - pieces[hit].x;
+      dragOff.y = pos.y - pieces[hit].y;
+      e.preventDefault();
+    }
+  }
+
+  function onMove(e) {
+    if (dragging === null || !activeCanvas) return;
+    var pos = getCanvasXY(e, activeCanvas);
+    pieces[dragging].x = pos.x - dragOff.x;
+    pieces[dragging].y = pos.y - dragOff.y;
+    e.preventDefault();
+  }
+
+  function onUp(e) {
+    if (dragging === null) return;
+    var p = pieces[dragging];
+    var dx = p.x - p.homeX, dy = p.y - p.homeY;
+    var dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist < SNAP_DIST) {
+      p.x = p.homeX; p.y = p.homeY;
+      p.placed = true;
+      p.snapTime = Date.now() * 0.001;
+      addSnapSparks(p.homeX, p.homeY);
+    }
+    dragging = null;
+  }
+
+  function bindEvents(canvas) {
+    canvas.addEventListener('mousedown', onDown);
+    canvas.addEventListener('mousemove', onMove);
+    canvas.addEventListener('mouseup', onUp);
+    canvas.addEventListener('mouseleave', onUp);
+    canvas.addEventListener('touchstart', onDown, {passive: false});
+    canvas.addEventListener('touchmove', onMove, {passive: false});
+    canvas.addEventListener('touchend', onUp);
+    canvas.style.cursor = 'grab';
+  }
+
+  var bound = {};
   window._puzzleAnim = {
     start: function() {
       var c1 = document.getElementById('puzzleCanvas');
       var c2 = document.getElementById('puzzleCanvasHe');
-      pieces = [];
+      activeCanvas = isHebrew ? c2 : c1;
+      pieces = []; sparks = [];
+      if (c1 && !bound.c1) { bindEvents(c1); bound.c1 = true; }
+      if (c2 && !bound.c2) { bindEvents(c2); bound.c2 = true; }
       function loop() {
-        if (!c1 && !c2) return;
-        drawPuzzle(isHebrew ? c2 : c1);
+        activeCanvas = isHebrew ? c2 : c1;
+        if (!activeCanvas) return;
+        drawPuzzle(activeCanvas);
         puzzleAnimId = requestAnimationFrame(loop);
       }
       loop();
     },
     stop: function() {
       if (puzzleAnimId) { cancelAnimationFrame(puzzleAnimId); puzzleAnimId = null; }
-      pieces = [];
+      pieces = []; dragging = null;
     }
   };
 })();
