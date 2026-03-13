@@ -5392,8 +5392,8 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
       ctx.stroke();
       ctx.setLineDash([]);
       // Faint label in target
-      ctx.fillStyle = 'rgba(189,214,230,0.08)';
-      ctx.font = '600 ' + Math.max(9, Math.min(11, p.w * 0.1)) + 'px Montserrat, sans-serif';
+      ctx.fillStyle = 'rgba(189,214,230,0.1)';
+      ctx.font = '700 ' + Math.max(12, Math.min(16, p.w * 0.14)) + 'px Montserrat, sans-serif';
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       var tLines = labels[p.idx].split('\n');
       for (var li = 0; li < tLines.length; li++) {
@@ -5504,14 +5504,15 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
       ctx.shadowBlur = 0;
       ctx.shadowOffsetY = 0;
 
-      // Label text
+      // Label text - big and centered in piece body
       ctx.fillStyle = '#fff';
-      var fontSize = Math.max(10, Math.min(14, p.w * 0.12));
-      ctx.font = '700 ' + fontSize + 'px Montserrat, sans-serif';
+      var fontSize = Math.max(14, Math.min(22, p.w * 0.18));
+      ctx.font = '800 ' + fontSize + 'px Montserrat, sans-serif';
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.letterSpacing = '0.5px';
       var tLines = labels[p.idx].split('\n');
       for (var li = 0; li < tLines.length; li++) {
-        ctx.fillText(tLines[li], 0, (li - (tLines.length-1)/2) * (fontSize + 3));
+        ctx.fillText(tLines[li], 0, (li - (tLines.length-1)/2) * (fontSize + 4));
       }
 
       // Placed checkmark
@@ -5671,7 +5672,7 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     for (var i = pieces.length - 1; i >= 0; i--) {
       var p = pieces[i];
       if (p.placed) continue;
-      var margin = Math.min(p.w, p.h) * 0.15;
+      var margin = Math.min(p.w, p.h) * 0.3;
       if (mx > p.x - p.w/2 - margin && mx < p.x + p.w/2 + margin && my > p.y - p.h/2 - margin && my < p.y + p.h/2 + margin) {
         return i;
       }
