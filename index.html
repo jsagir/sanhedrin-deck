@@ -730,6 +730,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 .slide.active .typewriter { animation: typeOut 2s steps(28, end) 0.4s forwards, blinkCaret 0.6s step-end 6; }
 @keyframes typeOut { to { width: 100%; } }
 @keyframes blinkCaret { 50% { border-color: transparent; } }
+@keyframes dashPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
 /* Animated counter */
 .count-up { font-variant-numeric: tabular-nums; }
@@ -4356,117 +4357,438 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
      ============================================================ -->
 <section class="slide" data-act="APPENDIX" data-appendix="true" id="appendix-video">
   <div class="lang-en">
-    <div class="layout-statement" style="align-items: flex-start; text-align: left; max-width: 1100px; margin: 0 auto; padding-top: 32px;">
+    <div class="layout-statement" style="align-items: flex-start; text-align: left; max-width: 1200px; margin: 0 auto; padding-top: 20px;">
       <p class="appendix-label reveal">Appendix F</p>
-      <h2 class="reveal r1" style="font-size: 44px;">AI Sages and the Art of Disagreement</h2>
-      <p class="body-text reveal r2" style="max-width: 800px; margin-top: 4px;">A conceptual walkthrough of the Sanhedrin Educational Experience: how visitors engage with historical AI personas in structured civic discourse.</p>
 
-      <div class="reveal r3" style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px; margin-top: 24px; width: 100%;">
-        <!-- Video Player -->
-        <div style="position: relative; border-radius: 10px; overflow: hidden; background: #000; border: 6px solid #003057; box-shadow: 0 4px 24px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(189,214,230,0.1);">
-          <div style="overflow: hidden; margin: -4px -14px -10px -4px;">
-            <video controls playsinline style="width: calc(100% + 18px); display: block; background: #000;">
-              <source src="video/explainer.mp4" type="video/mp4">
-            </video>
+      <!-- Dashboard Header Bar -->
+      <div class="reveal r1" style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 16px;">
+        <div>
+          <h2 style="font-size: 32px; margin: 0;">Experience Control Room</h2>
+          <p class="body-text" style="margin: 2px 0 0; font-size: 14px; color: var(--text-sub);">Live intelligence dashboard for the Sanhedrin Educational Experience</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 1.5px; color: var(--text-sub);">DILEMMA: PIKUACH NEFESH</div>
+          <div style="display: flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; background: rgba(90,140,106,0.12); border: 1px solid rgba(90,140,106,0.3);">
+            <div style="width: 7px; height: 7px; border-radius: 50%; background: #5A8C6A; animation: dashPulse 2s ease-in-out infinite;"></div>
+            <span style="font-family: var(--font-m); font-size: 10px; letter-spacing: 1.5px; color: #5A8C6A; font-weight: 600;">SESSION LIVE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Grid: Left Metrics | Center Video | Right Metrics -->
+      <div class="reveal r2" style="display: grid; grid-template-columns: 200px 1fr 200px; gap: 14px; width: 100%;">
+
+        <!-- LEFT PANEL: Sentiment + L'Shem Shamayim Index -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+
+          <!-- Sentiment Analysis -->
+          <div class="card" style="padding: 14px; border-radius: 8px;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">SENTIMENT ANALYSIS</div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 11px; color: var(--text-sub);">Constructive</span>
+                <span style="font-family: var(--font-m); font-size: 11px; color: #5A8C6A; font-weight: 600;">72%</span>
+              </div>
+              <div style="height: 6px; border-radius: 3px; background: rgba(0,48,87,0.08); overflow: hidden;">
+                <div style="width: 72%; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #5A8C6A, #7DB892);"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <span style="font-size: 11px; color: var(--text-sub);">Adversarial</span>
+                <span style="font-family: var(--font-m); font-size: 11px; color: #C05555; font-weight: 600;">18%</span>
+              </div>
+              <div style="height: 6px; border-radius: 3px; background: rgba(0,48,87,0.08); overflow: hidden;">
+                <div style="width: 18%; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #C05555, #D47777);"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <span style="font-size: 11px; color: var(--text-sub);">Neutral</span>
+                <span style="font-family: var(--font-m); font-size: 11px; color: var(--taupe); font-weight: 600;">10%</span>
+              </div>
+              <div style="height: 6px; border-radius: 3px; background: rgba(0,48,87,0.08); overflow: hidden;">
+                <div style="width: 10%; height: 100%; border-radius: 3px; background: var(--taupe);"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- L'Shem Shamayim Index -->
+          <div class="card" style="padding: 14px; border-radius: 8px; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">L'SHEM SHAMAYIM INDEX</div>
+            <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
+              <svg viewBox="0 0 100 100" style="width: 100%; height: 100%; transform: rotate(-90deg);">
+                <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(0,48,87,0.08)" stroke-width="8"/>
+                <circle cx="50" cy="50" r="42" fill="none" stroke="url(#lshGrad)" stroke-width="8" stroke-linecap="round" stroke-dasharray="211" stroke-dashoffset="48"/>
+                <defs><linearGradient id="lshGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#003057"/><stop offset="100%" stop-color="#5A8C6A"/></linearGradient></defs>
+              </svg>
+              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div style="font-family: var(--font-m); font-size: 28px; font-weight: 700; color: #003057; line-height: 1;">82</div>
+                <div style="font-size: 9px; color: var(--text-sub);">/ 100</div>
+              </div>
+            </div>
+            <div style="font-size: 10px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">"For the sake of heaven"<br>discourse quality</div>
+            <div style="display: flex; justify-content: center; gap: 4px; margin-top: 8px;">
+              <div style="font-family: var(--font-m); font-size: 9px; color: #5A8C6A; padding: 2px 6px; border-radius: 3px; background: rgba(90,140,106,0.1);">+4 from start</div>
+            </div>
+          </div>
+
+          <!-- Discourse Depth -->
+          <div class="card" style="padding: 14px; border-radius: 8px;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">DISCOURSE DEPTH</div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                <span style="color: var(--text-sub);">Arguments surfaced</span>
+                <span style="font-family: var(--font-m); font-weight: 600; color: #003057;">14</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                <span style="color: var(--text-sub);">Counterpoints</span>
+                <span style="font-family: var(--font-m); font-weight: 600; color: #003057;">9</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                <span style="color: var(--text-sub);">Consensus points</span>
+                <span style="font-family: var(--font-m); font-weight: 600; color: #5A8C6A;">3</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                <span style="color: var(--text-sub);">Visitor turns</span>
+                <span style="font-family: var(--font-m); font-weight: 600; color: #003057;">22</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Session Timetable -->
-        <div>
-          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 12px;">DAILY SESSION SCHEDULE</div>
-          <div style="display: flex; flex-direction: column; gap: 0;">
-            <div class="card" style="padding: 10px 14px; border-radius: 8px 8px 0 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">09:00</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">The Goring Ox</div><div style="font-size: 11px; color: var(--text-sub);">Autonomous Vehicle Liability</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">10:00</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Lashon Hara</div><div style="font-size: 11px; color: var(--text-sub);">Cyberbullying and Social Media</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px; background: rgba(0,48,87,0.06);">
-              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">11:00</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Pikuach Nefesh</div><div style="font-size: 11px; color: var(--text-sub);">AI Sentience and Rights</div></div>
-              <div style="margin-left: auto; font-family: var(--font-m); font-size: 9px; letter-spacing: 1.5px; padding: 3px 8px; border-radius: 4px; background: rgba(0,48,87,0.08); color: #003057;">NOW</div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">12:00</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">NFT Chametz</div><div style="font-size: 11px; color: var(--text-sub);">Digital Ownership vs. Tradition</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">13:30</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Bal Tashchit</div><div style="font-size: 11px; color: var(--text-sub);">Fast Fashion and Environmental Ethics</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">14:30</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Lo Taamod</div><div style="font-size: 11px; color: var(--text-sub);">Bystander Obligations in Virtual Spaces</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">15:30</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Power of the Crowd</div><div style="font-size: 11px; color: var(--text-sub);">Cancel Culture and Boycotts</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0 0 8px 8px; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">16:30</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">Dina D'Malkhuta</div><div style="font-size: 11px; color: var(--text-sub);">Open Source Code Ownership</div></div>
+        <!-- CENTER: Video Player (proper frame) -->
+        <div style="position: relative; border-radius: 8px; overflow: hidden; background: #0a0f1a; border: 3px solid #003057; box-shadow: 0 4px 32px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(189,214,230,0.08);">
+          <video controls playsinline style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top;">
+            <source src="video/explainer.mp4" type="video/mp4">
+          </video>
+          <!-- Frame corner accents -->
+          <div style="position: absolute; top: 6px; left: 6px; width: 16px; height: 16px; border-top: 2px solid rgba(0,212,255,0.4); border-left: 2px solid rgba(0,212,255,0.4);"></div>
+          <div style="position: absolute; top: 6px; right: 6px; width: 16px; height: 16px; border-top: 2px solid rgba(0,212,255,0.4); border-right: 2px solid rgba(0,212,255,0.4);"></div>
+          <div style="position: absolute; bottom: 6px; left: 6px; width: 16px; height: 16px; border-bottom: 2px solid rgba(0,212,255,0.4); border-left: 2px solid rgba(0,212,255,0.4);"></div>
+          <div style="position: absolute; bottom: 6px; right: 6px; width: 16px; height: 16px; border-bottom: 2px solid rgba(0,212,255,0.4); border-right: 2px solid rgba(0,212,255,0.4);"></div>
+        </div>
+
+        <!-- RIGHT PANEL: Sages at Play + Roles at Play -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+
+          <!-- Sages at Play -->
+          <div class="card" style="padding: 14px; border-radius: 8px;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">SAGES AT PLAY</div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #003057, #1a4d7a); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; font-weight: 700; border: 2px solid #5A8C6A;">R</div>
+                <div><div style="font-size: 12px; font-weight: 600; color: var(--text);">Rambam</div><div style="font-size: 9px; color: #5A8C6A; font-family: var(--font-m);">SPEAKING</div></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #003057, #1a4d7a); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; font-weight: 700; border: 2px solid #D4874D;">S</div>
+                <div><div style="font-size: 12px; font-weight: 600; color: var(--text);">Spinoza</div><div style="font-size: 9px; color: #D4874D; font-family: var(--font-m);">ANALYZING</div></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #003057, #1a4d7a); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; font-weight: 700; border: 2px solid #7B6B9E;">E</div>
+                <div><div style="font-size: 12px; font-weight: 600; color: var(--text);">Einstein</div><div style="font-size: 9px; color: #7B6B9E; font-family: var(--font-m);">LISTENING</div></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #003057, #1a4d7a); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; font-weight: 700; border: 2px solid rgba(189,214,230,0.2);">G</div>
+                <div><div style="font-size: 12px; font-weight: 600; color: var(--text);">Golda</div><div style="font-size: 9px; color: var(--text-dim); font-family: var(--font-m);">STANDBY</div></div>
+              </div>
             </div>
           </div>
-          <p style="font-size: 11px; color: var(--text-sub); margin-top: 10px; font-style: italic;">Each 25-min session rotates dilemmas daily. Up to 12 visitors per session.</p>
+
+          <!-- Roles at Play -->
+          <div class="card" style="padding: 14px; border-radius: 8px;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">ROLES AT PLAY</div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 4px; background: rgba(90,140,106,0.08);">
+                <div style="width: 5px; height: 5px; border-radius: 50%; background: #5A8C6A;"></div>
+                <span style="font-size: 11px; font-weight: 600; color: var(--text);">Nasi</span>
+                <span style="font-size: 9px; color: var(--text-sub); margin-left: auto;">Rambam</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 4px; background: rgba(212,135,77,0.08);">
+                <div style="width: 5px; height: 5px; border-radius: 50%; background: #D4874D;"></div>
+                <span style="font-size: 11px; font-weight: 600; color: var(--text);">Ipcha Mistabra</span>
+                <span style="font-size: 9px; color: var(--text-sub); margin-left: auto;">Spinoza</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 4px; background: rgba(123,107,158,0.08);">
+                <div style="width: 5px; height: 5px; border-radius: 50%; background: #7B6B9E;"></div>
+                <span style="font-size: 11px; font-weight: 600; color: var(--text);">Shakla V'Tarya</span>
+                <span style="font-size: 9px; color: var(--text-sub); margin-left: auto;">Einstein</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 4px; background: rgba(0,48,87,0.04);">
+                <div style="width: 5px; height: 5px; border-radius: 50%; background: rgba(0,48,87,0.2);"></div>
+                <span style="font-size: 11px; font-weight: 600; color: var(--text-dim);">Av Beit Din</span>
+                <span style="font-size: 9px; color: var(--text-dim); margin-left: auto;">standby</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visitor Engagement -->
+          <div class="card" style="padding: 14px; border-radius: 8px;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">VISITORS</div>
+            <div style="display: flex; align-items: baseline; gap: 4px;">
+              <span style="font-family: var(--font-m); font-size: 32px; font-weight: 700; color: #003057; line-height: 1;">8</span>
+              <span style="font-size: 13px; color: var(--text-sub);">/ 12 active</span>
+            </div>
+            <div style="display: flex; gap: 3px; margin-top: 8px;">
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: rgba(0,48,87,0.1);"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: rgba(0,48,87,0.1);"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: rgba(0,48,87,0.1);"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: rgba(0,48,87,0.1);"></div>
+            </div>
+            <div style="font-size: 10px; color: var(--text-sub); margin-top: 6px;">18 min remaining</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Compact Session Schedule -->
+      <div class="reveal r3" style="width: 100%; margin-top: 14px;">
+        <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 8px;">DAILY SESSION SCHEDULE</div>
+        <div style="display: flex; gap: 0; width: 100%;">
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 8px 0 0 8px; border-right: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--text-dim);">09:00</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-dim);">Goring Ox</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-right: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--text-dim);">10:00</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-dim);">Lashon Hara</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-right: none; text-align: center; background: rgba(0,48,87,0.06); border-color: #003057;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: #003057; font-weight: 600;">11:00</div>
+            <div style="font-size: 11px; font-weight: 700; color: #003057;">Pikuach Nefesh</div>
+            <div style="font-family: var(--font-m); font-size: 8px; letter-spacing: 1px; color: #5A8C6A; margin-top: 2px;">LIVE NOW</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-right: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--taupe);">12:00</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">NFT Chametz</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-right: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--taupe);">13:30</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">Bal Tashchit</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-right: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--taupe);">14:30</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">Lo Taamod</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-right: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--taupe);">15:30</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">Crowd</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0 8px 8px 0; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--taupe);">16:30</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">D'Malkhuta</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="lang-he" dir="rtl">
-    <div class="layout-statement" style="align-items: flex-start; text-align: right; max-width: 1100px; margin: 0 auto; padding-top: 32px;">
+    <div class="layout-statement" style="align-items: flex-start; text-align: right; max-width: 1200px; margin: 0 auto; padding-top: 20px;">
       <p class="appendix-label reveal">נספח ו'</p>
-      <h2 class="reveal r1" style="font-size: 44px;">חכמי AI ואמנות המחלוקת</h2>
-      <p class="body-text reveal r2" style="max-width: 800px; margin-top: 4px;">סקירה קונספטואלית של חווית הסנהדרין החינוכית: כיצד מבקרים מתדיינים עם דמויות היסטוריות מונעות AI בשיח אזרחי מובנה.</p>
 
-      <div class="reveal r3" style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px; margin-top: 24px; width: 100%;">
-        <div style="position: relative; border-radius: 10px; overflow: hidden; background: #000; border: 6px solid #003057; box-shadow: 0 4px 24px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(189,214,230,0.1);">
-          <div style="overflow: hidden; margin: -4px -14px -10px -4px;">
-            <video controls playsinline style="width: calc(100% + 18px); display: block; background: #000;">
-              <source src="video/explainer.mp4" type="video/mp4">
-            </video>
+      <!-- Dashboard Header Bar -->
+      <div class="reveal r1" style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 16px;">
+        <div>
+          <h2 style="font-size: 32px; margin: 0;">חדר הבקרה של החוויה</h2>
+          <p class="body-text" style="margin: 2px 0 0; font-size: 14px; color: var(--text-sub);">לוח בקרה חי של חוויית הסנהדרין החינוכית</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 1.5px; color: var(--text-sub);">דילמה: פיקוח נפש</div>
+          <div style="display: flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; background: rgba(90,140,106,0.12); border: 1px solid rgba(90,140,106,0.3);">
+            <div style="width: 7px; height: 7px; border-radius: 50%; background: #5A8C6A; animation: dashPulse 2s ease-in-out infinite;"></div>
+            <span style="font-family: var(--font-m); font-size: 10px; letter-spacing: 1.5px; color: #5A8C6A; font-weight: 600;">מפגש חי</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Grid: Right Metrics | Center Video | Left Metrics (RTL) -->
+      <div class="reveal r2" style="display: grid; grid-template-columns: 200px 1fr 200px; gap: 14px; width: 100%;">
+
+        <!-- RIGHT PANEL (appears first in RTL): Sentiment + L'Shem Shamayim -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="card" style="padding: 14px; border-radius: 8px;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">ניתוח סנטימנט</div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 11px; color: var(--text-sub);">בונה</span>
+                <span style="font-family: var(--font-m); font-size: 11px; color: #5A8C6A; font-weight: 600;">72%</span>
+              </div>
+              <div style="height: 6px; border-radius: 3px; background: rgba(0,48,87,0.08); overflow: hidden;">
+                <div style="width: 72%; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #5A8C6A, #7DB892); float: right;"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <span style="font-size: 11px; color: var(--text-sub);">עוין</span>
+                <span style="font-family: var(--font-m); font-size: 11px; color: #C05555; font-weight: 600;">18%</span>
+              </div>
+              <div style="height: 6px; border-radius: 3px; background: rgba(0,48,87,0.08); overflow: hidden;">
+                <div style="width: 18%; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #C05555, #D47777); float: right;"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <span style="font-size: 11px; color: var(--text-sub);">ניטרלי</span>
+                <span style="font-family: var(--font-m); font-size: 11px; color: var(--taupe); font-weight: 600;">10%</span>
+              </div>
+              <div style="height: 6px; border-radius: 3px; background: rgba(0,48,87,0.08); overflow: hidden;">
+                <div style="width: 10%; height: 100%; border-radius: 3px; background: var(--taupe); float: right;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 14px; border-radius: 8px; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">מדד לשם שמיים</div>
+            <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
+              <svg viewBox="0 0 100 100" style="width: 100%; height: 100%; transform: rotate(-90deg);">
+                <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(0,48,87,0.08)" stroke-width="8"/>
+                <circle cx="50" cy="50" r="42" fill="none" stroke="url(#lshGradHe)" stroke-width="8" stroke-linecap="round" stroke-dasharray="211" stroke-dashoffset="48"/>
+                <defs><linearGradient id="lshGradHe" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#003057"/><stop offset="100%" stop-color="#5A8C6A"/></linearGradient></defs>
+              </svg>
+              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div style="font-family: var(--font-m); font-size: 28px; font-weight: 700; color: #003057; line-height: 1;">82</div>
+                <div style="font-size: 9px; color: var(--text-sub);">/ 100</div>
+              </div>
+            </div>
+            <div style="font-size: 10px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">איכות השיח<br>"לשם שמיים"</div>
+            <div style="display: flex; justify-content: center; gap: 4px; margin-top: 8px;">
+              <div style="font-family: var(--font-m); font-size: 9px; color: #5A8C6A; padding: 2px 6px; border-radius: 3px; background: rgba(90,140,106,0.1);">+4 מההתחלה</div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 14px; border-radius: 8px;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">עומק השיח</div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; justify-content: space-between; font-size: 11px;"><span style="color: var(--text-sub);">טיעונים שעלו</span><span style="font-family: var(--font-m); font-weight: 600; color: #003057;">14</span></div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px;"><span style="color: var(--text-sub);">טענות נגד</span><span style="font-family: var(--font-m); font-weight: 600; color: #003057;">9</span></div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px;"><span style="color: var(--text-sub);">נקודות הסכמה</span><span style="font-family: var(--font-m); font-weight: 600; color: #5A8C6A;">3</span></div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px;"><span style="color: var(--text-sub);">תורות מבקרים</span><span style="font-family: var(--font-m); font-weight: 600; color: #003057;">22</span></div>
+            </div>
           </div>
         </div>
 
-        <div>
-          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 12px;">לוח מפגשים יומי</div>
-          <div style="display: flex; flex-direction: column; gap: 0;">
-            <div class="card" style="padding: 10px 14px; border-radius: 8px 8px 0 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">09:00</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">השור שנגח</div><div style="font-size: 11px; color: var(--text-sub);">אחריות על רכב אוטונומי</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">10:00</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">לשון הרע</div><div style="font-size: 11px; color: var(--text-sub);">בריונות ברשת ומדיה חברתית</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px; background: rgba(0,48,87,0.06);">
-              <div style="font-family: var(--font-m); font-size: 13px; color: #003057; font-weight: 600; min-width: 52px;">11:00</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">פיקוח נפש</div><div style="font-size: 11px; color: var(--text-sub);">תודעת AI וזכויות</div></div>
-              <div style="margin-left: auto; font-family: var(--font-m); font-size: 9px; letter-spacing: 1.5px; padding: 3px 8px; border-radius: 4px; background: rgba(0,48,87,0.08); color: #003057;">עכשיו</div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">12:00</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">חמץ NFT</div><div style="font-size: 11px; color: var(--text-sub);">בעלות דיגיטלית מול מסורת</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">13:30</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">בל תשחית</div><div style="font-size: 11px; color: var(--text-sub);">אופנה מהירה ואתיקה סביבתית</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">14:30</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">לא תעמוד</div><div style="font-size: 11px; color: var(--text-sub);">חובת הצופה במרחבים וירטואליים</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0; border-bottom: none; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">15:30</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">כוח הקהל</div><div style="font-size: 11px; color: var(--text-sub);">תרבות הביטול וחרמות</div></div>
-            </div>
-            <div class="card" style="padding: 10px 14px; border-radius: 0 0 8px 8px; display: flex; align-items: center; gap: 12px;">
-              <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); font-weight: 600; min-width: 52px;">16:30</div>
-              <div><div style="font-size: 14px; font-weight: 600; color: var(--text);">דינא דמלכותא</div><div style="font-size: 11px; color: var(--text-sub);">בעלות על קוד פתוח</div></div>
+        <!-- CENTER: Video Player -->
+        <div style="position: relative; border-radius: 8px; overflow: hidden; background: #0a0f1a; border: 3px solid #003057; box-shadow: 0 4px 32px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(189,214,230,0.08);">
+          <video controls playsinline style="width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top;">
+            <source src="video/explainer.mp4" type="video/mp4">
+          </video>
+          <div style="position: absolute; top: 6px; left: 6px; width: 16px; height: 16px; border-top: 2px solid rgba(0,212,255,0.4); border-left: 2px solid rgba(0,212,255,0.4);"></div>
+          <div style="position: absolute; top: 6px; right: 6px; width: 16px; height: 16px; border-top: 2px solid rgba(0,212,255,0.4); border-right: 2px solid rgba(0,212,255,0.4);"></div>
+          <div style="position: absolute; bottom: 6px; left: 6px; width: 16px; height: 16px; border-bottom: 2px solid rgba(0,212,255,0.4); border-left: 2px solid rgba(0,212,255,0.4);"></div>
+          <div style="position: absolute; bottom: 6px; right: 6px; width: 16px; height: 16px; border-bottom: 2px solid rgba(0,212,255,0.4); border-right: 2px solid rgba(0,212,255,0.4);"></div>
+        </div>
+
+        <!-- LEFT PANEL (appears last in RTL): Sages + Roles -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="card" style="padding: 14px; border-radius: 8px;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">חכמים בפעולה</div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #003057, #1a4d7a); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; font-weight: 700; border: 2px solid #5A8C6A;">ר</div>
+                <div><div style="font-size: 12px; font-weight: 600; color: var(--text);">רמב"ם</div><div style="font-size: 9px; color: #5A8C6A; font-family: var(--font-m);">מדבר</div></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #003057, #1a4d7a); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; font-weight: 700; border: 2px solid #D4874D;">ש</div>
+                <div><div style="font-size: 12px; font-weight: 600; color: var(--text);">שפינוזה</div><div style="font-size: 9px; color: #D4874D; font-family: var(--font-m);">מנתח</div></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #003057, #1a4d7a); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; font-weight: 700; border: 2px solid #7B6B9E;">א</div>
+                <div><div style="font-size: 12px; font-weight: 600; color: var(--text);">איינשטיין</div><div style="font-size: 9px; color: #7B6B9E; font-family: var(--font-m);">מאזין</div></div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #003057, #1a4d7a); display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; font-weight: 700; border: 2px solid rgba(189,214,230,0.2);">ג</div>
+                <div><div style="font-size: 12px; font-weight: 600; color: var(--text);">גולדה</div><div style="font-size: 9px; color: var(--text-dim); font-family: var(--font-m);">המתנה</div></div>
+              </div>
             </div>
           </div>
-          <p style="font-size: 11px; color: var(--text-sub); margin-top: 10px; font-style: italic;">כל מפגש נמשך 25 דקות. הדילמות מתחלפות מדי יום. עד 12 מבקרים למפגש.</p>
+
+          <div class="card" style="padding: 14px; border-radius: 8px;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">תפקידים בפעולה</div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 4px; background: rgba(90,140,106,0.08);">
+                <div style="width: 5px; height: 5px; border-radius: 50%; background: #5A8C6A;"></div>
+                <span style="font-size: 11px; font-weight: 600; color: var(--text);">נשיא</span>
+                <span style="font-size: 9px; color: var(--text-sub); margin-inline-start: auto;">רמב"ם</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 4px; background: rgba(212,135,77,0.08);">
+                <div style="width: 5px; height: 5px; border-radius: 50%; background: #D4874D;"></div>
+                <span style="font-size: 11px; font-weight: 600; color: var(--text);">איפכא מסתברא</span>
+                <span style="font-size: 9px; color: var(--text-sub); margin-inline-start: auto;">שפינוזה</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 4px; background: rgba(123,107,158,0.08);">
+                <div style="width: 5px; height: 5px; border-radius: 50%; background: #7B6B9E;"></div>
+                <span style="font-size: 11px; font-weight: 600; color: var(--text);">שקלא וטריא</span>
+                <span style="font-size: 9px; color: var(--text-sub); margin-inline-start: auto;">איינשטיין</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 4px; background: rgba(0,48,87,0.04);">
+                <div style="width: 5px; height: 5px; border-radius: 50%; background: rgba(0,48,87,0.2);"></div>
+                <span style="font-size: 11px; font-weight: 600; color: var(--text-dim);">אב בית דין</span>
+                <span style="font-size: 9px; color: var(--text-dim); margin-inline-start: auto;">המתנה</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 14px; border-radius: 8px;">
+            <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 10px;">מבקרים</div>
+            <div style="display: flex; align-items: baseline; gap: 4px;">
+              <span style="font-family: var(--font-m); font-size: 32px; font-weight: 700; color: #003057; line-height: 1;">8</span>
+              <span style="font-size: 13px; color: var(--text-sub);">/ 12 פעילים</span>
+            </div>
+            <div style="display: flex; gap: 3px; margin-top: 8px;">
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: #003057;"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: rgba(0,48,87,0.1);"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: rgba(0,48,87,0.1);"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: rgba(0,48,87,0.1);"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: rgba(0,48,87,0.1);"></div>
+            </div>
+            <div style="font-size: 10px; color: var(--text-sub); margin-top: 6px;">18 דקות נותרו</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Compact Session Schedule -->
+      <div class="reveal r3" style="width: 100%; margin-top: 14px;">
+        <div style="font-family: var(--font-m); font-size: 9px; letter-spacing: 2px; color: var(--taupe); font-weight: 600; margin-bottom: 8px;">לוח מפגשים יומי</div>
+        <div style="display: flex; gap: 0; width: 100%;">
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0 8px 8px 0; border-left: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--text-dim);">09:00</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-dim);">השור שנגח</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-left: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--text-dim);">10:00</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-dim);">לשון הרע</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-left: none; text-align: center; background: rgba(0,48,87,0.06); border-color: #003057;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: #003057; font-weight: 600;">11:00</div>
+            <div style="font-size: 11px; font-weight: 700; color: #003057;">פיקוח נפש</div>
+            <div style="font-family: var(--font-m); font-size: 8px; letter-spacing: 1px; color: #5A8C6A; margin-top: 2px;">חי עכשיו</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-left: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--taupe);">12:00</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">חמץ NFT</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-left: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--taupe);">13:30</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">בל תשחית</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-left: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--taupe);">14:30</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">לא תעמוד</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 0; border-left: none; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--taupe);">15:30</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">כוח הקהל</div>
+          </div>
+          <div class="card" style="flex: 1; padding: 8px 10px; border-radius: 8px 0 0 8px; text-align: center;">
+            <div style="font-family: var(--font-m); font-size: 10px; color: var(--taupe);">16:30</div>
+            <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">דינא דמלכותא</div>
+          </div>
         </div>
       </div>
     </div>
