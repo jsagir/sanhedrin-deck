@@ -49,7 +49,7 @@ SLIDES = [
     },
     {
         "file": "slide-07.mp3",
-        "text": "Our key value proposition: learn to disagree better in 30 minutes. Without needing to agree. A visitor brings a dilemma. Our engine, AI historical sages and human participants, deliberates together. The output: expanded thinking, new perspectives, a visitor who leaves sharper than when they walked in."
+        "text": "Discourse Training. Train how to disagree better. This is an AI-mediated civic discourse arena where visitors deliberate with 80 historical thinkers in real time. The flow: a structured dilemma goes in. Multi-agent deliberation happens, with Rambam, Einstein, Golda Meir and 77 more debating together. And what comes out: expanded thinking and new perspectives."
     },
     {
         "file": "slide-08.mp3",
