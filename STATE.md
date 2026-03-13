@@ -1,20 +1,19 @@
 # Sanhedrin Deck - Project State
 
 ## Current Status
-**Last updated:** 2026-03-13
-**Phase:** 20 main slides (3 team slides) + 5 appendix. 12 sages with voices. Deployed and live.
+**Last updated:** 2026-03-13 (Session 17)
+**Phase:** 22 main slides (3 team slides) + 8 appendix (A-F, P, Q). 12 sages with voices. Deployed and live.
 **Live URL:** https://sanhedrin-deck.onrender.com
 **Repo:** https://github.com/jsagir/sanhedrin-deck (auto-deploy on push to master)
 
 ## What To Do Next (Pick Up Here)
 
 ### Immediate
-1. **Review the live deck** at https://sanhedrin-deck.onrender.com
-2. **Sage card hover bug** - cards in Appendix E not scaling on hover due to overflow-y:auto on .sage-grid clipping transforms. May need CSS rework (margin-based effect instead of transform:scale)
-3. **Slide 9 (Physical Space)** - reconsider screen usage: live sentiment analysis, argument structure visualization instead of just decorative characters
+1. **Puzzle jigsaw shape polish** - pieces still look too tile-like despite arc-based tabs. Need more pronounced classic jigsaw shape (bezier curves, varied tab in/out per edge). The interaction works (drag, snap, gradient merge, Venn center) but visual shape needs love
+2. **Sage card hover bug** - cards in Appendix E not scaling on hover due to overflow-y:auto on .sage-grid clipping transforms
+3. **Slide 9 (Physical Space)** - reconsider screen usage: live sentiment analysis, argument structure visualization
 4. **Slide 15 (Business Case)** - placeholder for Yoni to customize per donor
-5. **Team slide position** - Daniel suggested moving to beginning of deck (not yet done, pending decision)
-6. **Wire up CTA buttons** - "Approve Phase 1 POC" and "View Tech Architecture" still have no targets
+5. **Wire up CTA buttons** - "Approve Phase 1 POC" and "View Tech Architecture" still have no targets
 
 ### Content Refinement
 - [ ] Confirm or remove unverified claims (Yazdani Studio, 100K visitors)
@@ -74,6 +73,24 @@
 | A5 | The Sage Library | All 80 Jewish Lives figures with hover overlays showing Sanhedrin roles |
 
 ## What Changed in Latest Sessions
+
+### Session 17 (2026-03-13) - Interactive Puzzle, Dark Mode Fixes, Video Appendix, Animation Index Fix
+- **Slide 4 (Cognitive Twist): Interactive drag-and-snap jigsaw puzzle**
+  - 4 jigsaw pieces: Arguments (matte green), Facts (matte orange), Empathy (matte red), Sentiment (matte purple)
+  - Pieces float scattered, user drags them to dashed ghost targets
+  - Snap-to-place with cyan spark burst, checkmark on placed pieces
+  - **Gradient merge**: placed pieces blend colors toward neighbors (islands merging into shared lake)
+  - **Venn center**: glowing intersection appears as pieces connect, "Shared Discourse" label when all 4 placed
+  - Auto-resets after 5 seconds. Mouse + touch. Bilingual EN/HE labels
+  - **STILL NEEDS WORK**: jigsaw tab shape may still look too tile-like. Tabs are arc-based with 22% size. May need bezier curves or more pronounced interlocking shape in next session
+- **Dark mode contrast fix**: All `background: var(--navy); color: #fff` hardcoded to `#003057`. In dark mode `--navy` flips to light blue making white text unreadable. Fixed: ENGINE box, 6 persona cards, View Full Library buttons, narration btn, back btn, tour btn, sage play btn
+- **Canvas animation indices fixed**: All were wrong since team slides were inserted at position 3. Polarization [1] correct, puzzle [5], role network [9], arena [12]
+- **Appendix F: Explainer Video** with daily session timetable
+  - Video: `video/explainer.mp4` (AI Sages & The Art of Disagreement, 33MB)
+  - 8 dilemma scenarios scheduled 09:00-16:30, rotates daily, 25-min sessions
+  - Video frame: navy border crops bottom-right to hide NotebookLM logo naturally via offset margins
+  - Quick nav updated, onboarding tour count updated to 8 appendices
+  - Bilingual EN/HE
 
 ### Session 16 (2026-03-13) - Narration, Onboarding, Polarization Anim, Value Prop Redesign
 - **22 narration MP3s generated** via ElevenLabs (Daniel voice, eleven_multilingual_v2)
