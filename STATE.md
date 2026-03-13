@@ -1,8 +1,8 @@
 # Sanhedrin Deck - Project State
 
 ## Current Status
-**Last updated:** 2026-03-12
-**Phase:** Full 80-sage library complete. 18 main + 5 appendix slides. Deployed and live.
+**Last updated:** 2026-03-13
+**Phase:** 20 main slides (3 team slides) + 5 appendix. 12 sages with voices. Deployed and live.
 **Live URL:** https://sanhedrin-deck.onrender.com
 **Repo:** https://github.com/jsagir/sanhedrin-deck (auto-deploy on push to master)
 
@@ -26,40 +26,42 @@
 - [ ] PDF export for leave-behind
 - [ ] Speaker notes mode
 
-## Current Deck Structure (18 + 5 Appendix)
+## Current Deck Structure (20 + 5 Appendix)
 
-### ACT 1: THE HOOK (Slides 1-5)
+### ACT 1: THE HOOK (Slides 1-7)
 | # | Title | Layout | Image |
 |---|-------|--------|-------|
 | 1 | Title/Hero - "Disagree Better. Discover Together." | Hero full-bleed | slide-01/hero.png |
 | 2 | The Problem - Discourse is broken | Editorial split (img right) | slide-02/hero.png |
-| 3 | The Cognitive Twist - Dispute as Dynamic Puzzle | Editorial split (img left) | slide-03/hero.png |
-| 4 | Value Prop - "Learn to argue in 30 min" + INPUT/ENGINE/OUTPUT | Statement | (no image) |
-| 5 | **NEW** Sage Showcase - 6 Jewish Lives figures (Abraham, Rambam, Herzl, Golda, Einstein, Anne Frank) | Statement + 6 sage-cards | (Jewish Lives cover images) |
+| 3 | Team: Core MOTJ Team (Daniel Muller, Jonathan Sagir, Marla Supnick, Sharon Jacobson) | Statement + 4-col grid | (headshot placeholders) |
+| 3B | Team: Bar-Ilan Academic Partner (Jonathan Schler, Alex Tal) | Statement + 2-col grid | (headshot placeholders) |
+| 3C | Team: Advisory (Micha Goodman, Miri Dayan) | Statement + 2-col grid | (headshot placeholders) |
+| 4 | The Cognitive Twist - Dispute as Dynamic Puzzle | Editorial split (img left) | slide-03/hero.png |
+| 5 | Value Prop - "Learn to argue in 30 min" + INPUT/ENGINE/OUTPUT | Statement | (no image) |
+| 6 | Sage Showcase - 12 sages in 4-col carousel (Abraham, Maimonides, Spinoza, Herzl, Golda, Einstein, Anne Frank, Houdini, Moses, Freud + 2 more) | Statement + carousel | (Jewish Lives covers) |
+| 7 | Visitor Journey - 6-step, 25-min loop (pre-selected dilemmas) | Statement + 2x3 cards | (no image) |
 
-### ACT 2: THE EXPERIENCE (Slides 6-10)
+### ACT 2: THE EXPERIENCE (Slides 8-12)
 | # | Title | Layout | Image |
 |---|-------|--------|-------|
-| 6 | Visitor Journey - 6-step, 25-min loop (pre-selected dilemmas) | Statement + 2x3 cards | (no image) |
-| 7 | Architecture - 3 Personas x Roles visual (Spinoza/Golda/Rambam) with Sanhedrin terminology | Statement + 3-column grid | (Jewish Lives images) |
-| 8 | Sample Session - The Goring Ox (Rambam/Shammai/Herzl) | Editorial split (img left) | slide-07/hero.png |
-| 9 | Two Configurations - Machloket vs Debate | Statement + 2 cards | (no image) |
-| 10 | Physical Space - 12 kiosks, Yazdani Studio | Hero full-bleed | slide-10/hero.png |
+| 8 | Architecture - 3 Personas x Roles visual with Sanhedrin terminology | Statement + 3-column grid | (Jewish Lives images) |
+| 9 | Sample Session - The Goring Ox | Editorial split (img left) | slide-07/hero.png |
+| 10 | Two Configurations - Machloket vs Debate | Statement + 2 cards | (no image) |
+| 11 | Physical Space - 12 kiosks, Yazdani Studio | Hero full-bleed | slide-10/hero.png |
 
-### ACT 3: WHY IT WORKS (Slides 11-14)
+### ACT 3: WHY IT WORKS (Slides 12-15)
 | # | Title | Layout | Image |
 |---|-------|--------|-------|
-| 11 | POC - Rambam exhibit validated. Quote: "Rambam is a monologue. Sanhedrin is a multi-agent dialogue." | Editorial split (img right) | slide-11/hero.png |
-| 12 | Risk - 70% Solved, 30% Ahead (A2A2H). 80 characters. | Statement + giant typography | (no image) |
-| 13 | Competitive - Simplified: Chatbot vs Sanhedrin only | Statement + editorial table | (no image) |
-| 14 | EdTech - Debate Gym (Museum/Schools/Home) - optional/aspirational | Editorial split (img right) | slide-14/hero.png |
+| 12 | POC - Rambam exhibit validated | Editorial split (img right) | slide-11/hero.png |
+| 13 | Risk - 70% Solved, 30% Ahead (A2A2H). 80 characters. | Statement + giant typography | (no image) |
+| 14 | Competitive - Chatbot vs Sanhedrin only | Statement + editorial table | (no image) |
+| 15 | EdTech - Debate Gym (Museum/Schools/Home) | Editorial split (img right) | slide-14/hero.png |
 
-### ACT 4: THE ASK (Slides 15-18)
+### ACT 4: THE ASK (Slides 16-20)
 | # | Title | Layout | Image |
 |---|-------|--------|-------|
-| 15 | Roadmap - 4 phases (POC/Demo/Prototype/Deploy) | Statement + timeline cards | (no image) |
-| 16 | Business Case - Placeholder for Yoni | Editorial split (img left) | slide-16/hero.png |
-| 17 | Team - Jonathan/Daniel/Micha Goodman/Bar-Ilan | Statement + 2x2 cards | (no image) |
+| 16 | Roadmap - 4 phases (POC/Demo/Prototype/Deploy) | Statement + timeline cards | (no image) |
+| 17 | Business Case - Placeholder for Yoni | Editorial split (img left) | slide-16/hero.png |
 | 18 | CTA - "Give us the green light" | Hero full-bleed | slide-18/hero.png |
 
 ### APPENDIX (A1-A5)
@@ -72,6 +74,20 @@
 | A5 | The Sage Library | All 80 Jewish Lives figures with hover overlays showing Sanhedrin roles |
 
 ## What Changed in Latest Sessions
+
+### Session 14 (2026-03-13) - Team Slides + Sage Carousel + Spinoza
+- **Team slide moved** from position 16 to position 3 per Daniel's feedback
+- **Team expanded to 3 slides** with 8 members across 3 sections:
+  - Slide 3: Core MOTJ Team (Daniel Muller PhD, Jonathan Sagir MBA, Marla Supnick, Sharon Jacobson)
+  - Slide 3B: Bar-Ilan Academic Partner (Jonathan Schler PhD, Alex Tal PhD)
+  - Slide 3C: Advisory Team (Micha Goodman PhD, Miri Dayan Lt. Col. Ret.)
+- Each team member has 80px circular headshot placeholder, full unabridged bio text
+- **Spinoza added** as 12th sage (between Maimonides and Herzl) with ElevenLabs "Roger" voice
+- **Sage carousel** on Slide 5: 4-col grid with prev/next navigation and dot indicators (replaces single-row scroll)
+- **Sage card CSS fixes**: overlay stacking (removed position:relative), play button underline bleed-through (z-index stacking context)
+- **Deck audit** against March 12 revision guide: 12/18 items done, 3 partial, 3 not done
+- All slides renumbered after Team insertion (old 3->4, 4->5, etc.)
+- Bilingual EN/HE for all new content
 
 ### Session 13 (2026-03-12) - Sage Voices + Canvas Animations
 - **ElevenLabs voice clips** for 9 sages: Abraham, Maimonides, Herzl, Golda Meir, Einstein, Anne Frank, Houdini, Moses, Freud
@@ -134,6 +150,7 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | 11 | 2026-03-12 | Daniel meeting revision: new sage slide, role terminology, simplified competitive, team update |
 | 12 | 2026-03-12 | Full 80-sage library: expanded Appendix E from 24 to 80 Jewish Lives figures with real cover images, added navigation button from Slide 5 |
 | 13 | 2026-03-12 | Sage voices (ElevenLabs, 9 sages), Slide 5 hover+play redesign, canvas animations for Slides 6+9 |
+| 14 | 2026-03-13 | Team moved to slide 3, split into 3 slides (8 members), Spinoza added as 12th sage, sage carousel with navigation, CSS fixes |
 
 ## Key Decisions
 | Decision | Why |
@@ -158,9 +175,13 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | Slide 5 links to full library | "View Full Library" button navigates from preview (9 sages) to complete Appendix E (80 sages) |
 | ElevenLabs for sage voices | Each sage gets a unique voice matching their character; Einstein uses Bill (Feynman restricted) |
 | Canvas animations lifecycle | Start/stop tied to slide transitions to avoid running 3 animation loops simultaneously |
+| Team slides at position 3 | Daniel requested team near beginning of deck, not end |
+| 3 separate team slides | 8 members across Core/Academic/Advisory sections too dense for 1 slide |
+| Spinoza as 12th sage | Surprising pick, fits philosophy/ethics theme. Roger voice (non-popular) |
+| Sage carousel (4-col paginated) | Replaced single horizontal row; cleaner for 12 cards with room to grow |
 
 ## File Quick Reference
-- `index.html` - the deck (18 main + 5 appendix, bilingual EN/HE, dark/light mode)
+- `index.html` - the deck (20 main + 5 appendix, bilingual EN/HE, dark/light mode)
 - `CLAUDE.md` - project guide + mandatory style rules
 - `STATE.md` - this file
 - `generate_images.py` - image regeneration script (editorial prompts, gemini-2.5-flash-image)
