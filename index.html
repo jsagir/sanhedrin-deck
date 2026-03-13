@@ -1144,7 +1144,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     SLIDE 4B: Sage Showcase - Character Library Preview
+     SLIDE 6: Sage Showcase - Character Library Preview
      ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
   <div class="lang-en">
@@ -1721,7 +1721,135 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     SLIDE 11: POC (Rambam) - Split img-right with pull quote
+     SLIDE 11: AI & Context Engineering - Statement with 4 cards
+     ============================================================ -->
+<section class="slide" data-act="ACT 2: THE EXPERIENCE">
+  <div class="lang-en">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+      <p class="label reveal">Under the Hood</p>
+      <h2 class="reveal r1">AI & Context Engineering</h2>
+      <p class="body-text reveal r2" style="max-width: 800px; margin-bottom: 24px;">How the Sanhedrin system maintains <strong>coherent multi-agent debate</strong> across sessions, personas, and visitor interactions.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; width: 100%;" class="reveal r3">
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Context Engineering</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">Each AI sage receives a <strong>dynamically assembled context window</strong> containing biographical knowledge, thinking mode constraints, debate history, and visitor profiling data.</div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Memory Engineering</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;"><strong>Session memory</strong> tracks argument threads across turns. <strong>Character memory</strong> maintains persona consistency. <strong>Debate memory</strong> preserves the evolving state of the discourse.</div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Orchestration Logic</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">The <em>Nasi</em> and <em>Av Beit Din</em> are <strong>meta-agents</strong> that route prompts, trigger interventions, and select which sage responds next based on debate dynamics.</div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">A2A2H Protocol</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">Agent-to-Agent-to-Human: background threads where agents <strong>validate claims</strong> and <strong>verify tone</strong> before output reaches the human layer.</div>
+        </div>
+      </div>
+      <a href="#appendix-tech" onclick="goToAppendix('appendix-tech');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: underline; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        Deep Dive: Technical Architecture (Appendix A)
+      </a>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+      <p class="label reveal">מתחת למכסה המנוע</p>
+      <h2 class="reveal r1">הנדסת AI והקשר</h2>
+      <p class="body-text reveal r2" style="max-width: 800px; margin-bottom: 24px;">כיצד מערכת הסנהדרין מקיימת <strong>דיון רב-סוכני קוהרנטי</strong> לאורך סשנים, פרסונות ואינטראקציות מבקרים.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; width: 100%;" class="reveal r3">
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">הנדסת הקשר</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">כל חכם AI מקבל <strong>חלון הקשר המורכב דינמית</strong> המכיל ידע ביוגרפי, מגבלות מצב חשיבה, היסטוריית דיון ונתוני פרופיל מבקר.</div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">הנדסת זיכרון</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;"><strong>זיכרון סשן</strong> עוקב אחר חוטי טיעון לאורך תורות. <strong>זיכרון דמות</strong> שומר על עקביות פרסונה. <strong>זיכרון דיון</strong> משמר את מצב השיח המתפתח.</div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">לוגיקת תזמור</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">ה<em>נשיא</em> ו<em>אב בית הדין</em> הם <strong>מטא-סוכנים</strong> שמנתבים פרומפטים, מפעילים התערבויות ובוחרים איזה חכם מגיב בהתבסס על דינמיקת הדיון.</div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">פרוטוקול A2A2H</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">סוכן-לסוכן-לאדם: תהליכי רקע בהם סוכנים <strong>מאמתים טענות</strong> ו<strong>מוודאים טון</strong> לפני שהפלט מגיע לשכבה האנושית.</div>
+        </div>
+      </div>
+      <a href="#appendix-tech" onclick="goToAppendix('appendix-tech');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: underline; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        צלילה עמוקה: ארכיטקטורה טכנית (נספח א')
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 12: Debate & Discourse Framework - Statement with 4 cards
+     ============================================================ -->
+<section class="slide" data-act="ACT 2: THE EXPERIENCE">
+  <div class="lang-en">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+      <p class="label reveal">The Cognitive Layer</p>
+      <h2 class="reveal r1">Debate & Discourse Framework</h2>
+      <p class="body-text reveal r2" style="max-width: 800px; margin-bottom: 24px;">The interaction model connecting <strong>humans, AI agents, and the physical space</strong> into a unified civic discourse experience.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; width: 100%;" class="reveal r3">
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Human-Machine Interaction</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">Visitors engage through <strong>kiosk touchscreens</strong> while AI sages respond via text, voice, and <strong>ambient spatial cues</strong> (lighting, sound, screen positioning).</div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Physical Space Integration</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">The circular arena <strong>maps debate topology to physical layout.</strong> Spotlights follow the active speaker. Screen arrays visualize argument structure in real time.</div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Civic Discourse Rules</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">Enforced Sanhedrin Rules of Engagement: <strong>state the opponent's case first</strong>, attack the premise not the person, concede the gray area, <strong>ground in practice.</strong></div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">13 Thinking Modes</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">Each sage is constrained to specific <strong>Talmudic thinking modes</strong>: from <em>Ipkha Mistabra</em> (Devil's Advocate) to <em>Shakla Vetarya</em> (Dialectic Give-and-Take).</div>
+        </div>
+      </div>
+      <a href="#appendix-modes" onclick="goToAppendix('appendix-modes');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: underline; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        Deep Dive: 13 Thinking Modes & Role Mapping (Appendix B)
+      </a>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+      <p class="label reveal">השכבה הקוגניטיבית</p>
+      <h2 class="reveal r1">מסגרת דיון ושיח</h2>
+      <p class="body-text reveal r2" style="max-width: 800px; margin-bottom: 24px;">מודל האינטראקציה המחבר <strong>בני אדם, סוכני AI והמרחב הפיזי</strong> לחוויית שיח אזרחי אחודה.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; width: 100%;" class="reveal r3">
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">אינטראקציה אדם-מכונה</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">מבקרים מתקשרים דרך <strong>מסכי מגע בעמדות</strong> בעוד חכמי AI מגיבים בטקסט, קול ו<strong>רמזים מרחביים</strong> (תאורה, צליל, מיקום מסכים).</div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">שילוב מרחב פיזי</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">הזירה המעגלית <strong>ממפה טופולוגיית דיון לפריסה פיזית.</strong> זרקורים עוקבים אחרי הדובר הפעיל. מערכי מסכים מדמיינים מבנה טיעון בזמן אמת.</div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">כללי שיח אזרחי</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">כללי התקשרות של הסנהדרין: <strong>הצג את טיעון היריב תחילה</strong>, תקוף את הנחת היסוד לא את האדם, הודה באזור האפור, <strong>עגן במעשה.</strong></div>
+        </div>
+        <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">13 מצבי חשיבה</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">כל חכם מוגבל ל<strong>מצבי חשיבה תלמודיים</strong> ספציפיים: מ<em>איפכא מסתברא</em> (פרקליט שטן) עד <em>שקלא וטריא</em> (דיאלקטיקה של נתינה ולקיחה).</div>
+        </div>
+      </div>
+      <a href="#appendix-modes" onclick="goToAppendix('appendix-modes');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: underline; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        צלילה עמוקה: 13 מצבי חשיבה ומיפוי תפקידים (נספח ב')
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 13: POC (Rambam) - Split img-right with pull quote
      ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="lang-en">
@@ -1759,7 +1887,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     SLIDE 12: 70/30 Risk - Statement with giant typography
+     SLIDE 14: 70/30 Risk - Statement with giant typography
      ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="lang-en">
@@ -1817,7 +1945,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     SLIDE 13: Competitive Advantage - Statement with editorial table
+     SLIDE 15: Competitive Advantage - Statement with editorial table
      ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="lang-en">
@@ -1863,7 +1991,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     SLIDE 14: EdTech Platform - Split img-right with tier cards
+     SLIDE 16: EdTech Platform - Split img-right with tier cards
      ============================================================ -->
 <section class="slide" data-act="ACT 3: WHY IT WORKS">
   <div class="lang-en">
@@ -1921,7 +2049,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     SLIDE 15: Roadmap - Statement with timeline cards (6 phases)
+     SLIDE 17: Roadmap - Statement with timeline cards (6 phases)
      ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="lang-en">
@@ -2015,7 +2143,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     SLIDE 16: Business Case - Split img-left
+     SLIDE 18: Business Case - Split img-left
      ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="lang-en">
@@ -2073,7 +2201,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     SLIDE 17: CTA - Hero full-bleed
+     SLIDE 19: CTA - Hero full-bleed
      ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="lang-en">
@@ -2115,7 +2243,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 <!-- ============================================================
      APPENDIX A: Technical Architecture
      ============================================================ -->
-<section class="slide" data-act="APPENDIX" data-appendix="true">
+<section class="slide" data-act="APPENDIX" data-appendix="true" id="appendix-tech">
   <div class="lang-en">
     <div class="layout-statement" style="align-items: flex-start; text-align: left; max-width: 950px; margin: 0 auto;">
       <p class="appendix-label reveal">Appendix A</p>
@@ -2149,7 +2277,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 <!-- ============================================================
      APPENDIX B: 13 Thinking Modes
      ============================================================ -->
-<section class="slide" data-act="APPENDIX" data-appendix="true">
+<section class="slide" data-act="APPENDIX" data-appendix="true" id="appendix-modes">
   <div class="lang-en">
     <div class="layout-statement" style="align-items: flex-start; text-align: left; max-width: 950px; margin: 0 auto;">
       <p class="appendix-label reveal">Appendix B</p>
