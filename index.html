@@ -5820,9 +5820,6 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
   var pieces = [];
   var sparks = [];
   var COLS = 2, ROWS = 2;
-  var SNAP_DIST = 40;
-  var dragging = null;
-  var dragOff = {x:0,y:0};
   var activeCanvas = null;
   var canvasRect = null;
   var completionGlow = 0;
@@ -5974,6 +5971,7 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     var labels = isHebrew ? LABELS_HE : LABELS_EN;
 
     if (pieces.length === 0) initPieces(w, h);
+    updateFlying();
 
     ctx.clearRect(0, 0, w, h);
 
@@ -5997,29 +5995,21 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
       }
     }
 
-    // Draw placed pieces first (behind), then unplaced (on top)
-    var drawOrder = [];
-    for (var i = 0; i < pieces.length; i++) drawOrder.push(i);
-    // Put dragged piece last
-    if (dragging !== null) {
-      drawOrder.splice(drawOrder.indexOf(dragging), 1);
-      drawOrder.push(dragging);
-    }
-
-    for (var di = 0; di < drawOrder.length; di++) {
-      var i = drawOrder[di];
+    // Draw all pieces
+    for (var di = 0; di < pieces.length; di++) {
+      var i = di;
       var p = pieces[i];
-      var isBeingDragged = (i === dragging);
+      var isFlying = !!p.flying;
       var snapAge = p.placed ? t - p.snapTime : 0;
       var snapPulse = p.placed && snapAge < 0.6 ? Math.max(0, 1 - snapAge / 0.6) : 0;
 
       ctx.save();
 
       // Shadow for floating pieces
-      if (!p.placed || isBeingDragged) {
+      if (!p.placed || isFlying) {
         ctx.shadowColor = 'rgba(0,0,0,0.25)';
-        ctx.shadowBlur = isBeingDragged ? 16 : 8;
-        ctx.shadowOffsetY = isBeingDragged ? 4 : 2;
+        ctx.shadowBlur = isFlying ? 16 : 8;
+        ctx.shadowOffsetY = isFlying ? 4 : 2;
       }
 
       // Snap glow
@@ -6028,8 +6018,8 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
         ctx.shadowBlur = 20 * snapPulse;
       }
 
-      // Scale up slightly when dragging
-      var scale = isBeingDragged ? 1.08 : 1;
+      // Scale up slightly when flying
+      var scale = isFlying ? 1.08 : 1;
       ctx.translate(p.x, p.y);
       ctx.scale(scale, scale);
 
@@ -6251,7 +6241,7 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
       ctx.fillStyle = 'rgba(189,214,230,0.35)';
       ctx.font = '500 11px Montserrat, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText((isHebrew ? '\u05D2\u05E8\u05D5\u05E8 \u05D5\u05D4\u05E0\u05D7 \u2013 ' : 'Drag and place \u2013 ') + placedCount + '/' + pieces.length, w/2, h - 12);
+      ctx.fillText((isHebrew ? '\u05DC\u05D7\u05E5 \u05DC\u05D4\u05E0\u05D7\u05D4 \u2013 ' : 'Click to place \u2013 ') + placedCount + '/' + pieces.length, w/2, h - 12);
     }
   }
 
@@ -6276,49 +6266,65 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     return -1;
   }
 
-  function onDown(e) {
+  // Click-to-place: click a piece and it animates to its home position
+  function onClick(e) {
     if (!activeCanvas) return;
     var pos = getCanvasXY(e, activeCanvas);
     var hit = hitTest(pos.x, pos.y);
     if (hit >= 0) {
-      dragging = hit;
-      dragOff.x = pos.x - pieces[hit].x;
-      dragOff.y = pos.y - pieces[hit].y;
+      var p = pieces[hit];
+      if (p.placed || p.flying) return;
+      // Start fly animation
+      p.flying = true;
+      p.flyStart = Date.now();
+      p.flyFromX = p.x;
+      p.flyFromY = p.y;
+      p.flyDuration = 400; // ms
       e.preventDefault();
     }
   }
 
-  function onMove(e) {
-    if (dragging === null || !activeCanvas) return;
-    var pos = getCanvasXY(e, activeCanvas);
-    pieces[dragging].x = pos.x - dragOff.x;
-    pieces[dragging].y = pos.y - dragOff.y;
-    e.preventDefault();
-  }
-
-  function onUp(e) {
-    if (dragging === null) return;
-    var p = pieces[dragging];
-    var dx = p.x - p.homeX, dy = p.y - p.homeY;
-    var dist = Math.sqrt(dx*dx + dy*dy);
-    if (dist < SNAP_DIST) {
-      p.x = p.homeX; p.y = p.homeY;
-      p.placed = true;
-      p.snapTime = Date.now() * 0.001;
-      addSnapSparks(p.homeX, p.homeY);
+  // Called each frame to animate flying pieces
+  function updateFlying() {
+    var now = Date.now();
+    for (var i = 0; i < pieces.length; i++) {
+      var p = pieces[i];
+      if (!p.flying) continue;
+      var elapsed = now - p.flyStart;
+      var t = Math.min(1, elapsed / p.flyDuration);
+      // Ease out cubic
+      var ease = 1 - Math.pow(1 - t, 3);
+      p.x = p.flyFromX + (p.homeX - p.flyFromX) * ease;
+      p.y = p.flyFromY + (p.homeY - p.flyFromY) * ease;
+      if (t >= 1) {
+        p.x = p.homeX; p.y = p.homeY;
+        p.placed = true;
+        p.flying = false;
+        p.snapTime = Date.now() * 0.001;
+        addSnapSparks(p.homeX, p.homeY);
+      }
     }
-    dragging = null;
   }
 
   function bindEvents(canvas) {
-    canvas.addEventListener('mousedown', onDown);
-    canvas.addEventListener('mousemove', onMove);
-    canvas.addEventListener('mouseup', onUp);
-    canvas.addEventListener('mouseleave', onUp);
-    canvas.addEventListener('touchstart', onDown, {passive: false});
-    canvas.addEventListener('touchmove', onMove, {passive: false});
-    canvas.addEventListener('touchend', onUp);
-    canvas.style.cursor = 'grab';
+    canvas.addEventListener('click', onClick);
+    canvas.addEventListener('touchend', function(e) {
+      if (e.changedTouches && e.changedTouches.length) {
+        // Simulate click from touch position
+        var touch = e.changedTouches[0];
+        var rect = canvas.getBoundingClientRect();
+        var pos = { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
+        var hit = hitTest(pos.x, pos.y);
+        if (hit >= 0) {
+          var p = pieces[hit];
+          if (!p.placed && !p.flying) {
+            p.flying = true; p.flyStart = Date.now();
+            p.flyFromX = p.x; p.flyFromY = p.y; p.flyDuration = 400;
+          }
+        }
+      }
+    });
+    canvas.style.cursor = 'pointer';
   }
 
   var bound = {};
@@ -6340,7 +6346,7 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     },
     stop: function() {
       if (puzzleAnimId) { cancelAnimationFrame(puzzleAnimId); puzzleAnimId = null; }
-      pieces = []; dragging = null;
+      pieces = [];
     }
   };
 })();
