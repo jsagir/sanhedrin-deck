@@ -75,6 +75,16 @@
 
 ## What Changed in Latest Sessions
 
+### Session 15 (2026-03-13) - Tech Slides, Appendices P/Q, Back Button
+- **Two new tech slides** (11: AI & Context Engineering, 12: Debate & Discourse Framework) with drill-down links to Appendix A/B
+- **Appendix P** (Program Scope) and **Appendix Q** (POC Definition) added as SoW-style documents with sticky TOC
+- **Roadmap** revamped: 6 phases, RFP moved to April, hyperlinks from cards to appendices
+- **Floating "Back to Slide" button** on all appendix slides for presentation flow
+- **RTL alignment fix** for Hebrew appendix content
+- **Daniel & Jonathan bios** updated with Maimonides Pavilion leadership
+- **All slides renumbered** (22 main + 7 appendix)
+- **PENDING**: Narration MP3s need complete redo for new slide order
+
 ### Session 14 (2026-03-13) - Team Slides + Sage Carousel + Spinoza
 - **Team slide moved** from position 16 to position 3 per Daniel's feedback
 - **Team expanded to 3 slides** with 8 members across 3 sections:
