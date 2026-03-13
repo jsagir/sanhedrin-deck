@@ -5500,6 +5500,40 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
       }
     }
 
+    // Venn center: the shared space where all 4 views converge
+    if (pieces.length === 4) {
+      var centerX = (pieces[0].homeX + pieces[1].homeX) / 2;
+      var centerY = (pieces[0].homeY + pieces[2].homeY) / 2;
+      // Count how many pieces touch the center (placed pieces adjacent to center)
+      var touchingCenter = 0;
+      for (var i = 0; i < 4; i++) if (pieces[i].placed) touchingCenter++;
+
+      if (touchingCenter >= 2) {
+        var intensity = (touchingCenter - 1) / 3; // 0.33 at 2, 0.66 at 3, 1.0 at 4
+        var vennR = Math.min(pieces[0].w, pieces[0].h) * (0.3 + intensity * 0.25);
+        var pulse = 0.6 + 0.2 * Math.sin(t * 1.8);
+
+        // Glowing radial at intersection
+        var vg = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, vennR);
+        vg.addColorStop(0, 'rgba(0,212,255,' + (intensity * pulse * 0.35) + ')');
+        vg.addColorStop(0.5, 'rgba(0,212,255,' + (intensity * pulse * 0.15) + ')');
+        vg.addColorStop(1, 'rgba(0,212,255,0)');
+        ctx.fillStyle = vg;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, vennR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Center label when all 4 meet
+        if (touchingCenter === 4) {
+          var labelAlpha = 0.5 + 0.2 * Math.sin(t * 1.5);
+          ctx.fillStyle = 'rgba(255,255,255,' + labelAlpha + ')';
+          ctx.font = '700 ' + Math.max(10, Math.min(13, vennR * 0.35)) + 'px Montserrat, sans-serif';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(isHebrew ? '\u05E9\u05D9\u05D7 \u05DE\u05E9\u05D5\u05EA\u05E3' : 'Shared Discourse', centerX, centerY);
+        }
+      }
+    }
+
     // Draw and update sparks
     for (var i = sparks.length - 1; i >= 0; i--) {
       var s = sparks[i];
