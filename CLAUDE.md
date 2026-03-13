@@ -149,3 +149,4 @@ This is non-negotiable. STATE.md is the project memory.
 4. **MOTJ Brand compliance** - All colors must use the 3 MOTJ Pantone values (see STYLE_GUIDE.md). No off-brand colors.
 5. **SVG icons only** - All icons must be inline SVG with `stroke="currentColor"`. No emoji, no icon fonts.
 6. **API keys LOCAL ONLY** - For image generation, read GEMINI_API_KEY from `.env` file (gitignored). NEVER hardcode API keys in code or commit them to the repo.
+7. **Narration MP3 sync** - When slides are added, removed, or reordered, the narration MP3s in `audio/narration/slide-NN.mp3` MUST be regenerated or renumbered to match. Run `generate_narration.py` after any slide structure change. Update narration scripts in that file to match new slide content.

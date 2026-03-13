@@ -828,6 +828,32 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 [data-theme="dark"] .sow-body td { color: var(--text-sub); border-bottom-color: rgba(189,214,230,0.08); }
 [data-theme="dark"] .sow-body tr:nth-child(even) td { background: rgba(189,214,230,0.04); }
 .sow-footer { text-align: center; font: 400 11px/1 var(--font-m); color: var(--text-dim); letter-spacing: 1px; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--card-border); }
+
+/* === ONBOARDING TOUR === */
+.tour-overlay { position: fixed; inset: 0; z-index: 10000; pointer-events: none; opacity: 0; transition: opacity 0.3s ease; }
+.tour-overlay.active { opacity: 1; pointer-events: auto; }
+.tour-backdrop { position: fixed; inset: 0; background: rgba(0,20,40,0.7); z-index: 10001; }
+.tour-highlight { position: absolute; z-index: 10003; border-radius: 8px; box-shadow: 0 0 0 4px rgba(189,214,230,0.8), 0 0 24px rgba(189,214,230,0.4); transition: all 0.4s ease; pointer-events: none; }
+.tour-tooltip { position: absolute; z-index: 10004; background: #fff; border-radius: 12px; padding: 20px 24px; max-width: 320px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); font-family: var(--font-d); transition: all 0.4s ease; }
+.tour-tooltip h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+.tour-tooltip p { font-size: 13px; color: #555; line-height: 1.5; margin: 0 0 16px; }
+.tour-tooltip-arrow { position: absolute; width: 12px; height: 12px; background: #fff; transform: rotate(45deg); }
+.tour-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.tour-dots { display: flex; gap: 6px; }
+.tour-dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; transition: background 0.2s; }
+.tour-dot.active { background: var(--navy); }
+.tour-btn { padding: 8px 20px; border: none; border-radius: 6px; font: 600 13px/1 var(--font-d); cursor: pointer; transition: all 0.2s; }
+.tour-btn-next { background: var(--navy); color: #fff; }
+.tour-btn-next:hover { background: #004680; }
+.tour-btn-skip { background: none; color: #999; font-weight: 500; }
+.tour-btn-skip:hover { color: #555; }
+.tour-step-count { font: 500 11px/1 var(--font-m); color: #aaa; letter-spacing: 1px; }
+[data-theme="dark"] .tour-tooltip { background: #1a2a3a; }
+[data-theme="dark"] .tour-tooltip h3 { color: var(--blue); }
+[data-theme="dark"] .tour-tooltip p { color: #aab; }
+[data-theme="dark"] .tour-tooltip-arrow { background: #1a2a3a; }
+[data-theme="dark"] .tour-dot { background: #334; }
+[data-theme="dark"] .tour-dot.active { background: var(--blue); }
 </style>
 </head>
 <body>
@@ -4380,6 +4406,25 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   </div>
 </div>
 
+<!-- ONBOARDING TOUR -->
+<div class="tour-overlay" id="tourOverlay">
+  <div class="tour-backdrop" id="tourBackdrop"></div>
+  <div class="tour-highlight" id="tourHighlight"></div>
+  <div class="tour-tooltip" id="tourTooltip">
+    <div class="tour-tooltip-arrow" id="tourArrow"></div>
+    <h3 id="tourTitle"></h3>
+    <p id="tourDesc"></p>
+    <div class="tour-footer">
+      <div class="tour-dots" id="tourDots"></div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span class="tour-step-count" id="tourCount"></span>
+        <button class="tour-btn tour-btn-skip" id="tourSkip" onclick="endTour()">Skip</button>
+        <button class="tour-btn tour-btn-next" id="tourNext" onclick="nextTourStep()">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 var slides = document.querySelectorAll('.slide');
 var mainSlides = document.querySelectorAll('.slide:not([data-appendix])');
@@ -4860,6 +4905,92 @@ showSlide = function(index) {
 };
 
 showSlide(0);
+
+// === ONBOARDING TOUR ===
+var tourSteps = [
+  { el: '#progressFill', title: 'Progress Bar', desc: 'Shows how far you are through the deck. Fills as you advance through slides.', pos: 'bottom' },
+  { el: '#slideCounter', title: 'Slide Counter', desc: 'Displays your current slide number. Main slides show "01 / 22", appendix slides show "A1 / A7".', pos: 'top' },
+  { el: '#actLabel', title: 'Act Label', desc: 'The deck is organized in 4 acts: The Hook, The Experience, Why It Works, and The Ask.', pos: 'top' },
+  { el: '.quick-nav-btn', title: 'Quick Navigation', desc: 'Jump to any of the 22 slides or 7 appendices instantly. Click to open the full slide menu.', pos: 'top' },
+  { el: '#langToggle', title: 'Language Toggle', desc: 'Switch between English and Hebrew. All slides are fully bilingual.', pos: 'top' },
+  { el: '#themeToggle', title: 'Dark Mode', desc: 'Toggle between light and dark themes. Your preference is saved.', pos: 'top' },
+  { el: '.nav-btn', title: 'Navigation Arrows', desc: 'Move between slides. You can also use arrow keys, Space, Home/End, or swipe on touch devices.', pos: 'top' },
+  { el: '#narrationBtn', title: 'Narration', desc: 'Play an AI-generated voice narration for the current slide. 22 unique narrations, one per main slide.', pos: 'left' },
+];
+var tourCurrent = 0;
+var tourActive = false;
+
+function startTour() {
+  tourCurrent = 0;
+  tourActive = true;
+  document.getElementById('tourOverlay').classList.add('active');
+  renderTourDots();
+  showTourStep();
+}
+
+function endTour() {
+  tourActive = false;
+  document.getElementById('tourOverlay').classList.remove('active');
+  localStorage.setItem('sanhedrin-tour-done', '1');
+}
+
+function nextTourStep() {
+  tourCurrent++;
+  if (tourCurrent >= tourSteps.length) { endTour(); return; }
+  showTourStep();
+}
+
+function renderTourDots() {
+  var html = '';
+  for (var i = 0; i < tourSteps.length; i++) {
+    html += '<div class="tour-dot' + (i === tourCurrent ? ' active' : '') + '"></div>';
+  }
+  document.getElementById('tourDots').innerHTML = html;
+}
+
+function showTourStep() {
+  var step = tourSteps[tourCurrent];
+  var target = document.querySelector(step.el);
+  if (!target) { nextTourStep(); return; }
+
+  renderTourDots();
+  document.getElementById('tourTitle').textContent = step.title;
+  document.getElementById('tourDesc').textContent = step.desc;
+  document.getElementById('tourCount').textContent = (tourCurrent + 1) + ' / ' + tourSteps.length;
+  document.getElementById('tourNext').textContent = tourCurrent === tourSteps.length - 1 ? 'Done' : 'Next';
+
+  var rect = target.getBoundingClientRect();
+  var pad = 6;
+  var hl = document.getElementById('tourHighlight');
+  hl.style.left = (rect.left - pad) + 'px';
+  hl.style.top = (rect.top - pad) + 'px';
+  hl.style.width = (rect.width + pad * 2) + 'px';
+  hl.style.height = (rect.height + pad * 2) + 'px';
+
+  var tt = document.getElementById('tourTooltip');
+  var arrow = document.getElementById('tourArrow');
+  tt.style.left = ''; tt.style.right = ''; tt.style.top = ''; tt.style.bottom = '';
+  arrow.style.left = ''; arrow.style.right = ''; arrow.style.top = ''; arrow.style.bottom = '';
+
+  if (step.pos === 'top') {
+    tt.style.left = Math.max(16, rect.left + rect.width / 2 - 160) + 'px';
+    tt.style.bottom = (window.innerHeight - rect.top + 16) + 'px';
+    arrow.style.bottom = '-6px'; arrow.style.left = '40px';
+  } else if (step.pos === 'bottom') {
+    tt.style.left = Math.max(16, rect.left) + 'px';
+    tt.style.top = (rect.bottom + 16) + 'px';
+    arrow.style.top = '-6px'; arrow.style.left = '40px';
+  } else if (step.pos === 'left') {
+    tt.style.right = (window.innerWidth - rect.left + 16) + 'px';
+    tt.style.top = Math.max(16, rect.top - 20) + 'px';
+    arrow.style.right = '-6px'; arrow.style.top = '24px';
+  }
+}
+
+// Auto-start tour on first visit
+if (!localStorage.getItem('sanhedrin-tour-done')) {
+  setTimeout(startTour, 1500);
+}
 </script>
 </body>
 </html>
