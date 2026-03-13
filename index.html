@@ -903,14 +903,15 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <div class="split-text">
         <p class="label reveal">The Urgency</p>
         <h2 class="reveal r1">Discourse<br>is Broken</h2>
-        <p class="body-text reveal r2">We live in a <em>polarized</em> society where young people literally <strong>walk out</strong> of rooms when exposed to <strong>opposing views.</strong> "I disagree with you" has become synonymous with <em>tribal identity</em> defense.</p>
+        <p class="body-text reveal r2">We live in a <strong><em>polarized society</em></strong> where young people literally <strong>walk out</strong> of rooms when exposed to <strong>opposing views.</strong> "I disagree with you" has become synonymous with <em>tribal identity</em> defense.</p>
         <p class="body-text reveal r3" style="margin-top: 20px;">Proper <strong>civic discourse</strong> cannot be taught via passive history lectures; it is a <strong>"muscle"</strong> requiring <strong>emotional strength training</strong> to sit with <em>discomfort.</em></p>
         <div class="card reveal r4" style="margin-top: 24px; border-left: 4px solid var(--navy);">
           <p style="font-size: 20px; color: var(--text); font-weight: 600;">The Gap: Currently, there is <strong>no civic discourse simulator</strong> to <strong>train society</strong> on how to navigate <strong><em>complex issues.</em></strong></p>
         </div>
       </div>
-      <div class="split-img">
-        <img src="slides/slide-02/hero.png" alt="Polarization">
+      <div class="split-img" style="position:relative; overflow:hidden;">
+        <canvas id="polarizationCanvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+        <img src="slides/slide-02/hero.png" alt="Polarization" style="opacity:0.15;">
       </div>
     </div>
   </div>
@@ -919,14 +920,15 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <div class="split-text" style="text-align: right;">
         <p class="label reveal">הדחיפות</p>
         <h2 class="reveal r1">השיח<br>שבור</h2>
-        <p class="body-text reveal r2">אנחנו חיים בחברה <em>מקוטבת</em> שבה צעירים פשוט <strong>עוזבים את החדר</strong> כשהם נחשפים ל<strong>דעה מנוגדת.</strong> "אני לא מסכים איתך" הפך למילה נרדפת להגנה <em>שבטית</em> על זהות.</p>
+        <p class="body-text reveal r2">אנחנו חיים ב<strong><em>חברה מקוטבת</em></strong> שבה צעירים פשוט <strong>עוזבים את החדר</strong> כשהם נחשפים ל<strong>דעה מנוגדת.</strong> "אני לא מסכים איתך" הפך למילה נרדפת להגנה <em>שבטית</em> על זהות.</p>
         <p class="body-text reveal r3" style="margin-top: 20px;"><strong>שיח אזרחי</strong> אמיתי לא נלמד דרך הרצאות היסטוריה פסיביות - זהו <strong>"שריר"</strong> שדורש <strong>אימון רגשי</strong> לשבת עם <em>אי-נוחות.</em></p>
         <div class="card reveal r4" style="margin-top: 24px; border-right: 4px solid var(--navy); border-left: none;">
           <p style="font-size: 20px; color: var(--text); font-weight: 600;">הפער: כיום <strong>אין סימולטור לשיח אזרחי</strong> ש<strong>מאמן את החברה</strong> לנווט <strong><em>סוגיות מורכבות.</em></strong></p>
         </div>
       </div>
-      <div class="split-img">
-        <img src="slides/slide-02/hero.png" alt="">
+      <div class="split-img" style="position:relative; overflow:hidden;">
+        <canvas id="polarizationCanvasHe" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+        <img src="slides/slide-02/hero.png" alt="" style="opacity:0.15;">
       </div>
     </div>
   </div>
@@ -4902,6 +4904,180 @@ showSlide = function(index) {
     }
   });
   setTimeout(animateCounters, 400);
+};
+
+// === POLARIZATION ANIMATION (Slide 2) ===
+(function() {
+  var polarAnimId = null;
+  var PARTICLE_COUNT = 40;
+  var particles = [];
+  var cracks = [];
+
+  function initParticles(w, h) {
+    particles = [];
+    cracks = [];
+    for (var i = 0; i < PARTICLE_COUNT; i++) {
+      var side = i < PARTICLE_COUNT / 2 ? -1 : 1;
+      particles.push({
+        x: w / 2 + (Math.random() * 60 - 30),
+        y: Math.random() * h,
+        vx: 0, vy: (Math.random() - 0.5) * 0.3,
+        side: side, r: 4 + Math.random() * 4,
+        separated: false, alpha: 0.7 + Math.random() * 0.3
+      });
+    }
+    // Crack lines down the center
+    var cx = w / 2;
+    var y = 0;
+    while (y < h) {
+      var nx = cx + (Math.random() - 0.5) * 30;
+      var ny = y + 10 + Math.random() * 25;
+      cracks.push({ x1: cx, y1: y, x2: nx, y2: Math.min(ny, h) });
+      cx = nx; y = ny;
+    }
+  }
+
+  function drawPolarization(canvas) {
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+    var w = rect.width, h = rect.height;
+
+    if (particles.length === 0) initParticles(w, h);
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Background gradient: red left, blue right
+    var grad = ctx.createLinearGradient(0, 0, w, 0);
+    grad.addColorStop(0, 'rgba(200,60,50,0.08)');
+    grad.addColorStop(0.48, 'rgba(200,60,50,0.03)');
+    grad.addColorStop(0.52, 'rgba(50,80,180,0.03)');
+    grad.addColorStop(1, 'rgba(50,80,180,0.08)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    // Draw crack
+    ctx.strokeStyle = 'rgba(180,60,50,0.25)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (var c = 0; c < cracks.length; c++) {
+      ctx.moveTo(cracks[c].x1, cracks[c].y1);
+      ctx.lineTo(cracks[c].x2, cracks[c].y2);
+    }
+    ctx.stroke();
+
+    // Glow along crack
+    ctx.strokeStyle = 'rgba(200,80,50,0.12)';
+    ctx.lineWidth = 8;
+    ctx.beginPath();
+    for (c = 0; c < cracks.length; c++) {
+      ctx.moveTo(cracks[c].x1, cracks[c].y1);
+      ctx.lineTo(cracks[c].x2, cracks[c].y2);
+    }
+    ctx.stroke();
+
+    // Move and draw particles
+    var time = Date.now() * 0.001;
+    var separationForce = 0.15 + Math.sin(time * 0.3) * 0.05;
+
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      // Push to sides (polarization force)
+      var targetX = p.side < 0 ? w * 0.2 : w * 0.8;
+      p.vx += (targetX - p.x) * 0.002 * separationForce;
+      // Gentle drift
+      p.vy += (Math.random() - 0.5) * 0.02;
+      // Damping
+      p.vx *= 0.98; p.vy *= 0.98;
+      p.x += p.vx; p.y += p.vy;
+      // Wrap Y
+      if (p.y < -10) p.y = h + 10;
+      if (p.y > h + 10) p.y = -10;
+      // Mark separated
+      p.separated = Math.abs(p.x - w / 2) > w * 0.15;
+
+      // Draw
+      var col = p.side < 0 ? 'rgba(200,70,60,' : 'rgba(50,90,190,';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = col + (p.alpha * 0.7) + ')';
+      ctx.fill();
+      // Outer glow
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r + 3, 0, Math.PI * 2);
+      ctx.fillStyle = col + '0.1)';
+      ctx.fill();
+    }
+
+    // Draw fading connection lines between nearby same-side particles
+    ctx.lineWidth = 0.5;
+    for (i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        if (particles[i].side !== particles[j].side) continue;
+        var dx = particles[i].x - particles[j].x;
+        var dy = particles[i].y - particles[j].y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 80) {
+          var a = (1 - dist / 80) * 0.15;
+          var lc = particles[i].side < 0 ? '200,70,60' : '50,90,190';
+          ctx.strokeStyle = 'rgba(' + lc + ',' + a + ')';
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Broken bridges across the crack (faint, severed lines)
+    ctx.setLineDash([4, 6]);
+    ctx.strokeStyle = 'rgba(150,150,150,0.12)';
+    ctx.lineWidth = 1;
+    for (i = 0; i < 5; i++) {
+      var y1 = h * 0.15 + i * h * 0.17;
+      ctx.beginPath();
+      ctx.moveTo(w * 0.35, y1);
+      ctx.lineTo(w * 0.45, y1 + 5);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(w * 0.55, y1 + 5);
+      ctx.lineTo(w * 0.65, y1);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+  }
+
+  window._polarAnim = {
+    start: function() {
+      var c1 = document.getElementById('polarizationCanvas');
+      var c2 = document.getElementById('polarizationCanvasHe');
+      particles = []; cracks = [];
+      function loop() {
+        var active = c1 || c2;
+        if (!active) return;
+        drawPolarization(isHebrew ? c2 : c1);
+        polarAnimId = requestAnimationFrame(loop);
+      }
+      loop();
+    },
+    stop: function() {
+      if (polarAnimId) { cancelAnimationFrame(polarAnimId); polarAnimId = null; }
+      particles = [];
+    }
+  };
+})();
+
+// Hook into slide transitions
+var _origShowSlide = showSlide;
+showSlide = function(index) {
+  _origShowSlide(index);
+  // Slide 2 is index 1
+  if (index === 1) { window._polarAnim.start(); }
+  else { window._polarAnim.stop(); }
 };
 
 showSlide(0);
