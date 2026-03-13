@@ -1103,8 +1103,8 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   <div class="lang-en">
     <div class="layout-split img-left">
       <div class="split-img" style="position:relative; overflow:hidden;">
-        <canvas id="puzzleCanvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
         <img src="slides/slide-03/hero.png" alt="Puzzle metaphor" style="opacity:0.08;">
+        <canvas id="puzzleCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;cursor:grab;"></canvas>
       </div>
       <div class="split-text">
         <p class="label reveal">The Cognitive Twist</p>
@@ -1121,8 +1121,8 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   <div class="lang-he" dir="rtl">
     <div class="layout-split img-left">
       <div class="split-img" style="position:relative; overflow:hidden;">
-        <canvas id="puzzleCanvasHe" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
         <img src="slides/slide-03/hero.png" alt="" style="opacity:0.08;">
+        <canvas id="puzzleCanvasHe" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;cursor:grab;"></canvas>
       </div>
       <div class="split-text" style="text-align: right;">
         <p class="label reveal">הטוויסט הקוגניטיבי</p>
@@ -5280,16 +5280,26 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
   }
 
   function drawRoundedRect(ctx, x, y, w, h, rad) {
+    // Jigsaw puzzle piece with tabs/notches on each edge
+    var tabSize = Math.min(w, h) * 0.15;
     ctx.beginPath();
-    ctx.moveTo(x + rad, y);
-    ctx.lineTo(x + w - rad, y);
-    ctx.quadraticCurveTo(x + w, y, x + w, y + rad);
-    ctx.lineTo(x + w, y + h - rad);
-    ctx.quadraticCurveTo(x + w, y + h, x + w - rad, y + h);
-    ctx.lineTo(x + rad, y + h);
-    ctx.quadraticCurveTo(x, y + h, x, y + h - rad);
-    ctx.lineTo(x, y + rad);
-    ctx.quadraticCurveTo(x, y, x + rad, y);
+    ctx.moveTo(x, y);
+    // Top edge - tab out
+    ctx.lineTo(x + w * 0.35, y);
+    ctx.arc(x + w * 0.5, y, tabSize, Math.PI, 0, false);
+    ctx.lineTo(x + w, y);
+    // Right edge - tab out
+    ctx.lineTo(x + w, y + h * 0.35);
+    ctx.arc(x + w, y + h * 0.5, tabSize, -Math.PI * 0.5, Math.PI * 0.5, false);
+    ctx.lineTo(x + w, y + h);
+    // Bottom edge - notch in
+    ctx.lineTo(x + w * 0.65, y + h);
+    ctx.arc(x + w * 0.5, y + h, tabSize, 0, Math.PI, true);
+    ctx.lineTo(x, y + h);
+    // Left edge - notch in
+    ctx.lineTo(x, y + h * 0.65);
+    ctx.arc(x, y + h * 0.5, tabSize, Math.PI * 0.5, -Math.PI * 0.5, true);
+    ctx.lineTo(x, y);
     ctx.closePath();
   }
 
@@ -5613,7 +5623,8 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     for (var i = pieces.length - 1; i >= 0; i--) {
       var p = pieces[i];
       if (p.placed) continue;
-      if (mx > p.x - p.w/2 && mx < p.x + p.w/2 && my > p.y - p.h/2 && my < p.y + p.h/2) {
+      var margin = Math.min(p.w, p.h) * 0.15;
+      if (mx > p.x - p.w/2 - margin && mx < p.x + p.w/2 + margin && my > p.y - p.h/2 - margin && my < p.y + p.h/2 + margin) {
         return i;
       }
     }
