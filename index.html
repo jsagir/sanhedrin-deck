@@ -5935,8 +5935,9 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     // Vertical: gridY = (1080 - 616) / 2 = 232px. Centered. ✓
 
     lastW = w; lastH = h;
-    var minDim = Math.min(w, h);
-    var gridSize = Math.floor((minDim - 40) / 1.18 * 0.65);
+    // Always size relative to canvas WIDTH (the narrower dimension in a split layout)
+    // This ensures tiles fit regardless of screen aspect ratio or zoom level
+    var gridSize = Math.floor((w - 40) / 1.18 * 0.55);
     var gridX = (w - gridSize) / 2;
     var gridY = (h - gridSize) / 2;
     var pw = gridSize / COLS, ph = gridSize / ROWS;
