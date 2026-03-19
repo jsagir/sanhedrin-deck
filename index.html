@@ -1188,36 +1188,36 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
      ============================================================ -->
 <section class="slide" data-act="ACT 1: THE HOOK">
   <div class="lang-en">
-    <div class="layout-split" style="grid-template-columns: 42% 58%;">
+    <div class="layout-split" style="grid-template-columns: 40% 60%;">
       <div class="split-img" style="position:relative; overflow:hidden; order:-1;">
         <img src="slides/slide-03/hero.png" alt="Puzzle metaphor" style="opacity:0.08;">
         <canvas id="puzzleCanvas" style="position:absolute;inset:0;z-index:2;cursor:pointer;pointer-events:auto;"></canvas>
       </div>
-      <div class="split-text" style="padding: 60px 72px 72px;">
+      <div class="split-text" style="padding: 64px 80px 72px; max-width: 720px;">
         <p class="label reveal">The Cognitive Twist</p>
-        <h2 class="reveal r1">Dispute as a<br>Dynamic Puzzle</h2>
-        <p class="body-text reveal r2">We are reframing the concept of a dispute. <strong><em>Dispute is not a battle</em></strong> to be won, but a <em>collaborative investigation,</em> a Sherlock Holmes-style inquiry.</p>
-        <ul class="bullets reveal r3" style="margin-top: 20px;">
+        <h2 class="reveal r1" style="font-size: 48px; line-height: 1.15;">Dispute as a<br>Dynamic Puzzle</h2>
+        <p class="body-text reveal r2" style="margin-top: 24px;">We are reframing the concept of a dispute. <strong><em>Dispute is not a battle</em></strong> to be won, but a <em>collaborative investigation,</em> a Sherlock Holmes-style inquiry.</p>
+        <ul class="bullets reveal r3" style="margin-top: 24px; display: flex; flex-direction: column; gap: 16px;">
           <li>Participants <strong>uncover hidden puzzle pieces</strong> (arguments, facts, agreements) to see the full picture.</li>
-          <li>Adding depth earns pieces; <em>demagoguery</em> or personal attacks <strong>causes pieces to blur</strong> or be lost.</li>
+          <li>Adding depth earns pieces. <em>Demagoguery</em> and personal attacks <strong>blur or erase pieces.</strong></li>
           <li>The ultimate goal is <strong><em>shared truth-seeking:</em></strong> <em>L'Shem Shamayim</em> (for the sake of heaven).</li>
         </ul>
       </div>
     </div>
   </div>
   <div class="lang-he" dir="rtl">
-    <div class="layout-split" style="grid-template-columns: 42% 58%;">
+    <div class="layout-split" style="grid-template-columns: 40% 60%;">
       <div class="split-img" style="position:relative; overflow:hidden; order:-1;">
         <img src="slides/slide-03/hero.png" alt="" style="opacity:0.08;">
         <canvas id="puzzleCanvasHe" style="position:absolute;inset:0;z-index:2;cursor:pointer;pointer-events:auto;"></canvas>
       </div>
-      <div class="split-text" style="text-align: right; padding: 60px 72px 72px;">
+      <div class="split-text" style="text-align: right; padding: 64px 80px 72px; max-width: 720px;">
         <p class="label reveal">הטוויסט הקוגניטיבי</p>
-        <h2 class="reveal r1">המחלוקת<br>כפאזל דינמי</h2>
-        <p class="body-text reveal r2">אנחנו ממסגרים מחדש את המושג "מחלוקת". <strong><em>מחלוקת היא לא קרב</em></strong> שצריך לנצח בו, אלא <em>חקירה משותפת,</em> בסגנון שרלוק הולמס.</p>
-        <ul class="bullets reveal r3" style="margin-top: 20px;">
+        <h2 class="reveal r1" style="font-size: 48px; line-height: 1.15;">המחלוקת<br>כפאזל דינמי</h2>
+        <p class="body-text reveal r2" style="margin-top: 24px;">אנחנו ממסגרים מחדש את המושג "מחלוקת". <strong><em>מחלוקת היא לא קרב</em></strong> שצריך לנצח בו, אלא <em>חקירה משותפת,</em> בסגנון שרלוק הולמס.</p>
+        <ul class="bullets reveal r3" style="margin-top: 24px; display: flex; flex-direction: column; gap: 16px;">
           <li>משתתפים <strong>חושפים חלקי פאזל נסתרים</strong> (טיעונים, עובדות, הסכמות) כדי לראות את התמונה המלאה.</li>
-          <li>הוספת עומק מרוויחה חלקים, <em>דמגוגיה</em> או התקפות אישיות <strong>מטשטשת חלקים.</strong></li>
+          <li>הוספת עומק מרוויחה חלקים. <em>דמגוגיה</em> והתקפות אישיות <strong>מטשטשות או מוחקות חלקים.</strong></li>
           <li>המטרה הסופית היא <strong><em>חיפוש אמת משותף:</em></strong> <em>לשם שמיים</em>.</li>
         </ul>
       </div>
@@ -5890,150 +5890,91 @@ showSlide = function(index) {
 if (!slideAnimations[1]) slideAnimations[1] = [];
 slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop: function() { window._polarAnim.stop(); } });
 
-// === INTERACTIVE PUZZLE (Slide 4 - Cognitive Twist) ===
+// === INTERACTIVE PUZZLE (Slide 4 - Cognitive Twist) - De Stijl ===
 (function() {
   var puzzleAnimId = null;
   var pieces = [];
-  var sparks = [];
   var COLS = 2, ROWS = 2;
   var activeCanvas = null;
-  var canvasRect = null;
-  var completionGlow = 0;
-  var completionTime = 0;
   var allPlaced = false;
+  var completionTime = 0;
+  var BORDER = 3;
 
   var LABELS_EN = [
-    'Arguments','Facts',
-    'Empathy','Sentiment'
+    'ARGUMENTS','FACTS',
+    'EMPATHY','SENTIMENT'
   ];
   var LABELS_HE = [
     '\u05D8\u05D9\u05E2\u05D5\u05E0\u05D9\u05DD','\u05E2\u05D5\u05D1\u05D3\u05D5\u05EA',
     '\u05D0\u05DE\u05E4\u05EA\u05D9\u05D4','\u05E1\u05E0\u05D8\u05D9\u05DE\u05E0\u05D8'
   ];
 
+  // De Stijl primary palette
   var COLORS = [
-    '#5A8C6A','#D4874D',
-    '#C05555','#7B6B9E'
+    '#C23B22','#1B5BA5',
+    '#F2C12E','#F0F0F0'
   ];
 
   function initPieces(w, h) {
-    pieces = []; sparks = []; allPlaced = false; completionGlow = 0;
-    var margin = 30;
-    // Use the smaller dimension to keep pieces square and proportional
-    var size = Math.min(w - margin * 2, h - margin * 2) * 0.55;
-    var gridW = size;
-    var gridH = size;
-    var gridX = (w - gridW) / 2;
-    var gridY = (h - gridH) / 2;
+    pieces = []; allPlaced = false; completionTime = 0;
+    // 8px grid system: everything snaps to multiples of 8
+    var unit = 8;
+    var margin = unit * 5; // 40px
+    var availW = w - margin * 2;
+    var availH = h - margin * 2;
+    // Grid fills ~60% of available space, stays proportional
+    var gridSize = Math.floor((Math.min(availW, availH) * 0.6) / unit) * unit;
+    var gridW = gridSize;
+    var gridH = gridSize;
+    var gridX = Math.floor(((w - gridW) / 2) / unit) * unit;
+    var gridY = Math.floor(((h - gridH) / 2) / unit) * unit;
     var pw = gridW / COLS, ph = gridH / ROWS;
+
+    // Controlled asymmetry: slightly varied piece sizes (snapped to 8px)
+    var sizeVariants = [
+      { wMul: 0.96, hMul: 0.96 },
+      { wMul: 1.04, hMul: 0.96 },
+      { wMul: 0.96, hMul: 1.04 },
+      { wMul: 1.04, hMul: 1.04 }
+    ];
+
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
+        var idx = r * COLS + c;
         var homeX = gridX + c * pw + pw / 2;
         var homeY = gridY + r * ph + ph / 2;
-        // Scatter around the edges of the canvas
-        var angle = Math.random() * Math.PI * 2;
-        var radius = Math.min(w, h) * 0.28 + Math.random() * Math.min(w, h) * 0.12;
-        var sx = w/2 + Math.cos(angle) * radius;
-        var sy = h/2 + Math.sin(angle) * radius;
-        sx = Math.max(pw/2 + 10, Math.min(w - pw/2 - 10, sx));
-        sy = Math.max(ph/2 + 10, Math.min(h - ph/2 - 10, sy));
+        // Scatter: place in corners/edges with controlled randomness
+        var corners = [
+          { x: margin + pw/2, y: margin + ph/2 },
+          { x: w - margin - pw/2, y: margin + ph/2 },
+          { x: margin + pw/2, y: h - margin - ph/2 },
+          { x: w - margin - pw/2, y: h - margin - ph/2 }
+        ];
+        var corner = corners[idx];
+        // Add slight jitter (snapped to 8px)
+        var jx = Math.floor((Math.random() * 40 - 20) / unit) * unit;
+        var jy = Math.floor((Math.random() * 40 - 20) / unit) * unit;
+        var sv = sizeVariants[idx];
+        var pieceW = Math.floor((pw * sv.wMul - BORDER * 2) / unit) * unit;
+        var pieceH = Math.floor((ph * sv.hMul - BORDER * 2) / unit) * unit;
         pieces.push({
           homeX: homeX, homeY: homeY,
-          x: sx, y: sy,
-          w: pw * 0.85, h: ph * 0.85,
-          col: c, row: r, idx: r * COLS + c,
+          x: corner.x + jx, y: corner.y + jy,
+          w: pieceW, h: pieceH,
+          col: c, row: r, idx: idx,
           placed: false,
           snapTime: 0,
-          color: COLORS[r * COLS + c]
+          color: COLORS[idx]
         });
       }
     }
   }
 
-  // Tab directions per piece: 0=flat (edge of puzzle), 1=tab out, -1=notch in
-  // Adjacent pieces have complementary tabs (one out, one in)
-  var PIECE_TABS = [
-    // [top, right, bottom, left] for each piece index (row-major 2x2)
-    [0, 1, 1, 0],   // (0,0) top-left: flat top/left edges, tab out right/bottom
-    [0, 0, -1, -1],  // (0,1) top-right: flat top/right, notch left/bottom (complements neighbors)
-    [-1, 1, 0, 0],   // (1,0) bottom-left: notch top (complement of 0,0 bottom), tab right, flat bottom/left
-    [1, 0, 0, -1]    // (1,1) bottom-right: tab top (complement of 0,1 bottom), flat right/bottom, notch left
-  ];
-
-  function drawJigsawEdge(ctx, x0, y0, x1, y1, tabDir) {
-    // Draw one edge of a jigsaw piece from (x0,y0) to (x1,y1)
-    // tabDir: 0=straight, 1=tab bulges outward (perpendicular), -1=notch inward
-    if (tabDir === 0) {
-      ctx.lineTo(x1, y1);
-      return;
-    }
-    var dx = x1 - x0, dy = y1 - y0;
-    var len = Math.sqrt(dx * dx + dy * dy);
-    // Unit vectors along edge and perpendicular
-    var ux = dx / len, uy = dy / len;
-    var nx = uy * tabDir, ny = -ux * tabDir; // perpendicular outward from piece center
-
-    var tabH = len * 0.22; // how far tab bulges
-    var neckW = len * 0.04; // neck inset
-
-    // Key points along the edge (as fractions of length)
-    var p1 = 0.34, p2 = 0.40, p3 = 0.60, p4 = 0.66;
-
-    // Start of tab neck
-    var ax = x0 + ux * len * p1, ay = y0 + uy * len * p1;
-    // Neck narrows inward slightly before bulging out
-    var bx = x0 + ux * len * p2 - nx * neckW, by = y0 + uy * len * p2 - ny * neckW;
-    // Tab bulge control points
-    var cx1 = x0 + ux * len * 0.28 + nx * tabH, cy1 = y0 + uy * len * 0.28 + ny * tabH;
-    var cx2 = x0 + ux * len * 0.72 + nx * tabH, cy2 = y0 + uy * len * 0.72 + ny * tabH;
-    // Neck on the other side
-    var ex = x0 + ux * len * p3 - nx * neckW, ey = y0 + uy * len * p3 - ny * neckW;
-    // End of tab
-    var fx = x0 + ux * len * p4, fy = y0 + uy * len * p4;
-
-    // Draw: straight to neck start, bezier through bulge, straight to edge end
-    ctx.lineTo(ax, ay);
-    ctx.bezierCurveTo(
-      bx, by,
-      cx1, cy1,
-      x0 + ux * len * 0.5 + nx * tabH * 1.05, y0 + uy * len * 0.5 + ny * tabH * 1.05
-    );
-    ctx.bezierCurveTo(
-      cx2, cy2,
-      ex, ey,
-      fx, fy
-    );
-    ctx.lineTo(x1, y1);
-  }
-
-  function drawRoundedRect(ctx, x, y, w, h, rad, pieceIdx) {
-    // Classic jigsaw piece shape with bezier-curve tabs/notches
-    var tabs = (pieceIdx !== undefined && PIECE_TABS[pieceIdx]) ? PIECE_TABS[pieceIdx] : [0,0,0,0];
+  // De Stijl: pure rectangles, no curves
+  function drawRect(ctx, x, y, w, h) {
     ctx.beginPath();
-    ctx.moveTo(x, y);
-    // Top edge (left to right)
-    drawJigsawEdge(ctx, x, y, x + w, y, tabs[0]);
-    // Right edge (top to bottom)
-    drawJigsawEdge(ctx, x + w, y, x + w, y + h, tabs[1]);
-    // Bottom edge (right to left)
-    drawJigsawEdge(ctx, x + w, y + h, x, y + h, tabs[2]);
-    // Left edge (bottom to top)
-    drawJigsawEdge(ctx, x, y + h, x, y, tabs[3]);
+    ctx.rect(x, y, w, h);
     ctx.closePath();
-  }
-
-  function addSnapSparks(x, y) {
-    for (var i = 0; i < 12; i++) {
-      var angle = (i / 12) * Math.PI * 2 + Math.random() * 0.3;
-      var speed = 1.5 + Math.random() * 2.5;
-      sparks.push({
-        x: x, y: y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        life: 1.0, decay: 0.02 + Math.random() * 0.015,
-        r: 2 + Math.random() * 2
-      });
-    }
   }
 
   function drawPuzzle(canvas) {
@@ -6053,296 +5994,103 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
 
     ctx.clearRect(0, 0, w, h);
 
-    // Draw ghost targets (where pieces should go)
+    // Draw ghost targets: thin dashed rectangles (De Stijl grid lines)
     for (var i = 0; i < pieces.length; i++) {
       var p = pieces[i];
       if (p.placed) continue;
-      drawRoundedRect(ctx, p.homeX - p.w/2, p.homeY - p.h/2, p.w, p.h, 8, p.idx);
-      ctx.strokeStyle = 'rgba(189,214,230,0.12)';
-      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = 'rgba(189,214,230,0.1)';
+      ctx.setLineDash([6, 6]);
       ctx.lineWidth = 1;
+      drawRect(ctx, p.homeX - p.w/2, p.homeY - p.h/2, p.w, p.h);
       ctx.stroke();
       ctx.setLineDash([]);
-      // Faint label in target
-      ctx.fillStyle = 'rgba(189,214,230,0.1)';
-      ctx.font = '700 ' + Math.max(12, Math.min(16, p.w * 0.14)) + 'px Montserrat, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      var tLines = labels[p.idx].split('\n');
-      for (var li = 0; li < tLines.length; li++) {
-        ctx.fillText(tLines[li], p.homeX, p.homeY + (li - (tLines.length-1)/2) * 14);
-      }
     }
 
-    // Draw all pieces
-    for (var di = 0; di < pieces.length; di++) {
-      var i = di;
+    // Draw all pieces - flat solid fills, hard 3px borders
+    for (var i = 0; i < pieces.length; i++) {
       var p = pieces[i];
-      var isFlying = !!p.flying;
-      var snapAge = p.placed ? t - p.snapTime : 0;
-      var snapPulse = p.placed && snapAge < 0.6 ? Math.max(0, 1 - snapAge / 0.6) : 0;
-
       ctx.save();
-
-      // Shadow for floating pieces
-      if (!p.placed || isFlying) {
-        ctx.shadowColor = 'rgba(0,0,0,0.25)';
-        ctx.shadowBlur = isFlying ? 16 : 8;
-        ctx.shadowOffsetY = isFlying ? 4 : 2;
-      }
-
-      // Snap glow
-      if (snapPulse > 0) {
-        ctx.shadowColor = 'rgba(0,212,255,' + (snapPulse * 0.6) + ')';
-        ctx.shadowBlur = 20 * snapPulse;
-      }
-
-      // Scale up slightly when flying
-      var scale = isFlying ? 1.08 : 1;
       ctx.translate(p.x, p.y);
-      ctx.scale(scale, scale);
 
-      // Draw piece body
-      drawRoundedRect(ctx, -p.w/2, -p.h/2, p.w, p.h, 8, p.idx);
-      var alpha = p.placed ? 0.92 : 0.78;
-
-      if (p.placed) {
-        // When placed: gradient blending with placed neighbors (islands merging into a shared lake)
-        var neighbors = [];
-        if (p.col > 0)        { var li = p.row*COLS+p.col-1; if(pieces[li].placed) neighbors.push({dx:-1,dy:0,c:pieces[li].color}); }
-        if (p.col < COLS-1)   { var ri = p.row*COLS+p.col+1; if(pieces[ri].placed) neighbors.push({dx:1,dy:0,c:pieces[ri].color}); }
-        if (p.row > 0)        { var ti = (p.row-1)*COLS+p.col; if(pieces[ti].placed) neighbors.push({dx:0,dy:-1,c:pieces[ti].color}); }
-        if (p.row < ROWS-1)   { var bi = (p.row+1)*COLS+p.col; if(pieces[bi].placed) neighbors.push({dx:0,dy:1,c:pieces[bi].color}); }
-
-        if (neighbors.length > 0) {
-          // Blend: gradient from own color center toward each neighbor edge
-          // Use the dominant neighbor direction for gradient angle
-          var gx0 = 0, gy0 = 0, gx1 = 0, gy1 = 0;
-          if (neighbors.length === 1) {
-            gx0 = -neighbors[0].dx * p.w/2; gy0 = -neighbors[0].dy * p.h/2;
-            gx1 = neighbors[0].dx * p.w/2; gy1 = neighbors[0].dy * p.h/2;
-            var grad = ctx.createLinearGradient(gx0, gy0, gx1, gy1);
-            grad.addColorStop(0, p.color);
-            grad.addColorStop(1, neighbors[0].c);
-            ctx.fillStyle = grad;
-          } else {
-            // Multiple neighbors: radial blend from center to a mixed average
-            var grad = ctx.createRadialGradient(0, 0, 0, 0, 0, Math.max(p.w, p.h) * 0.6);
-            grad.addColorStop(0, p.color);
-            // Average neighbor colors
-            var rSum=0,gSum=0,bSum=0;
-            for (var ni=0; ni<neighbors.length; ni++) {
-              var nc = neighbors[ni].c;
-              rSum += parseInt(nc.slice(1,3),16);
-              gSum += parseInt(nc.slice(3,5),16);
-              bSum += parseInt(nc.slice(5,7),16);
-            }
-            var avg = '#' + Math.round(rSum/neighbors.length).toString(16).padStart(2,'0') + Math.round(gSum/neighbors.length).toString(16).padStart(2,'0') + Math.round(bSum/neighbors.length).toString(16).padStart(2,'0');
-            grad.addColorStop(1, avg);
-            ctx.fillStyle = grad;
-          }
-        } else {
-          ctx.fillStyle = p.color; // Solo placed piece, still an island
-        }
-      } else {
-        ctx.fillStyle = p.color; // Unplaced: solid island color
-      }
-
-      ctx.globalAlpha = alpha;
+      // Solid fill - no gradients, no alpha variation
+      drawRect(ctx, -p.w/2, -p.h/2, p.w, p.h);
+      ctx.fillStyle = p.color;
       ctx.fill();
-      ctx.globalAlpha = 1;
 
-      // Border: fades when merged with neighbors (lake has no borders)
-      var placedNeighborCount = 0;
-      if (p.placed) {
-        if (p.col > 0 && pieces[p.row*COLS+p.col-1].placed) placedNeighborCount++;
-        if (p.col < COLS-1 && pieces[p.row*COLS+p.col+1].placed) placedNeighborCount++;
-        if (p.row > 0 && pieces[(p.row-1)*COLS+p.col].placed) placedNeighborCount++;
-        if (p.row < ROWS-1 && pieces[(p.row+1)*COLS+p.col].placed) placedNeighborCount++;
-      }
-      var borderAlpha = p.placed ? Math.max(0.08, 0.3 - placedNeighborCount * 0.07) : 0.15;
-      ctx.strokeStyle = 'rgba(255,255,255,' + borderAlpha + ')';
-      ctx.lineWidth = p.placed ? (placedNeighborCount > 0 ? 1 : 2) : 1.5;
+      // Hard black border - De Stijl signature
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = BORDER;
       ctx.stroke();
 
-      ctx.shadowColor = 'transparent';
-      ctx.shadowBlur = 0;
-      ctx.shadowOffsetY = 0;
-
-      // Label text - big and centered in piece body
-      ctx.fillStyle = '#fff';
-      var fontSize = Math.max(14, Math.min(22, p.w * 0.18));
+      // Label: bold uppercase, high contrast
+      var textColor = (p.idx === 2 || p.idx === 3) ? '#111' : '#fff';
+      ctx.fillStyle = textColor;
+      var fontSize = Math.max(11, Math.min(16, p.w * 0.13));
       ctx.font = '800 ' + fontSize + 'px Montserrat, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.letterSpacing = '0.5px';
-      var tLines = labels[p.idx].split('\n');
-      for (var li = 0; li < tLines.length; li++) {
-        ctx.fillText(tLines[li], 0, (li - (tLines.length-1)/2) * (fontSize + 4));
-      }
-
-      // Placed checkmark
-      if (p.placed && snapAge > 0.3) {
-        var checkAlpha = Math.min(1, (snapAge - 0.3) / 0.3);
-        ctx.globalAlpha = checkAlpha * 0.6;
-        ctx.fillStyle = '#fff';
-        ctx.font = '600 ' + Math.max(8, fontSize * 0.7) + 'px sans-serif';
-        ctx.fillText('\u2713', p.w/2 - 10, -p.h/2 + 10);
-        ctx.globalAlpha = 1;
-      }
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(labels[p.idx], 0, 0);
 
       ctx.restore();
     }
 
-    // Draw connection lines between adjacent placed pieces
-    ctx.lineWidth = 2;
-    for (var i = 0; i < pieces.length; i++) {
-      var p = pieces[i];
-      if (!p.placed) continue;
-      // Right neighbor
-      if (p.col < COLS - 1) {
-        var ri = p.row * COLS + p.col + 1;
-        if (pieces[ri].placed) {
-          var pulse = 0.2 + 0.15 * Math.sin(t * 2.5 + i);
-          ctx.strokeStyle = 'rgba(0,212,255,' + pulse + ')';
-          ctx.beginPath();
-          ctx.moveTo(p.homeX + p.w * 0.45, p.homeY);
-          ctx.lineTo(pieces[ri].homeX - pieces[ri].w * 0.45, pieces[ri].homeY);
-          ctx.stroke();
-        }
-      }
-      // Bottom neighbor
-      if (p.row < ROWS - 1) {
-        var bi = (p.row + 1) * COLS + p.col;
-        if (pieces[bi].placed) {
-          var pulse = 0.2 + 0.15 * Math.sin(t * 2.5 + i + 1);
-          ctx.strokeStyle = 'rgba(0,212,255,' + pulse + ')';
-          ctx.beginPath();
-          ctx.moveTo(p.homeX, p.homeY + p.h * 0.45);
-          ctx.lineTo(pieces[bi].homeX, pieces[bi].homeY - pieces[bi].h * 0.45);
-          ctx.stroke();
-        }
-      }
-    }
-
-    // Venn center: the shared space where all 4 views converge
-    if (pieces.length === 4) {
-      var centerX = (pieces[0].homeX + pieces[1].homeX) / 2;
-      var centerY = (pieces[0].homeY + pieces[2].homeY) / 2;
-      // Count how many pieces touch the center (placed pieces adjacent to center)
-      var touchingCenter = 0;
-      for (var i = 0; i < 4; i++) if (pieces[i].placed) touchingCenter++;
-
-      if (touchingCenter >= 2) {
-        var intensity = (touchingCenter - 1) / 3; // 0.33 at 2, 0.66 at 3, 1.0 at 4
-        var vennR = Math.min(pieces[0].w, pieces[0].h) * (0.3 + intensity * 0.25);
-        var pulse = 0.6 + 0.2 * Math.sin(t * 1.8);
-
-        // Glowing radial at intersection
-        var vg = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, vennR);
-        vg.addColorStop(0, 'rgba(0,212,255,' + (intensity * pulse * 0.35) + ')');
-        vg.addColorStop(0.5, 'rgba(0,212,255,' + (intensity * pulse * 0.15) + ')');
-        vg.addColorStop(1, 'rgba(0,212,255,0)');
-        ctx.fillStyle = vg;
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, vennR, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Center label when all 4 meet
-        if (touchingCenter === 4) {
-          var labelAlpha = 0.5 + 0.2 * Math.sin(t * 1.5);
-          ctx.fillStyle = 'rgba(255,255,255,' + labelAlpha + ')';
-          ctx.font = '700 ' + Math.max(10, Math.min(13, vennR * 0.35)) + 'px Montserrat, sans-serif';
-          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          ctx.fillText(isHebrew ? '\u05E9\u05D9\u05D7 \u05DE\u05E9\u05D5\u05EA\u05E3' : 'Shared Discourse', centerX, centerY);
-        }
-      }
-    }
-
-    // Draw and update sparks
-    for (var i = sparks.length - 1; i >= 0; i--) {
-      var s = sparks[i];
-      s.x += s.vx; s.y += s.vy;
-      s.vy += 0.05; // gravity
-      s.life -= s.decay;
-      if (s.life <= 0) { sparks.splice(i, 1); continue; }
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r * s.life, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0,212,255,' + (s.life * 0.8) + ')';
-      ctx.fill();
-    }
-
-    // Completion celebration
+    // When all placed: draw the shared grid structure (Mondrian composition)
     var placedCount = 0;
     for (var i = 0; i < pieces.length; i++) if (pieces[i].placed) placedCount++;
+
     if (placedCount === pieces.length && !allPlaced) {
       allPlaced = true;
       completionTime = t;
-      // Big spark burst from center
-      var cx = w/2, cy = h/2;
-      for (var i = 0; i < 30; i++) {
-        var angle = (i / 30) * Math.PI * 2;
-        var speed = 2 + Math.random() * 4;
-        sparks.push({x:cx, y:cy, vx:Math.cos(angle)*speed, vy:Math.sin(angle)*speed, life:1, decay:0.01+Math.random()*0.01, r:3+Math.random()*2});
-      }
     }
-    if (allPlaced) {
-      completionGlow = Math.min(1, (t - completionTime) / 0.8);
-      // Glow border around the whole grid
-      var gridW = pieces[COLS-1].homeX - pieces[0].homeX + pieces[0].w;
-      var gridH = pieces[pieces.length-1].homeY - pieces[0].homeY + pieces[0].h;
-      var gx = pieces[0].homeX - pieces[0].w/2;
-      var gy = pieces[0].homeY - pieces[0].h/2;
-      ctx.shadowColor = 'rgba(0,212,255,' + (completionGlow * 0.5) + ')';
-      ctx.shadowBlur = 24 * completionGlow;
-      drawRoundedRect(ctx, gx - 4, gy - 4, gridW + 8, gridH + 8, 12);
-      ctx.strokeStyle = 'rgba(0,212,255,' + (completionGlow * 0.4) + ')';
-      ctx.lineWidth = 2;
-      ctx.stroke();
-      ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0;
 
-      // "L'Shem Shamayim" completion text
-      if (completionGlow > 0.5) {
-        var textAlpha = (completionGlow - 0.5) * 2;
-        ctx.fillStyle = 'rgba(189,214,230,' + (textAlpha * 0.6) + ')';
-        ctx.font = '600 ' + Math.max(12, Math.min(16, w * 0.03)) + 'px Montserrat, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(isHebrew ? '\u05EA\u05DE\u05D5\u05E0\u05D4 \u05E9\u05DC\u05DE\u05D4 \u2013 \u05DC\u05E9\u05DD \u05E9\u05DE\u05D9\u05D9\u05DD' : 'Complete Picture \u2013 L\'Shem Shamayim', w/2, gy + gridH + 28);
+    if (allPlaced) {
+      var age = t - completionTime;
+      var fadeIn = Math.min(1, age / 0.6);
+
+      // Draw center cross - the structural grid line
+      var centerX = (pieces[0].homeX + pieces[1].homeX) / 2;
+      var centerY = (pieces[0].homeY + pieces[2].homeY) / 2;
+      var gridLeft = pieces[0].homeX - pieces[0].w/2;
+      var gridRight = pieces[1].homeX + pieces[1].w/2;
+      var gridTop = pieces[0].homeY - pieces[0].h/2;
+      var gridBottom = pieces[2].homeY + pieces[2].h/2;
+
+      ctx.globalAlpha = fadeIn;
+      // Vertical center line
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = BORDER;
+      ctx.beginPath();
+      ctx.moveTo(centerX, gridTop); ctx.lineTo(centerX, gridBottom);
+      ctx.stroke();
+      // Horizontal center line
+      ctx.beginPath();
+      ctx.moveTo(gridLeft, centerY); ctx.lineTo(gridRight, centerY);
+      ctx.stroke();
+
+      // Center label: "SHARED DISCOURSE"
+      if (fadeIn > 0.5) {
+        var labelAlpha = (fadeIn - 0.5) * 2;
+        ctx.globalAlpha = labelAlpha * 0.7;
+        ctx.fillStyle = '#BDD6E6';
+        ctx.font = '700 ' + Math.max(10, Math.min(13, (gridRight - gridLeft) * 0.07)) + 'px Montserrat, sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(isHebrew ? '\u05E9\u05D9\u05D7 \u05DE\u05E9\u05D5\u05EA\u05E3' : 'SHARED DISCOURSE', centerX, gridBottom + 24);
       }
+      ctx.globalAlpha = 1;
 
       // Auto-reset after 5 seconds
-      if (t - completionTime > 5) {
+      if (age > 5) {
         initPieces(w, h);
       }
     }
 
-    // Progress indicator
+    // Click prompt
     if (!allPlaced) {
-      ctx.fillStyle = 'rgba(189,214,230,0.35)';
+      ctx.fillStyle = 'rgba(189,214,230,0.3)';
       ctx.font = '500 11px Montserrat, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText(isHebrew ? '\u05DC\u05D7\u05E5 \u05DC\u05D4\u05E8\u05DB\u05D1\u05EA \u05D4\u05E4\u05D0\u05D6\u05DC' : 'Click to assemble the puzzle', w/2, h - 12);
+      ctx.fillText(isHebrew ? '\u05DC\u05D7\u05E5 \u05DC\u05D4\u05E8\u05DB\u05D1\u05EA \u05D4\u05E4\u05D0\u05D6\u05DC' : 'Click to assemble', w/2, h - 16);
     }
-  }
-
-  function getCanvasXY(e, canvas) {
-    var rect = canvas.getBoundingClientRect();
-    var clientX, clientY;
-    if (e.touches) { clientX = e.touches[0].clientX; clientY = e.touches[0].clientY; }
-    else { clientX = e.clientX; clientY = e.clientY; }
-    return { x: clientX - rect.left, y: clientY - rect.top };
-  }
-
-  function hitTest(mx, my) {
-    // Check all unplaced, non-flying pieces
-    for (var i = pieces.length - 1; i >= 0; i--) {
-      var p = pieces[i];
-      if (p.placed || p.flying) continue;
-      // Generous hit area: half the piece size as margin
-      var hw = p.w * 0.75, hh = p.h * 0.75;
-      if (mx > p.x - hw && mx < p.x + hw && my > p.y - hh && my < p.y + hh) {
-        return i;
-      }
-    }
-    return -1;
   }
 
   function placeAllPieces() {
