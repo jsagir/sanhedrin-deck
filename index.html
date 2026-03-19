@@ -1191,7 +1191,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-split img-left">
       <div class="split-img" style="position:relative; overflow:hidden;">
         <img src="slides/slide-03/hero.png" alt="Puzzle metaphor" style="opacity:0.08;">
-        <canvas id="puzzleCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;cursor:pointer;"></canvas>
+        <canvas id="puzzleCanvas" style="position:absolute;inset:0;z-index:2;cursor:pointer;pointer-events:auto;"></canvas>
       </div>
       <div class="split-text">
         <p class="label reveal">The Cognitive Twist</p>
@@ -1209,7 +1209,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-split img-left">
       <div class="split-img" style="position:relative; overflow:hidden;">
         <img src="slides/slide-03/hero.png" alt="" style="opacity:0.08;">
-        <canvas id="puzzleCanvasHe" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;cursor:pointer;"></canvas>
+        <canvas id="puzzleCanvasHe" style="position:absolute;inset:0;z-index:2;cursor:pointer;pointer-events:auto;"></canvas>
       </div>
       <div class="split-text" style="text-align: right;">
         <p class="label reveal">הטוויסט הקוגניטיבי</p>
@@ -6317,7 +6317,7 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
       ctx.fillStyle = 'rgba(189,214,230,0.35)';
       ctx.font = '500 11px Montserrat, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText((isHebrew ? '\u05DC\u05D7\u05E5 \u05DC\u05D4\u05E0\u05D7\u05D4 \u2013 ' : 'Click to place \u2013 ') + placedCount + '/' + pieces.length, w/2, h - 12);
+      ctx.fillText(isHebrew ? '\u05DC\u05D7\u05E5 \u05DC\u05D4\u05E8\u05DB\u05D1\u05EA \u05D4\u05E4\u05D0\u05D6\u05DC' : 'Click to assemble the puzzle', w/2, h - 12);
     }
   }
 
@@ -6343,27 +6343,28 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     return -1;
   }
 
-  function placePiece(idx) {
-    var p = pieces[idx];
-    if (p.placed || p.flying) return;
-    p.flying = true;
-    p.flyStart = Date.now();
-    p.flyFromX = p.x;
-    p.flyFromY = p.y;
-    p.flyDuration = 400;
+  function placeAllPieces() {
+    var anyUnplaced = false;
+    for (var i = 0; i < pieces.length; i++) {
+      if (!pieces[i].placed && !pieces[i].flying) anyUnplaced = true;
+    }
+    if (!anyUnplaced) return;
+    var now = Date.now();
+    for (var i = 0; i < pieces.length; i++) {
+      var p = pieces[i];
+      if (p.placed || p.flying) continue;
+      p.flying = true;
+      p.flyStart = now + i * 120; // stagger each piece by 120ms
+      p.flyFromX = p.x;
+      p.flyFromY = p.y;
+      p.flyDuration = 500;
+    }
   }
 
-  // Click-to-place: click a piece and it animates to its home position
+  // Click anywhere on canvas to place all pieces at once
   function onClick(e) {
-    var canvas = e.currentTarget;
-    var rect = canvas.getBoundingClientRect();
-    var mx = e.clientX - rect.left;
-    var my = e.clientY - rect.top;
-    var hit = hitTest(mx, my);
-    if (hit >= 0) {
-      placePiece(hit);
-      e.preventDefault();
-    }
+    e.preventDefault();
+    placeAllPieces();
   }
 
   // Called each frame to animate flying pieces
@@ -6390,14 +6391,10 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
 
   function bindEvents(canvas) {
     canvas.addEventListener('click', onClick);
-    canvas.addEventListener('touchend', function(ev) {
-      if (ev.changedTouches && ev.changedTouches.length) {
-        var touch = ev.changedTouches[0];
-        var r = canvas.getBoundingClientRect();
-        var hit = hitTest(touch.clientX - r.left, touch.clientY - r.top);
-        if (hit >= 0) placePiece(hit);
-      }
-    });
+    canvas.addEventListener('touchstart', function(ev) {
+      ev.preventDefault();
+      placeAllPieces();
+    }, { passive: false });
     canvas.style.cursor = 'pointer';
   }
 
