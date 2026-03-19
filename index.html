@@ -5916,32 +5916,34 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     pieces = []; sparks = []; allPlaced = false; completionTime = 0;
     // The canvas is a tall rectangle (left 40% of screen).
     // Grid must fit ENTIRELY within it, including jigsaw tab overhang.
-    // Tab overhang = ~22% of edge length, so we need ~25% extra margin.
-    var tabMargin = w * 0.08; // space for tabs sticking out
+    // Tab overhang = 22% of edge length. At 1920x1080:
+    //   canvas=768px, 12% margin=92px/side, safeW=584px, pw=292px,
+    //   piece=239px, tab=53px, margin=92px. Comfortable 39px clearance.
+    var tabMargin = w * 0.12;
     var safeW = w - tabMargin * 2;
-    var safeH = h * 0.7; // use 70% of height, centered vertically
-    // Grid is square, sized to the SMALLER safe dimension
+    var safeH = h * 0.65; // 65% of height: intentional breathing room
     var gridSize = Math.min(safeW, safeH);
     var gridX = (w - gridSize) / 2;
     var gridY = (h - gridSize) / 2;
     var pw = gridSize / COLS, ph = gridSize / ROWS;
     var pieceW = pw * 0.82, pieceH = ph * 0.82;
-    // Safe bounds for piece centers (accounts for piece size + tab overhang)
-    var safeLeft = pieceW * 0.5 + tabMargin;
-    var safeRight = w - pieceW * 0.5 - tabMargin;
-    var safeTop = pieceH * 0.5 + tabMargin;
-    var safeBottom = h - pieceH * 0.5 - tabMargin;
+    // Safe bounds: piece half-size + tab overhang (22% of edge) + 10px buffer
+    var tabOver = Math.max(pieceW, pieceH) * 0.22;
+    var safeLeft = pieceW * 0.5 + tabOver + 10;
+    var safeRight = w - pieceW * 0.5 - tabOver - 10;
+    var safeTop = pieceH * 0.5 + tabOver + 10;
+    var safeBottom = h - pieceH * 0.5 - tabOver - 10;
 
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
         var idx = r * COLS + c;
         var homeX = gridX + c * pw + pw / 2;
         var homeY = gridY + r * ph + ph / 2;
-        // Scatter: push pieces outward from center but WITHIN safe bounds
+        // Scatter: push pieces toward their corner of the canvas
         var dirX = (c === 0 ? -1 : 1);
         var dirY = (r === 0 ? -1 : 1);
-        var offsetX = dirX * (pw * 0.4 + Math.random() * pw * 0.2);
-        var offsetY = dirY * (ph * 0.4 + Math.random() * ph * 0.2);
+        var offsetX = dirX * (pw * 0.55 + Math.random() * pw * 0.3);
+        var offsetY = dirY * (ph * 0.7 + Math.random() * ph * 0.4);
         var sx = Math.max(safeLeft, Math.min(safeRight, homeX + offsetX));
         var sy = Math.max(safeTop, Math.min(safeBottom, homeY + offsetY));
         pieces.push({
