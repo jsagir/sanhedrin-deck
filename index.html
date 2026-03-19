@@ -5936,7 +5936,7 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
 
     lastW = w; lastH = h;
     var minDim = Math.min(w, h);
-    var gridSize = Math.floor((minDim - 40) / 1.18);
+    var gridSize = Math.floor((minDim - 40) / 1.18 * 0.65);
     var gridX = (w - gridSize) / 2;
     var gridY = (h - gridSize) / 2;
     var pw = gridSize / COLS, ph = gridSize / ROWS;
