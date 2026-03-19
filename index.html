@@ -5955,11 +5955,11 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
         // Home = center of each cell in the grid
         var homeX = gridX + c * pw + pw / 2;
         var homeY = gridY + r * ph + ph / 2;
-        // Scatter: push each piece toward its nearest corner
+        // Scatter: push pieces outward but keep composition centered
         var dirX = (c === 0 ? -1 : 1);
         var dirY = (r === 0 ? -1 : 1);
-        var offsetX = dirX * (pw * 0.45 + Math.random() * pw * 0.25);
-        var offsetY = dirY * (ph * 0.55 + Math.random() * ph * 0.35);
+        var offsetX = dirX * (pw * 0.28 + Math.random() * pw * 0.15);
+        var offsetY = dirY * (ph * 0.28 + Math.random() * ph * 0.15);
         var sx = Math.max(safeLeft, Math.min(safeRight, homeX + offsetX));
         var sy = Math.max(safeTop, Math.min(safeBottom, homeY + offsetY));
         pieces.push({
