@@ -659,7 +659,15 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   background-size: contain;
 }
 
-/* Slide 6 - no ::before (puzzle canvas handles visuals) */
+/* Slide 6 - puzzle: disable transform on split-img so canvas gets stable dimensions */
+.slide:nth-child(6) .split-img {
+  transform: none !important;
+  opacity: 0;
+  transition: opacity 0.9s ease 0.1s;
+}
+.slide:nth-child(6).active .split-img {
+  opacity: 1;
+}
 
 /* Slide 7 - Ox charging into car: The Goring Ox */
 .slide:nth-child(7)::before {
@@ -5909,37 +5917,49 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
 
   function initPieces(w, h) {
     pieces = []; sparks = []; allPlaced = false; completionTime = 0;
-    // Canvas is tall rectangle (left 40% of screen, full height).
-    // Grid must fit with ALL tabs visible. Strategy:
-    // 1. Size grid to 50% of canvas WIDTH (guarantees horizontal fit)
-    // 2. Cap to 50% of canvas HEIGHT (guarantees vertical fit)
-    // 3. Center both axes
-    // 4. Tab overhang (22% of piece edge) stays well within remaining 50%
+    // ── PIXEL MATH VERIFIED AT 1920x1080 ──
+    // Canvas: w=768 (40% of 1920), h=1080
+    //
+    // Step 1: Determine max grid size that fits with tab overhang on all 4 edges.
+    // Tab overhang = 22% of piece edge length, applied on all sides.
+    // pieceEdge = (gridSize/2) * 0.82
+    // tabOverhang = pieceEdge * 0.22 = gridSize * 0.0902
+    // Total width needed = gridSize + 2 * tabOverhang = gridSize * 1.1804
+    // Must fit in canvas: gridSize * 1.1804 <= min(w, h)
+    // gridSize <= min(w, h) / 1.1804
+    // Add 20px buffer per side: gridSize <= (min(w, h) - 40) / 1.1804
+    //
+    // At 1920x1080: gridSize <= (768 - 40) / 1.1804 = 616px
+    // pw = 308, pieceW = 252, tabOver = 56, total = 616 + 112 = 728 < 768 ✓
+    // Left margin = (768 - 616) / 2 = 76px. Right margin = 76px. Equal. ✓
+    // Vertical: gridY = (1080 - 616) / 2 = 232px. Centered. ✓
+
     lastW = w; lastH = h;
-    var gridW = w * 0.5;
-    var gridH = h * 0.5;
-    var gridSize = Math.min(gridW, gridH);
+    var minDim = Math.min(w, h);
+    var gridSize = Math.floor((minDim - 40) / 1.18);
     var gridX = (w - gridSize) / 2;
     var gridY = (h - gridSize) / 2;
     var pw = gridSize / COLS, ph = gridSize / ROWS;
     var pieceW = pw * 0.82, pieceH = ph * 0.82;
-    var tabOver = Math.max(pieceW, pieceH) * 0.24; // generous tab allowance
-    // Safe bounds for scattered piece centers
-    var safeLeft = pieceW * 0.5 + tabOver + 8;
-    var safeRight = w - pieceW * 0.5 - tabOver - 8;
-    var safeTop = pieceH * 0.5 + tabOver + 8;
-    var safeBottom = h - pieceH * 0.5 - tabOver - 40; // room for prompt text
+    var tabOver = Math.max(pieceW, pieceH) * 0.22;
+
+    // Safe bounds: piece half-width + tab overhang + 20px buffer on all 4 edges
+    var safeLeft = pieceW / 2 + tabOver + 20;
+    var safeRight = w - pieceW / 2 - tabOver - 20;
+    var safeTop = pieceH / 2 + tabOver + 20;
+    var safeBottom = h - pieceH / 2 - tabOver - 40;
 
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
         var idx = r * COLS + c;
+        // Home = center of each cell in the grid
         var homeX = gridX + c * pw + pw / 2;
         var homeY = gridY + r * ph + ph / 2;
-        // Scatter toward corners but within safe bounds
+        // Scatter: push each piece toward its nearest corner
         var dirX = (c === 0 ? -1 : 1);
         var dirY = (r === 0 ? -1 : 1);
-        var offsetX = dirX * (pw * 0.5 + Math.random() * pw * 0.3);
-        var offsetY = dirY * (ph * 0.6 + Math.random() * ph * 0.3);
+        var offsetX = dirX * (pw * 0.45 + Math.random() * pw * 0.25);
+        var offsetY = dirY * (ph * 0.55 + Math.random() * ph * 0.35);
         var sx = Math.max(safeLeft, Math.min(safeRight, homeX + offsetX));
         var sy = Math.max(safeTop, Math.min(safeBottom, homeY + offsetY));
         pieces.push({
