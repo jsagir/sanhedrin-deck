@@ -659,13 +659,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   background-size: contain;
 }
 
-/* Slide 6 - Modular grid blocks: architecture */
-.slide:nth-child(6)::before {
-  content: ''; position: absolute; bottom: 60px; left: 30px; width: 260px; height: 260px;
-  opacity: 0.035; z-index: 0; pointer-events: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect x='20' y='20' width='50' height='50' rx='4' fill='none' stroke='%23003057' stroke-width='1.5'/%3E%3Crect x='80' y='20' width='50' height='50' rx='4' fill='none' stroke='%23003057' stroke-width='1.5'/%3E%3Crect x='140' y='20' width='40' height='50' rx='4' fill='none' stroke='%23003057' stroke-width='1'/%3E%3Crect x='20' y='80' width='50' height='50' rx='4' fill='none' stroke='%23003057' stroke-width='1'/%3E%3Crect x='80' y='80' width='100' height='50' rx='4' fill='none' stroke='%23003057' stroke-width='1.5'/%3E%3Crect x='20' y='140' width='80' height='40' rx='4' fill='none' stroke='%23003057' stroke-width='1'/%3E%3Crect x='110' y='140' width='70' height='40' rx='4' fill='none' stroke='%23003057' stroke-width='1.5'/%3E%3Cline x1='45' y1='70' x2='45' y2='80' stroke='%23003057' stroke-width='0.8' stroke-dasharray='2 2'/%3E%3Cline x1='105' y1='70' x2='105' y2='80' stroke='%23003057' stroke-width='0.8' stroke-dasharray='2 2'/%3E%3Cline x1='60' y1='130' x2='60' y2='140' stroke='%23003057' stroke-width='0.8' stroke-dasharray='2 2'/%3E%3C/svg%3E") no-repeat center;
-  background-size: contain;
-}
+/* Slide 6 - no ::before (puzzle canvas handles visuals) */
 
 /* Slide 7 - Ox charging into car: The Goring Ox */
 .slide:nth-child(7)::before {
@@ -2303,7 +2297,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       </div>
       <div class="split-text">
         <p class="label reveal">Strategic ROI</p>
-        <h2 class="reveal r1">Ongoing Value &<br>The Research Hub</h2>
+        <h2 class="reveal r1">Business Model</h2>
         <div style="display: flex; flex-direction: column; gap: 12px;" class="reveal r2">
           <div class="card" style="padding: 20px 24px;">
             <div style="font-size: 20px; font-weight: 600; color: var(--text);">The External Ask</div>
@@ -2329,7 +2323,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       </div>
       <div class="split-text" style="text-align: right;">
         <p class="label reveal">תשואה אסטרטגית</p>
-        <h2 class="reveal r1">ערך מתמשך<br>ומרכז המחקר</h2>
+        <h2 class="reveal r1">מודל עסקי</h2>
         <div style="display: flex; flex-direction: column; gap: 12px;" class="reveal r2">
           <div class="card" style="padding: 20px 24px;">
             <div style="font-size: 20px; font-weight: 600; color: var(--text);">הבקשה החיצונית</div>
@@ -5195,7 +5189,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <button class="qn-item" onclick="qnGo(18)"><span class="qn-num">19</span>EdTech</button>
         <div class="qn-group">Act 4: The Ask</div>
         <button class="qn-item" onclick="qnGo(19)"><span class="qn-num">20</span>Roadmap</button>
-        <button class="qn-item" onclick="qnGo(20)"><span class="qn-num">21</span>Ongoing Value</button>
+        <button class="qn-item" onclick="qnGo(20)"><span class="qn-num">21</span>Business Model</button>
         <button class="qn-item" onclick="qnGo(21)"><span class="qn-num">22</span>CTA</button>
         <div class="qn-group">Appendix</div>
         <button class="qn-item" onclick="qnGo('appendix-tech')"><span class="qn-num">A</span>Technical Architecture</button>
@@ -5903,6 +5897,7 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
   var LABELS_EN = ['Arguments','Facts','Empathy','Sentiment'];
   var LABELS_HE = ['\u05D8\u05D9\u05E2\u05D5\u05E0\u05D9\u05DD','\u05E2\u05D5\u05D1\u05D3\u05D5\u05EA','\u05D0\u05DE\u05E4\u05EA\u05D9\u05D4','\u05E1\u05E0\u05D8\u05D9\u05DE\u05E0\u05D8'];
   var COLORS = ['#5A8C6A','#D4874D','#C05555','#7B6B9E'];
+  var lastW = 0, lastH = 0; // track canvas size to reinit on change
 
   // Tab directions: 0=flat, 1=tab out, -1=notch in
   var PIECE_TABS = [
@@ -5914,36 +5909,37 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
 
   function initPieces(w, h) {
     pieces = []; sparks = []; allPlaced = false; completionTime = 0;
-    // The canvas is a tall rectangle (left 40% of screen).
-    // Grid must fit ENTIRELY within it, including jigsaw tab overhang.
-    // Tab overhang = 22% of edge length. At 1920x1080:
-    //   canvas=768px, 12% margin=92px/side, safeW=584px, pw=292px,
-    //   piece=239px, tab=53px, margin=92px. Comfortable 39px clearance.
-    var tabMargin = w * 0.12;
-    var safeW = w - tabMargin * 2;
-    var safeH = h * 0.65; // 65% of height: intentional breathing room
-    var gridSize = Math.min(safeW, safeH);
+    // Canvas is tall rectangle (left 40% of screen, full height).
+    // Grid must fit with ALL tabs visible. Strategy:
+    // 1. Size grid to 50% of canvas WIDTH (guarantees horizontal fit)
+    // 2. Cap to 50% of canvas HEIGHT (guarantees vertical fit)
+    // 3. Center both axes
+    // 4. Tab overhang (22% of piece edge) stays well within remaining 50%
+    lastW = w; lastH = h;
+    var gridW = w * 0.5;
+    var gridH = h * 0.5;
+    var gridSize = Math.min(gridW, gridH);
     var gridX = (w - gridSize) / 2;
     var gridY = (h - gridSize) / 2;
     var pw = gridSize / COLS, ph = gridSize / ROWS;
     var pieceW = pw * 0.82, pieceH = ph * 0.82;
-    // Safe bounds: piece half-size + tab overhang (22% of edge) + 10px buffer
-    var tabOver = Math.max(pieceW, pieceH) * 0.22;
-    var safeLeft = pieceW * 0.5 + tabOver + 10;
-    var safeRight = w - pieceW * 0.5 - tabOver - 10;
-    var safeTop = pieceH * 0.5 + tabOver + 10;
-    var safeBottom = h - pieceH * 0.5 - tabOver - 10;
+    var tabOver = Math.max(pieceW, pieceH) * 0.24; // generous tab allowance
+    // Safe bounds for scattered piece centers
+    var safeLeft = pieceW * 0.5 + tabOver + 8;
+    var safeRight = w - pieceW * 0.5 - tabOver - 8;
+    var safeTop = pieceH * 0.5 + tabOver + 8;
+    var safeBottom = h - pieceH * 0.5 - tabOver - 40; // room for prompt text
 
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
         var idx = r * COLS + c;
         var homeX = gridX + c * pw + pw / 2;
         var homeY = gridY + r * ph + ph / 2;
-        // Scatter: push pieces toward their corner of the canvas
+        // Scatter toward corners but within safe bounds
         var dirX = (c === 0 ? -1 : 1);
         var dirY = (r === 0 ? -1 : 1);
-        var offsetX = dirX * (pw * 0.55 + Math.random() * pw * 0.3);
-        var offsetY = dirY * (ph * 0.7 + Math.random() * ph * 0.4);
+        var offsetX = dirX * (pw * 0.5 + Math.random() * pw * 0.3);
+        var offsetY = dirY * (ph * 0.6 + Math.random() * ph * 0.3);
         var sx = Math.max(safeLeft, Math.min(safeRight, homeX + offsetX));
         var sy = Math.max(safeTop, Math.min(safeBottom, homeY + offsetY));
         pieces.push({
@@ -6011,7 +6007,9 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     var t = Date.now() * 0.001;
     var labels = isHebrew ? LABELS_HE : LABELS_EN;
 
-    if (pieces.length === 0) initPieces(w, h);
+    // Reinitialize if canvas size changed (resize, CSS transition, etc.)
+    var sizeChanged = (Math.abs(w - lastW) > 2 || Math.abs(h - lastH) > 2);
+    if (pieces.length === 0 || sizeChanged) initPieces(w, h);
     updateFlying();
     ctx.clearRect(0, 0, w, h);
 
