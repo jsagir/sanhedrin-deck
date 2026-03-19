@@ -5890,79 +5890,60 @@ showSlide = function(index) {
 if (!slideAnimations[1]) slideAnimations[1] = [];
 slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop: function() { window._polarAnim.stop(); } });
 
-// === INTERACTIVE PUZZLE (Slide 4 - Cognitive Twist) - De Stijl ===
+// === INTERACTIVE PUZZLE (Slide 4 - Cognitive Twist) ===
 (function() {
   var puzzleAnimId = null;
   var pieces = [];
+  var sparks = [];
   var COLS = 2, ROWS = 2;
   var activeCanvas = null;
   var allPlaced = false;
   var completionTime = 0;
-  var BORDER = 3;
 
-  var LABELS_EN = [
-    'ARGUMENTS','FACTS',
-    'EMPATHY','SENTIMENT'
-  ];
-  var LABELS_HE = [
-    '\u05D8\u05D9\u05E2\u05D5\u05E0\u05D9\u05DD','\u05E2\u05D5\u05D1\u05D3\u05D5\u05EA',
-    '\u05D0\u05DE\u05E4\u05EA\u05D9\u05D4','\u05E1\u05E0\u05D8\u05D9\u05DE\u05E0\u05D8'
-  ];
+  var LABELS_EN = ['Arguments','Facts','Empathy','Sentiment'];
+  var LABELS_HE = ['\u05D8\u05D9\u05E2\u05D5\u05E0\u05D9\u05DD','\u05E2\u05D5\u05D1\u05D3\u05D5\u05EA','\u05D0\u05DE\u05E4\u05EA\u05D9\u05D4','\u05E1\u05E0\u05D8\u05D9\u05DE\u05E0\u05D8'];
+  var COLORS = ['#5A8C6A','#D4874D','#C05555','#7B6B9E'];
 
-  // De Stijl primary palette
-  var COLORS = [
-    '#C23B22','#1B5BA5',
-    '#F2C12E','#F0F0F0'
+  // Tab directions: 0=flat, 1=tab out, -1=notch in
+  var PIECE_TABS = [
+    [0, 1, 1, 0],
+    [0, 0, -1, -1],
+    [-1, 1, 0, 0],
+    [1, 0, 0, -1]
   ];
 
   function initPieces(w, h) {
-    pieces = []; allPlaced = false; completionTime = 0;
-    // 8px grid system: everything snaps to multiples of 8
-    var unit = 8;
-    var margin = unit * 5; // 40px
-    var availW = w - margin * 2;
-    var availH = h - margin * 2;
-    // Grid fills ~60% of available space, stays proportional
-    var gridSize = Math.floor((Math.min(availW, availH) * 0.6) / unit) * unit;
-    var gridW = gridSize;
-    var gridH = gridSize;
-    var gridX = Math.floor(((w - gridW) / 2) / unit) * unit;
-    var gridY = Math.floor(((h - gridH) / 2) / unit) * unit;
-    var pw = gridW / COLS, ph = gridH / ROWS;
-
-    // Controlled asymmetry: slightly varied piece sizes (snapped to 8px)
-    var sizeVariants = [
-      { wMul: 0.96, hMul: 0.96 },
-      { wMul: 1.04, hMul: 0.96 },
-      { wMul: 0.96, hMul: 1.04 },
-      { wMul: 1.04, hMul: 1.04 }
-    ];
+    pieces = []; sparks = []; allPlaced = false; completionTime = 0;
+    // Fit puzzle within the canvas with generous padding
+    var padX = w * 0.12;
+    var padY = h * 0.1;
+    var availW = w - padX * 2;
+    var availH = h - padY * 2;
+    // Square grid centered in available space, sized to fit comfortably
+    var gridSize = Math.min(availW, availH) * 0.8;
+    var gridX = (w - gridSize) / 2;
+    var gridY = (h - gridSize) / 2;
+    var pw = gridSize / COLS, ph = gridSize / ROWS;
 
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
         var idx = r * COLS + c;
         var homeX = gridX + c * pw + pw / 2;
         var homeY = gridY + r * ph + ph / 2;
-        // Scatter: place in corners/edges with controlled randomness
-        var corners = [
-          { x: margin + pw/2, y: margin + ph/2 },
-          { x: w - margin - pw/2, y: margin + ph/2 },
-          { x: margin + pw/2, y: h - margin - ph/2 },
-          { x: w - margin - pw/2, y: h - margin - ph/2 }
-        ];
-        var corner = corners[idx];
-        // Add slight jitter (snapped to 8px)
-        var jx = Math.floor((Math.random() * 40 - 20) / unit) * unit;
-        var jy = Math.floor((Math.random() * 40 - 20) / unit) * unit;
-        var sv = sizeVariants[idx];
-        var pieceW = Math.floor((pw * sv.wMul - BORDER * 2) / unit) * unit;
-        var pieceH = Math.floor((ph * sv.hMul - BORDER * 2) / unit) * unit;
+        // Scatter: offset from home but stay inside canvas bounds
+        var offsetX = (c === 0 ? -1 : 1) * (pw * 0.6 + Math.random() * pw * 0.3);
+        var offsetY = (r === 0 ? -1 : 1) * (ph * 0.6 + Math.random() * ph * 0.3);
+        var sx = homeX + offsetX;
+        var sy = homeY + offsetY;
+        // Clamp within canvas
+        sx = Math.max(pw * 0.45, Math.min(w - pw * 0.45, sx));
+        sy = Math.max(ph * 0.45, Math.min(h - ph * 0.45, sy));
         pieces.push({
           homeX: homeX, homeY: homeY,
-          x: corner.x + jx, y: corner.y + jy,
-          w: pieceW, h: pieceH,
+          x: sx, y: sy,
+          w: pw * 0.84, h: ph * 0.84,
           col: c, row: r, idx: idx,
-          placed: false,
+          placed: false, flying: false,
           snapTime: 0,
           color: COLORS[idx]
         });
@@ -5970,11 +5951,44 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
     }
   }
 
-  // De Stijl: pure rectangles, no curves
-  function drawRect(ctx, x, y, w, h) {
+  function drawJigsawEdge(ctx, x0, y0, x1, y1, tabDir) {
+    if (tabDir === 0) { ctx.lineTo(x1, y1); return; }
+    var dx = x1 - x0, dy = y1 - y0;
+    var len = Math.sqrt(dx * dx + dy * dy);
+    var ux = dx / len, uy = dy / len;
+    var nx = uy * tabDir, ny = -ux * tabDir;
+    var tabH = len * 0.22;
+    var neckW = len * 0.04;
+    var p1 = 0.34, p2 = 0.40, p3 = 0.60, p4 = 0.66;
+    var ax = x0 + ux*len*p1, ay = y0 + uy*len*p1;
+    var bx = x0 + ux*len*p2 - nx*neckW, by = y0 + uy*len*p2 - ny*neckW;
+    var cx1 = x0 + ux*len*0.28 + nx*tabH, cy1 = y0 + uy*len*0.28 + ny*tabH;
+    var cx2 = x0 + ux*len*0.72 + nx*tabH, cy2 = y0 + uy*len*0.72 + ny*tabH;
+    var ex = x0 + ux*len*p3 - nx*neckW, ey = y0 + uy*len*p3 - ny*neckW;
+    var fx = x0 + ux*len*p4, fy = y0 + uy*len*p4;
+    ctx.lineTo(ax, ay);
+    ctx.bezierCurveTo(bx, by, cx1, cy1, x0+ux*len*0.5+nx*tabH*1.05, y0+uy*len*0.5+ny*tabH*1.05);
+    ctx.bezierCurveTo(cx2, cy2, ex, ey, fx, fy);
+    ctx.lineTo(x1, y1);
+  }
+
+  function drawPieceShape(ctx, x, y, w, h, pieceIdx) {
+    var tabs = PIECE_TABS[pieceIdx] || [0,0,0,0];
     ctx.beginPath();
-    ctx.rect(x, y, w, h);
+    ctx.moveTo(x, y);
+    drawJigsawEdge(ctx, x, y, x+w, y, tabs[0]);
+    drawJigsawEdge(ctx, x+w, y, x+w, y+h, tabs[1]);
+    drawJigsawEdge(ctx, x+w, y+h, x, y+h, tabs[2]);
+    drawJigsawEdge(ctx, x, y+h, x, y, tabs[3]);
     ctx.closePath();
+  }
+
+  function addSnapSparks(x, y) {
+    for (var i = 0; i < 12; i++) {
+      var angle = (i/12)*Math.PI*2 + Math.random()*0.3;
+      var speed = 1.5 + Math.random()*2.5;
+      sparks.push({ x:x, y:y, vx:Math.cos(angle)*speed, vy:Math.sin(angle)*speed, life:1, decay:0.02+Math.random()*0.015, r:2+Math.random()*2 });
+    }
   }
 
   function drawPuzzle(canvas) {
@@ -5991,100 +6005,99 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
 
     if (pieces.length === 0) initPieces(w, h);
     updateFlying();
-
     ctx.clearRect(0, 0, w, h);
 
-    // Draw ghost targets: thin dashed rectangles (De Stijl grid lines)
+    // Ghost targets
     for (var i = 0; i < pieces.length; i++) {
       var p = pieces[i];
       if (p.placed) continue;
-      ctx.strokeStyle = 'rgba(189,214,230,0.1)';
-      ctx.setLineDash([6, 6]);
+      drawPieceShape(ctx, p.homeX-p.w/2, p.homeY-p.h/2, p.w, p.h, p.idx);
+      ctx.strokeStyle = 'rgba(189,214,230,0.12)';
+      ctx.setLineDash([4, 4]);
       ctx.lineWidth = 1;
-      drawRect(ctx, p.homeX - p.w/2, p.homeY - p.h/2, p.w, p.h);
       ctx.stroke();
       ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(189,214,230,0.08)';
+      ctx.font = '700 ' + Math.max(11, Math.min(14, p.w*0.12)) + 'px Montserrat, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(labels[p.idx], p.homeX, p.homeY);
     }
 
-    // Draw all pieces - flat solid fills, hard 3px borders
+    // Draw pieces
     for (var i = 0; i < pieces.length; i++) {
       var p = pieces[i];
+      var isFlying = !!p.flying;
+      var snapAge = p.placed ? t - p.snapTime : 0;
+      var snapPulse = p.placed && snapAge < 0.6 ? Math.max(0, 1 - snapAge/0.6) : 0;
       ctx.save();
+      if (!p.placed || isFlying) {
+        ctx.shadowColor = 'rgba(0,0,0,0.25)';
+        ctx.shadowBlur = isFlying ? 14 : 6;
+        ctx.shadowOffsetY = isFlying ? 3 : 1;
+      }
+      if (snapPulse > 0) {
+        ctx.shadowColor = 'rgba(0,212,255,' + (snapPulse*0.5) + ')';
+        ctx.shadowBlur = 16 * snapPulse;
+      }
+      var scale = isFlying ? 1.06 : 1;
       ctx.translate(p.x, p.y);
-
-      // Solid fill - no gradients, no alpha variation
-      drawRect(ctx, -p.w/2, -p.h/2, p.w, p.h);
+      ctx.scale(scale, scale);
+      drawPieceShape(ctx, -p.w/2, -p.h/2, p.w, p.h, p.idx);
       ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.placed ? 0.92 : 0.8;
       ctx.fill();
-
-      // Hard black border - De Stijl signature
-      ctx.strokeStyle = '#111';
-      ctx.lineWidth = BORDER;
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+      ctx.lineWidth = 1.5;
       ctx.stroke();
-
-      // Label: bold uppercase, high contrast
-      var textColor = (p.idx === 2 || p.idx === 3) ? '#111' : '#fff';
-      ctx.fillStyle = textColor;
-      var fontSize = Math.max(11, Math.min(16, p.w * 0.13));
+      ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+      ctx.fillStyle = '#fff';
+      var fontSize = Math.max(12, Math.min(18, p.w*0.15));
       ctx.font = '800 ' + fontSize + 'px Montserrat, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText(labels[p.idx], 0, 0);
-
       ctx.restore();
     }
 
-    // When all placed: draw the shared grid structure (Mondrian composition)
+    // Sparks
+    for (var i = sparks.length-1; i >= 0; i--) {
+      var s = sparks[i];
+      s.x += s.vx; s.y += s.vy; s.vy += 0.05; s.life -= s.decay;
+      if (s.life <= 0) { sparks.splice(i, 1); continue; }
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r*s.life, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(0,212,255,' + (s.life*0.8) + ')';
+      ctx.fill();
+    }
+
+    // Completion
     var placedCount = 0;
     for (var i = 0; i < pieces.length; i++) if (pieces[i].placed) placedCount++;
-
     if (placedCount === pieces.length && !allPlaced) {
       allPlaced = true;
       completionTime = t;
+      for (var i = 0; i < 24; i++) {
+        var angle = (i/24)*Math.PI*2;
+        var speed = 2 + Math.random()*3;
+        sparks.push({x:w/2, y:h/2, vx:Math.cos(angle)*speed, vy:Math.sin(angle)*speed, life:1, decay:0.012+Math.random()*0.01, r:2.5+Math.random()*2});
+      }
     }
-
     if (allPlaced) {
       var age = t - completionTime;
       var fadeIn = Math.min(1, age / 0.6);
-
-      // Draw center cross - the structural grid line
-      var centerX = (pieces[0].homeX + pieces[1].homeX) / 2;
-      var centerY = (pieces[0].homeY + pieces[2].homeY) / 2;
-      var gridLeft = pieces[0].homeX - pieces[0].w/2;
-      var gridRight = pieces[1].homeX + pieces[1].w/2;
-      var gridTop = pieces[0].homeY - pieces[0].h/2;
       var gridBottom = pieces[2].homeY + pieces[2].h/2;
-
-      ctx.globalAlpha = fadeIn;
-      // Vertical center line
-      ctx.strokeStyle = '#111';
-      ctx.lineWidth = BORDER;
-      ctx.beginPath();
-      ctx.moveTo(centerX, gridTop); ctx.lineTo(centerX, gridBottom);
-      ctx.stroke();
-      // Horizontal center line
-      ctx.beginPath();
-      ctx.moveTo(gridLeft, centerY); ctx.lineTo(gridRight, centerY);
-      ctx.stroke();
-
-      // Center label: "SHARED DISCOURSE"
-      if (fadeIn > 0.5) {
-        var labelAlpha = (fadeIn - 0.5) * 2;
-        ctx.globalAlpha = labelAlpha * 0.7;
+      if (fadeIn > 0.4) {
+        ctx.globalAlpha = Math.min(1, (fadeIn - 0.4) * 1.6) * 0.6;
         ctx.fillStyle = '#BDD6E6';
-        ctx.font = '700 ' + Math.max(10, Math.min(13, (gridRight - gridLeft) * 0.07)) + 'px Montserrat, sans-serif';
-        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillText(isHebrew ? '\u05E9\u05D9\u05D7 \u05DE\u05E9\u05D5\u05EA\u05E3' : 'SHARED DISCOURSE', centerX, gridBottom + 24);
+        ctx.font = '600 ' + Math.max(11, Math.min(14, w*0.035)) + 'px Montserrat, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(isHebrew ? '\u05EA\u05DE\u05D5\u05E0\u05D4 \u05E9\u05DC\u05DE\u05D4 \u2013 \u05DC\u05E9\u05DD \u05E9\u05DE\u05D9\u05D9\u05DD' : 'Complete Picture \u2013 L\'Shem Shamayim', w/2, gridBottom + 24);
+        ctx.globalAlpha = 1;
       }
-      ctx.globalAlpha = 1;
-
-      // Auto-reset after 5 seconds
-      if (age > 5) {
-        initPieces(w, h);
-      }
+      if (age > 5) initPieces(w, h);
     }
 
-    // Click prompt
+    // Prompt
     if (!allPlaced) {
       ctx.fillStyle = 'rgba(189,214,230,0.3)';
       ctx.font = '500 11px Montserrat, sans-serif';
@@ -6104,28 +6117,26 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
       var p = pieces[i];
       if (p.placed || p.flying) continue;
       p.flying = true;
-      p.flyStart = now + i * 120; // stagger each piece by 120ms
+      p.flyStart = now + i * 120;
       p.flyFromX = p.x;
       p.flyFromY = p.y;
       p.flyDuration = 500;
     }
   }
 
-  // Click anywhere on canvas to place all pieces at once
   function onClick(e) {
     e.preventDefault();
     placeAllPieces();
   }
 
-  // Called each frame to animate flying pieces
   function updateFlying() {
     var now = Date.now();
     for (var i = 0; i < pieces.length; i++) {
       var p = pieces[i];
       if (!p.flying) continue;
       var elapsed = now - p.flyStart;
+      if (elapsed < 0) continue; // stagger delay not reached yet
       var t = Math.min(1, elapsed / p.flyDuration);
-      // Ease out cubic
       var ease = 1 - Math.pow(1 - t, 3);
       p.x = p.flyFromX + (p.homeX - p.flyFromX) * ease;
       p.y = p.flyFromY + (p.homeY - p.flyFromY) * ease;
