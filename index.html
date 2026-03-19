@@ -5914,34 +5914,40 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
 
   function initPieces(w, h) {
     pieces = []; sparks = []; allPlaced = false; completionTime = 0;
-    // Fit puzzle within the canvas with generous padding
-    var padX = w * 0.12;
-    var padY = h * 0.1;
-    var availW = w - padX * 2;
-    var availH = h - padY * 2;
-    // Square grid centered in available space, sized to fit comfortably
-    var gridSize = Math.min(availW, availH) * 0.8;
+    // The canvas is a tall rectangle (left 40% of screen).
+    // Grid must fit ENTIRELY within it, including jigsaw tab overhang.
+    // Tab overhang = ~22% of edge length, so we need ~25% extra margin.
+    var tabMargin = w * 0.08; // space for tabs sticking out
+    var safeW = w - tabMargin * 2;
+    var safeH = h * 0.7; // use 70% of height, centered vertically
+    // Grid is square, sized to the SMALLER safe dimension
+    var gridSize = Math.min(safeW, safeH);
     var gridX = (w - gridSize) / 2;
     var gridY = (h - gridSize) / 2;
     var pw = gridSize / COLS, ph = gridSize / ROWS;
+    var pieceW = pw * 0.82, pieceH = ph * 0.82;
+    // Safe bounds for piece centers (accounts for piece size + tab overhang)
+    var safeLeft = pieceW * 0.5 + tabMargin;
+    var safeRight = w - pieceW * 0.5 - tabMargin;
+    var safeTop = pieceH * 0.5 + tabMargin;
+    var safeBottom = h - pieceH * 0.5 - tabMargin;
 
     for (var r = 0; r < ROWS; r++) {
       for (var c = 0; c < COLS; c++) {
         var idx = r * COLS + c;
         var homeX = gridX + c * pw + pw / 2;
         var homeY = gridY + r * ph + ph / 2;
-        // Scatter: offset from home but stay inside canvas bounds
-        var offsetX = (c === 0 ? -1 : 1) * (pw * 0.6 + Math.random() * pw * 0.3);
-        var offsetY = (r === 0 ? -1 : 1) * (ph * 0.6 + Math.random() * ph * 0.3);
-        var sx = homeX + offsetX;
-        var sy = homeY + offsetY;
-        // Clamp within canvas
-        sx = Math.max(pw * 0.45, Math.min(w - pw * 0.45, sx));
-        sy = Math.max(ph * 0.45, Math.min(h - ph * 0.45, sy));
+        // Scatter: push pieces outward from center but WITHIN safe bounds
+        var dirX = (c === 0 ? -1 : 1);
+        var dirY = (r === 0 ? -1 : 1);
+        var offsetX = dirX * (pw * 0.4 + Math.random() * pw * 0.2);
+        var offsetY = dirY * (ph * 0.4 + Math.random() * ph * 0.2);
+        var sx = Math.max(safeLeft, Math.min(safeRight, homeX + offsetX));
+        var sy = Math.max(safeTop, Math.min(safeBottom, homeY + offsetY));
         pieces.push({
           homeX: homeX, homeY: homeY,
           x: sx, y: sy,
-          w: pw * 0.84, h: ph * 0.84,
+          w: pieceW, h: pieceH,
           col: c, row: r, idx: idx,
           placed: false, flying: false,
           snapTime: 0,
