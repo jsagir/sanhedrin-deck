@@ -6578,16 +6578,17 @@ if (!slideAnimations[5]) slideAnimations[5] = [];
 slideAnimations[5].push({ start: function() { window._puzzleAnim.start(); }, stop: function() { window._puzzleAnim.stop(); } });
 
 // === SANHEDRIN DUAL MODE ANIMATION (Slide 9: Two Configurations, index 11) ===
-// Left: Culture of Disagreement - 12 seats in semicircle, slow flowing connections, bridge-building
-// Right: Debate Mode - 12 seats facing off in two rows, fast volleys, competitive strikes
-// Center: Shared Sanhedrin core (the platform)
+// Left edge: Culture - large slow orbiting circles, connecting bridges
+// Right edge: Debate - fast sharp arrows firing across, competitive energy
+// Top/bottom bands visible, not hidden by center cards
 (function() {
   ['modeVennEn','modeVennHe'].forEach(function(canvasId) {
     var canvas = document.getElementById(canvasId);
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
-    var raf, running = false, t = 0;
-    var dpr = 1;
+    var raf, running = false, t = 0, dpr = 1;
+
+    var cParts = [], dParts = [];
 
     function resize() {
       dpr = window.devicePixelRatio || 1;
@@ -6595,223 +6596,221 @@ slideAnimations[5].push({ start: function() { window._puzzleAnim.start(); }, sto
       canvas.height = canvas.offsetHeight * dpr;
     }
 
-    // Culture seats - semicircle arrangement (collaborative)
-    var cultureSeats = [];
-    // Debate seats - two opposing rows (adversarial)
-    var debateSeatsA = [];
-    var debateSeatsB = [];
-
-    function initSeats() {
+    function init() {
+      cParts = []; dParts = [];
       var w = canvas.width, h = canvas.height;
-      cultureSeats = [];
-      debateSeatsA = [];
-      debateSeatsB = [];
-
-      // Culture: 12 seats in a welcoming semicircle (left half)
-      var ccx = w * 0.28, ccy = h * 0.52, cr = Math.min(w * 0.18, h * 0.34);
-      for (var i = 0; i < 12; i++) {
-        var a = Math.PI * 0.15 + (Math.PI * 0.7 / 11) * i;
-        cultureSeats.push({ x: ccx + Math.cos(a) * cr, y: ccy - Math.sin(a) * cr, angle: a, active: false, pulse: Math.random() * Math.PI * 2 });
+      // Culture particles - LEFT edge + TOP-LEFT + BOTTOM-LEFT (visible around cards)
+      for (var i = 0; i < 30; i++) {
+        cParts.push({
+          x: Math.random() * w * 0.15,
+          y: Math.random() * h,
+          r: (10 + Math.random() * 20) * dpr,
+          speed: 0.001 + Math.random() * 0.002,
+          angle: Math.random() * Math.PI * 2,
+          orbitR: (30 + Math.random() * 80) * dpr,
+          cx: Math.random() * w * 0.15,
+          cy: Math.random() * h,
+          phase: Math.random() * Math.PI * 2
+        });
       }
-
-      // Debate: 2 rows of 6 facing each other (right half)
-      var dcx = w * 0.72, dcy = h * 0.52, rowGap = Math.min(w * 0.08, h * 0.2);
-      var rowLen = Math.min(w * 0.14, h * 0.3);
-      for (var j = 0; j < 6; j++) {
-        var yOff = -rowLen + (rowLen * 2 / 5) * j;
-        debateSeatsA.push({ x: dcx - rowGap, y: dcy + yOff, pulse: Math.random() * Math.PI * 2 });
-        debateSeatsB.push({ x: dcx + rowGap, y: dcy + yOff, pulse: Math.random() * Math.PI * 2 });
+      // Also top band and bottom band (above and below cards)
+      for (var j = 0; j < 15; j++) {
+        var inTop = j < 8;
+        cParts.push({
+          x: w * 0.15 + Math.random() * w * 0.3,
+          y: inTop ? Math.random() * h * 0.2 : h * 0.85 + Math.random() * h * 0.15,
+          r: (8 + Math.random() * 14) * dpr,
+          speed: 0.001 + Math.random() * 0.0015,
+          angle: Math.random() * Math.PI * 2,
+          orbitR: (20 + Math.random() * 50) * dpr,
+          cx: w * 0.15 + Math.random() * w * 0.3,
+          cy: inTop ? Math.random() * h * 0.2 : h * 0.85 + Math.random() * h * 0.15,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+      // Debate particles - RIGHT edge + TOP-RIGHT + BOTTOM-RIGHT
+      for (var k = 0; k < 30; k++) {
+        dParts.push({
+          x: w * 0.85 + Math.random() * w * 0.15,
+          y: Math.random() * h,
+          size: (6 + Math.random() * 12) * dpr,
+          vx: (-1.5 - Math.random() * 3) * dpr,
+          vy: (-1 + Math.random() * 2) * dpr,
+          life: 0, maxLife: 60 + Math.random() * 80,
+          startX: w * 0.85 + Math.random() * w * 0.15,
+          startY: Math.random() * h
+        });
+      }
+      for (var l = 0; l < 15; l++) {
+        var inTop2 = l < 8;
+        dParts.push({
+          x: w * 0.55 + Math.random() * w * 0.3,
+          y: inTop2 ? Math.random() * h * 0.2 : h * 0.85 + Math.random() * h * 0.15,
+          size: (6 + Math.random() * 10) * dpr,
+          vx: (1 + Math.random() * 2) * dpr * (Math.random() > 0.5 ? 1 : -1),
+          vy: (-0.5 + Math.random()) * dpr,
+          life: 0, maxLife: 50 + Math.random() * 60,
+          startX: w * 0.55 + Math.random() * w * 0.3,
+          startY: inTop2 ? Math.random() * h * 0.2 : h * 0.85 + Math.random() * h * 0.15
+        });
       }
     }
 
     function draw() {
       if (!running) return;
-      t += 0.006;
+      t += 0.012;
       var w = canvas.width, h = canvas.height;
       ctx.clearRect(0, 0, w, h);
 
-      var ccx = w * 0.28, ccy = h * 0.52;
-      var dcx = w * 0.72, dcy = h * 0.52;
-      var sharedX = w * 0.5, sharedY = h * 0.5;
-      var zoneR = Math.min(w * 0.24, h * 0.42);
+      // === LEFT EDGE GLOW (Culture - cyan) ===
+      var lGrad = ctx.createLinearGradient(0, 0, w * 0.2, 0);
+      lGrad.addColorStop(0, 'rgba(80,200,240,0.1)');
+      lGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = lGrad;
+      ctx.fillRect(0, 0, w * 0.2, h);
 
-      // ---- CULTURE ZONE (left) - soft cyan field ----
-      var cGrad = ctx.createRadialGradient(ccx, ccy, 0, ccx, ccy, zoneR * 1.3);
-      cGrad.addColorStop(0, 'rgba(80,200,240,0.12)');
-      cGrad.addColorStop(0.7, 'rgba(80,200,240,0.04)');
-      cGrad.addColorStop(1, 'transparent');
-      ctx.fillStyle = cGrad;
-      ctx.beginPath();
-      ctx.arc(ccx, ccy, zoneR * 1.3, 0, Math.PI * 2);
-      ctx.fill();
+      // === RIGHT EDGE GLOW (Debate - amber) ===
+      var rGrad = ctx.createLinearGradient(w * 0.8, 0, w, 0);
+      rGrad.addColorStop(0, 'transparent');
+      rGrad.addColorStop(1, 'rgba(255,160,50,0.1)');
+      ctx.fillStyle = rGrad;
+      ctx.fillRect(w * 0.8, 0, w * 0.2, h);
 
-      // Culture seats - circles with slow breathing glow
-      for (var ci = 0; ci < cultureSeats.length; ci++) {
-        var cs = cultureSeats[ci];
-        var breath = 0.4 + 0.6 * Math.sin(t * 0.5 + cs.pulse);
-        var seatR = 6 * dpr;
+      // === CULTURE PARTICLES - large slow orbiting circles with bridges ===
+      for (var ci = 0; ci < cParts.length; ci++) {
+        var cp = cParts[ci];
+        cp.angle += cp.speed;
+        cp.x = cp.cx + Math.cos(cp.angle) * cp.orbitR;
+        cp.y = cp.cy + Math.sin(cp.angle * 0.7 + cp.phase) * cp.orbitR * 0.6;
+        var breath = 0.3 + 0.7 * Math.sin(t * 0.4 + cp.phase);
 
-        // Soft glow
-        ctx.fillStyle = 'rgba(80,200,240,' + (0.15 * breath) + ')';
+        // Large soft glow
+        ctx.fillStyle = 'rgba(80,200,240,' + (0.08 * breath) + ')';
         ctx.beginPath();
-        ctx.arc(cs.x, cs.y, seatR * 2.5, 0, Math.PI * 2);
+        ctx.arc(cp.x, cp.y, cp.r * 2, 0, Math.PI * 2);
         ctx.fill();
 
-        // Seat dot
-        ctx.fillStyle = 'rgba(80,200,240,' + (0.6 * breath) + ')';
+        // Core circle
+        ctx.fillStyle = 'rgba(80,200,240,' + (0.35 * breath) + ')';
         ctx.beginPath();
-        ctx.arc(cs.x, cs.y, seatR, 0, Math.PI * 2);
+        ctx.arc(cp.x, cp.y, cp.r, 0, Math.PI * 2);
         ctx.fill();
 
-        // Bridge lines - slow, flowing connections between neighbors (collaborative web)
-        for (var ck = ci + 1; ck < cultureSeats.length; ck++) {
-          var cn = cultureSeats[ck];
-          var cdx = cn.x - cs.x, cdy = cn.y - cs.y;
-          var cdist = Math.sqrt(cdx * cdx + cdy * cdy);
-          if (cdist < zoneR * 0.8) {
-            var lineAlpha = 0.08 * (1 - cdist / (zoneR * 0.8)) * (0.5 + 0.5 * Math.sin(t + ci * 0.3 + ck * 0.2));
-            ctx.strokeStyle = 'rgba(80,200,240,' + lineAlpha + ')';
-            ctx.lineWidth = 1.5 * dpr;
+        // Ring
+        ctx.strokeStyle = 'rgba(80,200,240,' + (0.2 * breath) + ')';
+        ctx.lineWidth = 1.5 * dpr;
+        ctx.beginPath();
+        ctx.arc(cp.x, cp.y, cp.r * 1.4, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Bridge lines to nearby culture particles
+        for (var cn = ci + 1; cn < Math.min(ci + 4, cParts.length); cn++) {
+          var np = cParts[cn];
+          var dx = np.x - cp.x, dy = np.y - cp.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 200 * dpr) {
+            var la = 0.12 * (1 - dist / (200 * dpr)) * breath;
+            ctx.strokeStyle = 'rgba(80,200,240,' + la + ')';
+            ctx.lineWidth = 2 * dpr;
             ctx.beginPath();
-            // Curved lines (organic, flowing)
-            var mx = (cs.x + cn.x) / 2 + Math.sin(t + ci) * 10 * dpr;
-            var my = (cs.y + cn.y) / 2 - 15 * dpr;
-            ctx.moveTo(cs.x, cs.y);
-            ctx.quadraticCurveTo(mx, my, cn.x, cn.y);
+            var mx = (cp.x + np.x) / 2 + Math.sin(t + ci) * 15 * dpr;
+            var my = (cp.y + np.y) / 2 - 20 * dpr;
+            ctx.moveTo(cp.x, cp.y);
+            ctx.quadraticCurveTo(mx, my, np.x, np.y);
             ctx.stroke();
           }
         }
       }
 
-      // ---- DEBATE ZONE (right) - warm amber field ----
-      var dGrad = ctx.createRadialGradient(dcx, dcy, 0, dcx, dcy, zoneR * 1.3);
-      dGrad.addColorStop(0, 'rgba(255,160,50,0.12)');
-      dGrad.addColorStop(0.7, 'rgba(255,160,50,0.04)');
-      dGrad.addColorStop(1, 'transparent');
-      ctx.fillStyle = dGrad;
-      ctx.beginPath();
-      ctx.arc(dcx, dcy, zoneR * 1.3, 0, Math.PI * 2);
-      ctx.fill();
+      // === DEBATE PARTICLES - fast sharp arrows/streaks ===
+      for (var di = 0; di < dParts.length; di++) {
+        var dp = dParts[di];
+        dp.life++;
+        if (dp.life > dp.maxLife) {
+          dp.life = 0;
+          dp.x = dp.startX;
+          dp.y = dp.startY;
+          dp.vx = (-1.5 - Math.random() * 3) * dpr * (Math.random() > 0.5 ? 1 : -1);
+          dp.vy = (-1 + Math.random() * 2) * dpr;
+        }
+        dp.x += dp.vx;
+        dp.y += dp.vy;
+        var lifeRatio = 1 - dp.life / dp.maxLife;
+        var alpha = lifeRatio * 0.6;
 
-      // Debate seats - two rows, sharp diamonds
-      function drawDebateSeat(s, side) {
-        var pulse = 0.5 + 0.5 * Math.sin(t * 1.5 + s.pulse);
-        var sz = 5 * dpr;
-
-        // Glow
-        ctx.fillStyle = 'rgba(255,160,50,' + (0.12 * pulse) + ')';
+        // Arrow/streak trail
+        var trailLen = dp.size * 3;
+        var grad = ctx.createLinearGradient(dp.x, dp.y, dp.x - dp.vx * 4, dp.y - dp.vy * 4);
+        grad.addColorStop(0, 'rgba(255,160,50,' + alpha + ')');
+        grad.addColorStop(1, 'rgba(255,160,50,0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = dp.size * 0.4;
         ctx.beginPath();
-        ctx.arc(s.x, s.y, sz * 2.5, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.moveTo(dp.x, dp.y);
+        ctx.lineTo(dp.x - dp.vx * 4, dp.y - dp.vy * 4);
+        ctx.stroke();
 
-        // Diamond shape (competitive)
-        ctx.fillStyle = 'rgba(255,160,50,' + (0.7 * pulse) + ')';
+        // Arrow head (diamond)
+        ctx.fillStyle = 'rgba(255,180,60,' + alpha + ')';
+        ctx.save();
+        ctx.translate(dp.x, dp.y);
+        ctx.rotate(Math.atan2(dp.vy, dp.vx));
         ctx.beginPath();
-        ctx.moveTo(s.x, s.y - sz);
-        ctx.lineTo(s.x + sz * 0.7, s.y);
-        ctx.lineTo(s.x, s.y + sz);
-        ctx.lineTo(s.x - sz * 0.7, s.y);
+        var s = dp.size * 0.5;
+        ctx.moveTo(s, 0);
+        ctx.lineTo(-s * 0.5, -s * 0.6);
+        ctx.lineTo(-s * 0.5, s * 0.6);
         ctx.closePath();
         ctx.fill();
-      }
+        ctx.restore();
 
-      for (var da = 0; da < debateSeatsA.length; da++) {
-        drawDebateSeat(debateSeatsA[da], 'A');
-        drawDebateSeat(debateSeatsB[da], 'B');
-
-        // Volley lines between opposing seats (competitive exchanges, sharp and fast)
-        var sa = debateSeatsA[da], sb = debateSeatsB[da];
-        var volleyPhase = (t * 2 + da * 0.8) % (Math.PI * 2);
-        var volleyAlpha = Math.max(0, Math.sin(volleyPhase)) * 0.35;
-        if (volleyAlpha > 0.05) {
-          ctx.strokeStyle = 'rgba(255,140,30,' + volleyAlpha + ')';
-          ctx.lineWidth = 2 * dpr;
+        // Spark at head
+        if (Math.random() < 0.15) {
+          ctx.fillStyle = 'rgba(255,220,100,' + (alpha * 0.8) + ')';
           ctx.beginPath();
-          ctx.moveTo(sa.x, sa.y);
-          ctx.lineTo(sb.x, sb.y);
-          ctx.stroke();
-
-          // Volley particle moving across
-          var vt = (Math.sin(volleyPhase) + 1) / 2;
-          var vx = sa.x + (sb.x - sa.x) * vt;
-          var vy = sa.y + (sb.y - sa.y) * vt;
-          ctx.fillStyle = 'rgba(255,200,80,' + volleyAlpha + ')';
-          ctx.beginPath();
-          ctx.arc(vx, vy, 3 * dpr, 0, Math.PI * 2);
+          ctx.arc(dp.x + (Math.random() - 0.5) * 6 * dpr, dp.y + (Math.random() - 0.5) * 6 * dpr, 2 * dpr, 0, Math.PI * 2);
           ctx.fill();
         }
       }
 
-      // ---- SHARED CORE (center) - golden Sanhedrin spine ----
-      var pulse = 0.5 + 0.5 * Math.sin(t * 0.6);
-      var coreR = zoneR * 0.25;
+      // === SHARED SPINE (top center between title and cards) ===
+      var pulse = 0.5 + 0.5 * Math.sin(t * 0.5);
+      var spineY = h * 0.18;
+      var spineR = 18 * dpr;
 
-      // Core glow
-      var sGrad = ctx.createRadialGradient(sharedX, sharedY, 0, sharedX, sharedY, coreR * 2);
-      sGrad.addColorStop(0, 'rgba(212,175,55,' + (0.2 * pulse) + ')');
-      sGrad.addColorStop(0.5, 'rgba(212,175,55,' + (0.06 * pulse) + ')');
-      sGrad.addColorStop(1, 'transparent');
-      ctx.fillStyle = sGrad;
-      ctx.beginPath();
-      ctx.arc(sharedX, sharedY, coreR * 2, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Core hexagon (Sanhedrin seal)
-      ctx.strokeStyle = 'rgba(212,175,55,' + (0.4 * pulse) + ')';
-      ctx.lineWidth = 2 * dpr;
+      // Golden hexagon
+      ctx.strokeStyle = 'rgba(212,175,55,' + (0.35 * pulse) + ')';
+      ctx.lineWidth = 2.5 * dpr;
       ctx.beginPath();
       for (var hi = 0; hi < 6; hi++) {
-        var ha = (Math.PI / 3) * hi - Math.PI / 6 + t * 0.1;
-        var hx = sharedX + Math.cos(ha) * coreR;
-        var hy = sharedY + Math.sin(ha) * coreR;
+        var ha = (Math.PI / 3) * hi - Math.PI / 6 + t * 0.08;
+        var hx = w * 0.5 + Math.cos(ha) * spineR;
+        var hy = spineY + Math.sin(ha) * spineR;
         if (hi === 0) ctx.moveTo(hx, hy); else ctx.lineTo(hx, hy);
       }
       ctx.closePath();
       ctx.stroke();
 
-      // Inner hexagon (rotating opposite)
-      ctx.strokeStyle = 'rgba(212,175,55,' + (0.2 * pulse) + ')';
-      ctx.lineWidth = 1 * dpr;
+      // Dashed lines from spine to left and right edges
+      ctx.strokeStyle = 'rgba(212,175,55,' + (0.12 * pulse) + ')';
+      ctx.lineWidth = 1.5 * dpr;
+      ctx.setLineDash([6 * dpr, 10 * dpr]);
       ctx.beginPath();
-      for (var hi2 = 0; hi2 < 6; hi2++) {
-        var ha2 = (Math.PI / 3) * hi2 - Math.PI / 6 - t * 0.15;
-        var hx2 = sharedX + Math.cos(ha2) * coreR * 0.5;
-        var hy2 = sharedY + Math.sin(ha2) * coreR * 0.5;
-        if (hi2 === 0) ctx.moveTo(hx2, hy2); else ctx.lineTo(hx2, hy2);
-      }
-      ctx.closePath();
-      ctx.stroke();
-
-      // Energy lines from core to both zones
-      ctx.strokeStyle = 'rgba(212,175,55,' + (0.08 * pulse) + ')';
-      ctx.lineWidth = 1 * dpr;
-      ctx.setLineDash([4 * dpr, 8 * dpr]);
-      ctx.beginPath();
-      ctx.moveTo(sharedX - coreR, sharedY);
-      ctx.lineTo(ccx + zoneR * 0.3, ccy);
+      ctx.moveTo(w * 0.5 - spineR, spineY);
+      ctx.lineTo(w * 0.1, spineY);
       ctx.stroke();
       ctx.beginPath();
-      ctx.moveTo(sharedX + coreR, sharedY);
-      ctx.lineTo(dcx - zoneR * 0.3, dcy);
+      ctx.moveTo(w * 0.5 + spineR, spineY);
+      ctx.lineTo(w * 0.9, spineY);
       ctx.stroke();
       ctx.setLineDash([]);
 
       raf = requestAnimationFrame(draw);
     }
 
-    function start() {
-      if (running) return;
-      running = true;
-      resize();
-      initSeats();
-      draw();
-    }
-    function stop() {
-      running = false;
-      if (raf) cancelAnimationFrame(raf);
-    }
-
-    window.addEventListener('resize', function() { if (running) { resize(); initSeats(); } });
+    function start() { if (running) return; running = true; resize(); init(); draw(); }
+    function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
+    window.addEventListener('resize', function() { if (running) { resize(); init(); } });
 
     if (!slideAnimations[11]) slideAnimations[11] = [];
     slideAnimations[11].push({ start: start, stop: stop });
