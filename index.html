@@ -1854,46 +1854,48 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
      ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
   <div class="lang-en">
-    <div class="layout-statement">
-      <p class="label reveal">Platform Versatility</p>
-      <h2 class="reveal r1">One Platform.<br>Two Configurations.</h2>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 32px; width: 100%; max-width: 1000px;" class="reveal r2">
-        <div class="card" style="padding: 36px; border-top: 4px solid var(--navy);">
+    <div class="layout-statement" style="position: relative;">
+      <canvas id="modeVennEn" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
+      <p class="label reveal" style="position: relative; z-index: 1;">Platform Versatility</p>
+      <h2 class="reveal r1" style="position: relative; z-index: 1;">One Platform.<br>Two Configurations.</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 32px; width: 100%; max-width: 1000px; position: relative; z-index: 1;" class="reveal r2">
+        <div class="card" style="padding: 36px; border-top: 4px solid var(--navy); background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);">
           <h3 style="font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 12px;"><span class="term-tip" data-tip="The collaborative mode where nobody wins. The goal is deeper understanding through structured dialogue.">Culture of Disagreement</span></h3>
           <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong>Pedagogical, process-focused,</strong> and <em>collaborative.</em> Includes real-time analytics like a <span class="term-tip" data-tip="How far apart the two sides are. A dropping score means the conversation is building bridges."><span style="font-family: var(--font-m);">Polarization Score</span></span> and a <span class="term-tip" data-tip="A quality score measuring if people argued for truth, not just to win."><em>"L'Shem Shamayim"</em></span> index.</p>
           <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); letter-spacing: 1px; margin-top: 20px; text-transform: uppercase;">Ideal for school groups</div>
         </div>
-        <div class="card" style="padding: 36px; border-top: 4px solid var(--taupe);">
+        <div class="card" style="padding: 36px; border-top: 4px solid var(--taupe); background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);">
           <h3 style="font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 12px;"><span class="term-tip" data-tip="The competitive mode where Sages argue fiercely, time pressure is on, and the audience votes for a winner.">Debate Mode</span></h3>
           <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong>Competitive, outcome-focused,</strong> and heavily <em>rhetorical.</em> Features <strong>structured rounds</strong> and <strong>audience voting.</strong></p>
           <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); letter-spacing: 1px; margin-top: 20px; text-transform: uppercase;">Ideal for general visitors & corporate</div>
         </div>
       </div>
-      <p class="body-sm reveal r3" style="text-align: center; max-width: 800px; margin-top: 28px;"><strong>Same infrastructure</strong> serves both the <em>pedagogical vision</em> and the museum's need for a <strong>high-energy attraction.</strong></p>
-      <a href="#gloss-modes" onclick="goToGlossary('gloss-modes');return false;" class="reveal r3" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer;">
+      <p class="body-sm reveal r3" style="text-align: center; max-width: 800px; margin-top: 28px; position: relative; z-index: 1;"><strong>Same infrastructure</strong> serves both the <em>pedagogical vision</em> and the museum's need for a <strong>high-energy attraction.</strong></p>
+      <a href="#gloss-modes" onclick="goToGlossary('gloss-modes');return false;" class="reveal r3" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer; position: relative; z-index: 1;">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
         Glossary: Operational Modes & Analytics
       </a>
     </div>
   </div>
   <div class="lang-he" dir="rtl">
-    <div class="layout-statement">
-      <p class="label reveal">גמישות הפלטפורמה</p>
-      <h2 class="reveal r1">פלטפורמה אחת.<br>שתי תצורות.</h2>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 32px; width: 100%; max-width: 1000px;" class="reveal r2">
-        <div class="card" style="padding: 36px; border-top: 4px solid var(--navy);">
+    <div class="layout-statement" style="position: relative;">
+      <canvas id="modeVennHe" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;"></canvas>
+      <p class="label reveal" style="position: relative; z-index: 1;">גמישות הפלטפורמה</p>
+      <h2 class="reveal r1" style="position: relative; z-index: 1;">פלטפורמה אחת.<br>שתי תצורות.</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 32px; width: 100%; max-width: 1000px; position: relative; z-index: 1;" class="reveal r2">
+        <div class="card" style="padding: 36px; border-top: 4px solid var(--navy); background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);">
           <h3 style="font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">תרבות המחלוקת</h3>
           <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong>פדגוגי, מוכוון תהליך</strong> ו<em>שיתופי.</em> כולל אנליטיקה בזמן אמת כמו <span style="font-family: var(--font-m);">ציון קיטוב</span> ומדד <em>"לשם שמיים"</em>.</p>
           <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); letter-spacing: 1px; margin-top: 20px; text-transform: uppercase;">אידיאלי לקבוצות בתי ספר</div>
         </div>
-        <div class="card" style="padding: 36px; border-top: 4px solid var(--taupe);">
+        <div class="card" style="padding: 36px; border-top: 4px solid var(--taupe); background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);">
           <h3 style="font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">מצב דיבייט</h3>
           <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong>תחרותי, מוכוון תוצאות</strong> ו<em>רטורי.</em> כולל <strong>סבבים מובנים</strong> ו<strong>הצבעת קהל.</strong></p>
           <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); letter-spacing: 1px; margin-top: 20px; text-transform: uppercase;">אידיאלי למבקרים ותאגידים</div>
         </div>
       </div>
-      <p class="body-sm reveal r3" style="text-align: center; max-width: 800px; margin-top: 28px;"><strong>אותה תשתית</strong> משרתת גם את ה<em>חזון הפדגוגי</em> וגם את הצורך של המוזיאון ב<strong>אטרקציה בעלת אנרגיה גבוהה.</strong></p>
-      <a href="#gloss-modes-he" onclick="goToGlossary('gloss-modes-he');return false;" class="reveal r3" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer;">
+      <p class="body-sm reveal r3" style="text-align: center; max-width: 800px; margin-top: 28px; position: relative; z-index: 1;"><strong>אותה תשתית</strong> משרתת גם את ה<em>חזון הפדגוגי</em> וגם את הצורך של המוזיאון ב<strong>אטרקציה בעלת אנרגיה גבוהה.</strong></p>
+      <a href="#gloss-modes-he" onclick="goToGlossary('gloss-modes-he');return false;" class="reveal r3" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer; position: relative; z-index: 1;">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
         מילון: מצבי פעולה וניתוח
       </a>
@@ -6574,6 +6576,235 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
 // Register puzzle animation on slide index 5 (Slide 4 - Cognitive Twist, after Hero+Problem+3 team slides)
 if (!slideAnimations[5]) slideAnimations[5] = [];
 slideAnimations[5].push({ start: function() { window._puzzleAnim.start(); }, stop: function() { window._puzzleAnim.stop(); } });
+
+// === DUAL MODE VENN ANIMATION (Slide 9: Two Configurations, index 11) ===
+(function() {
+  ['modeVennEn','modeVennHe'].forEach(function(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var raf, running = false, t = 0;
+
+    // Particles for each mode
+    var cultureParticles = [];
+    var debateParticles = [];
+    var CULTURE_COUNT = 40;
+    var DEBATE_COUNT = 40;
+
+    function resize() {
+      canvas.width = canvas.offsetWidth * (window.devicePixelRatio || 1);
+      canvas.height = canvas.offsetHeight * (window.devicePixelRatio || 1);
+    }
+
+    function initParticles() {
+      cultureParticles = [];
+      debateParticles = [];
+      var w = canvas.width, h = canvas.height;
+      var cx = w * 0.35, cy = h * 0.5, r = Math.min(w, h) * 0.32;
+      for (var i = 0; i < CULTURE_COUNT; i++) {
+        var angle = Math.random() * Math.PI * 2;
+        var dist = Math.random() * r;
+        cultureParticles.push({
+          x: cx + Math.cos(angle) * dist,
+          y: cy + Math.sin(angle) * dist,
+          baseAngle: angle,
+          baseDist: dist,
+          speed: 0.002 + Math.random() * 0.003,
+          size: 2 + Math.random() * 3,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+      var dx = w * 0.65;
+      for (var j = 0; j < DEBATE_COUNT; j++) {
+        var a2 = Math.random() * Math.PI * 2;
+        var d2 = Math.random() * r;
+        debateParticles.push({
+          x: dx + Math.cos(a2) * d2,
+          y: cy + Math.sin(a2) * d2,
+          baseAngle: a2,
+          baseDist: d2,
+          speed: 0.005 + Math.random() * 0.008,
+          size: 2 + Math.random() * 2.5,
+          phase: Math.random() * Math.PI * 2,
+          trail: []
+        });
+      }
+    }
+
+    function draw() {
+      if (!running) return;
+      t += 0.008;
+      var w = canvas.width, h = canvas.height;
+      var dpr = window.devicePixelRatio || 1;
+      ctx.clearRect(0, 0, w, h);
+
+      var cultureCenter = { x: w * 0.35, y: h * 0.5 };
+      var debateCenter = { x: w * 0.65, y: h * 0.5 };
+      var sharedCenter = { x: w * 0.5, y: h * 0.5 };
+      var modeRadius = Math.min(w, h) * 0.32;
+      var coreRadius = modeRadius * 0.35;
+
+      // Culture zone - soft glow (cyan)
+      var cGrad = ctx.createRadialGradient(cultureCenter.x, cultureCenter.y, 0, cultureCenter.x, cultureCenter.y, modeRadius);
+      cGrad.addColorStop(0, 'rgba(80,200,240,0.08)');
+      cGrad.addColorStop(0.6, 'rgba(80,200,240,0.04)');
+      cGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = cGrad;
+      ctx.beginPath();
+      ctx.arc(cultureCenter.x, cultureCenter.y, modeRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Debate zone - warm glow (amber)
+      var dGrad = ctx.createRadialGradient(debateCenter.x, debateCenter.y, 0, debateCenter.x, debateCenter.y, modeRadius);
+      dGrad.addColorStop(0, 'rgba(255,180,80,0.08)');
+      dGrad.addColorStop(0.6, 'rgba(255,180,80,0.04)');
+      dGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = dGrad;
+      ctx.beginPath();
+      ctx.arc(debateCenter.x, debateCenter.y, modeRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Shared core - pulsing golden (the shared spine)
+      var pulse = 0.6 + 0.4 * Math.sin(t * 0.8);
+      var sGrad = ctx.createRadialGradient(sharedCenter.x, sharedCenter.y, 0, sharedCenter.x, sharedCenter.y, coreRadius);
+      sGrad.addColorStop(0, 'rgba(212,175,55,' + (0.15 * pulse) + ')');
+      sGrad.addColorStop(0.5, 'rgba(212,175,55,' + (0.08 * pulse) + ')');
+      sGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = sGrad;
+      ctx.beginPath();
+      ctx.arc(sharedCenter.x, sharedCenter.y, coreRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Core ring
+      ctx.strokeStyle = 'rgba(212,175,55,' + (0.2 * pulse) + ')';
+      ctx.lineWidth = 1.5 * dpr;
+      ctx.beginPath();
+      ctx.arc(sharedCenter.x, sharedCenter.y, coreRadius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Core label: hexagon shape (not cross)
+      ctx.save();
+      ctx.translate(sharedCenter.x, sharedCenter.y);
+      ctx.strokeStyle = 'rgba(212,175,55,' + (0.3 * pulse) + ')';
+      ctx.lineWidth = 1 * dpr;
+      ctx.beginPath();
+      var hexR = coreRadius * 0.3;
+      for (var hi = 0; hi < 6; hi++) {
+        var ha = (Math.PI / 3) * hi - Math.PI / 6;
+        if (hi === 0) ctx.moveTo(Math.cos(ha) * hexR, Math.sin(ha) * hexR);
+        else ctx.lineTo(Math.cos(ha) * hexR, Math.sin(ha) * hexR);
+      }
+      ctx.closePath();
+      ctx.stroke();
+      ctx.restore();
+
+      // Culture particles - slow, circular, collaborative (orbiting, forming bridges)
+      for (var ci = 0; ci < cultureParticles.length; ci++) {
+        var cp = cultureParticles[ci];
+        cp.baseAngle += cp.speed;
+        var wobble = Math.sin(t + cp.phase) * 8 * dpr;
+        cp.x = cultureCenter.x + Math.cos(cp.baseAngle) * (cp.baseDist + wobble);
+        cp.y = cultureCenter.y + Math.sin(cp.baseAngle) * (cp.baseDist + wobble);
+
+        // Draw soft circle
+        ctx.fillStyle = 'rgba(80,200,240,0.5)';
+        ctx.beginPath();
+        ctx.arc(cp.x, cp.y, cp.size * dpr, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Draw bridge lines between nearby culture particles (collaborative)
+        if (ci < cultureParticles.length - 1) {
+          var next = cultureParticles[ci + 1];
+          var bdx = next.x - cp.x, bdy = next.y - cp.y;
+          var bdist = Math.sqrt(bdx * bdx + bdy * bdy);
+          if (bdist < modeRadius * 0.5) {
+            ctx.strokeStyle = 'rgba(80,200,240,' + (0.15 * (1 - bdist / (modeRadius * 0.5))) + ')';
+            ctx.lineWidth = 0.5 * dpr;
+            ctx.beginPath();
+            ctx.moveTo(cp.x, cp.y);
+            ctx.lineTo(next.x, next.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Debate particles - fast, sharp, competitive (darting with trails)
+      for (var di = 0; di < debateParticles.length; di++) {
+        var dp = debateParticles[di];
+        dp.baseAngle += dp.speed;
+        var jitter = Math.sin(t * 3 + dp.phase) * 4 * dpr;
+        dp.x = debateCenter.x + Math.cos(dp.baseAngle) * (dp.baseDist + jitter);
+        dp.y = debateCenter.y + Math.sin(dp.baseAngle) * (dp.baseDist + jitter);
+
+        // Trail
+        dp.trail.push({ x: dp.x, y: dp.y });
+        if (dp.trail.length > 6) dp.trail.shift();
+
+        // Draw trail (sharp streaks)
+        for (var ti = 0; ti < dp.trail.length - 1; ti++) {
+          var alpha = (ti / dp.trail.length) * 0.3;
+          ctx.strokeStyle = 'rgba(255,180,80,' + alpha + ')';
+          ctx.lineWidth = dp.size * 0.5 * dpr;
+          ctx.beginPath();
+          ctx.moveTo(dp.trail[ti].x, dp.trail[ti].y);
+          ctx.lineTo(dp.trail[ti + 1].x, dp.trail[ti + 1].y);
+          ctx.stroke();
+        }
+
+        // Draw diamond shape (competitive, sharp)
+        ctx.fillStyle = 'rgba(255,180,80,0.6)';
+        ctx.save();
+        ctx.translate(dp.x, dp.y);
+        ctx.rotate(dp.baseAngle);
+        ctx.beginPath();
+        var ds = dp.size * dpr;
+        ctx.moveTo(0, -ds);
+        ctx.lineTo(ds * 0.6, 0);
+        ctx.lineTo(0, ds);
+        ctx.lineTo(-ds * 0.6, 0);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Particles migrating through the shared core (showing mode switching)
+      var migCount = 4;
+      for (var mi = 0; mi < migCount; mi++) {
+        var mt = (t * 0.3 + mi * 0.25) % 1;
+        var mx = cultureCenter.x + (debateCenter.x - cultureCenter.x) * mt;
+        var my = sharedCenter.y + Math.sin(mt * Math.PI) * (-20 * dpr) + Math.sin(t + mi) * 5 * dpr;
+        var mAlpha = Math.sin(mt * Math.PI) * 0.5;
+        // Gradient from cyan to amber as it crosses
+        var mr = Math.round(80 + (255 - 80) * mt);
+        var mg = Math.round(200 + (180 - 200) * mt);
+        var mb = Math.round(240 + (80 - 240) * mt);
+        ctx.fillStyle = 'rgba(' + mr + ',' + mg + ',' + mb + ',' + mAlpha + ')';
+        ctx.beginPath();
+        ctx.arc(mx, my, 3 * dpr, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      raf = requestAnimationFrame(draw);
+    }
+
+    function start() {
+      if (running) return;
+      running = true;
+      resize();
+      initParticles();
+      draw();
+    }
+    function stop() {
+      running = false;
+      if (raf) cancelAnimationFrame(raf);
+    }
+
+    window.addEventListener('resize', function() { if (running) { resize(); initParticles(); } });
+
+    if (!slideAnimations[11]) slideAnimations[11] = [];
+    slideAnimations[11].push({ start: start, stop: stop });
+  });
+})();
 
 showSlide(0);
 
