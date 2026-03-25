@@ -33,7 +33,7 @@ SLIDES = [
     },
     {
         "file": "slide-03.mp3",
-        "text": "Meet the core MOTJ team. Daniel Muller, PhD in AI, our CTO and project manager with 18 years in R&D. Jonathan Sagir, MBA, project operations and coordination. Marla Supnick, creative director and visitor experience lead. And Sharon Jacobson, director of design and content. Together, we co-lead the Maimonides Pavilion AI and AV integration model."
+        "text": "Meet the core MOTJ team. Daniel Muller, PhD in Planning and Decision-Making in AI. Technology executive and CTO of the Museum of Tolerance Jerusalem and MileZero, with 18 years of R&D experience including 12 years in AI. Jonathan Sagir, MBA, project operations and coordination. Marla Supnick, creative director and visitor experience lead. And Sharon Jacobson, director of design and content."
     },
     {
         "file": "slide-04.mp3",
@@ -101,7 +101,7 @@ SLIDES = [
     },
     {
         "file": "slide-20.mp3",
-        "text": "Roadmap and milestones. Six phases. Internal presentation and green light now. Donor presentations and RFP by April. Proof of concept. Core platform build. Beta testing and museum integration. Then school rollout and global scale."
+        "text": "Roadmap and milestones. Six phases. Internal presentation and stakeholder alignment by end of March. Donor presentations, RFP, and vendor selection by April, with K1 through K4 content authoring starting. Proof of concept from June to August: a WhatsApp group with 3 AI agents and 2 humans, both modes tested, validated by Micha Goodman. Working demo from September to November: custom React UI, 5 Sages plus Nasi and Av Beit Din, voice for 2 to 3 Sages, and an AI talking portrait prototype. Full prototype and museum deployment from December 2026 through May 2027."
     },
     {
         "file": "slide-21.mp3",

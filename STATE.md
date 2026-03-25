@@ -1,8 +1,8 @@
 # Sanhedrin Deck - Project State
 
 ## Current Status
-**Last updated:** 2026-03-13 (Session 20)
-**Phase:** 22 main slides (3 team slides) + 8 appendix (A-F, P, Q). 12 sages with voices. Deployed and live.
+**Last updated:** 2026-03-25 (Session 21)
+**Phase:** 22 main slides (3 team slides) + 8 appendix (A-F, P, Q). 12 sages with voices. Deployed and live. Appendix A replaced with full glossary. Tooltip system active.
 **Live URL:** https://sanhedrin-deck.onrender.com
 **Repo:** https://github.com/jsagir/sanhedrin-deck (auto-deploy on push to master)
 
@@ -10,13 +10,12 @@
 
 ### Immediate
 1. **Slide 15 (Business Case)** - placeholder for Yoni to customize per donor
-2. **Wire up CTA buttons** - "Approve Phase 1 POC" and "View Tech Architecture" still have no targets
 
 ### Content Refinement
-- [ ] Confirm or remove unverified claims (Yazdani Studio, 100K visitors)
-- [ ] Update "View Tech Architecture" link to point to Appendix A or a separate doc
+- [x] Yazdani Studio claim verified against v3.1 architecture doc (Layer 0A). 100K visitors claim not found in current deck (already removed).
 - [ ] Review all slide copy with Daniel (both EN and HE)
 - [ ] Daniel has a WhatsApp POC doc (written in LaTeX, ~1 year old) - integrate into Phase 1 narrative
+- [ ] Add more tooltip terms as feedback comes in from non-technical viewers
 
 ### Design Polish
 - [ ] PDF export for leave-behind
@@ -70,6 +69,21 @@
 | A5 | The Sage Library | All 80 Jewish Lives figures with hover overlays showing Sanhedrin roles |
 
 ## What Changed in Latest Sessions
+
+### Session 21 (2026-03-25) - Glossary Appendix, Tooltips, NDA Gate, Daniel Bio
+- **Appendix A replaced**: Old 4-bullet Technical Architecture Overview replaced with comprehensive **Technical Terms & Terminology** glossary (50+ terms across 7 categories: System, Modes/Analytics, Knowledge Architecture, Discourse Methodology, Technical Architecture, Infrastructure, Content/People). SoW-doc style with sticky TOC. Full bilingual EN/HE.
+- **Source document filed**: v3.1 Implementation Architecture PDF saved to `docs/sanhedrin_v3.1_architecture.pdf`
+- **NDA acknowledgment popup**: All appendix navigation (goToAppendix, quick nav) now gates through a MOTJ proprietary data acknowledgment overlay. SessionStorage persistence (per browser session). MOTJ logo + professional copy.
+- **Hover tooltip system**: CSS-only tooltips (.term-tip) with "mom-test" one-line explanations on technical terms across main slides. Terms tagged: L'Shem Shamayim, Thinking Modes, Ipcha Mistabra, Shakla V'Tarya, Av Beit Din, A2A2H Protocol, Context Engineering, Context Window, Nasi, Culture of Disagreement, Debate Mode, Polarization Score, Wheel of Sages. Dotted underline + navy tooltip on hover.
+- **Contextual glossary hyperlinks**: New "Glossary: [Section]" links added to slides 4 (Cognitive Twist), 8 (Architecture/Roles), 10 (Two Configurations), 14 (70/30 Risk), plus existing slides 11-12 updated. Links jump to specific glossary section within Appendix A via new goToGlossary() function. Both EN and HE versions.
+- **Daniel Muller bio updated** (EN + HE): "PhD in Planning and Decision-Making in AI. Technology executive... CTO of the Museum of Tolerance Jerusalem (MOTJ) and MileZero; former CTO of ShopperAI and Be The Bank (BTB). Brings 18 years of R&D experience, including 12 years in AI."
+- **Narration script updated**: slide-03.mp3 text in generate_narration.py updated to match Daniel's new bio. MP3 needs regeneration.
+- **Quick nav updated**: Appendix A button now reads "Terms & Terminology"
+- **Slide links updated**: "Deep Dive: Technical Architecture (Appendix A)" changed to "Technical Terms & Terminology (Appendix A)" on slides 11-12 (EN + HE)
+- **Roadmap slide synced with v3.1**: Working Demo card updated from "text-based demo" to "Custom React UI, 5 Sages + Nasi + Av Beit Din, voice for 2-3 Sages, AI talking-portrait prototype, 3 dilemmas, both modes." POC card adds "both modes tested, Micha Goodman validation." Donor card adds "K1-K4 content authoring begins." All EN + HE.
+- **CTA buttons wired up**: "Approve Phase 1 POC" now navigates to Appendix Q (POC Definition). "View Tech Architecture" navigates to Appendix A (Glossary). Both gate through NDA popup.
+- **Narration regenerated**: slide-03.mp3 (Daniel bio) and slide-20.mp3 (roadmap) regenerated via ElevenLabs to match updated content.
+- **Yazdani Studio verified**: Claim consistent with v3.1 architecture doc Layer 0A. "100K visitors" not found in current deck.
 
 ### Session 20 (2026-03-13) - HE Scatter Fix, Dashboard Tour, Sage Hover Fix, Layout Reflow, Seismograph
 - **Schedule relocated under video**: Moved Daily Session Schedule from cut-off footer into center column under video. Reformatted as 3-col grid (3x3). Both EN and HE
@@ -247,6 +261,7 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | 14 | 2026-03-13 | Team moved to slide 3, split into 3 slides (8 members), Spinoza added as 12th sage, sage carousel with navigation, CSS fixes |
 | 15-19 | 2026-03-13 | Tech slides, appendices P/Q, narration, onboarding tour, sage voices, dashboard, typography scale |
 | 20 | 2026-03-13 | HE scatter fix, dashboard tour (9 steps), sage hover fix, puzzle verification |
+| 21 | 2026-03-25 | Appendix A glossary (50+ terms, bilingual), tooltip system, NDA gate, Daniel bio update, glossary hyperlinks from slides, roadmap synced with v3.1, CTA wired, narrations regenerated |
 
 ## Key Decisions
 | Decision | Why |
@@ -275,6 +290,10 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | 3 separate team slides | 8 members across Core/Academic/Advisory sections too dense for 1 slide |
 | Spinoza as 12th sage | Surprising pick, fits philosophy/ethics theme. Roger voice (non-popular) |
 | Sage carousel (4-col paginated) | Replaced single horizontal row; cleaner for 12 cards with room to grow |
+| Appendix A = Glossary (not tech overview) | Full terminology reference is more useful than 4-bullet tech summary. Old content absorbed into glossary. |
+| NDA gate on all appendices | Appendices contain proprietary MOTJ data. SessionStorage so it only asks once per browser session. |
+| Tooltip system (CSS-only) | No JS library needed. Pure CSS ::after pseudo-elements with data-tip attributes. Dotted underline signals interactivity. |
+| Glossary hyperlinks from slides | Presenter can jump to specific glossary section during Q&A and back-button returns to the slide they came from. |
 
 ## File Quick Reference
 - `index.html` - the deck (22 main + 7 appendix, bilingual EN/HE, dark/light mode)

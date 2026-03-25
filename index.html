@@ -847,6 +847,39 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 [dir="rtl"] .sow-body li::before { left: auto; right: 0; }
 [dir="rtl"] .sow-body th { text-align: right; }
 [dir="rtl"] .sow-body td { text-align: right; }
+
+/* Glossary table (Appendix A) */
+.gloss-table { width: 100%; border-collapse: collapse; margin: 16px 0 32px; font-size: 15px; }
+.gloss-table thead th { font-family: var(--font-m); font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--navy); border-bottom: 2px solid var(--navy); padding: 10px 12px; text-align: left; }
+.gloss-table td { padding: 12px 12px; border-bottom: 1px solid rgba(0,48,87,0.08); vertical-align: top; line-height: 1.6; color: var(--text-sub); }
+.gloss-table td:first-child { font-family: var(--font-d); font-weight: 600; color: var(--text); white-space: nowrap; min-width: 180px; }
+.gloss-table td:nth-child(2) { font-family: var(--font-m); font-size: 12px; letter-spacing: 0.5px; color: var(--text-dim); white-space: nowrap; min-width: 100px; }
+.gloss-table td:nth-child(3) { font-family: var(--font-d); font-size: 15px; }
+.gloss-table tbody tr:hover { background: rgba(0,48,87,0.03); }
+[data-theme="dark"] .gloss-table thead th { color: var(--blue); border-bottom-color: var(--blue); }
+[data-theme="dark"] .gloss-table td { border-bottom-color: rgba(189,214,230,0.08); }
+[data-theme="dark"] .gloss-table tbody tr:hover { background: rgba(189,214,230,0.04); }
+[dir="rtl"] .gloss-table thead th { text-align: right; }
+[dir="rtl"] .gloss-table td { text-align: right; }
+
+/* NDA Acknowledgment Overlay */
+.nda-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,20,40,0.92); backdrop-filter: blur(8px); justify-content: center; align-items: center; }
+.nda-overlay.active { display: flex; }
+.nda-box { background: var(--bg); border: 1px solid var(--navy); border-radius: 8px; max-width: 520px; padding: 40px; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+.nda-box h3 { font: 700 22px/1.3 var(--font-d); color: var(--navy); margin-bottom: 16px; }
+.nda-box p { font: 400 15px/1.7 var(--font-d); color: var(--text-sub); margin-bottom: 20px; }
+.nda-box .nda-logo { height: 40px; margin-bottom: 20px; }
+.nda-btn { display: inline-block; font-family: var(--font-m); font-size: 14px; letter-spacing: 1px; text-transform: uppercase; background: var(--navy); color: #fff; border: none; border-radius: 4px; padding: 14px 32px; cursor: pointer; transition: background 0.2s; }
+.nda-btn:hover { background: #00467a; }
+[data-theme="dark"] .nda-box { background: #141B2D; border-color: rgba(189,214,230,0.2); }
+[data-theme="dark"] .nda-btn { background: var(--blue); color: #0A0F1A; }
+
+/* Hover Tooltip System */
+.term-tip { position: relative; border-bottom: 1px dotted var(--navy); cursor: help; }
+.term-tip::after { content: attr(data-tip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(-6px); background: #003057; color: #f0f4f7; font: 400 13px/1.5 var(--font-d); padding: 8px 14px; border-radius: 4px; white-space: normal; width: max-content; max-width: 320px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100; }
+.term-tip:hover::after { opacity: 1; }
+[data-theme="dark"] .term-tip { border-bottom-color: var(--blue); }
+[data-theme="dark"] .term-tip::after { background: #1a2744; border: 1px solid rgba(189,214,230,0.15); }
 [dir="rtl"] .sow-toc-row { direction: rtl; }
 [dir="rtl"] .sow-sticky-meta { text-align: right; }
 [dir="rtl"] .sow-footer { text-align: center; }
@@ -1005,7 +1038,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <div class="team-card-body">
             <div class="team-card-name">Daniel Muller, PhD</div>
             <div class="team-card-role">Project Manager &amp; AI / Tech Lead, CTO</div>
-            <div class="team-card-bio"><strong>PhD in AI</strong> and Decision Making and Planning in AI with extensive experience in engineering, data science, and R&amp;D leadership across the defense, finance, and retail industries. CTO of <em>MileZero</em> and <em>ShopperAI</em>, and former CTO at Be The Bank (BTB), with <strong>18 years in R&amp;D</strong>, including 12 years in AI.</div>
+            <div class="team-card-bio"><strong>PhD in Planning and Decision-Making in AI.</strong> Technology executive with deep expertise in engineering, data science, and R&amp;D leadership across defense, finance, and retail. CTO of the <em>Museum of Tolerance Jerusalem (MOTJ)</em> and <em>MileZero</em>; former CTO of <em>ShopperAI</em> and <em>Be The Bank (BTB)</em>. Brings <strong>18 years of R&amp;D experience</strong>, including 12 years in AI.</div>
           </div>
         </div>
         <div class="team-card">
@@ -1045,7 +1078,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <div class="team-card-body">
             <div class="team-card-name">ד"ר דניאל מולר</div>
             <div class="team-card-role">מנהל פרויקט ומוביל AI / טכנולוגיה, CTO</div>
-            <div class="team-card-bio"><strong>דוקטורט ב-AI</strong> וקבלת החלטות ותכנון ב-AI עם ניסיון נרחב בהנדסה, מדעי נתונים והובלת R&amp;D בתעשיות הביטחון, הפיננסים והקמעונאות. CTO ב-<em>MileZero</em> ו-<em>ShopperAI</em>, ולשעבר CTO ב-Be The Bank, עם <strong>18 שנות R&amp;D</strong>, כולל 12 שנים ב-AI.</div>
+            <div class="team-card-bio"><strong>דוקטורט בתכנון וקבלת החלטות ב-AI.</strong> מנהל טכנולוגיה עם מומחיות עמוקה בהנדסה, מדעי נתונים והובלת R&amp;D בתחומי הביטחון, הפיננסים והקמעונאות. CTO של <em>מוזיאון הסובלנות ירושלים (MOTJ)</em> ו-<em>MileZero</em>; לשעבר CTO ב-<em>ShopperAI</em> ו-<em>Be The Bank (BTB)</em>. מביא <strong>18 שנות ניסיון R&amp;D</strong>, כולל 12 שנים ב-AI.</div>
           </div>
         </div>
         <div class="team-card">
@@ -1202,8 +1235,12 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <ul class="bullets reveal r3" style="margin-top: 24px; display: flex; flex-direction: column; gap: 16px;">
           <li>Participants <strong>uncover hidden puzzle pieces</strong> (arguments, facts, agreements) to see the full picture.</li>
           <li>Adding depth earns pieces. <em>Demagoguery</em> and personal attacks <strong>blur or erase pieces.</strong></li>
-          <li>The ultimate goal is <strong><em>shared truth-seeking:</em></strong> <em>L'Shem Shamayim</em> (for the sake of heaven).</li>
+          <li>The ultimate goal is <strong><em>shared truth-seeking:</em></strong> <span class="term-tip" data-tip="Arguing for the sake of truth, not to win. The Talmudic principle behind the entire experience."><em>L'Shem Shamayim</em></span> (for the sake of heaven).</li>
         </ul>
+        <a href="#gloss-discourse" onclick="goToGlossary('gloss-discourse');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          Glossary: Discourse Methodology
+        </a>
       </div>
     </div>
   </div>
@@ -1220,8 +1257,12 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <ul class="bullets reveal r3" style="margin-top: 24px; display: flex; flex-direction: column; gap: 16px;">
           <li>משתתפים <strong>חושפים חלקי פאזל נסתרים</strong> (טיעונים, עובדות, הסכמות) כדי לראות את התמונה המלאה.</li>
           <li>הוספת עומק מרוויחה חלקים. <em>דמגוגיה</em> והתקפות אישיות <strong>מטשטשות או מוחקות חלקים.</strong></li>
-          <li>המטרה הסופית היא <strong><em>חיפוש אמת משותף:</em></strong> <em>לשם שמיים</em>.</li>
+          <li>המטרה הסופית היא <strong><em>חיפוש אמת משותף:</em></strong> <span class="term-tip" data-tip="טיעון לשם חיפוש אמת, לא כדי לנצח. העיקרון התלמודי שמנחה את כל החוויה."><em>לשם שמיים</em></span>.</li>
         </ul>
+        <a href="#gloss-discourse-he" onclick="goToGlossary('gloss-discourse-he');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          מילון: מתודולוגיית שיח
+        </a>
       </div>
     </div>
   </div>
@@ -1236,7 +1277,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <p class="label reveal">What This Is</p>
       <h2 class="reveal r1" style="font-size: 72px; max-width: 900px;">Discourse Training</h2>
       <p class="tagline reveal r2" style="margin-top: 8px;">Train how to disagree better.</p>
-      <p class="body-text reveal r3" style="text-align: center; margin-top: 24px; max-width: 800px;">An AI-mediated civic discourse arena where visitors deliberate with <strong><span style="font-family: var(--font-m);" data-count="80">0</span> historical thinkers</strong> in real time.</p>
+      <p class="body-text reveal r3" style="text-align: center; margin-top: 24px; max-width: 800px;">An AI-mediated civic discourse arena where visitors deliberate with <strong><span style="font-family: var(--font-m);" data-count="80">0</span> historical <span class="term-tip" data-tip="AI-powered historical Jewish figures whose personality, knowledge, and thinking style are loaded at runtime. Each one is a database row, not a separate system.">thinkers</span></strong> in real time.</p>
       <!-- Flow diagram: INPUT -> ENGINE -> OUTPUT -->
       <div style="display: flex; align-items: center; gap: 0; margin-top: 40px;" class="reveal r4">
         <div style="background: rgba(0,48,87,0.06); border: 1.5px solid rgba(0,48,87,0.15); color: var(--text); padding: 24px 32px; border-radius: 12px; min-width: 180px; text-align: center;">
@@ -1485,7 +1526,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div class="card">
           <span style="font-family: var(--font-m); font-size: 36px; font-weight: 700; color: var(--blue);">03</span>
           <div style="font-size: 22px; font-weight: 700; color: var(--text); margin-top: 8px;">Sages Assigned</div>
-          <div style="font-size: 20px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">The <strong>"Wheel of Sages"</strong> dynamically <strong>assigns <span style="font-family: var(--font-m);">AI</span> figures</strong> to join the human teams.</div>
+          <div style="font-size: 20px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">The <span class="term-tip" data-tip="A visual spinner on the main screen that reveals which historical figure will join the debate next - like a game show reveal with ceremonial quality."><strong>"Wheel of Sages"</strong></span> dynamically <strong>assigns <span style="font-family: var(--font-m);">AI</span> figures</strong> to join the human teams.</div>
         </div>
         <div class="card">
           <span style="font-family: var(--font-m); font-size: 36px; font-weight: 700; color: var(--blue);">04</span>
@@ -1554,7 +1595,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <canvas class="role-network" id="roleNetwork"></canvas>
       <p class="label reveal">System Design</p>
       <h2 class="reveal r1">Role-Based Architecture</h2>
-      <p class="body-text reveal r2" style="text-align: center; max-width: 800px;"><strong><em>Not a chatbot array.</em></strong> A modular architecture where <strong>personas</strong> are stable identities and <strong>roles</strong> are dynamic thinking modes, layered over <span style="font-family: var(--font-m);">13</span> <strong>Thinking Modes.</strong></p>
+      <p class="body-text reveal r2" style="text-align: center; max-width: 800px;"><strong><em>Not a chatbot array.</em></strong> A modular architecture where <strong>personas</strong> are stable identities and <strong>roles</strong> are dynamic thinking modes, layered over <span style="font-family: var(--font-m);">13</span> <span class="term-tip" data-tip="13 different reasoning styles (e.g., challenge assumptions, tell stories, demand evidence) that shape how each Sage argues."><strong>Thinking Modes.</strong></span></p>
 
       <!-- Visual: 3 Personas → Their possible roles -->
       <div class="reveal r3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 28px; max-width: 1100px; width: 100%;">
@@ -1568,11 +1609,11 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <div class="card" style="padding: 12px 16px; border-left: 3px solid var(--navy);">
-              <div style="font-size: 15px; font-weight: 600; color: var(--text);">Ipcha Mistabra <span style="font-size: 12px; color: var(--taupe);">(איפכא מסתברא)</span></div>
+              <div style="font-size: 15px; font-weight: 600; color: var(--text);"><span class="term-tip" data-tip="A move where the Sage argues the OPPOSITE of their position to test how strong both sides really are.">Ipcha Mistabra</span> <span style="font-size: 12px; color: var(--taupe);">(איפכא מסתברא)</span></div>
               <div style="font-size: 13px; color: var(--text-sub);">First-principles radical challenge</div>
             </div>
             <div class="card" style="padding: 12px 16px; border-left: 3px solid var(--taupe);">
-              <div style="font-size: 15px; font-weight: 600; color: var(--text);">Shakla V'Tarya <span style="font-size: 12px; color: var(--taupe);">(שקלא וטריא)</span></div>
+              <div style="font-size: 15px; font-weight: 600; color: var(--text);"><span class="term-tip" data-tip="Finding common ground by acknowledging what the other side got right. Prevents echo chambers.">Shakla V'Tarya</span> <span style="font-size: 12px; color: var(--taupe);">(שקלא וטריא)</span></div>
               <div style="font-size: 13px; color: var(--text-sub);">Geometric reasoning, axioms</div>
             </div>
             <div class="card" style="padding: 12px 16px; border-left: 3px solid var(--blue);">
@@ -1614,7 +1655,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <div class="card" style="padding: 12px 16px; border-left: 3px solid var(--navy);">
-              <div style="font-size: 15px; font-weight: 600; color: var(--text);">Av Beit Din <span style="font-size: 12px; color: var(--taupe);">(אב בית הדין)</span></div>
+              <div style="font-size: 15px; font-weight: 600; color: var(--text);"><span class="term-tip" data-tip="The AI quality checker that reviews every Sage response before the audience sees it. Think: editorial review before publish.">Av Beit Din</span> <span style="font-size: 12px; color: var(--taupe);">(אב בית הדין)</span></div>
               <div style="font-size: 13px; color: var(--text-sub);">Quality control, systematic classification</div>
             </div>
             <div class="card" style="padding: 12px 16px; border-left: 3px solid var(--taupe);">
@@ -1630,6 +1671,10 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 
       </div>
       <p class="body-sm reveal r4" style="text-align: center; max-width: 900px; margin-top: 20px;">Same persona, different role. <strong>Spinoza</strong> as <em>Ipcha Mistabra</em> challenges from first principles. As <em>Praklit Satan</em> he questions authority. <strong>Three personas, nine configurations</strong> - the system has <span style="font-family: var(--font-m);">80</span> x <span style="font-family: var(--font-m);">13</span>.</p>
+      <a href="#gloss-discourse" onclick="goToGlossary('gloss-discourse');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        Glossary: Discourse Roles & Moves
+      </a>
     </div>
   </div>
   <div class="lang-he" dir="rtl">
@@ -1796,17 +1841,21 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <h2 class="reveal r1">One Platform.<br>Two Configurations.</h2>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 32px; width: 100%; max-width: 1000px;" class="reveal r2">
         <div class="card" style="padding: 36px; border-top: 4px solid var(--navy);">
-          <h3 style="font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Culture of Disagreement</h3>
-          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong>Pedagogical, process-focused,</strong> and <em>collaborative.</em> Includes real-time analytics like a <span style="font-family: var(--font-m);">Polarization Score</span> and a <em>"L'Shem Shamayim"</em> index.</p>
+          <h3 style="font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 12px;"><span class="term-tip" data-tip="The collaborative mode where nobody wins. The goal is deeper understanding through structured dialogue.">Culture of Disagreement</span></h3>
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong>Pedagogical, process-focused,</strong> and <em>collaborative.</em> Includes real-time analytics like a <span class="term-tip" data-tip="How far apart the two sides are. A dropping score means the conversation is building bridges."><span style="font-family: var(--font-m);">Polarization Score</span></span> and a <span class="term-tip" data-tip="A quality score measuring if people argued for truth, not just to win."><em>"L'Shem Shamayim"</em></span> index.</p>
           <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); letter-spacing: 1px; margin-top: 20px; text-transform: uppercase;">Ideal for school groups</div>
         </div>
         <div class="card" style="padding: 36px; border-top: 4px solid var(--taupe);">
-          <h3 style="font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Debate Mode</h3>
+          <h3 style="font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 12px;"><span class="term-tip" data-tip="The competitive mode where Sages argue fiercely, time pressure is on, and the audience votes for a winner.">Debate Mode</span></h3>
           <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong>Competitive, outcome-focused,</strong> and heavily <em>rhetorical.</em> Features <strong>structured rounds</strong> and <strong>audience voting.</strong></p>
           <div style="font-family: var(--font-m); font-size: 13px; color: var(--taupe); letter-spacing: 1px; margin-top: 20px; text-transform: uppercase;">Ideal for general visitors & corporate</div>
         </div>
       </div>
       <p class="body-sm reveal r3" style="text-align: center; max-width: 800px; margin-top: 28px;"><strong>Same infrastructure</strong> serves both the <em>pedagogical vision</em> and the museum's need for a <strong>high-energy attraction.</strong></p>
+      <a href="#gloss-modes" onclick="goToGlossary('gloss-modes');return false;" class="reveal r3" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        Glossary: Operational Modes & Analytics
+      </a>
     </div>
   </div>
   <div class="lang-he" dir="rtl">
@@ -1826,6 +1875,10 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         </div>
       </div>
       <p class="body-sm reveal r3" style="text-align: center; max-width: 800px; margin-top: 28px;"><strong>אותה תשתית</strong> משרתת גם את ה<em>חזון הפדגוגי</em> וגם את הצורך של המוזיאון ב<strong>אטרקציה בעלת אנרגיה גבוהה.</strong></p>
+      <a href="#gloss-modes-he" onclick="goToGlossary('gloss-modes-he');return false;" class="reveal r3" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        מילון: מצבי פעולה וניתוח
+      </a>
     </div>
   </div>
 </section>
@@ -1883,8 +1936,8 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <p class="body-text reveal r2" style="max-width: 800px; margin-bottom: 24px;">How the Sanhedrin system maintains <strong>coherent multi-agent debate</strong> across sessions, personas, and visitor interactions.</p>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; width: 100%;" class="reveal r3">
         <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
-          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Context Engineering</div>
-          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">Each AI sage receives a <strong>dynamically assembled context window</strong> containing biographical knowledge, thinking mode constraints, debate history, and visitor profiling data.</div>
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;"><span class="term-tip" data-tip="Controlling exactly what information each AI sees at any moment - which knowledge, history, and context is fed in, in what order, and at what cost.">Context Engineering</span></div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">Each AI sage receives a <strong>dynamically assembled <span class="term-tip" data-tip="The limited amount of text an AI can process in one go. Context Engineering fills this space intelligently each turn.">context window</span></strong> containing biographical knowledge, thinking mode constraints, debate history, and visitor profiling data.</div>
         </div>
         <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
           <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Memory Engineering</div>
@@ -1892,16 +1945,16 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         </div>
         <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
           <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">Orchestration Logic</div>
-          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">The <em>Nasi</em> and <em>Av Beit Din</em> are <strong>meta-agents</strong> that route prompts, trigger interventions, and select which sage responds next based on debate dynamics.</div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">The <span class="term-tip" data-tip="The AI conductor that picks which Sage speaks, manages turn order, and intervenes to keep the conversation productive."><em>Nasi</em></span> and <span class="term-tip" data-tip="The AI quality checker that reviews every response before the audience sees it."><em>Av Beit Din</em></span> are <strong>meta-agents</strong> that route prompts, trigger interventions, and select which sage responds next based on debate dynamics.</div>
         </div>
         <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
-          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;">A2A2H Protocol</div>
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;"><span class="term-tip" data-tip="Agent-to-Agent-to-Human: AI agents check each other's work before anything reaches the audience. Like an editorial board reviewing before publishing.">A2A2H Protocol</span></div>
           <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">Agent-to-Agent-to-Human: background threads where agents <strong>validate claims</strong> and <strong>verify tone</strong> before output reaches the human layer.</div>
         </div>
       </div>
       <a href="#appendix-tech" onclick="goToAppendix('appendix-tech');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: underline; cursor: pointer;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-        Deep Dive: Technical Architecture (Appendix A)
+        Technical Terms & Terminology (Appendix A)
       </a>
     </div>
   </div>
@@ -1930,7 +1983,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       </div>
       <a href="#appendix-tech" onclick="goToAppendix('appendix-tech');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: underline; cursor: pointer;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-        צלילה עמוקה: ארכיטקטורה טכנית (נספח א')
+        מונחים טכניים וטרמינולוגיה (נספח א')
       </a>
     </div>
   </div>
@@ -2060,12 +2113,16 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Solved:</strong> Agent quality, protocols, <span style="font-family: var(--font-m);">80</span> <strong>characters,</strong> and <strong>core framework</strong> established.</p>
         </div>
         <div class="card" style="padding: 20px 28px;">
-          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Ahead:</strong> <span style="font-family: var(--font-m);">A2A2H</span> <strong>orchestration.</strong> Getting agents to debate <strong>each other</strong> while <em>synthesizing</em> outputs for humans.</p>
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Ahead:</strong> <span class="term-tip" data-tip="Agent-to-Agent-to-Human: AI agents coordinate and validate with each other before anything reaches the audience."><span style="font-family: var(--font-m);">A2A2H</span></span> <strong>orchestration.</strong> Getting agents to debate <strong>each other</strong> while <em>synthesizing</em> outputs for humans.</p>
         </div>
         <div class="card" style="padding: 20px 28px;">
           <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Mitigation:</strong> Proving this via <strong><span style="font-family: var(--font-m);">Phase 1</span> <span style="font-family: var(--font-m);">POC</span></strong> using a <strong>WhatsApp group</strong> to test <strong>live dynamics</strong> before building the UI.</p>
         </div>
       </div>
+      <a href="#gloss-architecture" onclick="goToGlossary('gloss-architecture');return false;" class="reveal r3" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        Glossary: Technical Architecture
+      </a>
     </div>
   </div>
   <div class="lang-he" dir="rtl">
@@ -2219,7 +2276,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Apr - May 2026</div>
           <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">Donor Presentations</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">Tailored presentations for <strong>potential donors</strong> with <strong>per-donor customization.</strong></div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">Tailored presentations for <strong>potential donors</strong> with <strong>per-donor customization.</strong> <span class="term-tip" data-tip="The 4 knowledge layers (K1-K4) that define how each Sage thinks and argues - the critical content authoring work.">K1-K4</span> content authoring begins.</div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Apr 2026</div>
@@ -2233,12 +2290,12 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Jun - Aug 2026</div>
           <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">POC</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>WhatsApp group</strong> with <span style="font-family: var(--font-m);">3</span> agents + <span style="font-family: var(--font-m);">2</span> humans to test <strong>live dynamics</strong> and <span style="font-family: var(--font-m);">A2A</span> mechanics. <a href="#appendix-poc" onclick="goToAppendix('appendix-poc');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">View POC Definition</a></div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>WhatsApp group</strong> with <span style="font-family: var(--font-m);">3</span> agents + <span style="font-family: var(--font-m);">2</span> humans. Both modes tested. <strong>Micha Goodman validation.</strong> <a href="#appendix-poc" onclick="goToAppendix('appendix-poc');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">View POC Definition</a></div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Sep - Nov 2026</div>
           <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">Working Demo</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>Text-based demo</strong> with <span style="font-family: var(--font-m);">5</span> historical characters and the <strong>orchestrator logic.</strong></div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">Custom React UI. <span style="font-family: var(--font-m);">5</span> Sages + <span class="term-tip" data-tip="The AI conductor that manages speaking order and interventions.">Nasi</span> + <span class="term-tip" data-tip="The AI quality checker that validates every response.">Av Beit Din</span>. Voice for <span style="font-family: var(--font-m);">2-3</span> Sages. AI talking-portrait prototype. <span style="font-family: var(--font-m);">3</span> dilemmas, both modes.</div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Dec 2026 - May 2027</div>
@@ -2263,7 +2320,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">אפר' - מאי 2026</div>
           <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">מצגות לתורמים</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">מצגות מותאמות ל<strong>תורמים פוטנציאליים</strong> עם <strong>התאמה אישית לכל תורם.</strong></div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">מצגות מותאמות ל<strong>תורמים פוטנציאליים</strong> עם <strong>התאמה אישית לכל תורם.</strong> כתיבת תוכן K1-K4 מתחילה.</div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">אפריל 2026</div>
@@ -2277,12 +2334,12 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">יוני - אוג' 2026</div>
           <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">POC</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>קבוצת WhatsApp</strong> עם <span style="font-family: var(--font-m);">3</span> סוכנים + <span style="font-family: var(--font-m);">2</span> בני אדם לבדיקת <strong>דינמיקות חיות</strong> ומכניקת <span style="font-family: var(--font-m);">A2A</span>. <a href="#appendix-poc" onclick="goToAppendix('appendix-poc');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">צפה בהגדרת ה-POC</a></div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>קבוצת WhatsApp</strong> עם <span style="font-family: var(--font-m);">3</span> סוכנים + <span style="font-family: var(--font-m);">2</span> בני אדם. שני המצבים נבדקים. <strong>אימות מיכה גודמן.</strong> <a href="#appendix-poc" onclick="goToAppendix('appendix-poc');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">צפה בהגדרת ה-POC</a></div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">ספט' - נוב' 2026</div>
           <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">דמו עובד</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>דמו טקסטואלי</strong> עם <span style="font-family: var(--font-m);">5</span> דמויות היסטוריות ו<strong>לוגיקת התזמורת.</strong></div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">ממשק React מותאם. <span style="font-family: var(--font-m);">5</span> חכמים + נשיא + אב בית דין. קול ל-<span style="font-family: var(--font-m);">2-3</span> חכמים. אב-טיפוס פורטרט מדבר AI. <span style="font-family: var(--font-m);">3</span> דילמות, שני המצבים.</div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">דצמ' 2026 - מאי 2027</div>
@@ -2364,9 +2421,9 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div class="pull-quote reveal r1" style="color: #fff; max-width: 800px; font-size: 34px; border-left: none; padding: 0;">"The Sanhedrin didn't give answers. They gave people the <strong>tools to think.</strong> We're bringing that to the <span style="font-family: var(--font-m);">21st</span> century."</div>
         <p class="reveal r2" style="font-size: 22px; color: rgba(255,255,255,0.8); margin-top: 24px; max-width: 700px;"><strong>Green Light</strong> to move past <span style="font-family: var(--font-m);">70%</span>, <strong>fund <span style="font-family: var(--font-m);">Phase 1</span>,</strong> and schedule the <strong>technical review.</strong></p>
         <div style="display: flex; gap: 16px; margin-top: 32px;" class="reveal r3">
-          <button class="cta-btn">Approve Phase 1 POC</button>
-          <a class="cta-btn-outline" href="#" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <button class="cta-btn" onclick="goToAppendix('appendix-poc')">Approve Phase 1 POC</button>
+          <a class="cta-btn-outline" href="#appendix-tech" onclick="goToAppendix('appendix-tech');return false;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
             View Tech Architecture
           </a>
         </div>
@@ -2381,9 +2438,9 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div class="pull-quote reveal r1" style="color: #fff; max-width: 800px; font-size: 34px; border-left: none; padding: 0;">"הסנהדרין לא נתנה תשובות. היא נתנה לאנשים <strong>כלים לחשוב.</strong> אנחנו מביאים את זה למאה ה-<span style="font-family: var(--font-m);">21</span>."</div>
         <p class="reveal r2" style="font-size: 22px; color: rgba(255,255,255,0.8); margin-top: 24px; max-width: 700px;"><strong>אור ירוק</strong> לעבור את רף ה-<span style="font-family: var(--font-m);">70%</span>, <strong>לממן שלב <span style="font-family: var(--font-m);">1</span>,</strong> ולתזמן את ה<strong>סקירה הטכנית.</strong></p>
         <div style="display: flex; gap: 16px; margin-top: 32px;" class="reveal r3">
-          <button class="cta-btn">אישור POC שלב 1</button>
-          <a class="cta-btn-outline" href="#" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <button class="cta-btn" onclick="goToAppendix('appendix-poc')">אישור POC שלב 1</button>
+          <a class="cta-btn-outline" href="#appendix-tech" onclick="goToAppendix('appendix-tech');return false;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
             צפייה בארכיטקטורה הטכנית
           </a>
         </div>
@@ -2393,34 +2450,264 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
-     APPENDIX A: Technical Architecture
+     APPENDIX A: Technical Terms and Terminology (Glossary)
      ============================================================ -->
-<section class="slide" data-act="APPENDIX" data-appendix="true" id="appendix-tech">
+<section class="slide slide--appendix" data-act="APPENDIX" data-appendix="true" id="appendix-tech">
   <div class="lang-en">
-    <div class="layout-statement" style="align-items: flex-start; text-align: left; max-width: 950px; margin: 0 auto;">
-      <p class="appendix-label reveal">Appendix A</p>
-      <h2 class="reveal r1" style="font-size: 48px;">Technical Architecture Overview</h2>
-      <div class="appendix-content reveal r2">
-        <ul class="appendix-list">
-          <li><strong>API Gateway & Infrastructure:</strong> <span style="font-family: var(--font-m);">Kong</span> API Gateway handles <strong>routing</strong> and <strong>rate limiting.</strong> <span style="font-family: var(--font-m);">PostgreSQL</span> for session data, <span style="font-family: var(--font-m);">Vector DB</span> for semantic character embeddings.</li>
-          <li><strong>Orchestrator Logic (<em>Nasi</em>/<em>Av Beit Din</em>):</strong> Meta-level <span style="font-family: var(--font-m);">LLM</span> instances that do not generate dialogue, but instead <strong>route prompts, trigger interventions,</strong> and <strong>select characters</strong> based on visitor profiling.</li>
-          <li><strong><span style="font-family: var(--font-m);">LLM</span> Fine-Tuning:</strong> <span style="font-family: var(--font-m);">68</span> Character Agents utilizing base models <strong>fine-tuned</strong> on biographical data, specific <em>wisdom domains,</em> and restricted to specific <strong>Thinking Modes.</strong></li>
-          <li><strong><span style="font-family: var(--font-m);">A2A2H</span> Protocol:</strong> Background <span style="font-family: var(--font-m);">AGP</span> threads where agents <strong>validate claims</strong> (Research Agent) and <strong>verify tone</strong> (Cultural Sensitivity Agent) before outputting to the human layer.</li>
-        </ul>
+    <div class="layout-statement" style="padding: 0; align-items: stretch;">
+      <div class="sow-doc">
+        <div class="sow-sticky">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px">
+            <img src="assets/logos/motj-logo-horizontal.png" alt="MOTJ" style="height:32px;width:auto">
+            <div class="label" style="color:var(--navy);margin-bottom:0">APPENDIX A</div>
+          </div>
+          <h2>Technical Terms and Terminology</h2>
+          <div class="sow-sticky-meta">Shared reference for technical and non-technical stakeholders, developers, content authors, and museum partners.</div>
+          <div class="sow-toc-row">
+            <a href="#gloss-system" onclick="sowJump(event,'gloss-system')">1. System</a>
+            <a href="#gloss-modes" onclick="sowJump(event,'gloss-modes')">2. Modes & Analytics</a>
+            <a href="#gloss-knowledge" onclick="sowJump(event,'gloss-knowledge')">3. Knowledge</a>
+            <a href="#gloss-discourse" onclick="sowJump(event,'gloss-discourse')">4. Discourse</a>
+            <a href="#gloss-architecture" onclick="sowJump(event,'gloss-architecture')">5. Architecture</a>
+            <a href="#gloss-infra" onclick="sowJump(event,'gloss-infra')">6. Infrastructure</a>
+            <a href="#gloss-content" onclick="sowJump(event,'gloss-content')">7. Content & People</a>
+          </div>
+        </div>
+        <div class="sow-body">
+
+          <h3 id="gloss-system">1. System and Experience</h3>
+          <table class="gloss-table">
+            <thead><tr><th>Term</th><th>Category</th><th>Definition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>The Sanhedrin Experience</strong></td><td>Project</td><td>The full interactive installation at MOTJ where visitors engage in structured moral discourse with AI-powered historical Jewish figures, facilitated by a human Host.</td></tr>
+              <tr><td><strong>Sage</strong></td><td>Character</td><td>One of 80 AI-powered historical Jewish figures (e.g., Maimonides, Spinoza, Golda Meir) whose persona, thinking style, and knowledge are injected via prompt at runtime, not a separate system.</td></tr>
+              <tr><td><strong>Nasi</strong></td><td>Agent Role</td><td>The AI conductor agent that selects Sages, manages speaking order, calls discourse moves, and intervenes to maintain quality. Never speaks directly to visitors.</td></tr>
+              <tr><td><strong>Av Beit Din</strong></td><td>Agent Role</td><td>The AI quality-control agent that validates every Sage response against the Sanhedrin Rules of Engagement before it is delivered to participants.</td></tr>
+              <tr><td><strong>Host / Facilitator</strong></td><td>Human Role</td><td>The human staff member who runs the session, holds ultimate override authority over all AI decisions, and uses the Host Tablet as their real-time control panel.</td></tr>
+              <tr><td><strong>MOTJ Pathfinder</strong></td><td>Hardware</td><td>The dedicated mobile device distributed to each visitor by the Museum of Tolerance Jerusalem, used to vote, react, and submit evaluations during the session, distinct from a personal phone.</td></tr>
+              <tr><td><strong>Host Tablet</strong></td><td>Hardware</td><td>The facilitator's dedicated control panel displaying live session analytics, alert feeds, and one-tap intervention tools to manage the discourse in real time.</td></tr>
+              <tr><td><strong>Sage Screens</strong></td><td>Hardware</td><td>The two large portrait displays flanking the Host Screen that show the active Sage on each side, animated in real time via AI talking-portrait technology.</td></tr>
+              <tr><td><strong>Wheel of Sages</strong></td><td>Experience Mechanic</td><td>The visual selection mechanic on the Host Screen where eligible Sages for each side are pre-filtered and revealed through a controlled spin, giving the experience a ceremonial quality.</td></tr>
+              <tr><td><strong>Puzzle Reveal</strong></td><td>Experience Mechanic</td><td>A visual element on the Host Screen that fills piece by piece as strong arguments are made, giving the audience a tangible sense of collective discovery.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-modes">2. Operational Modes and Analytics</h3>
+          <table class="gloss-table">
+            <thead><tr><th>Term</th><th>Category</th><th>Definition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Culture of Disagreement</strong></td><td>Operational Mode</td><td>The collaborative session mode where the goal is expanding understanding. No winner is declared, Sages build on each other's arguments, and the L'Shem Shamayim Index measures discourse quality.</td></tr>
+              <tr><td><strong>Debate Mode</strong></td><td>Operational Mode</td><td>The competitive session mode where the goal is persuasion. Sages advocate fiercely, time pressure is applied, and the audience votes to declare a winner at the end.</td></tr>
+              <tr><td><strong>L'Shem Shamayim Index</strong></td><td>Analytics</td><td>A composite quality score (Culture mode only) measuring whether participants argued for the sake of truth, based on acknowledgment of the other side, reasoning quality, position shift, and rules compliance.</td></tr>
+              <tr><td><strong>Polarization Score</strong></td><td>Analytics</td><td>A metric tracking group divergence between the two sides over time. A decreasing score in Culture mode indicates the discourse is successfully bridging positions.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-knowledge">3. Knowledge Architecture</h3>
+          <table class="gloss-table">
+            <thead><tr><th>Term</th><th>Category</th><th>Definition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>K1: Discourse Methodology</strong></td><td>Knowledge Layer</td><td>The shared foundation injected into every agent: the Talmudic discourse framework, move vocabulary, and Sanhedrin Rules of Engagement. Constant across all agents and all modes.</td></tr>
+              <tr><td><strong>K2: Mode-Specific Expertise</strong></td><td>Knowledge Layer</td><td>The behavioral profile injected per mode, defining what counts as a "good" contribution in Culture of Disagreement vs. Debate Mode. 2 profiles total.</td></tr>
+              <tr><td><strong>K3: Thinking Mode x Mode</strong></td><td>Knowledge Layer</td><td>The 26 behavioral profiles (13 Thinking Modes x 2 operational modes) that define how each cognitive style behaves differently in Culture vs. Debate. The critical-path content work.</td></tr>
+              <tr><td><strong>K4: Biographical Persona</strong></td><td>Knowledge Layer</td><td>The individual Sage profile: archetype title, historical values, signature rhetoric, and referenced works. Same across both modes, injected at runtime from the PostgreSQL sages table.</td></tr>
+              <tr><td><strong>The 13 Thinking Modes</strong></td><td>Cognitive Framework</td><td>A taxonomy of 13 cognitive styles drawn from Talmudic methodology (e.g., Disruption, Skeptical-Critical, Narrative-Visual) used to define how each Sage thinks and argues.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-discourse">4. Discourse Methodology</h3>
+          <table class="gloss-table">
+            <thead><tr><th>Term</th><th>Category</th><th>Definition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Discourse Move</strong></td><td>Methodology</td><td>A named, structured argument type (e.g., Kushiya, Terutz, Bridge) drawn from Talmudic methodology. The Nasi calls for a specific move type, and the Sage's response is constrained accordingly.</td></tr>
+              <tr><td><strong>Kushiya</strong></td><td>Discourse Move</td><td>A challenge move: after an opposing argument, the Sage identifies the specific logical weakness in what was just said.</td></tr>
+              <tr><td><strong>Terutz</strong></td><td>Discourse Move</td><td>A response move: after being challenged, the Sage defends their position with concrete counter-evidence or a grounding principle.</td></tr>
+              <tr><td><strong>Bridge (Shakla v'Tarya)</strong></td><td>Discourse Move</td><td>A mid-discourse move where the Sage finds and acknowledges what is valid in the opposing side's argument, preventing echo-chamber dynamics.</td></tr>
+              <tr><td><strong>Reframe (Ipcha Mistabra)</strong></td><td>Discourse Move</td><td>A destabilization move where the Sage argues the opposite of their assigned position to test the conviction of both sides.</td></tr>
+              <tr><td><strong>Machloket L'Shem Shamayim</strong></td><td>Methodology</td><td>Disagreement for the sake of heaven. The foundational Talmudic principle that all discourse in this system is oriented toward truth-seeking, not winning at the expense of understanding.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-architecture">5. Technical Architecture</h3>
+          <table class="gloss-table">
+            <thead><tr><th>Term</th><th>Category</th><th>Definition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>ModeProfile</strong></td><td>Architecture</td><td>A single configuration object that governs all behavioral differences between Culture of Disagreement and Debate Mode. One config swap changes the behavior of every agent simultaneously.</td></tr>
+              <tr><td><strong>Mode Router</strong></td><td>Architecture</td><td>The session-level component that reads the active ModeProfile and injects the correct behavioral constraints into every agent prompt at the start of a session.</td></tr>
+              <tr><td><strong>Prompt Assembly</strong></td><td>Architecture</td><td>The process of combining K1 + K2 + K3 + K4 + conversation context + move instruction into a complete Sage prompt for a single turn. This is context engineering, not model fine-tuning.</td></tr>
+              <tr><td><strong>Shared Spine</strong></td><td>Architecture</td><td>The core design principle that all 80 Sages run on a single orchestration pipeline, vector store, and session engine. Adding a new Sage requires only a database row and a prompt template, zero new infrastructure.</td></tr>
+              <tr><td><strong>Context Engineering</strong></td><td>Architecture</td><td>The discipline of managing what information each AI agent sees at any given moment: controlling which knowledge, history, and context is injected, in what order, and at what token cost.</td></tr>
+              <tr><td><strong>Context Window</strong></td><td>Technical</td><td>The finite amount of text an AI model can process in a single call. Context Engineering is the strategy for filling this window intelligently on every turn without exceeding limits.</td></tr>
+              <tr><td><strong>Context Registry</strong></td><td>Architecture</td><td>The Layer 6 store that tracks which prompt versions, K1-K4 cache keys, and token budgets were used for each agent on each turn. Feeds directly into the TurnTrace.</td></tr>
+              <tr><td><strong>Prompt Prefix Caching</strong></td><td>Technical</td><td>A cost-reduction strategy where the static K1-K4 knowledge layers are cached at the infrastructure level, reducing per-turn token cost by an estimated 70-75% of input tokens.</td></tr>
+              <tr><td><strong>Context Compression</strong></td><td>Technical</td><td>The process of summarizing older session turns rather than dropping them, preserving argumentative continuity without exceeding the context window limit of any agent.</td></tr>
+              <tr><td><strong>A2A2H Protocol</strong></td><td>Architecture</td><td>Agent-to-Agent-to-Human: the core innovation where AI agents (Nasi, Av Beit Din, Sentiment Agent, Research Agent) coordinate and validate responses with each other before any output reaches a human participant.</td></tr>
+              <tr><td><strong>LLM Abstraction Layer</strong></td><td>Architecture</td><td>A thin service that owns all model selection, retries, rate limiting, and provider routing. No application code calls Azure OpenAI directly, so swapping models requires only a config change.</td></tr>
+              <tr><td><strong>Primary Model Tier</strong></td><td>Technical</td><td>The high-capability model class used for Nasi, Sages, and Av Beit Din. Currently bound to GPT-4 class models, managed via the LLM Abstraction Layer for future model evolution.</td></tr>
+              <tr><td><strong>Lightweight Model Tier</strong></td><td>Technical</td><td>The fast, cost-efficient model class used for Layer 4 Infrastructure Agents (classification, sentiment, fact detection). Specific binding managed via the LLM Abstraction Layer.</td></tr>
+              <tr><td><strong>pgvector</strong></td><td>Technical</td><td>A PostgreSQL extension that enables semantic vector search, used to retrieve the most relevant Sage biographical fragments, dilemma context, and prior session material for each turn.</td></tr>
+              <tr><td><strong>Viseme Data</strong></td><td>Technical</td><td>Blend shape weights output by Azure Speech at 60fps alongside audio, used to drive real-time lip-sync and facial animation on the AI talking portrait of each active Sage.</td></tr>
+              <tr><td><strong>SSML Prosody Tuning</strong></td><td>Technical</td><td>Speech Synthesis Markup Language parameters (rate, pitch, pauses, emphasis) applied per Sage archetype to give each of the 80 Sages a distinct vocal character without building custom neural voice models.</td></tr>
+              <tr><td><strong>WebSocket</strong></td><td>Technical</td><td>A persistent, bidirectional communication channel used to synchronize all connected devices (kiosks, Pathfinders, Host Tablet, Sage Screens, lighting) in real time during a session.</td></tr>
+              <tr><td><strong>Session Manager</strong></td><td>Architecture</td><td>The Node.js service that acts as the single source of truth for all session state. If any device or agent disagrees about the current phase or speaker, the Session Manager's state wins.</td></tr>
+              <tr><td><strong>TurnTrace</strong></td><td>Observability</td><td>The structured log record generated for every single agent turn, capturing session ID, speaker, move type, prompt versions, model, latency, token usage, and validator flags. The primary instrument for systematic improvement.</td></tr>
+              <tr><td><strong>Graceful Degradation</strong></td><td>Architecture</td><td>The design principle that every layer has a defined fallback behavior (e.g., if avatar fails: static portrait + audio) so the experience simplifies rather than stops when a component fails.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-infra">6. Infrastructure</h3>
+          <table class="gloss-table">
+            <thead><tr><th>Term</th><th>Category</th><th>Definition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Pepper's Ghost</strong></td><td>Hardware (Under Review)</td><td>A Victorian-era optical illusion technique used in the Rambam exhibit to create a holographic effect. Currently under re-evaluation for Sanhedrin, where a high-resolution display may be a simpler and equally effective alternative.</td></tr>
+              <tr><td><strong>Azure Tenant (Shared)</strong></td><td>Infrastructure</td><td>The existing Microsoft Azure environment hosting the Rambam exhibit, within which Sanhedrin runs as a separate resource group, sharing VNet, Bastion, WAF, Key Vault, DevOps, and the Azure OpenAI endpoint.</td></tr>
+              <tr><td><strong>Redis Pub/Sub</strong></td><td>Infrastructure</td><td>The real-time messaging channel used to broadcast session events (speaker changes, reactions, phase transitions) to all subscribed devices simultaneously during a live session.</td></tr>
+              <tr><td><strong>Bar-Ilan Research Store</strong></td><td>Data</td><td>The anonymized, one-way-encrypted aggregate data store fed by every session, shared with Bar-Ilan University as part of an academic partnership to study discourse, polarization, and position change.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-content">7. Content and People</h3>
+          <table class="gloss-table">
+            <thead><tr><th>Term</th><th>Category</th><th>Definition</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Scenario Frame</strong></td><td>Content</td><td>The structured session anchor: a specific moral dilemma with defined sides, discourse rules, and a progression arc. A new non-inherited element unique to Sanhedrin that requires dedicated development.</td></tr>
+              <tr><td><strong>Dilemma Library</strong></td><td>Content</td><td>The curated set of moral dilemmas stored in PostgreSQL, each with defined sides, blocked topic lists, and associated Sage relevance scores. The starting point of every session.</td></tr>
+              <tr><td><strong>Micha Goodman</strong></td><td>Stakeholder</td><td>Scholar and thought leader whose expertise in Maimonidean philosophy and Jewish intellectual tradition is the critical-path resource for authoring the K3 Thinking Mode x Mode behavioral profiles.</td></tr>
+              <tr><td><strong>Miri Dayan</strong></td><td>Stakeholder</td><td>Content collaborator working alongside Micha Goodman on the K3 profile authoring, which represents the highest-effort content work in the entire system.</td></tr>
+              <tr><td><strong>70/30 Known/Unknown</strong></td><td>Project Frame</td><td>The architectural framing principle acknowledging that approximately 70% of the system's infrastructure is defined and buildable now, while 30%, primarily the real-time cognitive interaction quality, remains a discovery and tuning process.</td></tr>
+            </tbody>
+          </table>
+
+        </div>
       </div>
     </div>
   </div>
   <div class="lang-he" dir="rtl">
-    <div class="layout-statement" style="align-items: flex-start; text-align: right; max-width: 950px; margin: 0 auto;">
-      <p class="appendix-label reveal">נספח א'</p>
-      <h2 class="reveal r1" style="font-size: 48px;">סקירת ארכיטקטורה טכנית</h2>
-      <div class="appendix-content reveal r2">
-        <ul class="appendix-list">
-          <li><strong>שער <span style="font-family: var(--font-m);">API</span> ותשתית:</strong> <span style="font-family: var(--font-m);">Kong</span> API Gateway מנהל <strong>ניתוב</strong> ו<strong>הגבלת קצב.</strong> <span style="font-family: var(--font-m);">PostgreSQL</span> לנתוני סשנים, <span style="font-family: var(--font-m);">Vector DB</span> להטמעות סמנטיות של דמויות.</li>
-          <li><strong>לוגיקת התזמורת (<em>נשיא</em>/<em>אב בית דין</em>):</strong> מופעי <span style="font-family: var(--font-m);">LLM</span> ברמת-על שלא מייצרים דיאלוג, אלא <strong>מנתבים פרומפטים, מפעילים התערבויות</strong> ו<strong>בוחרים דמויות</strong> על סמך פרופיל המבקר.</li>
-          <li><strong>כיוונון <span style="font-family: var(--font-m);">LLM</span>:</strong> <span style="font-family: var(--font-m);">68</span> סוכני דמויות המשתמשים במודלים בסיסיים ש<strong>כוונו</strong> על נתונים ביוגרפיים, <em>תחומי חכמה</em> ספציפיים ומוגבלים ל<strong>מצבי חשיבה.</strong></li>
-          <li><strong>פרוטוקול <span style="font-family: var(--font-m);">A2A2H</span>:</strong> תהליכי <span style="font-family: var(--font-m);">AGP</span> ברקע בהם סוכנים <strong>מאמתים טענות</strong> (סוכן מחקר) ו<strong>מוודאים טון</strong> (סוכן רגישות תרבותית) לפני הפלט לשכבה האנושית.</li>
-        </ul>
+    <div class="layout-statement" style="padding: 0; align-items: stretch;">
+      <div class="sow-doc">
+        <div class="sow-sticky">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px">
+            <img src="assets/logos/motj-logo-horizontal.png" alt="MOTJ" style="height:32px;width:auto">
+            <div class="label" style="color:var(--navy);margin-bottom:0">נספח א'</div>
+          </div>
+          <h2>מונחים טכניים וטרמינולוגיה</h2>
+          <div class="sow-sticky-meta">מסמך עזר משותף לבעלי עניין טכניים ולא-טכניים, מפתחים, כותבי תוכן ושותפי המוזיאון.</div>
+          <div class="sow-toc-row">
+            <a href="#gloss-system-he" onclick="sowJump(event,'gloss-system-he')">1. מערכת</a>
+            <a href="#gloss-modes-he" onclick="sowJump(event,'gloss-modes-he')">2. מצבים וניתוח</a>
+            <a href="#gloss-knowledge-he" onclick="sowJump(event,'gloss-knowledge-he')">3. ידע</a>
+            <a href="#gloss-discourse-he" onclick="sowJump(event,'gloss-discourse-he')">4. שיח</a>
+            <a href="#gloss-architecture-he" onclick="sowJump(event,'gloss-architecture-he')">5. ארכיטקטורה</a>
+            <a href="#gloss-infra-he" onclick="sowJump(event,'gloss-infra-he')">6. תשתית</a>
+            <a href="#gloss-content-he" onclick="sowJump(event,'gloss-content-he')">7. תוכן ואנשים</a>
+          </div>
+        </div>
+        <div class="sow-body">
+
+          <h3 id="gloss-system-he">1. מערכת וחוויה</h3>
+          <table class="gloss-table">
+            <thead><tr><th>מונח</th><th>קטגוריה</th><th>הגדרה</th></tr></thead>
+            <tbody>
+              <tr><td><strong>חוויית הסנהדרין</strong></td><td>פרויקט</td><td>המיצב האינטראקטיבי המלא במוזיאון הסובלנות ירושלים בו מבקרים עוסקים בשיח מוסרי מובנה עם דמויות יהודיות היסטוריות מונעות AI, בהנחיית מנחה אנושי.</td></tr>
+              <tr><td><strong>חכם (Sage)</strong></td><td>דמות</td><td>אחת מ-80 דמויות יהודיות היסטוריות מונעות AI (כגון הרמב"ם, שפינוזה, גולדה מאיר) שפרסונה, סגנון חשיבה וידע מוזרקים באמצעות פרומפט בזמן ריצה, לא מערכת נפרדת.</td></tr>
+              <tr><td><strong>נשיא (Nasi)</strong></td><td>תפקיד סוכן</td><td>סוכן ה-AI המנצח שבוחר חכמים, מנהל סדר דוברים, קורא למהלכי שיח ומתערב לשמירת איכות. לעולם לא מדבר ישירות למבקרים.</td></tr>
+              <tr><td><strong>אב בית דין (Av Beit Din)</strong></td><td>תפקיד סוכן</td><td>סוכן ה-AI לבקרת איכות שמאמת כל תגובת חכם מול כללי ההתנהלות של הסנהדרין לפני שהיא מועברת למשתתפים.</td></tr>
+              <tr><td><strong>מנחה / פסיליטטור</strong></td><td>תפקיד אנושי</td><td>איש הצוות האנושי שמנהל את הסשן, מחזיק בסמכות דריסה מוחלטת על כל החלטות ה-AI, ומשתמש בטאבלט המנחה כלוח בקרה בזמן אמת.</td></tr>
+              <tr><td><strong>MOTJ Pathfinder</strong></td><td>חומרה</td><td>המכשיר הנייד הייעודי שמחולק לכל מבקר על ידי מוזיאון הסובלנות ירושלים, לצורך הצבעה, תגובה והגשת הערכות במהלך הסשן, נפרד מטלפון אישי.</td></tr>
+              <tr><td><strong>טאבלט מנחה</strong></td><td>חומרה</td><td>לוח הבקרה הייעודי של המנחה המציג אנליטיקות סשן חיות, פיד התראות וכלי התערבות בנגיעה אחת לניהול השיח בזמן אמת.</td></tr>
+              <tr><td><strong>מסכי חכמים</strong></td><td>חומרה</td><td>שני מסכי הפורטרט הגדולים משני צדי מסך המנחה שמציגים את החכם הפעיל בכל צד, מונפשים בזמן אמת באמצעות טכנולוגיית פורטרט מדבר AI.</td></tr>
+              <tr><td><strong>גלגל החכמים</strong></td><td>מכניקת חוויה</td><td>מכניקת הבחירה הוויזואלית על מסך המנחה בה חכמים כשירים לכל צד מסוננים מראש ונחשפים דרך סיבוב מבוקר, מעניקים לחוויה אופי טקסי.</td></tr>
+              <tr><td><strong>חשיפת הפאזל</strong></td><td>מכניקת חוויה</td><td>אלמנט ויזואלי על מסך המנחה שמתמלא חלק אחר חלק ככל שנשמעים טיעונים חזקים, נותן לקהל תחושה מוחשית של גילוי קולקטיבי.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-modes-he">2. מצבי פעולה וניתוח</h3>
+          <table class="gloss-table">
+            <thead><tr><th>מונח</th><th>קטגוריה</th><th>הגדרה</th></tr></thead>
+            <tbody>
+              <tr><td><strong>תרבות המחלוקת</strong></td><td>מצב פעולה</td><td>מצב הסשן השיתופי בו המטרה היא הרחבת הבנה. לא מוכרז מנצח, החכמים בונים על טיעוני זה את זה, ומדד לשם שמיים מודד את איכות השיח.</td></tr>
+              <tr><td><strong>מצב דיבייט</strong></td><td>מצב פעולה</td><td>מצב הסשן התחרותי בו המטרה היא שכנוע. החכמים טוענים בעוצמה, מופעל לחץ זמן, והקהל מצביע להכריז על מנצח בסיום.</td></tr>
+              <tr><td><strong>מדד לשם שמיים</strong></td><td>ניתוח</td><td>ציון איכות מורכב (מצב תרבות בלבד) המודד האם המשתתפים טענו לשם חיפוש אמת, על סמך הכרה בצד השני, איכות הנמקה, שינוי עמדה ועמידה בכללים.</td></tr>
+              <tr><td><strong>ציון קיטוב</strong></td><td>ניתוח</td><td>מדד העוקב אחר פער קבוצתי בין שני הצדדים לאורך זמן. ציון יורד במצב תרבות מצביע שהשיח מצליח לגשר בין עמדות.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-knowledge-he">3. ארכיטקטורת ידע</h3>
+          <table class="gloss-table">
+            <thead><tr><th>מונח</th><th>קטגוריה</th><th>הגדרה</th></tr></thead>
+            <tbody>
+              <tr><td><strong>K1: מתודולוגיית שיח</strong></td><td>שכבת ידע</td><td>הבסיס המשותף המוזרק לכל סוכן: מסגרת השיח התלמודית, אוצר המילים של מהלכי שיח, וכללי ההתנהלות של הסנהדרין. קבוע לכל הסוכנים ולכל המצבים.</td></tr>
+              <tr><td><strong>K2: מומחיות ספציפית למצב</strong></td><td>שכבת ידע</td><td>פרופיל התנהגותי המוזרק לפי מצב, המגדיר מהי תרומה "טובה" בתרבות מחלוקת מול מצב דיבייט. סה"כ 2 פרופילים.</td></tr>
+              <tr><td><strong>K3: מצב חשיבה x מצב</strong></td><td>שכבת ידע</td><td>26 פרופילים התנהגותיים (13 מצבי חשיבה x 2 מצבי פעולה) המגדירים כיצד כל סגנון קוגניטיבי מתנהג אחרת בתרבות מול דיבייט. עבודת התוכן הקריטית.</td></tr>
+              <tr><td><strong>K4: פרסונה ביוגרפית</strong></td><td>שכבת ידע</td><td>פרופיל החכם האישי: כותרת ארכיטיפ, ערכים היסטוריים, רטוריקה ייחודית, ויצירות מצוטטות. זהה בשני המצבים, מוזרק בזמן ריצה מטבלת החכמים ב-PostgreSQL.</td></tr>
+              <tr><td><strong>13 מצבי החשיבה</strong></td><td>מסגרת קוגניטיבית</td><td>טקסונומיה של 13 סגנונות קוגניטיביים שנגזרו ממתודולוגיה תלמודית (כגון חשיבה מפריעה, ספקנית-ביקורתית, נרטיבית-חזותית) המגדירים כיצד כל חכם חושב וטוען.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-discourse-he">4. מתודולוגיית שיח</h3>
+          <table class="gloss-table">
+            <thead><tr><th>מונח</th><th>קטגוריה</th><th>הגדרה</th></tr></thead>
+            <tbody>
+              <tr><td><strong>מהלך שיח</strong></td><td>מתודולוגיה</td><td>סוג טיעון מובנה ובעל שם (כגון קושיא, תירוץ, גשר) שנגזר ממתודולוגיה תלמודית. הנשיא קורא לסוג מהלך ספציפי, ותגובת החכם מוגבלת בהתאם.</td></tr>
+              <tr><td><strong>קושיא (Kushiya)</strong></td><td>מהלך שיח</td><td>מהלך אתגור: לאחר טיעון מנוגד, החכם מזהה את החולשה הלוגית הספציפית במה שנאמר.</td></tr>
+              <tr><td><strong>תירוץ (Terutz)</strong></td><td>מהלך שיח</td><td>מהלך תגובה: לאחר אתגור, החכם מגן על עמדתו עם ראיות נגדיות קונקרטיות או עיקרון מבסס.</td></tr>
+              <tr><td><strong>גשר (שקלא וטריא)</strong></td><td>מהלך שיח</td><td>מהלך אמצע-שיח בו החכם מוצא ומכיר במה שתקף בטיעון הצד השני, מונע דינמיקת תא הדהוד.</td></tr>
+              <tr><td><strong>מיסגור מחדש (איפכא מסתברא)</strong></td><td>מהלך שיח</td><td>מהלך ערעור בו החכם טוען את ההפך מעמדתו המוקצית כדי לבחון את השכנוע של שני הצדדים.</td></tr>
+              <tr><td><strong>מחלוקת לשם שמיים</strong></td><td>מתודולוגיה</td><td>מחלוקת לשם שמיים. העיקרון התלמודי היסודי שכל השיח במערכת זו מכוון לחיפוש אמת, לא לניצחון על חשבון הבנה.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-architecture-he">5. ארכיטקטורה טכנית</h3>
+          <table class="gloss-table">
+            <thead><tr><th>מונח</th><th>קטגוריה</th><th>הגדרה</th></tr></thead>
+            <tbody>
+              <tr><td><strong>ModeProfile</strong></td><td>ארכיטקטורה</td><td>אובייקט קונפיגורציה יחיד שמנהל את כל ההבדלים ההתנהגותיים בין תרבות מחלוקת למצב דיבייט. החלפת קונפיג אחת משנה את ההתנהגות של כל סוכן בו-זמנית.</td></tr>
+              <tr><td><strong>Mode Router</strong></td><td>ארכיטקטורה</td><td>רכיב ברמת הסשן שקורא את ה-ModeProfile הפעיל ומזריק את מגבלות ההתנהגות הנכונות לכל פרומפט סוכן בתחילת הסשן.</td></tr>
+              <tr><td><strong>הרכבת פרומפט</strong></td><td>ארכיטקטורה</td><td>תהליך השילוב של K1 + K2 + K3 + K4 + הקשר שיחה + הוראת מהלך לפרומפט חכם מלא לתור יחיד. זו הנדסת הקשר, לא כיוונון מודל.</td></tr>
+              <tr><td><strong>עמוד שדרה משותף</strong></td><td>ארכיטקטורה</td><td>עיקרון העיצוב המרכזי שכל 80 החכמים רצים על צינור תזמור יחיד, מאגר וקטורי יחיד ומנוע סשנים יחיד. הוספת חכם חדש דורשת רק שורה במסד נתונים ותבנית פרומפט.</td></tr>
+              <tr><td><strong>הנדסת הקשר</strong></td><td>ארכיטקטורה</td><td>הדיסציפלינה של ניהול איזה מידע כל סוכן AI רואה ברגע נתון: שליטה באיזה ידע, היסטוריה והקשר מוזרקים, באיזה סדר ובאיזה עלות טוקנים.</td></tr>
+              <tr><td><strong>חלון הקשר</strong></td><td>טכני</td><td>כמות הטקסט הסופית שמודל AI יכול לעבד בקריאה אחת. הנדסת הקשר היא האסטרטגיה למילוי חלון זה בצורה חכמה בכל תור מבלי לחרוג ממגבלות.</td></tr>
+              <tr><td><strong>רגיסטר הקשר</strong></td><td>ארכיטקטורה</td><td>המאגר בשכבה 6 שעוקב אחר אילו גרסאות פרומפט, מפתחות מטמון K1-K4, ותקציבי טוקנים שימשו לכל סוכן בכל תור. מזין ישירות את ה-TurnTrace.</td></tr>
+              <tr><td><strong>מטמון קידומת פרומפט</strong></td><td>טכני</td><td>אסטרטגיית הפחתת עלות בה שכבות הידע הסטטיות K1-K4 נשמרות במטמון ברמת התשתית, מפחיתה עלות טוקנים לתור ב-70-75% מוערך.</td></tr>
+              <tr><td><strong>דחיסת הקשר</strong></td><td>טכני</td><td>תהליך סיכום תורות ישנים במקום למחוק אותם, שומר על רציפות טיעונית מבלי לחרוג ממגבלת חלון ההקשר של שום סוכן.</td></tr>
+              <tr><td><strong>פרוטוקול A2A2H</strong></td><td>ארכיטקטורה</td><td>סוכן-לסוכן-לאדם: החידוש המרכזי בו סוכני AI (נשיא, אב בית דין, סוכן סנטימנט, סוכן מחקר) מתאמים ומאמתים תגובות ביניהם לפני שכל פלט מגיע למשתתף אנושי.</td></tr>
+              <tr><td><strong>שכבת הפשטת LLM</strong></td><td>ארכיטקטורה</td><td>שירות דק שמחזיק בכל בחירת מודל, ניסיונות חוזרים, הגבלת קצב וניתוב ספקים. שום קוד אפליקציה לא קורא ישירות ל-Azure OpenAI, כך שהחלפת מודלים דורשת רק שינוי קונפיג.</td></tr>
+              <tr><td><strong>שכבת מודל ראשית</strong></td><td>טכני</td><td>סוג המודל בעל היכולת הגבוהה המשמש לנשיא, חכמים ואב בית דין. מקושר כרגע למודלים מסוג GPT-4, מנוהל דרך שכבת הפשטת ה-LLM.</td></tr>
+              <tr><td><strong>שכבת מודל קלה</strong></td><td>טכני</td><td>סוג המודל המהיר וחסכוני המשמש לסוכני תשתית שכבה 4 (סיווג, סנטימנט, זיהוי עובדות). קישור ספציפי מנוהל דרך שכבת הפשטת ה-LLM.</td></tr>
+              <tr><td><strong>pgvector</strong></td><td>טכני</td><td>הרחבת PostgreSQL המאפשרת חיפוש וקטורי סמנטי, משמשת לאחזור מקטעי ביוגרפיה של חכמים, הקשר דילמה וחומר סשנים קודם הרלוונטיים ביותר לכל תור.</td></tr>
+              <tr><td><strong>נתוני ויזמה</strong></td><td>טכני</td><td>משקולות צורות מיזוג שמופקות על ידי Azure Speech ב-60fps לצד אודיו, משמשות להנעת סנכרון שפתיים והנפשת פנים בזמן אמת על פורטרט מדבר ה-AI של כל חכם פעיל.</td></tr>
+              <tr><td><strong>כוונון פרוזודיית SSML</strong></td><td>טכני</td><td>פרמטרי Speech Synthesis Markup Language (קצב, גובה, הפסקות, הדגשה) המוחלים לכל ארכיטיפ חכם כדי לתת לכל אחד מ-80 החכמים אופי קולי ייחודי ללא בניית מודלי קול מותאמים.</td></tr>
+              <tr><td><strong>WebSocket</strong></td><td>טכני</td><td>ערוץ תקשורת מתמשך ודו-כיווני המשמש לסנכרון כל המכשירים המחוברים (קיוסקים, Pathfinders, טאבלט מנחה, מסכי חכמים, תאורה) בזמן אמת במהלך סשן.</td></tr>
+              <tr><td><strong>מנהל סשנים</strong></td><td>ארכיטקטורה</td><td>שירות ה-Node.js שמשמש כמקור האמת היחיד לכל מצב הסשן. אם מכשיר או סוכן כלשהו חולק על השלב הנוכחי או הדובר, מצב מנהל הסשנים מנצח.</td></tr>
+              <tr><td><strong>TurnTrace</strong></td><td>צפיות</td><td>רשומת הלוג המובנית שנוצרת לכל תור סוכן יחיד, לוכדת מזהה סשן, דובר, סוג מהלך, גרסאות פרומפט, מודל, השהיה, שימוש בטוקנים ודגלי מאמתים. הכלי העיקרי לשיפור שיטתי.</td></tr>
+              <tr><td><strong>השפלה חיננית</strong></td><td>ארכיטקטורה</td><td>עיקרון העיצוב שלכל שכבה יש התנהגות חלופית מוגדרת (למשל אם אווטאר נכשל: פורטרט סטטי + אודיו) כך שהחוויה מתפשטת במקום נעצרת כשרכיב נכשל.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-infra-he">6. תשתית</h3>
+          <table class="gloss-table">
+            <thead><tr><th>מונח</th><th>קטגוריה</th><th>הגדרה</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Pepper's Ghost</strong></td><td>חומרה (בבדיקה מחדש)</td><td>טכניקת אשליה אופטית מהתקופה הוויקטוריאנית ששימשה בתערוכת הרמב"ם ליצירת אפקט הולוגרפי. נבחנת מחדש עבור סנהדרין, שם תצוגה ברזולוציה גבוהה עשויה להיות חלופה פשוטה ויעילה באותה מידה.</td></tr>
+              <tr><td><strong>Azure Tenant (משותף)</strong></td><td>תשתית</td><td>סביבת Microsoft Azure הקיימת שמארחת את תערוכת הרמב"ם, ובתוכה סנהדרין רצה כקבוצת משאבים נפרדת, חולקת VNet, Bastion, WAF, Key Vault, DevOps ונקודת קצה Azure OpenAI.</td></tr>
+              <tr><td><strong>Redis Pub/Sub</strong></td><td>תשתית</td><td>ערוץ ההודעות בזמן אמת המשמש לשידור אירועי סשן (החלפות דוברים, תגובות, מעברי שלב) לכל המכשירים המנויים בו-זמנית במהלך סשן חי.</td></tr>
+              <tr><td><strong>מאגר המחקר של בר-אילן</strong></td><td>נתונים</td><td>מאגר הנתונים המצרפי האנונימי ומוצפן חד-כיווני המוזן מכל סשן, משותף עם אוניברסיטת בר-אילן כחלק משותפות אקדמית לחקר שיח, קיטוב ושינוי עמדות.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="gloss-content-he">7. תוכן ואנשים</h3>
+          <table class="gloss-table">
+            <thead><tr><th>מונח</th><th>קטגוריה</th><th>הגדרה</th></tr></thead>
+            <tbody>
+              <tr><td><strong>מסגרת תרחיש</strong></td><td>תוכן</td><td>עוגן הסשן המובנה: דילמה מוסרית ספציפית עם צדדים מוגדרים, כללי שיח וקשת התקדמות. אלמנט חדש שאינו עובר בירושה, ייחודי לסנהדרין ודורש פיתוח ייעודי.</td></tr>
+              <tr><td><strong>ספריית דילמות</strong></td><td>תוכן</td><td>אוסף הדילמות המוסריות האצורות ב-PostgreSQL, כל אחת עם צדדים מוגדרים, רשימות נושאים חסומים וציוני רלוונטיות חכמים. נקודת ההתחלה של כל סשן.</td></tr>
+              <tr><td><strong>מיכה גודמן</strong></td><td>בעל עניין</td><td>חוקר ומוביל מחשבה שמומחיותו בפילוסופיה רמב"מית ובמסורת האינטלקטואלית היהודית היא משאב הנתיב הקריטי לכתיבת פרופילי K3 מצב חשיבה x מצב.</td></tr>
+              <tr><td><strong>מירי דיין</strong></td><td>בעלת עניין</td><td>שותפת תוכן העובדת לצד מיכה גודמן על כתיבת פרופילי K3, שמייצגת את עבודת התוכן בעלת המאמץ הגבוה ביותר במערכת כולה.</td></tr>
+              <tr><td><strong>70/30 ידוע/לא-ידוע</strong></td><td>מסגרת פרויקט</td><td>עיקרון מסגור ארכיטקטוני המכיר בכך שכ-70% מתשתית המערכת מוגדרת וניתנת לבנייה כעת, בעוד 30%, בעיקר איכות האינטראקציה הקוגניטיבית בזמן אמת, נותרים תהליך גילוי וכוונון.</td></tr>
+            </tbody>
+          </table>
+
+        </div>
       </div>
     </div>
   </div>
@@ -5157,6 +5444,17 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   </svg>
 </button>
 
+<!-- NDA Acknowledgment Overlay -->
+<div class="nda-overlay" id="ndaOverlay">
+  <div class="nda-box">
+    <img src="assets/logos/motj-logo-horizontal.png" alt="Museum of Tolerance Jerusalem" class="nda-logo">
+    <h3>Proprietary Information</h3>
+    <p>The appendix you are about to view contains proprietary data belonging to the <strong>Museum of Tolerance Jerusalem (MOTJ)</strong>. This material is to be viewed only after a signed NDA is in place.</p>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:24px;">By clicking below, you acknowledge that you understand the proprietary ownership of the document you are about to view.</p>
+    <button class="nda-btn" onclick="acceptNda()">I Acknowledge</button>
+  </div>
+</div>
+
 <button class="appendix-back-btn" id="appendixBackBtn" onclick="backFromAppendix()">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
   Back to Slide
@@ -5200,7 +5498,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <button class="qn-item" onclick="qnGo(20)"><span class="qn-num">21</span>Business Model</button>
         <button class="qn-item" onclick="qnGo(21)"><span class="qn-num">22</span>CTA</button>
         <div class="qn-group">Appendix</div>
-        <button class="qn-item" onclick="qnGo('appendix-tech')"><span class="qn-num">A</span>Technical Architecture</button>
+        <button class="qn-item" onclick="qnGo('appendix-tech')"><span class="qn-num">A</span>Terms & Terminology</button>
         <button class="qn-item" onclick="qnGo('appendix-modes')"><span class="qn-num">B</span>13 Thinking Modes</button>
         <button class="qn-item" onclick="qnGo('appendix-program')"><span class="qn-num">P</span>Program Scope</button>
         <button class="qn-item" onclick="qnGo('appendix-poc')"><span class="qn-num">Q</span>POC Definition</button>
@@ -5305,6 +5603,12 @@ function goToSageLibrary() {
 }
 
 function goToAppendix(id) {
+  var ndaAccepted = sessionStorage.getItem('sanhedrin_nda_accepted');
+  if (!ndaAccepted) {
+    window._pendingAppendixId = id;
+    document.getElementById('ndaOverlay').classList.add('active');
+    return;
+  }
   window._appendixSourceSlide = current;
   var target = document.getElementById(id);
   if (!target) return;
@@ -5313,6 +5617,19 @@ function goToAppendix(id) {
     if (allSlides[i] === target) {
       showSlide(i);
       return;
+    }
+  }
+}
+function acceptNda() {
+  sessionStorage.setItem('sanhedrin_nda_accepted', '1');
+  document.getElementById('ndaOverlay').classList.remove('active');
+  if (window._pendingAppendixId) {
+    var id = window._pendingAppendixId;
+    window._pendingAppendixId = null;
+    if (id.indexOf('_glossary_') === 0) {
+      goToGlossary(id.replace('_glossary_', ''));
+    } else {
+      goToAppendix(id);
     }
   }
 }
@@ -5348,6 +5665,28 @@ function sowJump(e, id) {
   e.preventDefault();
   var el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function goToGlossary(sectionId) {
+  var ndaAccepted = sessionStorage.getItem('sanhedrin_nda_accepted');
+  if (!ndaAccepted) {
+    window._pendingAppendixId = '_glossary_' + sectionId;
+    document.getElementById('ndaOverlay').classList.add('active');
+    return;
+  }
+  window._appendixSourceSlide = current;
+  var target = document.getElementById('appendix-tech');
+  if (!target) return;
+  var allSlides = document.querySelectorAll('.slide');
+  for (var i = 0; i < allSlides.length; i++) {
+    if (allSlides[i] === target) {
+      showSlide(i);
+      setTimeout(function() {
+        var anchor = document.getElementById(sectionId);
+        if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+      return;
+    }
+  }
 }
 
 function toggleFullscreen() {
