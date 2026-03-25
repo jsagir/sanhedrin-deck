@@ -253,6 +253,20 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(0,48,87,0.85) 0%, rgba(0,48,87,0.4) 40%, transparent 70%);
 }
+/* Cinematic glare overlays for Yazdani renderings */
+.hero-glare { position: absolute; inset: 0; pointer-events: none; z-index: 1; mix-blend-mode: screen; }
+.hero-glare--warm {
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 30%, rgba(255,200,100,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 50% at 75% 20%, rgba(255,180,80,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 20% 30% at 25% 50%, rgba(255,220,150,0.08) 0%, transparent 50%);
+}
+.hero-glare--cyan {
+  background:
+    radial-gradient(ellipse 50% 40% at 45% 35%, rgba(100,220,255,0.15) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 50% at 70% 25%, rgba(80,200,240,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 25% 35% at 30% 55%, rgba(120,240,255,0.06) 0%, transparent 50%);
+}
 .layout-hero .hero-content {
   position: relative; z-index: 2;
   padding: 0 80px 90px;
@@ -960,6 +974,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-hero">
       <img src="slides/slide-01/hero.png" alt="" class="hero-bg">
       <div class="hero-scrim"></div>
+      <div class="hero-glare hero-glare--warm"></div>
       <canvas class="deliberation-network" id="heroNetwork"></canvas>
       <div class="hero-content">
         <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" style="height: 64px; margin-bottom: 32px;" class="reveal">
@@ -973,6 +988,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-hero">
       <img src="slides/slide-01/hero.png" alt="" class="hero-bg">
       <div class="hero-scrim"></div>
+      <div class="hero-glare hero-glare--warm"></div>
       <canvas class="deliberation-network" id="heroNetworkHe"></canvas>
       <div class="hero-content" style="text-align: right;">
         <img src="assets/logos/motj-logo-horizontal-white.svg" alt="MOTJ" style="height: 64px; margin-bottom: 32px;" class="reveal">
@@ -1891,6 +1907,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-hero">
       <img src="slides/slide-10/hero.png" alt="Physical space" class="hero-bg">
       <div class="hero-scrim"></div>
+      <div class="hero-glare hero-glare--cyan"></div>
       <canvas class="arena-network" id="arenaNetwork"></canvas>
       <div class="hero-content">
         <p class="label reveal" style="color: rgba(255,255,255,0.6);">Spatial Design</p>
@@ -1909,6 +1926,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-hero">
       <img src="slides/slide-10/hero.png" alt="" class="hero-bg">
       <div class="hero-scrim"></div>
+      <div class="hero-glare hero-glare--cyan"></div>
       <canvas class="arena-network" id="arenaNetworkHe"></canvas>
       <div class="hero-content" style="text-align: right;">
         <p class="label reveal" style="color: rgba(255,255,255,0.6);">עיצוב מרחבי</p>
@@ -2417,6 +2435,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-hero">
       <img src="slides/slide-18/hero.png" alt="Closing" class="hero-bg">
       <div class="hero-scrim"></div>
+      <div class="hero-glare hero-glare--warm"></div>
       <div class="hero-content" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
         <div class="pull-quote reveal r1" style="color: #fff; max-width: 800px; font-size: 34px; border-left: none; padding: 0;">"The Sanhedrin didn't give answers. They gave people the <strong>tools to think.</strong> We're bringing that to the <span style="font-family: var(--font-m);">21st</span> century."</div>
         <p class="reveal r2" style="font-size: 22px; color: rgba(255,255,255,0.8); margin-top: 24px; max-width: 700px;"><strong>Green Light</strong> to move past <span style="font-family: var(--font-m);">70%</span>, <strong>fund <span style="font-family: var(--font-m);">Phase 1</span>,</strong> and schedule the <strong>technical review.</strong></p>
@@ -2434,6 +2453,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-hero">
       <img src="slides/slide-18/hero.png" alt="" class="hero-bg">
       <div class="hero-scrim"></div>
+      <div class="hero-glare hero-glare--warm"></div>
       <div class="hero-content" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
         <div class="pull-quote reveal r1" style="color: #fff; max-width: 800px; font-size: 34px; border-left: none; padding: 0;">"הסנהדרין לא נתנה תשובות. היא נתנה לאנשים <strong>כלים לחשוב.</strong> אנחנו מביאים את זה למאה ה-<span style="font-family: var(--font-m);">21</span>."</div>
         <p class="reveal r2" style="font-size: 22px; color: rgba(255,255,255,0.8); margin-top: 24px; max-width: 700px;"><strong>אור ירוק</strong> לעבור את רף ה-<span style="font-family: var(--font-m);">70%</span>, <strong>לממן שלב <span style="font-family: var(--font-m);">1</span>,</strong> ולתזמן את ה<strong>סקירה הטכנית.</strong></p>
