@@ -93,7 +93,7 @@ SLIDES = [
     },
     {
         "file": "slide-18.mp3",
-        "text": "Why not just use ChatGPT? A chatbot gives you one voice, one perspective, generic responses. The Sanhedrin gives you a council of distinct thinkers with authentic viewpoints, structured debate, and real cognitive challenge. Nobody combines multi-perspective dialogue with orchestrated meta-logic across 13 thinking modes and a physical immersive space."
+        "text": "Why not just use ChatGPT? A chatbot gives you one voice, one perspective, generic responses. The Sanhedrin gives you a council of distinct thinkers with authentic viewpoints, dual engagement mechanics across two modes, and real cognitive challenge. Nobody combines multi-perspective dialogue with orchestrated meta-logic across 13 thinking modes, a human facilitation layer, and a physical immersive space with institutional backing."
     },
     {
         "file": "slide-19.mp3",
