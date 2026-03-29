@@ -2424,41 +2424,115 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
      ============================================================ -->
 <section class="slide" data-act="ACT 4: THE ASK">
   <div class="lang-en">
-    <div class="layout-statement" style="justify-content: center; align-items: center; text-align: center;">
-      <p class="label reveal">The Ask</p>
-      <h2 class="reveal r1">Investment Required</h2>
-      <div class="reveal r2" style="margin: 36px 0; display: flex; flex-direction: column; align-items: center;">
-        <div style="font-family: var(--font-d); font-size: 160px; font-weight: 800; color: var(--navy); line-height: 1; opacity: 0.15;">$</div>
-        <div style="margin-top: -20px; padding: 24px 48px; border: 2px dashed var(--blue); border-radius: 12px; background: rgba(0,48,87,0.03);">
-          <div style="font-family: var(--font-m); font-size: 14px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase; margin-bottom: 8px;">Status</div>
-          <div style="font-size: 28px; font-weight: 700; color: var(--navy);">Pending Financial Estimation</div>
-          <div style="font-size: 16px; color: var(--text-sub); margin-top: 12px; max-width: 500px;">Full scope financial projection is being finalized based on the <strong>v3.1 Implementation Architecture</strong> and vendor quotes.</div>
+    <div class="layout-statement" style="justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden;">
+      <!-- Background $ watermark -->
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%); font-family: var(--font-d); font-size: 420px; font-weight: 800; color: var(--navy); opacity: 0.04; line-height: 1; pointer-events: none; z-index: 0;">$</div>
+
+      <!-- Content -->
+      <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 0;">
+        <div class="reveal" style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+          <div style="height: 1px; width: 60px; background: var(--taupe);"></div>
+          <p class="label" style="margin: 0;">The Ask</p>
+          <div style="height: 1px; width: 60px; background: var(--taupe);"></div>
         </div>
+
+        <h2 class="reveal r1" style="font-size: 52px; font-weight: 800; letter-spacing: -1px; margin-bottom: 40px;">Investment Required</h2>
+
+        <!-- The $ card -->
+        <div class="reveal r2" style="display: flex; align-items: center; gap: 40px; padding: 40px 56px; background: var(--navy); border-radius: 16px; box-shadow: 0 8px 40px rgba(0,48,87,0.2); max-width: 760px; width: 100%;">
+          <div style="font-family: var(--font-d); font-size: 96px; font-weight: 800; color: var(--blue); line-height: 1; flex-shrink: 0;">$</div>
+          <div style="text-align: left; flex: 1;">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 3px; color: var(--blue); text-transform: uppercase; margin-bottom: 6px;">
+              <span style="display: inline-block; width: 8px; height: 8px; background: var(--blue); border-radius: 50%; margin-right: 8px; animation: dashPulse 2s ease-in-out infinite;"></span>
+              Pending
+            </div>
+            <div style="font-size: 26px; font-weight: 700; color: #fff; line-height: 1.3;">Financial Estimation<br>in Progress</div>
+            <div style="font-size: 14px; color: rgba(255,255,255,0.65); margin-top: 10px; line-height: 1.5;">Based on <strong style="color: rgba(255,255,255,0.9);">v3.1 Implementation Architecture</strong> and vendor quotes.</div>
+          </div>
+        </div>
+
+        <!-- Scope items -->
+        <div class="reveal r3" style="display: flex; gap: 16px; margin-top: 32px; max-width: 760px; width: 100%;">
+          <div style="flex: 1; padding: 16px 20px; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--card-border); text-align: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.5" style="margin-bottom: 6px;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text);">Tech Architecture</div>
+          </div>
+          <div style="flex: 1; padding: 16px 20px; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--card-border); text-align: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.5" style="margin-bottom: 6px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text);">Content Development</div>
+          </div>
+          <div style="flex: 1; padding: 16px 20px; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--card-border); text-align: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.5" style="margin-bottom: 6px;"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text);">AV Build-out</div>
+          </div>
+          <div style="flex: 1; padding: 16px 20px; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--card-border); text-align: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.5" style="margin-bottom: 6px;"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text);">Physical Space</div>
+          </div>
+        </div>
+
+        <!-- Architecture link -->
+        <a href="#appendix-architecture" onclick="goToAppendix('appendix-architecture');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 24px; border-radius: 8px; background: rgba(0,48,87,0.06); color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: none; cursor: pointer; transition: background 0.2s;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+          View Full Architecture Proposal
+        </a>
       </div>
-      <p class="body-sm reveal r3" style="max-width: 600px;">Covers <strong>tech architecture, content development, AV build-out,</strong> and <strong>physical space construction.</strong></p>
-      <a href="#appendix-architecture" onclick="goToAppendix('appendix-architecture');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: underline; cursor: pointer;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-        View Full Architecture Proposal (Appendix)
-      </a>
     </div>
   </div>
   <div class="lang-he" dir="rtl">
-    <div class="layout-statement" style="justify-content: center; align-items: center; text-align: center;">
-      <p class="label reveal">הבקשה</p>
-      <h2 class="reveal r1">השקעה נדרשת</h2>
-      <div class="reveal r2" style="margin: 36px 0; display: flex; flex-direction: column; align-items: center;">
-        <div style="font-family: var(--font-d); font-size: 160px; font-weight: 800; color: var(--navy); line-height: 1; opacity: 0.15;">$</div>
-        <div style="margin-top: -20px; padding: 24px 48px; border: 2px dashed var(--blue); border-radius: 12px; background: rgba(0,48,87,0.03);">
-          <div style="font-family: var(--font-m); font-size: 14px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase; margin-bottom: 8px;">סטטוס</div>
-          <div style="font-size: 28px; font-weight: 700; color: var(--navy);">ממתין להערכה פיננסית</div>
-          <div style="font-size: 16px; color: var(--text-sub); margin-top: 12px; max-width: 500px;">תחזית פיננסית מלאה בסיום בהתבסס על <strong>ארכיטקטורת היישום v3.1</strong> והצעות מחיר מספקים.</div>
+    <div class="layout-statement" style="justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden;">
+      <!-- Background $ watermark -->
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%); font-family: var(--font-d); font-size: 420px; font-weight: 800; color: var(--navy); opacity: 0.04; line-height: 1; pointer-events: none; z-index: 0;">$</div>
+
+      <!-- Content -->
+      <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 0;">
+        <div class="reveal" style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+          <div style="height: 1px; width: 60px; background: var(--taupe);"></div>
+          <p class="label" style="margin: 0;">הבקשה</p>
+          <div style="height: 1px; width: 60px; background: var(--taupe);"></div>
         </div>
+
+        <h2 class="reveal r1" style="font-size: 52px; font-weight: 800; letter-spacing: -1px; margin-bottom: 40px;">השקעה נדרשת</h2>
+
+        <!-- The $ card -->
+        <div class="reveal r2" style="display: flex; align-items: center; gap: 40px; padding: 40px 56px; background: var(--navy); border-radius: 16px; box-shadow: 0 8px 40px rgba(0,48,87,0.2); max-width: 760px; width: 100%; direction: rtl;">
+          <div style="font-family: var(--font-d); font-size: 96px; font-weight: 800; color: var(--blue); line-height: 1; flex-shrink: 0;">$</div>
+          <div style="text-align: right; flex: 1;">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 3px; color: var(--blue); text-transform: uppercase; margin-bottom: 6px;">
+              <span style="display: inline-block; width: 8px; height: 8px; background: var(--blue); border-radius: 50%; margin-left: 8px; animation: dashPulse 2s ease-in-out infinite;"></span>
+              ממתין
+            </div>
+            <div style="font-size: 26px; font-weight: 700; color: #fff; line-height: 1.3;">הערכה פיננסית<br>בתהליך</div>
+            <div style="font-size: 14px; color: rgba(255,255,255,0.65); margin-top: 10px; line-height: 1.5;">בהתבסס על <strong style="color: rgba(255,255,255,0.9);">ארכיטקטורת היישום v3.1</strong> והצעות מחיר מספקים.</div>
+          </div>
+        </div>
+
+        <!-- Scope items -->
+        <div class="reveal r3" style="display: flex; gap: 16px; margin-top: 32px; max-width: 760px; width: 100%;">
+          <div style="flex: 1; padding: 16px 20px; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--card-border); text-align: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.5" style="margin-bottom: 6px;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text);">ארכיטקטורה טכנולוגית</div>
+          </div>
+          <div style="flex: 1; padding: 16px 20px; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--card-border); text-align: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.5" style="margin-bottom: 6px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text);">פיתוח תוכן</div>
+          </div>
+          <div style="flex: 1; padding: 16px 20px; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--card-border); text-align: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.5" style="margin-bottom: 6px;"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text);">בניית AV</div>
+          </div>
+          <div style="flex: 1; padding: 16px 20px; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--card-border); text-align: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.5" style="margin-bottom: 6px;"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text);">מרחב פיזי</div>
+          </div>
+        </div>
+
+        <!-- Architecture link -->
+        <a href="#appendix-architecture" onclick="goToAppendix('appendix-architecture');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 10px 24px; border-radius: 8px; background: rgba(0,48,87,0.06); color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: none; cursor: pointer; transition: background 0.2s;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+          צפייה בהצעה הארכיטקטונית המלאה
+        </a>
       </div>
-      <p class="body-sm reveal r3" style="max-width: 600px;">מכסה <strong>ארכיטקטורה טכנולוגית, פיתוח תוכן, בניית AV,</strong> ו<strong>הקמת מרחב פיזי.</strong></p>
-      <a href="#appendix-architecture" onclick="goToAppendix('appendix-architecture');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: underline; cursor: pointer;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-        צפייה בהצעה הארכיטקטונית המלאה (נספח)
-      </a>
     </div>
   </div>
 </section>
