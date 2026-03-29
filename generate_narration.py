@@ -109,7 +109,7 @@ SLIDES = [
     },
     {
         "file": "slide-22.mp3",
-        "text": "The Sanhedrin didn't give answers. They gave people the tools to think. We are bringing that into the 21st century. Give us the green light. Fund Phase 1. Let us prove the final 30 percent. And schedule the technical review where we show you exactly how this works under the hood."
+        "text": "In Judaism, disagreement was never the problem. It was always the method. Every tradition that changed the world didn't silence its arguments. It sanctified them. Judaism didn't just tolerate disagreement. It institutionalized it, ritualized it, and built a 2,000 year body of wisdom on top of it. That ancient technology went dormant. The Museum of Tolerance Jerusalem just switched it back on."
     },
 ]
 
