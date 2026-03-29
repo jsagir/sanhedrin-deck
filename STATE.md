@@ -1,15 +1,15 @@
 # Sanhedrin Deck - Project State
 
 ## Current Status
-**Last updated:** 2026-03-25 (Session 21)
-**Phase:** 22 main slides (3 team slides) + 8 appendix (A-F, P, Q). 12 sages with voices. Deployed and live. Appendix A replaced with full glossary. Tooltip system active.
+**Last updated:** 2026-03-29 (Session 22)
+**Phase:** 22 main slides (3 team slides) + 9 appendix (Architecture, A-F, P, Q). 12 sages with voices. Deployed and live. Architecture Proposal appendix added as first appendix.
 **Live URL:** https://sanhedrin-deck.onrender.com
 **Repo:** https://github.com/jsagir/sanhedrin-deck (auto-deploy on push to master)
 
 ## What To Do Next (Pick Up Here)
 
 ### Immediate
-1. **Slide 15 (Business Case)** - placeholder for Yoni to customize per donor
+1. **Slide 21 (The Ask)** - $ placeholder pending financial estimation, to be completed with real numbers
 
 ### Content Refinement
 - [x] Yazdani Studio claim verified against v3.1 architecture doc (Layer 0A). 100K visitors claim not found in current deck (already removed).
@@ -69,6 +69,18 @@
 | A5 | The Sage Library | All 80 Jewish Lives figures with hover overlays showing Sanhedrin roles |
 
 ## What Changed in Latest Sessions
+
+### Session 22 (2026-03-29) - Architecture Appendix, Engagement Mechanics, Rambam Reframe, The Ask
+- **Slide 15 (Debate & Discourse)**: "Civic Discourse Rules" card replaced with **Engagement Mechanics** showing two modes side-by-side: Culture of Disagreement (pedagogical, collaborative) and Debate Mode (competitive, rhetorical). Both EN and HE.
+- **Slide 16 (POC/Rambam)**: Quote changed from "monologue/multi-agent dialogue" to **"conversation/orchestration"**. Added **edge stack** narrative: Rambam connected previously disconnected components into a coherent digital + physical experience. Both EN and HE.
+- **Competitive table (Slide 18)**: "Structured discourse rules and methodology" updated to "Dual engagement mechanics (Discourse + Debate modes)". Both EN and HE.
+- **EdTech slide (Slide 19)**: Merged with Business Model content. Now shows 2-column layout: left = tiers (Museum/Schools/Home), right = business model (EdTech Platform IP + Research Hub). Both EN and HE.
+- **Roadmap (Slide 20)**: Removed "Prototype & Deploy" card. Replaced with **"Deployment"** card dated **June-July 2027** with museum deployment, physical space build-out, AV integration, live launch. Both EN and HE.
+- **Slide 21 (was Business Case)**: Replaced with **"The Ask"** slide. Giant $ sign placeholder with "Pending Financial Estimation" status. Dashed border box, links to Architecture Proposal appendix. Both EN and HE.
+- **Architecture Proposal appendix**: New appendix added as **first appendix** (before glossary). Summarizes v3.1 Implementation Architecture (23 pages): executive summary, core design principles, K1-K4 knowledge layers, 9 system layers, Rambam architectural lessons (edge stack), 4 design pillars. Full bilingual EN/HE. id="appendix-architecture".
+- **CTA slide (Slide 22)**: "View Tech Architecture" button updated to **"View Architecture Proposal"** linking to new appendix. Both EN and HE.
+- **Quick nav**: Architecture appendix button added before Appendix A.
+- **Narration regenerated**: 5 MP3s (slide-15 through slide-21 excluding 17-18) regenerated via ElevenLabs to match updated content. Scripts updated in generate_narration.py.
 
 ### Session 21 (2026-03-25) - Glossary Appendix, Tooltips, NDA Gate, Daniel Bio
 - **Appendix A replaced**: Old 4-bullet Technical Architecture Overview replaced with comprehensive **Technical Terms & Terminology** glossary (50+ terms across 7 categories: System, Modes/Analytics, Knowledge Architecture, Discourse Methodology, Technical Architecture, Infrastructure, Content/People). SoW-doc style with sticky TOC. Full bilingual EN/HE.
@@ -262,6 +274,7 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 | 15-19 | 2026-03-13 | Tech slides, appendices P/Q, narration, onboarding tour, sage voices, dashboard, typography scale |
 | 20 | 2026-03-13 | HE scatter fix, dashboard tour (9 steps), sage hover fix, puzzle verification |
 | 21 | 2026-03-25 | Appendix A glossary (50+ terms, bilingual), tooltip system, NDA gate, Daniel bio update, glossary hyperlinks from slides, roadmap synced with v3.1, CTA wired, narrations regenerated |
+| 22 | 2026-03-29 | Architecture Proposal appendix (first appendix), engagement mechanics dual-mode, Rambam reframe (conversation/orchestration + edge stack), EdTech+business model merge, The Ask ($TBD), roadmap deployment June-July 2027, 5 narrations regenerated |
 
 ## Key Decisions
 | Decision | Why |

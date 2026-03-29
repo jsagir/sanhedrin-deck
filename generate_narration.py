@@ -81,11 +81,11 @@ SLIDES = [
     },
     {
         "file": "slide-15.mp3",
-        "text": "The debate and discourse framework. Our cognitive layer implements structured argumentation protocols. Claim, evidence, rebuttal, synthesis. Each sage follows authentic deliberative patterns drawn from Talmudic methodology. The system actively tracks logical contradictions and filters for cultural sensitivity."
+        "text": "The debate and discourse framework. Two distinct engagement mechanics power the system. Culture of Disagreement: pedagogical, collaborative. State the opponent's case first, concede gray areas, ground in practice. Debate Mode: competitive, rhetorical. Win the argument, challenge premises, score points through logic and evidence. Same system, two fundamentally different cognitive architectures. Each sage carries 13 Talmudic thinking modes, from Ipkha Mistabra to Shakla Vetarya."
     },
     {
         "file": "slide-16.mp3",
-        "text": "We already did this. The Rambam exhibit at the Museum of Tolerance is our proven sibling project. Visitors engaged with a single AI sage and the response was overwhelming. Rambam was a monologue. Sanhedrin is a multi-agent dialogue. We are not starting from scratch. We are scaling a validated mechanism."
+        "text": "We already did this. The Rambam exhibit at the Museum of Tolerance is our proven sibling project. Visitors engaged with a single AI sage and the response was overwhelming. Rambam is a conversation. Sanhedrin is an orchestration. Rambam was built on an edge stack. We figured out how to connect components that were not connected before into a coherent experience, both digital and physical. We are not starting from scratch. We are scaling a validated mechanism."
     },
     {
         "file": "slide-17.mp3",
@@ -97,15 +97,15 @@ SLIDES = [
     },
     {
         "file": "slide-19.mp3",
-        "text": "The EdTech platform play. Beyond the museum: a debate gym for schools, universities, and home learners. Museum, school, home. Three tiers, one technology stack. Massive total addressable market expanding from museum visitors to the global education sector."
+        "text": "EdTech platform and business model. Beyond the museum: a debate gym for schools, universities, and home learners. Museum, school, home. Three tiers, one technology stack. The business model: our 80 sage personas, discourse methodology, and frameworks generate licensable intellectual property. A privacy-first research hub produces publishable data on moral reasoning through academic partnerships. Massive total addressable market expanding from museum visitors to the global education sector."
     },
     {
         "file": "slide-20.mp3",
-        "text": "Roadmap and milestones. Six phases. Internal presentation and stakeholder alignment by end of March. Donor presentations, RFP, and vendor selection by April, with K1 through K4 content authoring starting. Proof of concept from June to August: a WhatsApp group with 3 AI agents and 2 humans, both modes tested, validated by Micha Goodman. Working demo from September to November: custom React UI, 5 Sages plus Nasi and Av Beit Din, voice for 2 to 3 Sages, and an AI talking portrait prototype. Full prototype and museum deployment from December 2026 through May 2027."
+        "text": "Roadmap and milestones. Internal presentation and stakeholder alignment by end of March. Donor presentations, RFP, and vendor selection in April and May, with K1 through K4 content authoring starting. Proof of concept from June to August: a WhatsApp group with 3 AI agents and 2 humans, both modes tested, validated by Micha Goodman. Working demo from September to November: custom React UI, 5 Sages plus Nasi and Av Beit Din, voice for 2 to 3 Sages, and an AI talking portrait prototype. Museum deployment in June to July 2027 with physical space build-out, AV integration, and live launch."
     },
     {
         "file": "slide-21.mp3",
-        "text": "The business case. Multiple revenue streams: museum licensing, school subscriptions, and a research hub generating publishable data on AI-mediated discourse. The system creates a unique anonymized data repository on how society reasons about moral questions. Strategic ROI for donors investing in the future of civic engagement."
+        "text": "The ask. Investment required. The full scope financial projection is being finalized based on our version 3.1 implementation architecture and vendor quotes. This covers tech architecture, content development, AV build-out, and physical space construction. The detailed architecture proposal is available in the appendix."
     },
     {
         "file": "slide-22.mp3",
