@@ -1188,7 +1188,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-statement">
       <p class="label reveal">Project Team</p>
       <h2 class="reveal r1">Advisory Team</h2>
-      <div class="team-grid team-grid--2 reveal r2">
+      <div class="team-grid team-grid--2 reveal r2" style="grid-template-columns: repeat(3, 1fr);">
         <div class="team-card">
           <img class="team-card-photo" src="assets/headshots/micah-goodman.png" alt="Micah Goodman">
           <div class="team-card-body">
@@ -1205,6 +1205,16 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
             <div class="team-card-bio">A pioneer in <strong>instructional development</strong> in Israel and former <strong>Head of Instructional Development in the IDF</strong>. Principal Officer of the <em>School of Civic Discourse</em>. Specializes in designing complex learning processes and contributes to the development of educational experiences at MOTJ through a multi-layered methodology integrating theory, simulation, <strong>group dialogue</strong>, and personal reflection.</div>
           </div>
         </div>
+        <div class="team-card">
+          <div class="team-card-photo" style="background: var(--navy); display: flex; align-items: center; justify-content: center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Eli Horovitz</div>
+            <div class="team-card-role">Original Concept Development</div>
+            <div class="team-card-bio">Co-developed the original Sanhedrin experience concept alongside Roi. Foundational thinking on how <strong>ancient deliberation models</strong> could be reimagined as <strong>interactive museum technology.</strong></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1212,7 +1222,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-statement">
       <p class="label reveal">צוות הפרויקט</p>
       <h2 class="reveal r1">צוות ייעוץ</h2>
-      <div class="team-grid team-grid--2 reveal r2">
+      <div class="team-grid team-grid--2 reveal r2" style="grid-template-columns: repeat(3, 1fr);">
         <div class="team-card">
           <img class="team-card-photo" src="assets/headshots/micah-goodman.png" alt="מיכה גודמן">
           <div class="team-card-body">
@@ -1227,6 +1237,16 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
             <div class="team-card-name">מירי דיין (אל"מ בדימוס)</div>
             <div class="team-card-role">יועצת מתודולוגיית למידה</div>
             <div class="team-card-bio">חלוצה ב<strong>פיתוח הוראה</strong> בישראל ולשעבר <strong>ראש פיתוח הוראה בצה"ל</strong>. קצינה ראשית ב<em>בית הספר לשיח אזרחי</em>. מתמחה בעיצוב תהליכי למידה מורכבים ותורמת לפיתוח חוויות חינוכיות ב-MOTJ באמצעות מתודולוגיה רב-שכבתית המשלבת תיאוריה, סימולציה, <strong>דיאלוג קבוצתי</strong> ורפלקציה אישית.</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-photo" style="background: var(--navy); display: flex; align-items: center; justify-content: center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(189,214,230,0.6)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">אלי הורוביץ</div>
+            <div class="team-card-role">פיתוח קונספט מקורי</div>
+            <div class="team-card-bio">פיתח את הקונספט המקורי של חוויית הסנהדרין יחד עם רועי. חשיבה יסודית על אופן שבו <strong>מודלים עתיקים של דיון</strong> יכולים לקבל ביטוי חדש כ<strong>טכנולוגיית מוזיאון אינטראקטיבית.</strong></div>
           </div>
         </div>
       </div>
@@ -1603,6 +1623,146 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
 </section>
 
 <!-- ============================================================
+     SLIDE 6B: Visitor Experience Flow - Emotional journey moment by moment
+     ============================================================ -->
+<section class="slide" data-act="ACT 2: THE EXPERIENCE">
+  <div class="lang-en">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+      <p class="label reveal">What It Feels Like</p>
+      <h2 class="reveal r1">The Visitor Experience</h2>
+      <p class="body-text reveal r2" style="text-align: center; max-width: 800px; margin-bottom: 28px;">Five moments that transform a visitor from <strong>spectator</strong> to <strong>participant</strong> to <strong>changed thinker.</strong></p>
+      <!-- Timeline: 5 step cards with connecting line -->
+      <div style="display: flex; gap: 0; width: 100%; max-width: 1100px; position: relative; align-items: stretch;" class="reveal r3">
+        <!-- Connecting line -->
+        <div style="position: absolute; top: 28px; left: 5%; right: 5%; height: 3px; background: linear-gradient(90deg, var(--blue), var(--navy), var(--navy), var(--navy), var(--blue)); z-index: 0; border-radius: 2px;"></div>
+        <!-- Step 1: Before -->
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 6px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 14px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,48,87,0.3); flex-shrink: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="card" style="margin-top: 14px; padding: 16px; text-align: center; flex: 1; width: 100%;">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Before</div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 6px;">Prepare</div>
+            <div style="font-size: 14px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">Receive your <strong>role assignment</strong> via the MOTJ Pathfinder device. Brief training on discourse rules. <em>Pick your side.</em></div>
+          </div>
+        </div>
+        <!-- Step 2: Enter -->
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 6px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 14px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,48,87,0.3); flex-shrink: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          </div>
+          <div class="card" style="margin-top: 14px; padding: 16px; text-align: center; flex: 1; width: 100%;">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Enter</div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 6px;">Immerse</div>
+            <div style="font-size: 14px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">Walk into the <strong>circular arena.</strong> Dramatic lighting. Sages on screens. Meet your <em>facilitator.</em></div>
+          </div>
+        </div>
+        <!-- Step 3: Engage -->
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 6px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 14px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,48,87,0.3); flex-shrink: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div class="card" style="margin-top: 14px; padding: 16px; text-align: center; flex: 1; width: 100%; border-top: 3px solid var(--navy);">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Engage</div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 6px;">Deliberate</div>
+            <div style="font-size: 14px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">The dilemma is presented. Sages argue. <strong>You speak into the microphone.</strong> The crowd reacts. Your argument <em>shifts the puzzle.</em></div>
+          </div>
+        </div>
+        <!-- Step 4: Climax -->
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 6px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 14px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,48,87,0.3); flex-shrink: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="card" style="margin-top: 14px; padding: 16px; text-align: center; flex: 1; width: 100%;">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Climax</div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 6px;">Converge</div>
+            <div style="font-size: 14px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">The polarization score drops. Arguments converge. The puzzle completes. <strong><em>L'Shem Shamayim.</em></strong></div>
+          </div>
+        </div>
+        <!-- Step 5: Exit -->
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 6px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 14px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,48,87,0.3); flex-shrink: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          </div>
+          <div class="card" style="margin-top: 14px; padding: 16px; text-align: center; flex: 1; width: 100%;">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Exit</div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 6px;">Reflect</div>
+            <div style="font-size: 14px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;"><strong>QR takeaway</strong> with your personal journey. What shifted in your thinking. A reflection question <em>from your sage.</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lang-he" dir="rtl">
+    <div class="layout-statement" style="justify-content: flex-start; padding-top: 48px;">
+      <p class="label reveal">איך זה מרגיש</p>
+      <h2 class="reveal r1">חוויית המבקר</h2>
+      <p class="body-text reveal r2" style="text-align: center; max-width: 800px; margin-bottom: 28px;">חמישה רגעים שהופכים מבקר מ<strong>צופה</strong> ל<strong>משתתף</strong> ל<strong>חושב אחרת.</strong></p>
+      <!-- Timeline: 5 step cards with connecting line -->
+      <div style="display: flex; gap: 0; width: 100%; max-width: 1100px; position: relative; align-items: stretch;" class="reveal r3">
+        <!-- Connecting line -->
+        <div style="position: absolute; top: 28px; left: 5%; right: 5%; height: 3px; background: linear-gradient(90deg, var(--blue), var(--navy), var(--navy), var(--navy), var(--blue)); z-index: 0; border-radius: 2px;"></div>
+        <!-- Step 1: Before -->
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 6px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 14px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,48,87,0.3); flex-shrink: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="card" style="margin-top: 14px; padding: 16px; text-align: center; flex: 1; width: 100%;">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">לפני</div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 6px;">הכנה</div>
+            <div style="font-size: 14px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">קבלו את <strong>שיבוץ התפקיד</strong> דרך מכשיר ה-Pathfinder של MOTJ. הדרכה קצרה על כללי השיח. <em>בחרו צד.</em></div>
+          </div>
+        </div>
+        <!-- Step 2: Enter -->
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 6px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 14px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,48,87,0.3); flex-shrink: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          </div>
+          <div class="card" style="margin-top: 14px; padding: 16px; text-align: center; flex: 1; width: 100%;">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">כניסה</div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 6px;">שקיעה</div>
+            <div style="font-size: 14px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">נכנסים ל<strong>זירה העגולה.</strong> תאורה דרמטית. חכמים על מסכים. פגישה עם <em>המנחה.</em></div>
+          </div>
+        </div>
+        <!-- Step 3: Engage -->
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 6px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 14px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,48,87,0.3); flex-shrink: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div class="card" style="margin-top: 14px; padding: 16px; text-align: center; flex: 1; width: 100%; border-top: 3px solid var(--navy);">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">מעורבות</div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 6px;">דיון</div>
+            <div style="font-size: 14px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">הדילמה מוצגת. החכמים טוענים. <strong>אתם מדברים למיקרופון.</strong> הקהל מגיב. הטיעון שלכם <em>מזיז את הפאזל.</em></div>
+          </div>
+        </div>
+        <!-- Step 4: Climax -->
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 6px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 14px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,48,87,0.3); flex-shrink: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="card" style="margin-top: 14px; padding: 16px; text-align: center; flex: 1; width: 100%;">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">שיא</div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 6px;">התכנסות</div>
+            <div style="font-size: 14px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;">ציון הקיטוב יורד. הטיעונים מתכנסים. הפאזל מושלם. <strong><em>לשם שמיים.</em></strong></div>
+          </div>
+        </div>
+        <!-- Step 5: Exit -->
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 6px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 14px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,48,87,0.3); flex-shrink: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          </div>
+          <div class="card" style="margin-top: 14px; padding: 16px; text-align: center; flex: 1; width: 100%;">
+            <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">יציאה</div>
+            <div style="font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 6px;">רפלקציה</div>
+            <div style="font-size: 14px; color: var(--text-sub); margin-top: 6px; line-height: 1.4;"><strong>QR לקחת הביתה</strong> עם המסע האישי שלכם. מה השתנה בחשיבה שלכם. שאלת רפלקציה <em>מהחכם שלכם.</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      SLIDE 7: Architecture - Persona vs Role visual tree
      ============================================================ -->
 <section class="slide" data-act="ACT 2: THE EXPERIENCE">
@@ -1970,8 +2130,8 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">The <span class="term-tip" data-tip="The AI conductor that picks which Sage speaks, manages turn order, and intervenes to keep the conversation productive."><em>Nasi</em></span> and <span class="term-tip" data-tip="The AI quality checker that reviews every response before the audience sees it."><em>Av Beit Din</em></span> are <strong>meta-agents</strong> that route prompts, trigger interventions, and select which sage responds next based on debate dynamics.</div>
         </div>
         <div class="card" style="padding: 24px; border-top: 3px solid var(--navy);">
-          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;"><span class="term-tip" data-tip="Agent-to-Agent-to-Human: AI agents check each other's work before anything reaches the audience. Like an editorial board reviewing before publishing.">A2A2H Protocol</span></div>
-          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;">Agent-to-Agent-to-Human: background threads where agents <strong>validate claims</strong> and <strong>verify tone</strong> before output reaches the human layer.</div>
+          <div style="font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px;"><span class="term-tip" data-tip="AI agents check each other's work before anything reaches the audience. Like an editorial board reviewing before publishing.">Agent-to-Agent-to-Human Protocol</span></div>
+          <div style="font-size: 15px; color: var(--text-sub); line-height: 1.5;"><span style="font-family: var(--font-m);">A2A2H</span>: background threads where agents <strong>validate claims</strong> and <strong>verify tone</strong> before output reaches the human layer.</div>
         </div>
       </div>
       <a href="#appendix-tech" onclick="goToAppendix('appendix-tech');return false;" class="reveal r4" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 14px; text-decoration: underline; cursor: pointer;">
@@ -2157,10 +2317,10 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Solved:</strong> Agent quality, protocols, <span style="font-family: var(--font-m);">80</span> <strong>characters,</strong> and <strong>core framework</strong> established.</p>
         </div>
         <div class="card" style="padding: 20px 28px;">
-          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Ahead:</strong> <span class="term-tip" data-tip="Agent-to-Agent-to-Human: AI agents coordinate and validate with each other before anything reaches the audience."><span style="font-family: var(--font-m);">A2A2H</span></span> <strong>orchestration.</strong> Getting agents to debate <strong>each other</strong> while <em>synthesizing</em> outputs for humans.</p>
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Ahead:</strong> <span class="term-tip" data-tip="AI agents coordinate and validate with each other before anything reaches the audience.">Agent-to-Agent-to-Human (<span style="font-family: var(--font-m);">A2A2H</span>)</span> <strong>orchestration.</strong> Getting agents to debate <strong>each other</strong> while <em>synthesizing</em> outputs for humans.</p>
         </div>
         <div class="card" style="padding: 20px 28px;">
-          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Mitigation:</strong> Proving this via <strong><span style="font-family: var(--font-m);">Phase 1</span> <span style="font-family: var(--font-m);">POC</span></strong> using a <strong>WhatsApp group</strong> to test <strong>live dynamics</strong> before building the UI.</p>
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">Mitigation:</strong> Proving this via <strong><span style="font-family: var(--font-m);">Phase 1</span> Proof of Concept</strong> using a <strong>WhatsApp group</strong> to test <strong>live dynamics</strong> before building the UI.</p>
         </div>
       </div>
       <a href="#gloss-architecture" onclick="goToGlossary('gloss-architecture');return false;" class="reveal r3" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--navy); font-weight: 600; font-size: 13px; text-decoration: underline; cursor: pointer;">
@@ -2187,10 +2347,10 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">פתור:</strong> איכות סוכן, פרוטוקולים, <span style="font-family: var(--font-m);">80</span> <strong>דמויות,</strong> ו<strong>מסגרת ליבה</strong> מבוססת.</p>
         </div>
         <div class="card" style="padding: 20px 28px;">
-          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">לפנינו:</strong> תזמורת <span style="font-family: var(--font-m);">A2A2H</span>. לגרום לסוכנים להתדיין <strong>ביניהם</strong> תוך <em>סינתזה</em> לאינטראקציה אנושית.</p>
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">לפנינו:</strong> תזמורת <span class="term-tip" data-tip="סוכני AI מתאמים ומאמתים ביניהם לפני שהפלט מגיע לקהל.">סוכן-לסוכן-לאדם (<span style="font-family: var(--font-m);">A2A2H</span>)</span>. לגרום לסוכנים להתדיין <strong>ביניהם</strong> תוך <em>סינתזה</em> לאינטראקציה אנושית.</p>
         </div>
         <div class="card" style="padding: 20px 28px;">
-          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">מיטיגציה:</strong> הוכחה דרך <strong><span style="font-family: var(--font-m);">POC</span> שלב <span style="font-family: var(--font-m);">1</span></strong> באמצעות <strong>קבוצת WhatsApp</strong> לבדיקת <strong>דינמיקות חיות</strong> לפני בניית ה-UI.</p>
+          <p style="font-size: 20px; color: var(--text-sub); line-height: 1.5;"><strong style="color: var(--text);">מיטיגציה:</strong> הוכחה דרך <strong>הוכחת היתכנות שלב <span style="font-family: var(--font-m);">1</span></strong> באמצעות <strong>קבוצת WhatsApp</strong> לבדיקת <strong>דינמיקות חיות</strong> לפני בניית ה-UI.</p>
         </div>
       </div>
     </div>
@@ -2277,6 +2437,10 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
               <div style="font-size: 18px; font-weight: 600; color: var(--navy);">Research Hub</div>
               <div style="font-size: 15px; color: var(--text-sub); margin-top: 4px;"><strong>Privacy-first data repository</strong> on moral reasoning. Academic partnerships and <strong>societal trend insights.</strong></div>
             </div>
+            <div class="card" style="padding: 16px 20px; border-left: 4px solid var(--blue); background: rgba(0,48,87,0.04);">
+              <div style="font-size: 18px; font-weight: 600; color: var(--navy);">Impact Measurement</div>
+              <div style="font-size: 15px; color: var(--text-sub); margin-top: 4px;"><strong>Longitudinal data analytics</strong> tracking discourse skill improvement over time. Measurable outcomes keep donors, schools, and partners <strong>invested long-term.</strong></div>
+            </div>
           </div>
         </div>
       </div>
@@ -2315,6 +2479,10 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
               <div style="font-size: 18px; font-weight: 600; color: var(--navy);">מרכז מחקר</div>
               <div style="font-size: 15px; color: var(--text-sub); margin-top: 4px;"><strong>מאגר נתונים מאובטח פרטיות</strong> על חשיבה מוסרית. שותפויות אקדמיות ו<strong>תובנות מגמות חברתיות.</strong></div>
             </div>
+            <div class="card" style="padding: 16px 20px; border-right: 4px solid var(--blue); border-left: none; background: rgba(0,48,87,0.04);">
+              <div style="font-size: 18px; font-weight: 600; color: var(--navy);">מדידת השפעה</div>
+              <div style="font-size: 15px; color: var(--text-sub); margin-top: 4px;"><strong>ניתוח נתונים לונגיטודינלי</strong> העוקב אחר שיפור מיומנויות שיח לאורך זמן. תוצאות מדידות שומרות על <strong>מחויבות ארוכת טווח</strong> של תורמים, בתי ספר ושותפים.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -2333,32 +2501,32 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
     <div class="layout-statement" style="justify-content: flex-start; padding-top: 36px;">
       <p class="label reveal">Execution Plan</p>
       <h2 class="reveal r1">Roadmap & Milestones</h2>
-      <!-- Row 1: Pre-POC, Donor Presentations, POC -->
+      <!-- Row 1: Pre-Kickoff, Kickoff, RFP -->
       <div style="display: flex; gap: 16px; margin-top: 28px; width: 100%; max-width: 1100px; position: relative;" class="reveal r2">
         <div style="position: absolute; top: 50%; left: 3%; right: 3%; height: 2px; background: var(--blue); z-index: 0;"></div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
-          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Pre-POC (Now)</div>
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Pre-Kickoff (Now)</div>
           <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">Internal Presentation</div>
           <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>Internal deck</strong> and stakeholder alignment by <strong>end of March 2026.</strong></div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
-          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Apr - May 2026</div>
-          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">Donor Presentations</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">Tailored presentations for <strong>potential donors</strong> with <strong>per-donor customization.</strong> <span class="term-tip" data-tip="The 4 knowledge layers (K1-K4) that define how each Sage thinks and argues - the critical content authoring work.">K1-K4</span> content authoring begins.</div>
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Late Apr 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">Kickoff (Post-Passover)</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">Project kickoff after Passover. <span class="term-tip" data-tip="The 4 knowledge layers (K1-K4) that define how each Sage thinks and argues - the critical content authoring work.">K1-K4</span> content authoring begins. <strong>Donor presentations</strong> run in parallel with RFP.</div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
-          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Apr 2026</div>
-          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">RFP & Vendor Selection</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>Price quotes</strong>, supplier briefings, and <strong>vendor selection</strong> round. <a href="#appendix-program" onclick="goToAppendix('appendix-program');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">View Full Program Scope</a></div>
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">May 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">RFP Issued</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>RFP issued</strong>, supplier briefings, and <strong>vendor selection</strong> round. Runs <strong>in parallel</strong> with fundraising. <a href="#appendix-program" onclick="goToAppendix('appendix-program');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">View Full Program Scope</a></div>
         </div>
       </div>
-      <!-- Row 2: POC, Working Demo, Prototype -->
+      <!-- Row 2: Grant + POC, Working Demo, Deployment -->
       <div style="display: flex; gap: 16px; margin-top: 16px; width: 100%; max-width: 1100px; position: relative;" class="reveal r3">
         <div style="position: absolute; top: 50%; left: 3%; right: 3%; height: 2px; background: var(--blue); z-index: 0;"></div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
-          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Jun - Aug 2026</div>
-          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">POC</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>WhatsApp group</strong> with <span style="font-family: var(--font-m);">3</span> agents + <span style="font-family: var(--font-m);">2</span> humans. Both modes tested. <strong>Micha Goodman validation.</strong> <a href="#appendix-poc" onclick="goToAppendix('appendix-poc');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">View POC Definition</a></div>
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Jun 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">Federal Grant Filing + Proof of Concept</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>Federal grant filing.</strong> Proof of Concept via <strong>WhatsApp group</strong> with <span style="font-family: var(--font-m);">3</span> agents + <span style="font-family: var(--font-m);">2</span> humans. <strong>Micha Goodman validation.</strong> <a href="#appendix-poc" onclick="goToAppendix('appendix-poc');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">View POC Definition</a></div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">Sep - Nov 2026</div>
@@ -2381,28 +2549,28 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
       <div style="display: flex; gap: 16px; margin-top: 28px; width: 100%; max-width: 1100px; position: relative;" class="reveal r2">
         <div style="position: absolute; top: 50%; left: 3%; right: 3%; height: 2px; background: var(--blue); z-index: 0;"></div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
-          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">טרום-POC (עכשיו)</div>
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">טרום-קיקאוף (עכשיו)</div>
           <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">מצגת פנימית</div>
           <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>דק פנימי</strong> ויישור קו עם בעלי עניין עד <strong>סוף מרץ 2026.</strong></div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
-          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">אפר' - מאי 2026</div>
-          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">מצגות לתורמים</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">מצגות מותאמות ל<strong>תורמים פוטנציאליים</strong> עם <strong>התאמה אישית לכל תורם.</strong> כתיבת תוכן K1-K4 מתחילה.</div>
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">סוף אפריל 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">קיקאוף (אחרי פסח)</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;">השקת הפרויקט אחרי פסח. כתיבת תוכן K1-K4 מתחילה. <strong>מצגות לתורמים</strong> במקביל ל-RFP.</div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
-          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">אפריל 2026</div>
-          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">RFP ובחירת ספקים</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>הצעות מחיר</strong>, תדריכי ספקים, וסבב <strong>בחירת ספקים.</strong> <a href="#appendix-program" onclick="goToAppendix('appendix-program');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">צפה בהיקף התוכנית המלא</a></div>
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">מאי 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">הוצאת RFP</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>הוצאת RFP</strong>, תדריכי ספקים, וסבב <strong>בחירת ספקים.</strong> רץ <strong>במקביל</strong> לגיוס כספים. <a href="#appendix-program" onclick="goToAppendix('appendix-program');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">צפה בהיקף התוכנית המלא</a></div>
         </div>
       </div>
       <!-- Row 2 -->
       <div style="display: flex; gap: 16px; margin-top: 16px; width: 100%; max-width: 1100px; position: relative;" class="reveal r3">
         <div style="position: absolute; top: 50%; left: 3%; right: 3%; height: 2px; background: var(--blue); z-index: 0;"></div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
-          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">יוני - אוג' 2026</div>
-          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">POC</div>
-          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>קבוצת WhatsApp</strong> עם <span style="font-family: var(--font-m);">3</span> סוכנים + <span style="font-family: var(--font-m);">2</span> בני אדם. שני המצבים נבדקים. <strong>אימות מיכה גודמן.</strong> <a href="#appendix-poc" onclick="goToAppendix('appendix-poc');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">צפה בהגדרת ה-POC</a></div>
+          <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">יוני 2026</div>
+          <div style="font-size: 24px; font-weight: 700; color: var(--navy); margin-top: 6px;">הגשת מענק פדרלי + הוכחת היתכנות</div>
+          <div style="font-size: 15px; color: var(--text-sub); margin-top: 8px; line-height: 1.4;"><strong>הגשת מענק פדרלי.</strong> הוכחת היתכנות דרך <strong>קבוצת WhatsApp</strong> עם <span style="font-family: var(--font-m);">3</span> סוכנים + <span style="font-family: var(--font-m);">2</span> בני אדם. <strong>אימות מיכה גודמן.</strong> <a href="#appendix-poc" onclick="goToAppendix('appendix-poc');return false;" style="color: var(--navy); font-weight: 600; text-decoration: underline; font-size: 13px;">צפה בהגדרת הוכחת ההיתכנות</a></div>
         </div>
         <div class="card" style="flex: 1; position: relative; z-index: 1; padding: 22px;">
           <div style="font-family: var(--font-m); font-size: 11px; letter-spacing: 2px; color: var(--taupe); text-transform: uppercase;">ספט' - נוב' 2026</div>
@@ -2555,7 +2723,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <p style="font-size: 19px; color: rgba(255,255,255,0.95); line-height: 1.7; margin-top: 16px; font-weight: 600;">That ancient technology went dormant. The Museum of Tolerance Jerusalem just switched it back on.</p>
         </div>
         <div style="display: flex; gap: 16px; margin-top: 36px;" class="reveal r3">
-          <button class="cta-btn" onclick="goToAppendix('appendix-poc')">Approve Phase 1 POC</button>
+          <button class="cta-btn" onclick="goToAppendix('appendix-poc')">Approve Phase 1 Proof of Concept</button>
           <a class="cta-btn-outline" href="#appendix-architecture" onclick="goToAppendix('appendix-architecture');return false;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
             View Architecture Proposal
@@ -2578,7 +2746,7 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
           <p style="font-size: 19px; color: rgba(255,255,255,0.95); line-height: 1.7; margin-top: 16px; font-weight: 600;">הטכנולוגיה העתיקה הזו נרדמה. מוזיאון הסו��לנות ירושלים הפעיל אותה מחדש.</p>
         </div>
         <div style="display: flex; gap: 16px; margin-top: 36px;" class="reveal r3">
-          <button class="cta-btn" onclick="goToAppendix('appendix-poc')">אישור POC שלב 1</button>
+          <button class="cta-btn" onclick="goToAppendix('appendix-poc')">אישור הוכחת היתכנות שלב 1</button>
           <a class="cta-btn-outline" href="#appendix-architecture" onclick="goToAppendix('appendix-architecture');return false;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
             צפייה בהצעה הארכיטקטונית
@@ -5664,21 +5832,22 @@ h3 { font-family: var(--font-d); font-weight: 600; font-size: 28px; line-height:
         <div class="qn-group">Act 2: The Experience</div>
         <button class="qn-item" onclick="qnGo(7)"><span class="qn-num">08</span>Sage Showcase</button>
         <button class="qn-item" onclick="qnGo(8)"><span class="qn-num">09</span>Visitor Journey</button>
-        <button class="qn-item" onclick="qnGo(9)"><span class="qn-num">10</span>Architecture</button>
-        <button class="qn-item" onclick="qnGo(10)"><span class="qn-num">11</span>Sample Session</button>
-        <button class="qn-item" onclick="qnGo(11)"><span class="qn-num">12</span>Two Configurations</button>
-        <button class="qn-item" onclick="qnGo(12)"><span class="qn-num">13</span>Physical Space</button>
-        <button class="qn-item" onclick="qnGo(13)"><span class="qn-num">14</span>AI & Context Engineering</button>
-        <button class="qn-item" onclick="qnGo(14)"><span class="qn-num">15</span>Debate Framework</button>
+        <button class="qn-item" onclick="qnGo(9)"><span class="qn-num">10</span>Visitor Experience</button>
+        <button class="qn-item" onclick="qnGo(10)"><span class="qn-num">11</span>Architecture</button>
+        <button class="qn-item" onclick="qnGo(11)"><span class="qn-num">12</span>Sample Session</button>
+        <button class="qn-item" onclick="qnGo(12)"><span class="qn-num">13</span>Two Configurations</button>
+        <button class="qn-item" onclick="qnGo(13)"><span class="qn-num">14</span>Physical Space</button>
+        <button class="qn-item" onclick="qnGo(14)"><span class="qn-num">15</span>AI & Context Engineering</button>
+        <button class="qn-item" onclick="qnGo(15)"><span class="qn-num">16</span>Debate Framework</button>
         <div class="qn-group">Act 3: Why It Works</div>
-        <button class="qn-item" onclick="qnGo(15)"><span class="qn-num">16</span>POC (Rambam)</button>
-        <button class="qn-item" onclick="qnGo(16)"><span class="qn-num">17</span>70/30 Risk</button>
-        <button class="qn-item" onclick="qnGo(17)"><span class="qn-num">18</span>Competitive</button>
-        <button class="qn-item" onclick="qnGo(18)"><span class="qn-num">19</span>EdTech</button>
+        <button class="qn-item" onclick="qnGo(16)"><span class="qn-num">17</span>Proof of Concept</button>
+        <button class="qn-item" onclick="qnGo(17)"><span class="qn-num">18</span>70/30 Risk</button>
+        <button class="qn-item" onclick="qnGo(18)"><span class="qn-num">19</span>Competitive</button>
+        <button class="qn-item" onclick="qnGo(19)"><span class="qn-num">20</span>EdTech</button>
         <div class="qn-group">Act 4: The Ask</div>
-        <button class="qn-item" onclick="qnGo(19)"><span class="qn-num">20</span>Roadmap</button>
-        <button class="qn-item" onclick="qnGo(20)"><span class="qn-num">21</span>Business Model</button>
-        <button class="qn-item" onclick="qnGo(21)"><span class="qn-num">22</span>CTA</button>
+        <button class="qn-item" onclick="qnGo(20)"><span class="qn-num">21</span>Roadmap</button>
+        <button class="qn-item" onclick="qnGo(21)"><span class="qn-num">22</span>Business Model</button>
+        <button class="qn-item" onclick="qnGo(22)"><span class="qn-num">23</span>CTA</button>
         <div class="qn-group">Appendix</div>
         <button class="qn-item" onclick="qnGo('appendix-architecture')"><span class="qn-num" style="font-size:10px">ARCH</span>Architecture v3.1</button>
         <button class="qn-item" onclick="qnGo('appendix-tech')"><span class="qn-num">A</span>Terms & Terminology</button>
@@ -6179,12 +6348,12 @@ var slideAnimations = {};
     function start(){if(running)return;running=true;resize();edgeTimer=Date.now()*0.001;draw();}
     function stop(){running=false;if(animId){cancelAnimationFrame(animId);animId=null;}}
     window.addEventListener('resize',resize);
-    if(!slideAnimations[9])slideAnimations[9]=[];
-    slideAnimations[9].push({start:start,stop:stop});
+    if(!slideAnimations[10])slideAnimations[10]=[];
+    slideAnimations[10].push({start:start,stop:stop});
   });
 })();
 
-// === ARENA ANIMATION (Slide 9 - Physical Space) ===
+// === ARENA ANIMATION (Slide 10 - Physical Space) ===
 (function() {
   ['arenaNetwork','arenaNetworkHe'].forEach(function(id) {
     var canvas = document.getElementById(id); if (!canvas) return;
@@ -6219,8 +6388,8 @@ var slideAnimations = {};
     function start(){if(running)return;running=true;resize();draw();}
     function stop(){running=false;if(animId){cancelAnimationFrame(animId);animId=null;}}
     window.addEventListener('resize',resize);
-    if(!slideAnimations[12])slideAnimations[12]=[];
-    slideAnimations[12].push({start:start,stop:stop});
+    if(!slideAnimations[13])slideAnimations[13]=[];
+    slideAnimations[13].push({start:start,stop:stop});
   });
 })();
 
@@ -6732,11 +6901,11 @@ slideAnimations[1].push({ start: function() { window._polarAnim.start(); }, stop
   };
 })();
 
-// Register puzzle animation on slide index 5 (Slide 4 - Cognitive Twist, after Hero+Problem+3 team slides)
+// Register puzzle animation on slide index 5 (Cognitive Twist, after Hero+Problem+3 team slides)
 if (!slideAnimations[5]) slideAnimations[5] = [];
 slideAnimations[5].push({ start: function() { window._puzzleAnim.start(); }, stop: function() { window._puzzleAnim.stop(); } });
 
-// === SANHEDRIN DUAL MODE ANIMATION (Slide 9: Two Configurations, index 11) ===
+// === SANHEDRIN DUAL MODE ANIMATION (Slide 9: Two Configurations, index 12) ===
 // Left edge: Culture - large slow orbiting circles, connecting bridges
 // Right edge: Debate - fast sharp arrows firing across, competitive energy
 // Top/bottom bands visible, not hidden by center cards
@@ -6971,8 +7140,8 @@ slideAnimations[5].push({ start: function() { window._puzzleAnim.start(); }, sto
     function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
     window.addEventListener('resize', function() { if (running) { resize(); init(); } });
 
-    if (!slideAnimations[11]) slideAnimations[11] = [];
-    slideAnimations[11].push({ start: start, stop: stop });
+    if (!slideAnimations[12]) slideAnimations[12] = [];
+    slideAnimations[12].push({ start: start, stop: stop });
   });
 })();
 
