@@ -1,15 +1,19 @@
 # Sanhedrin Deck - Project State
 
 ## Current Status
-**Last updated:** 2026-03-29 (Session 22)
-**Phase:** 22 main slides (3 team slides) + 9 appendix (Architecture, A-F, P, Q). 12 sages with voices. Deployed and live. Architecture Proposal appendix added as first appendix.
+**Last updated:** 2026-03-30 (Session 23)
+**Phase:** 23 main slides (3 team + 1 visitor flow) + 10 appendix (Architecture PDF, R-Research, A-F, P, Q). 12 sages with voices. Deployed and live.
 **Live URL:** https://sanhedrin-deck.onrender.com
 **Repo:** https://github.com/jsagir/sanhedrin-deck (auto-deploy on push to master)
+**Rollback tag:** `v3.1-pre-revision` (state before Session 23 overhaul)
 
 ## What To Do Next (Pick Up Here)
 
 ### Immediate
 1. **Slide 21 (The Ask)** - $ placeholder pending financial estimation, to be completed with real numbers
+2. **Present to Aaron Lebowitz** (Tuesday) - deck is ready
+3. **RFP process** - Marla + Sharon to lead after Passover, use vendor research from Appendix R
+4. **Focus group planning** - bring in theatrical director, game expert, cognitive psychologist (Hagai)
 
 ### Content Refinement
 - [x] Yazdani Studio claim verified against v3.1 architecture doc (Layer 0A). 100K visitors claim not found in current deck (already removed).
@@ -69,6 +73,52 @@
 | A5 | The Sage Library | All 80 Jewish Lives figures with hover overlays showing Sanhedrin roles |
 
 ## What Changed in Latest Sessions
+
+### Session 23 (2026-03-30) - Meeting Feedback Overhaul, Research Appendix, Vendor Landscape
+
+**Based on team meeting with Yoni (JR), Marla, Daniel, Sharon, Eli, Diana:**
+
+#### Meeting Feedback Implementation
+- **NEW SLIDE: Visitor Experience Flow** (after Visitor Journey): 5-step emotional journey (Prepare/Immerse/Deliberate/Converge/Reflect) with connected timeline. Addresses Marla's core concern: "What do I DO as a visitor?"
+- **Eli Horovitz added to Advisory Team** (3rd card): "Original Concept Development" - co-developer of original Sanhedrin concept with Roi
+- **Acronyms spelled out**: A2A2H changed to "Agent-to-Agent-to-Human" on all main slides. POC changed to "Proof of Concept". CTA buttons updated.
+- **Roadmap updated to meeting timeline**: Pre-Kickoff (Now), Kickoff Post-Passover (Late Apr), RFP Issued (May, "runs in parallel with fundraising"), Federal Grant Filing + POC (Jun), Working Demo (Sep-Nov), Deployment (Jun-Jul 2027)
+- **Impact Measurement** added to EdTech + Business Model slide: longitudinal data analytics, discourse skill improvement tracking
+
+#### Slide Redesigns
+- **Slide 15 (Debate Framework)**: "Civic Discourse Rules" replaced with **Engagement Mechanics** showing two modes side-by-side (Culture of Disagreement + Debate Mode)
+- **Slide 16 (POC/Rambam)**: Quote changed to "conversation/orchestration" (34px bold). Added **edge stack** narrative. New Gemini-generated image: Rambam hologram in Pepper's ghost cabinet with ancient texts + visitor with microphone.
+- **Slide 18 (Competitive)**: "Structured discourse rules" updated to "Dual engagement mechanics"
+- **Slide 19 (EdTech)**: Merged with Business Model. 2-column layout: tiers left, IP + Research Hub + Impact Measurement right
+- **Slide 21 (The Ask)**: Redesigned with bold navy card, $96px sign, pulsing pending indicator, 4 scope cards with SVG icons
+- **Slide 22 (CTA)**: New quote: "In Judaism, disagreement was never the problem. It was always the method." 48px gold accent + explanation text
+
+#### Architecture Appendix
+- Replaced 126K of HTML tables with **embedded PDF** of original v3.1 document (23 pages). Header bar with MOTJ branding + Download PDF button.
+
+#### NEW: Technology Landscape Research (Appendix R)
+8 sections with 9 YouTube video embeds:
+1. **China Is 3-5 Years Ahead** (focal point): Shanghai Museum, Shenzhen S&T, Zhejiang, Forbidden City, 15th Five-Year Plan
+2. **Holographic + Non-Hologram paths**: RAVATAR, Proto, Looking Glass 86", HoloTheater, teamLab, Meow Wolf, ABBA Voyage, Refik Anadol DATALAND, Sleep No More
+3. **AI Digital Humans**: D-ID V4 (sub-0.5s, 4K), ElevenLabs Flash, Soul Machines WARNING
+4. **USC Shoah Foundation**: Dimensions in Testimony as closest precedent (15+ museums)
+5. **First-mover opportunity**: No museum doing multi-agent AI debate. Comparison table.
+6. **Budget tiers**: $50-150K / $150-500K / $500K-2M+
+7. **Vendor Landscape** (20+ vendors, 4 tiers):
+   - Tier 1 Full Creative: Moment Factory, RAVATAR, Exhibitry, NeoPangea, DISKIN (Jerusalem)
+   - Tier 2 Tech Specialists: D-ID (Israel), Proto, Looking Glass, ElevenLabs, Ailias, TimeLooper
+   - Tier 3 Environment: Grande Experiences, Future Colossal, Dimensional Innovations, Ideum, BASE
+   - Israeli Ecosystem: DISKIN, D-ID, Tower of David precedent, Infinity Museum Jerusalem
+   - 3 vendor demo YouTube embeds (Moment Factory, DISKIN Friends of Zion, Exhibitry KSC)
+8. **China Vendors + Inspiration**: Leyard, Unilumin, Absen, BOE, WiMi, Audfly hardware. 7 museum inspirations. teamLab, d'strict companies.
+
+#### Narration Updates
+- 6 MP3s regenerated (slides 15, 16, 18, 19, 20, 21, 22) via ElevenLabs to match updated content
+
+#### Other
+- Compressed Rambam image from 6.7MB to 2.2MB
+- Git tagged `v3.1-pre-revision` for rollback
+- Deck now 23 main slides + 10 appendices
 
 ### Session 22 (2026-03-29) - Architecture Appendix, Engagement Mechanics, Rambam Reframe, The Ask
 - **Slide 15 (Debate & Discourse)**: "Civic Discourse Rules" card replaced with **Engagement Mechanics** showing two modes side-by-side: Culture of Disagreement (pedagogical, collaborative) and Debate Mode (competitive, rhetorical). Both EN and HE.
