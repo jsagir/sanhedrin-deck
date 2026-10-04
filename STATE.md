@@ -370,3 +370,11 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 - `docs/sanhedrin-kickoff-transcript.md` - Meeting 1: kickoff, role-based architecture, two modes
 - `docs/sanhedrin-meeting2-transcript.md` - Meeting 2: deck walkthrough, presentation strategy
 - `docs/sanhedrin-meeting3-transcript.md` - Meeting 3: two-track ASK, debate expert, timeline
+
+## Session 24 (2026-10-04) - Version router + v5 (expert team master)
+- **Why:** the deck is being recalibrated for the 8 Oct 2026 expert-team alignment session (onboarding and alignment, not fundraising). The original must stay intact, so the site gets a version router.
+- **Layout:** `index.html` is now a version router. The original deck moved, unchanged, to `original.html`. The new deck is `v5/index.html`. Shared assets (`slides/`, `assets/`, `audio/`, `docs/`) are referenced by v5 as `../`.
+- **v5:** 22 main slides + 8 appendix, EN/HE, every slide tagged CLOSED / OPEN. Working title "The Convergence Lab". Reuses the original shell (CSS, nav, JS), problem, cognitive twist, sample session and Rambam proof slides. Dropped from v5: team slides, business case, "$ pending" ask, roadmap dates, appendix P/Q/F (superseded). No narration in v5 (audio not regenerated).
+- **Build:** `python3 v5-build/build.py` then `python3 v5-build/build_router.py`. Source of truth for v5 slides is `v5-build/build.py`; do not hand-edit `v5/index.html`.
+- **Open:** Hebrew copy is a first draft for review. Group size per session, launch sage count, name, discourse-only ratification, RFP issue date.
+- **Next:** review HE, regenerate narration if wanted, 10-slide cut for the CEO (separate pass).

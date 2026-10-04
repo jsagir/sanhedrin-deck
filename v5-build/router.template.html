@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>The Sanhedrin Decks | MOTJ - choose a version</title>
+%%CLARITY%%
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F2EB; --surface: #FFFFFF; --navy: #003057; --blue: #BDD6E6; --taupe: #776E64;
+  --text: #1A1A1A; --sub: #4A4A4A; --line: rgba(0,48,87,0.12);
+  --shadow: 0 2px 14px rgba(0,0,0,0.07); --shadow-hover: 0 8px 28px rgba(0,48,87,0.18);
+}
+:root[data-theme="dark"] {
+  --bg: #0b1a2a; --surface: #12263a; --navy: #BDD6E6; --blue: #BDD6E6; --taupe: #9a9189;
+  --text: #f0f4f7; --sub: #c4ced6; --line: rgba(189,214,230,0.2);
+  --shadow: 0 2px 14px rgba(0,0,0,0.4); --shadow-hover: 0 8px 28px rgba(0,0,0,0.6);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { min-height: 100%; }
+body { background: var(--bg); color: var(--text); font-family: 'Montserrat', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+main { max-width: 1040px; margin: 0 auto; padding: 56px 24px 40px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 56px; }
+.logo { height: 44px; }
+:root[data-theme="dark"] .logo { filter: brightness(0) invert(1); }
+.theme { font: 500 12px 'JetBrains Mono', monospace; letter-spacing: 1px; text-transform: uppercase; color: var(--navy);
+  background: transparent; border: 1px solid var(--line); border-radius: 6px; padding: 7px 12px; cursor: pointer; }
+.eyebrow { font: 500 13px 'JetBrains Mono', monospace; letter-spacing: 4px; text-transform: uppercase; color: var(--taupe); margin-bottom: 14px; }
+h1 { font-weight: 800; font-size: clamp(34px, 5.4vw, 58px); line-height: 1.05; letter-spacing: -1.2px; color: var(--navy); }
+.lede { font-size: 20px; line-height: 1.55; color: var(--sub); margin-top: 16px; max-width: 640px; }
+.versions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 44px; }
+.v {
+  display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 14px; padding: 28px 28px 24px; box-shadow: var(--shadow);
+  transition: transform .25s, box-shadow .25s; position: relative;
+}
+.v:hover, .v:focus-visible { transform: translateY(-4px); box-shadow: var(--shadow-hover); outline: none; }
+.v:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.v--current { border-top: 5px solid var(--navy); }
+.badge { align-self: flex-start; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: 2px; padding: 5px 11px; border-radius: 3px; margin-bottom: 18px; }
+.badge--current { background: var(--navy); color: #fff; }
+:root[data-theme="dark"] .badge--current { color: #003057; }
+.badge--archive { border: 1.5px dashed var(--taupe); color: var(--taupe); }
+.vn { font: 500 13px 'JetBrains Mono', monospace; letter-spacing: 3px; color: var(--taupe); }
+h2 { font-weight: 700; font-size: 28px; line-height: 1.15; color: var(--navy); margin: 6px 0 10px; }
+.v p { font-size: 17px; line-height: 1.55; color: var(--sub); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.meta span { font: 500 12px 'JetBrains Mono', monospace; letter-spacing: 1px; color: var(--sub); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; }
+.open { margin-top: auto; padding-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; color: var(--navy); }
+.open svg { transition: transform .25s; }
+.v:hover .open svg { transform: translateX(5px); }
+footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; line-height: 1.6; color: var(--taupe); }
+@media (max-width: 760px) { .versions { grid-template-columns: 1fr; } main { padding-top: 32px; } header { margin-bottom: 36px; } }
+@media (prefers-reduced-motion: reduce) { .v, .open svg { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img class="logo" src="assets/logos/motj-logo-horizontal.png" alt="Museum of Tolerance Jerusalem">
+    <button class="theme" id="theme" type="button" aria-label="Toggle dark mode">Dark</button>
+  </header>
+
+  <p class="eyebrow">The Sanhedrin decks</p>
+  <h1>Choose a version.</h1>
+  <p class="lede">Each version is a complete deck. Open the one you need. The earlier version stays exactly as it was.</p>
+
+  <nav class="versions" aria-label="Deck versions">
+%%CARDS%%
+  </nav>
+
+  <footer>
+    Proprietary information of the Museum of Tolerance Jerusalem (MOTJ). To be viewed only under a signed NDA.
+  </footer>
+</main>
+<script>
+(function () {
+  var root = document.documentElement, btn = document.getElementById('theme');
+  function set(t) { root.setAttribute('data-theme', t); btn.textContent = t === 'dark' ? 'Light' : 'Dark'; }
+  var saved = null;
+  try { saved = localStorage.getItem('sanhedrin-theme'); } catch (e) {}
+  set(saved || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  btn.addEventListener('click', function () {
+    var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    set(t); try { localStorage.setItem('sanhedrin-theme', t); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
