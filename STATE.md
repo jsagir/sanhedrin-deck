@@ -378,3 +378,9 @@ Based on transcript of Jonathan-Daniel deck walkthrough meeting:
 - **Build:** `python3 v5-build/build.py` then `python3 v5-build/build_router.py`. Source of truth for v5 slides is `v5-build/build.py`; do not hand-edit `v5/index.html`.
 - **Open:** Hebrew copy is a first draft for review. Group size per session, launch sage count, name, discourse-only ratification, RFP issue date.
 - **Next:** review HE, regenerate narration if wanted, 10-slide cut for the CEO (separate pass).
+
+## Session 2026-10-27 - Appendix C replaced with the full dilemma catalog (HE + EN)
+**What:** Appendix C ("Pre-Built Dilemma Scenarios", 13 items) replaced in BOTH `original.html` (former) and `v5/index.html` (updated) by a 7-slide bilingual catalog: method (sugya to modern transformation), 4 worked sugiot (Goring Ox, Guardians, Garma, Power of the Crowd), 20 test cases in two tables. First slide keeps `id="appendix-dilemmas"` so the v5 NAV entry still works.
+**Why:** Navigator supplied the full catalog text and asked for it in both Vercel versions.
+**Left out on purpose:** the pasted "13 thinking modes" list (conflicts with Appendix B naming and with the spine, where Av Beit Din and Praklit Satan are an AI meta-agent and a role, not modes) and the closing quote (no verifiable source). Slide 7 of Appendix C points to Appendix B.
+**Open:** the main deck still says 13 pre-built dilemmas in places and Appendix C now lists 20 cases; reconcile wording. Not committed or pushed.

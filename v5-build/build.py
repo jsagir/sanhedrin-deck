@@ -16,7 +16,8 @@ OUT = DEPLOY / 'v5' / 'index.html'
 
 s = SRC.read_text(encoding='utf-8')
 secs = [m.group(0) for m in re.finditer(r'<section class="slide[^>]*>.*?</section>\n', s, re.S)]
-assert len(secs) == 33, len(secs)
+# 33 original slides, with Appendix C expanded from 1 slide to the 7-slide dilemma catalog (HE + EN)
+assert len(secs) == 39, len(secs)
 first = re.search(r'<section class="slide[^>]*>', s).start()
 last_m = list(re.finditer(r'</section>\n', s))[-1].end()
 PRE, POST = s[:first], s[last_m:]
@@ -553,9 +554,10 @@ LOTS_SEC = ('<section class="slide" data-act="APPENDIX" data-appendix="true" id=
             '      <p class="reveal r3 v5-note" dir="ltr" style="text-align:left">Lots A-F: see the English view for the table.</p>\n'
             '    </div>\n  </div>\n</section>\n') % rows
 
-app = [secs[23], secs[24], secs[25], secs[26],
-       with_id(secs[27], 'appendix-dilemmas'), with_id(secs[28], 'appendix-personas'),
-       secs[29], LOTS_SEC]
+# secs[27..33] = Appendix C catalog (first slide already carries id="appendix-dilemmas")
+app = [secs[23], secs[24], secs[25], secs[26]] + secs[27:34] + [
+       with_id(secs[34], 'appendix-personas'),
+       secs[35], LOTS_SEC]
 N = len(main)
 body = ''.join(main) + ''.join(app)
 
